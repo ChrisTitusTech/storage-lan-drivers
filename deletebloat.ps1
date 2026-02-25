@@ -100,6 +100,11 @@ foreach ($extension in $extensionsToDelete) {
     $files = Get-ChildItem -Path $rootFolder -Filter $extension -Recurse -File -ErrorAction SilentlyContinue
 
     foreach ($file in $files) {
+        # Preserve the WinUtil log so STEP 3 can parse it
+        if ($file.FullName -eq (Join-Path $PSScriptRoot "WinUtil_Win11ISO.log")) {
+            Write-Host "Skipping (reserved for STEP 3): $($file.FullName)" -ForegroundColor DarkGray
+            continue
+        }
         try {
             Write-Host "Deleting file: $($file.FullName)" -ForegroundColor Yellow
             Remove-Item -Path $file.FullName -Force
