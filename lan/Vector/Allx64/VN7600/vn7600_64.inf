@@ -1,0 +1,134 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=12/02/2016,9.9.26.0
+CatalogFile.NTamd64=vn7600_64.cat
+
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+; Win 2000 / XP only 
+%DESCRIPTION_VN7600%=DI_vn7600,USB\Vid_1248&Pid_1030
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vn7600.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections
+;------------------------------------------------------------------------------
+; VN7600
+;---------
+[DI_vn7600.NTamd64]
+CopyFiles=@vn7600.sys
+AddReg=vn7600.registry,options.registry
+
+[DI_vn7600.NTamd64.Services]
+AddService=vn7600,2,vn7600.Service
+
+;Common
+;------
+[vn7600.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn7600.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN7600.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",TimerEligibility,0x10001,0x400
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",ChannelsPerCard,0x10001,4
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",HwType,0x10001,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",HwName,,"VN7600"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",DriverName,,VN7600
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7600",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwChannel,0x10003,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwChannel,0x10003,3
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwChannel,0x10003,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwChannel,0x10003,3
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwChannel,0x10003,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwType,0x10003,41
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwChannel,0x10003,3
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN7600",UseCardSerialNumber,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN7600",RxTransferCycleTime,0x10003,1000
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="VN7600"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN7600 Driver"
+DESCRIPTION_VN7600="VN7600"
+ClassName="Vector-Hardware"

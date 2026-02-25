@@ -1,0 +1,313 @@
+; Copyright 2015 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=09/27/2017,10.3.18.0
+CatalogFile.NTamd64=vn7572_64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+
+[DeviceList.NTamd64]
+%DESCRIPTION_VN7572%=DI_vn7572,PCI\VEN_19E2&DEV_3006&SUBSYS_300619e2
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=CanClassReg
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+vn7572.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows Sections
+;------------------------------------------------------------------------------
+
+[DI_vn7572.NTamd64]
+CopyFiles=@vn7572.sys
+AddReg=vn7572.registry,options.registry
+
+[DI_vn7572.NTamd64.Services]
+AddService=vn7572,2,vn7572.Service
+
+[DI_vn7572.NTamd64.HW]
+AddReg=VN7572.hw.registry
+
+[vn7572.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn7572.sys
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[DI_vn7572.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[DI_vn7572.NTamd64.Wdf]
+KmdfService    = vn7572, vn7572_wdfsect
+
+[vn7572_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;-------------------------------------------------------------------------
+; MSI support
+;-------------------------------------------------------------------------
+
+[VN7572.hw.registry]
+HKR, Interrupt Management,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001, 1
+
+;------------------------------------------------------------------------------
+;  Add hardware dependend registry entries
+;------------------------------------------------------------------------------
+[vn7572.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",TimerEligibility,0x10001,0x700
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",ChannelsPerCard,0x10001,9
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",HwType,0x10001,83
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",HwName,,"VN7572"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",DriverName,,VN7572
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7572",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN7572",UseCardSerialNumber,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add CAN assignment registry entries (generate only, no assignment)
+;------------------------------------------------------------------------------
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer4",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer4",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer4",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer5",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer5",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer5",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer6",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer6",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer6",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer7",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer7",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer7",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe4",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe4",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe4",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe5",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe5",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe5",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe6",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe6",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe6",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe7",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe7",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe7",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape4",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape4",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape4",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape5",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape5",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape5",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape6",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape6",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape6",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape7",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape7",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape7",hwChannel,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add LIN assignment registry entries (generate only, no assignment)
+;------------------------------------------------------------------------------
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN3",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN3",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN3",hwChannel,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add FRAY assignment registry entries (generate only, no assignment)
+;------------------------------------------------------------------------------
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add K-LINE assignment registry entries (generate only, no assignment)
+;------------------------------------------------------------------------------
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwChannel,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add DAIO assignment registry entries (generate only, no assignment)
+;------------------------------------------------------------------------------
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwChannel,0x10003,0
+
+;------------------------------------------------------------------------------
+; WIBU signature
+;------------------------------------------------------------------------------
+HKR,,fileSignature,0x00000001,3e,17,aa,a5,08,4e,45,7b,e8,33,5f,e3,76,65,5a,ca,63,26,e6,9e,36,2a,d8,b5,ae,7d,62,20,00,00,00,00,8f,9a,30,b4,58,08,96,19,a0,c0,65,77,0f,6f,04,91,60,34,75,4f,1b,59,13,51,c4,b0,8b,10,00,00,00,00
+
+;------------------------------------------------------------------------------
+;  Add common registry entries
+;------------------------------------------------------------------------------
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",TxQueueSize,0x10003,256
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",VirtualBus,0x10003,1
+
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+;DriverSetupDirectory="VN7572"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN7572-Driver"
+DESCRIPTION_VN7572="VN7572"
+ClassName="Vector-Hardware"

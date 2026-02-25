@@ -1,0 +1,136 @@
+; Copyright 2011 Vector Informatik GmbH
+[Version]
+Signature      = "$CHICAGO$"
+Class          = Vector-Hardware
+ClassGuid      = {D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider       = %MSFT%
+DriverVer=12/08/2016,8.4.36.0
+CatalogFile.NTamd64=vn2640_64.cat
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+; DisplayName            Section           DeviceId
+; -----------            -------           --------
+%vn2640.DRVDESC%=vn2640_Inst, USB\VID_1248&PID_1040
+;-------------------------------------------------------------------------
+; Class Section
+;-------------------------------------------------------------------------
+[ClassInstall32]
+Addreg         = CANClassReg
+
+[CANClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+;-------------------------------------------------------------------------
+; Device Install Section
+;-------------------------------------------------------------------------
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%MSFT%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vn2640.sys = 1
+
+[SourceDisksNames]
+1=%DISK_NAME%,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections
+;------------------------------------------------------------------------------
+[vn2640_Inst.NTamd64]
+CopyFiles      = @vn2640.sys
+AddReg	       = vn2640.registry,options.registry
+
+[vn2640_Inst.NTamd64.Services]
+AddService     = vn2640,0x00000002,vn2640_Service
+
+[vn2640_Service]
+DisplayName    = %vn2640.SVCDESC%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vn2640.sys
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[vn2640_Inst.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[vn2640_Inst.NTamd64.Wdf]
+KmdfService    = vn2640, vn2640_wdfsect
+
+[vn2640_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN2640.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",TimerEligibility,0x10001,0x400
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",ChannelsPerCard,0x10001,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",HwType,0x10001,53
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",HwName,,"VN2640"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",DriverName,,VN2640
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN2640",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST0",hwType,0x10003,53
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST1"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST2"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.MOST3"
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST0",hwType,0x10003,53
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST1"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST2"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.MOST3"
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN2640",UseCardSerialNumber,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN2640",RxTransferCycleTime,0x10003,2000
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",AdjustTimerResolution,0x10001,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="VN2640"
+MSFT           = "Vector Informatik GmbH"
+ClassName      = "Vector-Hardware"
+vn2640.SVCDESC = "VN2640"
+vn2640.DRVDESC = "VN2640"
+DISK_NAME      = "VN2640-Driver"

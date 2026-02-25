@@ -1,0 +1,137 @@
+;******************************************************************************
+;*
+;*                           Hilscher GmbH
+;*
+;*           netX Serial Device Driver Setup Information File
+;*
+;*                          Copyright (c) 2011
+;*
+;*******************************************************************************
+;* File name: netx10ser.INF
+;*******************************************************************************
+
+;--------- Version Section ---------------------------------------------------
+[Version]
+Signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%HILSCHER%
+DriverVer=07/15/2013,6.0.9.0
+CatalogFile=netx10ser.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+; ================= Device section =====================
+[Manufacturer]
+%HILSCHER%=netx10ser_devices,NTx86,NTamd64
+
+; For Win2K
+[netx10ser_devices]
+%HILSCHER_NETX10%=netx10ser_inst, USB\VID_1939&PID_0101
+%HILSCHER_COMX10%=netx10ser_inst, USB\VID_1939&PID_0110
+%HILSCHER_NJ10%=netx10ser_inst, USB\VID_1939&PID_0111
+%HILSCHER_netRAPID10%=netx10ser_inst, USB\VID_1939&PID_0112
+
+; For XP and later
+[netx10ser_devices.NTx86]
+%HILSCHER_NETX10%=netx10ser_inst, USB\VID_1939&PID_0101
+%HILSCHER_COMX10%=netx10ser_inst, USB\VID_1939&PID_0110
+%HILSCHER_NJ10%=netx10ser_inst, USB\VID_1939&PID_0111
+%HILSCHER_netRAPID10%=netx10ser_inst, USB\VID_1939&PID_0112
+
+[netx10ser_devices.NTamd64]
+%HILSCHER_NETX10%=netx10ser_inst, USB\VID_1939&PID_0101
+%HILSCHER_COMX10%=netx10ser_inst, USB\VID_1939&PID_0110
+%HILSCHER_NJ10%=netx10ser_inst, USB\VID_1939&PID_0111
+%HILSCHER_netRAPID10%=netx10ser_inst, USB\VID_1939&PID_0112
+
+[netx10ser_inst.NT]
+CopyFiles=netx10ser_inst.Files
+AddReg=netx10ser_inst.NT.AddReg
+
+[netx10ser_inst.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,netx10ser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKR,,PortSubClass,1,01
+
+[netx10ser_inst.NT.HW]
+Addreg=netx10ser_inst.NT.HW.AddReg
+
+[netx10ser_inst.NT.HW.AddReg]
+; By default, WDF device is protected with SDDL_DEVOBJ_SYS_ALL_ADM_ALL which means
+; only operating system and administrators can access the COM1 device. Let's change
+; it to allow everyone to have read/write access to it. Please refer to WDK section 
+; "SDDL for Device Objects" for detailed description on this.
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GRGW;;;WD)"
+
+; apply FILE_DEVICE_SECURE_OPEN to the whole devnode: Use same security checks on relative opens
+HKR,,DeviceCharacteristics,0x10001,0x100
+
+[netx10ser_inst.NT.Services]
+AddService = netx10ser, 0x00000002, netx10ser_inst.AddService
+
+[netx10ser_inst.AddService]
+DisplayName     = %netx10ser.SvcDesc%
+ServiceType     = 1 ; SERVICE_KERNEL_DRIVER
+StartType       = 3 ; SERVICE_DEMAND_START
+ErrorControl    = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\netx10ser.sys
+LoadOrderGroup  = Base
+
+[netx10ser_inst.Files]
+netx10ser.sys
+
+[SourceDisksNames]
+1=%Disk_Description%,,,
+
+[SourceDisksFiles]
+netx10ser.sys             = 1,x86
+WdfCoInstaller01009.dll = 1,x86
+
+[SourceDisksFiles.x86]
+netx10ser.sys             = 1,x86
+WdfCoInstaller01009.dll = 1,x86
+
+[SourceDisksFiles.amd64]
+netx10ser.sys             = 1,x64
+WdfCoInstaller01009.dll = 1,x64
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+;-------------- WDF Coinstaller installation
+
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[netx10ser_inst.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll=1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[netx10ser_inst.NT.Wdf]
+KmdfService = netx10ser, netx10ser_inst_wdfsect
+
+[netx10ser_inst_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;---------------------------------------------------------------;
+
+[Strings]
+HILSCHER            = "Hilscher GmbH"                           ;Name of HW Manufacturer
+netx10ser.SvcDesc   = "Hilscher netX10 USB Serial Driver"
+HILSCHER_NETX10     = "Hilscher netX 10"
+HILSCHER_COMX10     = "Hilscher comX 10"
+HILSCHER_NJ10       = "Hilscher netJACK 10"
+HILSCHER_netRAPID10 = "Hilscher netRAPID 10"
+Disk_Description    = "Hilscher netX 10 Serial Device Driver Install Disk"

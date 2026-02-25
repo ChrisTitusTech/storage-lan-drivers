@@ -1,0 +1,101 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=08/12/2015,9.3.18.0
+CatalogFile.NTamd64 = vn8800_64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList, NTamd64.6.1
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+
+[DeviceList.NTamd64.6.1]
+%DESCRIPTION_VN8810%=DI_vn8800,USB\Vid_1248&Pid_1180
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+vn8800.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows Sections
+;------------------------------------------------------------------------------
+; VN8800
+;---------
+[DI_vn8800.NTamd64]
+CopyFiles=@vn8800.sys
+AddReg=vn8800.registry,options.registry
+
+[DI_vn8800.NTamd64.Services]
+AddService=vn8800,2,vn8800.Service
+
+;Common
+;------
+[vn8800.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn8800.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN8800.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",TimerEligibility,0x10001,0x180
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",ChannelsPerCard,0x10001,3
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",HwType,0x10001,95
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",HwName,,"VN8800"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",DriverName,,VN8800
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8800",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN8800",UseCardSerialNumber,0x10003,0
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+;DriverSetupDirectory="VN8800"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN8800-Driver"
+DESCRIPTION_VN8810="VN8810"
+ClassName="Vector-Hardware"
+
+
+
+
+
+

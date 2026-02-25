@@ -20,19 +20,29 @@ function Test-DriverCompatibility {
     $content = Get-Content -Path $InfPath -ErrorAction SilentlyContinue
     if (-not $content) { return $false }
 
-    $is64Bit = $false
     $contentJoined = $content -join "`n"
 
-    foreach ($line in $content) {
-        if ($line -match "NTamd64|NTx64|amd64|\.10\.0\.\d{5}") {
-            $is64Bit = $true
-        }
+    # Must have at least one section header targeting NTamd64 (64-bit Windows).
+    # The version suffix (e.g. .6.1, .10.0) denotes MINIMUM OS — Win11 will still
+    # match any NTamd64 section regardless of the minimum version specified.
+    # Valid examples: [Models.NTamd64]  [Models.NTamd64.10.0]  [Models.NTamd64.6.1]
+    $hasAmd64Section = $contentJoined -match '(?im)^\[[^\]]*\.NTamd64'
+
+    # Also accept bare [NTamd64] or a Manufacturer line that lists NTamd64 as a target platform
+    if (-not $hasAmd64Section) {
+        $hasAmd64Section = $contentJoined -match '(?im)^\[NTamd64' -or
+                           $contentJoined -match '(?im),\s*NTamd64(\.|\s|,|$)'
     }
 
-    $isGenericAmd64 = $contentJoined -match "\[.*NTamd64.*\]"
-    $noOldOSOnly = -not ($contentJoined -match "NTx86" -and -not ($contentJoined -match "NTamd64"))
+    if (-not $hasAmd64Section) { return $false }
 
-    return ($is64Bit -or $isGenericAmd64) -and $noOldOSOnly
+    # Reject if the ONLY architecture present is 32-bit (NTx86 sections, no NTamd64)
+    # This is already covered above (we return $false when there's no NTamd64),
+    # but make it explicit for clarity.
+    $hasOnlyX86 = ($contentJoined -match '(?im)NTx86') -and (-not ($contentJoined -match '(?im)NTamd64'))
+    if ($hasOnlyX86) { return $false }
+
+    return $true
 }
 
 # ----------------------------------------
@@ -124,8 +134,13 @@ Write-Host "`n[STEP 2] Removing unnecessary folders..." -ForegroundColor Cyan
 Write-Host "----------------------------------------"
 
 $foldersToDelete = @(
-    # 32-bit architecture folders
-    "x86", "i386", "Win32",
+    # Generic 32-bit architecture folders
+    "x86", "i386", "Win32", "NTx86", "Allx86",
+    # SDIO-convention 32-bit Windows-version folders (Win XP through Win10 x86)
+    "5x86", "6x86", "7x86", "8x86", "81x86", "88x86", "10x86",
+    # SDIO-convention 64-bit folders for old Windows only (XP x64 through Win 8.1 x64)
+    # Win11 requires Win10-era drivers at minimum; these pre-Win10 x64 folders are obsolete
+    "5x64", "6x64", "7x64", "8x64", "81x64",
     # Language/locale folders
     "en-US", "de-DE", "fr-FR", "es-ES", "it-IT", "ja-JP", "ko-KR",
     "zh-CN", "zh-TW", "pt-BR", "ru-RU", "nl-NL", "pl-PL", "tr-TR",
@@ -196,15 +211,24 @@ if (Test-Path $logPath) {
             foreach ($inf in $matchingInfs) {
                 $driverFolder = $inf.DirectoryName
                 if ($deletedFolderPaths.Contains($driverFolder)) { continue }
-                Write-Host "Deleting folder (DISM failure): $driverFolder" -ForegroundColor Yellow
-                try {
-                    Remove-Item -Path $driverFolder -Recurse -Force
-                    $null = $deletedFolderPaths.Add($driverFolder)
-                    $incompatibleDriverCount++
-                } catch {
-                    Write-Host "FAILED to delete folder: $driverFolder" -ForegroundColor Red
-                    $failedCount++
+
+                # Delete only the files sharing this driver's base name (e.g. e1c65x64.*)
+                # rather than the whole folder, which may contain other valid drivers
+                $baseName = [System.IO.Path]::GetFileNameWithoutExtension($inf.Name)
+                $siblingFiles = Get-ChildItem -Path $driverFolder -File -ErrorAction SilentlyContinue |
+                    Where-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.Name) -ieq $baseName }
+
+                foreach ($sibling in $siblingFiles) {
+                    Write-Host "Deleting file (DISM failure): $($sibling.FullName)" -ForegroundColor Yellow
+                    try {
+                        Remove-Item -Path $sibling.FullName -Force
+                        $deletedFiles++
+                    } catch {
+                        Write-Host "FAILED to delete file: $($sibling.FullName)" -ForegroundColor Red
+                        $failedCount++
+                    }
                 }
+                $incompatibleDriverCount++
             }
         }
     }

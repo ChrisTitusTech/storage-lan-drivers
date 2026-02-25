@@ -1,0 +1,265 @@
+; *******************************
+; COPYRIGHT NetXen Inc. 2005-2007
+; *******************************
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318} 
+Provider    = %NetXen%
+CatalogFile = NXP2NIC.cat
+DriverVer = 10/12/2007,3.4.216
+DriverPackageType=PlugAndPlay
+DriverPackageDisplayName=%NXP2NIC.Service.DispName%
+
+[Manufacturer]
+%NetXen%     = NetXen,NTAMD64
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[NetXen.NTAMD64]
+; DisplayName           Section       DeviceID
+; -----------           -------       --------
+%NetXenXFP.DeviceDesc%  = NXP2NIC1.ndi,	PCI\VEN_4040&DEV_0001&SUBSYS_00014040
+%NetXenCX4.DeviceDesc%  = NXP2NIC2.ndi,	PCI\VEN_4040&DEV_0002&SUBSYS_00024040
+%NetXenQG.DeviceDesc%  = NXP2NIC3.ndi,	PCI\VEN_4040&DEV_0003&SUBSYS_00034040
+
+;// XFP Single port 10G
+[NXP2NIC1.ndi]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = NXP2NIC.reg,params,FlowXG
+DelReg	        = NXP2NICDel.reg
+CopyFiles       = NXP2NIC.CopyFiles
+
+[NXP2NIC1.ndi.Services]
+AddService = NXP2NIC, 2, NXP2NIC.Service, common.EventLog
+
+;// CX4 Single port 10G
+[NXP2NIC2.ndi]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = NXP2NIC.reg,params,FlowXG
+DelReg	        = NXP2NICDel.reg
+CopyFiles       = NXP2NIC.CopyFiles
+
+[NXP2NIC2.ndi.Services]
+AddService = NXP2NIC, 2, NXP2NIC.Service, common.EventLog
+
+;// Quad Gig 1G 
+[NXP2NIC3.ndi]
+Characteristics = 0x84
+BusType         = 5
+AddReg          = NXP2NIC.reg,params,FlowGBE
+DelReg	        = NXP2NICDel.reg
+CopyFiles       = NXP2NIC.CopyFiles
+
+[NXP2NIC3.ndi.Services]
+AddService = NXP2NIC, 2, NXP2NIC.Service, common.EventLog
+
+;//***********************************************************
+;// REGISTRY SECTION
+;//***********************************************************
+[NXP2NICDel.reg]
+HKR, NDI\params\NetworkAddressMMA
+
+[NXP2NIC.reg]
+HKR, Ndi,                       Service,    0, "NXP2NIC"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+
+[params]
+
+HKR, Ndi\Params\EnableTcpOffload,	ParamDesc, ,%TCPOffload%
+HKR, Ndi\Params\EnableTcpOffload,    default,   , "0"
+HKR, Ndi\Params\EnableTcpOffload,      type,     , "enum"
+HKR, Ndi\Params\EnableTcpOffload\enum, 1,        ,  %on%
+HKR, Ndi\Params\EnableTcpOffload\enum, 0,        ,  %off%
+
+
+HKR, Ndi\Params\LargeSendOffload,    ParamDesc, , %LargeSendOffload%
+HKR, Ndi\Params\LargeSendOffload,    default,   , "1"
+HKR, Ndi\Params\LargeSendOffload,      type,     , "enum"
+HKR, Ndi\Params\LargeSendOffload\enum, 1,        ,  %on%
+HKR, Ndi\Params\LargeSendOffload\enum, 0,        ,  %off%
+
+HKR, Ndi\Params\MaxFrameSize,    ParamDesc, , %MaxFrameSize%
+HKR, Ndi\Params\MaxFrameSize,    default,   , "1500"
+HKR, Ndi\Params\MaxFrameSize,      min,     , "1500"
+HKR, Ndi\Params\MaxFrameSize,      max,     , "8000"
+HKR, Ndi\Params\MaxFrameSize,      step,     , "1"
+HKR, Ndi\Params\MaxFrameSize,      base,     , "10"
+HKR, Ndi\Params\MaxFrameSize,      type,    , "int"
+
+HKR, Ndi\Params\RxIPChecksumOffload,    ParamDesc, , %RxIPChecksumOffload%
+HKR, Ndi\Params\RxIPChecksumOffload,    default,   , "1"
+HKR, Ndi\Params\RxIPChecksumOffload,      type,     , "enum" 
+HKR, Ndi\Params\RxIPChecksumOffload\enum, 1,        , %on%
+HKR, Ndi\Params\RxIPChecksumOffload\enum, 0,        , %off%
+
+HKR, Ndi\Params\TxIPChecksumOffload,    ParamDesc, , %TxIPChecksumOffload%
+HKR, Ndi\Params\TxIPChecksumOffload,    default,   , "1"
+HKR, Ndi\Params\TxIPChecksumOffload,      type,     , "enum" 
+HKR, Ndi\Params\TxIPChecksumOffload\enum, 1,        , %on%
+HKR, Ndi\Params\TxIPChecksumOffload\enum, 0,        , %off%
+
+HKR, Ndi\Params\RxTCPChecksumOffload,    ParamDesc, , %RxTCPChecksumOffload%
+HKR, Ndi\Params\RxTCPChecksumOffload,    default,   , "1"
+HKR, Ndi\Params\RxTCPChecksumOffload,      type,     , "enum"
+HKR, Ndi\Params\RxTCPChecksumOffload\enum, 1,        , %on%
+HKR, Ndi\Params\RxTCPChecksumOffload\enum, 0,        , %off%
+
+HKR, Ndi\Params\TxTCPChecksumOffload,    ParamDesc, , %TxTCPChecksumOffload%
+HKR, Ndi\Params\TxTCPChecksumOffload,    default,   , "1"
+HKR, Ndi\Params\TxTCPChecksumOffload,      type,     , "enum"
+HKR, Ndi\Params\TxTCPChecksumOffload\enum, 1,        , %on%
+HKR, Ndi\Params\TxTCPChecksumOffload\enum, 0,        , %off%
+
+;network address
+HKR,NDI\params\NetworkAddress,          ParamDesc,      0, %NetworkAddress%
+HKR,NDI\params\NetworkAddress,          type,           0, "edit"
+HKR,NDI\params\NetworkAddress,          UpperCase,      0, "1"
+HKR,NDI\params\NetworkAddress,          default,        0, ""
+HKR,NDI\params\NetworkAddress,          optional,       0, "1"
+
+;MMA network address
+HKR,                            ,  NetworkAddressMMA,      0x00010000, "" ;
+
+HKR, Ndi\Params\VlanId,    ParamDesc, , %VlanId%
+HKR, Ndi\Params\VlanId,    default,   , "0"
+HKR, Ndi\Params\VlanId,      min,     , "0"
+HKR, Ndi\Params\VlanId,      max,     , "4094"
+HKR, Ndi\Params\VlanId,      step,     , "1"
+HKR, Ndi\Params\VlanId,      base,     , "10"
+HKR, Ndi\Params\VlanId,      type,    , "int"
+
+HKR, Ndi\Params\PQTagging,    ParamDesc, , %PQTagging%
+HKR, Ndi\Params\PQTagging,    default,   , "1"
+HKR, Ndi\Params\PQTagging,      type,     , "enum"
+HKR, Ndi\Params\PQTagging\enum, 1,        , %on%
+HKR, Ndi\Params\PQTagging\enum, 0,        , %off%
+
+HKR, Ndi\Params\RxRingSize,    ParamDesc, , %RxRingSize%
+HKR, Ndi\Params\RxRingSize,    default,   , "3"
+HKR, Ndi\Params\RxRingSize\enum,      0,     , %ring_size1%
+HKR, Ndi\Params\RxRingSize\enum,      1,     , %ring_size2%
+HKR, Ndi\Params\RxRingSize\enum,      2,     , %ring_size3%
+HKR, Ndi\Params\RxRingSize\enum,      3,     , %ring_size4%
+HKR, Ndi\Params\RxRingSize\enum,      4,     , %ring_size5%
+HKR, Ndi\Params\RxRingSize,      type,    , "enum"
+
+HKR, Ndi\Params\RxJumboRingSize,    ParamDesc, , %RxJumboRingSize%
+HKR, Ndi\Params\RxJumboRingSize,    default,   , "2"
+HKR, Ndi\Params\RxJumboRingSize\enum,      0,     , %ring_size1%
+HKR, Ndi\Params\RxJumboRingSize\enum,      1,     , %ring_size2%
+HKR, Ndi\Params\RxJumboRingSize\enum,      2,     , %ring_size3%
+HKR, Ndi\Params\RxJumboRingSize\enum,      3,     , %ring_size4%
+HKR, Ndi\Params\RxJumboRingSize,      type,  , "enum"
+
+HKR, Ndi\Params\TxRingSize,    ParamDesc, , %TxRingSize%
+HKR, Ndi\Params\TxRingSize,    default,   , "0"
+HKR, Ndi\Params\TxRingSize\enum,      0,     , %ring_size1%
+HKR, Ndi\Params\TxRingSize\enum,      1,     , %ring_size2%
+HKR, Ndi\Params\TxRingSize,         type,    , "enum"
+
+HKR, Ndi\Params\StsRingSize,    ParamDesc, , %StsRingSize%
+HKR, Ndi\Params\StsRingSize,    default,   , "3"
+HKR, Ndi\Params\StsRingSize\enum,      0,     , %ring_size1%
+HKR, Ndi\Params\StsRingSize\enum,      1,     , %ring_size2%
+HKR, Ndi\Params\StsRingSize\enum,      2,     , %ring_size3%
+HKR, Ndi\Params\StsRingSize\enum,      3,     , %ring_size4%
+HKR, Ndi\Params\StsRingSize\enum,      4,     , %ring_size5%
+HKR, Ndi\Params\StsRingSize\enum,      5,     , %ring_size6%
+HKR, Ndi\Params\StsRingSize,      type,    , "enum"
+
+[FlowXG]
+; FlowControl
+HKR, Ndi\Params\FlowControl,                   ParamDesc,          0, %FlowControl%
+HKR, Ndi\Params\FlowControl,                   default,            0, "1"
+HKR, Ndi\Params\FlowControl\Enum,              "0",                0, %FlowControl_disable%
+HKR, Ndi\Params\FlowControl\Enum,              "1",                0, %FlowControl_enable%
+HKR, Ndi\Params\FlowControl,                   type,               0, "enum"
+
+[FlowGBE]
+; FlowControl
+HKR, Ndi\Params\FlowControl,                   ParamDesc,          0, %FlowControl%
+HKR, Ndi\Params\FlowControl,                   default,            0, "3"
+HKR, Ndi\Params\FlowControl\Enum,              "0",                0, %FlowControl_None%
+HKR, Ndi\Params\FlowControl\Enum,              "1",                0, %FlowControl_TxOnly%
+HKR, Ndi\Params\FlowControl\Enum,              "2",                0, %FlowControl_RxOnly%
+HKR, Ndi\Params\FlowControl\Enum,              "3",                0, %FlowControl_Full%
+HKR, Ndi\Params\FlowControl,                   type,               0, "enum"
+
+;----------------------------------------------------------------------
+[SourceDisksNames]
+1=%DiskName%,,0
+
+[SourceDisksFiles]
+NXP2NC64.sys = 1
+
+[NXP2NIC.CopyFiles]
+NXP2NC64.sys,,,2
+
+[DestinationDirs]
+NXP2NIC.CopyFiles     = 12
+
+;-----------------------------------------------------------------------
+[NXP2NIC.Service]
+DisplayName     = %NXP2NIC.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\NXP2NC64.sys
+LoadOrderGroup  = NDIS
+;-----------------------------------------------------------------------
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\drivers\NXP2NC64.sys"
+HKR,,TypesSupported  ,0x00010001,7
+
+;-----------------------------------------------------------------------------
+[Strings]
+NetXen			= "NetXen Inc."
+DiskName = "NetXen Network Driver Disk"
+NetXenXFP.DeviceDesc         = "NetXen 10Gb SR Ethernet Protocol Offload Adapter"
+NetXenCX4.DeviceDesc         = "NetXen 10Gb (CX4) Ethernet Protocol Offload Adapter"
+NetXenQG.DeviceDesc         = "NetXen QuadGig Ethernet Protocol Offload Adapter"
+NXP2NIC.Service.DispName = "NetXen 10Gb TCP Offload Driver"
+
+TCPOffload = "TCP Stateful Offload"
+LargeSendOffload = "Large Send Offload"
+MaxFrameSize = "Max Ethernet Frame Size"
+RxIPChecksumOffload  = "Receive IP Checksum Offload"
+TxIPChecksumOffload = "Transmit IP Checksum offload"
+RxTCPChecksumOffload = "Receive TCP/UDP Checksum Offload"
+TxTCPChecksumOffload  = "Transmit TCP/UDP Checksum offload"
+on = "Enabled"
+off = "Disabled"
+NetworkAddress = "Locally Administered Address"
+NetworkAddressMMA = "Multiple MAC Addresses"
+VlanId = "Vlan Id"
+RxRingSize = "Max Receive Buffers"
+RxJumboRingSize = "Max Jumbo Buffers"
+TxRingSize = "Transmit Ring Size"
+StsRingSize = "Status Ring Size"
+ring_size1 = " 1024"
+ring_size2 = " 2048"
+ring_size3 = " 4096"
+ring_size4 = " 8192"
+ring_size5 = "16384"
+ring_size6 = "32768"
+
+FlowControl              = "Flow Control"
+FlowControl_None         = "Off"
+FlowControl_RxOnly       = "Respond"
+FlowControl_TxOnly       = "Generate"
+FlowControl_Full         = "Generate & Respond"
+FlowControl_disable      = "Disabled"
+FlowControl_enable       = "Enabled"
+
+PQTagging = "QoS Packet Tagging"

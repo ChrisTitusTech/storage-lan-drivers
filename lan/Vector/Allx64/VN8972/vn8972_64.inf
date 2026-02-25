@@ -1,0 +1,145 @@
+; Copyright 2015 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=09/27/2017,10.3.18.0
+CatalogFile.NTamd64=vn8972_64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+
+[DeviceList.NTamd64]
+%DESCRIPTION_VN8972%=DI_vn8972,PCI\VEN_19E2&DEV_3005&SUBSYS_300519e2
+
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=CanClassReg
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+vn8972.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows Sections
+;------------------------------------------------------------------------------
+
+[DI_vn8972.NTamd64]
+CopyFiles=@vn8972.sys
+AddReg=vn8972.registry,options.registry
+
+[DI_vn8972.NTamd64.Services]
+AddService=VN8972,2,VN8972.Service
+
+[DI_vn8972.NTamd64.HW]
+AddReg=VN8972.hw.registry
+
+[VN8972.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\VN8972.sys
+AddReg=VN8972.vrtp.params
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[DI_vn8972.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[DI_vn8972.NTamd64.Wdf]
+KmdfService    = VN8972, VN8972_wdfsect
+
+[VN8972_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;-------------------------------------------------------------------------
+; MSI support
+;-------------------------------------------------------------------------
+
+[VN8972.hw.registry]
+HKR, Interrupt Management,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001, 1
+
+;------------------------------------------------------------------------------
+;  Add hardware dependend registry entries
+;------------------------------------------------------------------------------
+
+[VN8972.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",TimerEligibility,0x10001,0x700
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",ChannelsPerCard,0x10001,9
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",HwType,0x10001,85
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",HwName,,"VN8972"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",DriverName,,VN8972
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8972",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN8972",UseCardSerialNumber,0x10003,0
+
+;------------------------------------------------------------------------------
+;  Add common registry entries
+;------------------------------------------------------------------------------
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",TxQueueSize,0x10003,256
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",VirtualBus,0x10003,1
+
+[VN8972.vrtp.params]
+HKR,"Parameters",ShmBaseAddress,0x10001,0x7A733000
+HKR,"Parameters",ShmSize,0x10001,0x300000
+HKR,"Parameters",VrtpRxFifoOffset,0x10001,0x4000
+HKR,"Parameters",VrtpDmaOffsetTxData,0x10001,0x100100
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+;DriverSetupDirectory="VN8972"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN8972-Driver"
+DESCRIPTION_VN8972="VN8972"
+ClassName="Vector-Hardware"

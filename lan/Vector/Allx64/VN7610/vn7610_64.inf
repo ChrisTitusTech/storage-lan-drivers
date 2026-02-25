@@ -1,0 +1,136 @@
+; Copyright 2012-2013 Vector Informatik GmbH
+[Version]
+Signature      = "$CHICAGO$"
+Class          = Vector-Hardware
+ClassGuid      = {D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider       = %MFGNAME%
+DriverVer=06/10/2016,9.6.28.0
+CatalogFile.NTamd64=vn7610_64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+%DESCRIPTION_VN7610%=DI_vn7610, USB\VID_1248&PID_1300
+;-------------------------------------------------------------------------
+;  Class Install Section
+;-------------------------------------------------------------------------
+[ClassInstall32]
+Addreg=CanClassReg
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vn7610.sys = 1
+
+[SourceDisksNames]
+1=%INSTDISK%,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows Sections
+;------------------------------------------------------------------------------
+[DI_vn7610.NTamd64]
+CopyFiles      = @vn7610.sys
+AddReg=vn7610.registry,options.registry
+
+[DI_vn7610.NTamd64.Services]
+AddService     = vn7610,0x00000002,vn7610_Service
+
+[vn7610_Service]
+DisplayName    = %SVCDESC_VN7610%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vn7610.sys
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[DI_vn7610.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[DI_vn7610.NTamd64.Wdf]
+KmdfService    = vn7610, vn7610_wdfsect
+
+[vn7610_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys
+;------------------------------------------------------------------------------
+[vn7610.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",TimerEligibility,0x10001,0x300
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",ChannelsPerCard,0x10001,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",HwType,0x10001,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",HwName,,"vn7610"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",DriverName,,vn7610
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN7610",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN7610",UseCardSerialNumber,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN7610",RxTransferCycleTime,0x10003,250
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwChannel,0x10003,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwChannel,0x10003,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,81
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,1
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",VirtualBus,0x10003,1
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="VN7610"
+MFGNAME           = "Vector Informatik GmbH"
+INSTDISK="VN7610-Driver"
+DESCRIPTION_VN7610="VN7610"
+ClassName      = "Vector-Hardware"
+SVCDESC_VN7610 = "VN7610"

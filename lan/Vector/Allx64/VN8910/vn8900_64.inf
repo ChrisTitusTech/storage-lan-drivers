@@ -1,0 +1,202 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=07/11/2017,10.2.12.0
+CatalogFile.NTamd64 = vn8900_64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64.6.1
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+
+[DeviceList.NTamd64.6.1]
+%DESCRIPTION_VN8910%=DI_vn8910,USB\Vid_1248&Pid_1100
+%DESCRIPTION_VN8910A%=DI_vn8910,USB\Vid_1248&Pid_1108
+%DESCRIPTION_VN8912%=DI_vn8910,USB\Vid_1248&Pid_1110
+%DESCRIPTION_VN8911%=DI_vn8910,USB\Vid_1248&Pid_1118
+%DESCRIPTION_VN8912A%=DI_vn8910,USB\Vid_1248&Pid_1120
+%DESCRIPTION_VN8914%=DI_vn8910,USB\Vid_1248&Pid_1128
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+vn8900.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows Sections
+;------------------------------------------------------------------------------
+; VN8900
+;---------
+[DI_vn8910.NTamd64]
+CopyFiles=@vn8900.sys
+AddReg=vn8900.registry,options.registry
+
+[DI_vn8910.NTamd64.Services]
+AddService=vn8910,2,vn8910.Service
+
+;Common
+;------
+[vn8910.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn8900.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN8900.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",TimerEligibility,0x10001,0x180
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",ChannelsPerCard,0x10001,9
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",HwType,0x10001,45
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",HwName,,"VN8910"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",DriverName,,VN8900
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN8900",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.K-Line0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.K-Line0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape2",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape3",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.K-Line0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN8900",UseCardSerialNumber,0x10003,0
+
+;------------------------------------------------------------------------------
+; WIBU signature
+;------------------------------------------------------------------------------
+HKR,,fileSignature,0x00000001,cd,7e,48,59,bf,df,01,5e,6f,63,43,54,8b,5c,3f,57,b4,4e,25,3f,c2,0f,cb,3b,c7,2d,b6,9c,00,00,00,00,54,2b,c1,78,19,0b,4e,5d,cd,08,10,c7,4c,33,52,ee,64,52,d0,e3,ee,60,3d,0b,6f,84,9b,f1,00,00,00,00
+
+;------------------------------------------------------------------------------
+; Common
+;------------------------------------------------------------------------------
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+;DriverSetupDirectory="VN8910"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN8910-Driver"
+DESCRIPTION_VN8910="VN8910"
+DESCRIPTION_VN8910A="VN8910A"
+DESCRIPTION_VN8912="VN8912"
+DESCRIPTION_VN8911="VN8911"
+DESCRIPTION_VN8912A="VN8912A"
+DESCRIPTION_VN8914="VN8914"
+ClassName="Vector-Hardware"
+
+
+
+
+
+

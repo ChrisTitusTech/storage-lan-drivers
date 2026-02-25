@@ -1,0 +1,128 @@
+;*******************************************************************************
+; Copyright (c) 2007 Broadcom Corporation
+;
+; Module Description:
+;
+;    BASP Miniport INF file for Vista/Longhorn
+;
+;*******************************************************************************
+
+[Version]
+signature           = "$Windows NT$"
+Class               = Net
+ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
+CatalogFile         = baspm.cat
+Provider            = %BRCM%
+DriverVer=09/01/2014,1.7.0
+
+[Manufacturer]
+%BRCM%              = Broadcom,ntx86,ntia64,ntamd64
+
+;-----------------------
+; x86 platform specific
+;-----------------------
+
+[Broadcom.ntx86]
+%BLFM_DESC%         = Blfm.Install, BRCM_BLFM
+
+[Blfm.Install.ntx86]
+AddReg              = Blfm.Install.AddReg, Blfm.Install.Params
+
+Characteristics     = 0x80a1        ; NCF_FORCE_NDIS_NOTIFY  | NCF_VIRTUAL | 
+                                    ; NCF_NOT_USER_REMOVABLE | NCF_HAS_UI
+
+*IfType             = 6             ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType          = 0             ; NdisMedium802_3 
+*PhysicalMediaType  = 0             ; NdisPhysicalMediumUnspecified 
+
+[Blfm.Install.ntx86.Services]
+AddService = Blfm, 0x2, Blfm.AddService, Blfm.EventLog
+
+;------------------------
+; ia64 platform specific
+;------------------------
+
+[Broadcom.ntia64]
+%BLFM_DESC%         = Blfm.Install, BRCM_BLFM
+
+[Blfm.Install.ntia64]
+AddReg              = Blfm.Install.AddReg, Blfm.Install.Params
+
+Characteristics     = 0x80a1        ; NCF_FORCE_NDIS_NOTIFY  | NCF_VIRTUAL | 
+                                    ; NCF_NOT_USER_REMOVABLE | NCF_HAS_UI
+
+*IfType             = 6             ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType          = 0             ; NdisMedium802_3 
+*PhysicalMediaType  = 0             ; NdisPhysicalMediumUnspecified 
+
+[Blfm.Install.ntia64.Services]
+AddService = Blfm, 0x2, Blfm.AddService, Blfm.EventLog
+
+;-------------------------
+; amd64 platform specific
+;-------------------------
+
+[Broadcom.ntamd64]
+%BLFM_DESC%         = Blfm.Install, BRCM_BLFM
+
+[Blfm.Install.ntamd64]
+AddReg              = Blfm.Install.AddReg, Blfm.Install.Params
+
+Characteristics     = 0x80a1        ; NCF_FORCE_NDIS_NOTIFY  | NCF_VIRTUAL | 
+                                    ; NCF_NOT_USER_REMOVABLE | NCF_HAS_UI
+
+*IfType             = 6             ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType          = 0             ; NdisMedium802_3 
+*PhysicalMediaType  = 0             ; NdisPhysicalMediumUnspecified 
+
+[Blfm.Install.ntamd64.Services]
+AddService = Blfm, 0x2, Blfm.AddService, Blfm.EventLog
+
+;----------------------
+; platform independent
+;----------------------
+
+[ControlFlags]
+ExcludeFromSelect   = BRCM_BLFM
+
+[Blfm.AddService]
+DisplayName         = %BLFM_DESC%
+ServiceType         = 1             ; SERVICE_KERNEL_DRIVER
+StartType           = 3             ; SERVICE_DEMAND_START
+ErrorControl        = 1             ; SERVICE_ERROR_NORMAL
+ServiceBinary       = %12%\basp.sys
+Addreg              = bcmPnpInstallReg
+
+[bcmPnpInstallReg]
+HKR,,product_version,0,"12.8.0"
+
+[Blfm.EventLog]
+AddReg = Blfm.AddEventLog.Reg
+
+[Blfm.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\basp.sys"
+HKR, , TypesSupported  , 0x00010001, 7
+
+[Blfm.Install.AddReg]
+HKR, Ndi,            Service,    0, "Blfm"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+HKR,, *VMQ,               0, "1"
+HKR,, *VMQLookaheadSplit, 0, "1"
+HKR,, *HeaderDataSplit,   0, "1"
+HKR,, *RSS,               0, "1"
+HKR,, *MaxRssProcessors,  0, "65535"
+
+[Blfm.Install.Params]
+;HKR, Parameters, ParameterName,  0x10000, "MultiSz", "Parameter", "Value"
+;HKR, Parameters, ParameterName2, 0x10001, 4
+
+[SourceDisksNames]
+1 = %DISK_DESC%,,,
+
+[Strings]
+BRCM            = "Broadcom"
+DISK_DESC       = "Broadcom Advanced Server Program Driver Diskette"
+BLFM_DESC       = "BASP Virtual Adapter"
+

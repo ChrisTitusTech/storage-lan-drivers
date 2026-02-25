@@ -1,0 +1,318 @@
+
+;****************************************************************
+; ASIX AX99100x PCIe to Muilt I/O Controller
+;
+; COM & LPT Driver INF file
+;
+; Copyright (c) ASIX Electronics Corporation. All rights reserved.
+;****************************************************************
+
+[version]
+CatalogFile=AX99100x.cat 
+signature="$Chicago$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+DriverVer = 09/03/2024,2.20.3.0
+PnpLockdown=1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[SourceDisksNames]
+0=%DiskName%,,
+
+[SourceDisksNames.amd64]
+0=%DiskName%,,
+
+[SourceDisksFiles]
+AX99100x_Sport.sys=0,X86,
+AX99100x_Pport.sys=0,X86,
+AX99100x_Ports.dll=0,X86,
+AX99100x_CoInst.dll=0,X86,
+AX99100x_Lang.ini=0
+
+[SourceDisksFiles.amd64]
+AX99100x_Sport.sys=0,AMD64,
+AX99100x_Pport.sys=0,AMD64,
+AX99100x_Ports.dll=0,AMD64,
+AX99100x_Lang.ini=0
+
+
+[DestinationDirs]
+Common.Files.x86_11 = 11
+Sys.Files.x86_12 = 12 
+
+Common.Files.Amd64_11 = 11 
+Sys.Files.Amd64_12 = 12 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  Driver Installation
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Manufacturer]
+%ProviderName%=AX99100Ports, NTamd64
+
+[AX99100Ports]
+%AX99100.SerialPort%=AX99100ComCard, AX99100MF\AX99100_COM
+%AX99100.ParallelPort%=AX99100LptCard, AX99100MF\AX99100_LPT
+
+[AX99100Ports.NTamd64]
+%AX99100.SerialPort%=AX99100ComCard, AX99100MF\AX99100_COM
+%AX99100.ParallelPort%=AX99100LptCard, AX99100MF\AX99100_LPT
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PCI-Express COM Card Install
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;  X86 ;;;; 
+
+[AX99100ComCard.NT]
+CopyFiles=Common.Files.x86_11, Sys.Files.x86_12
+AddReg=ComPort.AddReg, AX99100ComCard.NT.AddReg
+
+[AX99100ComCard.NT.HW]
+AddReg=AX99100ComCard.NT.HW.AddReg
+AddReg = RegisterMSI ;; Remove the comment to enable the MSI.
+
+[AX99100ComCard.NT.Services]
+AddService = AX99100Sport, 0x00000002, AX99100Sport_Service_Inst,AX99100Sport_EventLog_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+
+;;;;  AMD64 ;;;; 
+
+[AX99100ComCard.NTamd64]
+CopyFiles=Common.Files.Amd64_11, Sys.Files.Amd64_12
+AddReg=ComPort.AddReg, AX99100ComCard.NT.AddReg
+
+[AX99100ComCard.NTamd64.HW]
+AddReg=AX99100ComCard.NT.HW.AddReg
+AddReg = RegisterMSI ;; Remove the comment to enable the MSI.
+
+[AX99100ComCard.NTamd64.Services]
+AddService = AX99100Sport, 0x00000002, AX99100Sport_Service_Inst_64,AX99100Sport_EventLog_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  General Sections for all Installations   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AX99100Sport_EventLog_Inst]
+AddReg=AX99100ComCard.DriverParams
+
+[ComPort.AddReg]
+HKR,,PortSubClass,1,01
+
+[AX99100ComCard.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+HKR,,"MaskLowBaudToHigh", 0x10001, 0
+HKR,,"UARTMode", 0x10001, 9
+HKR,,"RxFIFO", 0x10001, 64
+HKR,,"TxFIFO", 0x10001, 64
+HKR,,"RxHighWaterMark", 0x10001, 240
+HKR,,"RxLowWaterMark", 0x10001, 16
+HKR,,"EnableHwFlowControl", 0x10001, 0
+HKR,,"HwFlowControl", 0x10001, 0
+HKR,,"UseClockPrescalar", 0x10001, 0
+HKR,,"CPRRegValue", 0x10001, 1
+HKR,,"UseBaudMultiplier", 0x10001, 0
+HKR,,"TCRRegValue", 0x10001, 16
+HKR,,"XOnChar", 0x10001, 17
+HKR,,"XOffChar", 0x10001, 19
+HKR,,"TranceiverMode", 0x10001, 0
+HKR,,"RS485Mode", 0x10001, 1
+HKR,,"SampleStartBit", 0x10001, 0
+HKR,,"StartBitLength", 0x10001, 4
+HKR,,"SampleDataBit", 0x10001, 0
+HKR,,"DataBitLength", 0x10001, 4
+HKR,,"TxFifoAmount", 0x10001, 64
+HKR,,"TxDmaEnable", 0x10001, 0
+HKR,,"TxDmaLength", 0x10001, 65535
+HKR,,"RxDmaEnable", 0x10001, 0
+HKR,,"RxDmaLength", 0x10001, 65535
+HKR,,"Limit4k", 0x10001, 1
+HKR,,"SerialDebugLevel", 0x10001, 0
+HKR,,"PowerUpTime", 0x10001, 1000
+HKR,,"EnableICG", 0x10001, 0
+HKR,,"InterCharGap", 0x10001, 0
+HKR,,"UseCustomBaudrate", 0x10001, 0
+HKR,,"DLLValue", 0x10001, 0
+HKR,,"DLMValue", 0x10001, 0
+HKR,,"DivisorValueToSync1200baud", 0x10001, 0x5f
+HKR,,"InputClock", 0x10001, 0
+HKR,,"UseExternalClock", 0x10001, 0
+HKR,,"ExternalClock", 0x10001, 24000000
+HKR,,"UseExtPCIeClockSource", 0x10001, 0
+HKR,,"RemoteWakeOn", 0x10001, 0x09000000
+HKR,,"InterruptOnCTSChange", 0x10001, 1
+HKR,,"InterruptOnDSRChange", 0x10001, 1
+HKR,,"Use9BitMode", 0x10001, 0
+HKR,,"CUSTNAME",0x00010000,%CustomerName%
+HKR,,"TE485", 0x10001, 0
+HKR,,"LB", 0x10001, 0
+HKR,,"FEN", 0x10001, 1
+HKR,,"DZ", 0x10001, 0
+HKR,,"Tr2872Setting", 0x10001, 0
+HKR,,"TxEnableAO", 0x10001, 0
+HKR,,"EchoMode", 0x10001, 0
+HKR,,"SlaveID", 0x10001, 49
+HKR,,"ForceBR", 0x10001, 0
+
+;For customizing DTR overlap time and DTR polarity state in RS422/485
+HKR,,"RSModeEnableOverlapTime", 0x10001, 0  		;; non zero to enable RSModeDTROverlapTime ; 0 default value i.e 0xD0  
+HKR,,"RSModeDTROverlapTime", 0x10001, 0xD0 		;; valid values 0 to 0xFF; 
+HKR,,"RSModeDTRPolarityState", 0x10001, 0  		;; 0 to low and 1 to high, default to 0 if other than 0 or 1 specified.
+
+;For customizing RTS polarity state in RS422/485
+HKR,,"RSModeRTSPolarityState", 0x10001, 0  		;; 0 to low and 1 to high, default to 0 if other than 0 or 1 specified.
+
+HKR,,"CUSTGPIO", 0x10001, 0
+HKR,,"CustomVendorNumber", 0x10001, 0
+
+[AX99100ComCard.DriverParams]
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "EnableTranceiverShutdown", 0x10001, 0
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "UsePCIeClockForBaudGeneration", 0x10001, 0
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "RetainPowerOnClose", 0x10001, 1
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "WakeUsing_PME_HASH", 0x10001, 1
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "GpioSetValueGroup0", 0x10001, 0
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "GpioSetValueGroup1", 0x10001, 1
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "GpioSetValueGroup2", 0x10001, 2
+HKLM,"System\CurrentControlSet\Services\AX99100Sport", "GpioSetValueGroup3", 0x10001, 3
+
+[AX99100ComCard.NT.AddReg]
+HKR,,EnumPropPages32,,"AX99100x_Ports.dll,SerialPortPropPageProvider"
+
+[RegisterMSI]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 1
+
+[AX99100Sport_Service_Inst]
+DisplayName = %AX99100.SerialPort%
+ServiceType  = 1             ; SERVICE_KERNEL_DRIVER
+StartType      = 3           ; SERVICE_DEMAND_START (1-SERVICE_SYSTEM_START)
+ErrorControl = 0             ; SERVICE_ERROR_IGNORE
+ServiceBinary = %13%\x86\AX99100x_Sport.sys
+LoadOrderGroup = Extended base
+
+[AX99100Sport_Service_Inst_64]
+DisplayName = %AX99100.SerialPort%
+ServiceType  = 1             ; SERVICE_KERNEL_DRIVER
+StartType      = 3           ; SERVICE_DEMAND_START (1-SERVICE_SYSTEM_START)
+ErrorControl = 0             ; SERVICE_ERROR_IGNORE
+ServiceBinary = %13%\AMD64\AX99100x_Sport.sys
+LoadOrderGroup = Extended base
+
+; -------------- Serenum Driver install section
+[Serenum_Service_Inst]
+DisplayName    = %Serenum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PCI-Express LPT Card Install
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;  X86 ;;;; 
+
+[AX99100LptCard.NT]
+CopyFiles=Common.Files.x86_11, Sys.Files.x86_12
+AddReg=AX99100LptCard.AddReg,AX99100LptCard.NT.AddReg
+
+[AX99100LptCard.NT.HW]
+AddReg = AX99100LptCard.NT.HW.AddReg
+
+[AX99100LptCard.NT.Services]
+AddService = AX99100Pport, 0x00000002, AX99100Pport_Service_Inst, AX99100Pport_EventLog_Inst
+
+;;;;  AMD64 ;;;; 
+
+[AX99100LptCard.NTamd64]
+CopyFiles=Common.Files.Amd64_11, Sys.Files.Amd64_12
+AddReg=AX99100LptCard.AddReg,AX99100LptCard.NT.AddReg
+
+[AX99100LptCard.NTamd64.HW]
+AddReg = AX99100LptCard.NT.HW.AddReg
+
+[AX99100LptCard.NTamd64.Services]
+AddService = AX99100Pport, 0x00000002, AX99100Pport_Service_Inst_64, AX99100Pport_EventLog_Inst; Port Driver (function driver for this device)
+
+;;; Other sections
+
+[AX99100LptCard.NT.HW.AddReg]
+HKR,,"CUSTNAME",0x00010000,%CustomerName%
+HKR,,"ModeSelected",0x00000000,"0"
+
+[AX99100LptCard.AddReg]
+HKR,,PortSubClass,1,00
+HKR,,ECPDevice,1,01
+
+[AX99100LptCard.NT.AddReg]
+HKR,,PortSubClass,1,00
+HKR,,ECPDevice,1,01
+HKR,,EnumPropPages32,,"AX99100x_Ports.dll,ParallelPortPropPageProvider"
+
+
+
+; -------------- Parallel Port Driver install sections
+[AX99100Pport_Service_Inst]
+DisplayName    = %AX99100.ParallelPort%
+ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+StartType      = 3                ; SERVICE_DEMAND_START (1-SERVICE_SYSTEM_START)
+ErrorControl   = 0                ; SERVICE_ERROR_IGNORE  ;; Check
+ServiceBinary  = %13%\x86\AX99100x_Pport.sys
+LoadOrderGroup = Parallel arbitrator
+
+; -------------- Parallel Port Driver install sections
+[AX99100Pport_Service_Inst_64]
+DisplayName    = %AX99100.ParallelPort%
+ServiceType    = 1                ; SERVICE_KERNEL_DRIVER
+StartType      = 3                ; SERVICE_DEMAND_START (1-SERVICE_SYSTEM_START)
+ErrorControl   = 0                ; SERVICE_ERROR_IGNORE  ;; Check
+ServiceBinary  = %13%\AMD64\AX99100x_Pport.sys
+LoadOrderGroup = Parallel arbitrator
+
+[AX99100Pport_EventLog_Inst]
+AddReg = AX99100Pport_EventLog_AddReg
+
+[AX99100Pport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%13%%\AX99100x_Pport.sys"
+HKR,,TypesSupported,0x00010001,7
+HKLM,"System\CurrentControlSet\Services\AX99100Pport", "CreateRawPort", 0x10001, 1
+
+[Common.Files.x86_11] 
+AX99100x_Ports.dll
+AX99100x_Lang.ini
+
+[Sys.Files.x86_12] 
+AX99100x_Sport.sys
+AX99100x_Pport.sys
+
+[Common.Files.AMD64_11] 
+AX99100x_Ports.dll
+AX99100x_Lang.ini
+
+[Sys.Files.AMD64_12] 
+AX99100x_Sport.sys
+AX99100x_Pport.sys
+
+; User readable strings
+;----------------------------------------------------------
+[Strings]
+CustomerName="AX99100"
+ProviderName="ASIX"
+DiskName="AX99100 PCIe Multi-IO Drivers Disk"
+AX99100.SerialPort="ASIX PCIe to High Speed Serial Port"
+AX99100.ParallelPort="ASIX PCIe to Multi Mode Parallel Port"
+Serenum.SVCDESC = "Serenum Filter Driver"
+PortsClassName = "Ports (COM & LPT)"
+
+;-----------------------
+; END OF FILE
+;-----------------------

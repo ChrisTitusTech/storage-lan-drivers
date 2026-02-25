@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instrumentationManifest xsi:schemaLocation="http://schemas.microsoft.com/win/2004/08/events eventman.xsd" xmlns="http://schemas.microsoft.com/win/2004/08/events" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:trace="http://schemas.microsoft.com/win/2004/08/events/trace">
+    <instrumentation>
+        <counters schemaVersion="1.1" xmlns:auto-ns1="http://schemas.microsoft.com/win/2004/08/events" xmlns="http://schemas.microsoft.com/win/2005/12/counters">
+            <provider providerName="Mlx4DeviceProvider" providerGuid="{a99c9e99-a61a-400b-96b6-b76ab3abca87}" applicationIdentity="mlx4_bus.sys" providerType="kernelMode" callback="custom">
+                <counterSet name="Mellanox WinOF Bus Counters" symbol="OperationalCounters" guid="{0e649f32-61c4-4a12-9629-24fa9f013ab8}" uri="Mlx4Dev.OperationalCounters" description="This set contains low-level counters of the device" instances="multipleAggregate">
+                    <structs>
+                        <struct name="OperationalCountersStruct" type="mlx4_operational_counters_st">
+                        </struct>
+                    </structs>
+                    <counter name="PCI Back-pressure/sec" uri="Mlx4Dev.OperationalCounters.PCI_back_pressure" description="Device core clocks without PCIe read/write credits." id="1" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="PCI_back_pressure">
+                    </counter>
+                    <counter name="No-WQE Drops/sec" uri="Mlx4Dev.OperationalCounters.No_WQE_drops" description="Amount of packet drops due to no available receive buffers in the host." id="2" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="No_WQE_drops">
+                    </counter>
+                    <counter name="Scatter Back-pressure/sec" uri="Mlx4Dev.OperationalCounters.SCE_TCU_back_pressure" description="Device core clocks where Scatter delays Rx packet processing. Supported only on Connectx3-Pro." id="3" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="SCE_TCU_back_pressure">
+                    </counter>
+                    <counter name="WQE fetch/Atomic Back-pressure/sec" uri="Mlx4Dev.OperationalCounters.RDE_TCU_back_pressure" description="Device core clocks where Work-Queue-Element fetch or Atomic operation, delay Rx packet processing. Supported only on Connectx3-Pro." id="4" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="RDE_TCU_back_pressure">
+                    </counter>
+                    <counter name="Steering/QPC Back-pressure/sec" uri="Mlx4Dev.OperationalCounters.DCE_DATA_AF" description="Device core clocks where packet steering or queue-context handling delay Rx packet processing.  Supported only on Connectx3-Pro." id="5" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="DCE_DATA_AF">
+                    </counter>
+                    <counter name="Receive WQE cache hit/sec" uri="Mlx4Dev.OperationalCounters.Receive_WQE_cashe_hit" description="Number of receive WQE cache lookups resulted in a hit." id="6" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Receive_WQE_cashe_hit">
+                    </counter>
+                    <counter name="Receive WQE cache lookup/sec" uri="Mlx4Dev.OperationalCounters.Receive_WQE_cashe_lookup" description="Number of receive WQE cache lookups." id="7" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Receive_WQE_cashe_lookup">
+                    </counter>
+                    <counter name="SQ Miss/sec" uri="Mlx4Dev.OperationalCounters.SQ_miss" description="Transmit-queue/Requestor-QP context cache miss." id="8" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="SQ_miss">
+                    </counter>
+                    <counter name="RQ Miss/sec" uri="Mlx4Dev.OperationalCounters.RQ_miss" description="Receive-queue/Responder-QP context cache miss." id="9" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="RQ_miss">
+                    </counter>
+                    <counter name="CQ Miss/sec" uri="Mlx4Dev.OperationalCounters.CQ_miss" description="Completion-Queue (CQ) context cache miss." id="10" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="CQ_miss">
+                    </counter>
+                    <counter name="EQ Miss/sec" uri="Mlx4Dev.OperationalCounters.EQ_miss" description="Event-Queue(EQ) context cache miss." id="11" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="EQ_miss">
+                    </counter>
+                    <counter name="MTT Miss/sec" uri="Mlx4Dev.OperationalCounters.MTT_miss" description="Address translation page table (MTT) cache miss." id="12" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MTT_miss">
+                    </counter>
+                    <counter name="MPT Miss/sec" uri="Mlx4Dev.OperationalCounters.MPT_miss" description="Address translation region table (MPT) cache miss." id="13" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MPT_miss">
+                    </counter>
+                    <counter name="External Blueflame hit/sec" uri="Mlx4Dev.OperationalCounters.External_Blueflame_hit" description="Latency critical work-queue-element (BlueFlame) read from NIC buffer." id="14" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="External_Blueflame_hit">
+                    </counter>
+                    <counter name="External Blueflame Replace/sec" uri="Mlx4Dev.OperationalCounters.External_Blueflame_replace" description="Latency critical work-queue-element (BlueFlame) swap out from NIC buffer." id="15" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="External_Blueflame_replace">
+                    </counter>
+                    <counter name="External Doorbell Push/sec" uri="Mlx4Dev.OperationalCounters.External_Doorbell_push" description="Amount of doorbells received." id="16" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="External_Doorbell_push">
+                    </counter>
+                    <counter name="External Doorbell Drop/sec" uri="Mlx4Dev.OperationalCounters.External_Doorbell_drop" description="Amount of doorbells dropped." id="17" type="perf_counter_counter" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="External_Doorbell_drop">
+                    </counter>
+                    <counter name="MPT entries used for QP" uri="Mlx4Dev.OperationalCounters.MPT_in_use_QP" description="Number of Memory Protection Table (MPT) entries used for QPs." id="18" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MPT_in_use_QP">
+                    </counter>
+                    <counter name="MPT entries used for CQ" uri="Mlx4Dev.OperationalCounters.MPT_in_use_CQ" description="Number of Memory Protection Table (MPT) entries used for CQs." id="19" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MPT_in_use_CQ">
+                    </counter>
+                    <counter name="MPT entries used for EQ" uri="Mlx4Dev.OperationalCounters.MPT_in_use_EQ" description="Number of Memory Protection Table (MPT) entries used for EQs." id="20" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MPT_in_use_EQ">
+                    </counter>
+                    <counter name="MPT entries used for MR" uri="Mlx4Dev.OperationalCounters.MPT_in_use_MR" description="Number of Memory Protection Table (MPT) entries used for MRs." id="21" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MPT_in_use_MR">
+                    </counter>
+                    <counter name="MTT entries used for QP" uri="Mlx4Dev.OperationalCounters.MTT_in_use_QP" description="Number of Memory Translation Table (MTT) entries used for QPs." id="22" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MTT_in_use_QP">
+                    </counter>
+                    <counter name="MTT entries used for CQ" uri="Mlx4Dev.OperationalCounters.MTT_in_use_CQ" description="Number of Memory Translation Table (MTT) entries used for CQs." id="23" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MTT_in_use_CQ">
+                    </counter>
+                    <counter name="MTT entries used for EQ" uri="Mlx4Dev.OperationalCounters.MTT_in_use_EQ" description="Number of Memory Translation Table (MTT) entries used for EQs." id="24" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MTT_in_use_EQ">
+                    </counter>
+                    <counter name="MTT entries used for MR" uri="Mlx4Dev.OperationalCounters.MTT_in_use_MR" description="Number of Memory Translation Table (MTT) entries used for MRs." id="25" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="MTT_in_use_MR">
+                    </counter>
+                    <counter name="CPU MEM-pages (4K) mapped by TPT for QP" uri="Mlx4Dev.OperationalCounters.Pages_mapped_by_TPT_QP" description="Total number of CPU memory pages (4K) mapped by TPT for QPs." id="26" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Pages_mapped_by_TPT_QP">
+                    </counter>
+                    <counter name="CPU MEM-pages (4K) mapped by TPT for CQ" uri="Mlx4Dev.OperationalCounters.Pages_mapped_by_TPT_CQ" description="Total number of CPU memory pages (4K) mapped by TPT for CQs." id="27" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Pages_mapped_by_TPT_CQ">
+                    </counter>
+                    <counter name="CPU MEM-pages (4K) mapped by TPT for EQ" uri="Mlx4Dev.OperationalCounters.Pages_mapped_by_TPT_EQ" description="Total number of CPU memory pages (4K) mapped by TPT for EQs." id="28" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Pages_mapped_by_TPT_EQ">
+                    </counter>
+                    <counter name="CPU MEM-pages (4K) mapped by TPT for MR" uri="Mlx4Dev.OperationalCounters.Pages_mapped_by_TPT_MR" description="Total number of CPU memory pages (4K) mapped by TPT for MRs." id="29" type="perf_counter_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Pages_mapped_by_TPT_MR">
+                    </counter>
+                    <counter name="Arrived RDMA CNPs" uri="Mlx4Dev.OperationalCounters.Arrived_CNPs" description="Total number of received CNP packets for both ports." id="30" type="perf_counter_large_rawcount" detailLevel="standard" aggregate="sum" struct="OperationalCountersStruct" field="Arrived_CNPs">
+                    </counter>
+                </counterSet>
+            </provider>
+        </counters>
+    </instrumentation>
+</instrumentationManifest>

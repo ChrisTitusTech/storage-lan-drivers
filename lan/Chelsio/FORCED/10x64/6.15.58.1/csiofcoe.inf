@@ -1,0 +1,387 @@
+;/*++
+;
+;Copyright (c) 2003-2010 Chelsio Comminucations Inc. All rights Reserved
+;
+;Module Name:
+;
+;    CSIOFCOE.INF
+;
+;Abstract:
+;    INF file for installing Chelsio T5/T6 FCoE storage function
+;    driver
+;
+;--*/
+
+[version]
+Signature   = "$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4d36e97B-e325-11ce-bfc1-08002be10318}
+Provider    = %Chelsio%
+;LayoutFile  = layout.inf
+CatalogFile = csiofcoe.cat
+DriverVer = 08/01/2018,2.0.9.0
+
+[Manufacturer]
+%Chelsio%     = Chelsio,NTx86,NTamd64
+
+[Chelsio.NTx86]
+; DisplayName                     Section         DeviceID
+; -----------                     -------         --------
+
+;
+; Terminator 5 cards/FPGA
+;
+%csiofcoe-T5-PE10K-FPGA.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_B100
+
+
+%csiofcoeT580-DBG.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5600
+%csiofcoeT520-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5601
+%csiofcoeT522-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5602
+%csiofcoeT540-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5603
+%csiofcoeT520-BCH.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5604
+%csiofcoeT540-BCH.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5605
+%csiofcoeT540-CH.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5606
+%csiofcoeT520-CX.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5608
+%csiofcoeT520-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5609
+%csiofcoeT504-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560A
+%csiofcoeB520-SR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560B
+%csiofcoeB504-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560C
+%csiofcoeT580-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560D
+%csiofcoeT540-LP-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_560E
+
+%csiofcoeT580-LP-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5610
+%csiofcoeT520-LL-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5611
+%csiofcoeT560-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5612
+%csiofcoeT580-CR-40G.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5613
+
+%csiofcoeT502-BT.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5615
+%csiofcoeT540-BT.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5618
+
+
+[Chelsio.NTamd64]
+; DisplayName                     Section         DeviceID
+; -----------                     -------         --------
+
+;
+; Terminator 5 cards/FPGA
+;
+%csiofcoe-T5-PE10K-FPGA.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_B100&SUBSYS_00001425
+
+%csiofcoeT580-DBG.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5600&SUBSYS_00001425
+%csiofcoeT520-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5601&SUBSYS_00001425
+%csiofcoeT522-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5602&SUBSYS_00001425
+%csiofcoeT540-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5603&SUBSYS_00001425
+%csiofcoeT520-BCH.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5604&SUBSYS_00001425
+%csiofcoeT540-BCH.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_5605&SUBSYS_00001425
+%csiofcoeT540-CH.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5606&SUBSYS_00001425
+%csiofcoeT520-CX.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5608&SUBSYS_00001425
+%csiofcoeT520-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5609&SUBSYS_00001425
+%csiofcoeT504-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560A&SUBSYS_00001425
+%csiofcoeB520-SR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560B&SUBSYS_00001425
+%csiofcoeB504-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560C&SUBSYS_00001425
+%csiofcoeT580-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_560D&SUBSYS_00001425
+%csiofcoeT540-LP-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_560E&SUBSYS_00001425
+
+%csiofcoeT580-LP-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5610&SUBSYS_00001425
+%csiofcoeT520-LL-CR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_5611&SUBSYS_00001425
+%csiofcoeT560-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5612&SUBSYS_00001425
+%csiofcoeT580-CR-40G.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5613&SUBSYS_00001425
+
+%csiofcoeT502-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5615&SUBSYS_00001425
+%csiofcoeT540-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_5618&SUBSYS_00001425
+
+;
+; T5 Customer Applications
+;
+%csiofcoe.T540_80%=csiofcoe, PCI\VEN_1425&DEV_5680&SUBSYS_00001425
+%csiofcoe.T540_81%=csiofcoe, PCI\VEN_1425&DEV_5681&SUBSYS_00001425
+%csiofcoe.T504_82%=csiofcoe, PCI\VEN_1425&DEV_5682&SUBSYS_00001425
+%csiofcoe.T540_83%=csiofcoe, PCI\VEN_1425&DEV_5683&SUBSYS_00001425
+%csiofcoe.T580_84%=csiofcoe, PCI\VEN_1425&DEV_5684&SUBSYS_00001425
+%csiofcoe.T580_85%=csiofcoe, PCI\VEN_1425&DEV_5685&SUBSYS_00001425
+%csiofcoe.T580_86%=csiofcoe, PCI\VEN_1425&DEV_5686&SUBSYS_00001425
+%csiofcoe.Harpoon%=csiofcoe, PCI\VEN_1425&DEV_5687&SUBSYS_00001425
+%csiofcoe.Xalyo_T570%=csiofcoe, PCI\VEN_1425&DEV_5688&SUBSYS_00001425
+%csiofcoe.KTFN_T520%=csiofcoe, PCI\VEN_1425&DEV_5689&SUBSYS_00001425
+%csiofcoe.KTFN_T540%=csiofcoe, PCI\VEN_1425&DEV_5690&SUBSYS_00001425
+%csiofcoe.JZTech_T522%=csiofcoe, PCI\VEN_1425&DEV_5691&SUBSYS_00001425
+%csiofcoe.Diamanti_T540%=csiofcoe, PCI\VEN_1425&DEV_5692&SUBSYS_000E1D4C
+%csiofcoe.T580_93%=csiofcoe, PCI\VEN_1425&DEV_5693&SUBSYS_00001425
+%csiofcoe.T540_94%=csiofcoe, PCI\VEN_1425&DEV_5694&SUBSYS_00001425
+;%csiofcoe.T540_95%=csiofcoe, PCI\VEN_1425&DEV_5695&SUBSYS_00001425
+%csiofcoe.T580_96%=csiofcoe, PCI\VEN_1425&DEV_5696&SUBSYS_00001425
+%csiofcoe.T520_97%=csiofcoe, PCI\VEN_1425&DEV_5697&SUBSYS_00001425
+%csiofcoe.T580_98%=csiofcoe, PCI\VEN_1425&DEV_5698&SUBSYS_00001425
+%csiofcoe.T580_99%=csiofcoe, PCI\VEN_1425&DEV_5699&SUBSYS_00001425
+%csiofcoe.T520_9A%=csiofcoe, PCI\VEN_1425&DEV_569A&SUBSYS_00001425
+%csiofcoe.T540_9B%=csiofcoe, PCI\VEN_1425&DEV_569B&SUBSYS_00001425
+%csiofcoe.T520_9C%=csiofcoe, PCI\VEN_1425&DEV_569C&SUBSYS_00001425
+%csiofcoe.T540_9D%=csiofcoe, PCI\VEN_1425&DEV_569D&SUBSYS_00001425
+%csiofcoe.T520_9E%=csiofcoe, PCI\VEN_1425&DEV_569E&SUBSYS_00001425
+%csiofcoe.T540_9F%=csiofcoe, PCI\VEN_1425&DEV_569F&SUBSYS_00001425
+%csiofcoe.T540_A0%=csiofcoe, PCI\VEN_1425&DEV_56A0&SUBSYS_00001425
+%csiofcoe.T540_A1%=csiofcoe, PCI\VEN_1425&DEV_56A1&SUBSYS_00001425
+%csiofcoe.T520_A2%=csiofcoe, PCI\VEN_1425&DEV_56A2&SUBSYS_00001425
+%csiofcoe.T520_A3%=csiofcoe, PCI\VEN_1425&DEV_56A3&SUBSYS_00001425
+%csiofcoe.T520_A4%=csiofcoe, PCI\VEN_1425&DEV_56A4&SUBSYS_00001425
+%csiofcoe.T520_A5%=csiofcoe, PCI\VEN_1425&DEV_56A5&SUBSYS_00001425
+;%csiofcoe.T520_A6%=csiofcoe, PCI\VEN_1425&DEV_56A6&SUBSYS_00001425
+%csiofcoe.T520_A7%=csiofcoe, PCI\VEN_1425&DEV_56A7&SUBSYS_00001425
+%csiofcoe.T520_A8%=csiofcoe, PCI\VEN_1425&DEV_56A8&SUBSYS_00001425
+%csiofcoe.T520_A9%=csiofcoe, PCI\VEN_1425&DEV_56A9&SUBSYS_00001425
+%csiofcoe.T520_AA%=csiofcoe, PCI\VEN_1425&DEV_56AA&SUBSYS_00001425
+%csiofcoe.T520_AB%=csiofcoe, PCI\VEN_1425&DEV_56AB&SUBSYS_00001425
+%csiofcoe.T540_AC%=csiofcoe, PCI\VEN_1425&DEV_56AC&SUBSYS_00001425
+
+;
+; Terminator 6 cards/FPGA
+;
+%csiofcoeT6225-DBG.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_6600&SUBSYS_00001425
+%csiofcoeT6100-DBG.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_6610&SUBSYS_00001425
+
+%csiofcoeT6225-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_6601&SUBSYS_00001425
+%csiofcoeT6425-CR.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_6603&SUBSYS_00001425
+%csiofcoeT62100-LPCR.DeviceDesc% = csiofcoe, PCI\VEN_1425&DEV_6607&SUBSYS_00001425
+%csiofcoeT6210-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_6609&SUBSYS_00001425
+%csiofcoeT62100-CR.DeviceDesc%   = csiofcoe, PCI\VEN_1425&DEV_660D&SUBSYS_00001425
+%csiofcoeT6225-LLCR.DeviceDesc%  = csiofcoe, PCI\VEN_1425&DEV_6611&SUBSYS_00001425
+%csiofcoeT6201-BT.DeviceDesc%    = csiofcoe, PCI\VEN_1425&DEV_6615&SUBSYS_00001425
+
+;
+; T6 Customer Applications
+;
+%csiofcoe.Seagate_T6225%         = csiofcoe, PCI\VEN_1425&DEV_6680&SUBSYS_00001425
+%csiofcoe.Foxconn_T62100%        = csiofcoe, PCI\VEN_1425&DEV_6681&SUBSYS_00001425
+%csiofcoe.Harpoon_T6225%         = csiofcoe, PCI\VEN_1425&DEV_6682&SUBSYS_00001425
+%csiofcoe.Harpoon_T62100%        = csiofcoe, PCI\VEN_1425&DEV_6683&SUBSYS_00001425
+%csiofcoe.Foxconn_T64100%        = csiofcoe, PCI\VEN_1425&DEV_6684&SUBSYS_00001425
+;%csiofcoe.Diamanti_T6240SO%      = csiofcoe, PCI\VEN_1425&DEV_6685&SUBSYS_000F1D4C
+;%csiofcoe.Embedway_T6225SO%      = csiofcoe, PCI\VEN_1425&DEV_6686&SUBSYS_00001425
+%csiofcoe.Fiberhome_T6225CR%     = csiofcoe, PCI\VEN_1425&DEV_6687&SUBSYS_00001425
+
+[csiofcoe]
+
+CopyFiles       = copy_driver_file
+CopyINF         = csiofcoe.inf
+
+[csiofcoe.HW]
+
+AddReg = csiofcoe.MSI.AddReg
+
+[csiofcoe.MSI.AddReg]
+;
+; Enable Message Signalled Interrupt for this device.
+;
+HKR, "Interrupt Management", %COPYFLG_NO_OVERWRITE%
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", %COPYFLG_NO_OVERWRITE%
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, %REG_DWORD%, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit , %REG_DWORD%, 12
+
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\0", DevicePolicy, %REG_DWORD%, %IrqPolicyMachineDefault%
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\0", StartingMessage, %REG_DWORD%, 0
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\0", EndingMessage, %REG_DWORD%, 3
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\1", DevicePolicy, %REG_DWORD%, %IrqPolicySpreadMessagesAcrossAllProcessors%
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\1", StartingMessage, %REG_DWORD%, 4
+HKR, "Interrupt Management\MessageSignaledInterruptProperties\Range\1", EndingMessage, %REG_DWORD%, 11
+
+;
+; Set the interrupt policy
+;
+;HKR, "Interrupt Management\Affinity Policy", %COPYFLG_NO_OVERWRITE%
+;HKR, "Interrupt Management\Affinity Policy", DevicePolicy, %REG_DWORD%, %IrqPolicyAllCloseProcessors%
+
+[csiofcoe.Services]
+AddService = csiofcoe, 2, csiofcoe.Service, event_log_install
+
+[copy_driver_file]
+csiofcoe.sys
+
+;-----------
+; NT Service 32
+;
+[csiofcoe.Service]
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 0 ;%SERVICE_BOOT_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\csiofcoe.sys
+LoadOrderGroup  = "SCSI Miniport"
+AddReg = csiofcoe.service.addreg
+
+;---------------
+; NT Common base
+;
+[event_log_install]
+AddReg = event_log_install.reg
+
+[event_log_install.reg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\csiofcoe.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[csiofcoe.service.addreg]
+;
+; Our miniport driver supports PCIBus(5) PnP-Interface and the BusType of BusTypeFibre(0x6).
+;
+HKR,"Parameters\PnPInterface","5",%REG_DWORD%,0x00000001
+HKR,"Parameters","BusType",%REG_DWORD%,0x6
+
+
+;------------
+; Copy files
+;
+[DestinationDirs]
+copy_driver_file        = 12
+
+[SourceDisksNames]
+1 = %disk_label%,,,
+
+[SourceDisksFiles.x86]
+csiofcoe.sys = 1
+
+[SourceDisksFiles.amd64]
+csiofcoe.sys = 1
+
+
+
+;--------------------
+; Localizable Strings
+;
+[Strings]
+; Vendors
+Chelsio                 = "Chelsio"
+SCSIClassName           = "SCSI and RAID controllers"
+
+;--------------------
+; Device descriptions
+;
+disk_label                      = "Chelsio Terminator 4/5/6 Driver Installation Disk"
+
+csiofcoe-T5-PE10K-FPGA.DeviceDesc      = "Chelsio T5 PE10K FPGA [FCoE] function"
+
+csiofcoeT580-DBG.DeviceDesc     = "Chelsio T540-Dbg 10G [FCoE] function"
+csiofcoeT520-CR.DeviceDesc      = "Chelsio T520-CR 10G [FCoE] function"
+csiofcoeT522-CR.DeviceDesc      = "Chelsio T522-CR 10G/1G [FCoE] function"
+csiofcoeT540-CR.DeviceDesc      = "Chelsio T540-CR 10G [FCoE] function"
+csiofcoeT520-BCH.DeviceDesc     = "Chelsio T520-BCH 10G [FCoE] function"
+csiofcoeT540-BCH.DeviceDesc     = "Chelsio T540-BCH 10G [FCoE] function"
+csiofcoeT540-CH.DeviceDesc      = "Chelsio T540-CH 10G [FCoE] function"
+csiofcoeT520-CX.DeviceDesc      = "Chelsio T520-CX4 10G [FCoE] function"
+csiofcoeT520-BT.DeviceDesc      = "Chelsio T520-BT 10G [FCoE] function"
+csiofcoeT504-BT.DeviceDesc      = "Chelsio T504-BT 1G [FCoE] function"
+csiofcoeB520-SR.DeviceDesc      = "Chelsio B520-SR 10G [FCoE] function"
+csiofcoeB504-BT.DeviceDesc      = "Chelsio B504-BT 1G [FCoE] function"
+csiofcoeT580-CR.DeviceDesc      = "Chelsio T580-CR 10G [FCoE] function"
+csiofcoeT540-LP-CR.DeviceDesc   = "Chelsio T540-LP-CR 10G [FCoE] function"
+
+csiofcoeT580-LP-CR.DeviceDesc   = "Chelsio T580-LP-CR 40G [FCoE] function"
+csiofcoeT520-LL-CR.DeviceDesc   = "Chelsio T520-LL-CR 10G [FCoE] function"
+csiofcoeT560-CR.DeviceDesc      = "Chelsio T560-CR 40G/10G [FCoE] function"
+csiofcoeT580-CR-40G.DeviceDesc  = "Chelsio T580-CR 40G [FCoE] function"
+
+csiofcoeT502-BT.DeviceDesc      = "Chelsio T502-BT 1G [FCoE] function"
+csiofcoeT540-BT.DeviceDesc      = "Chelsio T540-BT 10G [FCoE] function"
+
+csiofcoe.T540_80= "Chelsio T540-CR 10G [FCoE] function"
+csiofcoe.T540_81= "Chelsio T540-LL-CR 10G [FCoE] function"
+csiofcoe.T504_82= "Chelsio T504-BT 1G [FCoE] function"
+csiofcoe.T540_83= "Huawei T540-LP-CR 10G [FCoE] function"
+csiofcoe.T580_84= "Huawei T580-CR 40G [FCoE] function"
+csiofcoe.T580_85= "Huawei T580-CR 10G-40G [FCoE] function"
+csiofcoe.T580_86= "Huawei T580-CR 2x40G [FCoE] function"
+csiofcoe.Harpoon= "Dell Harpoon 40G [FCoE] function"
+csiofcoe.Xalyo_T570= "Xalyo T570 10G-40G [FCoE] function"
+csiofcoe.KTFN_T520= "KTFN T520 2x10G [FCoE] function"
+csiofcoe.KTFN_T540= "KTFN T540 4x10G [FCoE] function"
+csiofcoe.JZTech_T522= "JZTech T522 LOM 2x10G+2x1G [FCoE] function"
+csiofcoe.Diamanti_T540 = "Diamanti D10 4x10G [FCoE] function"
+csiofcoe.T580_93= "SECA T580-LP-CR 2x40G [FCoE] function"
+csiofcoe.T540_94= "QNAP T540-CR 4x10G [FCoE] function"
+;csiofcoe.T540_95= "QNAP T540-SO-CR 4x10G [FCoE] function"
+csiofcoe.T580_96= "ZTE T580-CR 2x40G [FCoE] function"
+csiofcoe.T520_97= "ZTE T520-KR 2x10G [FCoE] function"
+csiofcoe.T580_98= "Seagate Dover T580 2x40G [FCoE] function"
+csiofcoe.T580_99= "Seagate Laguna Seca T580 2x40G [FCoE] function"
+csiofcoe.T520_9A= "H3C T520-CR 2x10G [FCoE] function"
+csiofcoe.T540_9B= "JZTech T540-CR LOM 4x10G [FCoE] function"
+csiofcoe.T520_9C= "NUDT T520-CR LOM 2x10G [FCoE] function"
+csiofcoe.T540_9D= "NEXCOM T540-CR 4x10G [FCoE] function"
+csiofcoe.T520_9E= "Institute 52 T520-CR 2x10G [FCoE] function"
+csiofcoe.T540_9F= "Institute 52 T540-CR 4x10G [FCoE] function"
+csiofcoe.T540_A0= "ZhongFu T540-CR 4x10G [FCoE] function"
+csiofcoe.T540_A1= "Seagate T540-CR 4x10G [FCoE] function"
+csiofcoe.T520_A2= "Inspur T520-CR 2x10G [FCoE] function"
+csiofcoe.T520_A3= "Institute 32 T580-KR 2x40G [FCoE] function"
+csiofcoe.T520_A4= "JZTech 2xT540-CR 2x4x10G [FCoE] function"
+csiofcoe.T520_A5= "Institute 52 T522-BT 2x10G [FCoE] function"
+;csiofcoe.T520_A6= "Institute 52 T522-BT-SO 2x10G [FCoE] function"
+csiofcoe.T520_A7= "Institute 32 T580-CR 4x40G [FCoE] function"
+csiofcoe.T520_A8= "Inspur Chaoyue T580-KR 2x40G [FCoE] function"
+csiofcoe.T520_A9= "Prophet T580-KR 2x40G [FCoE] function"
+csiofcoe.T520_AA= "Institute716 T580-CR 2x40G [FCoE] function"
+csiofcoe.T520_AB= "Institute716 T520-CR 2x10G [FCoE] function"
+csiofcoe.T540_AC= "Seagate T540-BT 4x10G [FCoE] function"
+
+
+csiofcoeT6225-DBG.DeviceDesc   = "Chelsio T6-Dbg 25G [FCoE] function"
+csiofcoeT6100-DBG.DeviceDesc   = "Chelsio T6-Dbg 100G [FCoE] function"
+csiofcoeT6225-CR.DeviceDesc   = "Chelsio T6225-CR 25G [FCoE] function"
+csiofcoeT6425-CR.DeviceDesc   = "Chelsio T6425-CR 25G [FCoE] function"
+csiofcoeT62100-LPCR.DeviceDesc   = "Chelsio T62100-LPCR 100G [FCoE] function"
+csiofcoeT6210-BT.DeviceDesc   = "Chelsio T6210-BT 10G [FCoE] function"
+csiofcoeT62100-CR.DeviceDesc   = "Chelsio T62100-CR 100G [FCoE] function"
+csiofcoeT6225-LLCR.DeviceDesc   = "Chelsio T6225-LLCR 25G [FCoE] function"
+csiofcoeT6201-BT.DeviceDesc   = "Chelsio T6201-BT 1G [FCoE] function"
+
+csiofcoe.Seagate_T6225="Seagate T6225 2x25G [FCoE] function"
+csiofcoe.Foxconn_T62100="Foxconn T62100 2x100G [FCoE] function"
+csiofcoe.Harpoon_T6225="Dell Harpoon T6225 2x25G [FCoE] function"
+csiofcoe.Harpoon_T62100="Dell Harpoon T62100 2x100G [FCoE] function"
+csiofcoe.Foxconn_T64100="Foxconn T64100 4x100G [FCoE] function"
+;csiofcoe.Diamanti_T6240SO="Diamanti T6240-SO 2x40G [FCoE] function"
+;csiofcoe.Embedway_T6225SO="Embedway T6225-SO 2x25G [FCoE] function"
+csiofcoe.Fiberhome_T6225CR="Fiberhome T6225-CR 2x25G [FCoE] function"
+
+;--------------------------------------
+; Macro substitutions (non-localizable)
+;
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+
+;
+; Bit 1 of REG_type spcifies whether to over-write an existing registry option:
+;  example: 0x00010001 = REG_DWORD overwrite an existing entry
+;           0x00010003 = REG_DWORD DO NOT overwrite an exsting entry
+;
+;
+
+REG_SZ                 = 0x00000000
+REG_MULTI_SZ           = 0x00010000
+REG_EXPAND_SZ          = 0x00020000
+REG_BINARY             = 0x00000001
+REG_DWORD              = 0x00010001
+REG_NONE               = 0x00020001
+
+COPYFLG_NO_OVERWRITE   = 0x00000010
+
+;----------------------------
+; Interrupt affinity policy
+;
+;
+
+IrqPolicyMachineDefault                    = 0x00
+IrqPolicyAllCloseProcessors                = 0x01
+IrqPolicyOneCloseProcessor                 = 0x02
+IrqPolicyAllProcessorsInMachine            = 0x03
+IrqPolicySpecifiedProcessors               = 0x04
+IrqPolicySpreadMessagesAcrossAllProcessors = 0x05
+
+;----------------------------
+; Interrupt priority policy
+;
+;
+
+IrqArbPriorityUndefined  = 0x00
+IrqArbPriorityLow        = 0x01
+IrqArbPriorityNormal     = 0x02
+IrqArbPriorityHigh       = 0x03

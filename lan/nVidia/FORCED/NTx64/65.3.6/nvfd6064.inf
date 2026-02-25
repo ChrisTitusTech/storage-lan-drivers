@@ -1,0 +1,649 @@
+;/***************************************************************************\
+;|*                                                                           *|
+;|*         Copyright 2001-2006 NVIDIA, Corporation.  All rights reserved.    *|
+;|*                                                                           *|
+;|*     THE INFORMATION CONTAINED HEREIN  IS PROPRIETARY AND CONFIDENTIAL     *|
+;|*     TO NVIDIA, CORPORATION.   USE,  REPRODUCTION OR DISCLOSURE TO ANY     *|
+;|*     THIRD PARTY IS SUBJECT TO WRITTEN PRE-APPROVAL BY NVIDIA, CORP.       *|
+;|*                                                                           *|
+;|*     THE INFORMATION CONTAINED HEREIN IS PROVIDED  "AS IS" WITHOUT         *|
+;|*     EXPRESS OR IMPLIED WARRANTY OF ANY KIND, INCLUDING ALL IMPLIED        *|
+;|*     WARRANTIES OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A     *|
+;|*     PARTICULAR PURPOSE.                                                   *|
+;|*                                                                           *|
+;\***************************************************************************/
+
+[version]
+Class       = Net
+ClassGUID   = {4D36E972-E325-11CE-BFC1-08002BE10318}
+Signature   = "$WINDOWS NT$"
+Compatible  = 1
+CatalogFile = NVENETFD.CAT
+Provider    = %Nvidia%
+DriverVer = 10/10/2006, 65.3.6
+
+
+[Manufacturer]
+%Nvidia%    = Nvidia, NTamd64
+
+[ControlFlags]
+ExcludeFromSelect = {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV008C,\          ; MCP2S
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0086,\          ; MCP2S-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV00DF,\          ; CK8S
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV00E6,\          ; CK8S-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0038,\          ; MCP04
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0037,\          ; MCP04-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0057,\          ; CK04
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0058,\          ; CK04-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0269, \         ; MCP51
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0268, \         ; MCP51-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0373, \         ; MCP55
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0372, \         ; MCP55-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03EF, \         ; MCP61
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03EE, \         ; MCP61-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03E6, \         ; MCP61_NBP01
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03E5, \         ; MCP61_NBP01-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0452, \         ; MCP65
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0450, \         ; MCP65-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0453, \         ; MCP65_NBP01
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0451, \         ; MCP65_NBP01-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV047A, \         ; T65
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV047B, \         ; T65_NBP01
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054E, \         ; MCP67
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054C, \         ; MCP67-NB
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054F, \         ; MCP67_NBP01
+                    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054D            ; MCP67_NBP01-NB
+
+
+[Nvidia.NTamd64]
+%NVENETFD.DeviceDesc%  =  NVENET2S.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV008C           ; MCP2S
+%NVENETFD.DeviceDesc%  =  NVENET2S.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0086           ; MCP2S-NB
+%NVENETFD.DeviceDesc%  =  NVENET30.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV00DF           ; CK8S
+%NVENETFD.DeviceDesc%  =  NVENET30.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV00E6           ; CK8S-NB
+%NVENETFD.DeviceDesc%  =  NVENET40.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0038           ; MCP04
+%NVENETFD.DeviceDesc%  =  NVENET40.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0037           ; MCP04-NB
+%NVENETFD.DeviceDesc%  =  NVENET40.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0057           ; CK04
+%NVENETFD.DeviceDesc%  =  NVENET40.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0056           ; CK04-NB
+%NVENETFD.DeviceDesc%  =  NVENET51.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0269           ; MCP51
+%NVENETFD.DeviceDesc%  =  NVENET51.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0268           ; MCP51-NB
+%NVENETFD.DeviceDesc%  =  NVENET55.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0373           ; MCP55
+%NVENETFD.DeviceDesc%  =  NVENET51.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0372           ; MCP55-NB
+%NVENETFD.DeviceDesc%  =  NVENET61.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03EF           ; MCP61
+%NVENETFD.DeviceDesc%  =  NVENET61.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03EE           ; MCP61-NB
+%NVENETFD.DeviceDesc%  =  NVENET61_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03E6           ; MCP61_NBP01
+%NVENETFD.DeviceDesc%  =  NVENET61_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV03E5           ; MCP61_NBP01-NB
+%NVENETFD.DeviceDesc%  =  NVENET65.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0452           ; MCP65
+%NVENETFD.DeviceDesc%  =  NVENET65.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0450           ; MCP65-NB
+%NVENETFD.DeviceDesc%  =  NVENET65_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0453           ; MCP65_NBP01
+%NVENETFD.DeviceDesc%  =  NVENET65_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0451           ; MCP65_NBP01-NB
+%NVENETFD.DeviceDesc%  =  NVENET_T65.NDI,        {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV047A           ; T65
+%NVENETFD.DeviceDesc%  =  NVENET_T65.NDI,        {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0478           ; T65-NB
+%NVENETFD.DeviceDesc%  =  NVENET_T65_NBP01.NDI,  {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV047B           ; T65_NBP01
+%NVENETFD.DeviceDesc%  =  NVENET_T65_NBP01.NDI,  {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV0479           ; T65_NBP01-NB
+%NVENETFD.DeviceDesc%  =  NVENET65.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054E           ; MCP67
+%NVENETFD.DeviceDesc%  =  NVENET65.NDI,          {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054C           ; MCP67-NB
+%NVENETFD.DeviceDesc%  =  NVENET65_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054F           ; MCP67_NBP01
+%NVENETFD.DeviceDesc%  =  NVENET65_NBP01.NDI,    {1a3e09be-1e45-494b-9174-d7385b45bbf5}\NVNET_DEV054D           ; MCP67_NBP01-NB
+
+
+
+;=========================================================================================
+;                                            NVENET2S Section
+;=========================================================================================
+
+[NVENET2S.NDI.NTamd64]
+Characteristics        = 0x84                                       ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                          ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, BasicFlowControl.reg,        \
+                         LSOv4.reg,                                                               \
+                         LSOv2Ipv4.reg, LSOv2Ipv6.reg,                                            \
+                         TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                \
+                         TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg,               \
+                         IPChecksumOffloadV4.reg,         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                          ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                          ; NdisMedium802_3
+*PhysicalMediaType     = 14                                         ; NdisPhysicalMedium802_3 
+
+
+;=========================================================================================
+;                                            NVENET30 Section
+;=========================================================================================
+
+[NVENET30.NDI.NTamd64]
+Characteristics        = 0x84                             ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                         BasicFlowControl.reg,     LSOv4.reg,                                       \
+                         LSOv2Ipv4.reg,            LSOv2Ipv6.reg,                                   \
+                         TCPChecksumOffloadV4.reg, UDPChecksumOffloadV4.reg,                        \
+                         IPChecksumOffloadV4.reg,  BasicPriority.reg,                               \ 
+                         TCPChecksumOffloadV6.reg, UDPChecksumOffloadV6.reg 
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                ; NdisMedium802_3
+*PhysicalMediaType     = 14                                ; NdisPhysicalMedium802_3
+
+;=========================================================================================
+;                                            NVENET40 Section
+;=========================================================================================
+
+[NVENET40.NDI.NTamd64]
+Characteristics        = 0x84                             ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                ; Pretend ISA
+AddReg                 =  BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,              \
+                          BasicFlowControl.reg,     LSOv4.reg,                                      \
+                          LSOv2Ipv4.reg,            LSOv2Ipv6.reg,                                  \
+                          TCPChecksumOffloadV4.reg, UDPChecksumOffloadV4.reg,                       \
+                          IPChecksumOffloadV4.reg,  BasicPriority.reg,                              \
+                          TCPChecksumOffloadV6.reg, UDPChecksumOffloadV6.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                               ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                               ; NdisMedium802_3
+*PhysicalMediaType     = 14                              ; NdisPhysicalMedium802_3
+
+
+;=========================================================================================
+;                                            NVENET51 Section
+;=========================================================================================
+
+[NVENET51.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, BasicFlowControl.reg ,         \
+                         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+
+
+;=========================================================================================
+;                                            NVENET55 Section
+;=========================================================================================
+
+[NVENET55.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                         LSOv4.reg, ReceiveSideScaling.reg, FlowControl.reg,                        \
+                         LSOv2Ipv4.reg,                   LSOv2Ipv6.reg,                            \
+                         TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                 \
+                         TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg,                 \
+                         IPChecksumOffloadV4.reg,         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+
+;=========================================================================================
+;                                            NVENET61 Section
+;=========================================================================================
+
+[NVENET61.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType               = 1                                   ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, FlowControl.reg,       \
+                         BasicPriority.reg
+CopyFiles             = NVENET.CopyFiles
+*IfType               = 6                                   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType            = 0                                   ; NdisMedium802_3
+*PhysicalMediaType    = 14                                  ; NdisPhysicalMedium802_3
+
+
+
+
+;=========================================================================================
+;                                            NVENET61_NBP01 Section
+;=========================================================================================
+
+[NVENET61_NBP01.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, FlowControl.reg,       \
+                         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+
+;=========================================================================================
+;                                            NVENET65 Section
+;=========================================================================================
+
+[NVENET65.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                         LSOv4.reg, ReceiveSideScaling.reg, FlowControl.reg,                        \
+                         LSOv2Ipv4.reg,                   LSOv2Ipv6.reg,                            \
+                         TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                 \
+                         TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg,                 \
+                         IPChecksumOffloadV4.reg,         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+;========================================================================================
+;                                            NVENET65_NBP01 Section
+;=========================================================================================
+
+[NVENET65_NBP01.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                         LSOv4.reg, ReceiveSideScaling.reg, FlowControl.reg,                       \
+                         LSOv2Ipv4.reg,                   LSOv2Ipv6.reg,                            \
+                         TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                \
+                         TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg,                 \        
+                         IPChecksumOffloadV4.reg,         BasicPriority.reg
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+;=========================================================================================
+;                                            NVENET_T65 Section
+;=========================================================================================
+
+[NVENET_T65.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                          LSOv4.reg, ReceiveSideScaling.reg, FlowControl.reg,                       \
+                          TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                \
+                          IPChecksumOffloadV4.reg,                                                  \
+                            TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg        
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+
+
+;=========================================================================================
+;                                            NVENET_T65_NBP01 Section
+;=========================================================================================
+
+[NVENET_T65_NBP01.NDI.NTamd64]
+Characteristics        = 0x84                               ; NCF_PHYSICAL | NCF_HAS_UI
+BusType                = 1                                  ; Pretend ISA
+AddReg                 = BasicFeatures.reg, SpeedDuplexUpto1000.reg, JumboPacket.reg,               \
+                         LSOv4.reg, ReceiveSideScaling.reg, FlowControl.reg,                       \
+                         LSOv2Ipv4.reg,                   LSOv2Ipv6.reg,                            \
+                         TCPChecksumOffloadV4.reg,        UDPChecksumOffloadV4.reg,                 \
+                         TCPChecksumOffloadV6.reg,        UDPChecksumOffloadV6.reg,                 \        
+                         IPChecksumOffloadV4.reg,         BasicPriority.reg 
+CopyFiles              = NVENET.CopyFiles
+*IfType                = 6                                  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType             = 0                                  ; NdisMedium802_3
+*PhysicalMediaType     = 14                                 ; NdisPhysicalMedium802_3
+
+; DestinationDirs
+[NVENET.CopyFiles]
+nvmfdx64.sys,nvmfdx64.sys,,2
+
+; DestinationDirs
+
+;=========================================================================================
+;                                        Services Section
+;=========================================================================================
+
+[NVENET2S.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET30.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET40.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET51.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET55.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET61.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET61_NBP01.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET65.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET65_NBP01.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET_T65.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+[NVENET_T65_NBP01.ndi.NTamd64.Services]
+AddService = NVENETFD, 2, NVENETFD.Service, common.EventLog
+
+
+[NVENETFD.Service]
+DisplayName     = %NVENETFD.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\nvmfdx64.sys
+LoadOrderGroup  = NDIS
+
+;-----------------------------------------------------------------------------------------
+; DestinationDirs
+;
+[SourceDisksNames]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1 = %DiskId1%, NVENETFD.tag,,
+
+[SourceDisksFiles]
+; filename_on_source = diskID[, [subdir][, size]]
+nvmfdx64.sys = 1,,
+
+[DestinationDirs]
+NVENET.CopyFiles     = 12
+
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+;=========================================================================================
+;                              Registry Section
+;=========================================================================================
+[BasicFeatures.reg]
+HKR, Ndi,                                       Service,                0, "NVENET"
+HKR, Ndi\Interfaces,                            LowerRange,                0, "ethernet"
+HKR, Ndi\Interfaces,                            UpperRange,                0, "ndis5"
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,			ParamDesc,	0, "%NetworkAddress%"
+HKR, Ndi\params\NetworkAddress,			default,	0, " "
+HKR, Ndi\params\NetworkAddress,			type,		0, "edit"
+HKR, Ndi\params\NetworkAddress,			LimitText,	0, "12"
+HKR, Ndi\params\NetworkAddress,			UpperCase,	0, "1"
+HKR, Ndi\params\NetworkAddress,			optional,	0, "1"
+
+; Interrupt        Moderation
+HKR, Ndi\params\*InterruptModeration,            ParamDesc,     0, "%InterruptModeration%"
+HKR, Ndi\params\*InterruptModeration,            default,       0, "1"
+HKR, Ndi\params\*InterruptModeration,            type,          0, "enum"
+HKR, Ndi\params\*InterruptModeration\enum,       "0",           0, "%Disabled%"
+HKR, Ndi\params\*InterruptModeration\enum,       "1",           0, "%Enabled%"
+
+; Wake on LAN from power off
+HKR, Ndi\params\EthWOLFromPowerOff,             ParamDesc,  0, "%WakeOnLANFromPowerOff%"
+HKR, Ndi\params\EthWOLFromPowerOff,             default,    0, "1"
+HKR, Ndi\params\EthWOLFromPowerOff,             type,       0, "enum"
+HKR, Ndi\params\EthWOLFromPowerOff\enum,        "0",        0, "%Disable%"
+HKR, Ndi\params\EthWOLFromPowerOff\enum,        "1",        0, "%Enable%"
+
+; Low power link speed
+HKR, Ndi\params\LowPowerStateLinkSpeed,         ParamDesc,  0, "%LowPowerStateLinkSpeed%" 
+HKR, Ndi\params\LowPowerStateLinkSpeed,         default,    0, "1"
+HKR, Ndi\params\LowPowerStateLinkSpeed,         type,       0, "enum"
+HKR, Ndi\params\LowPowerStateLinkSpeed\enum,    "0",        0, "%Disable%"
+HKR, Ndi\params\LowPowerStateLinkSpeed\enum,    "1",        0, "%Enable%"
+
+;
+; IEEE 802.1pq
+;
+HKR, Ndi\params\EthVLANId,                      ParamDesc,  0, "%VLANId%"
+HKR, Ndi\params\EthVLANId,                      default,    0, "1"
+HKR, Ndi\params\EthVLANId,                      type,       0, "word"
+HKR, Ndi\params\EthVLANId,                      min,        0, "1"
+HKR, Ndi\params\EthVLANId,                      max,            0, "4095"
+
+;
+; Basic        Flow Control
+;
+[BasicFlowControl.reg]
+HKR, Ndi\params\*FlowControl,                    ParamDesc,        0, "%FlowControl%" 
+HKR, Ndi\Params\*FlowControl,                    default,        0, "0"
+HKR, Ndi\Params\*FlowControl,                    type,                0, "enum"
+HKR, Ndi\Params\*FlowControl\Enum,               "0",                0, %FlowControlDisabled%
+HKR, Ndi\Params\*FlowControl\Enum,               "1",                0, %FlowControlRxEnabled%
+ 
+
+; Flow Control
+[FlowControl.reg]
+HKR, Ndi\params\*FlowControl,                    ParamDesc,          0, "%FlowControl%" 
+HKR, Ndi\Params\*FlowControl,                    default,        0, "0"
+HKR, Ndi\Params\*FlowControl,                    type,                   0, "enum"
+HKR, Ndi\Params\*FlowControl\Enum,               "0",                0, %FlowControlDisabled%
+HKR, Ndi\Params\*FlowControl\Enum,               "1",                0, %FlowControlRxEnabled%
+HKR, Ndi\Params\*FlowControl\Enum,               "2",                0, %FlowControlTxEnabled%
+HKR, Ndi\Params\*FlowControl\Enum,               "3",                0, %FlowControlRxTxEnabled%
+
+; Jumbo	Packet
+[JumboPacket.reg]
+HKR, Ndi\params\*JumboPacket,			ParamDesc,	0, "%JumboPacket%"
+HKR, Ndi\params\*JumboPacket,			default,	0, "1514"
+HKR, Ndi\params\*JumboPacket,			type,		0, "enum"
+HKR, Ndi\params\*JumboPacket\enum,		"1514",     0, "%JumboNo%"
+HKR, Ndi\params\*JumboPacket\enum,		"2514",     0, "%Jumbo2k%"
+HKR, Ndi\params\*JumboPacket\enum,		"4514",     0, "%Jumbo4k%"
+HKR, Ndi\params\*JumboPacket\enum,		"9014",     0, "%Jumbo8k%"
+
+; Receive Side Scaling
+[ReceiveSideScaling.reg]
+HKR, Ndi\params\*RSS,                            ParamDesc,          0, "%RSS%"
+HKR, Ndi\params\*RSS,                            default,        0, "1"
+HKR, Ndi\params\*RSS,                            type,                   0, "enum"
+HKR, Ndi\params\*RSS\enum,                       "0",                0, "%Disabled%"
+HKR, Ndi\params\*RSS\enum,                       "1",                0, "%Enabled%"
+
+; Speed        Duplex Setting
+;[SpeedDuplexUpto100.reg]
+;HKR, Ndi\params\*SpeedDuplex,                   ParamDesc,         0, "%SpeedDuplex%"
+;HKR, Ndi\params\*SpeedDuplex,                   default,           0, "0"
+;HKR, Ndi\params\*SpeedDuplex,                   type,                   0, "enum"
+;HKR, Ndi\params\*SpeedDuplex\enum,              "0",                   0, "%AutoNegotiation%"
+;HKR, Ndi\params\*SpeedDuplex\enum,              "1",                   0, "%HD10MB%"
+;HKR, Ndi\params\*SpeedDuplex\enum,              "2",                   0, "%FD10MB%"
+;HKR, Ndi\params\*SpeedDuplex\enum,              "3",                   0, "%HD100MB%"
+;HKR, Ndi\params\*SpeedDuplex\enum,              "4",                   0, "%FD100MB%"
+
+
+; Speed        Duplex Setting
+[SpeedDuplexUpto1000.reg]
+HKR, Ndi\params\*SpeedDuplex,                    ParamDesc,         0, "%SpeedDuplex%"
+HKR, Ndi\params\*SpeedDuplex,                    default,           0, "0"
+HKR, Ndi\params\*SpeedDuplex,                    type,                   0, "enum"
+HKR, Ndi\params\*SpeedDuplex\enum,               "0",                   0, "%AutoNegotiation%"
+HKR, Ndi\params\*SpeedDuplex\enum,               "1",                   0, "%HD10MB%"
+HKR, Ndi\params\*SpeedDuplex\enum,               "2",                   0, "%FD10MB%"
+HKR, Ndi\params\*SpeedDuplex\enum,               "3",                   0, "%HD100MB%"
+HKR, Ndi\params\*SpeedDuplex\enum,               "4",                   0, "%FD100MB%"
+HKR, Ndi\params\*SpeedDuplex\enum,               "6",                   0, "%FD1000MB%"
+
+
+
+; TCP Checksum offload V4
+[TCPChecksumOffloadV4.reg]
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,                 ParamDesc,        0, "%TCPChecksumOffloadV4%"        
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,                 default,        0, "3"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,                 type,                0, "enum"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum,            "0",                0, "%Disabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum,            "1",                0, "%TCPChecksumOffloadV4RxEnabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum,            "2",                0, "%TCPChecksumOffloadV4TxEnabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum,            "3",                0, "%TCPChecksumOffloadV4RxTxEnabled%"
+
+; UDP Checksum offload V4
+[UDPChecksumOffloadV4.reg]
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,                 ParamDesc,        0, "%UDPChecksumOffloadV4%"        
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,                 default,        0, "3"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,                 type,                0, "enum"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum,            "0",                0, "%Disabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum,            "1",                0, "%UDPChecksumOffloadV4RxEnabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum,            "2",                0, "%UDPChecksumOffloadV4TxEnabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum,            "3",                0, "%UDPChecksumOffloadV4RxTxEnabled%"
+
+
+; TCP Checksum offload V6
+[TCPChecksumOffloadV6.reg]
+HKR, Ndi\params\*TCPChecksumOffloadIPv6,			ParamDesc,	0, "%TCPChecksumOffloadV6%"	
+HKR, Ndi\params\*TCPChecksumOffloadIPv6,			default,	0, "3"
+HKR, Ndi\params\*TCPChecksumOffloadIPv6,			type,		0, "enum"
+HKR, Ndi\params\*TCPChecksumOffloadIPv6\enum,		"0",		0, "%Disabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv6\enum,		"1",		0, "%TCPChecksumOffloadV6RxEnabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv6\enum,		"2",		0, "%TCPChecksumOffloadV6TxEnabled%"
+HKR, Ndi\params\*TCPChecksumOffloadIPv6\enum,		"3",		0, "%TCPChecksumOffloadV6RxTxEnabled%"
+
+; UDP Checksum offload V6
+[UDPChecksumOffloadV6.reg]
+HKR, Ndi\params\*UDPChecksumOffloadIPv6,			ParamDesc,	0, "%UDPChecksumOffloadV6%"	
+HKR, Ndi\params\*UDPChecksumOffloadIPv6,			default,	0, "3"
+HKR, Ndi\params\*UDPChecksumOffloadIPv6,			type,		0, "enum"
+HKR, Ndi\params\*UDPChecksumOffloadIPv6\enum,		"0",		0, "%Disabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv6\enum,		"1",		0, "%UDPChecksumOffloadV6RxEnabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv6\enum,		"2",		0, "%UDPChecksumOffloadV6TxEnabled%"
+HKR, Ndi\params\*UDPChecksumOffloadIPv6\enum,		"3",		0, "%UDPChecksumOffloadV6RxTxEnabled%"
+
+; IP Checksum offload V4
+[IPChecksumOffloadV4.reg]
+HKR, Ndi\params\*IPChecksumOffloadIPv4,			ParamDesc,	0, "%IPChecksumOffloadV4%" 
+HKR, Ndi\params\*IPChecksumOffloadIPv4,			default,	0, "3"
+HKR, Ndi\params\*IPChecksumOffloadIPv4,			type,		0, "enum"
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum,		"0",		0, "%Disabled%"
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum,		"1",		0, "%IPChecksumOffloadV4RxEnabled%"
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum,		"2",		0, "%IPChecksumOffloadV4TxEnabled%"
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum,		"3",		0, "%IPChecksumOffloadV4RxTxEnabled%"
+
+[LSOv4.reg]
+HKR, Ndi\params\*LsoV1IPv4,				ParamDesc,	0, "%LsoV1IPv4%" 
+HKR, Ndi\params\*LsoV1IPv4,				default,	0, "1"
+HKR, Ndi\params\*LsoV1IPv4,				type,		0, "enum"
+HKR, Ndi\params\*LsoV1IPv4\enum,			"0",		0, "%Disabled%"
+HKR, Ndi\params\*LsoV1IPv4\enum,			"1",		0, "%Enabled%"
+[LSOv2Ipv4.reg]
+HKR, Ndi\params\*LsoV2IPv4,				ParamDesc,	0, "%LsoV2IPv4%" 
+HKR, Ndi\params\*LsoV2IPv4,				default,	0, "1"
+HKR, Ndi\params\*LsoV2IPv4,				type,		0, "enum"
+HKR, Ndi\params\*LsoV2IPv4\enum,			"0",		0, "%Disabled%"
+HKR, Ndi\params\*LsoV2IPv4\enum,			"1",		0, "%Enabled%"
+
+[LSOv2Ipv6.reg]
+HKR, Ndi\params\*LsoV2IPv6,				ParamDesc,	0, "%LsoV2IPv6%" 
+HKR, Ndi\params\*LsoV2IPv6,				default,	0, "1"
+HKR, Ndi\params\*LsoV2IPv6,				type,		0, "enum"
+HKR, Ndi\params\*LsoV2IPv6\enum,			"0",		0, "%Disabled%"
+HKR, Ndi\params\*LsoV2IPv6\enum,			"1",		0, "%Enabled%"
+
+[BasicPriority.reg]
+HKR, Ndi\params\*PriorityVLANTag,		ParamDesc,	0, "%PriorityVLANTag%" 
+HKR, Ndi\params\*PriorityVLANTag,		default,	0, "1"
+HKR, Ndi\params\*PriorityVLANTag,		type,		0, "enum"
+HKR, Ndi\params\*PriorityVLANTag\enum,		"0",		0, "%PriorityAndVLANDisabled%"
+HKR, Ndi\params\*PriorityVLANTag\enum,		"1",		0, "%PriorityEnabled%"
+HKR, Ndi\params\*PriorityVLANTag\enum,		"2",		0, "%PriorityAndVLANEnabled%"
+
+[Strings]
+Msft                                    = "Microsoft"
+Nvidia                                  = "NVIDIA"
+DiskId1                                 = "NVIDIA nForce Networking Controller Driver Disk 1"
+NVENETFD.DeviceDesc                     = "NVIDIA nForce Networking Controller"
+NVENETFD.Service.DispName               = "NVIDIA nForce Networking Controller Driver"
+Enabled                                 = "Enabled"
+Disabled                                = "Disabled"
+RSS                                     = "Receive Side Scaling"
+JumboPacket                             = "Jumbo Packet"
+LsoV1IPv4				= "Large Send Offload version 1 (IPv4)"
+LsoV2IPv4				= "Large Send Offload version 2 (IPv4)"
+LsoV2IPv6				= "Large Send Offload version 2 (IPv6)"
+NetworkAddress                          = "Network Address"
+InterruptModeration                     = "Interrupt Moderation"        
+Enable                                  = "Enable"
+Disable                                 = "Disable"
+LowPowerStateLinkSpeed                  = "Low Power State Link Speed"
+VLANSupport                             = "VLAN Support"
+VLANId                                  = "VLAN Id"
+;
+; Wake on LAN from power off
+;
+WakeOnLANFromPowerOff                   = "WakeOnLAN From PowerOff"
+
+;
+; Speed        and        Duplex settings
+;
+SpeedDuplex                             = "Speed & duplex settings"
+Autonegotiation                          = "Auto Negotiation"
+HD10MB                                  = "10 Mbps Half Duplex"
+FD10MB                                  = "10 Mpbs Full Duplex"
+HD100MB                                 = "100 Mbps Half Duplex" 
+FD100MB                                 = "100 Mbps Full Duplex"
+
+;
+; Flow Control values
+;
+FlowControl                             = "Flow Control"
+FlowControlDisabled                     = "Disabled"
+FlowControlRxEnabled                    = "Flow Control Rx Enabled"
+FlowControlTxEnabled                    = "Flow Control Tx Enabled"
+FlowControlRxTxEnabled                  = "Flow Control Rx/Tx Enabled"
+
+;
+; TCP Checkum offload V4
+;
+TCPChecksumOffloadV4                    = "TCP Checksum Offload (IPv4)"
+TCPChecksumOffloadV4RxEnabled           = "TCP RX Checksum offload enabled"
+TCPChecksumOffloadV4TxEnabled           = "TCP TX Checksum offload enabled"
+TCPChecksumOffloadV4RxTxEnabled         = "TCP RX/TX Checksum offload enabled"
+
+;
+; UDP Checkum offload V4
+;
+UDPChecksumOffloadV4                    = "UDP Checksum Offload (IPv4)"
+UDPChecksumOffloadV4RxEnabled           = "UDP RX Checksum offload enabled"
+UDPChecksumOffloadV4TxEnabled           = "UDP TX Checksum offload enabled"
+UDPChecksumOffloadV4RxTxEnabled         = "UDP RX/TX Checksum offload enabled"
+
+
+
+; TCP Checkum offload V6
+;
+TCPChecksumOffloadV6                    = "TCP Checksum Offload (IPv6)"
+TCPChecksumOffloadV6RxEnabled           = "TCP RX Checksum offload enabled"
+TCPChecksumOffloadV6TxEnabled           = "TCP TX Checksum offload enabled"
+TCPChecksumOffloadV6RxTxEnabled         = "TCP RX/TX Checksum offload enabled"
+
+;
+; UDP Checkum offload V6
+;
+UDPChecksumOffloadV6                    = "UDP Checksum Offload (IPv6)"
+UDPChecksumOffloadV6RxEnabled           = "UDP RX Checksum offload enabled"
+UDPChecksumOffloadV6TxEnabled           = "UDP TX Checksum offload enabled"
+UDPChecksumOffloadV6RxTxEnabled         = "UDP RX/TX Checksum offload enabled"
+
+;
+; IP Checksum offload V4
+;
+IPChecksumOffloadV4                     = "IP Checksum Offload"
+IPChecksumOffloadV4RxEnabled            = "IP RX Checksum offload enabled"
+IPChecksumOffloadV4TxEnabled            = "IP TX Checksum offload enabled"
+IPChecksumOffloadV4RxTxEnabled          = "IP RX/TX Checksum offload enabled"
+
+;
+; VLAN & Priority 
+;
+PriorityVLANTag                         = "Priority & VLAN"
+PriorityAndVLANDisabled                 = "Priority & VLAN Disabled"
+PriorityEnabled                         = "Priority Enabled"
+PriorityAndVLANEnabled                  = "Priority & VLAN Enabled"
+
+;
+; Jumbo Frame settings
+;
+JumboNo			= "1514 bytes"
+Jumbo2k			= "2514 bytes"
+Jumbo4k 		= "4514 bytes"
+Jumbo8k			= "9014 bytes"			

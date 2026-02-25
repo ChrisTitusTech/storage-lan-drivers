@@ -1,0 +1,110 @@
+; -- MUXMP.INF --
+;
+; Mellanox MUX INF file
+;
+; Copyright (c) 2008, Mellanox Corporation
+
+[Version]
+Signature 	= "$Windows NT$"
+Class 		= Net
+ClassGUID 	= {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider 	= %Mlnx%
+DriverVer=05/25/2017,5.35.12979
+CatalogFile = mux_mp.cat
+
+[ControlFlags]
+ExcludeFromSelect = MLNX_MUXMP	
+
+[Manufacturer]
+%Mlnx% = MLNX,NTx86,NTia64,NTamd64
+
+
+[MLNX.NTx86]
+%MUXMP_Desc% = MUXMP.ndi, MLNX_MUXMP
+
+[MLNX.NTia64]
+%MUXMP_Desc% = MUXMP.ndi, MLNX_MUXMP
+
+[MLNX.NTamd64]
+%MUXMP_Desc% = MUXMP.ndi, MLNX_MUXMP
+
+[MUXMP.ndi]
+AddReg  = MUXMP.ndi.AddReg, WinCtxTune_reg
+Characteristics = 0xA1 ;NCF_NOT_USER_REMOVABLE | NCF_VIRTUAL | NCF_HAS_UI
+copyfiles       = MUXP.CopyFiles.DLL, MUXP.CopyFiles.sys , WctxtuneCopyFiles
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0             ; NdisMedium802_3 
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+[SourceDisksNames]
+1=%DiskDescription%,"",,
+
+[SourceDisksFiles]
+mlxmux6x.sys = 1
+mux.dll      = 1
+winctxtune_mux.dll = 1
+
+
+[DestinationDirs]
+DefaultDestDir      = 12
+MUXP.CopyFiles.DLL  = 11   ; %windir%\System32
+MUXP.CopyFiles.Sys  = 12   ; %windir%\System32\drivers
+WctxtuneCopyFiles   = 11
+
+
+[MUXP.CopyFiles.Sys]
+mlxmux6x.sys,,,2
+
+[MUXP.CopyFiles.DLL]
+mux.dll,,,2
+
+[WctxtuneCopyFiles]
+winctxtune_mux.dll,,,0x00000002
+
+[MUXMP.ndi.AddReg]
+HKR, Ndi, Service,  0,  MUXMP
+HKR, Ndi, HelpText, 0,  "%MUXMP_HELP%"
+HKR, Ndi\Interfaces,    UpperRange, 0,  "ndis5"
+HKR, Ndi\Interfaces,    LowerRange, 0,  "nolower"
+
+HKR, Ndi\config\VlanID,     ParamDesc,       0, %VlanID%
+HKR, Ndi\config\VlanID,     default,         0, "1"
+HKR, Ndi\config\VlanID,     type,            0, "long"
+HKR, Ndi\config\VlanID,     min,             0, "1"
+HKR, Ndi\config\VlanID,     max,             0, "4095"
+HKR, Ndi\config\VlanID,     step,            0, "1"
+HKR, Ndi\config\VlanID,     base,            0, "10"
+
+HKR, Ndi\config\Priority,     ParamDesc,       0, %VlanPriority%
+HKR, Ndi\config\Priority,     default,         0, "0"
+HKR, Ndi\config\Priority,     type,            0, "long"
+HKR, Ndi\config\Priority,     min,             0, "0"
+HKR, Ndi\config\Priority,     max,             0, "7"
+HKR, Ndi\config\Priority,     step,            0, "1"
+HKR, Ndi\config\Priority,     base,            0, "10"
+
+[WinCtxTune_reg]
+HKR,,icon,,"-5"
+HKR,,EnumPropPages32,,"winctxtune_mux.dll,WinCtxTunePropPageProvider"
+
+[MUXMP.ndi.Services]
+AddService = MUXMP, 2, MUXMP.AddService
+
+[MUXMP.AddService]
+DisplayName     = %MUXMP_Desc%
+ServiceType     = 1 ;SERVICE_KERNEL_DRIVER
+StartType       = 3 ;SERVICE_DEMAND_START
+ErrorControl    = 1 ;SERVICE_ERROR_NORMAL
+ServiceBinary   = %12%\mlxmux6x.sys
+Description     = %MUXMP_Desc%
+
+
+[Strings]
+Mlnx = "Mellanox"
+MUXMP_Desc = "Mellanox Virtual Miniport Driver"
+MUXMP_HELP = "Mellanox Virtual Miniport Instance"
+DiskDescription = "Mellanox Virtual Miniport Driver"
+VlanID = "VLAN ID"
+VlanPriority = "Priority"
+
+

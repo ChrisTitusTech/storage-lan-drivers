@@ -1,0 +1,126 @@
+;******************************************************************************
+;*
+;*                           Hilscher GmbH
+;*
+;*                     cifXNDIS Setup Information File
+;*
+;*                          Copyright (c) 2006
+;*
+;*******************************************************************************
+;* File name: cifXNDIS.INF
+;*******************************************************************************
+
+;--------- Version Section ---------------------------------------------------
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %MfgName%
+DriverVer=10/23/2013,1.2.3.0
+CatalogFile = cifxndis.cat
+
+[ControlFlags]
+ExcludeFromSelect={d17cdadc-0fa8-4913-8505-913d69b230ae}\cifXNDIS
+
+[Manufacturer]
+%MfgName% = cifXNDIS,NTx86,NTamd64
+
+; For Win2K
+[cifXNDIS]
+%cifXNDIS.DeviceDesc%    = cifXNDIS.ndi, {d17cdadc-0fa8-4913-8505-913d69b230ae}\cifXNDIS
+
+; For XP and later
+[cifXNDIS.NTx86]
+%cifXNDIS.DeviceDesc%    = cifXNDIS.ndi, {d17cdadc-0fa8-4913-8505-913d69b230ae}\cifXNDIS
+
+[cifXNDIS.NTamd64]
+%cifXNDIS.DeviceDesc%    = cifXNDIS.ndi, {d17cdadc-0fa8-4913-8505-913d69b230ae}\cifXNDIS
+
+;-------------------------------------------------------------------------------
+; Microsoft Virtual Ethernet Adapter
+;
+[cifXNDIS.ndi]
+*IfType            = IF_TYPE_OTHER           ; optional,- only needed for NDIS6.0 and later, (added, since chkinf produce warnings)
+*MediaType         = NdisMedium802_3         ; optional,- only needed for NDIS6.0 and later, (added, since chkinf produce warnings)
+*PhysicalMediaType = NdisPhysicalMedium802_3 ; optional,- only needed for NDIS6.0 and later, (added, since chkinf produce warnings)
+Characteristics    = 0x1                     ; NCF_VIRTUAL
+AddReg             = cifXNDIS.Reg, ParamsPromiscuous
+CopyFiles          = cifXNDIS.CopyFiles
+
+[cifXNDIS.ndi.Services]
+AddService      = cifXNDIS, 2, cifXNDIS.Service, cifXNDIS.EventLog
+
+;-----------------------------------------------------------------------------
+; Microsoft Virtual Miniport Common
+;
+[cifXNDIS.Reg]
+HKR,    ,                         BusNumber,           0, "0"
+HKR, Ndi,                         Service,             0, "cifXNDIS"
+HKR, Ndi\Interfaces,              UpperRange,          0, "ndis5"
+HKR, Ndi\Interfaces,              LowerRange,          0, "ethernet"
+
+[ParamsPromiscuous]
+;
+;    Should the physical NIC be set to Promiscuous mode
+;
+;HKR, Ndi\Params\Promiscuous,     ParamDesc, , %Promiscuous%
+;HKR, Ndi\Params\Promiscuous,     Default,  ,"0"
+;HKR, Ndi\Params\Promiscuous,     type, ,      enum
+;HKR, Ndi\Params\Promiscuous\enum,"1",  ,     %Promiscuous_Enable%
+;HKR, Ndi\Params\Promiscuous\enum,"0",  ,     %Promiscuous_Disable%
+
+;-----------------------------------------------------------------------------
+; Driver and Service Section
+;
+[cifXNDIS.CopyFiles]
+cifXNDIS.sys,,,2
+
+[cifXNDIS.Service]
+DisplayName     = %cifXNDIS.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\cifXNDIS.sys
+LoadOrderGroup  = NDIS
+AddReg          = TextModeFlags.Reg
+
+[cifXNDIS.EventLog]
+AddReg = cifXNDIS.AddEventLog.Reg
+
+[cifXNDIS.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[TextModeFlags.Reg]
+HKR, , TextModeFlags,    0x00010001, 0x0001
+
+[SourceDisksNames]
+1 = %DISK_NAME%,,,""
+
+[SourceDisksFiles]
+cifXNDIS.sys  = 1,x86
+
+[SourceDisksFiles.x86]
+cifXNDIS.sys  = 1,x86
+
+[SourceDisksFiles.amd64]
+cifXNDIS.sys  = 1,x64
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+cifXNDIS.CopyFiles = 12
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+MfgName                   = "Hilscher GmbH"                           ;Name of HW Manufacturer
+cifXNDIS.DeviceDesc       = "Virtual cifX Ethernet Adapter (NDIS 5.0/.1)"
+cifXNDIS.Service.DispName = "Virtual cifX Ethernet Miniport (NDIS 5.0/.1)"
+DISK_NAME                 = "Hilscher cifX NDIS Device Driver Install Disk"
+;Promiscuous               = "Set the physical NIC to promiscuous mode"
+;Promiscuous_Disable       = "Disable"
+;Promiscuous_Enable        = "Enable"

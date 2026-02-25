@@ -1,0 +1,936 @@
+;*******************************************************************************
+; TN40xxmp_.INF  (Windows 7-10 / Server 2008-2016  32/64 )
+; Tehuti Networks 10GbE Adapter
+;
+; Copyright (c) 2016 by Tehuti Networks. All Rights Reserved.
+;
+;*******************************************************************************
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Provider%
+CatalogFile = TN40xxmp.cat
+DriverVer   = 08/28/2018,4.4.405.159
+
+;--------------------------------------------------------------
+;The manufacturer of devices
+;--------------------------------------------------------------
+[Manufacturer]
+%Provider%    = Install,NTx86,NTamd64,NTARM64,NTIA64
+
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Install]
+
+[Install.NTARM64]
+;empty - not supported
+
+[Install.NTIA64]
+;empty - not supported
+
+
+
+[Install.NTx86]
+%DeviceDesc4022%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_30151FC9
+%DeviceDescDXE%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_4D001186
+%DeviceDescAs2022%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_87091043
+%DeviceDescEm4022%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_81031432
+
+
+%DeviceDesc4024%= tbdx_NTx86_p0_ms,PCI\VEN_1FC9&DEV_4024&SUBSYS_30151FC9
+%DeviceDesc4027%= tbdx_NTx86_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_30151FC9
+%DeviceDesc4527%= tbdx_NTx86_p0_ms5mv,PCI\VEN_1FC9&DEV_4527&SUBSYS_30151FC9
+%DeviceDescEm4027%= tbdx_NTx86_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_81041432
+%DeviceDescBuff4027%= tbdx_NTx86_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_03681154
+%DeviceDesc1546%= tbdx_NTx86_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_40271546
+%DeviceDesc4027LR%= tbdx_NTx86_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_10014C52
+%DeviceDesc4027QNAP%= tbdx_NTx86_p0_ms5mv5qnap,PCI\VEN_1FC9&DEV_4027&SUBSYS_33101BAA
+
+
+%DeviceDesc4025%= tbdx_NTx86_p0_ms5,PCI\VEN_1FC9&DEV_4025&SUBSYS_30151FC9
+%DeviceDescAQ%= tbdx_NTx86_p0_dlink,PCI\VEN_1FC9&DEV_4025&SUBSYS_29001186
+%DeviceDescEm4025%= tbdx_NTx86_p0_ms5,PCI\VEN_1FC9&DEV_4025&SUBSYS_81021432 
+
+
+
+%DeviceDesc4026%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4026&SUBSYS_30151FC9
+%DeviceDesc4026LR%= tbdx_NTx86_p0,PCI\VEN_1FC9&DEV_4026&SUBSYS_10004C52
+
+%DeviceDesc4020%= tbdx_NTx86_px,PCI\VEN_1FC9&DEV_4020&SUBSYS_30151FC9
+%DeviceDesc4020Mustang200%= tbdx_NTx86_px,PCI\VEN_1FC9&DEV_4020&SUBSYS_2040180C
+
+
+%DeviceDesc4010%= tbdx_NTx86_px,PCI\VEN_1FC9&DEV_4010&SUBSYS_40101FC9
+
+[Install.NTamd64]
+%DeviceDesc4022%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_30151FC9
+%DeviceDescDXE%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_4D001186
+%DeviceDescAs2022%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_87091043
+%DeviceDescEm4022%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4022&SUBSYS_81031432
+
+
+%DeviceDesc4024%= tbdx_NTamd64_p0_ms,PCI\VEN_1FC9&DEV_4024&SUBSYS_30151FC9
+%DeviceDesc4027%= tbdx_NTamd64_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_30151FC9
+%DeviceDesc4527%= tbdx_NTamd64_p0_ms5mv,PCI\VEN_1FC9&DEV_4527&SUBSYS_30151FC9
+%DeviceDescEm4027%= tbdx_NTamd64_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_81041432
+%DeviceDescBuff4027%= tbdx_NTamd64_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_03681154
+%DeviceDesc1546%= tbdx_NTamd64_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_40271546
+%DeviceDesc4027LR%= tbdx_NTamd64_p0_ms5mv5,PCI\VEN_1FC9&DEV_4027&SUBSYS_10014C52
+%DeviceDesc4027QNAP%= tbdx_NTamd64_p0_ms5mv5qnap,PCI\VEN_1FC9&DEV_4027&SUBSYS_33101BAA
+
+%DeviceDesc4025%= tbdx_NTamd64_p0_ms5,PCI\VEN_1FC9&DEV_4025&SUBSYS_30151FC9
+%DeviceDescAQ%= tbdx_NTamd64_p0_dlink,PCI\VEN_1FC9&DEV_4025&SUBSYS_29001186
+%DeviceDescEm4025%= tbdx_NTamd64_p0_ms5,PCI\VEN_1FC9&DEV_4025&SUBSYS_81021432 
+
+
+%DeviceDesc4026%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4026&SUBSYS_30151FC9
+%DeviceDesc4026LR%= tbdx_NTamd64_p0,PCI\VEN_1FC9&DEV_4026&SUBSYS_10004C52
+%DeviceDesc4020%= tbdx_NTamd64_px,PCI\VEN_1FC9&DEV_4020&SUBSYS_30151FC9
+%DeviceDesc4020Mustang200%= tbdx_NTamd64_px,PCI\VEN_1FC9&DEV_4020&SUBSYS_2040180C
+
+
+
+%DeviceDesc4010%= tbdx_NTamd64_px,PCI\VEN_1FC9&DEV_4010&SUBSYS_40101FC9
+
+;; NTx86
+
+[tbdx_NTx86_p0]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,MaxJf16k
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_px]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.px
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_p0_dlink]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0_dlink,tbdx.10_5_2.5_1_100,MaxJf16k
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+
+[tbdx_NTx86_p0_ms]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,tbdx.10_1_100,MaxJf16k
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_p0_ms5]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,tbdx.10_5_2.5_1_100,MaxJf16k 
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_p0_ms5mv]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0_mv,tbdx.5_2.5_1_100,MaxJf9k 
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_p0_ms5mv5]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0,tbdx.10_5_2.5_1_100,MaxJf9k  ;
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTx86_p0_ms5mv5qnap]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0_qnap,tbdx.10_5_2.5_1_100,MaxJf9k  ;
+CopyFiles       = wxp.CopyFiles_NTx86
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+
+
+[wxp.CopyFiles_NTx86]
+TN40xxmp_32.sys,,,2
+
+
+[tbdx_NTx86_p0.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_px.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_dlink.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_ms.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_ms5mv.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_ms5mv5.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_ms5mv5qnap.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+[tbdx_NTx86_p0_ms5.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTx86, wxp.EventLog
+
+
+[wxp.Service_NTx86]
+DisplayName     = %Service_DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\TN40xxmp_32.sys
+LoadOrderGroup  = NDIS
+
+[wxp.EventLog]
+AddReg = wxp.AddEventLog.reg
+
+[wxp.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\TN40xxmp_32.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+[tbdx_NTamd64_p0]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,MaxJf16k
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_px]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.px
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+
+[tbdx_NTamd64_p0_dlink]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0_dlink,tbdx.10_5_2.5_1_100,MaxJf16k
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_p0_ms]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,tbdx.10_1_100,MaxJf16k 
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_p0_ms5]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.reg,tbdx.reg.p0,tbdx.10_5_2.5_1_100,MaxJf16k 
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_p0_ms5mv]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0_mv,tbdx.5_2.5_1_100,MaxJf9k  
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_p0_ms5mv5]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0,tbdx.10_5_2.5_1_100,MaxJf9k    
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+[tbdx_NTamd64_p0_ms5mv5qnap]
+BusType         = 5    ; PCI
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+AddReg          = tbdx.reg,FlowControl.1.reg,tbdx.reg.p0_qnap,tbdx.10_5_2.5_1_100,MaxJf9k    
+CopyFiles       = wxp.CopyFiles_NTamd64
+*IfType         = 6     ; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0     ; NdisMedium802_3
+*PhysicalMediaType = 14      ; NdisPhysicalMedium802_3 
+
+
+
+
+[wxp.CopyFiles_NTamd64]
+TN40xxmp_64.sys,,,2
+
+
+[tbdx_NTamd64_p0.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+[tbdx_NTamd64_px.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+
+[tbdx_NTamd64_p0_dlink.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+
+[tbdx_NTamd64_p0_ms.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+[tbdx_NTamd64_p0_ms5.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+[tbdx_NTamd64_p0_ms5mv.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+[tbdx_NTamd64_p0_ms5mv5.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+[tbdx_NTamd64_p0_ms5mv5qnap.Services]
+AddService = TN40xxmp, 2, wxp.Service_NTamd64, wxp.EventLog_NTamd64
+
+
+[wxp.Service_NTamd64]
+DisplayName     = %Service_DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\TN40xxmp_64.sys
+LoadOrderGroup  = NDIS
+
+[wxp.EventLog_NTamd64]
+AddReg = wxp.AddEventLog_NTamd64.reg
+
+[wxp.AddEventLog_NTamd64.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\TN40xxmp_64.sys"
+HKR, , TypesSupported,   0x00010001, 7
+
+;--------------------------------------------------------------
+;The target directories for all files          
+;--------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir        = 12 ; 
+wxp.CopyFiles_NTx86   = 12 ; Windows\System32\Drivers
+wxp.CopyFiles_NTamd64 = 12 ; Windows\System32\Drivers
+
+;--------------------------------------------------------------
+;Source disks for installation
+;--------------------------------------------------------------
+[SourceDisksNames]
+1 = %DISKNAME%,,,
+
+;--------------------------------------------------------------
+;This section identify source files for installation   
+;--------------------------------------------------------------
+[SourceDisksFiles]
+TN40xxmp_32.sys = 1,,
+TN40xxmp_64.sys = 1,,
+
+;--------------------------------------------------------------
+;Common 
+;--------------------------------------------------------------
+[tbdx.reg]
+HKR, Ndi,       Service,        0, "TN40xxmp"
+HKR, Ndi\Interfaces,	UpperRange, 0, "ndis5"   
+HKR, Ndi\Interfaces,    LowerRange, 0, "ethernet"
+
+
+HKR, Ndi\params\*IPChecksumOffloadIPv4,              ParamDesc,          0, %IPChecksumOffloadIPv4%
+HKR, Ndi\params\*IPChecksumOffloadIPv4,              default,            0, "3"
+HKR, Ndi\params\*IPChecksumOffloadIPv4,              type,               0, "enum"
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum, 0,        , %Disabled%
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum, 1,        , %TxEnabled%
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum, 2,        , %RxEnabled%
+HKR, Ndi\params\*IPChecksumOffloadIPv4\enum, 3,        , %RxTxEnabled%
+                
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,              ParamDesc,          0, %TCPChecksumOffloadIPv4%
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,              default,            0, "3"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4,              type,               0, "enum"
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum, 0,        , %Disabled%
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum, 1,        , %TxEnabled%
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum, 2,        , %RxEnabled%
+HKR, Ndi\params\*TCPChecksumOffloadIPv4\enum, 3,        , %RxTxEnabled%
+
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,              ParamDesc,          0, %UDPChecksumOffloadIPv4%
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,              default,            0, "3"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4,              type,               0, "enum"
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum, 0,        , %Disabled%
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum, 1,        , %TxEnabled%
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum, 2,        , %RxEnabled%
+HKR, Ndi\params\*UDPChecksumOffloadIPv4\enum, 3,        , %RxTxEnabled%
+
+HKR, Ndi\params\*RSS,              ParamDesc,          0, %RSS%
+HKR, Ndi\params\*RSS,              default,            0, "1"
+HKR, Ndi\params\*RSS,              type,               0, "enum"
+HKR, Ndi\params\*RSS\enum, 0,        , %Disabled%
+HKR, Ndi\params\*RSS\enum, 1,        , %Enabled%
+
+HKR, Ndi\params\*RSSProfile,              ParamDesc,          0, %RSSProfile%
+HKR, Ndi\params\*RSSProfile,              default,            0, "0"
+HKR, Ndi\params\*RSSProfile,              type,               0, "enum"
+HKR, Ndi\params\*RSSProfile\enum, 0,        , "ClosestProcessor"
+HKR, Ndi\params\*RSSProfile\enum, 1,        , "ClosestProcessorStatic"
+HKR, Ndi\params\*RSSProfile\enum, 2,        , "NUMAScaling"
+HKR, Ndi\params\*RSSProfile\enum, 3,        , "NUMAScalingStatic"
+HKR, Ndi\params\*RSSProfile\enum, 4,        , "ConservativeScaling"
+
+HKR, Ndi\params\*RssBaseProcGroup,              ParamDesc,          0, "The number of the processor group"
+HKR, Ndi\params\*RssBaseProcGroup,              default,            0, "0"
+HKR, Ndi\params\*RssBaseProcGroup,              min,                0, "0"
+HKR, Ndi\params\*RssBaseProcGroup,              max,                0, "32"
+HKR, Ndi\params\*RssBaseProcGroup,              step,               0, "1"
+HKR, Ndi\params\*RssBaseProcGroup,              Base,               0, "10"
+HKR, Ndi\params\*RssBaseProcGroup,              type,               0, "word"
+
+
+HKR, Ndi\params\*NumaNodeId,              ParamDesc,          0, "*NumaNodeId"
+HKR, Ndi\params\*NumaNodeId,              default,            0, "0"
+HKR, Ndi\params\*NumaNodeId,              min,                0, "0"
+HKR, Ndi\params\*NumaNodeId,              max,                0, "63"
+HKR, Ndi\params\*NumaNodeId,              step,               0, "1"
+HKR, Ndi\params\*NumaNodeId,              Base,               0, "10"
+HKR, Ndi\params\*NumaNodeId,              type,               0, "word"
+
+HKR, Ndi\params\*RssBaseProcNumber,              ParamDesc,          0, "Base RSS processor"
+HKR, Ndi\params\*RssBaseProcNumber,              default,            0, "0"
+HKR, Ndi\params\*RssBaseProcNumber,              min,                0, "0"
+HKR, Ndi\params\*RssBaseProcNumber,              max,                0, "32"
+HKR, Ndi\params\*RssBaseProcNumber,              step,               0, "1"
+HKR, Ndi\params\*RssBaseProcNumber,              Base,               0, "10"
+HKR, Ndi\params\*RssBaseProcNumber,              type,               0, "word"
+
+HKR, Ndi\params\*MaxRssProcessors,              ParamDesc,          0, "The maximum number of RSS processors"
+HKR, Ndi\params\*MaxRssProcessors,              default,            0, "4"
+HKR, Ndi\params\*MaxRssProcessors,              min,                0, "0"
+HKR, Ndi\params\*MaxRssProcessors,              max,                0, "8"
+HKR, Ndi\params\*MaxRssProcessors,              step,               0, "1"
+HKR, Ndi\params\*MaxRssProcessors,              Base,               0, "10"
+HKR, Ndi\params\*MaxRssProcessors,              type,               0, "word"
+
+HKR, Ndi\params\*RssMaxProcNumber,              ParamDesc,          0, "The maximum processor number of the RSS interface"
+HKR, Ndi\params\*RssMaxProcNumber,              default,            0, "4"
+HKR, Ndi\params\*RssMaxProcNumber,              min,                0, "0"
+HKR, Ndi\params\*RssMaxProcNumber,              max,                0, "8"
+HKR, Ndi\params\*RssMaxProcNumber,              step,               0, "1"
+HKR, Ndi\params\*RssMaxProcNumber,              Base,               0, "10"
+HKR, Ndi\params\*RssMaxProcNumber,              type,               0, "word"
+
+HKR, Ndi\params\*NumRSSQueues,              ParamDesc,          0, "Maximum Number of RSS Queues"
+HKR, Ndi\params\*NumRSSQueues,              default,            0, "4"
+HKR, Ndi\params\*NumRSSQueues,              min,                0, "0"
+HKR, Ndi\params\*NumRSSQueues,              max,                0, "8"
+HKR, Ndi\params\*NumRSSQueues,              step,               0, "1"
+HKR, Ndi\params\*NumRSSQueues,              Base,               0, "10"
+HKR, Ndi\params\*NumRSSQueues,              type,               0, "word"
+
+
+; Network Address
+HKR, Ndi\params\NetworkAddress,                ParamDesc,          0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,                Default,            0, ""
+HKR, Ndi\params\NetworkAddress,                type,               0, "edit"
+HKR, NDI\params\NetworkAddress,                LimitText,          0, "12"
+HKR, NDI\params\NetworkAddress,                UpperCase,          0, "1"
+HKR, NDI\params\NetworkAddress,                optional,           0, "1"
+
+
+
+;;RxBufferSize
+HKR, Ndi\params\RxBufferSize,              ParamDesc,          0, %RxBufferSize% 
+HKR, Ndi\params\RxBufferSize,              default,            0, "2048"
+HKR, Ndi\params\RxBufferSize,              min,                0, "2048"
+HKR, Ndi\params\RxBufferSize,              max,                0, "65535"
+HKR, Ndi\params\RxBufferSize,              Base,               0, "10"
+HKR, Ndi\params\RxBufferSize,              type,               0, "word"
+
+
+;RxDescriptorsNumber 
+HKR, Ndi\params\RxDescriptorsNumber,              ParamDesc,          0, %RxDescriptorsNumber% 
+HKR, Ndi\params\RxDescriptorsNumber,              default,            0, "1000"
+HKR, Ndi\params\RxDescriptorsNumber,              min,                0, "300"
+HKR, Ndi\params\RxDescriptorsNumber,              max,                0, "2000"
+HKR, Ndi\params\RxDescriptorsNumber,              step,               0, "10"
+HKR, Ndi\params\RxDescriptorsNumber,              Base,               0, "10"
+HKR, Ndi\params\RxDescriptorsNumber,              type,               0, "word"
+
+;TxDescriptorsNumber 
+HKR, Ndi\params\TxDescriptorsNumber,              ParamDesc,          0, %TxDescriptorsNumber% 
+HKR, Ndi\params\TxDescriptorsNumber,              default,            0, "1000"
+HKR, Ndi\params\TxDescriptorsNumber,              min,                0, "100"
+HKR, Ndi\params\TxDescriptorsNumber,              max,                0, "2000"
+HKR, Ndi\params\TxDescriptorsNumber,              step,               0, "10"
+HKR, Ndi\params\TxDescriptorsNumber,              Base,               0, "10"
+HKR, Ndi\params\TxDescriptorsNumber,              type,               0, "word"
+
+;;RxFreeFifoSize        				//0-4K 1-8K 2-16k 3-32k
+HKR, Ndi\Params\RxFreeFifoSize,    ParamDesc, , %RxFreeFifoSize%
+HKR, Ndi\Params\RxFreeFifoSize,    default,   , "3"
+HKR, Ndi\Params\RxFreeFifoSize,      type,     , "enum"
+HKR, Ndi\Params\RxFreeFifoSize\enum, 0,        , %FIFO_4K%
+HKR, Ndi\Params\RxFreeFifoSize\enum, 1,        , %FIFO_8K%
+HKR, Ndi\Params\RxFreeFifoSize\enum, 2,        , %FIFO_16K%
+HKR, Ndi\Params\RxFreeFifoSize\enum, 3,        , %FIFO_32K%
+
+;;RxDescriptorsFifoSize					//0-4K 1-8K 2-16k 3-32k
+HKR, Ndi\Params\RxDescriptorsFifoSize,    ParamDesc, , %RxDescriptorsFifoSize%
+HKR, Ndi\Params\RxDescriptorsFifoSize,    default,   , "3"
+HKR, Ndi\Params\RxDescriptorsFifoSize,      type,     , "enum"
+HKR, Ndi\Params\RxDescriptorsFifoSize\enum, 0,        , %FIFO_4K%
+HKR, Ndi\Params\RxDescriptorsFifoSize\enum, 1,        , %FIFO_8K%
+HKR, Ndi\Params\RxDescriptorsFifoSize\enum, 2,        , %FIFO_16K%
+HKR, Ndi\Params\RxDescriptorsFifoSize\enum, 3,        , %FIFO_32K%
+
+;;TxDescriptorsFifoSize				 //0-4K 1-8K 2-16k 3-32k
+HKR, Ndi\Params\TxDescriptorsFifoSize,    ParamDesc, , %TxDescriptorsFifoSize%
+HKR, Ndi\Params\TxDescriptorsFifoSize,    default,   , "3"
+HKR, Ndi\Params\TxDescriptorsFifoSize,      type,     , "enum"
+HKR, Ndi\Params\TxDescriptorsFifoSize\enum, 0,        , %FIFO_4K%
+HKR, Ndi\Params\TxDescriptorsFifoSize\enum, 1,        , %FIFO_8K%
+HKR, Ndi\Params\TxDescriptorsFifoSize\enum, 2,        , %FIFO_16K%
+HKR, Ndi\Params\TxDescriptorsFifoSize\enum, 3,        , %FIFO_32K%
+
+;;TxFreeFifoSize				        //0-4K 1-8K 2-16k 3-32k
+HKR, Ndi\Params\TxFreeFifoSize,    ParamDesc, , %TxFreeFifoSize%
+HKR, Ndi\Params\TxFreeFifoSize,    default,   , "3"
+HKR, Ndi\Params\TxFreeFifoSize,      type,     , "enum"
+HKR, Ndi\Params\TxFreeFifoSize\enum, 0,        , %FIFO_4K%
+HKR, Ndi\Params\TxFreeFifoSize\enum, 1,        , %FIFO_8K%
+HKR, Ndi\Params\TxFreeFifoSize\enum, 2,        , %FIFO_16K%
+HKR, Ndi\Params\TxFreeFifoSize\enum, 3,        , %FIFO_32K%
+
+;;RxInterruptCoalescingTimer        //in sec *10-6
+HKR, Ndi\params\RxInterruptCoalescingTimer,              ParamDesc,          0, %RxInterruptCoalescingTimer% 
+HKR, Ndi\params\RxInterruptCoalescingTimer,              default,            0, "20"
+HKR, Ndi\params\RxInterruptCoalescingTimer,              min,                0, "0"
+HKR, Ndi\params\RxInterruptCoalescingTimer,              max,                0, "32000"
+HKR, Ndi\params\RxInterruptCoalescingTimer,              step,               0, "1"
+HKR, Ndi\params\RxInterruptCoalescingTimer,              Base,               0, "10"
+HKR, Ndi\params\RxInterruptCoalescingTimer,              type,               0, "word"
+
+;;RxPacketCountThreshold						 
+HKR, Ndi\params\RxPacketCountThreshold,              ParamDesc,          0, %RxPacketCountThreshold% 
+HKR, Ndi\params\RxPacketCountThreshold,              default,            0, "12"
+HKR, Ndi\params\RxPacketCountThreshold,              min,                0, "0"
+HKR, Ndi\params\RxPacketCountThreshold,              max,                0, "15"
+HKR, Ndi\params\RxPacketCountThreshold,              step,               0, "1"
+HKR, Ndi\params\RxPacketCountThreshold,              Base,               0, "10"
+HKR, Ndi\params\RxPacketCountThreshold,              type,               0, "word"
+
+    
+;;TxInterruptCoalescingTimer			        //in sec *10-6
+HKR, Ndi\params\TxInterruptCoalescingTimer,              ParamDesc,          0, %TxInterruptCoalescingTimer% 
+HKR, Ndi\params\TxInterruptCoalescingTimer,              default,            0, "20"
+HKR, Ndi\params\TxInterruptCoalescingTimer,              min,                0, "0"
+HKR, Ndi\params\TxInterruptCoalescingTimer,              max,                0, "32000"
+HKR, Ndi\params\TxInterruptCoalescingTimer,              step,               0, "1"
+HKR, Ndi\params\TxInterruptCoalescingTimer,              Base,               0, "10"
+HKR, Ndi\params\TxInterruptCoalescingTimer,              type,               0, "word"
+
+;;TxPacketCountThreshold				 // in 64 byte of Fifo
+HKR, Ndi\params\TxPacketCountThreshold,              ParamDesc,          0, %TxPacketCountThreshold%
+HKR, Ndi\params\TxPacketCountThreshold,              default,            0, "12"
+HKR, Ndi\params\TxPacketCountThreshold,              min,                0, "0"
+HKR, Ndi\params\TxPacketCountThreshold,              max,                0, "15"
+HKR, Ndi\params\TxPacketCountThreshold,              step,               0, "1"
+HKR, Ndi\params\TxPacketCountThreshold,              Base,               0, "10"
+HKR, Ndi\params\TxPacketCountThreshold,              type,               0, "word"
+
+HKR, Ndi\params\MinRxDescriptors,              ParamDesc,          0, %MinRxDescriptors%
+HKR, Ndi\params\MinRxDescriptors,              default,            0, "20"
+HKR, Ndi\params\MinRxDescriptors,              min,                0, "0"
+HKR, Ndi\params\MinRxDescriptors,              max,                0, "100"
+HKR, Ndi\params\MinRxDescriptors,              step,               0, "1"
+HKR, Ndi\params\MinRxDescriptors,              Base,               0, "10"
+HKR, Ndi\params\MinRxDescriptors,              type,               0, "word"
+
+
+
+;;TCP_Large_MSS
+HKR, Ndi\params\TCP_Large_MSS,              ParamDesc,          0, %TCP_Large_MSS%
+HKR, Ndi\params\TCP_Large_MSS,              default,            0, "50000"
+HKR, Ndi\params\TCP_Large_MSS,              min,                0, "64"
+HKR, Ndi\params\TCP_Large_MSS,              max,                0, "65535"
+HKR, Ndi\params\TCP_Large_MSS,              step,               0, "1"
+HKR, Ndi\params\TCP_Large_MSS,              Base,               0, "10"
+HKR, Ndi\params\TCP_Large_MSS,              type,               0, "word"
+
+;;TCP_Fragmentation
+HKR, Ndi\params\TCP_Fragmentation,              ParamDesc,          0, %TCP_Fragmentation% 
+HKR, Ndi\params\TCP_Fragmentation,              default,            0, "1"
+HKR, Ndi\params\TCP_Fragmentation,              type,               0, "enum"
+HKR, Ndi\params\TCP_Fragmentation\enum, 0,        , %Disabled%
+HKR, Ndi\params\TCP_Fragmentation\enum, 1,        , %Enabled%
+
+
+HKR, ,TxFifoGap,             0, "1024"
+HKR, ,RxFifoGap,             0, "0"
+
+HKR, ,RxDescriptorsInHWLimit,0, "256"
+HKR, ,VenetoInternalTimer,   0, "1"
+HKR, ,VenetoGlobalRegister,  0, "0"
+HKR, ,RxTimerRecharge,       0, "1"
+HKR, ,TxTimerRecharge,       0, "1"
+HKR, ,RxFREEIRqThreshold,    0, "8"
+HKR, ,StatisticMode,         0, "1"  
+HKR, ,EnableChecksumOffloading, 0, "1"
+HKR, ,EnableMSI, 0, "1"
+HKR, ,extopt, 0, "0"
+HKR, ,PrefProtectMode, 0, "0"
+HKR, ,PnPCapabilities,0x10001,24
+
+
+
+
+
+;;VlanID
+HKR, Ndi\params\VlanID,           ParamDesc,  0, %VlanID%
+HKR, Ndi\params\VlanID,           default,    0, "0"
+HKR, Ndi\params\VlanID,           type,       0, "long"
+HKR, Ndi\params\VlanID,           min,        0, "0"
+HKR, Ndi\params\VlanID,           max,        0, "4095"
+HKR, Ndi\params\VlanID,           step,       0, "1"
+HKR, Ndi\params\VlanID,           base,       0, "10"
+
+
+;;VlanEnable
+HKR, Ndi\params\VlanEnable,             ParamDesc,  0, %VlanEnable%
+HKR, Ndi\params\VlanEnable,             default,    0, "1"
+HKR, Ndi\params\VlanEnable,             type,       0, "enum"
+HKR, Ndi\params\VlanEnable\enum,        "0",        0, %Disabled%
+HKR, Ndi\params\VlanEnable\enum,        "1",        0, %Enabled%
+
+
+;;RxPacksPerInterrupt
+HKR, Ndi\params\RxPacksPerInterrupt,       ParamDesc,     0, %RxPacksPerInterrupt%
+HKR, Ndi\params\RxPacksPerInterrupt,       default,       0, "300"
+HKR, Ndi\params\RxPacksPerInterrupt,       min,           0, "1"
+HKR, Ndi\params\RxPacksPerInterrupt,       max,           0, "999999"
+HKR, Ndi\params\RxPacksPerInterrupt,       step,          0, "1"
+HKR, Ndi\params\RxPacksPerInterrupt,       Base,          0, "10"
+HKR, Ndi\params\RxPacksPerInterrupt,       type,          0, "word"
+
+
+
+
+
+
+[MaxJf16k]
+;MaxPacketSize (Jumbo)
+HKR, Ndi\params\MaxPacketSize,       ParamDesc,          0, %Jumbo%
+HKR, Ndi\params\MaxPacketSize,       default,            0, "1514"
+HKR, Ndi\Params\MaxPacketSize,      type,     , "enum"
+HKR, Ndi\Params\MaxPacketSize\enum, 1514,     , %Disabled%
+HKR, Ndi\Params\MaxPacketSize\enum, 4088,     , "4088"
+HKR, Ndi\Params\MaxPacketSize\enum, 9014,     , "9014"
+HKR, Ndi\Params\MaxPacketSize\enum, 16218,    , "16128"
+
+[FlowControl.1.reg]
+HKR, ,FlowControl,   0, "1"
+
+[FlowControl.0.reg]
+HKR, ,FlowControl,   0, "0"
+
+
+[FlowControl.reg]
+;;FlowControl 
+HKR, Ndi\params\FlowControl,             ParamDesc,  0, %FlowControl%
+HKR, Ndi\params\FlowControl,             default,    0, "1"
+HKR, Ndi\params\FlowControl,             type,       0, "enum"
+HKR, Ndi\params\FlowControl\enum,        "0",        0, %Disabled%
+HKR, Ndi\params\FlowControl\enum,        "1",        0, %Enabled%
+
+
+[MaxJf9k]
+HKR, Ndi\params\MaxPacketSize,       ParamDesc,          0, %Jumbo%
+HKR, Ndi\params\MaxPacketSize,       default,            0, "1514"
+HKR, Ndi\Params\MaxPacketSize,      type,     , "enum"
+HKR, Ndi\Params\MaxPacketSize\enum, 1514,     , %Disabled%
+HKR, Ndi\Params\MaxPacketSize\enum, 4088,     , "4088"
+HKR, Ndi\Params\MaxPacketSize\enum, 9014,     , "9014"
+
+[tbdx.reg.p0] ;  32k mem window   Tehuti
+HKR, ,MacPortId,0, "1"
+HKR, ,CardCastId,0, "0"
+HKR, ,LinkSpeed,0, "0"
+
+[tbdx.reg.p0_dlink] ;  32k mem window D-Link
+HKR, ,MacPortId,0, "1"
+HKR, ,CardCastId,0, "1"
+HKR, ,LinkSpeed,0, "0"
+
+[tbdx.reg.p0_pr] ;  32k mem window promice
+HKR, ,MacPortId,0, "1"
+HKR, ,CardCastId,0, "2"
+HKR, ,LinkSpeed,0, "0"
+
+[tbdx.reg.p0_mv] ;  32k mem window marvwl
+HKR, ,MacPortId,0, "1"
+HKR, ,CardCastId,0, "3"
+HKR, ,LinkSpeed,0, "0"
+
+[tbdx.reg.p0_qnap] ;  32k mem window marvwl
+HKR, ,MacPortId,0, "1"
+HKR, ,CardCastId,0, "5"
+HKR, ,LinkSpeed,0, "0"
+
+
+[tbdx.reg.px] ;  clean OTP
+HKR, ,MacPortId,0, "1"
+HKR, ,LinkSpeed,0, "0"
+;;HKR, ,CardCastId,0, "4"
+;;CardCastID
+HKR, Ndi\params\CardCastID,             ParamDesc,  0, "Max Phy Speed"
+HKR, Ndi\params\CardCastID,             default,    0, "4"
+HKR, Ndi\params\CardCastID,             type,       0, "enum"
+HKR, Ndi\params\CardCastID\enum,        "0",        0, "PHY 10G"
+HKR, Ndi\params\CardCastID\enum,        "3",        0, "PHY 5G"
+HKR, Ndi\params\CardCastID\enum,        "4",        0, "PHY Disabled"
+
+
+
+[tbdx.10_1]
+
+HKR, Ndi\params\LinkSpeed,              ParamDesc,          0, "Link Speed"
+HKR, Ndi\params\LinkSpeed,              default,            0, "0"
+HKR, Ndi\params\LinkSpeed,              type,               0, "enum"
+HKR, Ndi\params\LinkSpeed\enum, 0,        , "Auto"
+HKR, Ndi\params\LinkSpeed\enum, 1,        , "10G"
+HKR, Ndi\params\LinkSpeed\enum, 2,        , "1G"
+
+
+[tbdx.10_1_100]
+HKR, Ndi\params\LinkSpeed,              ParamDesc,          0, "Link Speed"
+HKR, Ndi\params\LinkSpeed,              default,            0, "0"
+HKR, Ndi\params\LinkSpeed,              type,               0, "enum"
+HKR, Ndi\params\LinkSpeed\enum, 0,        , "Auto"
+HKR, Ndi\params\LinkSpeed\enum, 1,        , "10G"
+HKR, Ndi\params\LinkSpeed\enum, 2,        , "1G"
+HKR, Ndi\params\LinkSpeed\enum, 3,        , "100M"
+
+[tbdx.10_5_2.5_1_100]
+HKR, Ndi\params\LinkSpeed,              ParamDesc,          0, "Link Speed"
+HKR, Ndi\params\LinkSpeed,              default,            0, "0"
+HKR, Ndi\params\LinkSpeed,              type,               0, "enum"
+HKR, Ndi\params\LinkSpeed\enum, 0,        , "Auto"
+HKR, Ndi\params\LinkSpeed\enum, 1,        , "10G"
+HKR, Ndi\params\LinkSpeed\enum, 2,        , "1G"
+HKR, Ndi\params\LinkSpeed\enum, 3,        , "100M"
+HKR, Ndi\params\LinkSpeed\enum, 4,        , "2.5G"
+HKR, Ndi\params\LinkSpeed\enum, 5,        , "5G"
+
+
+[tbdx.5_2.5_1_100]
+HKR, Ndi\params\LinkSpeed,              ParamDesc,          0, "Link Speed"
+HKR, Ndi\params\LinkSpeed,              default,            0, "0"
+HKR, Ndi\params\LinkSpeed,              type,               0, "enum"
+HKR, Ndi\params\LinkSpeed\enum, 0,        , "Auto"
+HKR, Ndi\params\LinkSpeed\enum, 2,        , "1G"
+HKR, Ndi\params\LinkSpeed\enum, 3,        , "100M"
+HKR, Ndi\params\LinkSpeed\enum, 4,        , "2.5G"
+HKR, Ndi\params\LinkSpeed\enum, 5,        , "5G"
+
+
+[tbdx_NTx86_p0_dlink.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_dlink.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTx86_p0_ms.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_ms.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTx86_p0.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTx86_px.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_px.hw]
+AddReg		= HW_Removel_Policy
+
+
+[tbdx_NTx86_p0_ms5.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_ms5.hw]
+AddReg		= HW_Removel_Policy
+
+
+[tbdx_NTx86_p0_ms5mv.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_ms5mv.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTx86_p0_ms5mv5.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTx86_p0_ms5mv5qnap.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_ms5mv5.hw]
+AddReg		= HW_Removel_Policy
+
+[tbdx_NTamd64_p0_ms5mv5qnap.hw]
+AddReg		= HW_Removel_Policy
+
+
+
+[HW_Removel_Policy]
+HKR,,"RemovalPolicy",0x00010001,3 
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",	MSISupported, 0x00010001, 1
+
+
+;--------------------------------------------------------------
+; Localizable Strings
+;--------------------------------------------------------------
+[Strings]
+Provider ="TehutiNetworks"
+DeviceDescLxr = "Tehuti Networks 10GbE Adapter"
+DeviceDescLxrSP = "Tehuti Networks 10GbE Adapter"
+Service_DispName = "Tehuti Networks 10GbE Adapter Driver (TN40xxmp)"
+DISKNAME = "Tehuti Networks 10GbE Adapter Driver Disk"
+
+DeviceDesc4010="TN4010 Clean SROM"
+DeviceDesc4020="TN9030 10GbE CX4 Ethernet Adapter"
+DeviceDesc4022="TN9310 10GbE SFP+ Ethernet Adapter" ;; QT2025
+DeviceDesc4024="TN9210 10GBase-T Ethernet Adapter"  ;; MV88X3120
+DeviceDesc4025="TN9510 10GBase-T/NBASE-T Ethernet Adapter" ;; AQ2104
+DeviceDesc4026="TN9610 10GbE SFP+ Ethernet Adapter"  ;; TLK10232
+DeviceDesc4027="TN9710P 10GBase-T/NBASE-T Ethernet Adapter"  ;; MV88X3310
+DeviceDesc4527="TN9710Q 5GBase-T/NBASE-T Ethernet Adapter"  ;; MV88X3310
+
+DeviceDescAQ ="D-Link DXE-810T Single port 10GBASE-T PCI-E Adapter"
+DeviceDescDXE="D-Link DXE-810S 10Gigabit PCI-E Adapter"
+
+DeviceDescAs2022="ASUS XG-C100F 10GbE SFP+ Ethernet Adapter"
+
+DeviceDescEm4025="Edimax 10 Gigabit Ethernet PCI Express Adapter"
+DeviceDescEm4022="Edimax 10 Gigabit Ethernet SFP+ PCI Express Adapter"
+DeviceDescEm4027="Edimax 10 Gigabit Ethernet PCI Express Adapter"
+
+DeviceDescBuff4027="BUFFALO LGY-PCIE-MG"
+
+DeviceDesc4020Mustang200="Mustang-200 10GbE Ethernet Adapter"
+DeviceDesc1546= "IOI GE10-PCIE4XG202P 10Gbase-T/NBASE-T Ethernet Adapter"
+
+DeviceDesc4027LR="LR-Link LREC6860BT 10 Gigabit Ethernet Adapter" 
+DeviceDesc4026LR="LR-Link LREC6860AF 10 Gigabit Ethernet Adapter"
+DeviceDesc4027QNAP="QNAP PCIe Expansion Card"
+
+;--------------------------------------------------------------
+; Paramerers strings 
+;--------------------------------------------------------------
+FIFO_4K =	" 4 KByte"
+FIFO_8K =	" 8 KByte"
+FIFO_16K =	"16 KByte"
+FIFO_32K =	"32 KByte"
+Disabled =  "Disabled"
+Enabled =   "Enabled"
+
+NetworkAddress				= "Locally Administered MAC Address"
+RxDescriptorsFifoSize		= "Rx Descriptors Fifo Size"
+RxFreeFifoSize				= "Rx Free Fifo Size"
+TxDescriptorsFifoSize		= "Tx Descriptors Fifo Size"
+TxFreeFifoSize				= "Tx Free Fifo Size"
+MaxPacketSize				= "Maximal ethernet packet size"
+RxDescriptorsNumber			= "Number of RX descriptors"
+TxDescriptorsNumber			= "Number of TX descriptors"
+RxBufferSize				= "Rx Buffer Size"
+RxInterruptCoalescingTimer      = "Rx Interrupt Coalescing Timer (sec*10-6)"
+RxPacketCountThreshold		= "Rx Packet Count Threshold in 128 bite of Fifo"
+RxFREEIRqThreshold			= "Rx FREE IRQ Threshold"
+TxInterruptCoalescingTimer      = "Tx Interrupt Coalescing Timer (sec*10-6)"
+TxPacketCountThreshold		= "Tx Packet Count Threshold in 128 bite of Fifo"
+DpcMaxLoops					= "Dpc Max Loops"
+TCP_Large_MSS				= "TCP Large MSS"
+TCP_Fragmentation			= "TCP Fragmentation"
+RxTimerRecharge				= "Rx Timer Recharge"
+TxTimerRecharge				= "Tx Timer Recharge"
+RxDescriptorsInHWLimit		= "Rx Descriptors In HW Limit"
+VenetoInternalTimer			= "Veneto Internal Timer"
+VenetoGlobalRegister		= "Veneto Global Register"
+EnableChecksumOffloading	= "Enable Checksum Offloading"
+EnableCheckForHang          = "CheckForHang mode"
+StatisticTimer				= "Statistic Timer"
+Init_CLKPLL					= "Init CLKPLL (Hex, 0-disable 0x[4|8|C]000000)"
+TxFlowControl				= "TX Flow Control"
+RxFlowControl				= "RX Flow Control"
+FlowControl					= "Flow Control"
+RxPacksPerInterrupt			= "Rx Packs Per Interrupt"
+VlanId                      = "VlanId " 
+VlanEnable                  = "Enable QoS (IEEE 802.1q) Offloading" 
+AdapterResetMode            = "Adapter Reset Mode" 
+AdapterResetMode0            = "SW Reset Mode" 
+AdapterResetMode1            = "HW Reset Mode" 
+AdapterResetMode2            = "if SW fault HW" 
+Jumbo                        = "Jumbo Frames"
+EnableCheckForHang_1 = "Enabled (Reset Enabled)"
+EnableCheckForHang_2 = "Enabled (Reset Disabled)"
+EnableMSI="MSI support"
+
+RssMode="Rss Mode"
+RssMode0="Rss Disabled"
+RssModeSw="Rss Enabled (SW)"
+RssModeHw="Rss Enabled (HW)"
+
+
+
+MinRxDescriptors="MinRxDescriptors"
+
+RSS="Receive Side Scaling"
+RSSProfile="RSS load balancing profile"
+
+TxEnabled  ="Tx Enabled"
+RxEnabled  ="Rx Enabled"
+RxTxEnabled="Rx & Tx Enabled"
+
+IPChecksumOffloadIPv4 ="IPv4 Checksum Offload"
+TCPChecksumOffloadIPv4="TCP Checksum Offload (IPv4)"
+UDPChecksumOffloadIPv4="UDP Checksum Offload (IPv4)"
+
+NoLinkSpeed="No link speed indication"
+NoLinkSpeed0=" 0"
+NoLinkSpeed1="Max Speed"

@@ -1,0 +1,115 @@
+;/*++
+;
+;Copyright (c) 2003 Chelsio Communications. All rights reserved.
+;
+;Module Name:
+;
+;    chiserx64.inf
+;
+;Abstract:
+;    INF file for installing Chelsio T5/T6 iSER Initiator function driver
+;
+;--*/
+
+[version]
+Signature   = "$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4d36e97B-e325-11ce-bfc1-08002be10318}
+Provider    = %Chelsio%
+CatalogFile=chiserx64.cat
+DriverVer = 03/29/2023,6.16.9.0
+PnpLockDown= 1
+
+[Manufacturer]
+%Chelsio%     = Chelsio,NTamd64
+
+[Chelsio.NTamd64]
+; DisplayName       Section         DeviceID
+; -----------       -------         --------
+%cht5iscsi.DeviceDesc% = chiser, CHT5BUS\chiser
+%cht6iscsi.DeviceDesc% = chiser, CHT6BUS\chiser
+
+[chiser]
+AddReg=boot.reg
+
+CopyFiles   = copy_driver_file, copy_crashdump_driver_file
+CopyINF		= chiser.inf
+
+[chiser.Services]
+AddService = chiser, 2, chiser.Service, event_log_install
+
+;  Boot Support (iBFT)
+;  ------- ------------ -------
+[boot.reg]
+HKR, Ndi\params\Boot,   ParamDesc,  0, %boot%
+HKR, Ndi\params\Boot,   default,    0, "1"
+HKR, Ndi\params\Boot,   type,       0, "enum"
+HKR, Ndi\params\Boot\enum,   "0",  0, "Disabled"
+HKR, Ndi\params\Boot\enum,   "1",  0, "Enabled"
+
+[copy_driver_file]
+chiserx64.sys,,2
+
+[copy_crashdump_driver_file]
+chiserdump.sys,,2
+
+;-----------
+; NT Service 32
+;
+[chiser.Service]
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_NONBOOT_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\chiserx64.sys
+LoadOrderGroup	= "iSCSI"
+AddReg = bus_type.reg
+
+;---------------
+; NT Common base
+;
+[event_log_install]
+AddReg = event_log_install.reg
+
+[event_log_install.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\chiserx64.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[bus_type.reg]
+HKR,"Parameters","BusType",%REG_DWORD%,0x00000009
+HKR,"Parameters","IoTimeoutValue",%REG_DWORD%,0x0000001E
+HKR,"Parameters",BootFlags,%REG_DWORD_NO_CLOBBER%,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+
+;------------
+; Copy files
+;
+[DestinationDirs]
+copy_driver_file	= 12
+copy_crashdump_driver_file = 12
+
+[SourceDisksNames]
+1 = %disk_label%,,,
+
+[SourceDisksFiles]
+chiserx64.sys = 1
+chiserdump.sys = 1
+
+
+;--------------------
+; Localizable Strings
+;
+[Strings]
+; Vendors
+Chelsio         = "Chelsio"
+
+; Device descriptions
+disk_label		= "Chelsio Terminator iSER Driver Installation Disk"
+cht5iscsi.DeviceDesc	= "Chelsio T5 iSER Initiator"
+cht6iscsi.DeviceDesc	= "Chelsio T6 iSER Initiator"
+boot			= " Boot Support (iBFT)"
+
+;Non-localizable
+REG_DWORD              = 0x00010001
+REG_DWORD_NO_CLOBBER   = 0x00010003
+REG_ADDREG_APPEND      = 0x00010008
+REG_EXPAND_SZ          = 0x00020000

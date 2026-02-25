@@ -1,0 +1,1581 @@
+;*******************************************************************************
+; Copyright 2001-2018 Hewlett-Packard Development Company, L.P.
+;
+; INF for 64-bit Windows Vista
+;
+; InfVersion   214.0.0.0B
+;
+;*******************************************************************************
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+CatalogFile = b57nd60a.cat
+Compatible  = 1
+Provider    = %HPQ%
+DriverVer   = 05/30/2018,214.0.0.0
+
+
+[Manufacturer]
+%HPQ% = HPQ, NTamd64.6.0, NTamd64.6.1
+
+[HPQ.NTamd64.6.0]
+%NC1020%    =  NC1020_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1654&SUBSYS_3100103c
+%NC330i%    =  NC330i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1655&SUBSYS_18d2103c
+%NC331FLR%  =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1657&SUBSYS_169d103c
+%NC331T%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1657&SUBSYS_3383103c
+%NC331i%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1657&SUBSYS_22be103c
+%NC331i%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1657&SUBSYS_3372103c
+%NC330iSPI% =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1657&SUBSYS_1904103c
+%NC331FLR%  =  NC329a_LHinst_A0.NTamd64.6.0, PCI\VEN_14e4&DEV_1657&SUBSYS_169d103c&REV_00
+%NC331T%    =  NC329a_LHinst_A0.NTamd64.6.0, PCI\VEN_14e4&DEV_1657&SUBSYS_3383103c&REV_00
+%NC331i%    =  NC329a_LHinst_A0.NTamd64.6.0, PCI\VEN_14e4&DEV_1657&SUBSYS_3372103c&REV_00
+%NC332T%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165F&SUBSYS_1786103c
+%NC332i%    =  NC329aS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_165F&SUBSYS_193d103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165F&SUBSYS_22e8103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165F&SUBSYS_22eb103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165F&SUBSYS_2133103c
+%NC105i%    =  NC105i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165a&SUBSYS_7051103c
+%NC105T%    =  NC105T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165a&SUBSYS_7052103c
+%NC107i%    =  NC107i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165b&SUBSYS_705d103c
+%NC150T%    =  NC150T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1654&SUBSYS_3226103c
+%NC320i%    =  NC320i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_7032103c
+%NC320m%    =  NC320m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_170B103c
+%NC330i%    =  NC330iC0_LHinst.NTamd64.6.0,  PCI\VEN_14e4&DEV_1665&SUBSYS_22bd103c
+%NC324i%    =  NC324iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_1669&SUBSYS_703a103c
+%NC324i%    =  NC324i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1668&SUBSYS_7039103c
+%NC325i%    =  NC325i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_166a&SUBSYS_7035103c
+%NC325i%    =  NC325iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_166b&SUBSYS_7036103c
+%NC326i%    =  NC326i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1678&SUBSYS_703e103c
+%NC326i%    =  NC326iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_1679&SUBSYS_703c103c
+%NC326m%    =  NC326m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1679&SUBSYS_1707103c
+%NC325m%    =  NC325m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1679&SUBSYS_170c103c
+%NC320T%    =  NC320T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_7031103c
+%NC7761%    =  NC7761A3_LHinst.NTamd64.6.0,  PCI\VEN_14e4&DEV_1654&SUBSYS_00e30e11
+%NC7761%    =  NC7761_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1653&SUBSYS_00e30e11
+%NC7771%    =  NC7771_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16a7&SUBSYS_00ca0e11
+%NC7771%    =  NC7771_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_00ca0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16a7&SUBSYS_00cb0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_00cb0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_310e103c
+%NC7782%    =  NC7782_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1648&SUBSYS_00d00e11
+%NC7782%    =  NC7782_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1648&SUBSYS_310f103c
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[NC1020_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC105i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC105T_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC107i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC150T_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC320i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC320m_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC324iS_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC324i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC325i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC325iS_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC326i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC326iS_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC326m_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC325m_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC320T_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC7761A3_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC7761_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC7771_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC7781_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC7782_LHinst.NTamd64.6.0.hw]
+AddReg = MsiSupportStd
+
+[NC320i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC320i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC320i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC320i_LH_Service, Lh_EventLog
+
+[NC320i_LH_Service]
+DisplayName    = %NC320i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC320i.ProductString]
+HKR, , ProductString, 0, %NC320i%
+
+
+[NC320m_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC320m.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC320m_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC320m_LH_Service, Lh_EventLog
+
+[NC320m_LH_Service]
+DisplayName    = %NC320m%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC320m.ProductString]
+HKR, , ProductString, 0, %NC320m%
+
+
+
+
+[NC325i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC325i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC325i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC325i_LH_Service, Lh_EventLog
+
+[NC325i_LH_Service]
+DisplayName    = %NC325i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC325i.ProductString]
+HKR, , ProductString, 0, %NC325i%
+
+
+[NC325iS_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC325iS.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC325iS_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC325iS_LH_Service, Lh_EventLog
+
+[NC325iS_LH_Service]
+DisplayName    = %NC325i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC325iS.ProductString]
+HKR, , ProductString, 0, %NC325i%
+
+
+
+
+[NC324i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.Wol, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC324i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC324i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC324i_LH_Service, Lh_EventLog
+
+[NC324i_LH_Service]
+DisplayName    = %NC324i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC324i.ProductString]
+HKR, , ProductString, 0, %NC324i%
+
+
+[NC324iS_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC324iS.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC324iS_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC324iS_LH_Service, Lh_EventLog
+
+[NC324iS_LH_Service]
+DisplayName    = %NC324i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+
+[NC324iS.ProductString]
+HKR, , ProductString, 0, %NC324i%
+
+
+
+[NC326i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.Wol, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC326i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC326i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC326i_LH_Service, Lh_EventLog
+
+[NC326i_LH_Service]
+DisplayName    = %NC326i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC326i.ProductString]
+HKR, , ProductString, 0, %NC326i%
+
+
+[NC326iS_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC326iS.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsTuning, ParamsLgSnd_5715
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC326iS_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC326iS_LH_Service, Lh_EventLog
+
+[NC326iS_LH_Service]
+DisplayName    = %NC326i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC326iS.ProductString]
+HKR, , ProductString, 0, %NC326i%
+
+
+
+[NC325m_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC325m.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsLgSnd_5715, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC325m_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC325m_LH_Service, Lh_EventLog
+
+[NC325m_LH_Service]
+DisplayName    = %NC325m%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC325m.ProductString]
+HKR, , ProductString, 0, %NC325m%
+
+
+
+[NC326m_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType, DelReg.LsoV1IPv4
+AddReg          = LH_AddReg, Intr_coal, NC326m.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsLgSnd_5715, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC326m_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC326m_LH_Service, Lh_EventLog
+
+[NC326m_LH_Service]
+DisplayName    = %NC326m%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC326m.ProductString]
+HKR, , ProductString, 0, %NC326m%
+
+
+
+
+
+[NC7771_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC7771.ProductString,  BCM5703.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsWireSpeed, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC7771_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC7771_LH_Service, Lh_EventLog
+
+[NC7771_LH_Service]
+DisplayName    = %NC7771%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC7771.ProductString]
+HKR, , ProductString, 0, %NC7771%
+
+
+[NC7781_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC7781.ProductString,  BCM5703.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsWireSpeed, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC7781_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC7781_LH_Service, Lh_EventLog
+
+[NC7781_LH_Service]
+DisplayName    = %NC7781%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC7781.ProductString]
+HKR, , ProductString, 0, %NC7781%
+
+[NC7782_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WolS, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC7782.ProductString,  BCM5704.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOLNS, ParamsWireSpeed, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+Port1FunctionNumber = 0
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC7782_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC7782_LH_Service, Lh_EventLog
+
+[NC7782_LH_Service]
+DisplayName    = %NC7782%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC7782.ProductString]
+HKR, , ProductString, 0, %NC7782%
+
+[NC7761_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC7761.ProductString,  BCM5705.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsWireSpeed, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC7761_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC7761_LH_Service, Lh_EventLog
+
+[NC7761_LH_Service]
+DisplayName    = %NC7761%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC7761.ProductString]
+HKR, , ProductString, 0, %NC7761%
+
+[NC7761A3_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC7761A3.ProductString,  BCM5705.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC7761A3_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC7761A3_LH_Service, Lh_EventLog
+
+[NC7761A3_LH_Service]
+DisplayName    = %NC7761%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC7761A3.ProductString]
+HKR, , ProductString, 0, %NC7761%
+
+[NC1020_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC1020.ProductString,  BCM5705.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC1020_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC1020_LH_Service, Lh_EventLog
+
+[NC1020_LH_Service]
+DisplayName    = %NC1020%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC1020.ProductString]
+HKR, , ProductString, 0, %NC1020%
+
+[NC105i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC105i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+[NC105i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC105i_LH_Service, Lh_EventLog
+
+[NC105i_LH_Service]
+DisplayName    = %NC105i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC105i.ProductString]
+HKR, , ProductString, 0, %NC105i%
+
+[NC105T_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC105T.ProductString,  BCM5705.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+[NC105T_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC105T_LH_Service, Lh_EventLog
+
+[NC105T_LH_Service]
+DisplayName    = %NC105T%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC105T.ProductString]
+HKR, , ProductString, 0, %NC105T%
+
+[NC107i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC107i.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+[NC107i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC107i_LH_Service, Lh_EventLog
+
+[NC107i_LH_Service]
+DisplayName    = %NC107i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC107i.ProductString]
+HKR, , ProductString, 0, %NC107i%
+
+[NC150T_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.RxMtu, DelReg.WireSpeed, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC150T.ProductString,  BCM5705.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+[NC150T_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC150T_LH_Service, Lh_EventLog
+
+[NC150T_LH_Service]
+DisplayName    = %NC150T%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC150T.ProductString]
+HKR, , ProductString, 0, %NC150T%
+
+
+[NC320T_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.DisableAutoNeg, DelReg.RequestedMediaType
+AddReg          = LH_AddReg, Intr_coal, NC320T.ProductString,  BCM5750.Params, ParamsNt, ParamsNtW9x, ParamsC, ParamsWOL, ParamsWireSpeed, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+
+
+[NC320T_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC320T_LH_Service, Lh_EventLog
+
+[NC320T_LH_Service]
+DisplayName    = %NC320T%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC320T.ProductString]
+HKR, , ProductString, 0, %NC320T%
+
+
+[NC329a_LHinst.NTamd64.6.0.hw]
+AddReg = MsiXSupportStd
+
+[NC329a_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329a_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC329aS_LHinst.NTamd64.6.0.hw]
+AddReg = MsiXSupportStd
+
+[NC329aS_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE, DelReg.Wol, DelReg.WireSpeed
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsRssQueues, ParamsWOLTbi
+AddReg          = ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329aS_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC329a_LHinst_A0.NTamd64.6.0.hw]
+AddReg = MsiXSupportStd
+
+[NC329a_LHinst_A0.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsRingSize, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329a_LHinst_A0.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC330i_LHinst.NTamd64.6.0.hw]
+AddReg = MsiXSupportStd
+
+[NC330i_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC330i.ProductString, BCM5717.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues
+AddReg          = ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsNtv6TxRx, ParamsRSS, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+
+[NC330i_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC330i_LH_Service, LH_EventLog
+
+[NC330iC0_LHinst.NTamd64.6.0.hw]
+AddReg = MsiXSupportStd
+
+[NC330iC0_LHinst.NTamd64.6.0]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC330i.ProductString, BCM5717C0.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsNtv6TxRx, ParamsRSS, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+
+[NC330iC0_LHinst.NTamd64.6.0.Services]
+AddService = q57nd60a, 2, NC330i_LH_Service, LH_EventLog
+
+;*******************************************************************************
+; Windows 7 install sections.
+;*******************************************************************************
+[HPQ.NTamd64.6.1]
+%NC330i%    =  NC330i_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1655&SUBSYS_18d2103c
+%NC331FLR%  =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1657&SUBSYS_169d103c
+%NC331i%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1657&SUBSYS_22be103c
+%NC331T%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1657&SUBSYS_3383103c
+%NC331i%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1657&SUBSYS_3372103c
+%NC330iSPI% =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_1657&SUBSYS_1904103c
+%NC331FLR%  =  NC329a_LHinst_A0.NTamd64.6.1, PCI\VEN_14e4&DEV_1657&SUBSYS_169d103c&REV_00
+%NC331T%    =  NC329a_LHinst_A0.NTamd64.6.1, PCI\VEN_14e4&DEV_1657&SUBSYS_3383103c&REV_00
+%NC331i%    =  NC329a_LHinst_A0.NTamd64.6.1, PCI\VEN_14e4&DEV_1657&SUBSYS_3372103c&REV_00
+%NC332T%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_165F&SUBSYS_1786103c
+%NC332i%    =  NC329aS_LHinst.NTamd64.6.1,   PCI\VEN_14e4&DEV_165F&SUBSYS_193d103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_165F&SUBSYS_22e8103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_165F&SUBSYS_22eb103c
+%NC332i%    =  NC329a_LHinst.NTamd64.6.1,    PCI\VEN_14e4&DEV_165F&SUBSYS_2133103c
+%NC1020%    =  NC1020_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1654&SUBSYS_3100103c
+%NC105i%    =  NC105i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165a&SUBSYS_7051103c
+%NC105T%    =  NC105T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165a&SUBSYS_7052103c
+%NC107i%    =  NC107i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_165b&SUBSYS_705d103c
+%NC150T%    =  NC150T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1654&SUBSYS_3226103c
+%NC320i%    =  NC320i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_7032103c
+%NC320m%    =  NC320m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_170B103c
+%NC330i%    =  NC330iC0_LHinst.NTamd64.6.1,  PCI\VEN_14e4&DEV_1665&SUBSYS_22bd103c
+%NC324i%    =  NC324iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_1669&SUBSYS_703a103c
+%NC324i%    =  NC324i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1668&SUBSYS_7039103c
+%NC325i%    =  NC325i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_166a&SUBSYS_7035103c
+%NC325i%    =  NC325iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_166b&SUBSYS_7036103c
+%NC326i%    =  NC326i_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1678&SUBSYS_703e103c
+%NC326i%    =  NC326iS_LHinst.NTamd64.6.0,   PCI\VEN_14e4&DEV_1679&SUBSYS_703c103c
+%NC326m%    =  NC326m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1679&SUBSYS_1707103c
+%NC325m%    =  NC325m_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1679&SUBSYS_170c103c
+%NC320T%    =  NC320T_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1659&SUBSYS_7031103c
+%NC7761%    =  NC7761A3_LHinst.NTamd64.6.0,  PCI\VEN_14e4&DEV_1654&SUBSYS_00e30e11
+%NC7761%    =  NC7761_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1653&SUBSYS_00e30e11
+%NC7771%    =  NC7771_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16a7&SUBSYS_00ca0e11
+%NC7771%    =  NC7771_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_00ca0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16a7&SUBSYS_00cb0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_00cb0e11
+%NC7781%    =  NC7781_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_16c7&SUBSYS_310e103c
+%NC7782%    =  NC7782_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1648&SUBSYS_00d00e11
+%NC7782%    =  NC7782_LHinst.NTamd64.6.0,    PCI\VEN_14e4&DEV_1648&SUBSYS_310f103c
+
+[NC330i_LHinst.NTamd64.6.1.hw]
+AddReg = MsiXSupportStd
+
+[NC330i_LHinst.NTamd64.6.1]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC330i.ProductString, BCM5717.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues
+AddReg          = ParamsPM, ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsNtv6TxRx, ParamsRSS, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+
+[NC330i_LHinst.NTamd64.6.1.Services]
+AddService = q57nd60a, 2, NC330i_LH_Service, LH_EventLog
+
+[NC330i_LH_Service]
+DisplayName    = %NC330i%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC330i.ProductString]
+HKR, , ProductString, 0, %NC330i%
+
+[NC330iC0_LHinst.NTamd64.6.1.hw]
+AddReg = MsiXSupportStd
+
+[NC330iC0_LHinst.NTamd64.6.1]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC330i.ProductString, BCM5717C0.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsPM, ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsNtv6TxRx, ParamsRSS, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+
+[NC330iC0_LHinst.NTamd64.6.1.Services]
+AddService = q57nd60a, 2, NC330i_LH_Service, LH_EventLog
+
+[NC329a_LHinst.NTamd64.6.1.hw]
+AddReg = MsiXSupportStd
+
+[NC329a_LHinst.NTamd64.6.1]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsVmq, ParamsPM, ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329a_LHinst.NTamd64.6.1.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC329aS_LHinst.NTamd64.6.1.hw]
+AddReg = MsiXSupportStd
+
+[NC329aS_LHinst.NTamd64.6.1]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE, DelReg.Wol, DelReg.WireSpeed
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsRssQueues, ParamsWOLTbi
+AddReg          = ParamsVmq, ParamsPM, ParamsRingSize, ParamsJumbo, ParamsGSOv6, ParamsGSOv4, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329aS_LHinst.NTamd64.6.1.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC329a_LHinst_A0.NTamd64.6.1.hw]
+AddReg = MsiXSupportStd
+
+[NC329a_LHinst_A0.NTamd64.6.1]
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+DelReg          = DelReg_Generic, DelReg.Jumbo, DelReg.GphyGreenMode, DelReg.EEE
+AddReg          = LH_AddReg, Intr_coal, NC329a.ProductString, BCM5719.Params, ParamsNt, ParamsNT8021p, ParamsNtW9x, ParamsC, ParamsWOLeStar, ParamsWireSpeed, ParamsRssQueues, ParamsEEE
+AddReg          = ParamsVmq, ParamsPM, ParamsRingSize, ParamsTuning
+CopyFiles       = CopyFile.LhSys32
+BusType         = 5
+*IfType         = 6             ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0             ; NdisMedium802_3
+*PhysicalMediaType = 0          ; NdisPhysicalMediumUnspecified
+Port1FunctionNumber = 0
+AddReg = ParamsNtv6TxRx
+AddReg = ParamsRSS
+
+[NC329a_LHinst_A0.NTamd64.6.1.Services]
+AddService = q57nd60a, 2, NC329a_LH_Service, LH_EventLog
+
+[NC329a_LH_Service]
+DisplayName    = %NC329a%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\b57nd60a.sys
+LoadOrderGroup = NDIS
+
+[NC329a.ProductString]
+HKR, , ProductString, 0, %NC329a%
+
+;*******************************************************************************
+; common sections.
+;*******************************************************************************
+
+[LH_AddReg]
+HKR, Ndi,            Service,    0, "q57nd60a"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+[Intr_coal]
+HKR, Ndi\Params\*InterruptModeration,        ParamDesc, , %ParamDesc_InterruptModeration%
+HKR, Ndi\Params\*InterruptModeration,        default,   , "1"
+HKR, Ndi\Params\*InterruptModeration,        type,      , "enum"
+HKR, Ndi\Params\*InterruptModeration\enum,   0,         , %GenDisable%
+HKR, Ndi\Params\*InterruptModeration\enum,   1,         , %GenEnable%
+
+[MsiSupportStd]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+
+[MsiXSupportStd]
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\Affinity Policy", DevicePolicy, 0x00010001, 0x03
+
+[LH_EventLog]
+AddReg = LH_AddEventLogReg
+
+[LH_AddEventLogReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\b57nd60a.sys"
+HKR, , TypesSupported  , 0x00010001, 7
+
+
+
+;*******************************************************************************
+; Registry parameters.
+;*******************************************************************************
+
+[BCM5703.Params]
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "200"
+HKR, , *JumboPacket,             2, "1500"
+
+[BCM5704.Params]
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "200"
+HKR, , *JumboPacket,             2, "1500"
+
+[BCM5705.Params]
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "200"
+
+
+[BCM5750.Params]
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "200"
+
+
+[BCM5719.Params]
+HKR, , *TransmitBuffers,         0, "500"
+HKR, , *ReceiveBuffers,          0, "200"
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "50"
+HKR, , TxAltMaxCoalescedFrames,  0, "50"
+HKR, , TSS,                      0, "1"
+HKR, , Limit4kBd,                0, "1"
+HKR, , MaxTxQueueLen,            0, "20000"
+
+
+[BCM5717.Params]
+HKR, , *TransmitBuffers ,        0, "500"
+HKR, , *ReceiveBuffers,          0, "200"
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "50"
+HKR, , TxAltMaxCoalescedFrames,  0, "50"
+HKR, , TSS,                      0, "0"
+HKR, , MaxTxQueueLen,            0, "20000"
+
+
+[BCM5717C0.Params]
+HKR, , *TransmitBuffers,         0, "500"
+HKR, , *ReceiveBuffers,          0, "200"
+HKR, , RxCoalescingTicks,        0, "10"
+HKR, , TxCoalescingTicks,        0, "30"
+HKR, , RxMaxCoalescedFrames,     0, "5"
+HKR, , TxMaxCoalescedFrames,     0, "50"
+HKR, , TxAltMaxCoalescedFrames,  0, "50"
+HKR, , TSS,                      0, "1"
+HKR, , MaxTxQueueLen,            0, "20000"
+
+
+[ParamsNt]
+HKR, , AdminSettingsLevel,               0, "2"
+HKR, , flow_control_reporting_mode,      0, "1"
+
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4,        ParamDesc, , %ParamDesc_TCPUDPChecksumOffloadIPv4%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4,        default,   , "3"
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4,        type,      , "enum"
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4\enum,   "1",       , %GenTxEnable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4\enum,   "2",       , %GenRxEnable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv4\enum,   "3",       , %GenTxRxEnable%
+
+HKR, Ndi\Params\*PriorityVLANTag,  ParamDesc,  , %PriandVlan%
+HKR, Ndi\Params\*PriorityVLANTag,      default,, "3"
+HKR, Ndi\Params\*PriorityVLANTag,      type,   , "enum"
+HKR, Ndi\Params\*PriorityVLANTag\enum, 0,      , %PriVlanDisabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 1,      , %PriEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 2,      , %VlanEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 3,      , %PriVlanEnabled%
+
+[ParamsNT8021p]
+HKR, Ndi\Params\*PriorityVLANTag,  ParamDesc,  , %PriandVlan%
+HKR, Ndi\Params\*PriorityVLANTag,      default,, "3"
+HKR, Ndi\Params\*PriorityVLANTag,      type,   , "enum"
+HKR, Ndi\Params\*PriorityVLANTag\enum, 0,      , %PriVlanDisabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 1,      , %PriEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 2,      , %VlanEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum, 3,      , %PriVlanEnabled%
+
+HKR, Ndi\params\VlanID,     ParamDesc,       0, %VlanID%
+HKR, Ndi\params\VlanID,     default,         0, "0"
+HKR, Ndi\params\VlanID,     type,            0, "long"
+HKR, Ndi\params\VlanID,     min,             0, "0"
+HKR, Ndi\params\VlanID,     max,             0, "4094"
+HKR, Ndi\params\VlanID,     step,            0, "1"
+HKR, Ndi\params\VlanID,     base,            0, "10"
+
+[ParamsNtW9x]
+HKR, Ndi\Params\*FlowControl,      ParamDesc,  , %FlowControl%
+HKR, Ndi\Params\*FlowControl,      default,    , "4"
+HKR, Ndi\Params\*FlowControl,      type,       , "enum"
+HKR, Ndi\Params\*FlowControl\enum, 0,          , %FlowControl_Disable%
+HKR, Ndi\Params\*FlowControl\enum, 1,          , %FlowControl_Rx_Pause%
+HKR, Ndi\Params\*FlowControl\enum, 2,          , %FlowControl_Tx_Pause%
+HKR, Ndi\Params\*FlowControl\enum, 3,          , %FlowControl_Rx_Tx_Pause%
+HKR, Ndi\Params\*FlowControl\enum, 4,          , %FlowControl_Auto%
+HKR, , *FlowControl, 0, "4"
+
+HKR, Ndi\params\NetworkAddress,        ParamDesc,  0, %NetworkAddress%
+HKR, Ndi\params\NetworkAddress,        Default,    0, ""
+HKR, Ndi\params\NetworkAddress,        type,       0, "edit"
+HKR, NDI\params\NetworkAddress,        LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,        UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,        optional,   0, "1"
+
+
+[ParamsWireSpeed]
+HKR, Ndi\Params\WireSpeed,        ParamDesc, , %WireSpeed%
+HKR, Ndi\Params\WireSpeed,        default,   , "1"
+HKR, Ndi\Params\WireSpeed,        type,      , "enum"
+HKR, Ndi\Params\WireSpeed\enum,   0,         , %WireSpeed_Disable%
+HKR, Ndi\Params\WireSpeed\enum,   1,         , %WireSpeed_Enable%
+
+[ParamsC]
+HKR, Ndi\Params\*SpeedDuplex,      ParamDesc, , %Speed_Duplex%
+HKR, Ndi\Params\*SpeedDuplex,      default,   , "0"
+HKR, Ndi\Params\*SpeedDuplex,      type,      , "enum"
+HKR, Ndi\Params\*SpeedDuplex\enum, 0,         , %Speed_Duplex_Auto%
+HKR, Ndi\Params\*SpeedDuplex\enum, 1,         , %Speed_Duplex_10Mb_Hd%
+HKR, Ndi\Params\*SpeedDuplex\enum, 2,         , %Speed_Duplex_10Mb_Fd%
+HKR, Ndi\Params\*SpeedDuplex\enum, 3,         , %Speed_Duplex_100Mb_Hd%
+HKR, Ndi\Params\*SpeedDuplex\enum, 4,         , %Speed_Duplex_100Mb_Fd%
+HKR, Ndi\Params\*SpeedDuplex\enum, 6,         , %Speed_Duplex_1000Mb_Fd%
+
+[ParamsWOL]
+HKR, Ndi\params\*WakeOnMagicPacket,         ParamDesc,  0, %WakeOnMagicPacket%
+HKR, Ndi\params\*WakeOnMagicPacket,         default,    0, "1"
+HKR, Ndi\params\*WakeOnMagicPacket,         type,       0, "enum"
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "1",        0, %GenEnable%
+
+HKR, Ndi\params\*WakeOnPattern ,            ParamDesc,  0, %WakeOnPattern%
+HKR, Ndi\params\*WakeOnPattern,             default,    0, "1"
+HKR, Ndi\params\*WakeOnPattern,             type,       0, "enum"
+HKR, Ndi\params\*WakeOnPattern\enum,        "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnPattern\enum,        "1",        0, %GenEnable%
+
+HKR, Ndi\Params\WolSpeed,       ParamDesc, , %WolSpeed%
+HKR, Ndi\Params\WolSpeed,       default,   , "0"
+HKR, Ndi\Params\WolSpeed,       type,      , "enum"
+HKR, Ndi\Params\WolSpeed\enum,  0,         , %WolSpeed_Auto%
+HKR, Ndi\Params\WolSpeed\enum,  1,         , %WolSpeed_10mb%
+HKR, Ndi\Params\WolSpeed\enum,  2,         , %WolSpeed_100mb%
+
+[ParamsWOLeStar]
+HKR, Ndi\params\*WakeOnMagicPacket,         ParamDesc,  0, %WakeOnMagicPacket%
+HKR, Ndi\params\*WakeOnMagicPacket,         default,    0, "1"
+HKR, Ndi\params\*WakeOnMagicPacket,         type,       0, "enum"
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "1",        0, %GenEnable%
+
+HKR, Ndi\params\*WakeOnPattern ,            ParamDesc,  0, %WakeOnPattern%
+HKR, Ndi\params\*WakeOnPattern,             default,    0, "1"
+HKR, Ndi\params\*WakeOnPattern,             type,       0, "enum"
+HKR, Ndi\params\*WakeOnPattern\enum,        "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnPattern\enum,        "1",        0, %GenEnable%
+
+HKR, Ndi\Params\WolSpeed,       ParamDesc, , %WolSpeed%
+HKR, Ndi\Params\WolSpeed,       default,   , "256"
+HKR, Ndi\Params\WolSpeed,       type,      , "enum"
+HKR, Ndi\Params\WolSpeed\enum,  0,         , %WolSpeed_Auto%
+HKR, Ndi\Params\WolSpeed\enum,  1,         , %WolSpeed_10mb%
+HKR, Ndi\Params\WolSpeed\enum,  2,         , %WolSpeed_100mb%
+HKR, Ndi\Params\WolSpeed\enum,  256,       , %WolSpeed_LowestAvail%
+
+HKR, , WolSpeed, 0, "256"
+
+[ParamsWOLNS]
+HKR, Ndi\params\*WakeOnMagicPacket,         ParamDesc,  0, %WakeOnMagicPacket%
+HKR, Ndi\params\*WakeOnMagicPacket,         default,    0, "1"
+HKR, Ndi\params\*WakeOnMagicPacket,         type,       0, "enum"
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "1",        0, %GenEnable%
+
+HKR, Ndi\params\*WakeOnPattern ,            ParamDesc,  0, %WakeOnPattern%
+HKR, Ndi\params\*WakeOnPattern,             default,    0, "1"
+HKR, Ndi\params\*WakeOnPattern,             type,       0, "enum"
+HKR, Ndi\params\*WakeOnPattern\enum,        "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnPattern\enum,        "1",        0, %GenEnable%
+
+[ParamsWOLTbi]
+HKR, Ndi\params\*WakeOnMagicPacket,         ParamDesc,  0, %WakeOnMagicPacket%
+HKR, Ndi\params\*WakeOnMagicPacket,         default,    0, "1"
+HKR, Ndi\params\*WakeOnMagicPacket,         type,       0, "enum"
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "0",        0, %GenDisable%
+HKR, Ndi\params\*WakeOnMagicPacket\enum,    "1",        0, %GenEnable%
+HKR, , *WakeOnMagicPacket, 0, "1"
+HKR, , TbiWol,                   0, "1"
+
+[ParamsGSOv4]
+HKR, Ndi\Params\*LsoV2IPv4,        ParamDesc, , %ParamDesc_GSOv4%
+HKR, Ndi\Params\*LsoV2IPv4,        default,   , "1"
+HKR, Ndi\Params\*LsoV2IPv4,        type,      , "enum"
+HKR, Ndi\Params\*LsoV2IPv4\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*LsoV2IPv4\enum,   "1",       , %GenEnable%
+HKR, , *LsoV2IPv4,               0, "1"
+HKR, , HpLsoV1IPv4,              0, "1"
+
+[ParamsGSOv6]
+HKR, Ndi\Params\*LsoV2IPv6,        ParamDesc, , %ParamDesc_GSOv6%
+HKR, Ndi\Params\*LsoV2IPv6,        default,   , "1"
+HKR, Ndi\Params\*LsoV2IPv6,        type,      , "enum"
+HKR, Ndi\Params\*LsoV2IPv6\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*LsoV2IPv6\enum,   "1",       , %GenEnable%
+HKR, , *LsoV2IPv6,               0, "1"
+
+[ParamsJumbo]
+HKR, Ndi\params\*JumboPacket,       ParamDesc, , %JumboMtu%
+HKR, Ndi\params\*JumboPacket,       default,   , "1514"
+HKR, Ndi\params\*JumboPacket,       type,      , "enum"
+HKR, Ndi\params\*JumboPacket\enum,  1514,      , "1514"
+HKR, Ndi\params\*JumboPacket\enum,  4088,      , "4088"
+HKR, Ndi\params\*JumboPacket\enum,  9014,      , "9014"
+HKR, , *JumboPacket, 0, "1514"
+HKR, , JumboPacketMode, 0, "2"
+
+[ParamsNtv6TxRx]
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6,        ParamDesc, , %ParamDesc_TCPUDPChecksumOffloadIPv6%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6,        default,   , "3"
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6,        type,      , "enum"
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6\enum,   "1",       , %GenTxEnable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6\enum,   "2",       , %GenRxEnable%
+HKR, Ndi\Params\*TCPUDPChecksumOffloadIPv6\enum,   "3",       , %GenTxRxEnable%
+
+[ParamsRSS]
+HKR, Ndi\Params\*RSS,        ParamDesc, , %ParamDesc_RSS%
+HKR, Ndi\Params\*RSS,        default,   , "1"
+HKR, Ndi\Params\*RSS,        type,      , "enum"
+HKR, Ndi\Params\*RSS\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*RSS\enum,   "1",       , %GenEnable%
+
+[ParamsRssQueues]
+HKR, Ndi\Params\*NumRssQueues,        ParamDesc, , %ParamDesc_RSS_Queues%
+HKR, Ndi\Params\*NumRssQueues,        default,   , "1"
+HKR, Ndi\Params\*NumRssQueues,        type,      , "enum"
+HKR, Ndi\Params\*NumRssQueues\enum,   "1",       , %RSS_Queues_1%
+HKR, Ndi\Params\*NumRssQueues\enum,   "2",       , %RSS_Queues_2%
+HKR, Ndi\Params\*NumRssQueues\enum,   "4",       , %RSS_Queues_4%
+HKR, , *NumRssQueues, 0, "1"
+
+[ParamsTuning]
+HKR, Ndi\Params\*TransmitBuffers,  ParamDesc,          0, %TransmitBuffers%
+HKR, Ndi\Params\*TransmitBuffers,  default,            0, "200"
+HKR, Ndi\Params\*TransmitBuffers,  min,                0, "100"
+HKR, Ndi\Params\*TransmitBuffers,  max,                0, "600"
+HKR, Ndi\Params\*TransmitBuffers,  type,               0, "int"
+
+HKR, Ndi\Params\*ReceiveBuffers,   ParamDesc,          0, %ReceiveBuffers%
+HKR, Ndi\Params\*ReceiveBuffers,   default,            0, "200"
+HKR, Ndi\Params\*ReceiveBuffers,   min,                0, "100"
+HKR, Ndi\Params\*ReceiveBuffers,   max,                0, "512"
+HKR, Ndi\Params\*ReceiveBuffers,   type,               0, "int"
+
+[ParamsLgSnd_5715]
+HKR, , *LsoV1IPv4,               0, "0"
+HKR, , LargesendOffloadJumboCombo, 0, "7"
+HKR, , JumboPacketMode, 0, "2"
+
+[ParamsPM]
+HKR, Ndi\Params\*PMARPOffload,        ParamDesc, , %ParamDesc_PmArp%
+HKR, Ndi\Params\*PMARPOffload,        default,   , "1"
+HKR, Ndi\Params\*PMARPOffload,        type,      , "enum"
+HKR, Ndi\Params\*PMARPOffload\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*PMARPOffload\enum,   "1",       , %GenEnable%
+
+HKR, Ndi\Params\*PMNSOffload,        ParamDesc, , %ParamDesc_PmNs%
+HKR, Ndi\Params\*PMNSOffload,        default,   , "1"
+HKR, Ndi\Params\*PMNSOffload,        type,      , "enum"
+HKR, Ndi\Params\*PMNSOffload\enum,   "0",       , %GenDisable%
+HKR, Ndi\Params\*PMNSOffload\enum,   "1",       , %GenEnable%
+
+[ParamsVmq]
+
+HKR, Ndi\Params\*VMQ,                       ParamDesc, , %VMQ%
+HKR, Ndi\Params\*VMQ,                       default,   , "0"
+HKR, Ndi\Params\*VMQ,                       type,      , "enum"
+HKR, Ndi\Params\*VMQ\enum,                  0,         , %VMQ_Disable%
+HKR, Ndi\Params\*VMQ\enum,                  1,         , %VMQ_Enable%
+HKR, , *VMQ,        0, "0"
+
+HKR, Ndi\Params\*VMQVlanFiltering,          ParamDesc, , %VMQ_Vlan%
+HKR, Ndi\Params\*VMQVlanFiltering,          default,   , "0"
+HKR, Ndi\Params\*VMQVlanFiltering,          type,      , "enum"
+HKR, Ndi\Params\*VMQVlanFiltering\enum,     0,         , %VMQ_Vlan_Disable%
+HKR, Ndi\Params\*VMQVlanFiltering\enum,     1,         , %VMQ_Vlan_Enable%
+
+;HKR, Ndi\Params\*VMQLookaheadSplit,        ParamDesc, , %VMQ_HDS%
+;HKR, Ndi\Params\*VMQLookaheadSplit,        default,   , "0"
+;HKR, Ndi\Params\*VMQLookaheadSplit,        type,      , "enum"
+;HKR, Ndi\Params\*VMQLookaheadSplit\enum,   0,         , %VMQ_HDS_Disable%
+;HKR, Ndi\Params\*VMQLookaheadSplit\enum,   1,         , %VMQ_HDS_Enable%
+
+HKR, , *MaxRssProcessors,                   0, "16"
+
+[ParamsRingSize]
+HKR, , LargeSizeRxRing,               0, "0"
+
+[ParamsEEE]
+HKR, Ndi\Params\*EEE,               ParamDesc, , %EEE%
+HKR, Ndi\Params\*EEE,               default,   , "0"
+HKR, Ndi\Params\*EEE,               type,      , "enum"
+HKR, Ndi\Params\*EEE\enum,          0,         , %EEE_Disable%
+HKR, Ndi\Params\*EEE\enum,          1,         , %EEE_Enable%
+HKR, , *EEE, 0, "0"
+
+HKR, Ndi\Params\EeeCtrlMode,        ParamDesc, , %EEE_Control%
+HKR, Ndi\Params\EeeCtrlMode,        default,   , "1"
+HKR, Ndi\Params\EeeCtrlMode,        type,      , "enum"
+HKR, Ndi\Params\EeeCtrlMode\enum,   0,         , %EEE_MaxPowerSave%
+HKR, Ndi\Params\EeeCtrlMode\enum,   1,         , %EEE_Balance%
+HKR, Ndi\Params\EeeCtrlMode\enum,   2,         , %EEE_MaxPerformance%
+
+;*******************************************************************************
+; Keys to remove.
+;*******************************************************************************
+[DelReg_Generic]
+;; Vista
+HKR, , UserTaskOffloadCapDisable
+HKR, ,          LargeSendOffload
+HKR, Ndi\Params\LargeSendOffload
+
+HKR, ,          InterruptModeration
+HKR, Ndi\Params\InterruptModeration
+
+HKR, ,          AdminSettingsLevel
+HKR, Ndi\Params\AdminSettingsLevel
+
+HKR, ,          RSS
+HKR, Ndi\Params\RSS
+
+HKR, ,          RssRxRing
+HKR, Ndi\Params\RssRxRing
+HKR, ,          *NumRssQueues
+HKR, Ndi\Params\*NumRssQueues
+
+HKR, ,          TaskOffloadCap
+HKR, Ndi\Params\TaskOffloadCap
+
+HKR, ,          *TCPChksumOffv4
+HKR, Ndi\Params\*TCPChksumOffv4
+HKR, ,          *UDPChksumOffv4
+HKR, Ndi\Params\*UDPChksumOffv4
+HKR, ,          *IPChksumOffv4
+HKR, Ndi\Params\*IPChksumOffv4
+
+HKR, ,          *TCPChksumOffv6
+HKR, Ndi\Params\*TCPChksumOffv6
+HKR, ,          *UDPChksumOffv6
+HKR, Ndi\Params\*UDPChksumOffv6
+
+HKR, ,          *TCPChecksumOffloadIPv4
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4
+HKR, ,          *UDPChecksumOffloadIPv4
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4
+HKR, ,          *IPChecksumOffloadIPv4
+HKR, Ndi\Params\*IPChecksumOffloadIPv4
+
+HKR, ,          *TCPChecksumOffloadIPv6
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6
+HKR, ,          *UDPChecksumOffloadIPv6
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6
+
+HKR, ,          *LSOv4
+HKR, Ndi\Params\*LSOv4
+HKR, ,          *GSOv4
+HKR, Ndi\Params\*GSOv4
+HKR, ,          *GSOv6
+HKR, Ndi\Params\*GSOv6
+
+HKR, ,          *LsoV2IPv6
+HKR, Ndi\Params\*LsoV2IPv6
+HKR, ,          *LsoV2IPv4
+HKR, Ndi\Params\*LsoV2IPv4
+HKR, ,          *LsoV1IPv4
+HKR, Ndi\Params\*LsoV1IPv4
+
+HKR, ,          FlowControlCap
+HKR, Ndi\Params\FlowControlCap
+HKR, ,          *FlowControl
+HKR, Ndi\Params\*FlowControl
+
+HKR, Ndi\Params\RequestedMediaType
+HKR, Ndi\Params\*SpeedDuplex
+HKR, Ndi\Params\Enable8021p
+HKR, NDI\params\*NetworkAddress
+
+HKR, ,          *VMQLookaheadSplit
+HKR, Ndi\Params\*VMQLookaheadSplit
+
+HKR, ,          WakeUpModeCap
+HKR, Ndi\Params\WakeUpModeCap
+
+HKR, ,          ClockControl
+
+[DelReg.RxMtu]
+HKR, Ndi\Params\RxMtu
+HKR, Ndi\Params\*JumboPacket
+HKR, Ndi\Params\LargeSendOffloadJumboCombo
+
+[DelReg.RequestedMediaType]
+HKR, Ndi\Params\RequestedMediaType
+
+[DelReg.Wol]
+HKR, Ndi\Params\WakeUpModeCap
+HKR, Ndi\Params\*WakeOnMagicPacket
+HKR, Ndi\Params\*WakeOnPattern
+HKR, Ndi\Params\WolSpeed
+
+[DelReg.Jumbo]
+HKR, Ndi\Params\RxMtu
+HKR, ,         \RxMtu
+HKR, Ndi\Params\*JumboPacket
+HKR, ,          *JumboPacket
+HKR, Ndi\Params\JumboPacketMode
+HKR, ,          JumboPacketMode
+
+[DelReg.WolS]
+HKR, Ndi\Params\WolSpeed
+
+[DelReg.WireSpeed]
+HKR, Ndi\Params\WireSpeed
+HKR, ,          WireSpeed
+
+[DelReg.DisableAutoNeg]
+HKR, ,DisableAutoNeg
+
+[DelReg.LsoV1IPv4]
+HKR, Ndi\Params\*LsoV1IPv4
+HKR, ,          *LsoV1IPv4
+
+[DelReg.GphyGreenMode]
+HKR, Ndi\Params\GphyGreenMode
+
+[DelReg.EEE]
+HKR, Ndi\Params\EeePhyEnable
+HKR, Ndi\Params\EeeCtrlMode
+HKR, Ndi\Params\*EEE
+
+;*******************************************************************************
+; Destination directories
+;*******************************************************************************
+
+[DestinationDirs]
+DefaultDestDir   = 11
+CopyFile.LhSys32 = 12
+
+[SourceDisksNames]
+1 = %DISK_DESC%,,,
+
+[SourceDisksFiles]
+b57nd60a.sys = 1
+
+[CopyFile.LhSys32]
+b57nd60a.sys,,,1
+
+;*******************************************************************************
+; Localizable strings
+;*******************************************************************************
+
+[Strings]
+HPQ                 = "Hewlett-Packard Company"
+DISK_DESC           = "HP Driver Diskette"
+
+NC320i              = "HP NC320i PCIe Gigabit Server Adapter"
+NC320m              = "HP NC320m PCIe Gigabit Server Adapter"
+NC325i              = "HP NC325i PCIe Dual Port Gigabit Server Adapter"
+NC325m              = "HP NC325m PCIe Quad Port Adapter"
+NC326m              = "HP NC326m PCIe Dual Port Adapter"
+NC324i              = "HP NC324i PCIe Dual Port Gigabit Server Adapter"
+NC326i              = "HP NC326i PCIe Dual Port Gigabit Server Adapter"
+NC7771              = "HP NC7771 Gigabit Server Adapter"
+NC7781              = "HP NC7781 Gigabit Server Adapter"
+NC7782              = "HP NC7782 Gigabit Server Adapter"
+NC7761              = "HP NC7761 Gigabit Server Adapter"
+NC1020              = "HP NC1020 Gigabit Server Adapter 32 PCI"
+NC320T              = "HP NC320T PCIe Gigabit Server Adapter"
+NC105T              = "HP NC105T PCIe Gigabit Server Adapter"
+NC105i              = "HP NC105i PCIe Gigabit Server Adapter"
+NC107i              = "HP NC107i PCIe Gigabit Server Adapter"
+NC150T              = "HP NC150T PCI 4-Port Gigabit Combo Switch Adapter"
+NC329a              = "HP NC329a 4-port Ethernet Server Adapter"
+NC329T              = "HP NC329T 1Gb 4-port Ethernet Server Adapter"
+NC329I              = "HP NC329i 4-port Ethernet Server Adapter"
+NC328T              = "HP NC328T 1Gb 2-port Ethernet Server Adapter"
+NC331FLR            = "HPE Ethernet 1Gb 4-port 331FLR Adapter"
+NC331T              = "HPE Ethernet 1Gb 4-port 331T Adapter"
+NC331i              = "HPE Ethernet 1Gb 4-port 331i Adapter"
+NC330iSPI           = "HPE Ethernet 1Gb 4-port 331i-SPI Adapter"
+NC332T              = "HPE Ethernet 1Gb 2-port 332T Adapter"
+NC332i              = "HPE Ethernet 1Gb 2-port 332i Adapter"
+NC330i              = "HPE Ethernet 1Gb 2-port 330i Adapter"
+
+FlowControl             = "Flow Control"
+FlowControl_Disable     = "Disabled"
+FlowControl_Rx_Pause    = "Tx Enabled"
+FlowControl_Tx_Pause    = "Rx Enabled"
+FlowControl_Rx_Tx_Pause = "Rx & Tx Enabled"
+FlowControl_Auto        = "Auto Negotiation"
+
+Speed_Duplex          = "Speed & Duplex"
+Speed_Duplex_Auto     = "Auto Negotiation"
+Speed_Duplex_10Mb_Hd  = "10 Mbps Half Duplex"
+Speed_Duplex_10Mb_Fd  = "10 Mbps Full Duplex"
+Speed_Duplex_100Mb_Hd = "100 Mbps Half Duplex"
+Speed_Duplex_100Mb_Fd = "100 Mbps Full Duplex"
+Speed_Duplex_1000Mb_Fd = "1000 Mb Full Duplex"
+
+QOS_8021p         = "802.1p QOS"
+QOS_8021p_Disable = "Disable"
+QOS_8021p_Enable  = "Enable"
+
+WireSpeed         = "Ethernet@WireSpeed"
+WireSpeed_Disable = "Disable"
+WireSpeed_Enable  = "Enable"
+
+TaskOffload              = "Checksum Offload"
+TaskOffload_None         = "None"
+TaskOffload_Rx_Chksum    = "Rx TCP/IP Checksum"
+TaskOffload_Tx_Chksum    = "Tx TCP/IP Checksum"
+TaskOffload_Rx_Tx_Chksum = "Tx/Rx TCP/IP Checksum"
+
+TaskOffload_LargeSend           = "Large Send Offload"
+TaskOffload_LargeSend_Disable   = "Disable"
+TaskOffload_LargeSend_Enable    = "Enable"
+
+WakeOnMagicPacket       = "Wake on Magic Packet"
+WakeOnPattern           = "Wake on Pattern Match"
+
+WolSpeed       = "WOL Speed"
+WolSpeed_Auto  = "Auto"
+WolSpeed_10mb  = "10 Mb"
+WolSpeed_100mb = "100 Mb"
+WolSpeed_LowestAvail = "Lowest Speed Advertised"
+
+NetworkAddress           = "Locally Administered Address"
+
+ReceiveBuffers  =       "Receive Buffers"
+TransmitBuffers =       "Transmit Buffers"
+
+ParamDesc_RSS = "Receive Side Scaling"
+ParamDesc_RSS_Queues = "Maximum Number of RSS Queues"
+RSS_Queues_1 = "RSS 1 Queue"
+RSS_Queues_2 = "RSS 2 Queues"
+RSS_Queues_4 = "RSS 4 Queues"
+
+ParamDesc_InterruptModeration = "Interrupt Moderation"
+ParamDesc_IPChksumOffv4  = "IPv4 Checksum Offload"
+ParamDesc_TCPChksumOffv4 = "TCP Checksum Offload (IPv4)"
+ParamDesc_UDPChksumOffv4 = "UDP Checksum Offload (IPv4)"
+ParamDesc_TCPUDPChecksumOffloadIPv4 = "TCP/UDP Checksum Offload (IPv4)"
+ParamDesc_TCPUDPChecksumOffloadIPv6 = "TCP/UDP Checksum Offload (IPv6)"
+ParamDesc_LSOv4          = "Large Send Offload (IPv4)"
+ParamDesc_GSOv4          = "Large Send Offload V2 (IPv4)"
+ParamDesc_GSOv6          = "Large Send Offload V2 (IPv6)"
+GenTxEnable = "Tx Enabled"
+GenRxEnable = "Rx Enabled"
+GenTxRxEnable = "Rx & Tx Enabled"
+GenEnable="Enabled"
+GenDisable="Disabled"
+
+PriandVlan      =       "Priority & VLAN"
+PriVlanDisabled =       "Priority & VLAN Disabled"
+PriEnabled      =       "Priority Enabled"
+VlanEnabled     =       "VLAN Enabled"
+PriVlanEnabled  =       "Priority & VLAN Enabled"
+
+VlanID = "VLAN ID"
+JumboMtu = "Jumbo Mtu"
+
+ParamDesc_PmArp ="ARP Offload"
+ParamDesc_PmNs  ="NS Offload"
+
+VMQ                 =       "Virtual Machine Queues"
+VMQ_Disable         =       "Disable"
+VMQ_Enable          =       "Enable"
+
+VMQ_Vlan            =       "VMQ VLAN Filtering"
+VMQ_Vlan_Disable    =       "Disable"
+VMQ_Vlan_Enable     =       "Enable"
+
+VMQ_HDS             =       "VMQ Lookahead Split"
+VMQ_HDS_Disable     =       "Disable"
+VMQ_HDS_Enable      =       "Enable"
+
+EEE                     = "802.3az EEE"
+EEE_Disable             = "Disable"
+EEE_Enable              = "Enable"
+
+EEE_Control				= "EEE Control Policies"
+EEE_MaxPowerSave		= "Maximum Power Saving"
+EEE_Balance				= "Optimal Power and Performance"
+EEE_MaxPerformance		= "Maximum Performance"

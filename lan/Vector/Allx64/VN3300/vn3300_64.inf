@@ -1,0 +1,101 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=06/20/2012,8.2.26.0
+CatalogFile.NTamd64=vn3300_64.cat
+
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+%DESCRIPTION_VN3300%=DI_vn3300,PCI\VEN_19E2&DEV_2020&SUBSYS_000019e2
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vn3300.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections
+;------------------------------------------------------------------------------
+;VN3300
+;---------
+[DI_vn3300.NTamd64]
+CopyFiles=@vn3300.sys
+AddReg=vn3300.registry,options.registry
+
+[DI_vn3300.NTamd64.Services]
+AddService=vn3300,2,vn3300.Service
+
+;Common
+;------
+[vn3300.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn3300.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN3300.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",TimerEligibility,0x10001,0x700
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",ChannelsPerCard,0x10001,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",HwType,0x10001,37
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",HwName,,"VN3300"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",DriverName,,VN3300
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3300",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,37
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,37
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,37
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN3300",UseCardSerialNumber,0x10003,0
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN3300 Driver"
+DESCRIPTION_VN3300="VN3300"
+ClassName="Vector-Hardware"

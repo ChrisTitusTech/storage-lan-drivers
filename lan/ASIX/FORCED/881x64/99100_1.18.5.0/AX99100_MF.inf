@@ -1,0 +1,97 @@
+
+;****************************************************************
+; ASIX AX99100 PCIe to Muilt I/O Controller
+;
+; Multi-Function Driver INF file
+;
+; Copyright 2016, ASIX Electronics Corporation
+;****************************************************************
+
+[Version]
+Signature  = "$Windows NT$"
+Provider  = %ProviderName%
+Class = MultiFunction
+ClassGUID = {4d36e971-e325-11ce-bfc1-08002be10318}
+CatalogFile=AX99100.cat 
+DriverVer=07/02/2019, 1.18.5.0
+
+[Manufacturer]
+%ProviderName% = Multi_IOCards, NTamd64
+
+[Multi_IOCards]
+%AX99100MultiFunction%= AX99100_SINGLE_S.MF,PCI\VEN_125B&DEV_9100&SUBSYS_1000A000&REV_00
+%AX99100MultiFunction%= AX99100_SINGLE_P.MF,PCI\VEN_125B&DEV_9100&SUBSYS_2000A000&REV_00
+
+[Multi_IOCards.NTamd64]
+%AX99100MultiFunction%= AX99100_SINGLE_S.MF,PCI\VEN_125B&DEV_9100&SUBSYS_1000A000&REV_00
+%AX99100MultiFunction%= AX99100_SINGLE_P.MF,PCI\VEN_125B&DEV_9100&SUBSYS_2000A000&REV_00
+
+;;;;;;;;;;;;;;; X86 32-Bit OS ;;;;;;;;;;;;;;;
+
+[AX99100_SINGLE_S.MF.NT]
+Include=mf.inf
+Needs=MFINSTALL.mf
+
+[AX99100_SINGLE_S.MF.NT.HW]
+AddReg=AX99100_SER.RegHW
+
+[AX99100_SINGLE_S.MF.NT.Services]
+Include=mf.inf
+Needs=MFINSTALL.mf.services
+
+[AX99100_SINGLE_P.MF.NT]
+Include=mf.inf
+Needs=MFINSTALL.mf
+
+[AX99100_SINGLE_P.MF.NT.HW]
+AddReg=AX99100_PAR.RegHW
+
+[AX99100_SINGLE_P.MF.NT.Services]
+Include=mf.inf
+Needs=MFINSTALL.mf.services
+
+;;;;;;;;;;;;;;; Amd64 64-Bit OS ;;;;;;;;;;;;;;;
+
+[AX99100_SINGLE_S.MF.NTamd64]
+Include=mf.inf
+Needs=MFINSTALL.mf
+
+[AX99100_SINGLE_S.MF.NTamd64.HW]
+AddReg=AX99100_SER.RegHW
+
+[AX99100_SINGLE_S.MF.NTamd64.Services]
+Include=mf.inf
+Needs=MFINSTALL.mf.services
+
+[AX99100_SINGLE_P.MF.NTamd64]
+Include=mf.inf
+Needs=MFINSTALL.mf
+
+[AX99100_SINGLE_P.MF.NTamd64.HW]
+AddReg=AX99100_PAR.RegHW
+
+[AX99100_SINGLE_P.MF.NTamd64.Services]
+Include=mf.inf
+Needs=MFINSTALL.mf.services
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[AX99100_SER.RegHW]
+HKR,Child0000,HardwareID,,AX99100MF\AX99100_COM
+HKR,Child0000,ResourceMap,1,00,02,04,06
+
+[AX99100_PAR.RegHW]
+HKR,Child0000,HardwareID,,AX99100MF\AX99100_LPT
+HKR,Child0000,ResourceMap,1,00,02,04,06
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Strings]
+ProviderName="ASIX"
+MFClassName ="Multifunction"
+DiskName="AX99100 PCIe Multi-IO Drivers Disk"
+AX99100MultiFunction="AX99100 PCIe to Multifunction Peripheral Controller"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;   END OF FILE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

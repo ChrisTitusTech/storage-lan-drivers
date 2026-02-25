@@ -1,0 +1,118 @@
+;/*++
+;
+;Copyright (c) 2003 Chelsio Communications. All rights reserved.
+;
+;Module Name:
+;
+;    chnvmfx64.inf
+;
+;Abstract:
+;    INF file for installing Chelsio T5/T6 NVMeOF Initiator function driver
+;
+;--*/
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Chelsio%
+DriverVer = 12/24/2024,6.16.23.0
+CatalogFile = chnvmfx64.cat
+PnpLockdown = 1
+
+[Manufacturer]
+%Chelsio% = Chelsio,NTamd64 ; Models section = vnvme
+
+[Chelsio.NTamd64] ; per manufacturer model section
+;%Chelsio.DeviceDesc% = vnvme_Inst, %RootStr%
+%cht5nvme.DeviceDesc% = chnvme, CHT5BUS\chnvme
+%cht6nvme.DeviceDesc% = chnvme, CHT6BUS\chnvme
+%cht7nvme.DeviceDesc% = chnvme, CHT7BUS\chnvme
+
+[chnvme]
+AddReg=vnvme_Hw_AddReg
+CopyFiles   = copy_driver_file
+CopyINF		= nvme.inf
+AddReg      = nvme_basic.reg
+
+[nvme_basic.reg]
+HKR, ,MaxRqDepth, 0, 0
+HKR, ,MaxSqDepth, 0, 0
+HKR, ,MaxRegBuffers, 0, 0
+
+[SourceDisksNames]
+1 = %DiskId1%,,,
+
+[SourceDisksFiles]
+chnvmfx64.sys = 1,
+
+[DestinationDirs]
+DefaultDestDir   = 12
+
+[copy_driver_file]
+chnvmfx64.sys,,2
+
+[chnvme.Services]
+;AddService = chnvme, %SPSVCINST_ASSOCSERVICE%, vnvme_Service_Inst, Miniport_EventLog_Inst
+AddService = chnvme, 2, chnvmf.Service, Miniport_EventLog_Inst
+
+
+[chnvmf.Service]
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_NONBOOT_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\chnvmfx64.sys
+Dependencies     = TCPIP
+LoadOrderGroup	= "iSCSI"
+AddReg = bus_type.reg
+
+
+;*************************************************************
+; This section should be used when installing services to indicate
+; which interface types are safe for PNP and which are not.  
+; INTERFACE_TYPE is defined in NTDDK.H
+[bus_type.reg]
+HKR,"Parameters","BusType",%REG_DWORD%,0x00000009
+HKR,"Parameters","IoTimeoutValue",%REG_DWORD%,0x0000001E
+HKR,"Parameters",BootFlags,%REG_DWORD_NO_CLOBBER%,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+
+
+;*************************************************************
+
+; add the device instance settings for the controller
+[vnvme_Hw_AddReg]
+HKR,"ScsiPort","NeedsSystemShutdownNotification",0x00010001,1
+HKR, "StorPort", "TotalSenseDataBytes", %REG_DWORD%, 255
+
+[Miniport_EventLog_Inst]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\chnvmfx64.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+; Localizable Strings
+[Strings]
+diskId1               = "Chelsio NVMe Over Fabrics Installation Disk"
+Chelsio.DeviceDesc    = "Chelsio NVMe Over Fabrics"
+cht5nvme.DeviceDesc  = "Chelsio T5 NVMeOF Initiator"
+cht6nvme.DeviceDesc  = "Chelsio T6 NVMeOF Initiator"
+cht7nvme.DeviceDesc  = "Chelsio T7 NVMeOF Initiator"
+Chelsio               = "Chelsio Communication Inc."
+RootStr               = "root\mp"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER       = 1
+SERVICE_FILE_SYSTEM_DRIVER  = 2
+SERVICE_BOOT_START          = 0
+SERVICE_AUTO_START          = 2
+SERVICE_ERROR_NORMAL        = 1
+SERVICE_ERROR_CRITICAL      = 3
+REG_EXPAND_SZ  = 0x00020000
+REG_DWORD      = 0x00010001
+REG_MULTI_SZ                = 0x00010000
+REG_SZ                      = 0
+REG_BINARY                  = 0x00000001
+REG_NONE                    = 0x00020001
+REG_DWORD_NO_CLOBBER   = 0x00010003
+REG_ADDREG_APPEND      = 0x00010008

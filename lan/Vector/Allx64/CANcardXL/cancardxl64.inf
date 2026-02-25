@@ -1,0 +1,233 @@
+; Copyright 2010 Vector Informatik GmbH
+
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=09/17/2013,8.7.16.0
+CatalogFile.NTamd64=cancardxl64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+%MFGNAME_ETAS%=DeviceList_ETAS,NTamd64
+
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+%DESCRIPTION_CARDXL%=DI_cardxl,PCMCIA\VECTOR-02E6-0100
+%DESCRIPTION_CARDXL%=DI_cardxl,PCMCIA\VECTOR-CANcardXL-06FE
+
+[DeviceList_ETAS.NTamd64]
+%DESCRIPTION_ETAS%=DI_etas,PCMCIA\ETAS-02E6-0100
+%DESCRIPTION_ETAS2%=DI_etas2,PCMCIA\ETAS-02E6-0102
+%DESCRIPTION_ETAS%=DI_etas,PCMCIA\ETAS-CAN-Link_II-F7E5
+%DESCRIPTION_ETAS2%=DI_etas2,PCMCIA\ETAS-ES580-7932
+
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vcanxl.sys=1
+
+[SourceDisksNames]
+1=%DRIVER_NAME%,,,
+
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Main install Sections
+;------------------------------------------------------------------------------
+;CANcardXL
+;---------
+[DI_cardxl.NTamd64]
+CopyFiles=@vcanxl.sys
+AddReg=vcanxl.registry,options.registry,cardxl.registry
+
+[DI_cardxl.NTamd64.Services]
+AddService=vcanxl,2,vcanxl.Service.NTamd64
+
+[DI_cardxl.NTamd64.LogConfigOverride]
+LogConfig=CANcardXL.Override0,CANcardXL.Override1,CANcardXL.Override2
+
+
+;ETAS CAN-Link
+;-------------
+[DI_etas.NTamd64]
+CopyFiles=@vcanxl.sys
+AddReg=etas.registry,options.registry,canlink.registry
+
+[DI_etas.NTamd64.Services]
+AddService=vcanxl,2,vcanxl.Service.NTamd64
+
+[DI_etas.NTamd64.LogConfigOverride]
+LogConfig=CANcardXL.Override0,CANcardXL.Override1,CANcardXL.Override2
+
+
+;ETAS ES580
+;-----------
+[DI_etas2.NTamd64]
+CopyFiles=@vcanxl.sys
+AddReg=etas.registry,options.registry,es580.registry
+
+[DI_etas2.NTamd64.Services]
+AddService=vcanxl,2,vcanxl.Service.NTamd64
+
+[DI_etas2.NTamd64.LogConfigOverride]
+LogConfig=CANcardXL.Override0,CANcardXL.Override1,CANcardXL.Override2
+
+
+;Common
+;------
+[vcanxl.Service.NTamd64]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vcanxl.sys
+
+[CANcardXL.Override0]
+ConfigPriority=NORMAL
+IRQConfig=5,6,7,8,9,10,11,12,13,14,15,1,2,3,4
+MemConfig=2000@100000-FFFFFFFF(RWD)
+PcCardConfig=0(M XM0)
+
+[CANcardXL.Override1]
+ConfigPriority=NORMAL
+IRQConfig=5,6,7,8,9,10,11,12,13,14,15,1,2,3,4
+MemConfig=2000@A0000-FFFFFFFF(RWD)
+PcCardConfig=0(M XM0)
+
+[CANcardXL.Override2]
+ConfigPriority=NORMAL
+IRQConfig=LS:5,6,7,8,9,10,11,12,13,14,15,1,2,3,4
+MemConfig=2000@100000-FFFFFFFFFFFFFFFF(RWD)
+PcCardConfig=0(M XM0)
+
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[vcanxl.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",TimerEligibility,0x10001,0x600
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",ChannelsPerCard,0x10001,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",HwType,0x10001,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",DriverName,,vcanxl
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.LIN1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.DAIO0",hwChannel,0x10003,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.LIN1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.DAIO0",hwChannel,0x10003,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.LIN1",hwChannel,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwType,0x10003,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.DAIO0",hwChannel,0x10003,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+
+[etas.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",TimerEligibility,0x10001,0x600
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",ChannelsPerCard,0x10001,2
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",HwType,0x10001,15
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",DriverName,,vcanxl
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,1
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\CANcardXL",UseCardSerialNumber,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",AutoEnableSWCHighSpeed,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",TxQueueSize,0x10003,256
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",VirtualBus,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",IdleTime,0x10003,600
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",AdjustTimerResolution,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\CANcardXL",IRQLoadBurstSize,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\CANcardXL",IRQLoadTimeout,0x10003,150
+
+
+[cardxl.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",HwName,,"CANcardXL"
+
+[canlink.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",HwName,,"CAN-Link II"
+
+[es580.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\vcanxl",HwName,,"ES580"
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="CANcardXL"
+MFGNAME="Vector Informatik GmbH"
+MFGNAME_ETAS="ETAS GmbH"
+DRIVER_NAME="Vector Driver"
+DESCRIPTION_CARDXL="CANcardXL"
+DESCRIPTION_ETAS="CAN-Link II"
+DESCRIPTION_ETAS2="ES580"
+ClassName="Vector-Hardware"
+

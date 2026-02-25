@@ -1,0 +1,1162 @@
+; /*****************************************************************************
+; ** COPYRIGHT (C) 2008-2009 Mellanox                                        **
+; ****************************************************************************/
+
+[version]
+;Layoutfile parameter is reserved for internal Microsoft use only
+;LayoutFile = layout.inf
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider=%Mellanox%
+Compatible  = 1
+DriverVer=03/08/2017,5.35.12978
+CatalogFile=mlx4eth63.cat
+
+[Manufacturer]
+%Mellanox%     = Mellanox,ntamd64.10.0
+
+; Mellanox CX Based PCI VPI Adapter
+
+[Mellanox.ntamd64.10.0]
+; DisplayName           Section       DeviceID
+; -----------           -------       --------
+%mlx4eth63_CX.DeviceDesc%   = mlx4eth63_CX2.ndi,   MLX4\ConnectX_Eth 	 ; Mellanox ConnectX Ethernet Adapter
+%mlx4eth63_CX2.DeviceDesc%  = mlx4eth63_CX2.ndi,   MLX4\ConnectX-2_Eth   ; Mellanox ConnectX Ethernet Adapter
+%mlx4eth63_CX3.DeviceDesc%  = mlx4eth63_CX3.ndi,   MLX4\ConnectX-3_Eth   								; Mellanox ConnectX-3 Ethernet Adapter
+%mlx4eth63_CX3Pro.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,   MLX4\ConnectX-3Pro_Eth   						; Mellanox ConnectX-3 Pro Ethernet Adapter
+%mlx4eth63_vCX3.DeviceDesc%  = mlx4eth63_vCX3.ndi,   MLX4\ConnectX-3_vEth   								; Mellanox ConnectX-3 Virtual Function Ethernet Adapter
+%mlx4eth63_vCX3.DeviceDesc%  = mlx4eth63_vCX3_NW.ndi,   MLX4\ConnectX-3_vEth_NW   						; Mellanox ConnectX-3 Virtual Function Ethernet Adapter
+
+;;;;; cards of other companies
+
+; HP Maze
+%mlx4eth63_CX3Pro.801f.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&801f103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3.801f.DeviceDesc%  = mlx4eth63_vCX3.ndi,  MLX4\ConnectX-3_vEth&801f103c	                     	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3.801f.DeviceDesc%  = mlx4eth63_vCX3_NW.ndi,  MLX4\ConnectX-3_vEth_NW&801f103c	               	; Ethernet name for CX3 in VM over non Windows
+
+; HP Mesa
+%mlx4eth63_CX3Pro.8020.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&8020103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3.8020.DeviceDesc%  = mlx4eth63_vCX3.ndi,  MLX4\ConnectX-3_vEth&8020103c					; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3.8020.DeviceDesc%  = mlx4eth63_vCX3_NW.ndi,  MLX4\ConnectX-3_vEth_NW&8020103c			; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3
+%mlx4eth63_CX3.18cd.DeviceDesc%  = mlx4eth63_CX3.ndi,  MLX4\ConnectX-3_Eth&18cd103c	                     		; Ethernet name for CX3
+%mlx4eth63_vCX3.18cd.DeviceDesc%  = mlx4eth63_CX3.ndi,  MLX4\ConnectX-3_vEth&18cd103c	                     	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3.18cd.DeviceDesc%  = mlx4eth63_CX3.ndi,  MLX4\ConnectX-3_vEth_NW&18cd103c	                 	; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3Pro.22f1.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&22f1103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3Pro.22f1.DeviceDesc%  = mlx4eth63_vCX3Pro.ndi,  MLX4\ConnectX-3_vEth&22f1103c	              	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3Pro.22f1.DeviceDesc%  = mlx4eth63_vCX3Pro_NW.ndi,  MLX4\ConnectX-3_vEth_NW&22f1103c	            ; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3Pro.22f2.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&22f2103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3Pro.22f2.DeviceDesc%  = mlx4eth63_vCX3Pro.ndi,  MLX4\ConnectX-3_vEth&22f2103c	              	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3Pro.22f2.DeviceDesc%  = mlx4eth63_vCX3Pro_NW.ndi,  MLX4\ConnectX-3_vEth_NW&22f2103c	            ; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3Pro.22f3.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&22f3103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3Pro.22f3.DeviceDesc%  = mlx4eth63_vCX3Pro.ndi,  MLX4\ConnectX-3_vEth&22f3103c	              	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3Pro.22f3.DeviceDesc%  = mlx4eth63_vCX3Pro_NW.ndi,  MLX4\ConnectX-3_vEth_NW&22f3103c	            ; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3Pro.22f4.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&22f4103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3Pro.22f4.DeviceDesc%  = mlx4eth63_vCX3Pro.ndi,  MLX4\ConnectX-3_vEth&22f4103c	              	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3Pro.22f4.DeviceDesc%  = mlx4eth63_vCX3Pro_NW.ndi,  MLX4\ConnectX-3_vEth_NW&22f4103c	              	; Ethernet name for CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3Pro.22f5.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&22f5103c	                     ; Ethernet name for CX3 Pro
+%mlx4eth63_vCX3Pro.22f5.DeviceDesc%  = mlx4eth63_vCX3Pro.ndi,  MLX4\ConnectX-3_vEth&22f5103c	              	; Ethernet name for CX3 in VM
+%mlx4eth63_vCX3Pro.22f5.DeviceDesc%  = mlx4eth63_vCX3Pro_NW.ndi,  MLX4\ConnectX-3_vEth_NW&22f5103c	           	; Ethernet name for CX3 in VM over non Windows
+
+; VEA HWIDs
+%mlx4eth63_CX3Pro_VEA.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi, MLX4\ConnectX-3Pro_Eth_V   				; VEA Ethernet name for CX3 Pro
+%mlx4eth63_CX3_VEA.DeviceDesc%	   = mlx4eth63_CX3_VEA.ndi,    MLX4\ConnectX-3_Eth_V	  					; VEA Ethernet name for CX3
+%mlx4eth63_CX3_VEA.DeviceDesc%	   = mlx4eth63_CX3_VEA.ndi,    MLX4\ConnectX-3_vEth_V	  				; VEA Ethernet name for CX3
+%mlx4eth63_CX3_VEA.DeviceDesc%	   = mlx4eth63_CX3_VEA.ndi,    MLX4\ConnectX-3_vEth_NW_V	  		    ; VEA Ethernet name for CX3 over non Windows
+
+;;;;; cards of other companies
+
+; HP Maze
+%mlx4eth63_CX3Pro_VEA.801f.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&801f103c	 ; HP Maze ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in Host
+%mlx4eth63_CX3Pro_VEA.801f.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&801f103c	 	 ; HP Maze ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in VM
+%mlx4eth63_CX3Pro_VEA.801f.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_NW_V&801f103c	 ; HP Maze ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in VM over non Windows
+
+; HP Mesa
+%mlx4eth63_CX3Pro_VEA.8020.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&8020103c	 ; HP Mesa ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in Host
+%mlx4eth63_CX3Pro_VEA.8020.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&8020103c	 ; HP Mesa ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in VM
+%mlx4eth63_CX3Pro_VEA.8020.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_NW_V&8020103c	 ; HP Mesa ConnectX-3 Pro virtual Ethernet Adapter for VEA CX3 in VM over non Windows
+
+; HP Attitash CX3
+%mlx4eth63_CX3_VEA.18cd.DeviceDesc%  = mlx4eth63_CX3_VEA.ndi,  MLX4\ConnectX-3_Eth_V&18cd103c	               ; HP Attitash QDR ConnectX-3 Ethernet Adapter for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.18cd.DeviceDesc%  = mlx4eth63_CX3_VEA.ndi,  MLX4\ConnectX-3_vEth_V&18cd103c	               ; HP Attitash QDR ConnectX-3 Ethernet Adapter for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.18cd.DeviceDesc%  = mlx4eth63_CX3_VEA.ndi,  MLX4\ConnectX-3_vEth_NW_V&18cd103c	       ; HP Attitash QDR ConnectX-3 Ethernet Adapter for VEA CX3 in VM over non Windows
+
+; HP Attitash CX3 PRO
+%mlx4eth63_CX3_VEA.22f1.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&22f1103c	               ; Ethernet name for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.22f2.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&22f2103c	               ; Ethernet name for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.22f3.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&22f3103c	               ; Ethernet name for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.22f4.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&22f4103c	               ; Ethernet name for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.22f5.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&22f5103c	               ; Ethernet name for VEA CX3 in Host
+%mlx4eth63_CX3_VEA.22f1.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&22f1103c	               ; Ethernet name for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.22f2.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&22f2103c	               ; Ethernet name for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.22f3.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&22f3103c	               ; Ethernet name for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.22f4.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&22f4103c	               ; Ethernet name for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.22f5.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_V&22f5103c	               ; Ethernet name for VEA CX3 in VM
+%mlx4eth63_CX3_VEA.22f5.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3_vEth_NW_V&22f5103c	           ; Ethernet name for VEA CX3 in VM over non Windows
+
+
+; ATTO CX3 PRO Single Port 10GbE
+%mlx4eth63_CX3Pro.0092.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&0092117c	                    ; Ethernet name for CX3 Pro
+%mlx4eth63_CX3Pro_VEA.0092.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&0092117c	            ; ATTO Virtual Ethernet Adapter for CX3 Pro
+
+; ATTO CX3 PRO Dual Port 10GbE
+%mlx4eth63_CX3Pro.0093.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&0093117c	                    ; Ethernet name for CX3 Pro
+%mlx4eth63_CX3Pro_VEA.0093.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&0093117c	            ; ATTO Virtual Ethernet Adapter for CX3 Pro
+
+; ATTO CX3 PRO Single Port 40GbE
+%mlx4eth63_CX3Pro.0090.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&0090117c	                    ; Ethernet name for CX3 Pro
+%mlx4eth63_CX3Pro_VEA.0090.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&0090117c	            ; ATTO Virtual Ethernet Adapter for CX3 Pro
+
+; ATTO CX3 PRO Dual Port 40GbE
+%mlx4eth63_CX3Pro.0091.DeviceDesc%  = mlx4eth63_CX3Pro.ndi,  MLX4\ConnectX-3Pro_Eth&0091117c	                    ; Ethernet name for CX3 Pro
+%mlx4eth63_CX3Pro_VEA.0091.DeviceDesc%  = mlx4eth63_CX3Pro_VEA.ndi,  MLX4\ConnectX-3Pro_Eth_V&0091117c	            ; ATTO Virtual Ethernet Adapter for CX3 Pro
+
+;
+; Windows NT specific entry
+;
+;-----------------------------------------------------------------------------
+; ConnectX-2 and ConnectX
+;
+[mlx4eth63_CX2.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_pf.reg, mlx4eth63.reg, bindings.reg, virt.reg, WinCtxTune_reg, rx_int_mod_pf.reg , int_mod_pf.reg
+DelReg          = cx_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_CX2.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+
+;-----------------------------------------------------------------------------
+; ConnectX-3
+;
+[mlx4eth63_CX3.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_pf.reg, mlx4eth63.reg, bindings.reg, virt.reg, WinCtxTune_reg, cx3_pf.reg, rx_int_mod_pf.reg, int_mod_pf.reg
+DelReg          = cx_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_CX3.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+
+;-----------------------------------------------------------------------------
+; ConnectX-3Pro
+;
+[mlx4eth63_CX3Pro.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_pf.reg, mlx4eth63.reg, bindings.reg, virt.reg, WinCtxTune_reg, cx3_pf.reg, cx3Pro.reg, rx_int_mod_pf.reg, int_mod_pf.reg
+DelReg          = cx_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_CX3Pro.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 VF
+;
+[mlx4eth63_vCX3.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_vf.reg, mlx4eth63.reg, vf_bindings.reg, WinCtxTune_reg, cx3_vf.reg, rx_int_mod_vf.reg, int_mod_vf.reg
+DelReg          = cx_del.reg, cx_vf_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_vCX3.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 VF over non-windows
+;
+[mlx4eth63_vCX3_NW.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_vf.reg, mlx4eth63.reg, bindings.reg, WinCtxTune_reg, cx3_vf.reg, rx_int_mod_vf.reg, int_mod_vf.reg
+DelReg          = cx_del.reg, cx_vf_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_vCX3_NW.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 Pro VF
+;
+[mlx4eth63_vCX3Pro.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_vf.reg, mlx4eth63.reg, vf_bindings.reg, WinCtxTune_reg, cx3_vf.reg, cx3Pro.reg, rx_int_mod_vf.reg, int_mod_vf.reg
+DelReg          = cx_del.reg, cx_vf_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_vCX3Pro.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 Pro VF over non-windows
+;
+[mlx4eth63_vCX3Pro_NW.ndi.NT]
+Characteristics = 0x81
+AddReg          = cx.reg, cx_vf.reg, mlx4eth63.reg, bindings.reg, WinCtxTune_reg, cx3_vf.reg, cx3Pro.reg, rx_int_mod_vf.reg, int_mod_vf.reg
+DelReg          = cx_del.reg, cx_vf_del.reg
+CopyFiles       = mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[mlx4eth63_vCX3Pro_NW.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+;-----------------------------------------------------------------------------
+
+; ConnectX-3 VEA (Virtual Ethernet Adapter)
+;
+[mlx4eth63_CX3_VEA.ndi.NT]
+Characteristics = 0x81
+AddReg			= cx.reg, cx_vea.reg, mlx4eth63.reg, bindings.reg, virt.reg, WinCtxTune_reg, rx_int_mod_pf.reg, int_mod_pf.reg
+CopyFiles		= mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType 		= 6 	; IF_TYPE_ETHERNET_CSMACD
+*MediaType		= 0 	; NdisMedium802_3
+*PhysicalMediaType = 14 	; NdisPhysicalMedium802_3
+
+[mlx4eth63_CX3_VEA.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+;-----------------------------------------------------------------------------
+; ConnectX-3Pro VEA (Virtual Ethernet Adapter)
+;
+[mlx4eth63_CX3Pro_VEA.ndi.NT]
+Characteristics = 0x81
+AddReg			= cx.reg, cx_vea.reg, mlx4eth63.reg, bindings.reg, virt.reg, WinCtxTune_reg, cx3Pro.reg, rx_int_mod_pf.reg, int_mod_pf.reg
+CopyFiles		= mlx4eth63.CopyFiles, Wctxtune.CopyFiles
+*IfType 		= 6 	; IF_TYPE_ETHERNET_CSMACD
+*MediaType		= 0 	; NdisMedium802_3
+*PhysicalMediaType = 14 	; NdisPhysicalMedium802_3
+
+[mlx4eth63_CX3Pro_VEA.ndi.NT.Services]
+AddService = mlx4eth63, 2, mlx4eth63.Service, common.EventLog
+
+
+;-----------------------------------------------------------------------------
+
+; cx.reg - parameters, HW-agnostic and common for PF and VF
+;
+[cx.reg]
+HKR, NDI\Params\NumTcb,         ParamDesc,  0, "%TransmitControlBlocks%"
+HKR, NDI\Params\NumTcb,         default,    0, "16"
+HKR, NDI\Params\NumTcb,         min,        0, "1"
+HKR, NDI\Params\NumTcb,         max,        0, "00000064"
+HKR, NDI\Params\NumTcb,         step,       0, "1"
+HKR, NDI\Params\NumTcb,         Base,       0, "10"
+HKR, NDI\Params\NumTcb,         type,       0, "int"
+HKR, "",                        NumTcb,     %FLG_ADDREG_NOCLOBBER%, "16"
+
+HKR, NDI\Params\*HeaderDataSplit,  ParamDesc, 0, "%HeaderDataSplit%"
+HKR, NDI\Params\*HeaderDataSplit,  Type,      0, "enum"
+HKR, NDI\Params\*HeaderDataSplit,  Default,   0, "0"
+HKR, NDI\Params\*HeaderDataSplit,  Optional,  0, "0"
+HKR, NDI\Params\*HeaderDataSplit\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*HeaderDataSplit\enum,  "1",  0, "%Enabled%"
+HKR, "", *HeaderDataSplit, 0, "0"
+
+;RSS
+HKR, NDI\Params\*RSS,  ParamDesc, 0, "%RssMode%"
+HKR, NDI\Params\*RSS,  Type,  0, "enum"
+HKR, NDI\Params\*RSS,  Default, 0, "1"
+HKR, NDI\Params\*RSS,  Optional, 0, "0"
+HKR, NDI\Params\*RSS\enum,  "0", 0, "%No_rebalnce%"
+HKR, NDI\Params\*RSS\enum,  "1", 0, "%NDIS_RSS%"
+HKR, "", *RSS,  0, "1"
+
+; *NumaNodeId
+HKR, Ndi\params\*NumaNodeId, ParamDesc, 0, %NumaNodeId%
+HKR, Ndi\params\*NumaNodeId, default, 0, "65535"
+HKR, Ndi\params\*NumaNodeId, type, 0, "enum"
+HKR, Ndi\params\*NumaNodeId\Enum, "65535", 0, %NumaNodeId_default%
+HKR, Ndi\params\*NumaNodeId\Enum, "0", 0, %node0%
+HKR, Ndi\params\*NumaNodeId\Enum, "1", 0, %node1%
+HKR, Ndi\params\*NumaNodeId\Enum, "2", 0, %node2%
+HKR, Ndi\params\*NumaNodeId\Enum, "3", 0, %node3%
+HKR, Ndi\params\*NumaNodeId\Enum, "4", 0, %node4%
+HKR, Ndi\params\*NumaNodeId\Enum, "5", 0, %node5%
+HKR, Ndi\params\*NumaNodeId\Enum, "6", 0, %node6%
+HKR, Ndi\params\*NumaNodeId\Enum, "7", 0, %node7%
+HKR, "", *NumaNodeId,  0, "65535"
+
+; *RssBaseProcNumber
+HKR, Ndi\params\*RssBaseProcNumber, ParamDesc, 0, %RssBaseProcNumber%
+HKR, Ndi\params\*RssBaseProcNumber, default, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, min, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, max, 0, "63"
+HKR, Ndi\params\*RssBaseProcNumber, step, 0, "1"
+HKR, Ndi\params\*RssBaseProcNumber, Optional, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, type, 0, "int"
+HKR, "", *RssBaseProcNumber,  %FLG_ADDREG_NOCLOBBER%, "0"
+
+; *MaxRssProcessors
+HKR, Ndi\Params\*MaxRssProcessors,	ParamDesc, 0, %MaxRssProcessors%
+HKR, Ndi\Params\*MaxRssProcessors,  default, 0, "8"
+HKR, Ndi\Params\*MaxRssProcessors,  type,    0, "int"
+HKR, NDI\Params\*MaxRssProcessors,  min,     0, "1"
+HKR, NDI\Params\*MaxRssProcessors,  max,     0, "64"
+HKR, NDI\Params\*MaxRssProcessors,  step,        0, "1"
+HKR, NDI\Params\*MaxRssProcessors,  Base,        0, "10"
+HKR, "", *MaxRssProcessors,  0, "8"
+
+; *RssMaxProcNumber
+HKR, Ndi\params\*RssMaxProcNumber, ParamDesc, 0, %RssMaxProcNumber%
+HKR, Ndi\params\*RssMaxProcNumber, default, 0, "63"
+HKR, Ndi\params\*RssMaxProcNumber, min, 0, "0"
+HKR, Ndi\params\*RssMaxProcNumber, max, 0, "63"
+HKR, Ndi\params\*RssMaxProcNumber, step, 0, "1"
+HKR, Ndi\params\*RssMaxProcNumber, Optional, 0, "0"
+HKR, Ndi\params\*RssMaxProcNumber, type, 0, "int"
+HKR, "", *RssMaxProcNumber,  0, "63"
+
+;*NumRSSQueues
+HKR, NDI\Params\*NumRSSQueues,  ParamDesc, 0, "%NumRSSQueues%"
+HKR, NDI\Params\*NumRSSQueues,  Type,      0, "int"
+HKR, NDI\Params\*NumRSSQueues,  Default,   0, "8"
+HKR, NDI\Params\*NumRSSQueues,  min,       0, "1"
+HKR, NDI\Params\*NumRSSQueues,  max,       0, "512"
+HKR, NDI\Params\*NumRSSQueues,  step,      0, "1"
+HKR, NDI\Params\*NumRSSQueues,  Base,      0, "10"
+HKR, "", *NumRSSQueues,0, "8"
+
+; *RSSProfile
+HKR, NDI\Params\*RSSProfile,  ParamDesc, 0, "%RssProfile%"
+HKR, NDI\Params\*RSSProfile,  Type,  0, "enum"
+HKR, NDI\Params\*RSSProfile,  Default, 0, "1"
+HKR, NDI\Params\*RSSProfile\enum,  "1", 0, "%Closest_Processor%"
+HKR, NDI\Params\*RSSProfile\enum,  "2", 0, "%Closest_Processor_Static%"
+HKR, NDI\Params\*RSSProfile\enum,  "3", 0, "%Numa_Scaling%"
+HKR, NDI\Params\*RSSProfile\enum,  "4", 0, "%Numa_Scaling_Static%"
+HKR, NDI\Params\*RSSProfile\enum,  "5", 0, "%Conservative_Scaling%"
+HKR, "", *RSSProfile,  0, "1"
+
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  ParamDesc, 0, "%IPChecksumOffloadIPv4%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Type,      0, "enum"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Default,   0, "3"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Optional,  0, "0"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *IPChecksumOffloadIPv4, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  ParamDesc, 0, "%TCPUDPChecksumOffloadIPv4%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Type,      0, "enum"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Default,   0, "3"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Optional,  0, "0"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *TCPUDPChecksumOffloadIPv4, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  ParamDesc, 0, "%TCPUDPChecksumOffloadIPv6%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Type,      0, "enum"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Default,   0, "3"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Optional,  0, "0"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *TCPUDPChecksumOffloadIPv6, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*LsoV2IPv4,  ParamDesc, 0, "%LsoV2IPv4%"
+HKR, NDI\Params\*LsoV2IPv4,  Type,      0, "enum"
+HKR, NDI\Params\*LsoV2IPv4,  Default,   0, "1"
+HKR, NDI\Params\*LsoV2IPv4,  Optional,  0, "0"
+HKR, NDI\Params\*LsoV2IPv4\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*LsoV2IPv4\enum,  "1",  0, "%Enabled%"
+HKR, "", *LsoV2IPv4, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\*LsoV2IPv6,  ParamDesc, 0, "%LsoV2IPv6%"
+HKR, NDI\Params\*LsoV2IPv6,  Type,      0, "enum"
+HKR, NDI\Params\*LsoV2IPv6,  Default,   0, "1"
+HKR, NDI\Params\*LsoV2IPv6,  Optional,  0, "0"
+HKR, NDI\Params\*LsoV2IPv6\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*LsoV2IPv6\enum,  "1",  0, "%Enabled%"
+HKR, "", *LsoV2IPv6, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\TxBwPrecedence,  ParamDesc, 0, "%TxBwPrecedence%"
+HKR, NDI\Params\TxBwPrecedence,  Type,      0, "enum"
+HKR, NDI\Params\TxBwPrecedence,  Default,	0, "0"
+HKR, NDI\Params\TxBwPrecedence,  Optional,  0, "1"
+HKR, Ndi\Params\TxBwPrecedence\enum,	"0",  0, "%Default%"
+HKR, Ndi\Params\TxBwPrecedence\enum,	"1",  0, "%Precending%"
+HKR, "", TxBwPrecedence,  %FLG_ADDREG_NOCLOBBER%,  "0"
+
+HKR, NDI\Params\NetworkAddress,  ParamDesc,  0, "%NetworkAddress%"
+HKR, NDI\params\NetworkAddress,  Default,    0, ""
+HKR, NDI\params\NetworkAddress,  type,       0, "edit"
+HKR, NDI\params\NetworkAddress,  LimitText,  0, "12"
+HKR, NDI\params\NetworkAddress,  UpperCase,  0, "1"
+HKR, NDI\params\NetworkAddress,  optional,   0, "1"
+
+HKR, NDI\Params\RxBufferAlignment ,         ParamDesc,  0, "%RxBufferAlignment%"
+HKR, NDI\Params\RxBufferAlignment ,         default,    0, "0"
+HKR, NDI\Params\RxBufferAlignment ,         min,        0, "0"
+HKR, NDI\Params\RxBufferAlignment ,         max,        0, "63"
+HKR, NDI\Params\RxBufferAlignment ,         step,       0, "1"
+HKR, NDI\Params\RxBufferAlignment ,         Base,       0, "10"
+HKR, NDI\Params\RxBufferAlignment ,         type,       0, "int"
+HKR, "", RxBufferAlignment ,  %FLG_ADDREG_NOCLOBBER%, "0"
+
+
+;-----------------------------------------------------------------------------
+; rx_int_mod_pf.reg - RX interrupt moderation parameters for PF
+;
+[rx_int_mod_pf.reg]
+HKR, NDI\Params\RecvCompletionMethod,  ParamDesc, 0, "%RecvCompletionMethod%"
+HKR, NDI\Params\RecvCompletionMethod,  Type,  0, "enum"
+HKR, NDI\Params\RecvCompletionMethod,  Default, 0, "1"
+HKR, NDI\Params\RecvCompletionMethod,  Optional, 0, "0"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "0", 0, "%Polling%"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "1", 0, "%Adaptive%"
+;Fix RM:-443273, delete uncorrect registry value.
+HKR, NDI\Params\RecvCompletionMethod\enum,  "2", 0x00000004, ""
+HKR, "", RecvCompletionMethod, 0, "1"
+
+HKR, NDI\Params\RxIntModeration,  ParamDesc, 0, "%RxIntModeration%"
+HKR, NDI\Params\RxIntModeration,  Type,		0, "enum"
+HKR, NDI\Params\RxIntModeration,  Default,	0, "2"
+HKR, NDI\Params\RxIntModeration,  Optional,	0, "0"
+HKR, NDI\Params\RxIntModeration\enum, "1",	0, "%Static%"
+HKR, NDI\Params\RxIntModeration\enum, "2",	0, "%Adaptive%"
+HKR, "", RxIntModeration,%FLG_ADDREG_NOCLOBBER%, "2"
+
+HKR, NDI\Params\RxIntModerationProfile,  ParamDesc, 0, "%RxIntModerationProfile%"
+HKR, NDI\Params\RxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\RxIntModerationProfile,  Default,   0, "1"
+HKR, NDI\Params\RxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", RxIntModerationProfile, 0, "1"
+
+
+;-----------------------------------------------------------------------------
+; int_mod_pf.reg - TX interrupt moderation parameters for PF
+;
+[int_mod_pf.reg]
+HKR, NDI\Params\TxIntModerationProfile,  ParamDesc, 0, "%TxIntModerationProfile%"
+HKR, NDI\Params\TxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\TxIntModerationProfile,  Default,   0, "1"
+HKR, NDI\Params\TxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", TxIntModerationProfile, 0, "1"
+
+HKR, NDI\Params\ThreadPoll,         ParamDesc,  0, "%ThreadPoll%"
+HKR, NDI\Params\ThreadPoll,         Default,    0, "10000"
+HKR, NDI\Params\ThreadPoll,         min,        0, "1"
+HKR, NDI\Params\ThreadPoll,         max,        0, "200000"
+HKR, NDI\Params\ThreadPoll,         step,       0, "1"
+HKR, NDI\Params\ThreadPoll,         Base,       0, "10"
+HKR, NDI\Params\ThreadPoll,         type,       0, "dword"
+HKR, "", ThreadPoll,  %FLG_ADDREG_NOCLOBBER%, "10000"
+
+;-----------------------------------------------------------------------------
+; rx_int_mod_vf.reg - RX interrupt moderation parameters for VF
+;
+[rx_int_mod_vf.reg]
+HKR, NDI\Params\RecvCompletionMethod,  ParamDesc, 0, "%RecvCompletionMethod%"
+HKR, NDI\Params\RecvCompletionMethod,  Type,  0, "enum"
+HKR, NDI\Params\RecvCompletionMethod,  Default, 0, "1"
+HKR, NDI\Params\RecvCompletionMethod,  Optional, 0, "0"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "0", 0, "%Polling%"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "1", 0, "%Adaptive%"
+;Fix RM:-443273, delete uncorrect registry value.
+HKR, NDI\Params\RecvCompletionMethod\enum,  "2", 0x00000004, ""
+HKR, "", RecvCompletionMethod, 0, "1"
+
+HKR, NDI\Params\RxIntModeration,  ParamDesc, 0, "%RxIntModeration%"
+HKR, NDI\Params\RxIntModeration,  Type,     0, "enum"
+HKR, NDI\Params\RxIntModeration,  Default,  0, "0"
+HKR, NDI\Params\RxIntModeration,  Optional, 0, "0"
+HKR, NDI\Params\RxIntModeration\enum, "1",  0, "%Static%"
+HKR, NDI\Params\RxIntModeration\enum, "2",  0, "%Adaptive%"
+HKR, "", RxIntModeration,0, "0"
+
+HKR, NDI\Params\RxIntModerationProfile,  ParamDesc, 0, "%RxIntModerationProfile%"
+HKR, NDI\Params\RxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\RxIntModerationProfile,  Default,   0, "0"
+HKR, NDI\Params\RxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", RxIntModerationProfile, 0, "0"
+
+;-----------------------------------------------------------------------------
+; int_mod_vf.reg - TX interrupt moderation parameters for VF
+;
+[int_mod_vf.reg]
+HKR, NDI\Params\TxIntModerationProfile,  ParamDesc, 0, "%TxIntModerationProfile%"
+HKR, NDI\Params\TxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\TxIntModerationProfile,  Default,   0, "0"
+HKR, NDI\Params\TxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", TxIntModerationProfile, 0, "0"
+
+HKR, NDI\Params\ThreadPoll,         ParamDesc,  0, "%ThreadPoll%"
+HKR, NDI\Params\ThreadPoll,         Default,    0, "10000"
+HKR, NDI\Params\ThreadPoll,         min,        0, "1"
+HKR, NDI\Params\ThreadPoll,         max,        0, "200000"
+HKR, NDI\Params\ThreadPoll,         step,       0, "1"
+HKR, NDI\Params\ThreadPoll,         Base,       0, "10"
+HKR, NDI\Params\ThreadPoll,         type,       0, "dword"
+HKR, "", ThreadPoll,  %FLG_ADDREG_NOCLOBBER%, "10000"
+
+
+;-----------------------------------------------------------------------------
+; cx_pf.reg - parameters, HW agnostic and specific for PF
+;
+[cx_pf.reg]
+HKR, NDI\Params\IgnoreFCS,  ParamDesc, 0, "%IgnoreFCS%"
+HKR, NDI\Params\IgnoreFCS,  Type,      0, "enum"
+HKR, NDI\Params\IgnoreFCS,  Default,   0, "0"
+HKR, NDI\Params\IgnoreFCS,  Optional,  0, "0"
+HKR, NDI\Params\IgnoreFCS\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\IgnoreFCS\enum,  "1",  0, "%Enabled%"
+HKR, "", IgnoreFCS, 0, "0"
+
+HKR, NDI\Params\*ReceiveBuffers,  ParamDesc, 0, "%RecvRingSize%"
+HKR, NDI\Params\*ReceiveBuffers,  default,    0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  min, 	   0, "256"
+HKR, NDI\Params\*ReceiveBuffers,  max, 	   0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  step,	   0, "1"
+HKR, NDI\Params\*ReceiveBuffers,  Base,	   0, "10"
+HKR, NDI\Params\*ReceiveBuffers,  type,	   0, "int"
+HKR, "", *ReceiveBuffers, 0, "4096"
+
+HKR, NDI\Params\*TransmitBuffers,  ParamDesc, 0, "%SendRingSize%"
+HKR, NDI\Params\*TransmitBuffers,  default,	  0, "2048"
+HKR, NDI\Params\*TransmitBuffers,  min,	   0, "256"
+HKR, NDI\Params\*TransmitBuffers,  max,	   0, "4096"
+HKR, NDI\Params\*TransmitBuffers,  step,    0, "1"
+HKR, NDI\Params\*TransmitBuffers,  Base,    0, "10"
+HKR, NDI\Params\*TransmitBuffers,  type,    0, "int"
+HKR, "", *TransmitBuffers,  %FLG_ADDREG_NOCLOBBER%, "2048"
+
+HKR, NDI\Params\*JumboPacket ,		   ParamDesc,  0, "%MaxFrameSize%"
+HKR, NDI\Params\*JumboPacket ,		   default,    0, "1514"
+HKR, NDI\Params\*JumboPacket ,		   min, 	   0, "614"
+HKR, NDI\Params\*JumboPacket ,		   max, 	   0, "00009614"
+HKR, NDI\Params\*JumboPacket ,		   step,	   0, "1"
+HKR, NDI\Params\*JumboPacket ,		   Base,	   0, "10"
+HKR, NDI\Params\*JumboPacket ,		   type,	   0, "int"
+HKR, "", *JumboPacket ,  %FLG_ADDREG_NOCLOBBER%, "1514"
+
+HKR, NDI\Params\*NetworkDirect,            ParamDesc,  0, %ND_STR%
+HKR, NDI\Params\*NetworkDirect,            Type,       0, "enum"
+HKR, NDI\Params\*NetworkDirect,            Default,   0, "1"
+HKR, NDI\Params\*NetworkDirect\enum,       "0",        0, "%Disabled%"
+HKR, NDI\Params\*NetworkDirect\enum,       "1",        0, "%Enabled%"
+HKR, "", *NetworkDirect, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\*PacketDirect,            ParamDesc,  0, %PD_STR%
+HKR, NDI\Params\*PacketDirect,            Type,       0, "enum"
+HKR, NDI\Params\*PacketDirect,            Default,   0, "1"
+HKR, NDI\Params\*PacketDirect\enum,       "0",        0, "%Disabled%"
+HKR, NDI\Params\*PacketDirect\enum,       "1",        0, "%Enabled%"
+HKR, "", *PacketDirect, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\NdkWithGlobalPause,            ParamDesc,  0, %NDK_GLOBAL_PAUSE_STR%
+HKR, NDI\Params\NdkWithGlobalPause,            Type,       0, "enum"
+HKR, NDI\Params\NdkWithGlobalPause,            Default,    0, "1"
+HKR, NDI\Params\NdkWithGlobalPause\enum,       "0",        0, "%Disabled%"
+HKR, NDI\Params\NdkWithGlobalPause\enum,       "1",        0, "%Enabled%"
+HKR, "", NdkWithGlobalPause, 0, "1"
+
+HKR, NDI\Params\*RssOnHostVPorts,            ParamDesc,  0, %VRSS_STR%
+HKR, NDI\Params\*RssOnHostVPorts,            Type,       0, "enum"
+HKR, NDI\Params\*RssOnHostVPorts,            Default,   0, "1"
+HKR, NDI\Params\*RssOnHostVPorts\enum,       "0",        0, "%Disabled%"
+HKR, NDI\Params\*RssOnHostVPorts\enum,       "1",        0, "%Enabled%"
+HKR, "", *RssOnHostVPorts, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\RoceMaxFrameSize ,         ParamDesc,  0, "%RoceMaxFrameSize%"
+HKR, NDI\Params\RoceMaxFrameSize ,		   type,	   0, "enum"
+HKR, NDI\Params\RoceMaxFrameSize ,         default,    0, "0"
+HKR, NDI\Params\RoceMaxFrameSize\enum,		  "0",		0, "%MaxSizeWithinMaxFramSize%"
+HKR, NDI\Params\RoceMaxFrameSize\enum,		  "256",	0, "256"
+HKR, NDI\Params\RoceMaxFrameSize\enum,		  "512",	0, "512"
+HKR, NDI\Params\RoceMaxFrameSize\enum,		  "1024",	0, "1024"
+HKR, NDI\Params\RoceMaxFrameSize\enum,		  "2048",	0, "2048"
+HKR, "", RoceMaxFrameSize ,  %FLG_ADDREG_NOCLOBBER%, "0"
+
+HKR, NDI\Params\*FlowControl,  ParamDesc, 0, "%FlowControl%"
+HKR, NDI\Params\*FlowControl,  Type,      0, "enum"
+HKR, NDI\Params\*FlowControl,  Default,   0, "3"
+HKR, NDI\Params\*FlowControl,  Optional,  0, "0"
+HKR, NDI\Params\*FlowControl\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*FlowControl\enum,  "1",  0, "%TxEnabled%"
+HKR, NDI\Params\*FlowControl\enum,  "2",  0, "%RxEnabled%"
+HKR, NDI\Params\*FlowControl\enum,  "3",  0, "%TxRxEnabled%"
+HKR, "", *FlowControl, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*PriorityVLANTag,  ParamDesc, 0, "%PriorityVLANTag%"
+HKR, NDI\Params\*PriorityVLANTag,  Type,      0, "enum"
+HKR, NDI\Params\*PriorityVLANTag,  Default,   0, "3"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "0",  0, "%PriorityVlanDisabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "1",  0, "%PriorityEnabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "2",  0, "%VlanEnabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "3",  0, "%PriorityVlanEnabled%"
+HKR, "", *PriorityVLANTag, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*PriorityVLANTag,  ParamDesc, 0, "%PriorityVLANTag%"
+HKR, NDI\Params\*PriorityVLANTag,  Type,      0, "enum"
+HKR, NDI\Params\*PriorityVLANTag,  Default,   0, "3"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "0",  0, "%PriorityVlanDisabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "1",  0, "%PriorityEnabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "2",  0, "%VlanEnabled%"
+HKR, NDI\Params\*PriorityVLANTag\enum,        "3",  0, "%PriorityVlanEnabled%"
+HKR, "", *PriorityVLANTag, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\VlanID,  ParamDesc, 0, "%VlanID%"
+HKR, NDI\Params\VlanID,  default,	  0, "0"
+HKR, NDI\Params\VlanID,  min,	   0, "0"
+HKR, NDI\Params\VlanID,  max,	   0, "4095"
+HKR, NDI\Params\VlanID,  step,    0, "1"
+HKR, NDI\Params\VlanID,  Base,    0, "10"
+HKR, NDI\Params\VlanID,  type,    0, "int"
+HKR, "", VlanID,  %FLG_ADDREG_NOCLOBBER%, "0"
+
+HKR, NDI\Params\*InterruptModeration,  ParamDesc, 0, "%InterruptModeration%"
+HKR, NDI\Params\*InterruptModeration,  Type,      0, "enum"
+HKR, NDI\Params\*InterruptModeration,  Default,   0, "1"
+HKR, NDI\Params\*InterruptModeration,  Optional,  0, "0"
+HKR, NDI\Params\*InterruptModeration\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*InterruptModeration\enum,  "1",  0, "%Enabled%"
+HKR, "", *InterruptModeration, %FLG_ADDREG_NOCLOBBER%, "1"
+
+;-----------------------------------------------------------------------------
+; cx_vf.reg - parameters, HW agnostic and specific for VF
+;
+[cx_vf.reg]
+HKR, "", *PriorityVLANTag, 0, "0"
+
+HKR, NDI\Params\*ReceiveBuffers,  ParamDesc, 0, "%RecvRingSize%"
+HKR, NDI\Params\*ReceiveBuffers,  default,    0, "3072"
+HKR, NDI\Params\*ReceiveBuffers,  min, 	   0, "256"
+HKR, NDI\Params\*ReceiveBuffers,  max, 	   0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  step,	   0, "1"
+HKR, NDI\Params\*ReceiveBuffers,  Base,	   0, "10"
+HKR, NDI\Params\*ReceiveBuffers,  type,	   0, "int"
+HKR, "", *ReceiveBuffers, 0, "3072"
+
+HKR, NDI\Params\*TransmitBuffers,  ParamDesc, 0, "%SendRingSize%"
+HKR, NDI\Params\*TransmitBuffers,  default,	  0, "2048"
+HKR, NDI\Params\*TransmitBuffers,  min,	   0, "256"
+HKR, NDI\Params\*TransmitBuffers,  max,	   0, "4096"
+HKR, NDI\Params\*TransmitBuffers,  step,    0, "1"
+HKR, NDI\Params\*TransmitBuffers,  Base,    0, "10"
+HKR, NDI\Params\*TransmitBuffers,  type,    0, "int"
+HKR, "", *TransmitBuffers,  %FLG_ADDREG_NOCLOBBER%, "2048"
+
+HKR, NDI\Params\*JumboPacket ,		   ParamDesc,  0, "%MaxFrameSize%"
+HKR, NDI\Params\*JumboPacket ,		   default,    0, "1514"
+HKR, NDI\Params\*JumboPacket ,		   min, 	   0, "614"
+HKR, NDI\Params\*JumboPacket ,		   max, 	   0, "00009614"
+HKR, NDI\Params\*JumboPacket ,		   step,	   0, "1"
+HKR, NDI\Params\*JumboPacket ,		   Base,	   0, "10"
+HKR, NDI\Params\*JumboPacket ,		   type,	   0, "int"
+HKR, "", *JumboPacket ,  %FLG_ADDREG_NOCLOBBER%, "1514"
+
+HKR, NDI\Params\*InterruptModeration,  ParamDesc, 0, "%InterruptModeration%"
+HKR, NDI\Params\*InterruptModeration,  Type,      0, "enum"
+HKR, NDI\Params\*InterruptModeration,  Default,   0, "0"
+HKR, NDI\Params\*InterruptModeration,  Optional,  0, "0"
+HKR, NDI\Params\*InterruptModeration\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*InterruptModeration\enum,  "1",  0, "%Enabled%"
+HKR, "", *InterruptModeration, 0, "0"
+
+;-----------------------------------------------------------------------------
+;cx_vea.reg - parameters only for virtual ethernet adapters
+;
+[cx_vea.reg]
+HKR, NDI\Params\*ReceiveBuffers,  ParamDesc, 0, "%RecvRingSize%"
+HKR, NDI\Params\*ReceiveBuffers,  default,	  0, "512"
+HKR, NDI\Params\*ReceiveBuffers,  min,	   0, "256"
+HKR, NDI\Params\*ReceiveBuffers,  max,	   0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  step,    0, "1"
+HKR, NDI\Params\*ReceiveBuffers,  Base,    0, "10"
+HKR, NDI\Params\*ReceiveBuffers,  type,    0, "int"
+HKR, "", *ReceiveBuffers, 0, "512"
+
+HKR, NDI\Params\*TransmitBuffers,  ParamDesc, 0, "%SendRingSize%"
+HKR, NDI\Params\*TransmitBuffers,  default,   0, "2048"
+HKR, NDI\Params\*TransmitBuffers,  min,    0, "256"
+HKR, NDI\Params\*TransmitBuffers,  max,    0, "4096"
+HKR, NDI\Params\*TransmitBuffers,  step,	0, "1"
+HKR, NDI\Params\*TransmitBuffers,  Base,	0, "10"
+HKR, NDI\Params\*TransmitBuffers,  type,	0, "int"
+HKR, "", *TransmitBuffers,	%FLG_ADDREG_NOCLOBBER%, "2048"
+
+HKR, NDI\Params\*InterruptModeration,  ParamDesc, 0, "%InterruptModeration%"
+HKR, NDI\Params\*InterruptModeration,  Type,      0, "enum"
+HKR, NDI\Params\*InterruptModeration,  Default,   0, "1"
+HKR, NDI\Params\*InterruptModeration,  Optional,  0, "0"
+HKR, NDI\Params\*InterruptModeration\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*InterruptModeration\enum,  "1",  0, "%Enabled%"
+HKR, "", *InterruptModeration, %FLG_ADDREG_NOCLOBBER%, "1"
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 specific registry keys for PF
+;
+[cx3_pf.reg]
+HKR, NDI\Params\*QOS,  ParamDesc, 0, "%QOS%"
+HKR, NDI\Params\*QOS,  Type,      0, "enum"
+HKR, NDI\Params\*QOS,  Default,   0, "1"
+HKR, NDI\Params\*QOS,  Optional,  0, "0"
+HKR, NDI\Params\*QOS\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*QOS\enum,  "1",  0, "%Enabled%"
+HKR, "", *QOS, %FLG_ADDREG_NOCLOBBER%, "1"
+
+
+;-----------------------------------------------------------------------------
+; ConnectX-3 specific registry keys for VF
+;
+[cx3_vf.reg]
+
+;------------------------------------------------------------------------------
+;ConnectX-3 Pro specific registry keys
+;
+[cx3Pro.reg]
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload,  ParamDesc, 0, "%EncapsulatedPacketTaskOffload%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload,  Type,      0, "enum"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload,  Default,   0, "1"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload,  Optional,  0, "0"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload\enum,  "0",  0, "%Disabled%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffload\enum,  "1",  0, "%Enabled%"
+HKR, "", *EncapsulatedPacketTaskOffload, 0, "1"
+
+;;; NDIS650 ONLY ;;;
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre,  ParamDesc, 0, "%EncapsulatedPacketTaskOffloadNvgre%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre,  Type,      0, "enum"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre,  Default,   0, "1"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre,  Optional,  0, "0"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre\enum,  "0",  0, "%Disabled%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadNvgre\enum,  "1",  0, "%Enabled%"
+HKR, "", *EncapsulatedPacketTaskOffloadNvgre, 0, "1"
+
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan,  ParamDesc, 0, "%EncapsulatedPacketTaskOffloadVxlan%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan,  Type,      0, "enum"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan,  Default,   0, "1"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan,  Optional,  0, "0"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan\enum,  "0",  0, "%Disabled%"
+HKR, Ndi\Params\*EncapsulatedPacketTaskOffloadVxlan\enum,  "1",  0, "%Enabled%"
+HKR, "", *EncapsulatedPacketTaskOffloadVxlan, 0, "1"
+
+HKR, Ndi\Params\*VxlanUDPPortNumber,  ParamDesc, 0, "%VxlanUDPPortNumber%"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  default,   0, "4789"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  min,    0, "1024"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  max,    0, "65535"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  step,	0, "1"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  Base,	0, "10"
+HKR, Ndi\Params\*VxlanUDPPortNumber,  type,	0, "dword"
+HKR, "", *VxlanUDPPortNumber,	%FLG_ADDREG_NOCLOBBER%, "4789"
+
+HKR, NDI\Params\*EncapOverhead ,    ParamDesc,  0, "%EncapsulationOverhead%"
+HKR, NDI\Params\*EncapOverhead ,    default,    0, "0"
+HKR, NDI\Params\*EncapOverhead ,    min,        0, "0"
+HKR, NDI\Params\*EncapOverhead ,    max,        0, "256"
+HKR, NDI\Params\*EncapOverhead ,    step,       0, "32"
+HKR, NDI\Params\*EncapOverhead ,    Base,       0, "10"
+HKR, NDI\Params\*EncapOverhead ,    type,       0, "int"
+HKR, "", *EncapOverhead ,  %FLG_ADDREG_NOCLOBBER%,  "0"
+
+
+[virt.reg]
+
+;-------------------------------
+; SRIOV Default switch registry keys.
+;
+HKR, NicSwitches\0, *SwitchId,   %REG_DWORD_NO_CLOBBER%, 0
+HKR, NicSwitches\0, *SwitchName, %FLG_ADDREG_NOCLOBBER%, “%DefaultSwitchName%”
+HKR, NicSwitches\0, *SwitchType,   %REG_DWORD_NO_CLOBBER%, 1
+HKR, NicSwitches\0, *Flags,   %REG_DWORD_NO_CLOBBER%, 0
+HKR, NicSwitches\0, *NumVFs,   %REG_DWORD_NO_CLOBBER%, 32
+
+HKR, Ndi\Params\*Sriov,      paramDesc, , %Sriov%
+HKR, Ndi\Params\*Sriov,      type,      , "enum"
+HKR, Ndi\Params\*Sriov\enum, 0,         , %Disabled%
+HKR, Ndi\Params\*Sriov\enum, 1,         , %Enabled%
+HKR, "", *SRIOV, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, Ndi\Params\*VMQ,  ParamDesc, 0, "%VMQ%"
+HKR, Ndi\Params\*VMQ,  Type,      0, "enum"
+HKR, Ndi\Params\*VMQ,  Default,   0, "1"
+HKR, Ndi\Params\*VMQ,  Optional,  0, "0"
+HKR, Ndi\Params\*VMQ\enum,  "0",  0, "%Disabled%"
+HKR, Ndi\Params\*VMQ\enum,  "1",  0, "%Enabled%"
+HKR, "", *VMQ, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, Ndi\Params\*VMQVlanFiltering,  ParamDesc, 0, "%VMQVlanFiltering%"
+HKR, Ndi\Params\*VMQVlanFiltering,  Type,	  0, "enum"
+HKR, Ndi\Params\*VMQVlanFiltering,  Default,   0, "1"
+HKR, Ndi\Params\*VMQVlanFiltering,  Optional,  0, "0"
+HKR, Ndi\Params\*VMQVlanFiltering\enum,	"0",  0, "%Disabled%"
+HKR, Ndi\Params\*VMQVlanFiltering\enum,	"1",  0, "%Enabled%"
+HKR, "", *VMQVlanFiltering, %FLG_ADDREG_NOCLOBBER%, "1"
+
+;-----------------------------------------------------------------------------
+; delete unused keys
+;
+
+[cx_del.reg]
+HKR, Ndi\Params\UseDma
+HKR, "", UseDma
+
+HKR, Ndi\Params\TxRingNum
+HKR, "", TxRingNum
+
+HKR, NDI\Params\SendIntModCount
+HKR, "", SendIntModCount
+
+HKR, NDI\Params\SendIntModTime
+HKR, "", SendIntModTime
+
+HKR, NDI\Params\SendCompletionMethod
+HKR, "", SendCompletionMethod
+
+HKR, NDI\Params\SendPollingModCount
+HKR, "", SendPollingModCount
+
+HKR, NDI\Params\SendPollingModTime
+HKR, "", SendPollingModTime
+
+HKR, NDI\Params\RecvIntModCount
+HKR, "", RecvIntModCount
+
+HKR, NDI\Params\RecvIntModTime
+HKR, "", RecvIntModTime
+
+HKR, NDI\Params\AcceptGREbyOuterMAC
+HKR, "", AcceptGREbyOuterMAC
+
+HKR, "", MaxNumberOfPacketsToIndicateThread
+HKR, "", MaxNumberOfPacketsToIndicateDPC
+HKR, "", InterupptToThreadThreshold
+HKR, "", rx_usecs_low
+HKR, "", rx_usecs_high
+HKR, "", UseRSSForRawIP
+HKR, "", UseRSSForUDP
+HKR, "", LSOSize
+HKR, "", BlueFlame
+HKR, "", MaxNumOfMCList
+
+HKR,"",AverageFactor
+HKR,"",AveragePollThreshold
+HKR,"",ThisPollThreshold
+HKR,"",pkt_rate_low
+HKR,"",pkt_rate_high
+HKR,"",SingleStream
+HKR,"",RxSmallPacketBypass
+HKR,"",TxHashDisrtibution
+HKR,"",TxForwardingProcessor
+HKR,"",DefaultRecvRingProcessor
+HKR,"",TxInterruptProcessor
+
+[cx_vf_del.reg]
+HKR, NDI\Params\*PriorityVLANTag
+
+HKR, NDI\Params\VlanID
+HKR, "", VlanID
+
+HKR, NDI\Params\*FlowControl
+HKR, "", *FlowControl
+
+HKR, NDI\Params\*QOS
+HKR, "", *QOS
+
+HKR, NDI\Params\*NetworkDirect
+HKR, "", *NetworkDirect
+
+HKR, NDI\Params\RoceMaxFrameSize
+HKR, "", RoceMaxFrameSize
+
+[Ibbus_del.ParamsReg]
+HKR,"Parameters",NdkDebugLevel
+HKR,"Parameters",NdkDebugFlags
+HKR,"Parameters",ModeFlags
+
+;-----------------------------------------------------------------------------
+; mlx4eth NT specific
+;
+[bindings.reg]
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi,                       Service,    0, "mlx4eth63"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+
+[vf_bindings.reg]
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi,                       Service,    0, "mlx4eth63"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndisvf"
+HKR, Ndi\Interfaces,            LowerRange, 0, "iovvf"
+
+[mlx4eth63.reg]
+
+;*NetworkDirect shadow value
+HKR, "", NetworkDirectShadow, %FLG_ADDREG_NOCLOBBER%, "1"
+
+[WinCtxTune_reg]
+HKR,,icon,,"-5"
+HKR,,EnumPropPages32,,"winctxtune_eth.dll,WinCtxTunePropPageProvider"
+
+[mlx4eth63.Service]
+DisplayName     = %mlx4eth63.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType		= 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\mlx4eth63.sys
+LoadOrderGroup  = NDIS
+AddReg          = Ibbus.ParamsReg
+DelReg          = Ibbus_del.ParamsReg
+AddReg			= BootFlags.ParamsReg
+
+[Ibbus.ParamsReg]
+HKR,"Parameters","NdkModeFlags",%REG_DWORD_NO_CLOBBER%,0x00000001
+HKR,"Parameters","ModeFlags",%REG_DWORD_NO_CLOBBER%,0x00000001
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\mlx4eth63.sys;%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+
+[DestinationDirs]
+mlx4eth63.CopyFiles    = 12
+Wctxtune.CopyFiles     = 11
+[mlx4eth63.CopyFiles]
+mlx4eth63.sys,,,2
+
+
+[Wctxtune.CopyFiles]
+winctxtune_eth.dll,,,2
+
+
+
+
+[SourceDisksNames]
+;
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;
+1 = %DiskDescription%,mlx4eth63.sys,,
+
+[SourceDisksFiles]
+;
+; filename_on_source = diskID[, [subdir][, size]]
+;
+mlx4eth63.sys = 1,, ; on distribution disk 1
+winctxtune_eth.dll = 1
+
+
+[Strings]
+Mellanox                 = "Mellanox Technologies Ltd."
+MSFT                     = "Microsoft Corporation"
+IgnoreFCS				 = "Ignore FCS errors"
+ReceiveFrameDescriptors  = "Receive Frame Descriptors"
+TransmitControlBlocks    = "Transmit Control Blocks"
+Disabled                 = "Disabled"
+Enabled                  = "Enabled"
+MaxFrameSize             = "Jumbo Packet"
+RxBufferAlignment        = "Rx Buffer Alignment"
+EncapOverhead			 = "Encapsulation Overhead"
+ThreadPoll				 = "Number of Polls on Receive"
+ND_STR                   = "NetworkDirect Functionality"
+NDK_GLOBAL_PAUSE_STR     = "Force NDK to work with Global Pause"
+HeaderDataSplit          = "Header Data Split"
+RecvCompletionMethod	 = "Receive Completion Method"
+RecvRingSize             = "Receive Buffers"
+SendRingSize             = "Send Buffers"
+Polling                  = "Polling"
+Interrupts               = "Interrupts"
+Adaptive                 = "Adaptive"
+No_rebalnce              = "Disabled"
+NDIS_RSS                 = "Enabled"
+RssMode                  = "Receive Side Scaling"
+NumaNodeId               = "Preferred NUMA node"
+NumaNodeId_default       = "Default Settings"
+node0                    = "Node 0"
+node1                    = "Node 1"
+node2                    = "Node 2"
+node3                    = "Node 3"
+node4                    = "Node 4"
+node5                    = "Node 5"
+node6                    = "Node 6"
+node7                    = "Node 7"
+RssBaseProcNumber        = "RSS Base Processor Number"
+MaxRssProcessors         = "Maximum number of RSS Processors"
+RssMaxProcNumber         = "RSS Maximum Processor Number"
+NumRSSQueues              = "Maximum Number of RSS Queues"
+RssProfile                = "RSS load balancing Profile"
+Closest_Processor         = "ClosestProcessor"
+Closest_Processor_Static  = "ClosestProcessorStatic"
+Numa_Scaling              = "NumaScaling"
+Numa_Scaling_Static       = "NumaScalingStatic"
+Conservative_Scaling      = "ConservativeScaling"
+FailOver                 = "Fail Over"
+RxIntModeration		 	 = "Rx Interrupt Moderation Type"
+Static                   = "Static"
+FlowControl              = "Flow Control"
+InterruptModeration      = "Interrupt Moderation"
+TxEnabled				 = "Tx Enabled"
+RxEnabled				 = "Rx Enabled"
+TxRxEnabled				 = "Rx & Tx Enabled"
+IPChecksumOffloadIPv4    = "IPV4 Checksum Offload"
+TCPUDPChecksumOffloadIPv4= "TCP/UDP Checksum Offload (IPv4)"
+TCPUDPChecksumOffloadIPv6= "TCP/UDP Checksum Offload (IPv6)"
+LsoV2IPv4		 = "Large Send Offload V2 (IPv4)"
+LsoV2IPv6		 = "Large Send Offload V2 (IPv6)"
+
+PriorityVLANTag          = "Priority & Vlan Tag"
+PriorityVlanDisabled     = "Priority & VLAN Disabled"
+PriorityEnabled          = "Priority Enabled"
+VlanEnabled              = "VLAN Enabled"
+PriorityVlanEnabled      = "Priority & VLAN Enabled"
+VlanID					 = "VLAN ID"
+NetworkAddress			 = "Locally Administered Address"
+
+QOS                      = "Quality Of Service"
+VMQ 					 = "Virtual Machine Queues"
+VMQVlanFiltering		 = "VMQ VLAN Filtering"
+RoceMaxFrameSize         = "R/RoCE Max Frame Size"
+MaxSizeWithinMaxFramSize = "Auto"
+
+EncapsulatedPacketTaskOffload = "Encapsulated Task Offload"
+
+;;; NDIS650 ONLY ;;;
+EncapsulatedPacketTaskOffloadNvgre = "NVGRE Encapsulated Task Offload"
+EncapsulatedPacketTaskOffloadVxlan = "VXLAN Encapsulated Task Offload"
+VxlanUDPPortNumber = "VXLAN UDP destination port number"
+EncapsulationOverhead = "Encapsulation Overhead"
+PD_STR                = "PacketDirect Functionality"
+VRSS_STR              = "Virtual Switch RSS"
+
+SwitchName		 = "Name of the default NIC switch"
+DefaultSwitchName        = "Default Switch"
+SwitchId		 = "Id of the default NIC switch"
+SwitchType		 = "Type of the default NIC switch"
+SwitchFlags		 = "Flags of the default NIC switch"
+SwitchNumVFs		 = "Number of VFs of the default NIC switch"
+Sriov			 = "SR-IOV"
+
+
+
+
+mlx4eth63_CX.DeviceDesc    = "Mellanox ConnectX Ethernet Adapter"
+mlx4eth63_CX2.DeviceDesc   = "Mellanox ConnectX-2 Ethernet Adapter"
+mlx4eth63_CX3.DeviceDesc   = "Mellanox ConnectX-3 Ethernet Adapter"
+mlx4eth63_CX3Pro.DeviceDesc = "Mellanox ConnectX-3 Pro Ethernet Adapter"
+mlx4eth63_vCX3.DeviceDesc  = "Mellanox ConnectX-3 Virtual Function Ethernet Adapter"
+
+mlx4eth63_CX3_VEA.DeviceDesc	= "Mellanox ConnectX-3 Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.DeviceDesc = "Mellanox ConnectX-3 Pro Virtual Ethernet Adapter"
+
+;;;;; cards of other companies
+mlx4eth63_CX3Pro.801f.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Adapter"
+mlx4eth63_CX3Pro.8020.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Adapter"
+mlx4eth63_vCX3.801f.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Virtual Ethernet Adapter"
+mlx4eth63_vCX3.8020.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.801f.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.8020.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Virtual Ethernet Adapter"
+mlx4eth63_CX3_VEA.18cd.DeviceDesc = "HP 10Gb 2-port 544FLR-QSFP Virtual Ethernet Adapter"
+mlx4eth63_CX3.18cd.DeviceDesc  = "HP 10Gb 2-port 544FLR-QSFP Ethernet Adapter"
+mlx4eth63_vCX3.18cd.DeviceDesc  = "HP 10Gb 2-port 544FLR-QSFP Virtual Ethernet Adapter"
+
+mlx4eth63_CX3Pro.22f1.DeviceDesc  = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Ethernet Adapter"
+mlx4eth63_vCX3Pro.22f1.DeviceDesc  = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro.22f2.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Ethernet Adapter"
+mlx4eth63_vCX3Pro.22f2.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro.22f3.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Ethernet Adapter"
+mlx4eth63_vCX3Pro.22f3.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro.22f4.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Ethernet Adapter"
+mlx4eth63_vCX3Pro.22f4.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro.22f5.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Ethernet Adapter"
+mlx4eth63_vCX3Pro.22f5.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Virtual Ethernet Adapter"
+; VEA
+mlx4eth63_CX3_VEA.22f1.DeviceDesc  = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Virtual Ethernet Adapter"
+mlx4eth63_CX3_VEA.22f2.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Virtual Ethernet Adapter"
+mlx4eth63_CX3_VEA.22f3.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Virtual Ethernet Adapter"
+mlx4eth63_CX3_VEA.22f4.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Virtual Ethernet Adapter"
+mlx4eth63_CX3_VEA.22f5.DeviceDesc  = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Virtual Ethernet Adapter"
+
+; Cards for ATTO Inc. description
+mlx4eth63_CX3Pro.0090.DeviceDesc  = "ATTO FastFrame NQ41 Ethernet Adapter"
+mlx4eth63_CX3Pro.0091.DeviceDesc  = "ATTO FastFrame NQ42 Ethernet Adapter"
+mlx4eth63_CX3Pro.0092.DeviceDesc  = "ATTO FastFrame NQ11 Ethernet Adapter"
+mlx4eth63_CX3Pro.0093.DeviceDesc  = "ATTO FastFrame NQ12 Ethernet Adapter"
+
+;VEA for ATTO
+mlx4eth63_CX3Pro_VEA.0090.DeviceDesc  = "ATTO FastFrame NQ41 Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.0091.DeviceDesc  = "ATTO FastFrame NQ42 Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.0092.DeviceDesc  = "ATTO FastFrame NQ11 Virtual Ethernet Adapter"
+mlx4eth63_CX3Pro_VEA.0093.DeviceDesc  = "ATTO FastFrame NQ12 Virtual Ethernet Adapter"
+
+
+mlx4eth63.Service.DispName = "Mellanox ConnectX based Ethernet Adapter (NDIS 6.3) Driver"
+DiskDescription 	  = "Mellanox Driver Disk 1"
+
+RxIntModerationProfile         = "Rx Interrupt Moderation Profile"
+TxIntModerationProfile         = "Tx Interrupt Moderation Profile"
+LowLatency                = "Low Latency"
+Moderate                  = "Moderate"
+Aggressive                = "Aggressive"
+
+TxBwPrecedence			= "Tx Throughput Port Arbiter"
+Default					= "Best Effort (Default)"
+Precending				= "Guaranteed"
+
+REG_MULTI_SZ              = 0x00010000
+REG_DWORD                 = 0x00010001
+REG_DWORD_NO_CLOBBER	  = 0x00010003
+FLG_ADDREG_NOCLOBBER      = 0x00000002
+

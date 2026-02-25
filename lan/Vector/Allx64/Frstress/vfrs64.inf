@@ -1,0 +1,84 @@
+; Copyright 2013 Vector Informatik GmbH
+
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=02/26/2013,8.3.130.0
+CatalogFile.NTamd64=vfrs64.cat
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+
+[DeviceList.NTamd64]
+%DESCRIPTION_FRS%=DI_casexl,USB\Vid_1248&Pid_1002
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+vfrs.sys=1
+vfrsif.dll=1
+
+[SourceDisksNames]
+1=%DRIVER_NAME%,,,
+
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Main install Sections
+;------------------------------------------------------------------------------
+;VFRS
+;---------
+[DI_casexl.NTamd64]
+CopyFiles=@vfrs.sys
+AddReg=options.registry
+
+[DI_casexl.NTamd64.Services]
+AddService=vfrs,2,vfrs.Service.NTamd64
+
+
+;Common
+;------
+[vfrs.Service.NTamd64]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vfrs.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",AdjustTimerResolution,0x10001,1
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+
+[Strings]
+;DriverSetupDirectory="VFRS"
+MFGNAME="Vector Informatik GmbH"
+DRIVER_NAME="Vector Driver"
+DESCRIPTION_FRS="Vector FlexRayStress"
+ClassName="Vector-Hardware"
+
+

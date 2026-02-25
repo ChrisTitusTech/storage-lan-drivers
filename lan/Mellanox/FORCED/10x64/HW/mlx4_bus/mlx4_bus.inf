@@ -1,0 +1,734 @@
+; Mellanox Technologies InfiniBand HCAs.
+; Copyright 2008 Mellanox Technologies all Rights Reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+
+Provider=%MTL%
+; must be synchronized with bus\drv.c
+DriverVer=03/08/2017,5.35.12978
+CatalogFile=mlx4_bus.cat
+
+
+;*****************************************
+; Destination directory section
+;*****************************************
+
+[DestinationDirs]
+DefaultDestDir = 12
+Wctxtune.CopyFiles = 11
+
+
+;*****************************************
+; Device Install section
+;*****************************************
+
+[SourceDisksNames.amd64]
+1=%DiskId%,,,""
+
+[SourceDisksFiles.amd64]
+mlx4_bus.sys = 1,,
+winctxtune_bus.dll =1,,
+ibbus.sys = 1,,
+winverbs.sys = 1,,
+winmad.sys = 1,,
+ndfltr.sys = 1,,
+
+
+;*****************************************
+; Mlx4Bus  Install Section
+;*****************************************
+
+[Manufacturer]
+%MTL% = MLX4BUS.DeviceSection,ntamd64.10.0
+
+[MLX4BUS.DeviceSection.ntamd64.10.0]
+%MT25408.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6340
+%MT25418.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_634A
+%MT25428.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6354
+%MT25448.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6368
+%MT25458.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6372
+%MT26418.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6732
+%MT26488.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6778
+%MT26428.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_673c
+%MT26438.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6746
+%MT26448.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6750
+%MT26458.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_675A
+%MT26468.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6764
+%MT26478.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_676E
+%MT25409.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6341
+%MT25419.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_634b
+%MT26419.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6733
+%MT26429.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_673d
+%MT25449.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6369
+%MT26449.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6751
+%MT26469.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_6765
+%MT04096.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1000
+%MT04097.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1001
+%MT04098.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1002
+%MT04099.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1003
+%MT04100.DeviceDesc%=MLX4BUS_VF.DDInstall, PCI\VEN_15B3&DEV_1004
+%MT04101.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1005
+%MT04102.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1006
+%MT04103.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1007
+%MT04104.DeviceDesc%=MLX4BUS_VF.DDInstall, PCI\VEN_15B3&DEV_1008
+%MT04105.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1009
+%MT04106.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100a
+%MT04107.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100b
+%MT04108.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100c
+%MT04109.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100d
+%MT04110.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100e
+%MT04111.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_100f
+%MT04112.DeviceDesc%=MLX4BUS.DDInstall, PCI\VEN_15B3&DEV_1010
+
+;;;;; cards of other companies
+; HP: Maze and Mesa
+%MT04100_HP_Maze.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_801f103c
+%MT04100_HP_Mesa.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_8020103c
+%MT04103_HP_Maze.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_801f103c
+%MT04103_HP_Mesa.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_8020103c
+%MT04104_HP_Maze.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_801f103c
+%MT04104_HP_Mesa.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_8020103c
+
+; HP: Attitash ConnectX 3
+%MT04099_HP_Attitash_18cd.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1003&SUBSYS_18cd103c
+%MT04100_HP_Attitash_18cd.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_18cd103c
+
+; HP: Attitash ConnectX 3 Pro
+%MT04100_HP_Attitash_22f1.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_22f1103c
+%MT04103_HP_Attitash_22f1.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_22f1103c
+%MT04104_HP_Attitash_22f1.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_22f1103c
+
+%MT04100_HP_Attitash_22f2.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_22f2103c
+%MT04103_HP_Attitash_22f2.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_22f2103c
+%MT04104_HP_Attitash_22f2.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_22f2103c
+
+%MT04100_HP_Attitash_22f3.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_22f3103c
+%MT04103_HP_Attitash_22f3.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_22f3103c
+%MT04104_HP_Attitash_22f3.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_22f3103c
+
+%MT04100_HP_Attitash_22f4.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_22f4103c
+%MT04103_HP_Attitash_22f4.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_22f4103c
+%MT04104_HP_Attitash_22f4.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_22f4103c
+
+%MT04100_HP_Attitash_22f5.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1004&SUBSYS_22f5103c
+%MT04103_HP_Attitash_22f5.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_22f5103c
+%MT04104_HP_Attitash_22f5.DeviceDesc%=MLX4BUS_ExtendedHWID_VF.DDInstall, PCI\VEN_15B3&DEV_1008&SUBSYS_22f5103c
+
+; ATTO ConnectX-3 Pro
+%MT04103_ATTO_NQ41.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_0090117c
+%MT04103_ATTO_NQ42.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_0091117c
+%MT04103_ATTO_NQ11.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_0092117c
+%MT04103_ATTO_NQ12.DeviceDesc%=MLX4BUS_ExtendedHWID.DDInstall, PCI\VEN_15B3&DEV_1007&SUBSYS_0093117c
+
+
+[MLX4BUS.DDInstall.ntamd64.hw]
+AddReg = MLX4BUS.HwReg
+Include=machine.inf
+Needs=PciSriovSupported.HW
+
+
+[MLX4BUS_VF.DDInstall.ntamd64.hw]
+AddReg = MLX4BUS_VF.HwReg
+Include=machine.inf
+Needs=PciSriovSupported.HW
+
+
+[MLX4BUS_ExtendedHWID.DDInstall.ntamd64.hw]
+AddReg = MLX4BUS.HwReg
+Include=machine.inf
+Needs=PciSriovSupported.HW
+
+[MLX4BUS_ExtendedHWID_VF.DDInstall.ntamd64.hw]
+AddReg = MLX4BUS_VF.HwReg
+Include=machine.inf
+Needs=PciSriovSupported.HW
+
+;-----------------------------------------------------------------------------
+; PF parameters
+;
+[MLX4BUS.HwReg]
+; upper filters
+HKR,,"UpperFilters",0x00010000,"ibbus","ndfltr","WinVerbs","WinMad"	; enable IBBUS/AL, winverbs and winmad Filter driver loading.
+
+; MSI-X support
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MessageNumberLimit,0x00010001,128
+
+; AssignmentSetOverride - processors KAFFINITY mask
+HKR,"Interrupt Management\Affinity Policy",AssignmentSetOverride,0x00000001,0x0
+
+; IrqPolicyMachineDefault (0) - use default policy for the computer
+; IrqPolicyAllCloseProcessors (1) - connect interrupts to all processors of the near NUMA node
+; IrqPolicyOneCloseProcessor (2) - connect interrupts to one processor
+; IrqPolicyAllProcessorsInMachine (3) - connect interrupts to all processors in the machine
+; IrqPolicySpecifiedProcessors (4) - connects interrupts according to AssignmentSetOverride
+; IrqPolicySpreadMessagesAcrossAllProcessors (5) - assign different message-based interrupts to different processors
+HKR,"Interrupt Management\Affinity Policy",DevicePolicy,0x00010001,0x5
+
+; 0 - indicates that the device interrupts only on logical processors in group 0
+; 1 - indicates that the device can interrupt on logical processors beyond group 0.
+HKR,"Interrupt Management\Affinity Policy",GroupPolicy,0x00010001,0x1
+
+; IrqArbPriorityUndefined (0) - no interrupt priority policy.
+; IrqArbPriorityLow (1) - device can tolerate low IRQL
+; IrqArbPriorityNormal (2) - device expects normal interrupt latencies
+; IrqArbPriorityHigh (3) - device requires the lowest possible interrupt latency
+HKR,"Interrupt Management\Affinity Policy",DevicePriority,0x00010001,0x3
+
+
+;-----------------------------------------------------------------------------
+; VF parameters
+;
+[MLX4BUS_VF.HwReg]
+; upper filters
+HKR,,"UpperFilters",0x00010000,"ibbus","ndfltr","WinVerbs","WinMad"	; enable IBBUS/AL, winverbs and winmad Filter driver loading.
+
+; MSI-X support
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MessageNumberLimit,0x00010001,8
+HKR,"Interrupt Management\Affinity Policy",AssignmentSetOverride,0x00000001,0x0
+HKR,"Interrupt Management\Affinity Policy",DevicePolicy,0x00010001,0x5
+HKR,"Interrupt Management\Affinity Policy",GroupPolicy,0x00010001,0x1
+HKR,"Interrupt Management\Affinity Policy",DevicePriority,0x00010001,0x3
+
+[MLX4BUS.DDInstall.ntamd64]
+CopyFiles = SYS.CopyFiles, Wctxtune.CopyFiles
+AddReg    = MLX4BUS.SoftwareReg, WinCtxTune_reg
+DelReg	  = MLX4BUS.SoftwareRegDeprecated
+
+[MLX4BUS.DDInstall.ntamd64.Services]
+AddService = mlx4_bus,%SPSVCINST_ASSOCSERVICE%,MLX4BUS.ServiceInstall,MLX4BUS.EventLog
+AddService = ibbus,,Ibbus.ServiceInstall,IBBUS.EventLog
+AddService = ndfltr,,ndfltr.ServiceInstall
+AddService = WinVerbs,,WinVerbs.ServiceInstall
+AddService = WinMad,,WinMad.ServiceInstall
+
+
+[MLX4BUS_VF.DDInstall.ntamd64]
+CopyFiles = SYS.CopyFiles, Wctxtune.CopyFiles
+AddReg    = MLX4BUS.SoftwareReg, WinCtxTune_reg
+DelReg	  = MLX4BUS.SoftwareRegDeprecated
+
+[MLX4BUS_VF.DDInstall.ntamd64.Services]
+AddService = mlx4_bus,%SPSVCINST_ASSOCSERVICE%,MLX4BUS.ServiceInstall,MLX4BUS.EventLog
+AddService = ibbus,,Ibbus.ServiceInstall,IBBUS.EventLog
+AddService = ndfltr,,ndfltr.ServiceInstall
+AddService = WinVerbs,,WinVerbs.ServiceInstall
+AddService = WinMad,,WinMad.ServiceInstall
+
+
+[MLX4BUS_ExtendedHWID.DDInstall.ntamd64]
+CopyFiles = SYS.CopyFiles, Wctxtune.CopyFiles
+AddReg    = MLX4BUS.SoftwareReg, WinCtxTune_reg,MLX4BUS_ExtendedHWID.softwareReg
+DelReg	  = MLX4BUS.SoftwareRegDeprecated
+
+[MLX4BUS_ExtendedHWID.DDInstall.ntamd64.Services]
+AddService = mlx4_bus,%SPSVCINST_ASSOCSERVICE%,MLX4BUS.ServiceInstall,MLX4BUS.EventLog
+AddService = ibbus,,Ibbus.ServiceInstall,IBBUS.EventLog
+AddService = ndfltr,,ndfltr.ServiceInstall
+AddService = WinVerbs,,WinVerbs.ServiceInstall
+AddService = WinMad,,WinMad.ServiceInstall
+
+
+
+[MLX4BUS_ExtendedHWID_VF.DDInstall.ntamd64]
+CopyFiles = SYS.CopyFiles, Wctxtune.CopyFiles
+AddReg    = MLX4BUS.SoftwareReg, WinCtxTune_reg,MLX4BUS_ExtendedHWID.softwareReg
+DelReg	  = MLX4BUS.SoftwareRegDeprecated
+
+[MLX4BUS_ExtendedHWID_VF.DDInstall.ntamd64.Services]
+AddService = mlx4_bus,%SPSVCINST_ASSOCSERVICE%,MLX4BUS.ServiceInstall,MLX4BUS.EventLog
+AddService = ibbus,,Ibbus.ServiceInstall,IBBUS.EventLog
+AddService = ndfltr,,ndfltr.ServiceInstall
+AddService = WinVerbs,,WinVerbs.ServiceInstall
+AddService = WinMad,,WinMad.ServiceInstall
+
+
+
+
+;*****************************************
+; File Copy
+;*****************************************
+
+[SYS.CopyFiles]
+mlx4_bus.sys
+ibbus.sys
+winverbs.sys
+winmad.sys
+ndfltr.sys
+
+
+;*****************************************
+; Service Install section
+;*****************************************
+
+[MLX4BUS.ServiceInstall]
+DisplayName     = %MLX4BUS.ServiceDesc%
+ServiceType     = %SERVICE_KERNEL_DRIVER%
+StartType       = %SERVICE_DEMAND_START%
+ErrorControl    = %SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\mlx4_bus.sys
+LoadOrderGroup  = NDIS
+AddReg          = MLX4BUS.ParamsReg
+AddReg			= BootFlags.ParamsReg
+DelReg          = MLX4BUS.DelParamsReg
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+[MLX4BUS.EventLog]
+AddReg = MLX4BUS.AddEventLogReg
+
+[MLX4BUS.AddEventLogReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\mlx4_bus.sys;%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[MLX4BUS.SoftwareReg]
+HKR,"Parameters","CapabilityFlag",%REG_DWORD%,0x00000000
+HKR,"Parameters","AcceptGREbyOuterMAC_P1",%REG_DWORD_NO_CLOBBER%,0
+HKR,"Parameters","AcceptGREbyOuterMAC_P2",%REG_DWORD_NO_CLOBBER%,0
+HKR,"Parameters","UseExtendedHwidIPoIB",%REG_DWORD%,0x00000000
+HKR,"Parameters","UseExtendedHwidETH",%REG_DWORD%,0x00000000
+
+
+
+
+
+[MLX4BUS.SoftwareRegDeprecated]
+HKR,"Parameters","EnableRoce"
+HKR,"Parameters","EnableRRoce"
+HKR,"Parameters","SriovEnable"
+
+[MLX4BUS.ParamsReg]
+HKR,,DeviceCharacteristics,0x10001,0x0100         ; Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"      ; Allow generic-all access to Built-in administrators and Local system
+HKR,"Parameters","DeviceManagedSteering",%REG_DWORD%,1
+
+; Flex10
+
+
+
+
+HKLM,"System\CurrentControlSet\Control\WMI\GlobalLogger\E51BB6E2-914A-4e21-93C0-192F4801BBFF","Flags",%REG_DWORD%,0xffff
+HKLM,"System\CurrentControlSet\Control\WMI\GlobalLogger\E51BB6E2-914A-4e21-93C0-192F4801BBFF","Level",%REG_DWORD%,0x3
+
+; Parameters for Auto Tracing session
+; Trace parameters
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","BufferSize",%REG_DWORD%,0x20
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","FlushTimer",%REG_DWORD%,300
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","MaximumBuffers",%REG_DWORD%,0x60
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","MinimumBuffers",%REG_DWORD%,0x40
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","Start",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","ClockType",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","MaxFileSize",%REG_DWORD%,0x10
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","LogFileMode",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","Status",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","Guid",%REG_SZ%,"{2AAAD09A-72D6-4FBD-B1BF-81747D0F95A0}"
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","FileName",%REG_SZ%,"%%SystemRoot%%\system32\LogFiles\Mlnx\Mellanox-System.etl"
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","FileMax",%REG_DWORD%,0x3
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel","FileCounter",%REG_DWORD_NO_CLOBBER%,0x1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; KERNEL COMPONENTS
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Providers: {B94560A8-E060-48F3-B2B5-F543E534B9EF} General Trace
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B94560A8-E060-48F3-B2B5-F543E534B9EF}","Status",%REG_DWORD%,0x0
+
+; Providers: {BF3440A2-0830-4481-A7BB-7BFE6AA51DDE} deferred startup
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{BF3440A2-0830-4481-A7BB-7BFE6AA51DDE}","Status",%REG_DWORD%,0x0
+
+; Providers: {CDE9C859-A7D6-439E-A8AC-698F92761D10} ibbus
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CDE9C859-A7D6-439E-A8AC-698F92761D10}","Status",%REG_DWORD%,0x0
+
+; Providers: {E51BB6E2-914A-4e21-93C0-192F4801BBFF} mlx4_bus
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","EnableLevel",%REG_DWORD%,0x3
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{E51BB6E2-914A-4e21-93C0-192F4801BBFF}","Status",%REG_DWORD%,0x0
+
+; Providers: {7707876a-2ff7-4808-ae74-453Ed62836f5} ndfltr
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{7707876a-2ff7-4808-ae74-453Ed62836f5}","Status",%REG_DWORD%,0x0
+
+; Providers: {99dc84e3-b106-431e-88a6-4dd20c9bbde3} ibbus/IBAL
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{99dc84e3-b106-431e-88a6-4dd20c9bbde3}","Status",%REG_DWORD%,0x0
+
+; Providers: {5D63D37F-E400-4455-A902-1FDABE74A9AB} ibbus/IBAL4
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{5D63D37F-E400-4455-A902-1FDABE74A9AB}","Status",%REG_DWORD%,0x0
+
+; Providers: {684E068C-3FDC-4bce-89C3-CDB77A8B75A4} GenUtils
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{684E068C-3FDC-4bce-89C3-CDB77A8B75A4}","Status",%REG_DWORD%,0x0
+
+; Providers: {F8C96A49-AE22-41e9-8025-D7E416884D89} HCA
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{F8C96A49-AE22-41e9-8025-D7E416884D89}","Status",%REG_DWORD%,0x0
+
+; Providers: {3F9BC73D-EB03-453a-B27B-20F9A664211A} NDK
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{3F9BC73D-EB03-453a-B27B-20F9A664211A}","Status",%REG_DWORD%,0x0
+
+; Providers: {bf83b73c-cc3c-4342-a2ba-bb38ead7bb52} IPoIB
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{bf83b73c-cc3c-4342-a2ba-bb38ead7bb52}","Status",%REG_DWORD%,0x0
+
+; Providers: {2a219718-1373-11dc-8314-0800200c9a66} Ethernet
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{2a219718-1373-11dc-8314-0800200c9a66}","Status",%REG_DWORD%,0x0
+
+; Providers: {cb0b88ec-fb28-4b50-87cd-885c9bae58d4} MUX
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{cb0b88ec-fb28-4b50-87cd-885c9bae58d4}","Status",%REG_DWORD%,0x0
+
+; Providers: {83793EC3-E8A3-4801-BECF-5E921F79F06E} L2W
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{83793EC3-E8A3-4801-BECF-5E921F79F06E}","Status",%REG_DWORD%,0x0
+
+; Providers: {93c5d651-de7e-449c-9801-81c18c1d3dce} PD
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{93c5d651-de7e-449c-9801-81c18c1d3dce}","Status",%REG_DWORD%,0x0
+
+; Providers: {FB519A7D-886F-4A9D-A63F-28A34A6D469D} COMPLIB
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{FB519A7D-886F-4A9D-A63F-28A34A6D469D}","Status",%REG_DWORD%,0x0
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; USER COMPONENTS
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Providers: {B199CE55-F8BF-4147-B119-DACD1E5987A6} IBAL user1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{B199CE55-F8BF-4147-B119-DACD1E5987A6}","Status",%REG_DWORD%,0x0
+
+; Providers: {C66F5F72-DF10-45BB-948E-5482C551CD2B} IBAL user3
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{C66F5F72-DF10-45BB-948E-5482C551CD2B}","Status",%REG_DWORD%,0x0
+
+; Providers: {fec86576-9d3c-4e00-80ab-2c4abdbfbc86} ND Provider
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{fec86576-9d3c-4e00-80ab-2c4abdbfbc86}","Status",%REG_DWORD%,0x0
+
+; Providers: {1752F07C-7E5C-402c-9C5F-AD21E572F852} HCA
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{1752F07C-7E5C-402c-9C5F-AD21E572F852}","Status",%REG_DWORD%,0x0
+
+; Providers: {CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D} COMPLIB user
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","Enabled",%REG_DWORD%,0x1
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","EnableLevel",%REG_DWORD%,0x2
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","EnableProperty",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","MatchAllKeyword",%REG_DWORD%,0x0
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","MatchAnyKeyword",%REG_DWORD%,0x7fffffff
+HKLM,"System\CurrentControlSet\Control\WMI\Autologger\Mellanox-Kernel\{CA7A4CF7-8B0C-4C4D-96C3-505B8360EB2D}","Status",%REG_DWORD%,0x0
+
+
+
+[MLX4BUS.DelParamsReg]
+HKR,"Parameters","Sriov"
+
+
+[MLX4BUS_ExtendedHWID.SoftwareReg]
+HKR,"Parameters","UseExtendedHwidIPoIB",%REG_DWORD%,0x00000001
+HKR,"Parameters","UseExtendedHwidETH",%REG_DWORD%,0x00000001
+
+
+[WinCtxTune_reg]
+HKR,,icon,,"-5"
+HKR,,EnumPropPages32,,"winctxtune_bus.dll,MlxPropPageProvider"
+
+[Wctxtune.CopyFiles]
+winctxtune_bus.dll,,,2
+
+;*****************************************
+; IBBUS Service Install section
+;*****************************************
+
+[Ibbus.ServiceInstall]
+DisplayName     = %Ibbus.ServiceDesc%
+ServiceType     = %SERVICE_KERNEL_DRIVER%
+StartType       = %SERVICE_DEMAND_START%
+ErrorControl    = %SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\ibbus.sys
+LoadOrderGroup  = PnP Filter
+AddReg          = Ibbus.ParamsReg
+AddReg			= BootFlags.ParamsReg
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+[IBBUS.EventLog]
+AddReg = IBBUS.AddEventLogReg
+
+[IBBUS.AddEventLogReg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\ibbus.sys;%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+[Ibbus.ParamsReg]
+HKR,"Parameters","IbalDebugLevel",%REG_DWORD%,2
+HKR,"Parameters","IbalDebugFlags",%REG_DWORD%,0xffffffff
+HKR,"Parameters","SmiPollInterval",%REG_DWORD_NO_CLOBBER%,20000
+HKR,"Parameters","IocQueryTimeout",%REG_DWORD_NO_CLOBBER%,250
+HKR,"Parameters","IocQueryRetries",%REG_DWORD_NO_CLOBBER%,4
+HKR,"Parameters","IocPollInterval",%REG_DWORD_NO_CLOBBER%,0
+HKR,"Parameters","DebugFlags",%REG_DWORD%,0x80000000
+HKR,"Parameters","ReportPortNIC",%REG_DWORD%,1
+
+HKR,"Parameters","StaticChild",%REG_MULTI_SZ_NO_CLOBBER%,IPoIB
+;use the following line to add your device
+;HKR,"Parameters","StaticChild",%REG_MULTI_SZ_APPEND%,"XsigoBus"
+
+HKR,"Parameters\IPoIB","DeviceId",%REG_SZ%,"IBA\IPoIB"
+HKR,"Parameters\IPoIB","CompatibleId",%REG_MULTI_SZ%,"IBA\SID_1000066a00020000"
+HKR,"Parameters\IPoIB","HardwareId",%REG_MULTI_SZ%,"IBA\IPoIB"
+HKR,"Parameters\IPoIB","Description",%REG_SZ%,"Mellanox IPoIB Adapter"
+HKR,"Parameters\IPoIB","PartitionKey",%REG_SZ%,"0XFFFF-IPoIB"
+
+HKR,"Parameters\XsigoBus","DeviceId",%REG_SZ%,"IBA\XsigoBus"
+HKR,"Parameters\XsigoBus","CompatibleId",%REG_MULTI_SZ%,"IBA\SID_0000000002139702"
+HKR,"Parameters\XsigoBus","HardwareId",%REG_MULTI_SZ%,"IBA\XsigoBus"
+HKR,"Parameters\XsigoBus","Description",%REG_SZ%,"Xsigo Virtual Bus"
+HKR,"Parameters\XsigoBus","PartitionKey",%REG_SZ%,"0XFFFF-iXsigo"
+
+;****************************************
+; ND Filter Driver Service Install section
+;*****************************************
+
+[ndfltr.ServiceInstall]
+DisplayName = %ndfltr.ServiceDesc%
+ServiceType = %SERVICE_KERNEL_DRIVER%
+StartType = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ndfltr.sys
+LoadOrderGroup = PNP Filter
+Dependencies   = ibbus
+AddReg			= BootFlags.ParamsReg
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+;*****************************************
+; WinVerbs Service Install section
+;*****************************************
+
+[WinVerbs.ServiceInstall]
+DisplayName = %WinVerbs.ServiceDesc%
+ServiceType = %SERVICE_KERNEL_DRIVER%
+StartType = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\winverbs.sys
+LoadOrderGroup = PNP Filter
+Dependencies   = ibbus
+AddReg			= BootFlags.ParamsReg
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+;*****************************************
+; WinMad Service Install section
+;*****************************************
+
+[WinMad.ServiceInstall]
+DisplayName = %WinMad.ServiceDesc%
+ServiceType = %SERVICE_KERNEL_DRIVER%
+StartType = %SERVICE_DEMAND_START%
+ErrorControl = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\winmad.sys
+LoadOrderGroup = PNP Filter
+Dependencies   = winverbs
+AddReg			= BootFlags.ParamsReg
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+;*****************************************
+; Strings
+;*****************************************
+
+[Strings]
+MSFT = "Microsoft Corporation"
+MTL="Mellanox Technologies Ltd."
+MLX4BUS.ServiceDesc = "Mellanox ConnectX Bus Enumerator"
+; VPI
+MT25408.DeviceDesc="Mellanox ConnectX VPI (MT25408) - PCIe 2.0 IB SDR / 10GigE Network Adapter"
+MT25409.DeviceDesc="Mellanox ConnectX VPI (MT25409) - IB SDR / 10GigE Network Adapter"
+MT25418.DeviceDesc="Mellanox ConnectX VPI (MT25418) - PCIe 2.0 2.5GT/s, IB DDR / 10GigE Network Adapter"
+MT25428.DeviceDesc="Mellanox ConnectX VPI (MT25428) - PCIe 2.0 2.5GT/s, IB QDR / 10GigE Network Adapter"
+MT25419.DeviceDesc="Mellanox ConnectX VPI (MT25419) - PCIe 2.0 2.5GT/s, IB DDR / 10GigE Network Adapter"
+MT26418.DeviceDesc="Mellanox ConnectX VPI (MT26418) - PCIe 2.0 5GT/s, IB DDR / 10GigE Network Adapter"
+MT26419.DeviceDesc="Mellanox ConnectX VPI (MT26419) - PCIe 2.0 5GT/s, IB DDR / 10GigE Network Adapter"
+MT26488.DeviceDesc="Mellanox ConnectX VPI (MT26488) - PCIe 2.0 5GT/s, IB DDR / 10GigE Network Adapter"
+MT26428.DeviceDesc="Mellanox ConnectX VPI (MT26428) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT26429.DeviceDesc="Mellanox ConnectX VPI (MT26429) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT26438.DeviceDesc="Mellanox ConnectX VPI (MT26438) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT04096.DeviceDesc="Mellanox ConnectX VPI (MT04096) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT04097.DeviceDesc="Mellanox ConnectX VPI (MT04097) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT04098.DeviceDesc="Mellanox ConnectX VPI (MT04098) - PCIe 2.0 5GT/s, IB QDR / 10GigE Network Adapter"
+MT04099.DeviceDesc="Mellanox ConnectX-3 VPI (MT04099) Network Adapter"
+MT04100.DeviceDesc="Mellanox ConnectX-3 VPI (MT04100) Virtual Network Adapter"
+MT04101.DeviceDesc="Mellanox ConnectX (MT04101) Network Adapter"
+MT04102.DeviceDesc="Mellanox ConnectX (MT04102) Virtual Network Adapter"
+MT04103.DeviceDesc="Mellanox ConnectX-3 PRO VPI (MT04103) Network Adapter"
+MT04104.DeviceDesc="Mellanox ConnectX-3 PRO VPI (MT04104) Virtual Network Adapter"
+MT04105.DeviceDesc="Mellanox ConnectX (MT04105) Network Adapter"
+MT04106.DeviceDesc="Mellanox ConnectX (MT04106) Virtual Network Adapter"
+MT04107.DeviceDesc="Mellanox ConnectX (MT04107) Network Adapter"
+MT04108.DeviceDesc="Mellanox ConnectX (MT04108) Virtual Network Adapter"
+MT04109.DeviceDesc="Mellanox ConnectX (MT04109) Network Adapter"
+MT04110.DeviceDesc="Mellanox ConnectX (MT04110) Virtual Network Adapter"
+MT04111.DeviceDesc="Mellanox ConnectX (MT04111) Network Adapter"
+MT04112.DeviceDesc="Mellanox ConnectX (MT04112) Virtual Network Adapter"
+; EN
+MT25448.DeviceDesc="Mellanox ConnectX EN (MT25448) - PCIe 2.0 2.5GT/s, 10GigE Ethernet Adapter"
+MT25449.DeviceDesc="Mellanox ConnectX EN (MT25449) - PCIe 2.0 2.5GT/s, 10GigE Ethernet Adapter"
+MT25458.DeviceDesc="Mellanox ConnectX EN (MT25458) - PCIe 2.0 2.5GT/s, 10GigE 10GBaseT Ethernet Adapter"
+MT26448.DeviceDesc="Mellanox ConnectX EN (MT26448) - PCIe 2.0 5GT/s, 10GigE Ethernet Adapter"
+MT26449.DeviceDesc="Mellanox ConnectX EN (MT26449) - PCIe 2.0 5GT/s, 10GigE Ethernet Adapter"
+MT26458.DeviceDesc="Mellanox ConnectX EN (MT26458) - PCIe 2.0 5GT/s, 10GigE 10GBaseT Ethernet Adapter"
+MT26468.DeviceDesc="Mellanox ConnectX EN (MT26468) - PCIe 2.0 5GT/s, 10GigE Ethernet Adapter"
+MT26469.DeviceDesc="Mellanox ConnectX EN (MT26469) - PCIe 2.0 5GT/s, 10GigE Ethernet Adapter"
+MT26478.DeviceDesc="Mellanox ConnectX EN (MT26478) - PCIe 2.0 5GT/s, 40GigE Ethernet Adapter"
+
+;;;;; cards of other companies
+MT04100_HP_Maze.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Virtual Network Adapter"
+MT04100_HP_Mesa.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Virtual Network Adapter"
+MT04103_HP_Maze.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Adapter"
+MT04103_HP_Mesa.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Adapter"
+MT04104_HP_Maze.DeviceDesc = "HP Ethernet 10G 2-port 546SFP+ Virtual Network Adapter"
+MT04104_HP_Mesa.DeviceDesc = "HP Ethernet 10G 2-port 546FLR-SFP+ Virtual Network Adapter"
+MT04099_HP_Attitash_18cd.DeviceDesc = "HP Infiniband QDR/Ethernet 10Gb 2-port 544FLR-QSFP Adapter"
+MT04100_HP_Attitash_18cd.DeviceDesc = "HP Infiniband QDR/Ethernet 10Gb 2-port 544FLR-QSFP Virtual Network Adapter"
+MT04100_HP_Attitash_22f1.DeviceDesc = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Virtual Network Adapter"
+MT04103_HP_Attitash_22f1.DeviceDesc = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Adapter"
+MT04104_HP_Attitash_22f1.DeviceDesc = "HP InfiniBand QDR/Ethernet 10Gb 2-port 544+M Virtual Network Adapter"
+MT04100_HP_Attitash_22f2.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Virtual Network Adapter"
+MT04103_HP_Attitash_22f2.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Adapter"
+MT04104_HP_Attitash_22f2.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+M Virtual Network Adapter"
+MT04100_HP_Attitash_22f3.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Virtual Network Adapter"
+MT04103_HP_Attitash_22f3.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Adapter"
+MT04104_HP_Attitash_22f3.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+QSFP Virtual Network Adapter"
+MT04100_HP_Attitash_22f4.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Virtual Network Adapter"
+MT04103_HP_Attitash_22f4.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Adapter"
+MT04104_HP_Attitash_22f5.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb/40Gb 2-port 544+FLR-QSFP Virtual Network Adapter"
+MT04100_HP_Attitash_22f5.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Virtual Network Adapter"
+MT04103_HP_Attitash_22f5.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Adapter"
+MT04104_HP_Attitash_22f4.DeviceDesc = "HP InfiniBand FDR/Ethernet 10Gb 2-port 544+FLR-QSFP Virtual Network Adapter"
+
+;ATTO devices descreption
+MT04103_ATTO_NQ41.DeviceDesc = "ATTO FastFrame NQ41 Adapter"
+MT04103_ATTO_NQ42.DeviceDesc = "ATTO FastFrame NQ42 Adapter"
+MT04103_ATTO_NQ11.DeviceDesc = "ATTO FastFrame NQ11 Adapter"
+MT04103_ATTO_NQ12.DeviceDesc = "ATTO FastFrame NQ12 Adapter"
+
+DiskId = "Mellanox Mlx4 Bus installation disk"
+SPSVCINST_NULL = 0x0
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_DWORD              = 0x00010001
+REG_SZ                 = 0x00000000
+Ibbus.ServiceDesc = "Mellanox InfiniBand Bus/AL (Filter Driver)"
+ndfltr.ServiceDesc = "NetworkDirect Service"
+WinVerbs.ServiceDesc = "WinVerbs Service"
+WinMad.ServiceDesc = "WinMad Service"
+
+REG_DWORD_NO_CLOBBER   = 0x00010003
+REG_MULTI_SZ	       = 0x00010000
+
+REG_MULTI_SZ_NO_CLOBBER = 0x00010002
+REG_MULTI_SZ_APPEND    = 0x00010008
+DIRID_SYSTEM           = 11
+DIRID_DRIVERS          = 12

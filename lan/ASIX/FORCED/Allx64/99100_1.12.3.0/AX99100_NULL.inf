@@ -1,0 +1,62 @@
+
+;****************************************************************
+; ASIX AX99100 PCIe to Muilt I/O Controller
+;
+; NULL Driver INF file
+;
+; Copyright 2016, ASIX Electronics Corporation
+;****************************************************************
+
+[Version]
+CatalogFile=AX99100.cat 
+signature="$Chicago$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+DriverVer=09/11/2018, 1.12.3.0
+
+[Manufacturer]
+%ProviderName%=AX99100_Null_Function, NTamd64
+
+; Manufacturer Name Section
+
+[AX99100_Null_Function]
+%AX99100NullFunctionName%=AX99100_SYSTEM_DEVICE,PCI\VEN_125B&DEV_9105&SUBSYS_1000A000&REV_00
+
+[AX99100_Null_Function.NTamd64]
+%AX99100NullFunctionName%=AX99100_SYSTEM_DEVICE,PCI\VEN_125B&DEV_9105&SUBSYS_1000A000&REV_00
+
+;----------------------------------------
+; BRIDGE Port Install
+;----------------------------------------
+
+;;;;  X86 ;;;; 
+
+[AX99100_SYSTEM_DEVICE.NT]
+AddReg=Nothing.AddReg
+
+[AX99100_SYSTEM_DEVICE.NT.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+;;;;  AMD64 ;;;;
+ 
+[AX99100_SYSTEM_DEVICE.NTamd64]
+AddReg=Nothing.AddReg
+
+[AX99100_SYSTEM_DEVICE.NTamd64.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[Nothing.AddReg]
+;No entries required to add
+
+; User readable strings
+;----------------------------------------------------------
+
+[Strings]
+ProviderName="ASIX"
+SPSVCINST_ASSOCSERVICE = 0x00000002
+AX99100NullFunctionName="AX99100 PCIe to IO-Bridge"
+
+;-----------------------
+; END OF FILE
+;-----------------------

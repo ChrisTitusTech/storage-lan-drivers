@@ -1,0 +1,314 @@
+[Version]
+Signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %DAVICOM%
+CatalogFile = dm9usb.cat
+DriverVer   = 07/03/2012, 5.0.3.0703
+
+[Manufacturer]
+%DAVICOM%   = DM9USB,NTx86,NTamd64
+
+[ControlFlags]
+ExcludeFromSelect = USB\VID_0A46&PID_9620, USB\VID_0A46&PID_9621, USB\VID_0A46&PID_0267, USB\VID_0A46&PID_0268, USB\VID_0A46&PID_0269, USB\VID_0A46&PID_1267, USB\VID_0A46&PID_1268, USB\VID_0A46&PID_1269
+
+[DM9USB.NTx86]
+; DisplayName          					Section       				DeviceID
+; -----------           				-------       				--------
+%DM9620.DeviceDesc%    					= DM9621.Ndi,  				USB\VID_0A46&PID_9620
+%DM9621.DeviceDesc%    					= DM9621.Ndi,  				USB\VID_0A46&PID_9621
+%DM9620A_Fiber.DeviceDesc%				= DM9621A_Fiber.Ndi,		USB\VID_0A46&PID_0267
+%DM9620A_EM.DeviceDesc%					= DM9621A_EM.Ndi,			USB\VID_0A46&PID_0268
+%DM9620A.DeviceDesc%    				= DM9621A.Ndi,  			USB\VID_0A46&PID_0269
+%DM9621A_Fiber.DeviceDesc%				= DM9621A_Fiber.Ndi,		USB\VID_0A46&PID_1267
+%DM9621A_EM.DeviceDesc%					= DM9621A_EM.Ndi,  			USB\VID_0A46&PID_1268
+%DM9621A.DeviceDesc%					= DM9621A.Ndi,  			USB\VID_0A46&PID_1269
+
+[DM9USB.NTamd64]
+; DisplayName           				Section       				DeviceID
+; -----------           				-------       				--------
+%DM9620.DeviceDesc%    					= DM9621.Ndi,  				USB\VID_0A46&PID_9620
+%DM9621.DeviceDesc%    					= DM9621.Ndi,  				USB\VID_0A46&PID_9621
+%DM9620A_Fiber.DeviceDesc%				= DM9621A_Fiber.Ndi,		USB\VID_0A46&PID_0267
+%DM9620A_EM.DeviceDesc%					= DM9621A_EM.Ndi,			USB\VID_0A46&PID_0268
+%DM9620A.DeviceDesc%    				= DM9621A.Ndi,  			USB\VID_0A46&PID_0269
+%DM9621A_Fiber.DeviceDesc%				= DM9621A_Fiber.Ndi,		USB\VID_0A46&PID_1267
+%DM9621A_EM.DeviceDesc%					= DM9621A_EM.Ndi,  			USB\VID_0A46&PID_1268
+%DM9621A.DeviceDesc%					= DM9621A.Ndi,  			USB\VID_0A46&PID_1269
+
+;****************************************************************
+[DM9621.Ndi]
+AddReg          = DM9USB.NT.Reg, DM9USB.Params, DM9621.Params, DM9621.WOL, DM9621.VLAN, DM9USB.Speed
+Characteristics = 0x84
+BusType         = 15 
+CopyFiles       = CopyFile.Sys
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+[DM9621A.Ndi]
+AddReg          = DM9USB.NT.Reg, DM9USB.Params, DM9621.Params, DM9621.WOL, DM9621.VLAN, DM9621A.Params, DM9621A.WOL, DM9USB.IM, DM9USB.Speed
+Characteristics = 0x84
+BusType         = 15 
+CopyFiles       = CopyFile.Sys
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+[DM9621A_EM.Ndi]
+AddReg          = DM9USB.NT.Reg, DM9USB.Params, DM9621.Params, DM9621.WOL, DM9621.VLAN, DM9621A.Params, DM9621A.WOL, DM9USB.EM, DM9USB.FixSpeed
+Characteristics = 0x84
+BusType         = 15 
+CopyFiles       = CopyFile.Sys
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+[DM9621A_Fiber.Ndi]
+AddReg          = DM9USB.NT.Reg, DM9USB.Params, DM9621.Params, DM9621.WOL, DM9621.VLAN, DM9621A.Params, DM9621A.WOL, DM9USB.IM, DM9USB.FixSpeed
+Characteristics = 0x84
+BusType         = 15 
+CopyFiles       = CopyFile.Sys
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD 
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[DM9621.Ndi.Services]
+AddService = DM9USB, 2, DM9USB.Service, Common.EventLog
+[DM9621A.Ndi.Services]
+AddService = DM9USB, 2, DM9USB.Service, Common.EventLog
+[DM9621A_EM.Ndi.Services]
+AddService = DM9USB, 2, DM9USB.Service, Common.EventLog
+[DM9621A_Fiber.Ndi.Services]
+AddService = DM9USB, 2, DM9USB.Service, Common.EventLog
+
+;[DM9USB.ndis.copyfiles.NT]
+;dm9usb.sys,,,2
+
+;*******************************************************************************
+; Driver parameters
+;*******************************************************************************
+
+[DM9USB.EM]
+HKR, ,Reg2EH,          0, "32"   ; external PHY Force Mode Control Register (2EH)
+
+[DM9USB.IM]
+HKR, ,Reg2EH,          0, "0"   ; external PHY Force Mode Control Register (2EH)
+
+[DM9USB.FixSpeed]
+HKR, ,ConnectionType,          0, "9"   ; 100Base-TX Full_Duplex
+
+[DM9USB.Params]
+;Mac address
+HKR,Ndi\params\NetworkAddress,ParamDesc,0,%NetworkAddress%
+HKR,Ndi\params\NetworkAddress,type,0,"edit"
+HKR,Ndi\params\NetworkAddress,default,0,"000000000000"
+HKR,Ndi\params\NetworkAddress,LimitText,0,"12"
+HKR,Ndi\params\NetworkAddress,UpperCase,0,"1"
+HKR,Ndi\params\NetworkAddress,Optional,0,"1"
+
+;Flow  control
+HKR,Ndi\params\FlowControl,ParamDesc,0,%FlowControl%
+HKR,Ndi\params\FlowControl,default,0, "1"
+HKR,Ndi\params\FlowControl,type,0, "enum"
+HKR,Ndi\params\FlowControl\enum, "0",0,%Disabled%
+HKR,Ndi\params\FlowControl\enum, "1",0,%Enabled%
+
+[DM9USB.Speed]
+HKR,Ndi\Params\ConnectionType,ParamDesc,,"ConnectionType"
+HKR,Ndi\Params\ConnectionType,default,,"15"
+HKR,Ndi\Params\ConnectionType,type,,"enum"
+HKR,Ndi\Params\ConnectionType\enum,15,,"Auto-Negotiation"
+HKR,Ndi\Params\ConnectionType\enum,4,,"10Base-T"
+HKR,Ndi\Params\ConnectionType\enum,5,,"10Base-T Full_Duplex"
+HKR,Ndi\Params\ConnectionType\enum,8,,"100Base-TX"
+HKR,Ndi\Params\ConnectionType\enum,9,,"100Base-TX Full_Duplex"
+
+[DM9621.Params]
+;Checksum offload
+HKR,Ndi\params\CksOffload,ParamDesc,,%ChecksumOffload%
+HKR,Ndi\params\CksOffload,default,,"0"
+HKR,Ndi\params\CksOffload,type,,"enum"
+HKR,Ndi\params\CksOffload\enum,0,,%Disabled%
+HKR,Ndi\params\CksOffload\enum,1,,%RxEnabled%
+HKR,Ndi\params\CksOffload\enum,2,,%TxEnabled%
+HKR,Ndi\params\CksOffload\enum,3,,%RxTxEnabled%
+
+[DM9621.WOL]
+;Wake Up on LAN
+HKR,Ndi\Params\WakeUpCapabilities,ParamDesc,,%WakeUpCapabilities%
+HKR,Ndi\Params\WakeUpCapabilities,default,,"0"
+HKR,Ndi\Params\WakeUpCapabilities,type,,"enum"
+HKR,Ndi\Params\WakeUpCapabilities\enum,0,,"Disable"
+HKR,Ndi\Params\WakeUpCapabilities\enum,2,,"WOLMagicPacket"
+HKR,Ndi\Params\WakeUpCapabilities\enum,4,,"WOLSampleFrame"
+HKR,Ndi\Params\WakeUpCapabilities\enum,14,,"All"
+
+[DM9621.VLAN]
+HKR,Ndi\Params\VLAN_ID,  ParamDesc,  , %VLANID%
+HKR,Ndi\Params\VLAN_ID,  Type,       , "long"
+HKR,Ndi\Params\VLAN_ID,  Default,    , "0"
+HKR,Ndi\params\VLAN_ID,  min,        , "0"
+HKR,Ndi\params\VLAN_ID,  max,        , "4095"
+HKR,Ndi\params\VLAN_ID,  step,       , "1"
+HKR,NDI\params\VLAN_ID,  UpperCase,  , "1"
+HKR,NDI\params\VLAN_ID,  optional,   , "1"
+
+HKR,Ndi\Params\QosTag,ParamDesc,,%QosTag%
+HKR,Ndi\Params\QosTag,default,,"0"
+HKR,Ndi\Params\QosTag,type,,"enum"
+HKR,Ndi\Params\QosTag\enum,0,,"Disable"
+HKR,Ndi\Params\QosTag\enum,1,,"Enable"
+
+
+[DM9621A.Params]
+;Energy Efficient Ethernet
+HKR,Ndi\params\EEE,ParamDesc,0,%EEE%
+HKR,Ndi\params\EEE,default,0, "1"
+HKR,Ndi\params\EEE,type,0, "enum"
+HKR,Ndi\params\EEE\enum, "0",0,%Disabled%
+HKR,Ndi\params\EEE\enum, "1",0,%Enabled%
+
+;NetWork Detach
+HKR,Ndi\params\NetworkDetach,ParamDesc,0,%NetworkDetach%
+HKR,Ndi\params\NetworkDetach,default,0, "0"
+HKR,Ndi\params\NetworkDetach,type,0, "enum"
+HKR,Ndi\params\NetworkDetach\enum, "0",0,%Disabled%
+HKR,Ndi\params\NetworkDetach\enum, "1",0,%Enabled%
+
+;ARP/NS Offload
+HKR,Ndi\Params\ARPNSOffload,ParamDesc,,%ARPNSOffload%
+HKR,Ndi\Params\ARPNSOffload,default,,"0"
+HKR,Ndi\Params\ARPNSOffload,type,,"enum"
+HKR,Ndi\Params\ARPNSOffload\enum,0,,"Disable"
+HKR,Ndi\Params\ARPNSOffload\enum,1,,"Enable"
+
+[DM9621A.WOL]
+;Wake Up on LAN
+HKR,Ndi\Params\WakeUpCapabilities,ParamDesc,,%WakeUpCapabilities%
+HKR,Ndi\Params\WakeUpCapabilities,default,,"0"
+HKR,Ndi\Params\WakeUpCapabilities,type,,"enum"
+HKR,Ndi\Params\WakeUpCapabilities\enum,0,,"Disable"
+HKR,Ndi\Params\WakeUpCapabilities\enum,2,,"WOLMagicPacket"
+HKR,Ndi\Params\WakeUpCapabilities\enum,4,,"WOLSampleFrame"
+HKR,Ndi\Params\WakeUpCapabilities\enum,8,,"WOLLinkChange"
+HKR,Ndi\Params\WakeUpCapabilities\enum,14,,"All"
+;*******************************************************************************
+; Install section for Windows 2000
+;*******************************************************************************
+
+[DM9USB.NT.Reg]
+; Interfaces
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi,            Service,    0, "DM9USB"
+
+HKR,,LogErrorMessages, 0, "1"
+
+[DM9USB.Service]
+DisplayName    = %DM9621.DeviceDesc%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\dm9usb.sys
+LoadOrderGroup = NDIS
+
+[Common.EventLog]
+AddReg = Common.AddEventLog.Reg
+
+[Common.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\system32\drivers\DM9USB.sys"
+HKR, , TypesSupported  , 0x00010001, 7
+
+[CopyFile.Sys]
+DM9USB.sys,,,2
+
+;****************************************************************
+; WDF Coinstaller installation section
+;****************************************************************
+;[DestinationDirs]
+;DM9USB.CoInstaller.CopyFiles=11
+
+[DM9621.Ndi.CoInstallers]
+AddReg=DM9USB.CoInstaller.AddReg
+CopyFiles=DM9USB.CoInstaller.CopyFiles
+
+[DM9621A.Ndi.CoInstallers]
+AddReg=DM9USB.CoInstaller.AddReg
+CopyFiles=DM9USB.CoInstaller.CopyFiles
+
+[DM9621A_EM.Ndi.CoInstallers]
+AddReg=DM9USB.CoInstaller.AddReg
+CopyFiles=DM9USB.CoInstaller.CopyFiles
+
+[DM9621A_Fiber.Ndi.CoInstallers]
+AddReg=DM9USB.CoInstaller.AddReg
+CopyFiles=DM9USB.CoInstaller.CopyFiles
+
+[DM9USB.CoInstaller.AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[DM9USB.CoInstaller.CopyFiles]
+WdfCoInstaller01009.dll
+
+[DM9621.Ndi.Wdf]
+KmdfService = DM9USB, DM9USB.wdfsect
+
+[DM9621A.Ndi.Wdf]
+KmdfService = DM9USB, DM9USB.wdfsect
+
+[DM9621A_EM.Ndi.Wdf]
+KmdfService = DM9USB, DM9USB.wdfsect
+
+[DM9621A_Fiber.Ndi.Wdf]
+KmdfService = DM9USB, DM9USB.wdfsect
+
+
+[DM9USB.wdfsect]
+KmdfLibraryVersion = 1.9
+
+;*******************************************************************************
+; Destination directories
+;*******************************************************************************
+
+[DestinationDirs]
+CopyFile.Sys = 12
+DM9USB.CoInstaller.CopyFiles=11
+
+[SourceDisksNames]
+1=%DISKNAME%,,
+
+[SourceDisksFiles]
+dm9usb.sys=1,,dm9usb.sys,10000
+WdfCoInstaller01009.dll = 1
+
+;*******************************************************************************
+; Localizable strings
+;*******************************************************************************
+
+[Strings]
+DAVICOM = "DAVICOM Semiconductor, Inc."
+ConnectionType = "Connection Type"
+NetworkAddress = "Network Address"
+ChecksumOffload = "Checksum Offload"
+FlowControl = "Flow Control"
+Disabled = "Disable"
+Enabled = "Enable"
+RxTxEnabled = "Tx & Rx Enable"
+TxEnabled = "Tx Enable"
+RxEnabled = "Rx Enable"
+WakeUpCapabilities = "Wake Up Capabilities"
+VLANID = "VLAN ID"
+QosTag = "QosTag"
+ARPNSOffload = "ARP/NS Offload"
+EEE = "Energy Efficient Ethernet"
+NetworkDetach = "Network Detach"
+
+;Source Disk Name
+DISKNAME = "DM96xx USB To Fast Ethernet Adapter Driver Disk"
+
+DM9620.DeviceDesc       	= "DM9620 USB To Fast Ethernet Adapter(KMDF)"
+DM9621.DeviceDesc       	= "DM9621 USB To Fast Ethernet Adapter(KMDF)"
+DM9620A.DeviceDesc       	= "DM9620A USB To Fast Ethernet Adapter(KMDF)"
+DM9620A_EM.DeviceDesc		= "DM9620A To Fast Ethernet"
+DM9620A_Fiber.DeviceDesc  	= "DM9620A USB To Fiber Adapter"
+DM9621A.DeviceDesc    		= "DM9621A USB To Fast Ethernet Adapter(KMDF)"
+DM9621A_EM.DeviceDesc    	= "DM9621A To Fast Ethernet"
+DM9621A_Fiber.DeviceDesc  	= "DM9621A USB To Fiber Adapter"

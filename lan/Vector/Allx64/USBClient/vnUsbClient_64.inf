@@ -1,0 +1,157 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature      = "$CHICAGO$"
+Class          = Vector-Hardware
+ClassGuid      = {D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider       = %MSFT%
+DriverVer=07/11/2017,10.2.12.0
+CatalogFile.NTamd64=vnUsbClient_64.cat
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+; DisplayName            Section           DeviceId
+; -----------            -------           --------
+%vnUsbCl8911.DRVDESC%=vnUsbCl8911_Inst,   PCI\VEN_19E2&DEV_4010
+%vnUsbCl8914.DRVDESC%=vnUsbCl8914_Inst,   PCI\VEN_19E2&DEV_4020
+
+;-------------------------------------------------------------------------
+; Class Section
+;-------------------------------------------------------------------------
+[ClassInstall32]
+Addreg         = CANClassReg
+
+[CANClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+;-------------------------------------------------------------------------
+; Device Install Section
+;-------------------------------------------------------------------------
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%MSFT%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vnUsbClient8911.sys = 1
+vnUsbClient8914.sys = 1
+
+[SourceDisksNames]
+1=%DISK_NAME%,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections for USBClient VN8911
+;------------------------------------------------------------------------------
+[vnUsbCl8911_Inst.NTamd64]
+CopyFiles      = @vnUsbClient8911.sys
+
+[vnUsbCl8911_Inst.NTamd64.Services]
+AddService     = vnUsbCl8911,0x00000002,vnUsbCl8911_Service
+
+[vnUsbCl8911_Inst.NTamd64.HW]
+AddReg=vnUsbCl8911.hw.registry
+
+[vnUsbCl8911_Service]
+DisplayName    = %vnUsbCl8911.SVCDESC%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vnUsbClient8911.sys
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections for USBClient VN8914
+;------------------------------------------------------------------------------
+[vnUsbCl8914_Inst.NTamd64]
+CopyFiles      = @vnUsbClient8914.sys
+
+[vnUsbCl8914_Inst.NTamd64.Services]
+AddService     = vnUsbCl8914,0x00000002,vnUsbCl8914_Service
+
+[vnUsbCl8914_Inst.NTamd64.HW]
+AddReg=vnUsbCl8914.hw.registry
+
+[vnUsbCl8914_Service]
+DisplayName    = %vnUsbCl8914.SVCDESC%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vnUsbClient8914.sys
+
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[vnUsbCl8911_Inst.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[vnUsbCl8914_Inst.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[vnUsbCl8911_Inst.NTamd64.Wdf]
+KmdfService    = vnUsbCl8911, vnUsbCl8911_wdfsect
+
+[vnUsbCl8911_wdfsect]
+KmdfLibraryVersion = 1.9
+
+[vnUsbCl8914_Inst.NTamd64.Wdf]
+KmdfService    = vnUsbCl8914, vnUsbCl8914_wdfsect
+
+[vnUsbCl8914_wdfsect]
+KmdfLibraryVersion = 1.9
+
+[vnUsbCl8911.hw.registry] ; MSI support
+HKR, Interrupt Management,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001, 1
+
+[vnUsbCl8914.hw.registry] ; MSI support
+HKR, Interrupt Management,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties,, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001, 1
+
+;------------------------------------------------------------------------------
+; WIBU signature
+;------------------------------------------------------------------------------
+HKR,,fileSignature,0x00000001,00
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="USBClient"
+MSFT           = "Vector Informatik GmbH"
+ClassName      = "Vector-Hardware"
+vnUsbCl8911.SVCDESC   = "USBClient8911"
+vnUsbCl8911.DRVDESC   = "USBClient8911"
+vnUsbCl8914.SVCDESC   = "USBClient8914"
+vnUsbCl8914.DRVDESC   = "USBClient8914"
+DISK_NAME      = "vnUsbClient-Driver"
+

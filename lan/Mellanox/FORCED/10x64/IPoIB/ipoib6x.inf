@@ -1,0 +1,670 @@
+; /*****************************************************************************
+; ** COPYRIGHT (C) 2008-2009 Mellanox                                        **
+; ****************************************************************************/
+
+[version]
+;Layoutfile parameter is reserved for internal Microsoft use only
+;LayoutFile = layout.inf
+Signature   = "$Chicago$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Mellanox%
+Compatible  = 1
+DriverVer=03/08/2017,5.35.12978
+CatalogFile=ipoib6x.cat
+
+[Manufacturer]
+%Mellanox%     = Mellanox,ntamd64.10.0
+
+[Mellanox.ntamd64.10.0]
+; DisplayName           					Section       		DeviceID
+; -----------           					-------       		--------
+%ipoib6x_CX.DeviceDesc%      			= ipoib6x.ndi,	    	IBA\ConnectX_IPoIB	      	; Mellanox ConnectX Internet Protocol over InfiniBand Adapter
+%ipoib6x_CX_V.DeviceDesc%  			= ipoib6x_V.ndi,  	IBA\ConnectX_IPoIBP       	; Mellanox ConnectX Internet Protocol over InfiniBand Adapter with partition key (virtual)
+%ipoib6x_CX2.DeviceDesc%     			= ipoib6x.ndi,	    	IBA\ConnectX-2_IPoIB      	; Mellanox ConnectX-2 Internet Protocol over InfiniBand Adapter
+%ipoib6x_CX2_V.DeviceDesc%     		= ipoib6x_V.ndi,  	IBA\ConnectX-2_IPoIBP     	; Mellanox ConnectX-2 Internet Protocol over InfiniBand Adapter with partition key (virtual)
+%ipoib6x_CX3.DeviceDesc%     			= ipoib6x.ndi,		IBA\ConnectX-3_IPoIB      	; Mellanox ConnectX-3 Internet Protocol over InfiniBand Adapter
+%ipoib6x_CX3_V.DeviceDesc%     		= ipoib6x_V.ndi,	IBA\ConnectX-3_IPoIBP     	; Mellanox ConnectX-3 Internet Protocol over InfiniBand Adapter with partition key (virtual)
+%ipoib6x_CX3Pro.DeviceDesc%  			= ipoib6x.ndi,     	IBA\ConnectX-3Pro_IPoIB   	; Mellanox ConnectX-3Pro Internet Protocol over InfiniBand Adapter
+%ipoib6x_CX3Pro_V.DeviceDesc%  		= ipoib6x_V.ndi,  	IBA\ConnectX-3Pro_IPoIBP  ; Mellanox ConnectX-3Pro Internet Protocol over InfiniBand Adapter with partition key (virtual)
+
+;;;;; cards of other companies
+
+; HP Attitash 0x18cd
+%ipoib6x_CX3.18cd.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&18cd103c	              ; IPoIB name for CX3
+%ipoib6x_CX3_V.18cd.DeviceDesc%  		= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&18cd103c	  		; part_man name for CX3
+
+; HP Attitash 0x22f1
+%ipoib6x_CX3Pro.22f1.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3Pro_IPoIB&22f1103c	              ; IPoIB name for CX3 Pro
+%ipoib6x_CX3Pro.22f1.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&22f1103c	              ; IPoIB name for CX3 in VM
+%ipoib6x_CX3Pro_V.22f1.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3Pro_IPoIBP&22f1103c	       ; part_man name for CX3 Pro
+%ipoib6x_CX3Pro_V.22f1.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&22f1103c	       	; part_man name for CX3 in VM
+
+; HP Attitash 0x22f2
+%ipoib6x_CX3Pro.22f2.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3Pro_IPoIB&22f2103c	              ; IPoIB name for CX3 Pro
+%ipoib6x_CX3Pro.22f2.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&22f2103c	              ; IPoIB name for CX3 in VM
+%ipoib6x_CX3Pro_V.22f2.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3Pro_IPoIBP&22f2103c	       ; part_man name for CX3 Pro
+%ipoib6x_CX3Pro_V.22f2.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&22f2103c	       	; part_man name for CX3 in VM
+
+; HP Attitash 0x22f3
+%ipoib6x_CX3Pro.22f3.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3Pro_IPoIB&22f3103c	              ; IPoIB name for CX3 Pro
+%ipoib6x_CX3Pro.22f3.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&22f3103c	              ; IPoIB name for CX3 in VM
+%ipoib6x_CX3Pro_V.22f3.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3Pro_IPoIBP&22f3103c	       ; part_man name for CX3 Pro
+%ipoib6x_CX3Pro_V.22f3.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&22f3103c	       	; part_man name for CX3 in VM
+
+; HP Attitash 0x22f4
+%ipoib6x_CX3Pro.22f4.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3Pro_IPoIB&22f4103c	              ; IPoIB name for CX3 Pro
+%ipoib6x_CX3Pro.22f4.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&22f4103c	              ; IPoIB name for CX3 in VM
+%ipoib6x_CX3Pro_V.22f4.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3Pro_IPoIBP&22f4103c	       ; part_man name for CX3 Pro
+%ipoib6x_CX3Pro_V.22f4.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&22f4103c	       	; part_man name for CX3 in VM
+
+; HP Attitash 0x22f5
+%ipoib6x_CX3Pro.22f5.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3Pro_IPoIB&22f5103c	              ; IPoIB name for CX3 Pro
+%ipoib6x_CX3Pro.22f5.DeviceDesc%  		= ipoib6x.ndi,  IBA\ConnectX-3_IPoIB&22f5103c	              ; IPoIB name for CX3 in VM
+%ipoib6x_CX3Pro_V.22f5.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3Pro_IPoIBP&22f5103c	       ; part_man name for CX3 Pro
+%ipoib6x_CX3Pro_V.22f5.DeviceDesc%  	= ipoib6x_V.ndi,  IBA\ConnectX-3_IPoIBP&22f5103c	       	; part_man name for CX3 in VM
+
+
+; Windows NT specific entry
+
+[ipoib6x.ndi.ntamd64]
+Characteristics = 0x81 ; NCF_HAS_UI | NCF_VIRTUAL
+AddReg          = cx.reg, cx_pf.reg, ipoib6x.reg, WinCtxTune_reg
+DelReg          = cx_del.reg
+CopyFiles       = IpoibCopyFiles, WctxtuneCopyFiles
+*IfType         = 6		; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0		; NdisMedium802_3
+*PhysicalMediaType = 14		; NdisPhysicalMedium802_3
+
+[ipoib6x.ndi.ntamd64.Services]
+AddService = ipoib6x, 2, ipoib6x.Service, common.EventLog
+
+
+;
+; VIPoIB (Virtual IPoIB Adapter)
+;
+[ipoib6x_V.ndi.ntamd64]
+Characteristics = 0x81 ; NCF_HAS_UI | NCF_VIRTUAL
+AddReg			= cx.reg, cx_V.reg, ipoib6x.reg, WinCtxTune_reg
+DelReg          = cx_del.reg
+CopyFiles		= IpoibCopyFiles, WctxtuneCopyFiles
+*IfType 		= 6 	; IF_TYPE_ETHERNET_CSMACD
+*MediaType		= 0 	; NdisMedium802_3
+*PhysicalMediaType = 14 	; NdisPhysicalMedium802_3
+
+[ipoib6x_V.ndi.ntamd64.Services]
+AddService = ipoib6x, 2, ipoib6x.Service, common.EventLog
+
+
+;-----------------------------------------------------------------------------
+; cx common
+;
+[cx.reg]
+HKR, NDI\Params\NumTcb,         ParamDesc,  0, "%TransmitControlBlocks%"
+HKR, NDI\Params\NumTcb,         default,    0, "16"
+HKR, NDI\Params\NumTcb,         min,        0, "1"
+HKR, NDI\Params\NumTcb,         max,        0, "00000064"
+HKR, NDI\Params\NumTcb,         step,       0, "1"
+HKR, NDI\Params\NumTcb,         Base,       0, "10"
+HKR, NDI\Params\NumTcb,         type,       0, "int"
+HKR, "",                        NumTcb,     %FLG_ADDREG_NOCLOBBER%, "16"
+
+HKR, NDI\Params\SendCompletionMethod,  ParamDesc, 0, "%SendCompletionMethod%"
+HKR, NDI\Params\SendCompletionMethod,  Type,      0, "enum"
+HKR, NDI\Params\SendCompletionMethod,  Default,   0, "0"
+HKR, NDI\Params\SendCompletionMethod,  Optional,  0, "0"
+HKR, NDI\Params\SendCompletionMethod\enum,  "0",  0, "%Polling%"
+HKR, NDI\Params\SendCompletionMethod\enum,  "1",  0, "%Interrupts%"
+HKR, "", SendCompletionMethod, 0, "0"
+
+HKR, NDI\Params\RecvCompletionMethod,  ParamDesc, 0, "%RecvCompletionMethod%"
+HKR, NDI\Params\RecvCompletionMethod,  Type,  0, "enum"
+HKR, NDI\Params\RecvCompletionMethod,  Default, 0, "1"
+HKR, NDI\Params\RecvCompletionMethod,  Optional, 0, "0"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "0", 0, "%Polling%"
+HKR, NDI\Params\RecvCompletionMethod\enum,  "1", 0, "%Adaptive%"
+;Fix RM:-443273, delete uncorrect registry value.
+HKR, NDI\Params\RecvCompletionMethod\enum,  "2", 0x00000004 , ""
+HKR, "", RecvCompletionMethod, 0, "1"
+
+HKR, NDI\Params\*JumboPacket ,         ParamDesc,  0, "%MaxFrameSize%"
+HKR, NDI\Params\*JumboPacket ,         default,    0, "4092"
+HKR, NDI\Params\*JumboPacket ,         min,        0, "1500"
+HKR, NDI\Params\*JumboPacket ,         max,        0, "4092"
+HKR, NDI\Params\*JumboPacket ,         step,       0, "1"
+HKR, NDI\Params\*JumboPacket ,         Base,       0, "10"
+HKR, NDI\Params\*JumboPacket ,         type,       0, "int"
+HKR, "", *JumboPacket ,  %FLG_ADDREG_NOCLOBBER%, "4092"
+
+HKR, NDI\Params\*NetworkDirect,            ParamDesc,  0, %ND_STR%
+HKR, NDI\Params\*NetworkDirect,            Type,       0, "enum"
+HKR, NDI\Params\*NetworkDirect,            Default,   0, "1"
+HKR, NDI\Params\*NetworkDirect\enum,       "0",        0, "%Disabled%"
+HKR, NDI\Params\*NetworkDirect\enum,       "1",        0, "%Enabled%"
+HKR, "", *NetworkDirect, %FLG_ADDREG_NOCLOBBER%, "1"
+
+;*RSS
+HKR, NDI\Params\*RSS,  ParamDesc, 0, "%RssMode%"
+HKR, NDI\Params\*RSS,  Type,  0, "enum"
+HKR, NDI\Params\*RSS,  Default, 0, "1"
+HKR, NDI\Params\*RSS,  Optional, 0, "0"
+HKR, NDI\Params\*RSS\enum,  "0", 0, "%No_rebalnce%"
+HKR, NDI\Params\*RSS\enum,  "1", 0, "%NDIS_RSS%"
+HKR, "", *RSS,  0, "1"
+
+; *NumaNodeId
+HKR, Ndi\params\*NumaNodeId, ParamDesc, 0, %NumaNodeId%
+HKR, Ndi\params\*NumaNodeId, default, 0, "65535"
+HKR, Ndi\params\*NumaNodeId, type, 0, "enum"
+HKR, Ndi\params\*NumaNodeId\Enum, "65535", 0, %NumaNodeId_default%
+HKR, Ndi\params\*NumaNodeId\Enum, "0", 0, %node0%
+HKR, Ndi\params\*NumaNodeId\Enum, "1", 0, %node1%
+HKR, Ndi\params\*NumaNodeId\Enum, "2", 0, %node2%
+HKR, Ndi\params\*NumaNodeId\Enum, "3", 0, %node3%
+HKR, Ndi\params\*NumaNodeId\Enum, "4", 0, %node4%
+HKR, Ndi\params\*NumaNodeId\Enum, "5", 0, %node5%
+HKR, Ndi\params\*NumaNodeId\Enum, "6", 0, %node6%
+HKR, Ndi\params\*NumaNodeId\Enum, "7", 0, %node7%
+HKR, "", *NumaNodeId,  0, "65535"
+
+; *RssBaseProcNumber
+HKR, Ndi\params\*RssBaseProcNumber, ParamDesc, 0, %RssBaseProcNumber%
+HKR, Ndi\params\*RssBaseProcNumber, default, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, min, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, max, 0, "63"
+HKR, Ndi\params\*RssBaseProcNumber, step, 0, "1"
+HKR, Ndi\params\*RssBaseProcNumber, Optional, 0, "0"
+HKR, Ndi\params\*RssBaseProcNumber, type, 0, "int"
+HKR, "", *RssBaseProcNumber,  %FLG_ADDREG_NOCLOBBER%, "0"
+
+; *MaxRssProcessors
+HKR, Ndi\Params\*MaxRssProcessors,	ParamDesc, 0, %MaxRssProcessors%
+HKR, Ndi\Params\*MaxRssProcessors,  default, 0, "8"
+HKR, Ndi\Params\*MaxRssProcessors,  type,    0, "int"
+HKR, NDI\Params\*MaxRssProcessors,  min,     0, "1"
+HKR, NDI\Params\*MaxRssProcessors,  max,     0, "64"
+HKR, NDI\Params\*MaxRssProcessors,  step,        0, "1"
+HKR, NDI\Params\*MaxRssProcessors,  Base,        0, "10"
+HKR, "", *MaxRssProcessors,  0, "8"
+
+; *RssMaxProcNumber
+HKR, Ndi\params\*RssMaxProcNumber, ParamDesc, 0, %RssMaxProcNumber%
+HKR, Ndi\params\*RssMaxProcNumber, default, 0, "63"
+HKR, Ndi\params\*RssMaxProcNumber, min, 0, "0"
+HKR, Ndi\params\*RssMaxProcNumber, max, 0, "63"
+HKR, Ndi\params\*RssMaxProcNumber, step, 0, "1"
+HKR, Ndi\params\*RssMaxProcNumber, Optional, 0, "0"
+HKR, Ndi\params\*RssMaxProcNumber, type, 0, "int"
+HKR, "", *RssMaxProcNumber,  0, "63"
+
+; *RSSProfile
+HKR, NDI\Params\*RSSProfile,  ParamDesc, 0, "%RssProfile%"
+HKR, NDI\Params\*RSSProfile,  Type,  0, "enum"
+HKR, NDI\Params\*RSSProfile,  Default, 0, "1"
+HKR, NDI\Params\*RSSProfile\enum,  "1", 0, "%Closest_Processor%"
+HKR, NDI\Params\*RSSProfile\enum,  "2", 0, "%Closest_Processor_Static%"
+HKR, NDI\Params\*RSSProfile\enum,  "3", 0, "%Numa_Scaling%"
+HKR, NDI\Params\*RSSProfile\enum,  "4", 0, "%Numa_Scaling_Static%"
+HKR, NDI\Params\*RSSProfile\enum,  "5", 0, "%Conservative_Scaling%"
+HKR, "", *RSSProfile,  0, "1"
+
+HKR, NDI\Params\SendPollingModCount,         ParamDesc,  0, "%SendPollingModCount%"
+HKR, NDI\Params\SendPollingModCount,         Default,    0, "1"
+HKR, NDI\Params\SendPollingModCount,         min,        0, "1"
+HKR, NDI\Params\SendPollingModCount,         max,        0, "100"
+HKR, NDI\Params\SendPollingModCount,         step,       0, "1"
+HKR, NDI\Params\SendPollingModCount,         Base,       0, "10"
+HKR, NDI\Params\SendPollingModCount,         type,       0, "int"
+HKR, "", SendPollingModCount,  %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\SendPollingModTime,         ParamDesc,  0, "%SendPollingModTime%"
+HKR, NDI\Params\SendPollingModTime,         Default,    0, "20"
+HKR, NDI\Params\SendPollingModTime,         min,        0, "10"
+HKR, NDI\Params\SendPollingModTime,         max,        0, "100"
+HKR, NDI\Params\SendPollingModTime,         step,       0, "10"
+HKR, NDI\Params\SendPollingModTime,         Base,       0, "10"
+HKR, NDI\Params\SendPollingModTime,         type,       0, "int"
+HKR, "", SendPollingModTime,  %FLG_ADDREG_NOCLOBBER%, "20"
+
+HKR, NDI\Params\ThreadPoll,         ParamDesc,  0, "%ThreadPoll%"
+HKR, NDI\Params\ThreadPoll,         Default,    0, "10000"
+HKR, NDI\Params\ThreadPoll,         min,        0, "1"
+HKR, NDI\Params\ThreadPoll,         max,        0, "200000"
+HKR, NDI\Params\ThreadPoll,         step,       0, "1"
+HKR, NDI\Params\ThreadPoll,         Base,       0, "10"
+HKR, NDI\Params\ThreadPoll,         type,       0, "dword"
+HKR, "", ThreadPoll,  %FLG_ADDREG_NOCLOBBER%, "10000"
+
+HKR, NDI\Params\RxIntModeration,  ParamDesc, 0, "%RxIntModeration%"
+HKR, NDI\Params\RxIntModeration,  Type,		0, "enum"
+HKR, NDI\Params\RxIntModeration,  Default,	0, "2"
+HKR, NDI\Params\RxIntModeration,  Optional,	0, "0"
+HKR, NDI\Params\RxIntModeration\enum, "1",	0, "%Static%"
+HKR, NDI\Params\RxIntModeration\enum, "2",	0, "%Adaptive%"
+HKR, "", RxIntModeration,%FLG_ADDREG_NOCLOBBER%, "2"
+
+HKR, NDI\Params\*InterruptModeration,  ParamDesc, 0, "%InterruptModeration%"
+HKR, NDI\Params\*InterruptModeration,  Type,      0, "enum"
+HKR, NDI\Params\*InterruptModeration,  Default,   0, "1"
+HKR, NDI\Params\*InterruptModeration,  Optional,  0, "0"
+HKR, NDI\Params\*InterruptModeration\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*InterruptModeration\enum,  "1",  0, "%Enabled%"
+HKR, "", *InterruptModeration, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\RxIntModerationProfile,  ParamDesc, 0, "%RxIntModerationProfile%"
+HKR, NDI\Params\RxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\RxIntModerationProfile,  Default,   0, "1"
+HKR, NDI\Params\RxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\RxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", RxIntModerationProfile, 0, "1"
+
+HKR, NDI\Params\TxIntModerationProfile,  ParamDesc, 0, "%TxIntModerationProfile%"
+HKR, NDI\Params\TxIntModerationProfile,  Type,      0, "enum"
+HKR, NDI\Params\TxIntModerationProfile,  Default,   0, "1"
+HKR, NDI\Params\TxIntModerationProfile,  Optional,  0, "0"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "0",  0, "%LowLatency%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "1",  0, "%Moderate%"
+HKR, NDI\Params\TxIntModerationProfile\enum,  "2",  0, "%Aggressive%"
+HKR, "", TxIntModerationProfile, 0, "1"
+
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  ParamDesc, 0, "%IPChecksumOffloadIPv4%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Type,      0, "enum"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Default,   0, "3"
+HKR, NDI\Params\*IPChecksumOffloadIPv4,  Optional,  0, "0"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*IPChecksumOffloadIPv4\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *IPChecksumOffloadIPv4, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  ParamDesc, 0, "%TCPUDPChecksumOffloadIPv4%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Type,      0, "enum"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Default,   0, "3"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4,  Optional,  0, "0"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv4\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *TCPUDPChecksumOffloadIPv4, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  ParamDesc, 0, "%TCPUDPChecksumOffloadIPv6%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Type,      0, "enum"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Default,   0, "3"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6,  Optional,  0, "0"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"0",  0, "%Disabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"1",  0, "%TxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"2",  0, "%RxEnabled%"
+HKR, NDI\Params\*TCPUDPChecksumOffloadIPv6\enum,	"3",  0, "%TxRxEnabled%"
+HKR, "", *TCPUDPChecksumOffloadIPv6, %FLG_ADDREG_NOCLOBBER%, "3"
+
+HKR, NDI\Params\*LsoV2IPv4,  ParamDesc, 0, "%LsoV2IPv4%"
+HKR, NDI\Params\*LsoV2IPv4,  Type,      0, "enum"
+HKR, NDI\Params\*LsoV2IPv4,  Default,   0, "1"
+HKR, NDI\Params\*LsoV2IPv4,  Optional,  0, "0"
+HKR, NDI\Params\*LsoV2IPv4\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*LsoV2IPv4\enum,  "1",  0, "%Enabled%"
+HKR, "", *LsoV2IPv4, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, NDI\Params\*LsoV2IPv6,  ParamDesc, 0, "%LsoV2IPv6%"
+HKR, NDI\Params\*LsoV2IPv6,  Type,      0, "enum"
+HKR, NDI\Params\*LsoV2IPv6,  Default,   0, "1"
+HKR, NDI\Params\*LsoV2IPv6,  Optional,  0, "0"
+HKR, NDI\Params\*LsoV2IPv6\enum,  "0",  0, "%Disabled%"
+HKR, NDI\Params\*LsoV2IPv6\enum,  "1",  0, "%Enabled%"
+HKR, "", *LsoV2IPv6, %FLG_ADDREG_NOCLOBBER%, "1"
+
+; mlx4eth NT specific
+;
+HKR, Ndi\Params\*VMQ,  ParamDesc, 0, "%VMQ%"
+HKR, Ndi\Params\*VMQ,  Type,      0, "enum"
+HKR, Ndi\Params\*VMQ,  Default,   0, "1"
+HKR, Ndi\Params\*VMQ,  Optional,  0, "0"
+HKR, Ndi\Params\*VMQ\enum,  "0",  0, "%Disabled%"
+HKR, Ndi\Params\*VMQ\enum,  "1",  0, "%Enabled%"
+HKR, "", *VMQ, %FLG_ADDREG_NOCLOBBER%, "1"
+
+HKR, Ndi\Params\*VMQVlanFiltering,  ParamDesc, 0, "%VMQVlanFiltering%"
+HKR, Ndi\Params\*VMQVlanFiltering,  Type,	  0, "enum"
+HKR, Ndi\Params\*VMQVlanFiltering,  Default,   0, "1"
+HKR, Ndi\Params\*VMQVlanFiltering,  Optional,  0, "0"
+HKR, Ndi\Params\*VMQVlanFiltering\enum,	"0",  0, "%Disabled%"
+HKR, Ndi\Params\*VMQVlanFiltering\enum,	"1",  0, "%Enabled%"
+HKR, "", *VMQVlanFiltering, 0, "1"
+
+
+HKR, NDI\Params\SaTimeout,		ParamDesc,	0, %SA_QUERY_TO_STR%
+HKR, NDI\Params\SaTimeout,		Type,		0, "long"
+HKR, NDI\Params\SaTimeout,		Default,	0, "1000"
+HKR, NDI\Params\SaTimeout,		Optional,	0, "0"
+HKR, NDI\Params\SaTimeout,		Min,		0, "500"
+HKR, NDI\Params\SaTimeout,		Max,		0, "60000"
+HKR, NDI\Params\SaTimeout,		Step,		0, "250"
+HKR, NDI\Params\SaTimeout,      Base,       0, "10"
+HKR, "", SaTimeout, %FLG_ADDREG_NOCLOBBER%, "1000"
+
+HKR, NDI\Params\SaRetries,		ParamDesc,	0, %SA_QUERY_RETRY_STR%
+HKR, NDI\Params\SaRetries,		Type,		0, "int"
+HKR, NDI\Params\SaRetries,		Default,	0, "10"
+HKR, NDI\Params\SaRetries,		Optional,	0, "0"
+HKR, NDI\Params\SaRetries,		Min,		0, "1"
+HKR, NDI\Params\SaRetries,		Max,		0, "64"
+HKR, NDI\Params\SaRetries,      Base,       0, "10"
+HKR, "", SaRetries, %FLG_ADDREG_NOCLOBBER%, "10"
+
+HKR, Ndi\config\EnableQPR,  ParamDesc, 0, "%QPR%"
+HKR, Ndi\config\EnableQPR,  Type,	  0, "enum"
+HKR, Ndi\config\EnableQPR,  Default,   0, "0"
+HKR, Ndi\config\EnableQPR,  Optional,  0, "0"
+HKR, Ndi\config\EnableQPR\enum,	"0",  0, "%Disabled%"
+HKR, Ndi\config\EnableQPR\enum,	"1",  0, "%Enabled%"
+HKR, "", EnableQPR, %FLG_ADDREG_NOCLOBBER%, "0"
+
+;-----------------------------------------------------------------------------
+;cx_pf.reg - parameters only for physical IPoIB adapters
+;
+[cx_pf.reg]
+HKR, NDI\Params\*ReceiveBuffers,  ParamDesc, 0, "%RecvRingSize%"
+HKR, NDI\Params\*ReceiveBuffers,  default,	  0, "512"
+HKR, NDI\Params\*ReceiveBuffers,  min,	   0, "256"
+HKR, NDI\Params\*ReceiveBuffers,  max,	   0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  step,    0, "1"
+HKR, NDI\Params\*ReceiveBuffers,  Base,    0, "10"
+HKR, NDI\Params\*ReceiveBuffers,  type,    0, "int"
+HKR, "", *ReceiveBuffers, 0, "512"
+
+HKR, NDI\Params\*TransmitBuffers,  ParamDesc, 0, "%SendRingSize%"
+HKR, NDI\Params\*TransmitBuffers,  default,   0, "2048"
+HKR, NDI\Params\*TransmitBuffers,  min,    0, "256"
+HKR, NDI\Params\*TransmitBuffers,  max,    0, "4096"
+HKR, NDI\Params\*TransmitBuffers,  step,	0, "1"
+HKR, NDI\Params\*TransmitBuffers,  Base,	0, "10"
+HKR, NDI\Params\*TransmitBuffers,  type,	0, "int"
+HKR, "", *TransmitBuffers,	%FLG_ADDREG_NOCLOBBER%, "2048"
+
+HKR, Ndi\Params\TxRingNum,         ParamDesc,  0, "%TxRingNum%"
+HKR, Ndi\Params\TxRingNum ,	   type,	   0, "enum"
+HKR, Ndi\Params\TxRingNum ,        default,    0, "8"
+HKR, Ndi\Params\TxRingNum\enum,	   "1",	0, "1"
+HKR, Ndi\Params\TxRingNum\enum,	   "2",	0, "2"
+HKR, Ndi\Params\TxRingNum\enum,	   "4",	0, "4"
+HKR, Ndi\Params\TxRingNum\enum,	   "8",	0, "8"
+HKR, Ndi\Params\TxRingNum\enum,	   "16",	0, "16"
+HKR, "", TxRingNum ,  0, "8"
+
+;*NumRSSQueues
+HKR, NDI\Params\*NumRSSQueues,  ParamDesc, 0, "%NumRSSQueues%"
+HKR, NDI\Params\*NumRSSQueues,  Type,      0, "int"
+HKR, NDI\Params\*NumRSSQueues,  Default,   0, "8"
+HKR, NDI\Params\*NumRSSQueues,  min,       0, "1"
+HKR, NDI\Params\*NumRSSQueues,  max,       0, "512"
+HKR, NDI\Params\*NumRSSQueues,  step,      0, "1"
+HKR, NDI\Params\*NumRSSQueues,  Base,      0, "10"
+HKR, "", *NumRSSQueues, 0, "8"
+
+;-----------------------------------------------------------------------------
+;cx_V.reg - parameters only for virtual IPoIB adapters
+;
+[cx_V.reg]
+HKR, NDI\Params\*ReceiveBuffers,  ParamDesc, 0, "%RecvRingSize%"
+HKR, NDI\Params\*ReceiveBuffers,  default,	  0, "512"
+HKR, NDI\Params\*ReceiveBuffers,  min,	   0, "256"
+HKR, NDI\Params\*ReceiveBuffers,  max,	   0, "4096"
+HKR, NDI\Params\*ReceiveBuffers,  step,    0, "1"
+HKR, NDI\Params\*ReceiveBuffers,  Base,    0, "10"
+HKR, NDI\Params\*ReceiveBuffers,  type,    0, "int"
+HKR, "", *ReceiveBuffers, 0, "512"
+
+HKR, NDI\Params\*TransmitBuffers,  ParamDesc, 0, "%SendRingSize%"
+HKR, NDI\Params\*TransmitBuffers,  default,   0, "512"
+HKR, NDI\Params\*TransmitBuffers,  min,    0, "256"
+HKR, NDI\Params\*TransmitBuffers,  max,    0, "4096"
+HKR, NDI\Params\*TransmitBuffers,  step,	0, "1"
+HKR, NDI\Params\*TransmitBuffers,  Base,	0, "10"
+HKR, NDI\Params\*TransmitBuffers,  type,	0, "int"
+HKR, "", *TransmitBuffers,	%FLG_ADDREG_NOCLOBBER%, "512"
+
+HKR, Ndi\Params\TxRingNum,         ParamDesc,  0, "%TxRingNum%"
+HKR, Ndi\Params\TxRingNum ,	   type,	   0, "enum"
+HKR, Ndi\Params\TxRingNum ,        default,    0, "4"
+HKR, Ndi\Params\TxRingNum\enum,	   "1",	0, "1"
+HKR, Ndi\Params\TxRingNum\enum,	   "2",	0, "2"
+HKR, Ndi\Params\TxRingNum\enum,	   "4",	0, "4"
+HKR, Ndi\Params\TxRingNum\enum,	   "8",	0, "8"
+HKR, Ndi\Params\TxRingNum\enum,	   "16",	0, "16"
+HKR, "", TxRingNum ,  0, "4"
+
+;*NumRSSQueues
+HKR, NDI\Params\*NumRSSQueues,  ParamDesc, 0, "%NumRSSQueues%"
+HKR, NDI\Params\*NumRSSQueues,  Type,      0, "int"
+HKR, NDI\Params\*NumRSSQueues,  Default,   0, "4"
+HKR, NDI\Params\*NumRSSQueues,  min,       0, "1"
+HKR, NDI\Params\*NumRSSQueues,  max,       0, "512"
+HKR, NDI\Params\*NumRSSQueues,  step,      0, "1"
+HKR, NDI\Params\*NumRSSQueues,  Base,      0, "10"
+HKR, "", *NumRSSQueues, 0, "4"
+
+;-----------------------------------------------------------------------------
+; delete unused keys
+;
+
+[cx_del.reg]
+HKR, Ndi\Params\UseDma
+HKR, "", UseDma
+
+HKR, NDI\Params\SendIntModCount
+HKR, "", SendIntModCount
+
+HKR, NDI\Params\SendIntModTime
+HKR, "", SendIntModTime
+
+HKR, NDI\Params\RecvIntModCount
+HKR, "", RecvIntModCount
+
+HKR, NDI\Params\RecvIntModTime
+HKR, "", RecvIntModTime
+
+HKR, "", MaxNumberOfPacketsToIndicateThread
+HKR, "", MaxNumberOfPacketsToIndicateDPC
+HKR, "", InterupptToThreadThreshold
+HKR, "", rx_usecs_low
+HKR, "", rx_usecs_high
+HKR, "", UseRSSForRawIP
+HKR, "", UseRSSForUDP
+
+;-----------------------------------------------------------------------------
+
+
+
+[ipoib6x.reg]
+; use ndis5 as the upper bound because NT supports it
+HKR, Ndi,                       Service,    0, "ipoib6x"
+HKR, Ndi\Interfaces,            UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces,            LowerRange, 0, "ethernet"
+HKR,"","AverageFactor"                      ,%FLG_ADDREG_NOCLOBBER%,"16"
+HKR,"","AveragePollThreshold"               ,%FLG_ADDREG_NOCLOBBER%,"10"
+HKR,"","ThisPollThreshold"                  ,%FLG_ADDREG_NOCLOBBER%,100
+
+HKR,"","pkt_rate_low"                       ,%FLG_ADDREG_NOCLOBBER%,150000
+HKR,"","pkt_rate_high"                      ,%FLG_ADDREG_NOCLOBBER%,170000
+HKR,"","LSOSize"                            ,%FLG_ADDREG_NOCLOBBER%,64000
+HKR,"","BlueFlame"                          ,%FLG_ADDREG_NOCLOBBER%,1
+HKR,"","RxSmallPacketBypass"                ,%FLG_ADDREG_NOCLOBBER%,0
+HKR,"","TxHashDisrtibution" 				,%FLG_ADDREG_NOCLOBBER%,3
+HKR,"","TxForwardingProcessor"	, 0,-1
+HKR,"","DefaultRecvRingProcessor"	, 0,-1
+HKR,"","TxInterruptProcessor"	        , 0,-1
+
+HKR,"","MaxNumOfMCList" 	,%FLG_ADDREG_NOCLOBBER%,128
+
+HKR, "", GUIDMask, %FLG_ADDREG_NOCLOBBER%, "231"
+
+[WinCtxTune_reg]
+HKR,,icon,,"-5"
+HKR,,EnumPropPages32,,"winctxtune_ipoib.dll,WinCtxTunePropPageProvider"
+
+[ipoib6x.Service]
+DisplayName     = %ipoib6x.Service.DispName%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType		= 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\ipoib6x.sys
+LoadOrderGroup  = NDIS
+AddReg          = Ibbus.ParamsReg
+AddReg			= BootFlags.ParamsReg
+
+[Ibbus.ParamsReg]
+HKR,"Parameters","NdkDebugLevel",%REG_DWORD_NO_CLOBBER%,0x00000002
+HKR,"Parameters","NdkDebugFlags",%REG_DWORD_NO_CLOBBER%,0x00000fff
+HKR,"Parameters","NdkModeFlags",%REG_DWORD_NO_CLOBBER%,0x00000001
+HKR,"Parameters","ModeFlags",%REG_DWORD_NO_CLOBBER%,0x00000001
+
+[BootFlags.ParamsReg]
+HKR,,BootFlags,0x00010003,0x1 ; CM_SERVICE_NETWORK_BOOT_LOAD
+
+[common.EventLog]
+AddReg = common.AddEventLog.reg
+
+[common.AddEventLog.reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\drivers\ipoib6x.sys;%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+
+[DestinationDirs]
+IpoibCopyFiles         = %DIRID_DRIVERS%
+WctxtuneCopyFiles      = %DIRID_SYSTEM%
+
+[IpoibCopyFiles]
+ipoib6x.sys,,,2
+
+
+[WctxtuneCopyFiles]
+winctxtune_ipoib.dll,,,0x00000002
+
+
+
+;
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+;
+[SourceDisksNames.amd64]
+1 = %DiskDescription%,ipoib6x.sys,,
+
+;
+; filename_on_source = diskID[, [subdir][, size]]
+;
+[SourceDisksFiles.amd64]
+ipoib6x.sys = 1
+winctxtune_ipoib.dll = 1
+
+
+[Strings]
+Mellanox                 = "Mellanox Technologies Ltd."
+MSFT                     = "Microsoft Corporation"
+ReceiveFrameDescriptors  = "Receive Frame Descriptors"
+TransmitControlBlocks    = "Transmit Control Blocks"
+Disabled                 = "Disabled"
+Enabled                  = "Enabled"
+MaxFrameSize			 = "Jumbo Packet"
+ThreadPoll				 = "Number of Polls on Receive"
+SendPollingModCount 	 = "Polling Moderation Tx Packet Count"
+SendPollingModTime		 = "Polling Moderation Tx Packet Time"
+DIRID_SYSTEM         	 = 11
+DIRID_DRIVERS            = 12
+HeaderDataSplit          = "Header Data Split"
+SendCompletionMethod     = "Send Completion Method"
+RecvCompletionMethod	 = "Receive Completion Method"
+RecvRingSize			 = "Receive Buffers"
+SendRingSize			 = "Send Buffers"
+Polling                  = "Polling"
+Interrupts               = "Interrupts"
+Adaptive                 = "Adaptive"
+No_rebalnce              = "Disabled"
+NDIS_RSS                 = "Enabled"
+RssMode                  = "Receive Side Scaling"
+NumaNodeId               = "Preferred NUMA node"
+NumaNodeId_default       = "Default Settings"
+node0                    = "Node 0"
+node1                    = "Node 1"
+node2                    = "Node 2"
+node3                    = "Node 3"
+node4                    = "Node 4"
+node5                    = "Node 5"
+node6                    = "Node 6"
+node7                    = "Node 7"
+RssBaseProcNumber        = "RSS Base Processor Number"
+MaxRssProcessors         = "Maximum number of RSS Processors"
+RssMaxProcNumber         = "RSS Maximum Processor Number"
+NumRSSQueues             = "Maximum Number of RSS Queues"
+RssProfile                = "RSS load balancing Profile"
+Closest_Processor         = "ClosestProcessor"
+Closest_Processor_Static  = "ClosestProcessorStatic"
+Numa_Scaling              = "NumaScaling"
+Numa_Scaling_Static       = "NumaScalingStatic"
+Conservative_Scaling      = "ConservativeScaling"
+FailOver                 = "Fail Over"
+RxIntModeration		 	 = "Rx Interrupt Moderation Type"
+Static                   = "Static"
+InterruptModeration      = "Interrupt Moderation"
+TxEnabled				 = "Tx Enabled"
+RxEnabled				 = "Rx Enabled"
+TxRxEnabled				 = "Rx & Tx Enabled"
+IPChecksumOffloadIPv4    = "IPV4 Checksum Offload"
+TCPUDPChecksumOffloadIPv4= "TCP/UDP Checksum Offload (IPv4)"
+TCPUDPChecksumOffloadIPv6= "TCP/UDP Checksum Offload (IPv6)"
+LsoV2IPv4		 = "Large Send Offload V2 (IPv4)"
+LsoV2IPv6		 = "Large Send Offload V2 (IPv6)"
+TxRingNum		 = "Tx Ring Number"
+
+
+VMQ 					 = "Virtual Machine Queues"
+VMQVlanFiltering		 = "VMQ VLAN Filtering"
+
+ipoib6x_CX.DeviceDesc        		= "Mellanox ConnectX IPoIB Adapter"
+ipoib6x_CX_V.DeviceDesc			= "Mellanox ConnectX Virtual IPoIB Adapter"
+ipoib6x_CX2.DeviceDesc		 	= "Mellanox ConnectX-2 IPoIB Adapter"
+ipoib6x_CX2_V.DeviceDesc			= "Mellanox ConnectX-2 Virtual IPoIB Adapter"
+ipoib6x_CX3.DeviceDesc       		= "Mellanox ConnectX-3 IPoIB Adapter"
+ipoib6x_CX3_V.DeviceDesc	 		= "Mellanox ConnectX-3 Virtual IPoIB Adapter"
+ipoib6x_CX3Pro.DeviceDesc	 		= "Mellanox ConnectX-3 Pro IPoIB Adapter"
+ipoib6x_CX3Pro_V.DeviceDesc 		= "Mellanox ConnectX-3 Pro Virtual IPoIB Adapter"
+
+;;;;; cards of other companies
+ipoib6x_CX3.18cd.DeviceDesc             = "HP 10Gb 2-port 544FLR-QSFP IPoIB Adapter"
+ipoib6x_CX3_V.18cd.DeviceDesc 		= "HP 10Gb 2-port 544FLR-QSFP Virtual IPoIB Adapter"
+
+ipoib6x_CX3Pro.22f1.DeviceDesc      = "HP 10Gb 2-port 544+M IPoIB Adapter"
+ipoib6x_CX3Pro_V.22f1.DeviceDesc  = "HP 10Gb 2-port 544+M Virtual IPoIB Adapter"
+ipoib6x_CX3Pro.22f2.DeviceDesc      = "HP 10Gb/40Gb 2-port 544+M IPoIB Adapter"
+ipoib6x_CX3Pro_V.22f2.DeviceDesc  = "HP 10Gb/40Gb 2-port 544+M Virtual IPoIB Adapter"
+ipoib6x_CX3Pro.22f3.DeviceDesc      = "HP 10Gb/40Gb 2-port 544+QSFP IPoIB Adapter"
+ipoib6x_CX3Pro_V.22f3.DeviceDesc  = "HP 10Gb/40Gb 2-port 544+QSFP Virtual IPoIB Adapter"
+ipoib6x_CX3Pro.22f4.DeviceDesc      = "HP 10Gb/40Gb 2-port 544+FLR-QSFP IPoIB Adapter"
+ipoib6x_CX3Pro_V.22f4.DeviceDesc  = "HP 10Gb/40Gb 2-port 544+FLR-QSFP Virtual IPoIB Adapter"
+ipoib6x_CX3Pro.22f5.DeviceDesc      = "HP 10Gb 2-port 544+FLR-QSFP IPoIB Adapter"
+ipoib6x_CX3Pro_V.22f5.DeviceDesc  = "HP 10Gb 2-port 544+FLR-QSFP Virtual IPoIB Adapter"
+
+
+Eoib63.DeviceDesc       = "Mellanox EoIB Adapter"
+ipoib6x.Service.DispName = "Mellanox ConnectX based IPoIB Adapter (NDIS 6.3) Driver"
+DiskDescription 	  	 = "Mellanox Driver Disk 1"
+GUID_MASK_STR		  	 = "GUID bitwise mask"
+SA_QUERY_TO_STR	 		 = "SA Query Timeout"
+SA_QUERY_RETRY_STR  	 = "SA Query Retry Count"
+ND_STR                   = "NetworkDirect Functionality"
+QPR			= "Query Path Record"
+
+RxIntModerationProfile         = "Rx Interrupt Moderation Profile"
+TxIntModerationProfile         = "Tx Interrupt Moderation Profile"
+LowLatency                = "Low Latency"
+Moderate                  = "Moderate"
+Aggressive                = "Aggressive"
+
+REG_MULTI_SZ             = 0x00010000
+REG_DWORD                = 0x00010001
+REG_DWORD_NO_CLOBBER     = 0x00010003
+FLG_ADDREG_NOCLOBBER     = 0x00000002

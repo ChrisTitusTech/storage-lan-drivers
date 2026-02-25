@@ -1,0 +1,266 @@
+;/*++
+;
+;Copyright (c) 2003-2005 Chelsio Comminucations Inc. All rights Reserved
+;
+;Module Name:
+;
+;    CHT4ISCSI.INF
+;
+;Abstract:
+;    INF file for installing Chelsio Terminator 4 storage function
+;    driver
+;
+;--*/
+
+[version]
+Signature   = "$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4d36e97B-e325-11ce-bfc1-08002be10318}
+Provider    = %Chelsio%
+;LayoutFile  = layout.inf
+CatalogFile=cht4iscsi.cat
+DriverVer = 05/20/2021,6.15.58.0
+PnpLockdown=1
+
+[Manufacturer]
+%Chelsio%     = Chelsio,NTamd64
+
+[Chelsio.NTamd64]
+; DisplayName       Section         DeviceID
+; -----------       -------         --------
+;%cht4iscsi.DeviceDesc% = cht4iscsi, CHT4BUS\cht4iscsi
+%cht5iscsi.DeviceDesc% = cht4iscsi, CHT5BUS\chiscsi
+%cht6iscsi.DeviceDesc% = cht4iscsi, CHT6BUS\chiscsi
+
+[cht4iscsi]
+AddReg=boot.reg
+AddReg=sourceipaddress.reg
+AddReg=netmask.reg
+AddReg=gatewayipaddress.reg
+AddReg=sourceip6address.reg
+AddReg=prefix.reg
+AddReg=gatewayip6address.reg
+AddReg=cht4iscsi.NT.reg
+Addreg=vlanid.reg
+AddReg=vlan.reg
+AddReg=mtu.reg
+AddReg=msix.reg
+AddReg=queue.reg
+AddReg=maxpdu.reg
+
+CopyFiles       = copy_driver_file, copy_crashdump_driver_file
+CopyINF		= cht4iscsi.inf
+
+[cht4iscsi.Services]
+AddService = chiscsi, 2, cht4iscsi.Service, event_log_install
+
+;---------------------------
+; NT NDI object registration
+;
+[cht4iscsi.NT.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"
+HKR,,Icon,,"-10"
+
+; MSIX Support
+;------------------------------
+[msix.reg]
+HKR, Interrupt Management, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001, 1024
+
+;  Boot Support (iBFT)
+;  ------- ------------ -------
+[boot.reg]
+;HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\Boot,   ParamDesc,  0, %boot%
+;HKR,,Icon,,"-10"
+HKR, Ndi\params\Boot,   ParamDesc,  0, %boot%
+HKR, Ndi\params\Boot,   default,    0, "1"
+HKR, Ndi\params\Boot,   type,       0, "enum"
+HKR, Ndi\params\Boot\enum,   "0",  0, "Disabled"
+HKR, Ndi\params\Boot\enum,   "1",  0, "Enabled"
+
+;  Source Address
+;  ------- ------------ -------
+[sourceipaddress.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\SourceIPAddress,   ParamDesc,  0, %source_ip_addr%
+HKR,,Icon,,"-10"
+HKR, Ndi\params\SourceIPAddress,   ParamDesc,  0, %source_ip_addr%
+HKR, Ndi\params\SourceIPAddress,   default,    0, "0.0.0.0"
+HKR, Ndi\params\SourceIPAddress,   type,       0, "edit"
+HKR, Ndi\params\SourceIPAddress,   LimitText,  0, "15"
+HKR, Ndi\params\SourceIPAddress,   UpperCase,  0, "1"
+
+;  SubNetMask
+;  ------- ----- -------
+[netmask.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\NetMask,   ParamDesc,  0, %net_mask%
+HKR,,Icon,,"-10"
+HKR, Ndi\params\NetMask,   ParamDesc,  0, %net_mask%
+HKR, Ndi\params\NetMask,   default,    0, "255.0.0.0"
+HKR, Ndi\params\NetMask,   type,       0, "edit"
+HKR, Ndi\params\NetMask,   LimitText,  0, "15"
+HKR, Ndi\params\NetMask,   UpperCase,  0, "1"
+
+;  Gateway Address
+;  ------- ------------ -------
+[gatewayipaddress.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\GatewayIPAddress,   ParamDesc,  0, %gateway_ip_addr%
+HKR,,Icon,,"-10"
+HKR, Ndi\params\GatewayIPAddress,   ParamDesc,  0, %gateway_ip_addr%
+HKR, Ndi\params\GatewayIPAddress,   default,    0, "0.0.0.0"
+HKR, Ndi\params\GatewayIPAddress,   type,       0, "edit"
+HKR, Ndi\params\GatewayIPAddress,   LimitText,  0, "15"
+HKR, Ndi\params\GatewayIPAddress,   UpperCase,  0, "1"
+
+;  Source ipv6 Address
+;  ------- ------------ -------
+[sourceip6address.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\SourceIP6Address,   ParamDesc,  0, %source_ip6_addr%
+HKR,,Icon,,"-10"
+HKR, Ndi\params\SourceIP6Address,   ParamDesc,  0, %source_ip6_addr%
+HKR, Ndi\params\SourceIP6Address,   default,    0, "0:0:0:0:0:0:0:0"
+HKR, Ndi\params\SourceIP6Address,   type,       0, "edit"
+HKR, Ndi\params\SourceIP6Address,   LimitText,  0, "39"
+HKR, Ndi\params\SourceIP6Address,   UpperCase,  0, "1"
+
+[prefix.reg]
+HKR, Ndi\params\Prefix,           ParamDesc,  0, %prefixlen%
+HKR, Ndi\params\Prefix,           default,    0, "64"
+HKR, Ndi\params\Prefix,           type,       0, "long"
+HKR, Ndi\params\Prefix,           min,        0, "0"
+HKR, Ndi\params\Prefix,           max,        0, "128"
+HKR, Ndi\params\Prefix,           step,       0, "1"
+HKR, Ndi\params\Prefix,           base,       0, "10"
+
+;  Gateway ip6 Address
+;  ------- ------------ -------
+[gatewayip6address.reg]
+HKR,,EnumPropPages32,,"NetCfgx.dll,NetPropPageProvider"  HKR, Ndi\params\GatewayIP6Address,   ParamDesc,  0, %gateway_ip6_addr%
+HKR,,Icon,,"-10"
+HKR, Ndi\params\GatewayIP6Address,   ParamDesc,  0, %gateway_ip6_addr%
+HKR, Ndi\params\GatewayIP6Address,   default,    0, "0:0:0:0:0:0:0:0"
+HKR, Ndi\params\GatewayIP6Address,   type,       0, "edit"
+HKR, Ndi\params\GatewayIP6Address,   LimitText,  0, "39"
+HKR, Ndi\params\GatewayIP6Address,   UpperCase,  0, "1"
+
+[vlanid.reg]
+HKR, Ndi\params\VlanID,           ParamDesc,  0, %vlanid%
+HKR, Ndi\params\VlanID,           default,    0, "777"
+HKR, Ndi\params\VlanID,           type,       0, "long"
+HKR, Ndi\params\VlanID,           min,        0, "1"
+HKR, Ndi\params\VlanID,           max,        0, "4094"
+HKR, Ndi\params\VlanID,           step,       0, "1"
+HKR, Ndi\params\VlanID,           base,       0, "10"
+
+[vlan.reg]
+HKR, Ndi\params\Vlan,             ParamDesc,  0, %vlan_insertion%
+HKR, Ndi\params\Vlan,             default,    0, "0"
+HKR, Ndi\params\Vlan,             type,       0, "enum"
+HKR, Ndi\params\Vlan\enum,        "0",        0, %disable%
+HKR, Ndi\params\Vlan\enum,        "1",        0, %enable%
+
+[mtu.reg]
+HKR, Ndi\params\Mtu,              ParamDesc,  0, %mtu%
+HKR, Ndi\params\Mtu,              default,    0, "1500"
+HKR, Ndi\params\Mtu,              type,       0, "long"
+HKR, Ndi\params\Mtu,              min,        0, "1500"
+HKR, Ndi\params\Mtu,              max,        0, "9000"
+HKR, Ndi\params\Mtu,              step,       0, "500"
+HKR, Ndi\params\Mtu,              base,       0, "10"
+
+[queue.reg]
+HKR,,NumISCSIQueues, 0, "8"
+HKR, Ndi\Params\NumISCSIQueues,                          ParamDesc,              0, %NumISCSIQs%
+HKR, Ndi\params\NumISCSIQueues,                          default,                0, "8"
+HKR, Ndi\params\NumISCSIQueues,                          type,                   0, "int"
+HKR, Ndi\params\NumISCSIQueues,                          step,                   0, "1"
+HKR, Ndi\params\NumISCSIQueues,                          min,                    0, "4"
+HKR, Ndi\params\NumISCSIQueues,                          max,                    0, "16"
+
+[maxpdu.reg]
+HKR,,MaxPDULength, 0, "0"
+HKR, Ndi\params\MaxPDULength,         ParamDesc,  0, %maxpdu%
+HKR, Ndi\params\MaxPDULength,         default,    0, "0"
+HKR, Ndi\params\MaxPDULength,         type,       0, "long"
+HKR, Ndi\params\MaxPDULength,         min,        0, "0"
+HKR, Ndi\params\MaxPDULength,         max,        0, "8192"
+HKR, Ndi\params\MaxPDULength,         step,       0, "512"
+HKR, Ndi\params\MaxPDULength,         base,       0, "10"
+
+[copy_driver_file]
+cht4iscsi.sys,,2
+
+[copy_crashdump_driver_file]
+cht4idump.sys,,2
+
+;-----------
+; NT Service 32
+;
+[cht4iscsi.Service]
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 0 ;%SERVICE_BOOT_START%
+;StartType       = 3 ;%SERVICE_NONBOOT_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\cht4iscsi.sys
+LoadOrderGroup	= "SCSI Miniport"
+AddReg = bus_type.reg
+
+;---------------
+; NT Common base
+;
+[event_log_install]
+AddReg = event_log_install.reg
+
+[event_log_install.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\cht4iscsi.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[bus_type.reg]
+HKR,"Parameters","BusType",0x00010001,0x9
+HKR,"Parameters","IoTimeoutValue",0x00010001,0x0000001E
+
+
+;------------
+; Copy files
+;
+[DestinationDirs]
+copy_driver_file	= 12
+copy_crashdump_driver_file = 12
+
+[SourceDisksNames]
+1 = %disk_label%,,,
+
+[SourceDisksFiles]
+cht4iscsi.sys = 1
+cht4idump.sys = 1
+
+
+;--------------------
+; Localizable Strings
+;
+[Strings]
+; Vendors
+Chelsio         = "Chelsio"
+SCSIClassName   = "SCSI and RAID controllers"
+
+; Device descriptions
+disk_label		= "Chelsio Terminator iSCSI Driver Installation Disk"
+cht4iscsi.DeviceDesc	= "Chelsio T4 iSCSI Initiator"
+cht5iscsi.DeviceDesc	= "Chelsio T5 iSCSI Initiator"
+cht6iscsi.DeviceDesc	= "Chelsio T6 iSCSI Initiator"
+source_ip_addr  = " IPv4 address"
+net_mask        = " Subnet mask"
+gateway_ip_addr = " Default IPv4 gateway"
+source_ip6_addr	= " IPv6 address"
+prefixlen		= " Subnet prefix length"
+gateway_ip6_addr 	= " Default IPv6 gateway"
+boot			= " Boot Support (iBFT)"
+vlanid			= " VlanID"
+vlan_insertion	= " Vlan Insertion"
+enable			= "Enabled"
+disable			= "Disabled"
+mtu			    = " MTU"
+NumISCSIQs      = " Max Queue Sets"
+maxpdu          = " Max PDU Length"
+

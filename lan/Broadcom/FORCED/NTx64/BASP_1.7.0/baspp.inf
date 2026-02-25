@@ -1,0 +1,128 @@
+;*******************************************************************************
+; Copyright (c) 2007 Broadcom Corporation
+;
+; Module Description:
+;
+;    BASP Protocol INF file for Vista/Longhorn
+;
+;*******************************************************************************
+
+[Version]
+Signature           = "$Windows NT$"
+Class               = NetTrans
+ClassGUID           = {4d36e975-e325-11ce-bfc1-08002be10318}
+CatalogFile         = baspp.cat
+Provider            = %BRCM%
+DriverVer=09/01/2014,1.7.0
+
+[Manufacturer]
+%BRCM%              = Broadcom,ntx86,ntia64,ntamd64
+
+;-----------------------
+; x86 platform specific
+;-----------------------
+
+[Broadcom.ntx86]
+%BLFP_DESC%         = Blfp.Install, BRCM_BLFP
+
+[Blfp.Install.ntx86]
+AddReg              = Blfp.Ndi.AddReg, Blfp.AddReg.Params
+CopyFiles           = Blfp.CopyFiles.Sys, Blfp.Copyfiles.Exe
+
+Characteristics     = 0x20000           ; NCF_FIXED_BINDING --netcfgx.h
+
+[Blfp.Install.ntx86.Services]
+AddService = Blfp, 0, Blfp.Install.BlfpService, Blfp.EventLog
+
+;------------------------
+; ia64 platform specific
+;------------------------
+
+[Broadcom.ntia64]
+%BLFP_DESC%         = Blfp.Install, BRCM_BLFP
+
+[Blfp.Install.ntia64]
+AddReg              = Blfp.Ndi.AddReg, Blfp.AddReg.Params
+CopyFiles           = Blfp.CopyFiles.Sys, Blfp.Copyfiles.Exe
+
+Characteristics     = 0x20000           ; NCF_FIXED_BINDING --netcfgx.h
+
+[Blfp.Install.ntia64.Services]
+AddService = Blfp, 0, Blfp.Install.BlfpService, Blfp.EventLog
+
+;-------------------------
+; amd64 platform specific
+;-------------------------
+
+[Broadcom.ntamd64]
+%BLFP_DESC%         = Blfp.Install, BRCM_BLFP
+
+[Blfp.Install.ntamd64]
+AddReg              = Blfp.Ndi.AddReg, Blfp.AddReg.Params
+CopyFiles           = Blfp.CopyFiles.Sys, Blfp.Copyfiles.Exe
+
+Characteristics     = 0x20000           ; NCF_FIXED_BINDING --netcfgx.h
+
+[Blfp.Install.ntamd64.Services]
+AddService = Blfp, 0, Blfp.Install.BlfpService, Blfp.EventLog
+
+;----------------------
+; platform independent
+;----------------------
+
+[ControlFlags]
+ExcludeFromSelect   = BRCM_BLFP
+
+[Blfp.Install.BlfpService]
+DisplayName         = %BLFP_DESC%
+ServiceType         = 1                 ; SERVICE_KERNEL_DRIVER
+StartType           = 3                 ; SERVICE_DEMAND_START
+ErrorControl        = 1                 ; SERVICE_ERROR_NORMAL
+ServiceBinary       = %12%\basp.sys
+Description         = %BLFP_DESC%
+
+[Blfp.Ndi.AddReg]
+HKR, Ndi, HelpText,                 , %BLFP_DESC%
+HKR, Ndi, Service,                  , "Blfp"
+
+HKR, Ndi, ClsID,                    , {042E165B-D71F-481b-8FDB-001018250072}
+HKR, Ndi, ComponentDll,             , "basp.dll"
+
+HKR, Ndi\Interfaces, UpperRange,    , "noupper"
+HKR, Ndi\Interfaces, LowerRange,    , "ndis5"
+
+[Blfp.EventLog]
+AddReg = Blfp.AddEventLog.Reg
+
+[Blfp.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\basp.sys"
+HKR, , TypesSupported  , 0x00010001, 7
+
+[SourceDisksNames]
+1 = %DISK_DESC%,,,
+
+[SourceDisksFiles]
+basp.sys                = 1
+basp.man                = 1
+baspin.exe              = 1
+
+[DestinationDirs]
+DefaultDestDir          = 12            ; %windir%\System32\drivers
+Blfp.CopyFiles.Sys      = 12            ; %windir%\System32\drivers
+Blfp.CopyFiles.Exe      = 11            ; %windir%\System32
+
+[Blfp.CopyFiles.Exe]
+baspin.exe, , , 2
+
+[Blfp.CopyFiles.Sys]
+basp.sys, , , 2
+basp.man, , , 2
+
+[Blfp.AddReg.Params]
+; HKR, Parameters, KeyName, 0, 4
+
+[Strings]
+BRCM      = "Broadcom"
+DISK_DESC = "Broadcom Advanced Server Program Driver Diskette"
+BLFP_DESC = "Broadcom Advanced Server Program Driver"
+

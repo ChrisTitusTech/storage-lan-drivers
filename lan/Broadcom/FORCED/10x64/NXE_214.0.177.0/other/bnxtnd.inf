@@ -1,0 +1,2170 @@
+;*******************************************************************************
+; Copyright (c) 2002-2016 Broadcom Corporation.
+;
+; L2 Ndis INF.
+;
+; History:
+;    7/1/13 havk               Inception.
+;
+;*******************************************************************************
+
+[Version]
+signature   = "$Windows NT$"
+class       = net
+classguid   = {4d36e972-e325-11ce-bfc1-08002be10318}
+provider    = %brcm%
+catalogfile = bnxtnd.cat
+DriverVer = 10/23/2018,214.0.177.0
+
+[manufacturer]
+%brcm% = broadcom,NTx86,ntamd64
+
+[controlflags]
+excludefromselect = *
+
+[broadcom.NTx86]
+; Empty section for other OSes and architectures
+
+
+
+
+[broadcom.ntamd64]
+;*******************************************************************************
+; Physical device ID's.
+;*******************************************************************************
+
+;*******************************************************************************
+; Cumulus physical device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16c8&subsys_16c814E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16c8&subsys_16c814E4
+%pci\ven_14e4&dev_16c9&subsys_16c914E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16c9&subsys_16c914E4
+%pci\ven_14e4&dev_16c9&subsys_020314E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020314E4
+%pci\ven_14e4&dev_16c9&subsys_020414E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020414E4 ; 57302
+%pci\ven_14e4&dev_16ca&subsys_16ca14E4.DeviceDesc% = bcm_link50_fec_x64,            pci\ven_14e4&dev_16ca&subsys_16ca14E4 ;**
+%pci\ven_14e4&dev_16ca&subsys_040314E4.DeviceDesc% = bcm_link50_fec_x64,            pci\ven_14e4&dev_16ca&subsys_040314E4 ; 57304
+%pci\ven_14e4&dev_16ca&subsys_040214E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16ca&subsys_040214E4 ; 57304
+%pci\ven_14e4&dev_16ca&subsys_040514E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16ca&subsys_040514E4 ; 57304
+%pci\ven_14e4&dev_16c9&subsys_020514E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020514E4 ; 57302
+%pci\ven_14e4&dev_16c9&subsys_020614E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020614E4 ; 57302
+%pci\ven_14e4&dev_16c9&subsys_020714E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020714E4 ; 57302
+%pci\ven_14e4&dev_16c9&subsys_020814E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16c9&subsys_020814E4 ; 57302
+%pci\ven_14e4&dev_16ca&subsys_3043108e.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16ca&subsys_3043108e ; 57304
+
+;*******************************************************************************
+; Cumulus+ physical device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16ce&subsys_16ce14e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16ce&subsys_16ce14e4
+%pci\ven_14e4&dev_16cf&subsys_312017aa.DeviceDesc% = bcm_link25_fecplus_x64,        pci\ven_14e4&dev_16cf&subsys_312017aa
+%pci\ven_14e4&dev_16cf&subsys_16cf14e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16cf&subsys_16cf14e4
+%pci\ven_14e4&dev_16df&subsys_16df14e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_16df&subsys_16df14e4
+%pci\ven_14e4&dev_16df&subsys_140414e4.DeviceDesc% = bcm_link25_fecplus_x64,        pci\ven_14e4&dev_16df&subsys_140414e4
+%pci\ven_14e4&dev_16df&subsys_120214e4.DeviceDesc% = bcm_link25_fecplus_x64,        pci\ven_14e4&dev_16df&subsys_120214e4
+%pci\ven_14e4&dev_16df&subsys_140214e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16df&subsys_140214e4
+%pci\ven_14e4&dev_16df&subsys_140314e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_16df&subsys_140314e4
+%pci\ven_14e4&dev_16e0&subsys_16e014e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16e0&subsys_16e014e4
+%pci\ven_14e4&dev_16e4&subsys_16e414e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16e4&subsys_16e414e4
+%pci\ven_14e4&dev_16df&subsys_4869108e.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16df&subsys_4869108e
+%pci\ven_14e4&dev_16df&subsys_140514e4.DeviceDesc% = bcm_link25_fecplus_x64,        pci\ven_14e4&dev_16df&subsys_140514e4
+
+;*******************************************************************************
+; Whitney physical device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16d0&subsys_402014E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d0&subsys_402014E4 ; 57402
+%pci\ven_14e4&dev_16d0&subsys_16d014E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d0&subsys_16d014E4 ; **
+%pci\ven_14e4&dev_16d1&subsys_16d114E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16d1&subsys_16d114E4 ; **
+%pci\ven_14e4&dev_16d1&subsys_404114E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16d1&subsys_404114E4 ; 57404
+%pci\ven_14e4&dev_16d1&subsys_040214E4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16d1&subsys_040214E4 ; 57404
+%pci\ven_14e4&dev_16d1&subsys_312017aa.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16d1&subsys_312017aa
+%pci\ven_14e4&dev_16d2&subsys_060214E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d2&subsys_060214E4 ; 57406
+%pci\ven_14e4&dev_16d2&subsys_406014E4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d2&subsys_406014E4 ; 57406
+%pci\ven_14e4&dev_16d2&subsys_416017aa.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d2&subsys_416017aa
+%pci\ven_14e4&dev_16d2&subsys_16d214e4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d2&subsys_16d214e4 ; **
+%pci\ven_14e4&dev_16d5&subsys_16d514e4.DeviceDesc% = bcm_link10_fec_x64,            pci\ven_14e4&dev_16d5&subsys_16d514e4 ; **
+%pci\ven_14e4&dev_16e9&subsys_16e914e4.DeviceDesc% = bcm_link25_fec_x64,            pci\ven_14e4&dev_16e9&subsys_16e914e4 ; **
+
+;*******************************************************************************
+; Whitney+ physical device ID's.
+;*******************************************************************************
+
+%pci\ven_14E4&dev_16D6&subsys_412014E4.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d6&subsys_412014E4
+%pci\ven_14E4&dev_16D6&subsys_412114E4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d6&subsys_412114E4
+%pci\ven_14E4&dev_16D6&subsys_16d614E4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14E4&dev_16D6&subsys_16d614E4 ; **
+%pci\ven_14e4&dev_16d7&subsys_16d714e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_16d714e4 ; **
+%pci\ven_14e4&dev_16d7&subsys_414114e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_414114e4
+%pci\ven_14e4&dev_16d7&subsys_140514e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_140514e4 ; 57414A0
+%pci\ven_14e4&dev_16d7&subsys_414014e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_414014e4
+%pci\ven_14e4&dev_16d8&subsys_416114e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d8&subsys_416114e4
+%pci\ven_14e4&dev_16d8&subsys_416014e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_416014e4
+%pci\ven_14e4&dev_16d8&subsys_160214e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d8&subsys_160214E4 ; 57314
+%pci\ven_14e4&dev_16d8&subsys_416017aa.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,        pci\ven_14e4&dev_16d8&subsys_416017aa
+%pci\ven_14e4&dev_16d8&subsys_416117aa.DeviceDesc% = bcm_link10_fecplus_x64,        pci\ven_14e4&dev_16d8&subsys_416117aa
+%pci\ven_14E4&dev_16d8&subsys_1feb1028.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14E4&dev_16d8&subsys_1feb1028
+%pci\ven_14e4&dev_16d8&subsys_16d814e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d8&subsys_16d814e4 ; **
+%pci\ven_14e4&dev_16d9&subsys_16d914e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d9&subsys_16d914e4 ; **
+%pci\ven_14e4&dev_16e2&subsys_16e214e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16e2&subsys_16e214e4 ; **
+%pci\ven_14e4&dev_16e3&subsys_16e314e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16e3&subsys_16e314e4 ; **
+%pci\ven_14e4&dev_16d9&subsys_4866108e.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d9&subsys_4866108e
+%pci\ven_14e4&dev_16e2&subsys_4866108e.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16e2&subsys_4866108e
+%pci\ven_14e4&dev_16d8&subsys_1fea1028.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_1fea1028 ; **
+%pci\ven_14e4&dev_16d8&subsys_07e51028.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_07e51028 ; **
+%pci\ven_14e4&dev_16d6&subsys_412017aa.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d6&subsys_412017aa
+%pci\ven_14e4&dev_16d7&subsys_140314e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_140314e4
+%pci\ven_14e4&dev_16d7&subsys_140214e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_140214e4
+%pci\ven_14e4&dev_16d7&subsys_140414e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_140414e4
+%pci\ven_14e4&dev_16d6&subsys_120214e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d6&subsys_120214e4
+%pci\ven_14e4&dev_16d7&subsys_3044108e.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_3044108e
+%pci\ven_14e4&dev_16d7&subsys_4869108e.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_16d7&subsys_4869108e
+%pci\ven_14e4&dev_16d7&subsys_414314e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_414314e4
+%pci\ven_14e4&dev_16d6&subsys_412314e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d6&subsys_412314e4
+%pci\ven_14e4&dev_16d6&subsys_412414e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d6&subsys_412414e4
+%pci\ven_14e4&dev_16cf&subsys_120214e4.DeviceDesc% = bcm_link25_fecplus_x64_wol,   pci\ven_14e4&dev_16cf&subsys_120214e4
+%pci\ven_14e4&dev_16ca&subsys_040614e4.DeviceDesc% = bcm_link25_fecplus_x64_wol,   pci\ven_14e4&dev_16ca&subsys_040614e4
+%pci\ven_14e4&dev_16ca&subsys_040a14e4.DeviceDesc% = bcm_link25_fecplus_x64,   pci\ven_14e4&dev_16ca&subsys_040a14e4
+%pci\ven_14e4&dev_16ca&subsys_040414e4.DeviceDesc% = bcm_link50_fecplus_x64_wol,   pci\ven_14e4&dev_16ca&subsys_040414e4
+%pci\ven_14e4&dev_16ca&subsys_414214e4.DeviceDesc% = bcm_link25_fecplus_x64_wol,   pci\ven_14e4&dev_16ca&subsys_414214e4
+%pci\ven_14e4&dev_16ca&subsys_304414e4.DeviceDesc% = bcm_link25_fecplus_x64,   pci\ven_14e4&dev_16ca&subsys_304414e4
+%pci\ven_14e4&dev_16c9&subsys_020214e4.DeviceDesc% = bcm_link25_fecplus_x64,   pci\ven_14e4&dev_16c9&subsys_020214e4
+%pci\ven_14e4&dev_16d7&subsys_414414e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_414414e4
+%pci\ven_14e4&dev_16d8&subsys_416314e4.DeviceDesc% = bcm_link10_fecplus_x64_rdma,   pci\ven_14e4&dev_16d8&subsys_416314e4
+%pci\ven_14e4&dev_16d7&subsys_094e15d9.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_094e15d9
+%pci\ven_14e4&dev_16d7&subsys_092815d9.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_092815d9
+%pci\ven_14e4&dev_16d8&subsys_099615d9.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_099615d9
+%pci\ven_14e4&dev_16d8&subsys_1a0815d9.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_1a0815d9
+%pci\ven_14e4&dev_16d8&subsys_1a0915d9.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_1a0915d9
+%pci\ven_14e4&dev_16d8&subsys_060214E4.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_060214E4
+%pci\ven_14e4&dev_16d7&subsys_4877108e.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_4877108e
+%pci\ven_14e4&dev_16d8&subsys_8b17152d.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_8b17152d
+%pci\ven_14e4&dev_16e2&subsys_8b18152d.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16e2&subsys_8b18152d
+%pci\ven_14e4&dev_16e3&subsys_8b19152d.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16e3&subsys_8b19152d
+%pci\ven_14e4&dev_16d8&subsys_16d815d9.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d8&subsys_16d815d9
+%pci\ven_14e4&dev_16d7&subsys_140714e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_140714e4
+%pci\ven_14e4&dev_16d6&subsys_8b20152d.DeviceDesc% = bcm_link10_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d6&subsys_8b20152d
+%pci\ven_14e4&dev_16d6&subsys_8b22152d.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d6&subsys_8b22152d
+%pci\ven_14e4&dev_16d7&subsys_8b21152d.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol,   pci\ven_14e4&dev_16d7&subsys_8b21152d
+
+
+;*******************************************************************************
+; Stratus physical device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16f1&subsys_16f114e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,  pci\ven_14e4&dev_16f1&subsys_16f114e4
+%pci\ven_14e4&dev_16f0&subsys_16f014e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,  pci\ven_14e4&dev_16f0&subsys_16f014e4
+%pci\ven_14e4&dev_16f1&subsys_452014e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_16f1&subsys_452014e4
+%pci\ven_14e4&dev_1614&subsys_454014e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,  pci\ven_14e4&dev_1614&subsys_454014e4
+%pci\ven_14e4&dev_1614&subsys_454114e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,  pci\ven_14e4&dev_1614&subsys_454114e4
+%pci\ven_14e4&dev_1614&subsys_8b11152d.DeviceDesc% = bcm_link25_fecplus_x64_rdma_wol, pci\ven_14e4&dev_1614&subsys_8b11152d
+%pci\ven_14e4&dev_d802&subsys_802014e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_d802&subsys_802014e4
+%pci\ven_14e4&dev_d802&subsys_d80214e4.DeviceDesc% = bcm_link50_fecplus_x64_rdma,   pci\ven_14e4&dev_d802&subsys_d80214e4
+%pci\ven_14e4&dev_d804&subsys_d80414e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,  pci\ven_14e4&dev_d804&subsys_d80414e4
+%pci\ven_14e4&dev_d802&subsys_802114e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_d802&subsys_802114e4
+%pci\ven_14e4&dev_d802&subsys_802414e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_d802&subsys_802414e4
+%pci\ven_14e4&dev_d802&subsys_802814e4.DeviceDesc% = bcm_link25_fecplus_x64_rdma,   pci\ven_14e4&dev_d802&subsys_802814e4
+%pci\ven_14e4&dev_d804&subsys_804014e4.DeviceDesc% = bcm_link100_fecplus_x64_rdma,   pci\ven_14e4&dev_d804&subsys_804014e4
+
+;*******************************************************************************
+; NPAR, Non-RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16d4&subsys_402014E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16d4&subsys_402014E4 ; 57402
+%pci\ven_14e4&dev_16d4&subsys_16d014E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16d4&subsys_16d014E4 ; **
+%pci\ven_14e4&dev_16e7&subsys_16d114E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e7&subsys_16d114E4 ; **
+%pci\ven_14e4&dev_16e7&subsys_404114E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e7&subsys_404114E4 ; 57404
+%pci\ven_14e4&dev_16e7&subsys_040214E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e7&subsys_040214E4 ; 57404
+%pci\ven_14e4&dev_16d4&subsys_040214E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16d4&subsys_040214E4 ; 57404
+%pci\ven_14e4&dev_16e7&subsys_312017aa.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e7&subsys_312017aa
+%pci\ven_14e4&dev_16e8&subsys_060214E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e8&subsys_060214E4 ; 57406
+%pci\ven_14e4&dev_16e8&subsys_406014E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e8&subsys_406014E4 ; 57406
+%pci\ven_14e4&dev_16e8&subsys_416017aa.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e8&subsys_416017aa
+%pci\ven_14e4&dev_16e8&subsys_16d214e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16e8&subsys_16d214e4 ; **
+%pci\ven_14e4&dev_16ea&subsys_16d514e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ea&subsys_16d514e4 ; **
+%pci\ven_14e4&dev_16ea&subsys_16e914e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ea&subsys_16e914e4 ; **
+%pci\ven_14E4&dev_16de&subsys_412014E4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16de&subsys_412014E4
+%pci\ven_14E4&dev_16de&subsys_412114E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16de&subsys_412114E4
+%pci\ven_14E4&dev_16de&subsys_16d614E4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14E4&dev_16de&subsys_16d614E4 ; **
+%pci\ven_14e4&dev_16ec&subsys_16d714e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_16d714e4 ; **
+%pci\ven_14e4&dev_16ec&subsys_414114e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_414114e4
+%pci\ven_14e4&dev_16ec&subsys_140514e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_140514e4 ; 57414A0
+%pci\ven_14e4&dev_16ec&subsys_414014e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_414014e4
+%pci\ven_14e4&dev_16ee&subsys_416114e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_416114e4
+%pci\ven_14e4&dev_16ee&subsys_416014e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_416014e4
+%pci\ven_14e4&dev_16ee&subsys_160214e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_160214E4 ; 57314
+%pci\ven_14e4&dev_16ee&subsys_416017aa.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_416017aa
+%pci\ven_14e4&dev_16ee&subsys_416117aa.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_416117aa
+%pci\ven_14e4&dev_16ee&subsys_16d814e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_16d814e4 ; **
+%pci\ven_14e4&dev_16ee&subsys_16e314e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_16e314e4 ; **
+%pci\ven_14e4&dev_16ee&subsys_1fea1028.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_1fea1028
+%pci\ven_14e4&dev_16ee&subsys_1feb1028.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_1feb1028
+%pci\ven_14e4&dev_16ee&subsys_07e51028.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_07e51028
+%pci\ven_14e4&dev_16cc&subsys_16d914e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16cc&subsys_16d914e4 ; **
+%pci\ven_14e4&dev_16cc&subsys_16e214e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16cc&subsys_16e214e4 ; **
+%pci\ven_14e4&dev_16cc&subsys_4866108e.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16cc&subsys_4866108e
+%pci\ven_14e4&dev_16de&subsys_412017aa.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16de&subsys_412017aa
+%pci\ven_14e4&dev_16ec&subsys_140314e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_140314e4
+%pci\ven_14e4&dev_16ec&subsys_140214e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_140214e4
+%pci\ven_14e4&dev_16ec&subsys_140414e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_140414e4
+%pci\ven_14e4&dev_16de&subsys_120214e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16de&subsys_120214e4
+%pci\ven_14e4&dev_16ec&subsys_3044108e.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_3044108e
+%pci\ven_14e4&dev_16ec&subsys_4869108e.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ec&subsys_4869108e
+%pci\ven_14e4&dev_1604&subsys_452014e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1604&subsys_452014e4
+%pci\ven_14e4&dev_1604&subsys_454014e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1604&subsys_454014e4
+%pci\ven_14e4&dev_1604&subsys_454114e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1604&subsys_454114e4
+%pci\ven_14e4&dev_1604&subsys_16f014e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1604&subsys_16f014e4
+%pci\ven_14e4&dev_1604&subsys_16f114e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1604&subsys_16f114e4
+%pci\ven_14e4&dev_1604&subsys_160414e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_1604&subsys_160414e4
+%pci\ven_14e4&dev_16ec&subsys_414314e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_414314e4
+%pci\ven_14e4&dev_16de&subsys_412314e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16de&subsys_412314e4
+%pci\ven_14e4&dev_16de&subsys_412414e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16de&subsys_412414e4
+%pci\ven_14e4&dev_16ec&subsys_414414e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_414414e4
+%pci\ven_14e4&dev_16ee&subsys_416314e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_16ee&subsys_416314e4
+%pci\ven_14e4&dev_16ec&subsys_094e15d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_094e15d9
+%pci\ven_14e4&dev_16ec&subsys_092815d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_092815d9
+%pci\ven_14e4&dev_16ee&subsys_099615d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_099615d9
+%pci\ven_14e4&dev_16ee&subsys_1a0815d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_1a0815d9
+%pci\ven_14e4&dev_16ee&subsys_1a0915d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_1a0915d9
+%pci\ven_14e4&dev_16ec&subsys_4877108e.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_4877108e
+%pci\ven_14e4&dev_16ee&subsys_8b17152d.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_8b17152d
+%pci\ven_14e4&dev_16cc&subsys_8b18152d.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16cc&subsys_8b18152d
+%pci\ven_14e4&dev_16ee&subsys_8b19152d.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_8b19152d
+%pci\ven_14e4&dev_16ee&subsys_16d815d9.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ee&subsys_16d815d9
+%pci\ven_14e4&dev_16ec&subsys_140714e4.DeviceDesc% = bcm_npar_x64_wol,              pci\ven_14e4&dev_16ec&subsys_140714e4
+%pci\ven_14e4&dev_1794&subsys_802014e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1794&subsys_802014e4
+%pci\ven_14e4&dev_1794&subsys_802114e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1794&subsys_802114e4
+%pci\ven_14e4&dev_1794&subsys_802414e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1794&subsys_802414e4
+%pci\ven_14e4&dev_1794&subsys_802814e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1794&subsys_802814e4
+%pci\ven_14e4&dev_1796&subsys_804014e4.DeviceDesc% = bcm_npar_x64,                  pci\ven_14e4&dev_1796&subsys_804014e4
+
+
+;*******************************************************************************
+; NPAR, RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14E4&dev_16eb&subsys_412014E4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16eb&subsys_412014E4
+%pci\ven_14E4&dev_16eb&subsys_412114E4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16eb&subsys_412114E4
+%pci\ven_14E4&dev_16eb&subsys_16d614E4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14E4&dev_16eb&subsys_16d614E4 ; **
+%pci\ven_14e4&dev_16ed&subsys_16d714e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_16d714e4 ; **
+%pci\ven_14e4&dev_16ed&subsys_414114e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_414114e4
+%pci\ven_14e4&dev_16ed&subsys_140514e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_140514e4 ; 57414A0
+%pci\ven_14e4&dev_16ed&subsys_414014e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_414014e4
+%pci\ven_14e4&dev_16ef&subsys_416114e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_416114e4
+%pci\ven_14e4&dev_16ef&subsys_416014e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_416014e4
+%pci\ven_14e4&dev_16ef&subsys_160214e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_160214E4 ; 57314
+%pci\ven_14e4&dev_16ef&subsys_416017aa.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_416017aa
+%pci\ven_14e4&dev_16ef&subsys_416117aa.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_416117aa
+%pci\ven_14e4&dev_16ef&subsys_16d814e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_16d814e4 ; **
+%pci\ven_14e4&dev_16ef&subsys_16e314e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_16e314e4 ; **
+%pci\ven_14e4&dev_16ef&subsys_1fea1028.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_1fea1028
+%pci\ven_14e4&dev_16ef&subsys_1feb1028.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_1feb1028
+%pci\ven_14e4&dev_16ef&subsys_07e51028.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_07e51028
+%pci\ven_14e4&dev_16c0&subsys_16d914e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16c0&subsys_16d914e4 ; **
+%pci\ven_14e4&dev_16c0&subsys_16e214e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16c0&subsys_16e214e4 ; **
+%pci\ven_14e4&dev_16c0&subsys_4866108e.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16c0&subsys_4866108e
+%pci\ven_14e4&dev_16eb&subsys_412017aa.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16eb&subsys_412017aa
+%pci\ven_14e4&dev_16ed&subsys_140314e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_140314e4
+%pci\ven_14e4&dev_16ed&subsys_140214e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_140214e4
+%pci\ven_14e4&dev_16ed&subsys_140414e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_140414e4
+%pci\ven_14e4&dev_16eb&subsys_120214e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16eb&subsys_120214e4
+%pci\ven_14e4&dev_16ed&subsys_3044108e.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_3044108e
+%pci\ven_14e4&dev_16ed&subsys_4869108e.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ed&subsys_4869108e
+%pci\ven_14e4&dev_1605&subsys_452014e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1605&subsys_452014e4
+%pci\ven_14e4&dev_1605&subsys_454014e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1605&subsys_454014e4
+%pci\ven_14e4&dev_1605&subsys_454114e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1605&subsys_454114e4
+%pci\ven_14e4&dev_1605&subsys_16f014e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1605&subsys_16f014e4
+%pci\ven_14e4&dev_1605&subsys_16f114e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1605&subsys_16f114e4
+%pci\ven_14e4&dev_1605&subsys_160514e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_1605&subsys_160514e4
+%pci\ven_14e4&dev_16ed&subsys_414314e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_414314e4
+%pci\ven_14e4&dev_16eb&subsys_412314e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16eb&subsys_412314e4
+%pci\ven_14e4&dev_16eb&subsys_412414e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16eb&subsys_412414e4
+%pci\ven_14e4&dev_16ed&subsys_414414e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_414414e4
+%pci\ven_14e4&dev_16ef&subsys_416314e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_16ef&subsys_416314e4
+%pci\ven_14e4&dev_16ed&subsys_094e15d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_094e15d9
+%pci\ven_14e4&dev_16ed&subsys_092815d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_092815d9
+%pci\ven_14e4&dev_16ef&subsys_099615d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_099615d9
+%pci\ven_14e4&dev_16ef&subsys_1a0815d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_1a0815d9
+%pci\ven_14e4&dev_16ef&subsys_1a0915d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_1a0915d9
+%pci\ven_14e4&dev_16ed&subsys_4877108e.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_4877108e
+%pci\ven_14e4&dev_16ef&subsys_8b17152d.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_8b17152d
+%pci\ven_14e4&dev_16c0&subsys_8b18152d.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16c0&subsys_8b18152d
+%pci\ven_14e4&dev_16ef&subsys_8b19152d.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_8b19152d
+%pci\ven_14e4&dev_16ef&subsys_16d815d9.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ef&subsys_16d815d9
+%pci\ven_14e4&dev_16ed&subsys_140714e4.DeviceDesc% = bcm_npar_x64_rdma_wol,         pci\ven_14e4&dev_16ed&subsys_140714e4
+%pci\ven_14e4&dev_1795&subsys_802014e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1795&subsys_802014e4
+%pci\ven_14e4&dev_1795&subsys_802114e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1795&subsys_802114e4
+%pci\ven_14e4&dev_1795&subsys_802414e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1795&subsys_802414e4
+%pci\ven_14e4&dev_1795&subsys_802814e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1795&subsys_802814e4
+%pci\ven_14e4&dev_1797&subsys_804014e4.DeviceDesc% = bcm_npar_x64_rdma,             pci\ven_14e4&dev_1797&subsys_804014e4
+
+
+;*******************************************************************************
+; VF, Non-RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16cb.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_16cb                 ; 
+%pci\ven_14e4&dev_16e1.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_16e1                 ; 
+%pci\ven_14e4&dev_16d3.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_16d3                 ; 
+%pci\ven_14e4&dev_16dc.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_16dc                 ;
+%pci\ven_14e4&dev_1609.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_1609                 ; 
+%pci\ven_14e4&dev_16f4.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_16f4                 ;
+%pci\ven_14e4&dev_d800.DeviceDesc%        = bcm_vf_nhv_x64,                         pci\ven_14e4&dev_d800                 ; 
+
+;*******************************************************************************
+; VF, RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16c1.DeviceDesc%        = bcm_vf_r_nhv_x64,                       pci\ven_14e4&dev_16c1                 ; 
+%pci\ven_14e4&dev_16e5.DeviceDesc%        = bcm_vf_r_nhv_x64,                       pci\ven_14e4&dev_16e5                 ;
+%pci\ven_14e4&dev_1606.DeviceDesc%        = bcm_vf_r_nhv_x64,                       pci\ven_14e4&dev_1606                 ;
+%pci\ven_14e4&dev_d801.DeviceDesc%        = bcm_vf_r_nhv_x64,                       pci\ven_14e4&dev_d801                 ;
+
+;*******************************************************************************
+; VF for Hyper-V, Non-RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16c2.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_16c2                 ; 
+%pci\ven_14e4&dev_16c3.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_16c3                 ; 
+%pci\ven_14e4&dev_16c4.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_16c4                 ; 
+%pci\ven_14e4&dev_16c5.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_16c5                 ;
+%pci\ven_14e4&dev_1607.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_1607                 ;
+%pci\ven_14e4&dev_1792.DeviceDesc%         = bcm_vf_hv_x64,                         pci\ven_14e4&dev_1792                 ;
+
+;*******************************************************************************
+; VF for Hyper-V, RoCE device ID's.
+;*******************************************************************************
+
+%pci\ven_14e4&dev_16bd.DeviceDesc%         = bcm_vf_r_hv_x64,                       pci\ven_14e4&dev_16bd                 ; 
+%pci\ven_14e4&dev_16e6.DeviceDesc%         = bcm_vf_r_hv_x64,                       pci\ven_14e4&dev_16e6                 ; 
+%pci\ven_14e4&dev_1608.DeviceDesc%         = bcm_vf_r_hv_x64,                       pci\ven_14e4&dev_1608                 ;
+%pci\ven_14e4&dev_1793.DeviceDesc%         = bcm_vf_r_hv_x64,                       pci\ven_14e4&dev_1793                 ;
+
+
+;*******************************************************************************
+; End of device ID's.
+;*******************************************************************************
+
+[BRCM_NVRAMPackageSecurity]
+security = "O:BAG:BAD:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GR;;;BU)"
+
+;*******************************************************************************
+; x64 install sections.
+;*******************************************************************************
+
+[bcm_link100_fecplus_x64_rdma]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link100, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link100_fecplus_x64_rdma.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link100_fecplus_x64_rdma.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link100_fecplus_x64_rdma.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+
+
+
+[bcm_link50_fecplus_x64_rdma]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link50, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link50_fecplus_x64_rdma.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link50_fecplus_x64_rdma.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link50_fecplus_x64_rdma.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;;; wol
+[bcm_link50_fecplus_x64_rdma_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link50, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link50_fecplus_x64_rdma_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link50_fecplus_x64_rdma_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link50_fecplus_x64_rdma_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of non-wol section ;;;;;;;;;;;;;;;;;
+
+
+
+;; no wol section
+[bcm_link50_fecplus_x64_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link50, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link50_fecplus_x64_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link50_fecplus_x64_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link50_fecplus_x64_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+[bcm_link50_fec_x64]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link50, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link50_fec_x64.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link50_fec_x64.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link50_fec_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+
+
+
+[bcm_link25_fecplus_x64_rdma]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link25, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          =params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link25_fecplus_x64_rdma.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link25_fecplus_x64_rdma.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link25_fecplus_x64_rdma.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; no wol section
+[bcm_link25_fecplus_x64_rdma_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link25, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link25_fecplus_x64_rdma_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link25_fecplus_x64_rdma_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link25_fecplus_x64_rdma_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+
+
+[bcm_link25_fecplus_x64]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link25, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link25_fecplus_x64.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link25_fecplus_x64.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link25_fecplus_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; no wol section
+[bcm_link25_fecplus_x64_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link25, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link25_fecplus_x64_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link25_fecplus_x64_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link25_fecplus_x64_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+
+[bcm_link25_fec_x64]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link25, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link25_fec_x64.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link25_fec_x64.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link25_fec_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+
+
+
+[bcm_link10_fecplus_x64_rdma]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link10, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link10_fecplus_x64_rdma.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link10_fecplus_x64_rdma.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link10_fecplus_x64_rdma.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; wol section
+[bcm_link10_fecplus_x64_rdma_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link10, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link10_fecplus_x64_rdma_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link10_fecplus_x64_rdma_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link10_fecplus_x64_rdma_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+
+[bcm_link10_fecplus_x64]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link10, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link10_fecplus_x64.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link10_fecplus_x64.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link10_fecplus_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; no wol section
+[bcm_link10_fecplus_x64_wol]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_wol_cap, params_link10, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec, params_fecplus
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link10_fecplus_x64_wol.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link10_fecplus_x64_wol.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link10_fecplus_x64_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of no section ;;;;;;;;;;;;;;;;;
+
+
+
+[bcm_link10_fec_x64]
+characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg          = x64_addreg, params_nt, params_link10, params_mtu_9k, params_lso
+addreg          = params_rss, params_rss_queues_16, params_ipv6_cksum, params_ipv6_lso, params_flow
+addreg          = params_buf_desc, params_max_msix, params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_qos, params_fec
+
+addreg          = params_nvgre, params_sriov, params_vf_anti_spoof_protection
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+copyfiles       = x64_sys_file
+bustype         = 5
+*IfType         = 6      ; IF_TYPE_ETHERNET_CSMACD
+*MediaType      = 0      ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber = 0
+
+[bcm_link10_fec_x64.Services]
+addservice      = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_link10_fec_x64.hw]
+addreg          = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_link10_fec_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+
+
+
+
+[bcm_vf_hv_x64]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_vf_addreg, params_nt_vf, params_mtu_vf, params_lso, params_rss, params_rss_queues_16
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_buf_desc, params_rsc_ipv4, params_rsc_ipv6
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+
+[bcm_vf_hv_x64.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_vf_hv_x64.hw]
+addreg               = msix_support
+
+[bcm_vf_hv_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+[bcm_vf_r_hv_x64]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_vf_addreg, params_nt_vf, params_mtu_vf, params_lso, params_rss, params_rss_queues_16
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_buf_desc, params_rsc_ipv4, params_rsc_ipv6, params_ndk
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+
+[bcm_vf_r_hv_x64.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_vf_r_hv_x64.hw]
+addreg               = msix_support
+
+[bcm_vf_r_hv_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+[bcm_vf_nhv_x64]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt_vf, params_mtu_vf, params_lso, params_rss, params_rss_queues_16
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_buf_desc, params_rsc_ipv4, params_rsc_ipv6
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+
+[bcm_vf_nhv_x64.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_vf_nhv_x64.hw]
+addreg               = msix_support
+
+[bcm_vf_nhv_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+[bcm_vf_r_nhv_x64]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt_vf, params_mtu_vf, params_lso, params_rss, params_rss_queues_16
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_buf_desc, params_rsc_ipv4, params_rsc_ipv6, params_ndk
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+
+[bcm_vf_r_nhv_x64.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_vf_r_nhv_x64.hw]
+addreg               = msix_support
+
+[bcm_vf_r_nhv_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+[bcm_npar_x64]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt, params_mtu_9k, params_lso
+addreg               = params_rss, params_rss_queues_8, params_rss_queues_default_4, params_qos
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_flow, params_buf_desc, params_rx_buffers_default_2000
+
+addreg               = params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_sriov, params_nvgre
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+
+addreg               = params_vf_anti_spoof_protection
+
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber  = 0
+
+[bcm_npar_x64.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_npar_x64.hw]
+addreg               = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_npar_x64.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; no wol section
+[bcm_npar_x64_wol]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt, params_wol_cap, params_mtu_9k, params_lso
+addreg               = params_rss, params_rss_queues_8, params_rss_queues_default_4, params_qos
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_flow, params_buf_desc, params_rx_buffers_default_2000
+
+addreg               = params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_sriov, params_nvgre
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+
+addreg               = params_vf_anti_spoof_protection
+
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber  = 0
+
+[bcm_npar_x64_wol.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_npar_x64_wol.hw]
+addreg               = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_npar_x64_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+[bcm_npar_x64_rdma]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt, params_mtu_9k, params_lso
+addreg               = params_rss, params_rss_queues_8, params_rss_queues_default_4, params_qos
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_flow, params_buf_desc, params_rx_buffers_default_2000
+
+addreg               = params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_sriov, params_nvgre, params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+addreg          = params_vf_anti_spoof_protection
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber  = 0
+
+[bcm_npar_x64_rdma.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_npar_x64_rdma.hw]
+addreg               = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_npar_x64_rdma.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of section ;;;;;;;;;;;;;;;;;
+
+;; no wol section
+[bcm_npar_x64_rdma_wol]
+characteristics      = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+addreg               = x64_addreg, params_nt, params_wol_cap, params_mtu_9k, params_lso
+addreg               = params_rss, params_rss_queues_8, params_rss_queues_default_4, params_qos
+addreg               = params_ipv6_cksum, params_ipv6_lso, params_flow, params_buf_desc, params_rx_buffers_default_2000
+
+addreg               = params_vmq, params_rsc_ipv4, params_rsc_ipv6, params_sriov, params_nvgre, params_ndk
+
+
+addreg          = params_vxlan, params_hnv_mtu, params_vmmq
+
+addreg          = params_packet_direct
+
+
+
+addreg               = params_vf_anti_spoof_protection
+
+copyfiles            = x64_sys_file
+bustype              = 5
+*IfType              = 6   ; IF_TYPE_ETHERNET_CSMACD
+*MediaType           = 0   ; NdisMedium802_3
+*PhysicalMediaType   = 14  ; NdisPhysicalMedium802_3
+Port1FunctionNumber  = 0
+
+[bcm_npar_x64_rdma_wol.Services]
+addservice           = bnxtnd, 2, x64_add_service, x64_eventlog
+
+[bcm_npar_x64_rdma_wol.hw]
+addreg               = msix_support
+
+
+
+include         = pci.inf
+
+
+
+
+needs           = PciSriovSupported.Hw
+
+
+[bcm_npar_x64_rdma_wol.WMI]
+WMIInterface = {E8BA3968-D0EC-4CDE-ACAC-EA6AABBEF185},1,BRCM_NVRAMPackageSecurity
+
+;;;;;;; end of no wol section ;;;;;;;;;;;;;;;;;
+
+;*******************************************************************************
+; x64 common sections.
+;*******************************************************************************
+
+[x64_add_service]
+displayname     = %mp_srv_desc%
+servicetype     = 1 
+starttype       = 3
+errorcontrol    = 1
+servicebinary   = %12%\bnxtnd.sys
+
+[x64_addreg]
+hkr, ndi,            service,    0, "bnxtnd"
+hkr, ndi\interfaces, upperrange, 0, "ndis5"
+hkr, ndi\interfaces, lowerrange, 0, "ethernet"
+
+[x64_vf_addreg]
+hkr, ,               busnumber,  0, "0"
+hkr, ndi,            service,    0, "bnxtnd"
+hkr, ndi\interfaces, upperrange, 0, "ndisvf"
+hkr, ndi\interfaces, lowerrange, 0, "iovvf"
+
+[x64_eventlog]
+addreg = x64_addreg_eventlog
+
+[x64_addreg_eventlog]
+hkr, , eventmessagefile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\bnxtnd.sys"
+hkr, , typessupported  , 0x00010001, 7
+
+;*******************************************************************************
+; Registry parameters.
+;*******************************************************************************
+
+[msix_support]
+hkr, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+hkr, "Interrupt Management\Affinity Policy", DevicePolicy, 0x00010001, 0x02
+
+[params_nt]
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      paramDesc, , %taskoffload_desc_ipv4%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      default,   , "3"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      type,      , "enum"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 0,         , %taskoffload_disabled%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 1,         , %taskoffload_tx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 2,         , %taskoffload_rx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 3,         , %taskoffload_rx_tx_cksum%
+
+hkr, ndi\params\*PriorityVLANTag,       paramDesc, , %priority_vlan_desc%
+hkr, ndi\params\*PriorityVLANTag,       default,   , "3"
+hkr, ndi\params\*PriorityVLANTag,       type,      , "enum"
+hkr, ndi\params\*PriorityVLANTag\enum,  0,         , %priority_vlan_disabled%
+hkr, ndi\params\*PriorityVLANTag\enum,  1,         , %priority_enabled%
+hkr, ndi\params\*PriorityVLANTag\enum,  2,         , %vlan_enabled%
+hkr, ndi\params\*PriorityVLANTag\enum,  3,         , %priority_vlan_enabled%
+
+hkr, ndi\params\VlanID, paramdesc, , %vlan_id_desc%
+hkr, ndi\params\VlanID, default,   , "0"
+hkr, ndi\params\VlanID, type,      , "dword"
+hkr, ndi\params\VlanID, min,       , "0"
+hkr, ndi\params\VlanID, max,       , "4094"
+hkr, ndi\params\VlanID, step,      , "1"
+hkr, ndi\params\VlanID, base,      , "10"
+
+hkr, ndi\params\*InterruptModeration,      paramDesc, , %intr_mod_desc%
+hkr, ndi\params\*InterruptModeration,      default,   , "1"
+hkr, ndi\params\*InterruptModeration,      type,      , "enum"
+hkr, ndi\params\*InterruptModeration\enum, 0,         , %disabled%
+hkr, ndi\params\*InterruptModeration\enum, 1,         , %enabled%
+
+hkr, ndi\params\NetworkAddress, paramdesc, 0, %network_address%
+hkr, ndi\params\NetworkAddress, default,   0, ""
+hkr, ndi\params\NetworkAddress, type,      0, "edit"
+hkr, ndi\params\NetworkAddress, limittext, 0, "12"
+hkr, ndi\params\NetworkAddress, uppercase, 0, "1"
+hkr, ndi\params\NetworkAddress, optional,  0, "1"
+
+[params_nt_vf]
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      paramDesc, , %taskoffload_desc_ipv4%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      default,   , "3"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4,      type,      , "enum"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 0,         , %taskoffload_disabled%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 1,         , %taskoffload_tx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 2,         , %taskoffload_rx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv4\enum, 3,         , %taskoffload_rx_tx_cksum%
+
+[params_max_msix]
+hkr, ndi\params\max_num_msix_messages, paramDesc, , %max_num_msix_messages%
+hkr, ndi\params\max_num_msix_messages, default,   0, "0"
+hkr, ndi\params\max_num_msix_messages, type,      0, "dword"
+hkr, ndi\params\max_num_msix_messages, min,       0, "16"
+hkr, ndi\params\max_num_msix_messages, max,       0, "511"
+hkr, ndi\params\max_num_msix_messages, base,      0, "10"
+hkr, ndi\params\max_num_msix_messages, optional,  0, "1"
+
+
+[params_vmq]
+hkr, ndi\params\*VMQ,      paramDesc, , %vmq_desc%
+hkr, ndi\params\*VMQ,      default,   , "1"
+hkr, ndi\params\*VMQ,      type,      , "enum"
+hkr, ndi\params\*VMQ\enum, 0,         , %disabled%
+hkr, ndi\params\*VMQ\enum, 1,         , %enabled%
+
+
+
+[params_sriov]
+hkr, ndi\params\*Sriov,      paramDesc, , %sriov_desc%
+hkr, ndi\params\*Sriov,      default,   , "1"
+hkr, ndi\params\*Sriov,      type,      , "enum"
+hkr, ndi\params\*Sriov\enum, 0,         , %disabled%
+hkr, ndi\params\*Sriov\enum, 1,         , %enabled%
+
+hkr, NicSwitches\0, *SwitchName, 0x00000000, "Default Switch"
+hkr, NicSwitches\0, *Flags,      0x00010001, 0
+hkr, NicSwitches\0, *SwitchType, 0x00010001, 1
+hkr, NicSwitches\0, *SwitchId,   0x00010001, 0
+hkr, NicSwitches\0, *NumVFs,     0x00010001, 128
+
+
+
+
+[params_packet_direct]
+hkr, ndi\params\*PacketDirect,                            paramDesc, , %packet_direct_desc%
+hkr, ndi\params\*PacketDirect,                            default,   , "0"
+hkr, ndi\params\*PacketDirect,                            type,      , "enum"
+hkr, ndi\params\*PacketDirect\enum,                       0,         , %disabled%
+hkr, ndi\params\*PacketDirect\enum,                       1,         , %enabled%
+
+
+
+[params_rsc_ipv4]
+hkr, ndi\params\*RscIPv4,  paramDesc, , %ipv4_rsc_desc%
+hkr, ndi\params\*RscIPv4,  default,   , "1"
+hkr, ndi\params\*RscIPv4,  type,      , "enum"
+hkr, ndi\params\*RscIPv4\enum, 0,    , %disabled%
+hkr, ndi\params\*RscIPv4\enum, 1,    , %enabled%
+
+[params_rsc_ipv6]
+hkr, ndi\params\*RscIPv6,  paramDesc, , %ipv6_rsc_desc%
+hkr, ndi\params\*RscIPv6,  default,   , "1"
+hkr, ndi\params\*RscIPv6,  type,      , "enum"
+hkr, ndi\params\*RscIPv6\enum, 0,    , %disabled%
+hkr, ndi\params\*RscIPv6\enum, 1,    , %enabled%
+
+[params_qos]
+hkr, ndi\params\*QOS,  paramDesc, , %qos_desc%
+hkr, ndi\params\*QOS,  default,   , "1"
+hkr, ndi\params\*QOS,  type,      , "enum"
+hkr, ndi\params\*QOS\enum, 0,    , %disabled%
+hkr, ndi\params\*QOS\enum, 1,    , %enabled%
+
+[params_mtu_9k]
+hkr, ndi\params\*JumboPacket,       paramdesc, , %mtu_desc%
+hkr, ndi\params\*JumboPacket,       default,   , "1514"
+hkr, ndi\params\*JumboPacket,       type,      , "enum"
+hkr, ndi\params\*JumboPacket\enum, 1514,      , "1514"
+hkr, ndi\params\*JumboPacket\enum, 4088,      , "4088"
+hkr, ndi\params\*JumboPacket\enum, 9014,      , "9014"
+hkr, ndi\params\*JumboPacket\enum, 9336,      , "9336"
+
+[params_mtu_vf]
+hkr, ndi\params\*JumboPacket,       paramdesc, , %mtu_desc%
+hkr, ndi\params\*JumboPacket,       default,   , "1514"
+hkr, ndi\params\*JumboPacket,       type,      , "enum"
+hkr, ndi\params\*JumboPacket\enum, 1514,      , "1514"
+hkr, ndi\params\*JumboPacket\enum, 4088,      , "4088"
+hkr, ndi\params\*JumboPacket\enum, 9014,      , "9014"
+
+[params_rss_queues_16]
+hkr, ndi\params\*NumRSSQueues,         paramDesc, , %rss_queue_cnt_desc%
+hkr, ndi\params\*NumRSSQueues,         default,   , "16"
+HKR,Ndi\Params\*NumRssQueues,          type,      ,"long"
+HKR,Ndi\Params\*NumRssQueues,          min,       ,"1"
+HKR,Ndi\Params\*NumRssQueues,          max,       ,"16"
+
+[params_rss_queues_8]
+hkr, ndi\params\*NumRSSQueues,         paramDesc, , %rss_queue_cnt_desc%
+hkr, ndi\params\*NumRSSQueues,         default,   , "8"
+HKR,Ndi\Params\*NumRssQueues,          type,      ,"long"
+HKR,Ndi\Params\*NumRssQueues,          min,       ,"1"
+HKR,Ndi\Params\*NumRssQueues,          max,       ,"8"
+
+[params_rss_queues_default_4]
+hkr, ndi\params\*NumRSSQueues,         default,   , "4"
+
+[params_wol_cap]
+hkr, ndi\params\*WakeOnMagicPacket,      paramDesc, , %wake_on_magic_desc%
+hkr, ndi\params\*WakeOnMagicPacket,      default,   , "1"
+hkr, ndi\params\*WakeOnMagicPacket,      type,      , "enum"
+hkr, ndi\params\*WakeOnMagicPacket\enum, 0,         , %disabled%
+hkr, ndi\params\*WakeOnMagicPacket\enum, 1,         , %enabled%
+
+hkr, ndi\params\*WakeOnPattern,      paramDesc, , %wake_on_pattern_desc%
+hkr, ndi\params\*WakeOnPattern,      default,   , "1"
+hkr, ndi\params\*WakeOnPattern,      type,      , "enum"
+hkr, ndi\params\*WakeOnPattern\enum, 0,         , %disabled%
+hkr, ndi\params\*WakeOnPattern\enum, 1,         , %enabled%
+
+[params_buf_desc]
+hkr, ndi\params\*TransmitBuffers, paramdesc, , %tx_bufs_desc%
+hkr, ndi\params\*TransmitBuffers, default,   , "0"
+hkr, ndi\params\*TransmitBuffers, type,      , "dword"
+hkr, ndi\params\*TransmitBuffers, min,       , "0"
+hkr, ndi\params\*TransmitBuffers, max,       , "5000"
+hkr, ndi\params\*TransmitBuffers, step,      , "50"
+hkr, ndi\params\*TransmitBuffers, base,      , "10"
+
+hkr, ndi\params\*ReceiveBuffers, paramdesc, , %rx_bufs_desc%
+hkr, ndi\params\*ReceiveBuffers, default,   , "0"
+hkr, ndi\params\*ReceiveBuffers, type,      , "dword"
+hkr, ndi\params\*ReceiveBuffers, min,       , "0"
+hkr, ndi\params\*ReceiveBuffers, max,       , "15000"
+hkr, ndi\params\*ReceiveBuffers, step,      , "500"
+hkr, ndi\params\*ReceiveBuffers, base,      , "10"
+
+[params_rx_buffers_default_2000]
+hkr, ndi\params\*ReceiveBuffers,         default,   , "2000"
+
+[params_ipv6_cksum]
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6,      paramDesc, , %taskoffload_desc_ipv6%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6,      default,   , "3"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6,      type,      , "enum"
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6\enum, 0,         , %taskoffload_disabled%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6\enum, 1,         , %taskoffload_tx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6\enum, 2,         , %taskoffload_rx_cksum%
+hkr, ndi\params\*TCPUDPChecksumOffloadIPv6\enum, 3,         , %taskoffload_rx_tx_cksum%
+
+[params_ipv6_lso]
+hkr, ndi\params\*LSOv2IPv6,      paramDesc, , %lso_desc_ipv6%
+hkr, ndi\params\*LSOv2IPv6,      default,   , "1"
+hkr, ndi\params\*LSOv2IPv6,      type,      , "enum"
+hkr, ndi\params\*LSOv2IPv6\enum, 0,         , %disabled%
+hkr, ndi\params\*LSOv2IPv6\enum, 1,         , %enabled%
+
+[params_flow]
+hkr, ndi\params\*FlowControl,      paramdesc,  , %flow_ctrl%
+hkr, ndi\params\*FlowControl,      default,    , "4"
+hkr, ndi\params\*FlowControl,      type,       , "enum"
+hkr, ndi\params\*FlowControl\enum, 0,          , %flow_ctrl_disabled%
+hkr, ndi\params\*FlowControl\enum, 1,          , %flow_ctrl_tx%
+hkr, ndi\params\*FlowControl\enum, 2,          , %flow_ctrl_rx%
+hkr, ndi\params\*FlowControl\enum, 3,          , %flow_ctrl_rx_tx%
+hkr, ndi\params\*FlowControl\enum, 4,          , %flow_ctrl_auto%
+
+[params_rss]
+hkr, ndi\params\*RSS,      paramDesc, , %rss_desc%
+hkr, ndi\params\*RSS,      default,   , "1"
+hkr, ndi\params\*RSS,      type,      , "enum"
+hkr, ndi\params\*RSS\enum, 0,         , %disabled%
+hkr, ndi\params\*RSS\enum, 1,         , %enabled%
+
+hkr, ndi\Params\*NumaNodeId,                              paramDesc, , "%numa_node_desc%"
+hkr, ndi\Params\*NumaNodeId,                              default,   , ""
+hkr, ndi\Params\*NumaNodeId,                              type,      , "long"
+hkr, ndi\Params\*NumaNodeId,                              min,       , "0"
+hkr, ndi\Params\*NumaNodeId,                              max,       , "65535"
+hkr, ndi\Params\*NumaNodeId,                              optional,  , "1"
+
+
+hkr, ndi\params\*RSSProfile,                              paramDesc, , %rss_profile_desc%
+hkr, ndi\params\*RSSProfile,                              default,   , "4"
+hkr, ndi\params\*RSSProfile,                              type,      , "enum"
+hkr, ndi\params\*RSSProfile\enum,                         1,         , %rss_profile_cp%
+hkr, ndi\params\*RSSProfile\enum,                         2,         , %rss_profile_cps%
+hkr, ndi\params\*RSSProfile\enum,                         3,         , %rss_profile_ns%
+hkr, ndi\params\*RSSProfile\enum,                         4,         , %rss_profile_nss%
+hkr, ndi\params\*RSSProfile\enum,                         5,         , %rss_profile_cs%
+hkr, ndi\params\*RSSProfile,                              optional,  , "1"
+
+hkr, ndi\Params\*RssBaseProcGroup,                        paramDesc, , "%rss_base_group_proc_number_desc%"
+hkr, ndi\Params\*RssBaseProcGroup,                        default,   , ""
+hkr, ndi\Params\*RssBaseProcGroup,                        type,      , "long"
+hkr, ndi\Params\*RssBaseProcGroup,                        min,       , "0"
+hkr, ndi\Params\*RssBaseProcGroup,                        max,       , "65534"
+hkr, ndi\params\*RssBaseProcGroup,                        optional,  , "1"
+
+
+
+hkr, ndi\Params\*RssBaseProcNumber,                       paramDesc, , "%rss_base_proc_number_desc%"
+hkr, ndi\Params\*RssBaseProcNumber,                       default,   , "0"
+hkr, ndi\Params\*RssBaseProcNumber,                       type,      , "long"
+hkr, ndi\Params\*RssBaseProcNumber,                       min,       , "0"
+hkr, ndi\Params\*RssBaseProcNumber,                       max,       , "63"
+hkr, ndi\Params\*RssBaseProcNumber,                       optional,  , "1"
+
+hkr, ndi\Params\*MaxRssProcessors,                        paramDesc, , "%max_rss_processors_desc%"
+hkr, ndi\Params\*MaxRssProcessors,                        default,   , "16"
+hkr, ndi\Params\*MaxRssProcessors,                        type,      , "long"
+hkr, ndi\Params\*MaxRssProcessors,                        min,       , "1"
+hkr, ndi\Params\*MaxRssProcessors,                        max,       , "65535"
+
+
+hkr, ndi\Params\*RssMaxProcNumber,                        paramDesc, , "%rss_max_proc_number_desc%"
+hkr, ndi\Params\*RssMaxProcNumber,                        default,   , ""
+hkr, ndi\Params\*RssMaxProcNumber,                        type,      , "long"
+hkr, ndi\Params\*RssMaxProcNumber,                        min,       , "0"
+hkr, ndi\Params\*RssMaxProcNumber,                        max,       , "63"
+hkr, ndi\Params\*RssMaxProcNumber,                        optional,  , "1"
+
+hkr, ndi\Params\*RSSMaxProcGroup,                         paramDesc, , "%rss_max_group_proc_number_desc%"
+hkr, ndi\Params\*RSSMaxProcGroup,                         default,   , ""
+hkr, ndi\Params\*RSSMaxProcGroup,                         type,      , "long"
+hkr, ndi\Params\*RSSMaxProcGroup,                         min,       , "0"
+hkr, ndi\Params\*RSSMaxProcGroup,                         max,       , "65534"
+hkr, ndi\Params\*RSSMaxProcGroup,                         optional,  , "1"
+
+
+[params_link10]
+hkr, ndi\params\*SpeedDuplex,                             paramDesc, , %speed_duplex_desc%
+hkr, ndi\params\*SpeedDuplex,                             default,   , "0"
+hkr, ndi\params\*SpeedDuplex,                             type,      , "enum"
+hkr, ndi\params\*SpeedDuplex\enum,                        0,         , %speed_duplex_auto%
+hkr, ndi\params\*SpeedDuplex\enum,                        6,         , %speed_duplex_1Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        7,         , %speed_duplex_10Gb_fd%
+
+hkr, ndi\params\*EEE,                                     paramDesc, , %eee_desc%
+hkr, ndi\params\*EEE,                                     default,   , "1"
+hkr, ndi\params\*EEE,                                     type,      , "enum"
+hkr, ndi\params\*EEE\enum,                                0,         , %disabled%
+hkr, ndi\params\*EEE\enum,                                1,         , %enabled%
+
+[params_link25]
+hkr, ndi\params\*SpeedDuplex,                             paramDesc, , %speed_duplex_desc%
+hkr, ndi\params\*SpeedDuplex,                             default,   , "0"
+hkr, ndi\params\*SpeedDuplex,                             type,      , "enum"
+hkr, ndi\params\*SpeedDuplex\enum,                        0,         , %speed_duplex_auto%
+hkr, ndi\params\*SpeedDuplex\enum,                        6,         , %speed_duplex_1Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        7,         , %speed_duplex_10Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        25000,     , %speed_duplex_25Gb_fd%
+
+
+[params_link50]
+hkr, ndi\params\*SpeedDuplex,                             paramDesc, , %speed_duplex_desc%
+hkr, ndi\params\*SpeedDuplex,                             default,   , "0"
+hkr, ndi\params\*SpeedDuplex,                             type,      , "enum"
+hkr, ndi\params\*SpeedDuplex\enum,                        0,         , %speed_duplex_auto%
+hkr, ndi\params\*SpeedDuplex\enum,                        7,         , %speed_duplex_10Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        25000,     , %speed_duplex_25Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        9,         , %speed_duplex_40Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        50000,     , %speed_duplex_50Gb_fd%
+
+[params_link100]
+hkr, ndi\params\*SpeedDuplex,                             paramDesc, , %speed_duplex_desc%
+hkr, ndi\params\*SpeedDuplex,                             default,   , "0"
+hkr, ndi\params\*SpeedDuplex,                             type,      , "enum"
+hkr, ndi\params\*SpeedDuplex\enum,                        0,         , %speed_duplex_auto%
+hkr, ndi\params\*SpeedDuplex\enum,                        7,         , %speed_duplex_10Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        25000,     , %speed_duplex_25Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        9,         , %speed_duplex_40Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        50000,     , %speed_duplex_50Gb_fd%
+hkr, ndi\params\*SpeedDuplex\enum,                        100000,    , %speed_duplex_100Gb_fd%
+
+
+[params_lso]
+hkr, ndi\params\*LSOv2IPv4,      paramDesc, , %lso_desc_ipv4%
+hkr, ndi\params\*LSOv2IPv4,      default,   , "1"
+hkr, ndi\params\*LSOv2IPv4,      type,      , "enum"
+hkr, ndi\params\*LSOv2IPv4\enum, 0,         , %disabled%
+hkr, ndi\params\*LSOv2IPv4\enum, 1,         , %enabled%
+
+
+[params_nvgre]
+hkr, ndi\params\*EncapsulatedPacketTaskOffload,           paramDesc, , %nvgre_desc%
+hkr, ndi\params\*EncapsulatedPacketTaskOffload,           default,   , "1"
+hkr, ndi\params\*EncapsulatedPacketTaskOffload,           type,      , "enum"
+hkr, ndi\params\*EncapsulatedPacketTaskOffload\enum,      0,         , %disabled%
+hkr, ndi\params\*EncapsulatedPacketTaskOffload\enum,      1,         , %enabled%
+
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadNvgre,      paramDesc, , %nvgre_desc2%
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadNvgre,      default,   , "1"
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadNvgre,      type,      , "enum"
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadNvgre\enum, 0,         , "%disabled%"
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadNvgre\enum, 1,         , "%enabled%"
+
+
+
+
+[params_vxlan]
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadVxlan,      paramDesc, , %vxlan_desc%
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadVxlan,      default,   , "1"
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadVxlan,      type,      , "enum"
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadVxlan\enum, 0,         , %disabled%
+hkr, ndi\params\*EncapsulatedPacketTaskOffloadVxlan\enum, 1,         , %enabled%
+
+;hkr, ndi\params\*VxlanUDPPortNumber,                      paramDesc, , %vxlan_port_desc%
+;hkr, ndi\params\*VxlanUDPPortNumber,                      default,   , "4789"
+;hkr, ndi\params\*VxlanUDPPortNumber,                      type,      , "dword"
+;hkr, ndi\params\*VxlanUDPPortNumber,                      Min,       , "1"
+;hkr, ndi\params\*VxlanUDPPortNumber,                      Max,       , "65535"
+;hkr, ndi\params\*VxlanUDPPortNumber,                      Optional,  , "1"
+
+
+
+[params_hnv_mtu]
+hkr, ndi\params\*EncapOverhead,                           paramDesc, , "%encap_overhead_desc%"
+hkr, ndi\params\*EncapOverhead,                           type,      , "long"
+hkr, ndi\params\*EncapOverhead,                           min,       , "0"
+hkr, ndi\params\*EncapOverhead,                           max,       , "256"
+hkr, ndi\params\*EncapOverhead,                           step,      , "32"
+hkr, ndi\params\*EncapOverhead,                           base,      , "10"
+hkr, ndi\params\*EncapOverhead,                           default,   , "0"
+
+
+[params_ndk]
+hkr, ndi\params\*NetworkDirect,  paramDesc, , "NetworkDirect Functionality"
+hkr, ndi\params\*NetworkDirect,  type,      , "enum"
+hkr, ndi\params\*NetworkDirect,  default,   , "0"
+hkr, ndi\params\*NetworkDirect\enum, 0,    , %disabled%
+hkr, ndi\params\*NetworkDirect\enum, 1,    , %enabled%
+
+hkr, ndi\params\RoCEVersion,  paramDesc, , "RoCE Protocol Version"
+hkr, ndi\params\RoCEVersion,  type,      , "enum"
+hkr, ndi\params\RoCEVersion,  default,   , "2"
+hkr, ndi\params\RoCEVersion\enum, 1,    , %roce_v1%
+hkr, ndi\params\RoCEVersion\enum, 2,    , %roce_v2%
+
+hkr, ndi\params\RoCEMtu,  paramDesc, , "RoCE MTU"
+hkr, ndi\params\RoCEMtu,  type,      , "enum"
+hkr, ndi\params\RoCEMtu,  default,   , "3"
+hkr, ndi\params\RoCEMtu\enum, 1,    , %roce_mtu_256%
+hkr, ndi\params\RoCEMtu\enum, 2,    , %roce_mtu_512%
+hkr, ndi\params\RoCEMtu\enum, 3,    , %roce_mtu_1024%
+hkr, ndi\params\RoCEMtu\enum, 4,    , %roce_mtu_2048%
+hkr, ndi\params\RoCEMtu\enum, 5,    , %roce_mtu_4096%
+
+
+[params_vmmq]
+hkr, ndi\Params\*RssOnHostVPorts,                         paramDesc, , "%vmmq_desc%"
+hkr, ndi\Params\*RssOnHostVPorts,                         default,   , "0"
+
+hkr, ndi\Params\*RssOnHostVPorts,                         type,      , "enum"
+hkr, ndi\Params\*RssOnHostVPorts\enum,                    0,         , "%disabled%"
+hkr, ndi\Params\*RssOnHostVPorts\enum,                    1,         , "%enabled%"
+
+
+
+[params_vf_anti_spoof_protection]
+hkr, ndi\params\VFAntiSpoofing,      paramDesc, , %vf_spoofing_protection%
+hkr, ndi\params\VFAntiSpoofing,      default,   , "31"
+hkr, ndi\params\VFAntiSpoofing,      type,      , "enum"
+hkr, ndi\params\VFAntiSpoofing\enum, 0,         , %disabled%
+hkr, ndi\params\VFAntiSpoofing\enum, 31,         , %enabled%
+
+
+[params_fec]
+hkr, ndi\Params\FEC,                         paramDesc, , "%fec_desc%"
+hkr, ndi\Params\FEC,                         default,   , "0"
+hkr, ndi\Params\FEC,                         type,      , "enum"
+hkr, ndi\Params\FEC\enum,                    0,         , "%disabled%"
+hkr, ndi\Params\FEC\enum,                    1,         , "%fec_cl74%"
+hkr, ndi\Params\FEC\enum,                    3,         , "%fec_auto%"
+
+;Only include if params_fec is included
+[params_fecplus]
+hkr, ndi\Params\FEC\enum,                    2,         , "%fec_cl91%"
+
+;*******************************************************************************
+; Destination directories
+;*******************************************************************************
+
+[destinationdirs]
+defaultdestdir  = 11
+x64_sys_file  = 12
+
+[sourcedisksnames]
+1 = %disk_desc%,,,
+
+[sourcedisksfiles]
+bnxtnd.sys = 1
+
+[x64_sys_file]
+bnxtnd.sys,,,1
+
+;*******************************************************************************
+; Localizable and non-localizable strings.
+;*******************************************************************************
+
+[strings]
+
+; Non-Localizable strings
+brcm = "Broadcom Corporation"
+
+; Localizable strings
+disk_desc                   = "Broadcom Installation Media"
+mp_srv_desc                 = "Broadcom Cumulus Ethernet Adapter"
+
+
+;*******************************************************************************
+; Physical device strings.
+;*******************************************************************************
+
+;*******************************************************************************
+; Cumulus physical device strings.
+;*******************************************************************************
+
+
+
+pci\ven_14e4&dev_16c8&subsys_16c814E4.DeviceDesc = "Broadcom BCM57301 NetXtreme-C 10Gb Ethernet Controller" ;**
+pci\ven_14e4&dev_16c9&subsys_16c914E4.DeviceDesc = "Broadcom BCM57302 NetXtreme-C 10Gb/25Gb Ethernet Controller" ;**
+pci\ven_14e4&dev_16c9&subsys_020314E4.DeviceDesc = "Broadcom M125c NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16c9&subsys_020414E4.DeviceDesc = "Broadcom M125clp NetXtreme C-Series Ethernet OCP Type4 Adapter"
+pci\ven_14e4&dev_16ca&subsys_16ca14E4.DeviceDesc = "Broadcom BCM57304 NetXtreme-C 10Gb/25Gb/40Gb/50Gb Ethernet Controller" ;**
+pci\ven_14e4&dev_16ca&subsys_040314E4.DeviceDesc = "Broadcom P150c NetXtreme-C Single-port 40Gb/50Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16ca&subsys_040214E4.DeviceDesc = "Broadcom P225c NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16ca&subsys_040514E4.DeviceDesc = "Broadcom M225c NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16ca&subsys_3043108e.DeviceDesc = "Broadcom NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16c9&subsys_020514E4.DeviceDesc = "Broadcom P210c NetXtreme-C Dual-port 10Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16c9&subsys_020614E4.DeviceDesc = "Broadcom P210c NetXtreme-C Dual-port 10Gb  Ethernet OCP Mezzanine Adapter"
+pci\ven_14e4&dev_16c9&subsys_020714E4.DeviceDesc = "Broadcom M125c NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16c9&subsys_020814E4.DeviceDesc = "Broadcom M125clp NetXtreme C-Series Ethernet OCP Type4 Adapter"
+
+;*******************************************************************************
+; Cumulus+ physical device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16ce&subsys_16ce14e4.DeviceDesc = "Broadcom BCM57311 NetXtreme-C 10Gb RDMA Ethernet Controller" ;**
+pci\ven_14e4&dev_16cf&subsys_312017aa.DeviceDesc = "Broadcom NX-C PCIe 25Gb 1-Port SFP28 Ethernet Adapter"
+pci\ven_14e4&dev_16cf&subsys_16cf14e4.DeviceDesc = "Broadcom BCM57312 NetXtreme-C 10Gb/25Gb RDMA Ethernet Controller" ;**
+pci\ven_14e4&dev_16df&subsys_16df14e4.DeviceDesc = "Broadcom BCM57314 NetXtreme-C 10Gb/25Gb/40Gb/50Gb RDMA Ethernet Controller" ;**
+pci\ven_14e4&dev_16df&subsys_140414e4.DeviceDesc = "Broadcom M225cp NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16df&subsys_120214e4.DeviceDesc = "Broadcom M125cp NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16df&subsys_140214e4.DeviceDesc = "Broadcom P225cp NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16df&subsys_140314e4.DeviceDesc = "Broadcom P150cp NetXtreme-C single port 40Gb/50Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16e0&subsys_16e014e4.DeviceDesc = "Broadcom BCM57317 NetXtreme-C 10GBase-T RDMA Ethernet Controller" ;**
+pci\ven_14e4&dev_16e4&subsys_16e414e4.DeviceDesc = "Broadcom BCM57317 NetXtreme-C 25Gb RDMA Ethernet Controller" ;**
+pci\ven_14e4&dev_16df&subsys_140514e4.DeviceDesc = "Broadcom M225cp NetXtreme C-Series Ethernet OCP Adapter"
+
+;*******************************************************************************
+; Whitney physical device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16d0&subsys_16d014E4.DeviceDesc = "Broadcom BCM57402 NetXtreme-E 10Gb Ethernet Controller" ;**
+pci\ven_14e4&dev_16d0&subsys_402014E4.DeviceDesc = "Broadcom NetXtreme E-Series Dual-port 10Gb SFP+ Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d1&subsys_040214E4.DeviceDesc = "Broadcom P225e NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d1&subsys_404114E4.DeviceDesc = "Broadcom NetXtreme E-Series Dual-port 25Gb SFP28 Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d1&subsys_312017aa.DeviceDesc = "Broadcom NX-C Single-port 25G PCIe Adapter"
+pci\ven_14e4&dev_16d1&subsys_16d114E4.DeviceDesc = "Broadcom BCM57404 NetXtreme-E 10Gb/25Gb Ethernet Controller" ; **
+pci\ven_14e4&dev_16d2&subsys_060214E4.DeviceDesc = "Broadcom P210t NetXtreme-E Dual-port 10GBASE-T Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d2&subsys_406014E4.DeviceDesc = "Broadcom NetXtreme E-Series Dual-port 10GBASE-T Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d2&subsys_416017aa.DeviceDesc = "Broadcom NX-E Dual-port 10GBASE-T PCIe Adapter"
+pci\ven_14e4&dev_16d2&subsys_16d214e4.DeviceDesc = "Broadcom BCM57406 NetXtreme-E 10GBASE-T Ethernet Controller" ; **
+pci\ven_14e4&dev_16d5&subsys_16d514e4.DeviceDesc = "Broadcom BCM57407 NetXtreme-E 10GBase-T Ethernet Controller" ; **
+pci\ven_14e4&dev_16e9&subsys_16e914e4.DeviceDesc = "Broadcom BCM57407 NetXtreme-E 25Gb Ethernet Controller" ; **
+pci\ven_14e4&dev_16df&subsys_4869108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Cloud Ethernet Controller"
+
+;*******************************************************************************
+; Whitney+ physical device strings.
+;*******************************************************************************
+
+pci\ven_14E4&dev_16D6&subsys_412014E4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10Gb SFP+ Ethernet Network Daughter Card"
+pci\ven_14E4&dev_16D6&subsys_412114E4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10Gb SFP+ Ethernet PCIe Adapter"
+pci\ven_14E4&dev_16D6&subsys_16d614E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E 10Gb RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16d7&subsys_16d714e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16d7&subsys_414114e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 25Gb SFP28 Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_140514e4.DeviceDesc = "Broadcom P225ep NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_414014e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 25Gb SFP28 Network Daughter Card"
+pci\ven_14e4&dev_16d8&subsys_416114e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d8&subsys_416014e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet Network Daughter Card"
+pci\ven_14E4&dev_16d8&subsys_1feb1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10Gb SFP+ Ethernet LOM" ; **
+pci\ven_14e4&dev_16d8&subsys_160214e4.DeviceDesc = "Broadcom P210tep NetXtreme-E Dual-port 10GBASE-T Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d8&subsys_416017aa.DeviceDesc = "Broadcom NX-E PCIe 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16d8&subsys_416117aa.DeviceDesc = "Broadcom NX-E ML2 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16d8&subsys_16d814e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E 10GBASE-T RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16d9&subsys_16d914e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E 10GBASE-T RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16e2&subsys_16e214e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16e3&subsys_16e314e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E 10Gb RDMA Ethernet Controller" ; **
+pci\ven_14e4&dev_16d9&subsys_4866108e.DeviceDesc = "Oracle Dual Port 10GBase-T Ethernet Controller"
+pci\ven_14e4&dev_16e2&subsys_4866108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_1fea1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet LOM"
+pci\ven_14e4&dev_16d8&subsys_07e51028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet LOM"
+pci\ven_14e4&dev_16d6&subsys_412017aa.DeviceDesc = "Broadcom NX-E PCIe 25Gb 1-Port SFP28 Ethernet Adapter"
+pci\ven_14e4&dev_16d7&subsys_140314e4.DeviceDesc = "Broadcom P150p NetXtreme-E Single-port 40Gb/50Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_140214e4.DeviceDesc = "Broadcom P225p NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_140414e4.DeviceDesc = "Broadcom M225p NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d6&subsys_120214e4.DeviceDesc = "Broadcom M125p NetXtreme E-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16d7&subsys_3044108e.DeviceDesc = "Oracle Dual Port 25Gb Ethernet Adapter"
+pci\ven_14e4&dev_16d7&subsys_4869108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Cloud Ethernet Controller"
+pci\ven_14e4&dev_16d7&subsys_414314e4.DeviceDesc = "Broadcom NetXtreme E-Series Single Port 40Gb/50Gb Ethernet OCP Adapter"
+pci\ven_14e4&dev_16d6&subsys_412314e4.DeviceDesc = "Broadcom M210p NetXtreme-E Dual-port 10Gb Ethernet OCP Adapter"
+pci\ven_14e4&dev_16d6&subsys_412414e4.DeviceDesc = "Broadcom P210p NetXtreme-E Dual-port 10Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16cf&subsys_120214e4.DeviceDesc = "Broadcom M125cp NetXtreme C-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_16ca&subsys_040614e4.DeviceDesc = "Broadcom P225c NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16ca&subsys_040a14e4.DeviceDesc = "Broadcom P225c NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16ca&subsys_040414e4.DeviceDesc = "Broadcom M150c NetXtreme-C Single-port 40Gb/50Gb Ethernet OCP Mezzanine Adapter"
+pci\ven_14e4&dev_16ca&subsys_414214e4.DeviceDesc = "Broadcom NetXtreme E-Series Dual-port 25Gb SFP28 Ethernet OCP Adapter"
+pci\ven_14e4&dev_16ca&subsys_304414e4.DeviceDesc = "Broadcom NetXtreme-C Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16c9&subsys_020214e4.DeviceDesc = "Broadcom P125c NetXtreme-C Single-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_414414e4.DeviceDesc = "Broadcom M225p NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d8&subsys_416314e4.DeviceDesc = "Broadcom M210tp NetXtreme-E Dual-port 10GBASE-T Ethernet OCP Adapter"
+pci\ven_14e4&dev_16d7&subsys_094e15d9.DeviceDesc = "Supermicro SIOM 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16d7&subsys_092815d9.DeviceDesc = "Supermicro 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_099615d9.DeviceDesc = "Supermicro SIOM 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_1a0815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_1a0915d9.DeviceDesc = "Supermicro Ultra Riser 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_060214E4.DeviceDesc = "Broadcom P210tep NetXtreme-E Dual-port 10GBASE-T Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_4877108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Cloud Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_8b17152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E 10GBASE-T RDMA Ethernet Controller"
+pci\ven_14e4&dev_16e2&subsys_8b18152d.DeviceDesc = "Broadcom BCM57417 NetXtreme-E 10Gb/25Gb RDMA Ethernet Controller"
+pci\ven_14e4&dev_16e3&subsys_8b19152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E 10Gb RDMA Ethernet Controller"
+pci\ven_14e4&dev_16d8&subsys_16d815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16d7&subsys_140714e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 25Gb SFP28 Ethernet OCP Adapter"
+pci\ven_14e4&dev_16d6&subsys_8b20152d.DeviceDesc = "Broadcom P210p NetXtreme-E Dual-port 10Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d6&subsys_8b22152d.DeviceDesc = "Broadcom P125p NetXtreme E-Series Ethernet PCIe Adapter"
+pci\ven_14e4&dev_16d7&subsys_8b21152d.DeviceDesc = "Broadcom P225p NetXtreme-E Dual-port 10Gb/25Gb Ethernet PCIe Adapter"
+
+
+;*******************************************************************************
+; Stratus physical device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16f1&subsys_16f114e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E 10Gb/25Gb/40Gb/50Gb/100Gb RDMA Ethernet Controller"
+pci\ven_14e4&dev_16f0&subsys_16f014e4.DeviceDesc = "Broadcom NetXtreme-S Ethernet Controller"
+pci\ven_14e4&dev_16f1&subsys_452014e4.DeviceDesc = "Broadcom M150pm NetXtreme E-Series Ethernet OCP Adapter"
+pci\ven_14e4&dev_1614&subsys_454014e4.DeviceDesc = "Broadcom P1100p NetXtreme-E Single-port 50Gb/100Gb Ethernet PCIe Adapter"
+pci\ven_14e4&dev_1614&subsys_454114e4.DeviceDesc = "Broadcom M1100pm NetXtreme E-Series Single-port 50Gb/100Gb Ethernet OCP Adapter"
+pci\ven_14e4&dev_1614&subsys_8b11152d.DeviceDesc = "Broadcom 57454 NetXtreme-E Quad-port 25Gb Ethernet OCP Adapter"
+pci\ven_14e4&dev_d802&subsys_802014e4.DeviceDesc = "Broadcom PS150-H16 NetXtreme-S Single-port 50Gb PCIe SmartNIC"
+pci\ven_14e4&dev_d802&subsys_d80214e4.DeviceDesc = "Broadcom NetXtreme-S 50G Ethernet Controller"
+pci\ven_14e4&dev_d804&subsys_d80414e4.DeviceDesc = "Broadcom NetXtreme-S 100G Ethernet Controller"
+pci\ven_14e4&dev_d802&subsys_802114e4.DeviceDesc = "Broadcom PS225-H16 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_d802&subsys_802414e4.DeviceDesc = "Broadcom PS225-H04 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_d802&subsys_802814e4.DeviceDesc = "Broadcom PS225-H08 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_d804&subsys_804014e4.DeviceDesc = "Broadcom PS1100-H08 NetXtreme-S Single-port 100Gb PCIe SmartNIC"
+
+;*******************************************************************************
+; NPAR, Non-RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16d4&subsys_402014E4.DeviceDesc = "Broadcom BCM57402 NetXtreme-E Partition"
+pci\ven_14e4&dev_16d4&subsys_16d014E4.DeviceDesc = "Broadcom BCM57402 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16e7&subsys_16d114E4.DeviceDesc = "Broadcom BCM57404 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16e7&subsys_040214E4.DeviceDesc = "Broadcom BCM57404 NetXtreme-E Partition"
+pci\ven_14e4&dev_16e7&subsys_404114E4.DeviceDesc = "Broadcom BCM57404 NetXtreme-E Partition"
+pci\ven_14e4&dev_16e7&subsys_312017aa.DeviceDesc = "Broadcom NX-C Single-port 25G PCIe Adapter"
+pci\ven_14e4&dev_16e8&subsys_060214E4.DeviceDesc = "Broadcom BCM57406 NetXtreme-E Partition"
+pci\ven_14e4&dev_16e8&subsys_406014E4.DeviceDesc = "Broadcom BCM57406 NetXtreme-E Partition"
+pci\ven_14e4&dev_16e8&subsys_416017aa.DeviceDesc = "Broadcom NX-E Dual-port 10GBASE-T PCIe Adapter"
+pci\ven_14e4&dev_16e8&subsys_16d214e4.DeviceDesc = "Broadcom BCM57406 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ea&subsys_16d514e4.DeviceDesc = "Broadcom BCM57407 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ea&subsys_16e914e4.DeviceDesc = "Broadcom BCM57407 NetXtreme-E Partition" ; **
+pci\ven_14E4&dev_16de&subsys_412014E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E Partition"
+pci\ven_14E4&dev_16de&subsys_412114E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E Partition"
+pci\ven_14E4&dev_16de&subsys_16d614E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ec&subsys_16d714e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ec&subsys_414114e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_140514e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_414014e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_416114e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_416014e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_160214e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_416017aa.DeviceDesc = "Broadcom NX-E PCIe 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16ee&subsys_416117aa.DeviceDesc = "Broadcom NX-E ML2 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16ee&subsys_16d814e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ee&subsys_16e314e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16ee&subsys_1fea1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet LOM"
+pci\ven_14e4&dev_16ee&subsys_1feb1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10G SFP+ Ethernet LOM"
+pci\ven_14e4&dev_16ee&subsys_07e51028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T Ethernet LOM"
+pci\ven_14e4&dev_16cc&subsys_16d914e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16cc&subsys_16e214e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E Partition" ; **
+pci\ven_14e4&dev_16cc&subsys_4866108e.DeviceDesc = "Broadcom BCM57417 NetXtreme-E Partition"
+pci\ven_14e4&dev_16d4&subsys_040214E4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16de&subsys_412017aa.DeviceDesc = "Broadcom NX-E PCIe 25Gb 1-Port SFP28 Ethernet Adapter"
+pci\ven_14e4&dev_16ec&subsys_140314e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_140214e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_140414e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16de&subsys_120214e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_3044108e.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_4869108e.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_452014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_454014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_454114e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_16f014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_16f114e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_1604&subsys_160414e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_414314e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16de&subsys_412314e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16de&subsys_412414e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_414414e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_416314e4.DeviceDesc = "Broadcom NetXtreme-E Partition"
+pci\ven_14e4&dev_16ec&subsys_094e15d9.DeviceDesc = "Supermicro SIOM 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16ec&subsys_092815d9.DeviceDesc = "Supermicro 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16ee&subsys_099615d9.DeviceDesc = "Supermicro SIOM 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ee&subsys_1a0815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ee&subsys_1a0915d9.DeviceDesc = "Supermicro Ultra Riser 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ec&subsys_4877108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Cloud Ethernet Controller"
+pci\ven_14e4&dev_16ee&subsys_8b17152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition"
+pci\ven_14e4&dev_16cc&subsys_8b18152d.DeviceDesc = "Broadcom BCM57417 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_8b19152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E Partition"
+pci\ven_14e4&dev_16ee&subsys_16d815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ec&subsys_140714e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 25Gb SFP28 Ethernet OCP Adapter"
+pci\ven_14e4&dev_1794&subsys_802014e4.DeviceDesc = "Broadcom PS150-H16 NetXtreme-S Single-port 50Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1794&subsys_802114e4.DeviceDesc = "Broadcom PS225-H16 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1794&subsys_802414e4.DeviceDesc = "Broadcom PS225-H04 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1794&subsys_802814e4.DeviceDesc = "Broadcom PS225-H08 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1796&subsys_804014e4.DeviceDesc = "Broadcom PS1100-H08 NetXtreme-S Single-port 100Gb PCIe SmartNIC"
+
+
+;*******************************************************************************
+; NPAR, RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14E4&dev_16eb&subsys_412014E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E RDMA Partition"
+pci\ven_14E4&dev_16eb&subsys_412114E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E RDMA Partition"
+pci\ven_14E4&dev_16eb&subsys_16d614E4.DeviceDesc = "Broadcom BCM57412 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16ed&subsys_16d714e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16ed&subsys_414114e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_140514e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_414014e4.DeviceDesc = "Broadcom BCM57414 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_416114e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_416014e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_160214e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_416017aa.DeviceDesc = "Broadcom NX-E PCIe 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16ef&subsys_416117aa.DeviceDesc = "Broadcom NX-E ML2 10Gb 2-Port Base-T Ethernet Adapter"
+pci\ven_14e4&dev_16ef&subsys_16d814e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16ef&subsys_16e314e4.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16ef&subsys_1fea1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10GBASE-T LOM"
+pci\ven_14e4&dev_16ef&subsys_1feb1028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10G SFP+ Ethernet LOM"
+pci\ven_14e4&dev_16ef&subsys_07e51028.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 10G SFP+ Ethernet LOM"
+pci\ven_14e4&dev_16c0&subsys_16d914e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16c0&subsys_16e214e4.DeviceDesc = "Broadcom BCM57417 NetXtreme-E RDMA Partition" ; **
+pci\ven_14e4&dev_16c0&subsys_4866108e.DeviceDesc = "Broadcom BCM57417 NetXtreme-E Partition"
+pci\ven_14e4&dev_16eb&subsys_412017aa.DeviceDesc = "Broadcom NX-E PCIe 25Gb 1-Port SFP28 Ethernet Adapter"
+pci\ven_14e4&dev_16ed&subsys_140314e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_140214e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_140414e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16eb&subsys_120214e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_3044108e.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_4869108e.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_452014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_454014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_454114e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_16f014e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_16f114e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_1605&subsys_160514e4.DeviceDesc = "Broadcom BCM57320 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_414314e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16eb&subsys_412314e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16eb&subsys_412414e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_414414e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_416314e4.DeviceDesc = "Broadcom NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ed&subsys_094e15d9.DeviceDesc = "Supermicro SIOM 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16ed&subsys_092815d9.DeviceDesc = "Supermicro 25Gb SFP28 Ethernet Controller"
+pci\ven_14e4&dev_16ef&subsys_099615d9.DeviceDesc = "Supermicro SIOM 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ef&subsys_1a0815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ef&subsys_1a0915d9.DeviceDesc = "Supermicro Ultra Riser 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ed&subsys_4877108e.DeviceDesc = "Oracle Dual Port 10Gb/25Gb SFP28 Cloud Ethernet Controller"
+pci\ven_14e4&dev_16ef&subsys_8b17152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16c0&subsys_8b18152d.DeviceDesc = "Broadcom BCM57417 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_8b19152d.DeviceDesc = "Broadcom BCM57416 NetXtreme-E RDMA Partition"
+pci\ven_14e4&dev_16ef&subsys_16d815d9.DeviceDesc = "Supermicro 10GBASE-T Ethernet Controller"
+pci\ven_14e4&dev_16ed&subsys_140714e4.DeviceDesc = "Broadcom NetXtreme E-Series Advanced Dual-port 25Gb SFP28 Ethernet OCP Adapter"
+pci\ven_14e4&dev_1795&subsys_802014e4.DeviceDesc = "Broadcom PS150-H16 NetXtreme-S Single-port 50Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1795&subsys_802114e4.DeviceDesc = "Broadcom PS225-H16 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1795&subsys_802414e4.DeviceDesc = "Broadcom PS225-H04 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1795&subsys_802814e4.DeviceDesc = "Broadcom PS225-H08 NetXtreme-S Dual-port 25Gb PCIe SmartNIC"
+pci\ven_14e4&dev_1797&subsys_804014e4.DeviceDesc = "Broadcom PS1100-H08 NetXtreme-S Single-port 100Gb PCIe SmartNIC"
+
+
+;*******************************************************************************
+; VF, Non-RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16cb.DeviceDesc = "Broadcom NetXtreme-C Virtual Function"
+pci\ven_14e4&dev_16e1.DeviceDesc = "Broadcom NetXtreme-C Virtual Function"
+pci\ven_14e4&dev_16d3.DeviceDesc = "Broadcom NetXtreme-E Virtual Function"
+pci\ven_14e4&dev_16dc.DeviceDesc = "Broadcom NetXtreme-E Virtual Function"
+pci\ven_14e4&dev_1609.DeviceDesc = "Broadcom NetXtreme-E Virtual Function"
+pci\ven_14e4&dev_16f4.DeviceDesc = "Broadcom NetXtreme-S Virtual Function"
+pci\ven_14e4&dev_d800.DeviceDesc = "Broadcom NetXtreme-S Virtual Function"
+
+;*******************************************************************************
+; VF, RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16e5.DeviceDesc = "Broadcom NetXtreme-C Virtual Function"
+pci\ven_14e4&dev_16c1.DeviceDesc = "Broadcom NetXtreme-E Virtual Function"
+pci\ven_14e4&dev_1606.DeviceDesc = "Broadcom NetXtreme-E Virtual Function"
+pci\ven_14e4&dev_d801.DeviceDesc = "Broadcom NetXtreme-S Virtual Function"
+
+;*******************************************************************************
+; VF for Hyper-V, Non-RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16c2.DeviceDesc = "Broadcom NetXtreme-C Virtual Function for Hyper-V"
+pci\ven_14e4&dev_16c3.DeviceDesc = "Broadcom NetXtreme-C Virtual Function for Hyper-V"
+pci\ven_14e4&dev_16c4.DeviceDesc = "Broadcom NetXtreme-E Virtual Function for Hyper-V"
+pci\ven_14e4&dev_16c5.DeviceDesc = "Broadcom NetXtreme-E Virtual Function for Hyper-V"
+pci\ven_14e4&dev_1607.DeviceDesc = "Broadcom NetXtreme-E Virtual Function for Hyper-V"
+pci\ven_14e4&dev_1792.DeviceDesc = "Broadcom NetXtreme-S Virtual Function for Hyper-V"
+
+;*******************************************************************************
+; VF for Hyper-V, RoCE device strings.
+;*******************************************************************************
+
+pci\ven_14e4&dev_16e6.DeviceDesc = "Broadcom NetXtreme-C Virtual Function for Hyper-V"
+pci\ven_14e4&dev_16bd.DeviceDesc = "Broadcom NetXtreme-E Virtual Function for Hyper-V"
+pci\ven_14e4&dev_1608.DeviceDesc = "Broadcom NetXtreme-E Virtual Function for Hyper-V"
+pci\ven_14e4&dev_1793.DeviceDesc = "Broadcom NetXtreme-S Virtual Function for Hyper-V"
+
+
+;*******************************************************************************
+; End of device strings.
+;*******************************************************************************
+
+speed_duplex_desc           = "Speed & Duplex"
+speed_duplex_auto           = "Auto Negotiation"
+speed_duplex_10Mb_hd        = "10 Mbps Half Duplex"
+speed_duplex_10Mb_fd        = "10 Mbps Full Duplex"
+speed_duplex_100Mb_hd       = "100 Mbps Half Duplex"
+speed_duplex_100Mb_fd       = "100 Mbps Full Duplex"
+speed_duplex_1Gb_fd_an      = "1.0 Gbps Full Auto"
+speed_duplex_1Gb_fd         = "1.0 Gbps Full Duplex"
+speed_duplex_10Gb_fd        = "10 Gbps Full Duplex"
+speed_duplex_20Gb_fd        = "20 Gbps Full Duplex"
+speed_duplex_25Gb_fd        = "25 Gbps Full Duplex"
+speed_duplex_40Gb_fd        = "40 Gbps Full Duplex"
+speed_duplex_50Gb_fd        = "50 Gbps Full Duplex"
+speed_duplex_100Gb_fd       = "100 Gbps Full Duplex"
+
+priority_vlan_desc          = "Priority & VLAN"
+priority_vlan_disabled      = "Priority & VLAN disabled"
+priority_enabled            = "Priority enabled"
+vlan_enabled                = "VLAN enabled"
+priority_vlan_enabled       = "Priority & VLAN enabled"
+
+taskoffload_desc_ipv4       = "TCP/UDP Checksum Offload (IPv4)"
+taskoffload_desc_ipv6       = "TCP/UDP Checksum Offload (IPv6)"
+taskoffload_disabled        = "Disabled"
+taskoffload_tx_cksum        = "Tx Enabled"
+taskoffload_rx_cksum        = "Rx Enabled"
+taskoffload_rx_tx_cksum     = "Rx & Tx Enabled"
+
+flow_ctrl                   = "Flow Control"
+flow_ctrl_disabled          = "Disabled"
+flow_ctrl_rx                = "Rx Enabled"
+flow_ctrl_tx                = "Tx Enabled"
+flow_ctrl_rx_tx             = "Rx & Tx Enabled"
+flow_ctrl_auto              = "Auto Negotiation"
+
+enabled                     = "Enabled"
+disabled                    = "Disabled"
+wire_speed                  = "Ethernet@WireSpeed"
+mtu_desc                    = "Jumbo Packet"
+rss_queue_cnt_desc          = "Maximum Number of RSS Queues"
+vlan_id_desc                = "VLAN ID"
+network_address             = "Locally Administered Address"
+eee_desc                    = "Energy-Efficient Ethernet"
+lso_desc_ipv4               = "Large Send Offload V2 (IPv4)"
+lso_desc_ipv6               = "Large Send Offload V2 (IPv6)"
+rss_desc                    = "Receive Side Scaling"
+rss_profile_desc            = "RSS load balancing profile"
+rss_profile_cp              = "ClosestProcessor"
+rss_profile_cps             = "ClosestProcessorStatic"
+rss_profile_ns              = "NUMAScaling"
+rss_profile_nss             = "NUMAScalingStatic"
+rss_profile_cs              = "ConservativeScaling"
+numa_node_desc              = "Preferred NUMA node"
+tx_bufs_desc                = "Transmit Buffers (0=Auto)"
+rx_bufs_desc                = "Receive Buffers (0=Auto)"
+vmq_desc                    = "Virtual Machine Queues"
+intr_mod_desc               = "Interrupt Moderation"
+Wake_on_magic_desc          = "Wake On Magic Packet"
+wake_on_pattern_desc        = "Wake On Pattern Match"
+sriov_desc                  = "SR-IOV"
+ipv4_rsc_desc               = "Recv Segment Coalescing (IPv4)"
+ipv6_rsc_desc               = "Recv Segment Coalescing (IPv6)"
+qos_desc                    = "Quality of Service"
+nvgre_desc                  = "Encapsulated Task Offload"
+max_rss_processors_desc     = "Maximum Number of RSS Processors"
+rss_base_proc_number_desc   = "RSS Base Processor Number"
+rss_max_proc_number_desc    = "Maximum RSS Processor Number"
+rss_base_group_proc_number_desc = "RSS Base Processor Group"
+rss_max_group_proc_number_desc = "RSS Max Processor Group"
+max_num_msix_messages     = "Maximum Number of MSI-X Messages"
+
+nvgre_desc2                 = "NVGRE Encapsulated Task Offload"
+vxlan_desc                  = "VXLAN Encapsulated Task Offload"
+vxlan_port_desc             = "VXLAN UDP destination port number"
+encap_overhead_desc         = "Encapsulation Overhead"
+vmmq_desc                   = "Virtual Switch RSS"
+packet_direct_desc          = "Packet Direct"
+
+roce_v1                     = "RoCEv1"
+roce_v2                     = "RoCEv2"
+roce_mtu_256                = "256"
+roce_mtu_512                = "512"
+roce_mtu_1024               = "1024"
+roce_mtu_2048               = "2048"
+roce_mtu_4096               = "4096"
+fec_cl74                    = "CL74 with Force Mode"
+fec_cl91                    = "CL91 with Force Mode"
+fec_auto                    = "Auto Negotiation"
+fec_desc                    = "Forward Error Correction"
+vf_spoofing_protection      = "VF Spoofing Protection"

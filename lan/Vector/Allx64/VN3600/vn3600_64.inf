@@ -1,0 +1,104 @@
+; Copyright 2009 Vector Informatik GmbH
+[Version]
+Signature="$CHICAGO$"
+Class=Vector-Hardware
+ClassGuid={D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=06/20/2012,8.2.26.0
+CatalogFile.NTamd64=vn3600_64.cat
+
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NTamd64
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+[DeviceList.NTamd64]
+; Win 2000 / XP only 
+%DESCRIPTION_VN3600%=DI_vn3600,USB\Vid_1248&Pid_1020
+
+;------------------------------------------------------------------------------
+;  Class Install Section
+;------------------------------------------------------------------------------
+[ClassInstall32]
+Addreg=CanClassReg     
+
+[CanClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,"-5"
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vn3600.sys=1
+
+[SourceDisksNames]
+1=%INSTDISK%,,,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections
+;------------------------------------------------------------------------------
+; VN3600
+;---------
+[DI_vn3600.NTamd64]
+CopyFiles=@vn3600.sys
+AddReg=vn3600.registry,options.registry
+
+[DI_vn3600.NTamd64.Services]
+AddService=vn3600,2,vn3600.Service
+
+;Common
+;------
+[vn3600.Service]
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\vn3600.sys
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys 
+;------------------------------------------------------------------------------
+[VN3600.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",TimerEligibility,0x10001,0x400
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",ChannelsPerCard,0x10001,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",HwType,0x10001,39
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",HwName,,"VN3600"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",DriverName,,VN3600
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VN3600",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwType,0x10003,39
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANoe.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwType,0x10003,39
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANalyzer.FlexRay0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwType,0x10003,39
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.FlexRay0",hwChannel,0x10003,0
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN3600",UseCardSerialNumber,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VN3600",RxTransferCycleTime,0x10003,1000
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="VN3600"
+MFGNAME="Vector Informatik GmbH"
+INSTDISK="VN3600 Driver"
+DESCRIPTION_VN3600="VN3600"
+ClassName="Vector-Hardware"

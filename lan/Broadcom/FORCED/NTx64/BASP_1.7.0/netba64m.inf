@@ -1,0 +1,108 @@
+;*******************************************************************************
+; Copyright 2000 Broadcom Corporation.
+;
+; Module Description:
+;    Broadcom Load Balanacing Fail Over driver INF file for Windows 2000.
+;
+; History:
+;    4/9/03 Hao-Yang Feng
+;       Prepare for first release
+;*******************************************************************************
+
+[Version]
+signature  = "$Windows NT$"
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+CatalogFile = netba64m.cat
+Provider   = %BRCM%
+DriverVer  = 06/15/2011,6.3.31
+
+
+[Manufacturer]
+%BRCM% = Broadcom, NTAmd64
+
+
+[ControlFlags]
+ExcludeFromSelect = BRCM_BLFM
+
+
+[Broadcom.NTAmd64]
+%BLFM_DESC% = Blfm.Install, BRCM_BLFM
+
+
+
+;*******************************************************************************
+; File information.
+;*******************************************************************************
+
+[SourceDisksNames]
+1 = %DISK_DESC%,,,
+
+[SourceDisksFiles]
+
+
+
+;*******************************************************************************
+; Install section.
+;*******************************************************************************
+
+[Blfm.Install.NTAmd64]
+AddReg          = Blfm.Install.AddReg, Blfm.Install.Params
+Characteristics = 0x80a1  ; NCF_FORCE_NDIS_NOTIFY | NCF_VIRTUAL | NCF_NOT_USER_REMOVABLE
+
+
+[Blfm.Install.NTAmd64.Services]
+AddService = Blfm, 0x2, Blfm.AddService, Blfm.EventLog
+
+
+[Blfm.AddService]
+DisplayName    = %BLFM_DESC%
+ServiceType    = 1            ; SERVICE_KERNEL_DRIVER
+StartType      = 3            ; SERVICE_DEMAND_START
+ErrorControl   = 1            ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\basamd64.sys
+Addreg         = bcmPnpInstallReg
+
+[bcmPnpInstallReg]
+HKR,,product_version,0,"12.8.0"
+
+[Blfm.EventLog]
+AddReg = Blfm.AddEventLog.Reg
+
+
+[Blfm.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\basamd64.sys"
+HKR, , TypesSupported  , 0x00010001, 7
+
+
+
+;*******************************************************************************
+; Interface section.
+;*******************************************************************************
+
+[Blfm.Install.AddReg]
+HKR, Ndi,            Service,    0, "Blfm"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+
+
+
+;*******************************************************************************
+; Driver parameters
+;*******************************************************************************
+
+[Blfm.Install.Params]
+;HKR, Parameters, ParameterName,  0x10000, "MultiSz", "Parameter", "Value"
+;HKR, Parameters, ParameterName2, 0x10001, 4
+
+
+
+;*******************************************************************************
+; Localizable string section.
+;*******************************************************************************
+
+[Strings]
+BRCM            = "Broadcom"
+DISK_DESC       = "Broadcom Advanced Server Program Driver Diskette"
+BLFM_DESC       = "BASP Virtual Adapter"
+

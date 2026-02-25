@@ -1,0 +1,266 @@
+;-------------------------------------------------------------------------------
+; AMDXgbe.inf
+;
+; AMD On-chip Ethernet Adapter for the Zeppelin package
+;
+; Copyright (c) AMD Corporation.  All rights reserved.
+
+
+[version]
+Signature                = "$Windows NT$"
+Class                    = Net
+ClassGUID                = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider                 = %AMD%
+CatalogFile              = AMDXgbe.cat
+DriverVer=09/21/2016,1.0.0.0046
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%AMD% = AMD,NTAMD64
+
+[AMD]
+
+; This driver supports x64 (only)
+[AMD.NTAMD64]
+%ZeppelinNetMini.DeviceDesc% = ZeppelinNetMini.ndi, PCI\VEN_1022&DEV_1458
+%ZeppelinNetMini.DeviceDesc% = ZeppelinNetMini.ndi, PCI\VEN_1022&DEV_1459
+%ZeppelinNetMini.DeviceDesc% = ZeppelinNetMini.ndi, PCI\VEN_1022&DEV_1458&SUBSYS_14581022&REV_00
+%ZeppelinNetMini.DeviceDesc% = ZeppelinNetMini.ndi, PCI\VEN_1022&DEV_1458&REV_01
+%ZeppelinNetMini.DeviceDesc% = ZeppelinNetMini.ndi, PCI\VEN_1022&DEV_1459&REV_01
+
+
+;-------------------------------------------------------------------------------
+; AMD Zeppelin on-chip Ethernet Adapter
+;
+[ZeppelinNetMini.ndi]
+Characteristics    = 0x84 ; NCF_PHYSICAL + NCF_HAS_UI
+BusType            = 5  ; PCI
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+AddReg             = ZeppelinNetMini.Reg
+CopyFiles          = ZeppelinNetMini.CopyFiles
+
+;-------------------------------------------------------------------------------
+; Services
+;
+[ZeppelinNetMini.ndi.Services]
+;
+; AddService=ServiceName,[flags],service-install-section
+;                      [,event-log-install-section[,[EventLogType][,EventName]]]...]
+;
+; for flags, see http://msdn.microsoft.com/en-us/library/windows/hardware/ff546326%28v=vs.85%29.aspx
+AddService         = ZeppelinNetMini, 2, ZeppelinNetMini.Service
+
+[ZeppelinNetMini.ndi.HW]
+Include            = machine.inf
+Needs              = PciIoSpaceNotRequired
+AddReg             = MSI.reg
+
+
+[ZeppelinNetMini.Reg]
+HKR, Ndi,                         Service,             0, "ZeppelinNetMini"
+HKR, Ndi\Interfaces,              UpperRange,          0, "ndis5"
+HKR, Ndi\Interfaces,              LowerRange,          0, "ethernet"
+
+; Priority + VLAN Tagging
+HKR, Ndi\Params\*PriorityVLANTag,                  ParamDesc, 0, %PriorityVLANTag%
+HKR, Ndi\Params\*PriorityVLANTag,                  default,   0, "3"
+HKR, Ndi\Params\*PriorityVLANTag,                  type,      0, "enum"
+HKR, Ndi\Params\*PriorityVLANTag\enum,             0,         0,  %PriorityVLANDisabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,             1,         0,  %PriorityEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,             2,         0,  %VLANEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,             3,         0,  %PriorityVLANEnabled%
+
+HKR, Ndi\params\VlanId,                            Paramdesc, , %Vlan_Id%
+HKR, Ndi\params\VlanId,                            default,   , "0"
+HKR, Ndi\params\VlanId,                            type,      , "dword"
+
+; Speed and duplex
+HKR, Ndi\params\*SpeedDuplex,                      ParamDesc, 0, %SpeedDuplex%
+HKR, Ndi\params\*SpeedDuplex,                      default,   0, "0"
+HKR, Ndi\params\*SpeedDuplex,                      type,      0, "enum"
+HKR, Ndi\params\*SpeedDuplex\enum,                 "0",       0, %AutoNegotiation%
+HKR, Ndi\params\*SpeedDuplex\enum,                 "1",       0, %1Gb_Full_Duplex%
+HKR, Ndi\params\*SpeedDuplex\enum,                 "2",       0, %10Gb_Full_Duplex%
+
+; TCP/UDP Checksum Offload IPv4
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4,        ParamDesc,   , %TcpUdpCsumOffload_IPv4%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4,        default,     , "3"
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4,        type,        , "enum"
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4\enum,   0,           , %CsumOffload_Disabled%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4\enum,   1,           , %CsumOffload_Tx%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4\enum,   2,           , %CsumOffload_Rx%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv4\enum,   3,           , %CsumOffload_Tx_Rx%
+
+; TCP/UDP Checksum Offload IPv6
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6,        ParamDesc,   , %TcpUdpCsumOffload_IPv6%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6,        default,     , "3"
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6,        type,        , "enum"
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6\enum,   0,           , %CsumOffload_Disabled%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6\enum,   1,           , %CsumOffload_Tx%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6\enum,   2,           , %CsumOffload_Rx%
+HKR, Ndi\params\*TCPUDPChecksumOffloadIPv6\enum,   3,           , %CsumOffload_Tx_Rx%
+
+; IPv4 Checksum Offload
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,            ParamDesc, 0, %IpCsumOffload_IPv4%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,            default,   0, "3"
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,            type,      0, "enum"
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,       "0",       0, %CsumOffload_Disabled%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,       "1",       0, %CsumOffload_Tx%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,       "2",       0, %CsumOffload_Rx%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,       "3",       0, %CsumOffload_Tx_Rx%
+
+; *LsoV2IPv4
+HKR, Ndi\Params\*LsoV2IPv4,                        ParamDesc,   0, %LsoV2_IPv4%
+HKR, Ndi\Params\*LsoV2IPv4,                        default,     0, "1"
+HKR, Ndi\Params\*LsoV2IPv4,                        type,        0, "enum"
+HKR, Ndi\Params\*LsoV2IPv4\Enum,                   "0",         0, %Lso_Disabled%
+HKR, Ndi\Params\*LsoV2IPv4\Enum,                   "1",         0, %Lso_Enabled%
+
+; *LsoV2IPv6
+HKR, Ndi\Params\*LsoV2IPv6,                        ParamDesc,   0, %LsoV2_IPv6%
+HKR, Ndi\Params\*LsoV2IPv6,                        default,     0, "1"
+HKR, Ndi\Params\*LsoV2IPv6,                        type,        0, "enum"
+HKR, Ndi\Params\*LsoV2IPv6\Enum,                   "0",         0, %Lso_Disabled%
+HKR, Ndi\Params\*LsoV2IPv6\Enum,                   "1",         0, %Lso_Enabled%
+
+; *Jumbo Packet
+HKR, Ndi\Params\*JumboPacket,                      ParamDesc,   0, %JumboPacket%
+HKR, Ndi\Params\*JumboPacket,                      default,     0, "0"
+HKR, Ndi\Params\*JumboPacket,                      type,        0, "enum"
+HKR, Ndi\Params\*JumboPacket\Enum,                 "0",         0, %Jumbo_Disabled%
+HKR, Ndi\Params\*JumboPacket\Enum,                 "1",         0, %Jumbo_Enabled%
+
+; *InterruptModeration
+HKR, Ndi\Params\*InterruptModeration,              ParamDesc,   0, %InterruptModeration%
+HKR, Ndi\Params\*InterruptModeration,              default,     0, "1"
+HKR, Ndi\Params\*InterruptModeration,              type,        0, "enum"
+HKR, Ndi\Params\*InterruptModeration\Enum,         "0",         0, %IntMod_Disabled%
+HKR, Ndi\Params\*InterruptModeration\Enum,         "1",         0, %IntMod_Enabled%
+
+; InterruptRate
+HKR, Ndi\Params\InterruptRate                      ParamDesc,   0, %InterruptRate%
+HKR, Ndi\Params\InterruptRate,                     default,     0, "2"
+HKR, Ndi\Params\InterruptRate,                     type,        0, "enum"
+HKR, Ndi\Params\InterruptRate\Enum,                "0",         0, %IntRate_Min%
+HKR, Ndi\Params\InterruptRate\Enum,                "1",         0, %IntRate_Low%
+HKR, Ndi\Params\InterruptRate\Enum,                "2",         0, %IntRate_Medium%
+HKR, Ndi\Params\InterruptRate\Enum,                "3",         0, %IntRate_High%
+HKR, Ndi\Params\InterruptRate\Enum,                "4",         0, %IntRate_Max%
+
+[MSI.reg]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 18
+
+;-----------------------------------------------------------------------------
+; Driver and Service Section
+;
+[ZeppelinNetMini.CopyFiles]
+AMDXgbe.sys
+
+[ZeppelinNetMini.Service]
+;
+; see http://msdn.microsoft.com/en-us/library/windows/hardware/ff546326%28v=vs.85%29.aspx
+;
+DisplayName        = %Zeppelin.Service.DispName%
+Description        = %Zeppelin.Service.Discription%
+ServiceType        = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType          = 3 ;%SERVICE_DEMAND_START%
+ErrorControl       = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary      = %12%\AMDXgbe.sys
+AddReg             = TextModeFlags.Reg
+
+[TextModeFlags.Reg]
+HKR, , TextModeFlags,    0x00010001, 0x0001
+
+[SourceDisksNames]
+;
+; diskid = description[, [tagfile] [, <unused>,subdir]]
+;
+1 = %DiskId1%
+
+[SourceDisksFiles]
+;
+; filename=diskid[,[ subdir][,size]]
+;
+AMDXgbe.sys  = 1
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+;
+; sectionname = dirnum
+;
+; section name can also be DefaultDestDir
+; dirnum 11 means copy to %SystemRoot%\system32
+; dirnum 12 means copy to %SystemRoot%\system32\drivers
+;
+DefaultDestDir           = 12
+ZeppelinNetMini.CopyFiles = 12
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+AMD                          = "Advanced Micro Devices"
+ZeppelinNetMini.DeviceDesc    = "AMD Zeppelin on-chip Ethernet Adapter (NDIS 6.30)"
+Zeppelin.Service.DispName     = "AMD Zeppelin Ethernet Miniport"
+Zeppelin.Service.Discription  = "AMD Zeppelin on-chip Ethernet Adapter (NDIS 6.30)"
+DiskId1                      = "AMD Zeppelin on-chip Ethernet Adapter Disk #1"
+
+PriorityVLANTag              = "Priority & VLAN"
+
+Disabled                     = "Disabled"
+Enabled                      = "Enabled"
+PriorityVLANDisabled         = "Priority & VLAN Disabled"
+PriorityEnabled              = "Priority Enabled"
+VLANEnabled                  = "VLAN Enabled"
+PriorityVLANEnabled          = "Priority & VLAN Enabled"
+
+
+
+SpeedDuplex                  = "Speed & Duplex"
+AutoNegotiation              = "Auto Negotiation"
+1Gb_Full_Duplex              = "1 Gbps Full Duplex"
+10Gb_Full_Duplex             = "10 Gbps Full Duplex"
+
+TcpUdpCsumOffload_IPv4       = "TCP/UDP Checksum Offload (IPv4)"
+TcpUdpCsumOffload_IPv6       = "TCP/UDP Checksum Offload (IPv6)"
+IpCsumOffload_IPv4           = "IPv4 Checksum Offload"
+
+CsumOffload_Disabled         = "Disabled"
+CsumOffload_Tx               = "Tx Enabled"
+CsumOffload_Rx               = "Rx Enabled"
+CsumOffload_Tx_Rx            = "Tx & Rx Enabled"
+
+LsoV2_IPv4                   = "Large Send Offload V2 (IPv4)"
+LsoV2_IPv6                   = "Large Send Offload V2 (IPv6)"
+
+Lso_Disabled                 = "Disabled"
+Lso_Enabled                  = "Enabled"
+ 
+Vlan_Id                      = "VLAN ID"
+
+JumboPacket                  = "Jumbo Packet"
+Jumbo_Enabled                = "9014 Bytes"
+Jumbo_Disabled               = "Disabled"
+
+InterruptModeration          = "Interrupt Moderation"
+IntMod_Enabled               = "Enabled"
+IntMod_Disabled              = "Disabled"
+
+InterruptRate                = "Interrupt Rate"
+IntRate_Min                  = "Minimum"
+IntRate_Low                  = "Low"
+IntRate_Medium               = "Medium"
+IntRate_High                 = "High"
+IntRate_Max                  = "Maximum"  
+
+
+

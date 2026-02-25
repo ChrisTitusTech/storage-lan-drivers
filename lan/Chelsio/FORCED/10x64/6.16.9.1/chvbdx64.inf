@@ -1,0 +1,609 @@
+; Chelsio Communications T5/T6 Adapters
+; Copyright (c) 2010 Chelsio Communications. All rights reserved.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%Chelsio%
+DriverVer = 03/29/2023,6.16.9.1
+CatalogFile=chvbdx64.cat
+PnpLockDown= 1
+
+;*************************************************
+; Chelsio T5/T6 device enumerator Install Section
+;*************************************************
+[Manufacturer]
+%chelsio%=Chelsio,NTamd64
+
+[Chelsio.NTamd64]
+;---------------------------------------------------------------------------
+; Chelsio T5 adapters PnP Info
+
+%cht5vbd.BYPASS%                    = cht4vbd, PCI\VEN_1425&DEV_B004&SUBSYS_00000000
+%cht5vbd.T580DBG%                   = cht4vbd, PCI\VEN_1425&DEV_5400&SUBSYS_00001425
+%cht5vbd.T520CR%                    = cht4vbd, PCI\VEN_1425&DEV_5401&SUBSYS_00001425
+%cht5vbd.T522CR%                    = cht4vbd_4port, PCI\VEN_1425&DEV_5402&SUBSYS_00001425
+%cht5vbd.T540CR%                    = cht4vbd_4port, PCI\VEN_1425&DEV_5403&SUBSYS_00001425
+%cht5vbd.T520BCH%                   = cht4vbd, PCI\VEN_1425&DEV_5404&SUBSYS_00001425
+%cht5vbd.T540BCH%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5405&SUBSYS_00001425
+%cht5vbd.T540CH%                    = cht4vbd_4port, PCI\VEN_1425&DEV_5406&SUBSYS_00001425
+%cht5vbd.T520SO%                    = cht4vbd, PCI\VEN_1425&DEV_5407&SUBSYS_00001425
+%cht5vbd.T520CX%                    = cht4vbd, PCI\VEN_1425&DEV_5408&SUBSYS_00001425
+%cht5vbd.T520BT%                    = cht4vbd, PCI\VEN_1425&DEV_5409&SUBSYS_00001425
+%cht5vbd.T504BT%                    = cht4vbd_4port, PCI\VEN_1425&DEV_540A&SUBSYS_00001425
+%cht5vbd.B520%                      = cht4vbd, PCI\VEN_1425&DEV_540B&SUBSYS_00001425
+%cht5vbd.B504%                      = cht4vbd_4port, PCI\VEN_1425&DEV_540C&SUBSYS_00001425
+%cht5vbd.T580CR%                    = cht4vbd, PCI\VEN_1425&DEV_540D&SUBSYS_00001425
+%cht5vbd.T540LPCR%                  = cht4vbd_4port, PCI\VEN_1425&DEV_540E&SUBSYS_00001425
+%cht5vbd.T540_0F%                   = cht4vbd_4port, PCI\VEN_1425&DEV_540F&SUBSYS_00001425
+%cht5vbd.T580LPCR%                  = cht4vbd, PCI\VEN_1425&DEV_5410&SUBSYS_00001425
+%cht5vbd.T520LLCR%                  = cht4vbd, PCI\VEN_1425&DEV_5411&SUBSYS_00001425
+%cht5vbd.T560CR%                    = cht4vbd, PCI\VEN_1425&DEV_5412&SUBSYS_00001425
+%cht5vbd.T580CHR%                   = cht4vbd, PCI\VEN_1425&DEV_5413&SUBSYS_00001425
+%cht5vbd.T580SOCR%                  = cht4vbd, PCI\VEN_1425&DEV_5414&SUBSYS_00001425
+%cht5vbd.T502BT%                    = cht4vbd, PCI\VEN_1425&DEV_5415&SUBSYS_00001425
+%cht5vbd.T580OCP%                   = cht4vbd, PCI\VEN_1425&DEV_5416&SUBSYS_00001425
+%cht5vbd.T520OCP%                   = cht4vbd, PCI\VEN_1425&DEV_5417&SUBSYS_00001425
+%cht5vbd.T540BT%                    = cht4vbd_4port, PCI\VEN_1425&DEV_5418&SUBSYS_00001425
+%cht5vbd.T540LPBT%                  = cht4vbd_4port, PCI\VEN_1425&DEV_5419&SUBSYS_00001425
+%cht5vbd.T540SOBT%                  = cht4vbd_4port, PCI\VEN_1425&DEV_541A&SUBSYS_00001425
+%cht5vbd.T540SOCR%                  = cht4vbd_4port, PCI\VEN_1425&DEV_541B&SUBSYS_00001425
+%cht5vbd.T540_80%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5480&SUBSYS_00001425
+%cht5vbd.T540_81%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5481&SUBSYS_00001425
+%cht5vbd.T504_82%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5482&SUBSYS_00001425
+%cht5vbd.Dell_T540_CR_LC_83%        = cht4vbd_4port, PCI\VEN_1425&DEV_5483&SUBSYS_00001425
+%cht5vbd.Dell_T540_BT_LC_84%        = cht4vbd_4port, PCI\VEN_1425&DEV_5484&SUBSYS_00001425
+%cht5vbd.T580_85%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5485&SUBSYS_00001425
+%cht5vbd.T580_86%                   = cht4vbd, PCI\VEN_1425&DEV_5486&SUBSYS_00001425
+%cht5vbd.Harpoon%                   = cht4vbd, PCI\VEN_1425&DEV_5487&SUBSYS_00001425
+%cht5vbd.Xalyo_T570%                = cht4vbd, PCI\VEN_1425&DEV_5488&SUBSYS_00001425
+%cht5vbd.KTFN_T520%                 = cht4vbd, PCI\VEN_1425&DEV_5489&SUBSYS_00001425
+%cht5vbd.KTFN_T540%                 = cht4vbd_4port, PCI\VEN_1425&DEV_5490&SUBSYS_00001425
+%cht5vbd.JZTech_T522%               = cht4vbd_4port, PCI\VEN_1425&DEV_5491&SUBSYS_00001425
+%cht5vbd.Diamanti_T540%             = cht4vbd_4port, PCI\VEN_1425&DEV_5492&SUBSYS_000E1D4C
+%cht5vbd.T580_93%                   = cht4vbd, PCI\VEN_1425&DEV_5493&SUBSYS_00001425
+%cht5vbd.T540_94%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5494&SUBSYS_00001425
+%cht5vbd.T540_95%                   = cht4vbd_4port, PCI\VEN_1425&DEV_5495&SUBSYS_00001425
+%cht5vbd.T580_96%                   = cht4vbd, PCI\VEN_1425&DEV_5496&SUBSYS_00001425
+%cht5vbd.T520_97%                   = cht4vbd, PCI\VEN_1425&DEV_5497&SUBSYS_00001425
+%cht5vbd.T580_98%                   = cht4vbd, PCI\VEN_1425&DEV_5498&SUBSYS_00001425
+%cht5vbd.T580_99%                   = cht4vbd, PCI\VEN_1425&DEV_5499&SUBSYS_00001425
+%cht5vbd.T520_9A%                   = cht4vbd, PCI\VEN_1425&DEV_549A&SUBSYS_00001425
+%cht5vbd.T540_9B%                   = cht4vbd_4port, PCI\VEN_1425&DEV_549B&SUBSYS_00001425
+%cht5vbd.T520_9C%                   = cht4vbd, PCI\VEN_1425&DEV_549C&SUBSYS_00001425
+%cht5vbd.T540_9D%                   = cht4vbd_4port, PCI\VEN_1425&DEV_549D&SUBSYS_00001425
+%cht5vbd.T520_9E%                   = cht4vbd, PCI\VEN_1425&DEV_549E&SUBSYS_00001425
+%cht5vbd.T540_9F%                   = cht4vbd_4port, PCI\VEN_1425&DEV_549F&SUBSYS_00001425
+%cht5vbd.T540_A0%                   = cht4vbd_4port, PCI\VEN_1425&DEV_54A0&SUBSYS_00001425
+%cht5vbd.T540_A1%                   = cht4vbd_4port, PCI\VEN_1425&DEV_54A1&SUBSYS_00001425
+%cht5vbd.T520_A2%                   = cht4vbd, PCI\VEN_1425&DEV_54A2&SUBSYS_00001425
+%cht5vbd.T520_A3%                   = cht4vbd, PCI\VEN_1425&DEV_54A3&SUBSYS_00001425
+%cht5vbd.T520_A4%                   = cht4vbd, PCI\VEN_1425&DEV_54A4&SUBSYS_00001425
+%cht5vbd.T520_A5%                   = cht4vbd, PCI\VEN_1425&DEV_54A5&SUBSYS_00001425
+%cht5vbd.T520_A6%                   = cht4vbd, PCI\VEN_1425&DEV_54A6&SUBSYS_00001425
+%cht5vbd.T520_A7%                   = cht4vbd_4port, PCI\VEN_1425&DEV_54A7&SUBSYS_00001425
+%cht5vbd.T520_A8%                   = cht4vbd, PCI\VEN_1425&DEV_54A8&SUBSYS_00001425
+%cht5vbd.T520_A9%                   = cht4vbd, PCI\VEN_1425&DEV_54A9&SUBSYS_00001425
+%cht5vbd.T520_AA%                   = cht4vbd, PCI\VEN_1425&DEV_54AA&SUBSYS_00001425
+%cht5vbd.T520_AB%                   = cht4vbd, PCI\VEN_1425&DEV_54AB&SUBSYS_00001425
+%cht5vbd.T540_AC%                   = cht4vbd_4port, PCI\VEN_1425&DEV_54AC&SUBSYS_00001425
+%cht5vbd.T540_AD%                   = cht4vbd, PCI\VEN_1425&DEV_54AD&SUBSYS_00001425
+%cht5vbd.T540_AE%                   = cht4vbd, PCI\VEN_1425&DEV_54AE&SUBSYS_00001425
+%cht5vbd.T540_AF%                   = cht4vbd, PCI\VEN_1425&DEV_54AF&SUBSYS_00001425
+%cht5vbd.T540_B0%                   = cht4vbd, PCI\VEN_1425&DEV_54B0&SUBSYS_00001425
+        
+%cht5vbd.BYPASS%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_B007&SUBSYS_00000000
+%cht5vbd.T580DBG%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5800&SUBSYS_00001425
+%cht5vbd.T520CR%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5801&SUBSYS_00001425
+%cht5vbd.T522CR%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5802&SUBSYS_00001425
+%cht5vbd.T540CR%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5803&SUBSYS_00001425
+%cht5vbd.T520BCH%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5804&SUBSYS_00001425
+%cht5vbd.T540BCH%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5805&SUBSYS_00001425
+%cht5vbd.T540CH%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5806&SUBSYS_00001425
+%cht5vbd.T520SO%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5807&SUBSYS_00001425
+%cht5vbd.T520CX%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5808&SUBSYS_00001425
+%cht5vbd.T520BT%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5809&SUBSYS_00001425
+%cht5vbd.T504BT%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_580A&SUBSYS_00001425
+%cht5vbd.B520%%VF%                  = cht5vbd_vf, PCI\VEN_1425&DEV_580B&SUBSYS_00001425
+%cht5vbd.B504%%VF%                  = cht5vbd_vf, PCI\VEN_1425&DEV_580C&SUBSYS_00001425
+%cht5vbd.T580CR%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_580D&SUBSYS_00001425
+%cht5vbd.T540LPCR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_580E&SUBSYS_00001425
+%cht5vbd.T540_0F%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_580F&SUBSYS_00001425
+%cht5vbd.T580LPCR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_5810&SUBSYS_00001425
+%cht5vbd.T520LLCR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_5811&SUBSYS_00001425
+%cht5vbd.T560CR%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5812&SUBSYS_00001425
+%cht5vbd.T580CHR%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5813&SUBSYS_00001425
+%cht5vbd.T580SOCR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_5814&SUBSYS_00001425
+%cht5vbd.T502BT%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5815&SUBSYS_00001425
+%cht5vbd.T540BT%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_5818&SUBSYS_00001425
+%cht5vbd.T540LPBT%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_5819&SUBSYS_00001425
+%cht5vbd.T540SOBT%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_581A&SUBSYS_00001425
+%cht5vbd.T540SOCR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_581B&SUBSYS_00001425
+%cht5vbd.T540_80%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5880&SUBSYS_00001425
+%cht5vbd.T540_81%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5881&SUBSYS_00001425
+%cht5vbd.T504_82%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5882&SUBSYS_00001425
+%cht5vbd.Dell_T540_CR_LC_83%%VF%    = cht5vbd_vf, PCI\VEN_1425&DEV_5883&SUBSYS_00001425
+%cht5vbd.Dell_T540_BT_LC_84%%VF%    = cht5vbd_vf, PCI\VEN_1425&DEV_5884&SUBSYS_00001425
+%cht5vbd.T580_85%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5885&SUBSYS_00001425
+%cht5vbd.T580_86%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5886&SUBSYS_00001425
+%cht5vbd.Harpoon%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5887&SUBSYS_00001425
+%cht5vbd.Xalyo_T570%%VF%            = cht5vbd_vf, PCI\VEN_1425&DEV_5888&SUBSYS_00001425
+%cht5vbd.KTFN_T520%%VF%             = cht5vbd_vf, PCI\VEN_1425&DEV_5889&SUBSYS_00001425
+%cht5vbd.KTFN_T540%%VF%             = cht5vbd_vf, PCI\VEN_1425&DEV_5890&SUBSYS_00001425
+%cht5vbd.JZTech_T522%%VF%           = cht5vbd_vf, PCI\VEN_1425&DEV_5891&SUBSYS_00001425
+%cht5vbd.Diamanti_T540%%VF%         = cht5vbd_vf, PCI\VEN_1425&DEV_5892&SUBSYS_000E1D4C
+%cht5vbd.T580_93%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5893&SUBSYS_00001425
+%cht5vbd.T540_94%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5894&SUBSYS_00001425
+%cht5vbd.T540_95%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5895&SUBSYS_00001425
+%cht5vbd.T580_96%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5896&SUBSYS_00001425
+%cht5vbd.T520_97%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5897&SUBSYS_00001425
+%cht5vbd.T580_98%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5898&SUBSYS_00001425
+%cht5vbd.T580_99%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_5899&SUBSYS_00001425
+%cht5vbd.T520_9A%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589A&SUBSYS_00001425
+%cht5vbd.T540_9B%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589B&SUBSYS_00001425
+%cht5vbd.T520_9C%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589C&SUBSYS_00001425
+%cht5vbd.T540_9D%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589D&SUBSYS_00001425
+%cht5vbd.T520_9E%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589E&SUBSYS_00001425
+%cht5vbd.T540_9F%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_589F&SUBSYS_00001425
+%cht5vbd.T540_A0%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A0&SUBSYS_00001425
+%cht5vbd.T540_A1%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A1&SUBSYS_00001425
+%cht5vbd.T520_A2%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A2&SUBSYS_00001425
+%cht5vbd.T520_A3%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A3&SUBSYS_00001425
+%cht5vbd.T520_A4%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A4&SUBSYS_00001425
+%cht5vbd.T520_A5%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A5&SUBSYS_00001425
+%cht5vbd.T520_A6%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A6&SUBSYS_00001425
+%cht5vbd.T520_A7%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A7&SUBSYS_00001425
+%cht5vbd.T520_A8%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A8&SUBSYS_00001425
+%cht5vbd.T520_A9%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58A9&SUBSYS_00001425
+%cht5vbd.T520_AA%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AA&SUBSYS_00001425
+%cht5vbd.T520_AB%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AB&SUBSYS_00001425
+%cht5vbd.T540_AC%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AC&SUBSYS_00001425
+%cht5vbd.T540_AD%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AD&SUBSYS_00001425
+%cht5vbd.T540_AE%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AE&SUBSYS_00001425
+%cht5vbd.T540_AF%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58AF&SUBSYS_00001425
+%cht5vbd.T540_B0%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_58B0&SUBSYS_00001425
+
+;---------------------------------------------------------------------------
+; Chelsio T6 adapters PnP Info
+
+%cht6vbd.BYPASS%                    = cht4vbd, PCI\VEN_1425&DEV_C400&SUBSYS_00000000
+%cht6vbd.T6DBG100%                  = cht4vbd, PCI\VEN_1425&DEV_6410&SUBSYS_00001425
+%cht6vbd.T6DBG25%                   = cht4vbd, PCI\VEN_1425&DEV_6400&SUBSYS_00001425
+%cht6vbd.T6225CR%                   = cht4vbd, PCI\VEN_1425&DEV_6401&SUBSYS_00001425
+%cht6vbd.T6225SO%                   = cht4vbd, PCI\VEN_1425&DEV_6402&SUBSYS_00001425
+%cht6vbd.T6425CR%                   = cht4vbd, PCI\VEN_1425&DEV_6403&SUBSYS_00001425
+%cht6vbd.T6425SO%                   = cht4vbd, PCI\VEN_1425&DEV_6404&SUBSYS_00001425
+%cht6vbd.T6225OCP%                  = cht4vbd, PCI\VEN_1425&DEV_6405&SUBSYS_00001425
+%cht6vbd.T62100OCP%                 = cht4vbd, PCI\VEN_1425&DEV_6406&SUBSYS_00001425
+%cht6vbd.T62100LPCR%                = cht4vbd, PCI\VEN_1425&DEV_6407&SUBSYS_00001425
+%cht6vbd.T62100SO%                  = cht4vbd, PCI\VEN_1425&DEV_6408&SUBSYS_00001425
+%cht6vbd.T6220BT%                   = cht4vbd, PCI\VEN_1425&DEV_6409&SUBSYS_00001425
+%cht6vbd.T62100CR%                  = cht4vbd, PCI\VEN_1425&DEV_640D&SUBSYS_00001425
+%cht6vbd.T6225LLCR%                 = cht4vbd, PCI\VEN_1425&DEV_6411&SUBSYS_00001425
+%cht6vbd.T61100OCP%                 = cht4vbd, PCI\VEN_1425&DEV_6414&SUBSYS_00001425
+%cht6vbd.T6202BT%                   = cht4vbd, PCI\VEN_1425&DEV_6415&SUBSYS_00001425
+%cht6vbd.Seagate_T6225%             = cht4vbd, PCI\VEN_1425&DEV_6480&SUBSYS_00001425
+%cht6vbd.Foxconn_T62100%            = cht4vbd, PCI\VEN_1425&DEV_6481&SUBSYS_00001425
+%cht6vbd.Harpoon_T6225%             = cht4vbd, PCI\VEN_1425&DEV_6482&SUBSYS_00001425
+%cht6vbd.Harpoon_T62100%            = cht4vbd, PCI\VEN_1425&DEV_6483&SUBSYS_00001425
+%cht6vbd.Foxconn_T64100%            = cht4vbd, PCI\VEN_1425&DEV_6484&SUBSYS_00001425
+%cht6vbd.Diamanti_T6240SO%          = cht4vbd, PCI\VEN_1425&DEV_6485&SUBSYS_000F1D4C
+%cht6vbd.Embedway_T6225SO%          = cht4vbd, PCI\VEN_1425&DEV_6486&SUBSYS_00001425
+%cht6vbd.Fiberhome_T6225CR%         = cht4vbd, PCI\VEN_1425&DEV_6487&SUBSYS_00001425
+%cht6vbd.Vadatech_T62100CR%         = cht4vbd, PCI\VEN_1425&DEV_6488&SUBSYS_00001425
+%cht6vbd.Vadatech_T62100KR%         = cht4vbd, PCI\VEN_1425&DEV_6489&SUBSYS_00001425
+%cht6vbd.HellaStorm_T62100CR%       = cht4vbd, PCI\VEN_1425&DEV_648A&SUBSYS_00001425
+
+%cht6vbd.BYPASS%%VF%                = cht5vbd_vf, PCI\VEN_1425&DEV_C800&SUBSYS_00000000
+%cht6vbd.T6DBG100%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_6810&SUBSYS_00001425
+%cht6vbd.T6DBG25%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6800&SUBSYS_00001425
+%cht6vbd.T6225CR%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6801&SUBSYS_00001425
+%cht6vbd.T6225SO%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6802&SUBSYS_00001425
+%cht6vbd.T6425CR%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6803&SUBSYS_00001425
+%cht6vbd.T6425SO%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6804&SUBSYS_00001425
+%cht6vbd.T6225OCP%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_6805&SUBSYS_00001425
+%cht6vbd.T62100OCP%%VF%             = cht5vbd_vf, PCI\VEN_1425&DEV_6806&SUBSYS_00001425
+%cht6vbd.T62100LPCR%%VF%            = cht5vbd_vf, PCI\VEN_1425&DEV_6807&SUBSYS_00001425
+%cht6vbd.T62100SO%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_6808&SUBSYS_00001425
+%cht6vbd.T6220BT%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6809&SUBSYS_00001425
+%cht6vbd.T62100CR%%VF%              = cht5vbd_vf, PCI\VEN_1425&DEV_680D&SUBSYS_00001425
+%cht6vbd.T6225LLCR%%VF%             = cht5vbd_vf, PCI\VEN_1425&DEV_6811&SUBSYS_00001425
+%cht6vbd.T61100OCP%%VF%             = cht5vbd_vf, PCI\VEN_1425&DEV_6814&SUBSYS_00001425
+%cht6vbd.T6202BT%%VF%               = cht5vbd_vf, PCI\VEN_1425&DEV_6815&SUBSYS_00001425
+%cht6vbd.Seagate_T6225%%VF%         = cht5vbd_vf, PCI\VEN_1425&DEV_6880&SUBSYS_00001425
+%cht6vbd.Foxconn_T62100%%VF%        = cht5vbd_vf, PCI\VEN_1425&DEV_6881&SUBSYS_00001425
+%cht6vbd.Harpoon_T6225%%VF%         = cht5vbd_vf, PCI\VEN_1425&DEV_6882&SUBSYS_00001425
+%cht6vbd.Harpoon_T62100%%VF%        = cht5vbd_vf, PCI\VEN_1425&DEV_6883&SUBSYS_00001425
+%cht6vbd.Foxconn_T64100%%VF%        = cht5vbd_vf, PCI\VEN_1425&DEV_6884&SUBSYS_00001425
+%cht6vbd.Diamanti_T6240SO%%VF%      = cht5vbd_vf, PCI\VEN_1425&DEV_6885&SUBSYS_000F1D4C
+%cht6vbd.Embedway_T6225SO%%VF%      = cht5vbd_vf, PCI\VEN_1425&DEV_6886&SUBSYS_00001425
+%cht6vbd.Fiberhome_T6225CR%%VF%     = cht5vbd_vf, PCI\VEN_1425&DEV_6887&SUBSYS_00001425
+%cht6vbd.Vadatech_T62100CR%%VF%     = cht5vbd_vf, PCI\VEN_1425&DEV_6888&SUBSYS_00001425
+%cht6vbd.Vadatech_T62100KR%%VF%     = cht5vbd_vf, PCI\VEN_1425&DEV_6889&SUBSYS_00001425
+%cht6vbd.HellaStorm_T62100CR%%VF%   = cht5vbd_vf, PCI\VEN_1425&DEV_688A&SUBSYS_00001425
+
+
+[cht4vbd.hw]
+Include=machine.inf
+Needs=PciSriovSupported.Hw
+AddReg=msix.Addreg
+
+[cht4vbd_4port.hw]
+Include=machine.inf
+Needs=PciSriovSupported.Hw
+AddReg=msix.Addreg
+
+[cht5vbd_vf.hw]
+AddReg=msix_vf.Addreg
+
+;---------------------------------------------------------------------------
+; cht4vbd paramters
+
+[msix.Addreg]
+HKR, "Interrupt Management",, 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",, 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 256
+HKR, "Interrupt Management\Affinity Policy",, 0x00000010
+HKR, "Interrupt Management\Affinity Policy", DevicePolicy, 0x00010001, 0x02
+
+;---------------------------------------------------------------------------
+; cht5vbd_vf paramters
+
+[msix_vf.Addreg]
+HKR, "Interrupt Management",, 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",, 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 16
+HKR, "Interrupt Management\Affinity Policy",, 0x00000010
+HKR, "Interrupt Management\Affinity Policy", DevicePolicy, 0x00010001, 0x02
+
+
+[cht4vbd]
+CopyFiles   = copy_driver_file, copy_chbusprop
+CopyINF     = chvbdx64.inf
+AddReg      = cht4vbd.AddReg
+AddReg      = nics.reg
+AddReg      = scsi.reg
+AddReg      = iser.reg
+AddReg      = nvme.reg
+
+[cht4vbd_4port]
+CopyFiles   = copy_driver_file, copy_chbusprop
+CopyINF     = chvbdx64.inf
+AddReg      = cht4vbd.AddReg
+AddReg      = nics.reg
+AddReg      = scsi_4port.reg
+AddReg      = iser_4port.reg
+AddReg      = nvme_4port.reg
+
+[cht5vbd_vf]
+CopyFiles   = copy_driver_file
+CopyINF     = chvbdx64.inf
+AddReg      = cht5vbd_vf.AddReg
+
+;*************************************************
+; Registry definitions
+;*************************************************
+
+;---------------------------------------------------------------------------
+; cht4vbd related registry definitions
+
+[cht4vbd.AddReg]
+HKR,,DeviceCharacteristics,0x10001,0x0100         ; Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"      ; Allow generic-all access to Built-in administrators and Local system
+HKR,,EnumPropPages32,,"chbusprop.dll, chbus_PropPageProvider"
+HKR,,ForceHardwareInit, 0, 0
+HKR,,UseBuiltInFirmware, 0, 1
+HKR,,UseBuiltInConfig, 0, 1
+HKR,,AllocDumpBuffer, 0, 1
+HKR,,RingBackboneCfg, 0, 0
+HKR,,DeadmanWatchDogTimer, 0, 0                   ; Deadman Watchdog timer in ms. Minimum value is 1000 (1s)
+                                                  ; Maximum value is 60000 (60s)
+
+[nics.reg]
+HKR,,NicInstances, 0, -1
+HKR,Ndi\params\NicInstances,       ParamDesc,  0, "NIC Instances"
+HKR,Ndi\params\NicInstances,       default,    0, "-1"
+HKR,Ndi\params\NicInstances,       type,       0, "enum"
+HKR,Ndi\params\NicInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\NicInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\NicInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\NicInstances\enum,  "2",        0, "2"
+HKR,Ndi\params\NicInstances\enum,  "3",        0, "3"
+HKR,Ndi\params\NicInstances\enum,  "4",        0, "4"
+HKR,Ndi\params\NicInstances\enum,  "5",        0, "5"
+HKR,Ndi\params\NicInstances\enum,  "6",        0, "6"
+HKR,Ndi\params\NicInstances\enum,  "7",        0, "7"
+HKR,Ndi\params\NicInstances\enum,  "8",        0, "8"
+
+;
+;
+[scsi.reg]
+HKR,,iScsiInstances, 0, -1
+HKR,Ndi\params\iScsiInstances,       ParamDesc,  0, "iSCSI Instances"
+HKR,Ndi\params\iScsiInstances,       default,    0, "-1"
+HKR,Ndi\params\iScsiInstances,       type,       0, "enum"
+HKR,Ndi\params\iScsiInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\iScsiInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\iScsiInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\iScsiInstances\enum,  "2",        0, "2"
+
+;
+;
+[iser.reg]
+HKR,,iSerInstances, 0, 0
+HKR,Ndi\params\iSerInstances,       ParamDesc,  0, "iSER Instances"
+HKR,Ndi\params\iSerInstances,       default,    0, "0"
+HKR,Ndi\params\iSerInstances,       type,       0, "enum"
+HKR,Ndi\params\iSerInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\iSerInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\iSerInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\iSerInstances\enum,  "2",        0, "2"
+
+;
+;
+[nvme.reg]
+HKR,,NvmeInstances, 0, 0
+HKR,Ndi\params\NvmeInstances,       ParamDesc,  0, "NVMeOF Instances"
+HKR,Ndi\params\NvmeInstances,       default,    0, "0"
+HKR,Ndi\params\NvmeInstances,       type,       0, "enum"
+HKR,Ndi\params\NvmeInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\NvmeInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\NvmeInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\NvmeInstances\enum,  "2",        0, "2"
+
+;---------------------------------------------------------------------------
+; cht4vbd_4port related registry definitions
+
+[scsi_4port.reg]
+HKR,,iScsiInstances, 0, -1
+HKR,Ndi\params\iScsiInstances,       ParamDesc,  0, "iSCSI Instances"
+HKR,Ndi\params\iScsiInstances,       default,    0, "-1"
+HKR,Ndi\params\iScsiInstances,       type,       0, "enum"
+HKR,Ndi\params\iScsiInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\iScsiInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\iScsiInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\iScsiInstances\enum,  "2",        0, "2"
+HKR,Ndi\params\iScsiInstances\enum,  "3",        0, "3"
+HKR,Ndi\params\iScsiInstances\enum,  "4",        0, "4"
+
+[iser_4port.reg]
+HKR,,iSerInstances, 0, 0
+HKR,Ndi\params\iSerInstances,       ParamDesc,  0, "iSER Instances"
+HKR,Ndi\params\iSerInstances,       default,    0, "0"
+HKR,Ndi\params\iSerInstances,       type,       0, "enum"
+HKR,Ndi\params\iSerInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\iSerInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\iSerInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\iSerInstances\enum,  "2",        0, "2"
+HKR,Ndi\params\iSerInstances\enum,  "3",        0, "3"
+HKR,Ndi\params\iSerInstances\enum,  "4",        0, "4"
+
+[nvme_4port.reg]
+HKR,,NvmeInstances, 0, 0
+HKR,Ndi\params\NvmeInstances,       ParamDesc,  0, "NVMeOF Instances"
+HKR,Ndi\params\NvmeInstances,       default,    0, "0"
+HKR,Ndi\params\NvmeInstances,       type,       0, "enum"
+HKR,Ndi\params\NvmeInstances\enum,  "-1",       0, "default"
+HKR,Ndi\params\NvmeInstances\enum,  "0",        0, "0"
+HKR,Ndi\params\NvmeInstances\enum,  "1",        0, "1"
+HKR,Ndi\params\NvmeInstances\enum,  "2",        0, "2"
+HKR,Ndi\params\NvmeInstances\enum,  "3",        0, "3"
+HKR,Ndi\params\NvmeInstances\enum,  "4",        0, "4"
+
+
+;---------------------------------------------------------------------------
+; cht5vbd_vf related registry definitions
+
+[cht5vbd_vf.AddReg]
+HKR,,DeviceCharacteristics,0x10001,0x0100         ; Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"      ; Allow generic-all access to Built-in administrators and Local system
+HKR,,VF, 0, 1
+
+
+;*************************************************
+; Service installation
+;*************************************************
+
+[cht4vbd.Services]
+AddService = chvbd, %SPSVCINST_ASSOCSERVICE%, cht4vbd_Service_Inst, event_log_install
+
+[cht4vbd_4port.Services]
+AddService = chvbd, %SPSVCINST_ASSOCSERVICE%, cht4vbd_Service_Inst, event_log_install
+
+[cht5vbd_vf.Services]
+AddService = chvbd, %SPSVCINST_ASSOCSERVICE%, cht4vbd_Service_Inst, event_log_install
+
+;*************************************************
+; cht4vbd driver install sections
+;*************************************************
+
+[cht4vbd_Service_Inst]
+DisplayName    = %cht4vbd.generic%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 0               ; SERVICE_BOOT_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\chvbdx64.sys
+LoadOrderGroup = System Bus Extender
+addreg = bootflags.reg
+addreg = wpprecorder.reg
+
+[event_log_install]
+AddReg = event_log_install.reg
+
+[event_log_install.reg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\chvbdx64.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;*************************************************
+; WDF specific install sections
+;*************************************************
+
+[cht4vbd.Wdf]
+KmdfService    = chvbd, cht4vbd_wdfsect
+
+[cht4vbd_4port.Wdf]
+KmdfService    = chvbd, cht4vbd_wdfsect
+
+[cht5vbd_vf.Wdf]
+KmdfService    = chvbd, cht4vbd_wdfsect
+
+[cht4vbd_wdfsect]
+KmdfLibraryVersion = 1.15
+
+
+[bootflags.reg]
+HKR, "Parameters", BootFlags, 0x00010001, 1
+
+[wpprecorder.reg]
+HKR, "Parameters", VerboseOn, 0x00010001, 1
+
+
+;*****************************************
+; Device install section
+;*****************************************
+
+[SourceDisksNames]
+1 = %disk_label%,,,
+
+[SourceDisksFiles]
+; make sure the number matches with SourceDisksNames
+chvbdx64.sys = 1
+chvflib.sys = 1
+chbusprop.dll = 1
+
+;*****************************************
+; Destination directory section
+;*****************************************
+[DestinationDirs]
+copy_driver_file = 12           ; Copy into the Drivers direectory.
+copy_chbusprop = 11
+
+;*************************************************
+; File copy
+;*************************************************
+
+[copy_driver_file]
+chvbdx64.sys,,2
+chvflib.sys,,2
+
+[copy_chbusprop]
+chbusprop.dll,,2
+
+;*************************************************
+; Strings
+;*************************************************
+
+[Strings]
+SPSVCINST_ASSOCSERVICE          = 0x00000002
+MSFT                            = "Microsoft"
+chelsio                         = "Chelsio"
+disk_label                      = "Chelsio T4 Driver Installation Disk"
+
+cht4vbd.generic                 = "Chelsio Virtual Bus Driver"
+
+cht5vbd.BYPASS                  = "Chelsio T5 Bypass 1G Bus Enumerator"
+cht5vbd.T580DBG                 = "Chelsio T580-Dbg 10G Bus Enumerator"
+cht5vbd.T520CR                  = "Chelsio T520-CR 10G Bus Enumerator"
+cht5vbd.T522CR                  = "Chelsio T522-CR 10G-1G Bus Enumerator"
+cht5vbd.T540CR                  = "Chelsio T540-CR 10G Bus Enumerator"
+cht5vbd.T520BCH                 = "Chelsio T520-BCH 10G Bus Enumerator"
+cht5vbd.T540BCH                 = "Chelsio T540-BCH 10G Bus Enumerator"
+cht5vbd.T540CH                  = "Chelsio T540-CH 10G Bus Enumerator"
+cht5vbd.T520SO                  = "Chelsio T520-SO 10G Bus Enumerator"
+cht5vbd.T520CX                  = "Chelsio T520-CX4 10G Bus Enumerator"
+cht5vbd.T520BT                  = "Chelsio T520-BT 10G Bus Enumerator"
+cht5vbd.T520QM                  = "Chelsio T520-QM 10G Bus Enumerator"
+cht5vbd.T504BT                  = "Chelsio T504-BT 1G Bus Enumerator"
+cht5vbd.B520                    = "Chelsio B520-SR 10G Bus Enumerator"
+cht5vbd.B504                    = "Chelsio B504-BT 1G Bus Enumerator"
+cht5vbd.T580CR                  = "Chelsio T580-CR 40G Bus Enumerator"
+cht5vbd.T540LPCR                = "Chelsio T540-LP-CR 10G Bus Enumerator"
+cht5vbd.T540_0F                 = "Amsterdam T540-CR 4x10G Bus Enumerator"
+cht5vbd.T580LPCR                = "Chelsio T580-LP-CR 40G Bus Enumerator"
+cht5vbd.T520LLCR                = "Chelsio T520-LL-CR 10G Bus Enumerator"
+cht5vbd.T560CR                  = "Chelsio T560-CR 10G-40G Bus Enumerator"
+cht5vbd.T580CHR                 = "Chelsio T580-CHR 40G Bus Enumerator"
+cht5vbd.T580SOCR                = "Chelsio T580-SO-CR 40G Bus Enumerator"
+cht5vbd.T502BT                  = "Chelsio T502-BT 1G Bus Enumerator"
+cht5vbd.T580OCP                 = "Chelsio T580-OCP-SO 40G Bus Enumerator"
+cht5vbd.T520OCP                 = "Chelsio T520-OCP-SO 10G Bus Enumerator"
+cht5vbd.T540BT                  = "Chelsio T540-BT 10G Bus Enumerator"
+cht5vbd.T540LPBT                = "Chelsio T540-LP-BT 10G Bus Enumerator"
+cht5vbd.T540SOBT                = "Chelsio T540-SO-BT 10G Bus Enumerator"
+cht5vbd.T540SOCR                = "Chelsio T540-SO-CR 10G Bus Enumerator"
+cht5vbd.T540_80                 = "Chelsio T540-CR 10G Bus Enumerator"
+cht5vbd.T540_81                 = "Chelsio T540-LL-CR 10G Bus Enumerator"
+cht5vbd.T504_82                 = "Chelsio T504-BT 1G Bus Enumerator"
+cht5vbd.Dell_T540_CR_LC_83      = "Dell T540-CR-LC 10G Bus Enumerator"
+cht5vbd.Dell_T540_BT_LC_84      = "Dell T540-BT-LC 10G Bus Enumerator"
+cht5vbd.T580_85                 = "Huawei T580-CR 10G-40G Bus Enumerator"
+cht5vbd.T580_86                 = "Huawei T580-CR 2x40G Bus Enumerator"
+cht5vbd.Harpoon                 = "Dell Harpoon 40G Bus Enumerator"
+cht5vbd.Xalyo_T570              = "Xalyo T570 10G-40G Bus Enumerator"
+cht5vbd.KTFN_T520               = "KTFN T520 2x10G Bus Enumerator"
+cht5vbd.KTFN_T540               = "KTFN T540 4x10G Bus Enumerator"
+cht5vbd.JZTech_T522             = "JZTech T522 LOM 2x10G+2x1G Bus Enumerator"
+cht5vbd.Diamanti_T540           = "Diamanti D10 4x10G Bus Enumerator"
+cht5vbd.T580_93                 = "SECA T580-LP-CR 2x40G Bus Enumerator"
+cht5vbd.T540_94                 = "QNAP T540-CR 4x10G Bus Enumerator"
+cht5vbd.T540_95                 = "QNAP T540-SO-CR 4x10G Bus Enumerator"
+cht5vbd.T580_96                 = "ZTE T580-CR 2x40G Bus Enumerator"
+cht5vbd.T520_97                 = "ZTE T520-KR 2x10G Bus Enumerator"
+cht5vbd.T580_98                 = "Seagate Dover T580 2x40G Bus Enumerator"
+cht5vbd.T580_99                 = "Seagate Laguna Seca T580 2x40G Bus Enumerator"
+cht5vbd.T520_9A                 = "H3C T520-CR 2x10G Bus Enumerator"
+cht5vbd.T540_9B                 = "JZTech T540-CR LOM 4x10G Bus Enumerator"
+cht5vbd.T520_9C                 = "NUDT T520-CR LOM 2x10G Bus Enumerator"
+cht5vbd.T540_9D                 = "NEXCOM T540-CR 4x10G Bus Enumerator"
+cht5vbd.T520_9E                 = "Institute 52 T520-CR 2x10G Bus Enumerator"
+cht5vbd.T540_9F                 = "Institute 52 T540-CR 4x10G Bus Enumerator"
+cht5vbd.T540_A0                 = "ZhongFu T540-CR 4x10G Bus Enumerator"
+cht5vbd.T540_A1                 = "Seagate T540-CR 4x10G Bus Enumerator"
+cht5vbd.T520_A2                 = "Inspur T520-CR 2x10G Bus Enumerator"
+cht5vbd.T520_A3                 = "Institute 32 T580-KR 2x40G Bus Enumerator"
+cht5vbd.T520_A4                 = "JZTech 2xT540-CR 2x4x10G Bus Enumerator"
+cht5vbd.T520_A5                 = "Institute 52 T522-BT 2x10G Bus Enumerator"
+cht5vbd.T520_A6                 = "Institute 52 T522-BT-SO 2x10G Bus Enumerator"
+cht5vbd.T520_A7                 = "Institute 32 T580-CR 4x40G Bus Enumerator"
+cht5vbd.T520_A8                 = "Inspur Chaoyue T580-KR 2x40G Bus Enumerator"
+cht5vbd.T520_A9                 = "Prophet T580-KR 2x40G Bus Enumerator"
+cht5vbd.T520_AA                 = "Institute716 T580-CR 2x40G Bus Enumerator"
+cht5vbd.T520_AB                 = "Institute716 T520-CR 2x10G Bus Enumerator"
+cht5vbd.T540_AC                 = "Seagate T540-BT 4x10G Bus Enumerator"
+cht5vbd.T540_AD                 = "Panasonic Avionics T520-CR 2x10G Bus Enumerator"
+cht5vbd.T540_AE                 = "Institute 52 T540-XL-SO 1x40G Bus Enumerator"
+cht5vbd.T540_AF                 = "Eware T580-KR 2x40G Bus Enumerator"
+cht5vbd.T540_B0                 = "Institute 52 T520-CR-LOM 2x10G Bus Enumerator"
+
+cht6vbd.BYPASS                  = "Chelsio T6 Bypass 1G Bus Enumerator"
+cht6vbd.T6DBG100                = "Chelsio T6 DBG 100G Bus Enumerator"
+cht6vbd.T6DBG25                 = "Chelsio T6 DBG 25G Bus Enumerator"
+cht6vbd.T6225CR                 = "Chelsio T6225-CR 25G Bus Enumerator"
+cht6vbd.T6225SO                 = "Chelsio T6225-SO-CR 25G Bus Enumerator"
+cht6vbd.T6425CR                 = "Chelsio T6425-CR 25G Bus Enumerator"
+cht6vbd.T6425SO                 = "Chelsio T6425-SO-CR 25G Bus Enumerator"
+cht6vbd.T6225OCP                = "Chelsio T6225-OCP-SO 25G Bus Enumerator"
+cht6vbd.T62100OCP               = "Chelsio T62100-OCP-SO 100G Bus Enumerator"
+cht6vbd.T62100LPCR              = "Chelsio T62100-LP-CR 100G Bus Enumerator"
+cht6vbd.T62100SO                = "Chelsio T62100-SO-CR 100G Bus Enumerator"
+cht6vbd.T6220BT                 = "Chelsio T6220-BT 10G Bus Enumerator"
+cht6vbd.T62100CR                = "Chelsio T62100-CR 100G Bus Enumerator"
+cht6vbd.T6225LLCR               = "Chelsio T6225-LL-CR 25G Bus Enumerator"
+cht6vbd.T61100OCP               = "Chelsio T61100-OCP-SO 100G Bus Enumerator"
+cht6vbd.T6202BT                 = "Chelsio T6202-BT 1G Bus Enumerator"
+cht6vbd.Seagate_T6225           = "Seagate T6225 2x25G Bus Enumerator"
+cht6vbd.Foxconn_T62100          = "Foxconn T62100 2x100G Bus Enumerator"
+cht6vbd.Harpoon_T6225           = "Dell Harpoon T6225 2x25G Bus Enumerator"
+cht6vbd.Harpoon_T62100          = "Dell Harpoon T62100 2x100G Bus Enumerator"
+cht6vbd.Foxconn_T64100          = "Foxconn T64100 4x100G Bus Enumerator"
+cht6vbd.Diamanti_T6240SO        = "Diamanti T6240-SO 2x40G Bus Enumerator"
+cht6vbd.Embedway_T6225SO        = "Embedway T6225-SO 2x25G Bus Enumerator"
+cht6vbd.Fiberhome_T6225CR       = "Fiberhome T6225-CR 2x25G Bus Enumerator"
+cht6vbd.Vadatech_T62100CR       = "Vadatech T62100-CR 2x100G Bus Enumerator"
+cht6vbd.Vadatech_T62100KR       = "Vadatech T62100-KR 2x100G Bus Enumerator"
+cht6vbd.HellaStorm_T62100CR     = "HellaStorm T62100-CR 2x100G Bus Enumerator"
+
+VF                              = " [Virtual Function]"

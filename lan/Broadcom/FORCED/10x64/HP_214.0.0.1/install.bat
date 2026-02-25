@@ -1,0 +1,1 @@
+pnputil -a "%~dp0atind60a.inf" /install

@@ -1,0 +1,378 @@
+;******************************************************************************
+;*
+;*                           Hilscher GmbH
+;*
+;*                     cifX Setup Information File
+;*
+;*                          Copyright (c) 2006
+;*
+;*******************************************************************************
+;* File name: cifX.INF
+;*******************************************************************************
+
+;--------- Version Section ---------------------------------------------------
+
+[Version]
+Signature="$WINDOWS NT$"
+Provider=%ProviderName%
+
+Class=cifX Communication Interface
+ClassGUID={F065297D-CE07-4da1-AEC6-E67EDBF2ECBE}
+
+DriverVer=10/23/2013,1.2.3.0
+CatalogFile=cifxdrv.cat
+
+[DestinationDirs]
+DefaultDestDir                    = 12
+cifX.CopyDriverFiles              = 12
+cifX.CopyProgramFiles             = 16422,cifX Device Driver
+cifX.CopySystem32Files            = 11
+cifX.NTx86.CopySystem32Files      = 11
+cifX.NTamd64.CopySystem32Files    = 16425 ; cifX32dll.dll for x86 on an AMD64 platform
+cifX.CopySystem64Files            = 11
+CoInstaller_CopyFiles             = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+HKR,,DeviceCharacteristics,0x10001,0x100     ;Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;WD)(A;;GA;;;RC)"  ; Allow full access to all users
+
+; ================= Device Install section =====================
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%MfgName%=cifX,NTx86,NTamd64
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1,x86
+cifXDrv.sys                                = 1,x86
+cifXCpl.cpl                                = 1,x86
+cifX32DLL.dll                              = 1
+driver_history.txt                         = 1
+bsl_history.txt                            = 1
+NETX100-BSL.bin                            = 1
+NETX50-BSL.bin                             = 1
+cifXSetup.exe                              = 1,x86
+cifXTest.exe                               = 1,x86
+
+[SourceDisksFiles.x86]
+WdfCoInstaller01009.dll = 1,x86
+cifXDrv.sys                                = 1,x86
+cifXCpl.cpl                                = 1,x86
+cifX32DLL.dll                              = 1
+driver_history.txt                         = 1
+bsl_history.txt                            = 1
+NETX100-BSL.bin                            = 1
+NETX50-BSL.bin                             = 1
+cifXSetup.exe                              = 1,x86
+cifXTest.exe                               = 1,x86
+
+[SourceDisksFiles.amd64]
+WdfCoInstaller01009.dll = 1,x64
+cifXDrv.sys                                = 1,x64
+cifXCpl.cpl                                = 1,x64
+cifX32DLL.dll                              = 1
+cifX32DLL64.dll                            = 1
+driver_history.txt                         = 1
+bsl_history.txt                            = 1
+NETX100-BSL.bin                            = 1
+NETX50-BSL.bin                             = 1
+cifXSetup.exe                              = 1,x64
+cifXTest.exe                               = 1,x64
+
+[SourceDisksNames]
+1=%DISK_NAME%,
+
+; For Win2K
+[cifX]
+; DisplayName           Section           DeviceId
+; -----------           -------           --------
+%cifX50.DRVDESC%=      cifX_Inst,     PCI\VEN_15CF&DEV_0000&SUBSYS_00000000
+%netPLCR.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000015CF
+%netPLCF.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000115CF
+%netJACKR.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000015CF
+%netJACKF.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000115CF
+%nxsbpca.DRVDESC%=     cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_323510B5
+%nxpcapci.DRVDESC%=    cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_333510B5
+%cifXisa16.DRVDESC%=   cifX_ISA_Inst
+%OEMisa32.DRVDESC%=    cifX_ISA_Inst_32K
+
+; For XP and later
+[cifX.NTx86]
+; DisplayName           Section           DeviceId
+; -----------           -------           --------
+%cifX50.DRVDESC%=      cifX_Inst,     PCI\VEN_15CF&DEV_0000&SUBSYS_00000000
+%netPLCR.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000015CF
+%netPLCF.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000115CF
+%netJACKR.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000015CF
+%netJACKF.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000115CF
+%nxsbpca.DRVDESC%=     cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_323510B5
+%nxpcapci.DRVDESC%=    cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_333510B5
+%cifXisa16.DRVDESC%=   cifX_ISA_Inst
+%OEMisa32.DRVDESC%=    cifX_ISA_Inst_32K
+
+; For XP and later
+[cifX.NTamd64]
+; DisplayName           Section           DeviceId
+; -----------           -------           --------
+%cifX50.DRVDESC%=      cifX_Inst,     PCI\VEN_15CF&DEV_0000&SUBSYS_00000000
+%netPLCR.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000015CF
+%netPLCF.DRVDESC%=     cifX_Inst,     PCI\VEN_15CF&DEV_0010&SUBSYS_000115CF
+%netJACKR.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000015CF
+%netJACKF.DRVDESC%=    cifX_Inst,     PCI\VEN_15CF&DEV_0020&SUBSYS_000115CF
+%nxsbpca.DRVDESC%=     cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_323510B5
+%nxpcapci.DRVDESC%=    cifX_Inst,     PCI\VEN_10B5&DEV_9030&SUBSYS_333510B5
+%cifXisa16.DRVDESC%=   cifX_ISA_Inst
+%OEMisa32.DRVDESC%=    cifX_ISA_Inst_32K
+
+[cifX_Security]
+HKR,,DeviceCharacteristics,0x10001,0x100                              ; Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GA;;;WD)(A;;GA;;;RC)"  ; Allow full access to all users
+
+[cifX_Inst.NT]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.CopySystem32Files
+AddReg=cifX_Security
+
+[cifX_Inst.NTx86]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTx86.CopySystem32Files
+AddReg=cifX_Security
+
+[cifX_Inst.NTamd64]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTamd64.CopySystem32Files,cifX.CopySystem64Files
+AddReg=cifX_Security
+
+[cifX_Inst.NT.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_Inst.NTx86.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_Inst.NTamd64.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst.NT]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.CopySystem32Files
+LogConfig=ISA_CNF_16K_OPT,ISA_CNF_16K,ISA_CNF_16K_IRQ
+AddReg=cifX_Security
+
+[cifX_ISA_Inst.NTx86]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTx86.CopySystem32Files
+LogConfig=ISA_CNF_16K_OPT,ISA_CNF_16K,ISA_CNF_16K_IRQ
+AddReg=cifX_Security
+
+[cifX_ISA_Inst.NTamd64]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTamd64.CopySystem32Files,cifX.CopySystem64Files
+LogConfig=ISA_CNF_16K_OPT,ISA_CNF_16K,ISA_CNF_16K_IRQ
+AddReg=cifX_Security
+
+[cifX_ISA_Inst_32K.NT]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.CopySystem32Files
+LogConfig=ISA_CNF_32K_OPT,ISA_CNF_32K,ISA_CNF_32K_IRQ
+AddReg=cifX_Security
+
+[cifX_ISA_Inst_32K.NTx86]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTx86.CopySystem32Files
+LogConfig=ISA_CNF_32K_OPT,ISA_CNF_32K,ISA_CNF_32K_IRQ
+AddReg=cifX_Security
+
+[cifX_ISA_Inst_32K.NTamd64]
+CopyFiles=cifX.CopyDriverFiles,cifX.CopyProgramFiles,cifX.NTamd64.CopySystem32Files,cifX.CopySystem64Files
+LogConfig=ISA_CNF_32K_OPT,ISA_CNF_32K,ISA_CNF_32K_IRQ
+AddReg=cifX_Security
+
+; --------- LogConfig Section -----------------
+[ISA_CNF_16K_OPT]
+ConfigPriority=HARDRECONFIG
+MemConfig=D0000-D3FFF			; MemoryRange0;
+
+[ISA_CNF_16K]
+ConfigPriority=HARDRECONFIG
+MemConfig=4000@C0000-FC000%FFFFC000	; MemoryRange0;
+
+[ISA_CNF_16K_IRQ]
+ConfigPriority=HARDRECONFIG
+MemConfig=4000@C0000-FC000%FFFFC000	; MemoryRange0;
+IRQConfig=3,4,5,6,7,9,10,11,12,14,15
+
+[ISA_CNF_32K_OPT]
+ConfigPriority=HARDRECONFIG
+MemConfig=D0000-D7FFF			; MemoryRange0;
+
+[ISA_CNF_32K]
+ConfigPriority=HARDRECONFIG
+MemConfig=8000@C0000-F8000%FFFF8000	; MemoryRange0;
+
+[ISA_CNF_32K_IRQ]
+ConfigPriority=HARDRECONFIG
+MemConfig=8000@C0000-F8000%FFFF8000	; MemoryRange0;
+IRQConfig=3,4,5,6,7,9,10,11,12,14,15
+
+; ---------------------------------------------
+
+[cifX_ISA_Inst.NT.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst.NTx86.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst.NTamd64.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst_32K.NT.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst_32K.NTx86.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX_ISA_Inst_32K.NTamd64.Services]
+Addservice=cifXDrv, 0x00000002, cifX_Service
+
+[cifX.CopyDriverFiles]
+cifXDrv.sys
+
+[cifX.CopySystem32Files]
+cifXCpl.cpl
+cifX32DLL.dll
+
+[cifX.NTx86.CopySystem32Files]
+cifXCpl.cpl
+cifX32DLL.dll
+
+[cifX.NTamd64.CopySystem32Files]
+cifX32DLL.dll
+
+[cifX.CopyProgramFiles]
+driver_history.txt
+bsl_history.txt
+NETX100-BSL.bin
+NETX50-BSL.bin
+cifXSetup.exe
+cifXTest.exe
+
+[cifX.CopySystem64Files]
+cifX32Dll.dll,cifX32Dll64.dll
+cifXCpl.cpl
+
+[cifX_Service]
+DisplayName    = %SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = Extended Base
+ServiceBinary  = %12%\cifXDrv.sys
+AddReg         = cifX_Parameters_AddReg
+
+[cifX_Parameters_AddReg]
+HKR, Parameters\Wdf, VerboseOn,       0x00010001, 1
+HKR, Parameters\Wdf, VerifierOn,      0x00010001, 1
+HKR, Parameters\Wdf, DbgBreakOnError, 0x00010001, 1
+HKR,,"Start", 0x00010003, 1
+HKR,,"Type", 0x00010003, 1
+HKR,,"ErrorControl", 0x00010003, 1
+HKR,,"PCIIntEnable",0x00010003, 0
+HKR,,"ImagePath", 2, %10%\System32\Drivers\cifXDrv.sys
+HKR,,"DisplayName",2,%SvcDesc%
+HKR,,"InstallDir", 2, %16422%\cifX Device Driver
+HKR, Parameters,"TraceLevel",0x00010003, 0
+HKR, Parameters\NX-PCA-PCI,"DPM_8_Bit",0x00010003, 0x5431F962
+HKR, Parameters\NX-PCA-PCI,"DPM_16_Bit",0x00010003, 0x4073F8E2
+HKR, Parameters\NX-PCA-PCI,"DPM_32_Bit",0x00010003, 0x40824122
+HKR, Parameters\NDIS,"InterruptEnable",0x00010003, 0x00000001
+HKR, Parameters\NDIS,"PollingInterval",0x00010003, 0x00000001
+
+;-------------- Coinstaller installation
+[cifX_Inst.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_Inst.NTx86.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_Inst.NTamd64.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst.NTx86.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst.NTamd64.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst_32K.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst_32K.NTx86.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[cifX_ISA_Inst_32K.NTamd64.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[cifX_Inst.NT.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_Inst.NTx86.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_Inst.NTamd64.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst.NT.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst.NTx86.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst.NTamd64.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst_32K.NT.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst_32K.NTx86.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_ISA_Inst_32K.NTamd64.Wdf]
+KmdfService = cifXDrv, cifX_wdfsect
+
+[cifX_wdfsect]
+KmdfLibraryVersion = 1.9
+
+[Strings]
+ProviderName="Hilscher GmbH"                      ;Company Name
+ClassName="cifX Communication Interface"          ;Description of Device class
+cifX50.DRVDESC="cifX PCI/PCIe Device"             ;Description of Device
+netPLCR.DRVDESC="netPLC C100 PCI/PCIe Device"     ;netPLC C100 RAM based card
+netPLCF.DRVDESC="netPLC C100 PCI/PCIe Device"     ;netPLC C100 FLASH based card
+netJACKR.DRVDESC="netJACK 100 PCI/PCIe Device"    ;netJACK 100 RAM based card
+netJACKF.DRVDESC="netJACK 100 PCI/PCIe Device"    ;netJACK 100 FLASH based card
+nxsbpca.DRVDESC="NXSB-PCA Adapter"                ;Description of PLX-Adapter Card
+nxpcapci.DRVDESC="NX-PCA-PCI"                     ;Description of configurable PLX-Adapter Card
+cifXisa16.DRVDESC="cifX ISA (16kB)"               ;Description for cifX ISA cards with 16 kB DPM
+OEMisa32.DRVDESC="OEM ISA (32kB)"                 ;Description for OEM ISA cards with 32 kB DPM
+SvcDesc="cifX Driver"                             ;Description of NT service
+MfgName="Hilscher GmbH"                           ;Name of HW Manufacturer
+DISK_NAME="Hilscher cifX Device Driver Install Disk"

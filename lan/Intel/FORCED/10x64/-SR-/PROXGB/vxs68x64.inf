@@ -1,0 +1,1196 @@
+;*******************************************************************************
+;**                                                                           **
+;**                            INTEL CONFIDENTIAL                             **
+;**                                                                           **
+;**        Copyright 2023 Intel Corporation All Rights Reserved.              **
+;**                                                                           **
+;**  The material contained or described herein and all documents related     **
+;**  to such material ("Material") are owned by Intel Corporation or its      **
+;**  suppliers or licensors. Title to the Material remains with Intel         **
+;**  Corporation or its suppliers and licensors. The Material contains trade  **
+;**  secrets and proprietary and confidential information of Intel or its     **
+;**  suppliers and licensors. The Material is protected by worldwide          **
+;**  copyright and trade secret laws and treaty provisions. No part of the    **
+;**  Material may be used, copied, reproduced, modified, published,           **
+;**  uploaded, posted, transmitted, distributed, or disclosed in any way      **
+;**  without Intel's prior express written permission.                        **
+;**                                                                           **
+;**  No license under any patent, copyright, trade secret or other            **
+;**  intellectual property right is granted to or conferred upon you by       **
+;**  disclosure or delivery of the Materials, either expressly, by            **
+;**  implication, inducement, estoppel or otherwise. Any license under such   **
+;**  intellectual property rights must be express and approved by Intel in    **
+;**  writing.                                                                 **
+;**                                                                           **
+;*******************************************************************************
+;
+;*******************************************************************************
+; INF for Intel(R) Gigabit Virtual Function Network Adapters
+;*******************************************************************************
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Intel%
+CatalogFile = vxs68x64.cat
+DriverVer = 02/08/2024,2.1.252.0
+
+[Manufacturer]
+%Intel%     = Intel, NTamd64.10.0
+
+[Intel]
+
+[Intel.NTamd64.10.0]
+; DisplayName                       Section         DeviceID
+; -----------                       -------         --------
+%E1564VF.DeviceDesc%               = VF8086,        PCI\VEN_8086&DEV_1565
+%E15A8VF.DeviceDesc%               = VF8086,        PCI\VEN_8086&DEV_15A8
+%E15C5VF.DeviceDesc%               = VF8086,        PCI\VEN_8086&DEV_15C5
+%E1564VF.DeviceDesc%               = HV8086_NO_RSC, PCI\VEN_8086&DEV_1564
+%E15A8VF.DeviceDesc%               = HV8086_NO_RSC, PCI\VEN_8086&DEV_15A9
+%E15C5VF.DeviceDesc%               = HV8086_NO_RSC, PCI\VEN_8086&DEV_15B4
+
+;-------------------------------------------------------------------------------
+; Intel Virtual Function
+;
+[VF8086]
+Characteristics    = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType            = 5 ; PCI
+DelReg             = Cleanup.DelReg
+AddReg             = Interfaces_vf.reg, Default.reg, VLAN.reg, Uninstall.reg
+CopyFiles          = CopyFiles, MessageDll.CopyFiles, Uninstall.CopyFiles
+AddReg             = CoInK.reg
+*IfType            = 6  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0  ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMediumUnspecified
+
+[VF8086.Services]
+AddService = %ServiceName%, 2, Service, EventLog
+
+[VF8086.HW]
+Include            = pci.inf
+Needs              = PciIoSpaceNotRequired.HW
+AddReg             = MSI.reg
+
+;-------------------------------------------------------------------------------
+; Intel Virtual Function - Windows Hypervisor without RSC
+;
+[HV8086_NO_RSC]
+Characteristics    = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType            = 5 ; PCI
+DelReg             = Cleanup.DelReg
+AddReg             = Interfaces_hyperv.reg, Default.reg, Uninstall.reg
+CopyFiles          = CopyFiles, MessageDll.CopyFiles, Uninstall.CopyFiles
+AddReg             = CoInK.reg
+*IfType            = 6  ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0  ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMediumUnspecified
+
+[HV8086_NO_RSC.Services]
+AddService = %ServiceName%, 2, Service, EventLog
+
+[HV8086_NO_RSC.HW]
+Include            = pci.inf
+Needs              = PciIoSpaceNotRequired.HW
+AddReg             = MSI.reg
+
+;-------------------------------------------------------------------------------
+; Registry Settings
+;-------------------------------------------------------------------------------
+
+[Interfaces_vf.reg]
+HKR, Ndi\Interfaces,                            UpperRange,             0, "ndis5"
+HKR, Ndi\Interfaces,                            LowerRange,             0, "ethernet"
+HKR, Ndi,                                       Service,                0, %ServiceName%
+
+[Interfaces_hyperv.reg]
+HKR, Ndi\Interfaces,                            UpperRange,             0, "ndisvf"
+HKR, Ndi\Interfaces,                            LowerRange,             0, "iovvf"
+HKR, Ndi,                                       Service,                0, %ServiceName%
+
+[Default.reg]
+; *TransmitBuffers
+HKR, Ndi\params\*TransmitBuffers,               ParamDesc,              0, %TransmitBuffers%
+HKR, Ndi\params\*TransmitBuffers,               default,                0, "512"
+HKR, Ndi\params\*TransmitBuffers,               min,                    0, "128"
+HKR, Ndi\params\*TransmitBuffers,               max,                    0, "16384"
+HKR, Ndi\params\*TransmitBuffers,               step,                   0, "64"
+HKR, Ndi\params\*TransmitBuffers,               Base,                   0, "10"
+HKR, Ndi\params\*TransmitBuffers,               type,                   0, "int"
+
+; *ReceiveBuffers
+HKR, Ndi\params\*ReceiveBuffers,                ParamDesc,              0, %ReceiveBuffers%
+HKR, Ndi\params\*ReceiveBuffers,                default,                0, "512"
+HKR, Ndi\params\*ReceiveBuffers,                min,                    0, "128"
+HKR, Ndi\params\*ReceiveBuffers,                max,                    0, "4096"
+HKR, Ndi\params\*ReceiveBuffers,                step,                   0, "64"
+HKR, Ndi\params\*ReceiveBuffers,                Base,                   0, "10"
+HKR, Ndi\params\*ReceiveBuffers,                type,                   0, "int"
+
+; Set MinHardwareOwnedPacketCount to 32
+HKR,,                                           MinHardwareOwnedPacketCount,   0, "32"
+
+; *TCPChecksumOffloadIPv4
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4,        ParamDesc,              0, %TCPChksumOffv4%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4,        default,                0, "3"
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4\Enum,   "0",                    0, %Disabled%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4\Enum,   "1",                    0, %ChksumOffTx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4\Enum,   "2",                    0, %ChksumOffRx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4\Enum,   "3",                    0, %ChksumOffTxRx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv4,        type,                   0, "enum"
+
+; *TCPChecksumOffloadIPv6
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6,        ParamDesc,              0, %TCPChksumOffv6%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6,        default,                0, "3"
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6\Enum,   "0",                    0, %Disabled%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6\Enum,   "1",                    0, %ChksumOffTx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6\Enum,   "2",                    0, %ChksumOffRx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6\Enum,   "3",                    0, %ChksumOffTxRx%
+HKR, Ndi\Params\*TCPChecksumOffloadIPv6,        type,                   0, "enum"
+
+; *UDPChecksumOffloadIPv4
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4,        ParamDesc,              0, %UDPChksumOffv4%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4,        default,                0, "3"
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4\Enum,   "0",                    0, %Disabled%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4\Enum,   "1",                    0, %ChksumOffTx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4\Enum,   "2",                    0, %ChksumOffRx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4\Enum,   "3",                    0, %ChksumOffTxRx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv4,        type,                   0, "enum"
+
+; *UDPChecksumOffloadIPv6
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6,        ParamDesc,              0, %UDPChksumOffv6%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6,        default,                0, "3"
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6\Enum,   "0",                    0, %Disabled%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6\Enum,   "1",                    0, %ChksumOffTx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6\Enum,   "2",                    0, %ChksumOffRx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6\Enum,   "3",                    0, %ChksumOffTxRx%
+HKR, Ndi\Params\*UDPChecksumOffloadIPv6,        type,                   0, "enum"
+
+; *IPChecksumOffloadIPv4
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,         ParamDesc,              0, %IPChksumOffv4%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,         default,                0, "3"
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,    "0",                    0, %Disabled%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,    "1",                    0, %ChksumOffTx%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,    "2",                    0, %ChksumOffRx%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4\Enum,    "3",                    0, %ChksumOffTxRx%
+HKR, Ndi\Params\*IPChecksumOffloadIPv4,         type,                   0, "enum"
+
+;Log Link State Event
+HKR,Ndi\Params\LogLinkStateEvent,               ParamDesc,              0, %LogLinkState%
+HKR,Ndi\Params\LogLinkStateEvent,               Type,                   0, "enum"
+HKR,Ndi\Params\LogLinkStateEvent,               Default,                0, "51"
+HKR,Ndi\Params\LogLinkStateEvent\Enum,          "51",                   0, %Enabled%
+HKR,Ndi\Params\LogLinkStateEvent\Enum,          "16",                   0, %Disabled%
+HKR,,                                           LogLinkStateEvent,      0, "51"
+
+; Interrupt Throttle Rate
+HKR, Ndi\Params\ITR,                            ParamDesc,              0, %InterruptThrottleRate%
+HKR, Ndi\Params\ITR,                            default,                0, "65535"
+HKR, Ndi\Params\ITR\Enum,                       "65535",                0, %Adaptive%
+HKR, Ndi\Params\ITR\Enum,                       "2000",                 0, %Extreme%
+HKR, Ndi\Params\ITR\Enum,                       "1333",                 0, %Balanced%
+HKR, Ndi\Params\ITR\Enum,                       "950",                  0, %High%
+HKR, Ndi\Params\ITR\Enum,                       "488",                  0, %Medium%
+HKR, Ndi\Params\ITR\Enum,                       "200",                  0, %Low%
+HKR, Ndi\Params\ITR\Enum,                       "0",                    0, %Off%
+HKR, Ndi\Params\ITR,                            type,                   0, "enum"
+
+; *InterruptModeration
+HKR, Ndi\Params\*InterruptModeration,           ParamDesc,              0, %InterruptModeration%
+HKR, Ndi\Params\*InterruptModeration,           default,                0, "1"
+HKR, Ndi\Params\*InterruptModeration\Enum,      "0",                    0, %Disabled%
+HKR, Ndi\Params\*InterruptModeration\Enum,      "1",                    0, %Enabled%
+HKR, Ndi\Params\*InterruptModeration,           type,                   0, "enum"
+
+; *LsoV2IPv4
+HKR, Ndi\Params\*LsoV2IPv4,                     ParamDesc,              0, %LsoV2IPv4%
+HKR, Ndi\Params\*LsoV2IPv4,                     default,                0, "1"
+HKR, Ndi\Params\*LsoV2IPv4\Enum,                "0",                    0, %Disabled%
+HKR, Ndi\Params\*LsoV2IPv4\Enum,                "1",                    0, %Enabled%
+HKR, Ndi\Params\*LsoV2IPv4,                     type,                   0, "enum"
+
+; *LsoV1IPv4
+HKR,,                                           *LsoV1IPv4,             0, "0"
+
+; *LsoV2IPv6
+HKR, Ndi\Params\*LsoV2IPv6,                     ParamDesc,              0, %LsoV2IPv6%
+HKR, Ndi\Params\*LsoV2IPv6,                     default,                0, "1"
+HKR, Ndi\Params\*LsoV2IPv6\Enum,                "0",                    0, %Disabled%
+HKR, Ndi\Params\*LsoV2IPv6\Enum,                "1",                    0, %Enabled%
+HKR, Ndi\Params\*LsoV2IPv6,                     type,                   0, "enum"
+
+; Network Address
+HKR, PROSetNdi\params\NetworkAddress,           ParamDesc,              0, %LAA%
+HKR, PROSetNdi\params\NetworkAddress,           Default,                0, ""
+HKR, PROSetNdi\params\NetworkAddress,           type,                   0, "edit"
+HKR, PROSetNDI\params\NetworkAddress,           LimitText,              0, "12"
+HKR, PROSetNDI\params\NetworkAddress,           UpperCase,              0, "1"
+HKR, PROSetNDI\params\NetworkAddress,           optional,               0, "1"
+HKR, PROSetNDI\params\NetworkAddress,           ExposeLevel,            0, "3"
+HKR,,                                           HDSplitBufferAssoc,     0, "0"
+
+; *JumboPacket
+HKR, Ndi\Params\*JumboPacket,                   ParamDesc,              0, %JumboPacket%
+HKR, Ndi\Params\*JumboPacket,                   default,                0, "1514"
+HKR, Ndi\Params\*JumboPacket\Enum,              "1514",                 0, %Disabled%
+HKR, Ndi\Params\*JumboPacket\Enum,              "4088",                 0, %Bytes4088%
+HKR, Ndi\Params\*JumboPacket\Enum,              "9014",                 0, %Bytes9014%
+HKR, Ndi\Params\*JumboPacket,                   type,                   0, "enum"
+
+; NumRssQueues
+HKR, Ndi\Params\*NumRssQueues,                   ParamDesc,              0, %NumRssQueues2%
+HKR, Ndi\Params\*NumRssQueues,                   default,                0, "2"
+HKR, Ndi\Params\*NumRssQueues,                   type,                   0, "enum"
+HKR, Ndi\Params\*NumRssQueues\Enum,              "1",                    0, %1queue%
+HKR, Ndi\Params\*NumRssQueues\Enum,              "2",                    0, %2queues%
+
+; *RSS
+HKR, Ndi\Params\*RSS,                           ParamDesc,              0, %RSS%
+HKR, Ndi\Params\*RSS,                           default,                0, "1"
+HKR, Ndi\Params\*RSS,                           type,                   0, "enum"
+HKR, Ndi\Params\*RSS\Enum,                      "0",                    0, %Disabled%
+HKR, Ndi\Params\*RSS\Enum,                      "1",                    0, %Enabled%
+
+; *RSSProfile
+HKR, Ndi\Params\*RSSProfile,                   ParamDesc,              0, %RSSProfile%
+HKR, Ndi\Params\*RSSProfile,                   default,                0, "1"
+HKR, Ndi\Params\*RSSProfile,                   type,                   0, "enum"
+HKR, Ndi\Params\*RSSProfile\Enum,              "1",                    0, %Closest_Processor%
+HKR, Ndi\Params\*RSSProfile\Enum,              "2",                    0, %Closest_Processor_Static%
+HKR, Ndi\Params\*RSSProfile\Enum,              "3",                    0, %NUMA_Scaling%
+HKR, Ndi\Params\*RSSProfile\Enum,              "4",                    0, %NUMA_Scaling_Static%
+HKR, Ndi\Params\*RSSProfile\Enum,              "5",                    0, %Conservative_Scaling%
+
+; *RssBaseProcNumber
+HKR, Ndi\params\*RssBaseProcNumber,             ParamDesc,              0, %RssBaseProcNumber%
+HKR, Ndi\params\*RssBaseProcNumber,             default,                0, "0"
+HKR, Ndi\params\*RssBaseProcNumber,             min,                    0, "0"
+HKR, Ndi\params\*RssBaseProcNumber,             max,                    0, "63"
+HKR, Ndi\params\*RssBaseProcNumber,             step,                   0, "1"
+HKR, Ndi\params\*RssBaseProcNumber,             Optional,               0, "0"
+HKR, Ndi\params\*RssBaseProcNumber,             type,                   0, "int"
+
+; *NumaNodeId
+HKR, Ndi\params\*NumaNodeId,                    ParamDesc,              0, %NumaNodeId%
+HKR, Ndi\params\*NumaNodeId,                    default,                0, "65535"
+HKR, Ndi\params\*NumaNodeId,                    type,                   0, "enum"
+HKR, Ndi\params\*NumaNodeId\Enum,               "65535",                0, %default%
+HKR, Ndi\params\*NumaNodeId\Enum,               "0",                    0, %node0%
+HKR, Ndi\params\*NumaNodeId\Enum,               "1",                    0, %node1%
+HKR, Ndi\params\*NumaNodeId\Enum,               "2",                    0, %node2%
+HKR, Ndi\params\*NumaNodeId\Enum,               "3",                    0, %node3%
+HKR, Ndi\params\*NumaNodeId\Enum,               "4",                    0, %node4%
+HKR, Ndi\params\*NumaNodeId\Enum,               "5",                    0, %node5%
+HKR, Ndi\params\*NumaNodeId\Enum,               "6",                    0, %node6%
+HKR, Ndi\params\*NumaNodeId\Enum,               "7",                    0, %node7%
+
+; Miscellanous defaults
+HKR,,                                           UniversalInstall,       0x00010001, 1
+
+[VLAN.reg]
+; *PriorityVLANTag
+HKR, Ndi\Params\*PriorityVLANTag,               ParamDesc,              0, %PriorityVLANTag2%
+HKR, Ndi\Params\*PriorityVLANTag,               default,                0, "3"
+HKR, Ndi\Params\*PriorityVLANTag\Enum,          "0",                    0, %PriorityVlanDisabled2%
+HKR, Ndi\Params\*PriorityVLANTag\Enum,          "1",                    0, %PriorityEnabled2%
+HKR, Ndi\Params\*PriorityVLANTag\Enum,          "2",                    0, %VlanEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\Enum,          "3",                    0, %PriorityVlanEnabled2%
+HKR, Ndi\Params\*PriorityVLANTag,               type,                   0, "enum"
+
+[MSI.reg]
+HKR, "Interrupt Management", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 18
+
+[AddEventLog]
+HKR,, EventMessageFile, 0x00020000, %EventLogMessageDllPath%
+HKR,, TypesSupported,   0x00010001, 7
+
+[Cleanup.DelReg]
+HKR, Ndi\Params\RxScalingMode
+HKR,, RxScalingMode
+HKR, Ndi\Params\DcaEnabled
+HKR,, DcaEnabled
+HKR, Ndi\Params\EnableRSC
+HKR,, EnableRSC
+
+;-----------------------------------------------------------------------------
+; Uninstall parameters
+;-----------------------------------------------------------------------------
+[Uninstall.reg]
+HKR,Prounstl\SupportedDevices\8086, 1565, 0, "1565"
+HKR,Prounstl\SupportedDevices\8086, 15A8, 0, "15A8"
+HKR,Prounstl\SupportedDevices\8086, 15C5, 0, "15C5"
+HKR,Prounstl\SupportedDevices\8086, 1564, 0, "1564"
+HKR,Prounstl\SupportedDevices\8086, 15A9, 0, "15A9"
+HKR,Prounstl\SupportedDevices\8086, 15B4, 0, "15B4"
+HKR,Prounstl\Dins, vxs68x64.din, 0, "vxs.Uninstall"
+HKR,Prounstl\Services, %ServiceName%, 0, vxs68x64.sys
+
+;-----------------------------------------------------------------------------
+; Driver "service" installation settings
+;-----------------------------------------------------------------------------
+[Service]
+DisplayName     = %Service.Displayname%
+ServiceType     = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType       = 3 ;%SERVICE_DEMAND_START%
+ErrorControl    = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\vxs68x64.sys
+LoadOrderGroup  = NDIS
+
+;-----------------------------------------------------------------------------
+; Event Log settings
+;-----------------------------------------------------------------------------
+
+[EventLog]
+AddReg             = AddEventLog
+
+[CoInK.reg]
+HKR,, CoInstallFlag, 0x00010001, 0x00280000
+
+[CopyFiles]
+vxs68x64.sys,,,2
+
+[MessageDll.CopyFiles]
+vxsmsg.dll,,,2
+
+[Uninstall.CopyFiles]
+vxs68x64.din,,,2
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+CopyFiles          = 12
+DefaultDestDir          = 11
+Uninstall.CopyFiles          = 11
+MessageDll.CopyFiles          = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,
+
+;-----------------------------------------------------------------------------
+; SourceDisksFiles
+;-----------------------------------------------------------------------------
+[SourceDisksFiles]
+vxs68x64.sys = 1
+vxs68x64.din = 1
+vxsmsg.dll   = 1
+
+[Strings]
+InterruptThrottleRate           = "Interrupt Moderation Rate"
+Adaptive                        = "Adaptive"
+Extreme                         = "Extreme"
+Balanced                        = "Balanced"
+High                            = "High"
+Medium                          = "Medium"
+Low                             = "Low"
+IPChksumOffv4                   = "IPv4 Checksum Offload"
+TCPChksumOffv4                  = "TCP Checksum Offload (IPv4)"
+UDPChksumOffv4                  = "UDP Checksum Offload (IPv4)"
+LsoV2IPv4                       = "Large Send Offload V2 (IPv4)"
+InterruptModeration             = "Interrupt Moderation"
+TCPChksumOffv6                  = "TCP Checksum Offload (IPv6)"
+UDPChksumOffv6                  = "UDP Checksum Offload (IPv6)"
+LsoV2IPv6                       = "Large Send Offload V2 (IPv6)"
+ChksumOffTxRx                   = "Rx & Tx Enabled"
+ChksumOffTx                     = "Tx Enabled"
+ChksumOffRx                     = "Rx Enabled"
+TransmitBuffers                 = "Transmit Buffers"
+ReceiveBuffers                  = "Receive Buffers"
+RSS                             = "Receive Side Scaling"
+1queue                          = "1 Queue"
+2queues                         = "2 Queues"
+NumRssQueues2                   = "Maximum Number of RSS Queues"
+RSSProfile                      = "RSS load balancing profile"
+Closest_Processor               = "ClosestProcessor"
+Closest_Processor_Static        = "ClosestProcessorStatic"
+NUMA_Scaling                    = "NUMAScaling"
+NUMA_Scaling_Static             = "NUMAScalingStatic"
+Conservative_Scaling            = "ConservativeScaling"
+RssBaseProcNumber               = "Starting RSS CPU"
+NumaNodeId                      = "Preferred NUMA node"
+default                         = "System Default"
+node0                           = "Node 0"
+node1                           = "Node 1"
+node2                           = "Node 2"
+node3                           = "Node 3"
+node4                           = "Node 4"
+node5                           = "Node 5"
+node6                           = "Node 6"
+node7                           = "Node 7"
+PriorityVLANTag2                = "Packet Priority & VLAN"
+PriorityVlanDisabled2           = "Packet Priority & VLAN Disabled"
+PriorityEnabled2                = "Packet Priority Enabled"
+PriorityVlanEnabled2            = "Packet Priority & VLAN Enabled"
+VlanEnabled                     = "VLAN Enabled"
+Off                             = "Off"
+Enabled                         = "Enabled"
+Disabled                        = "Disabled"
+Bytes4088                       = "4088 Bytes"
+Bytes9014                       = "9014 Bytes"
+LAA                             = "Locally Administered Address"
+JumboPacket                     = "Jumbo Packet"
+LogLinkState                    = "Log Link State Event"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\drivers\vxs68x64.sys"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0804] ; Chinese (Simplified)
+InterruptThrottleRate           ="÷–∂œ≤√æˆ¬ "
+Adaptive                        ="  ”¶–‘"
+Extreme                         ="º´÷µ"
+Balanced                        ="∆Ω∫‚µƒ"
+High                            ="∏ﬂ"
+Medium                          ="÷–"
+Low                             ="µÕ"
+IPChksumOffv4                   ="IPv4 –£—È∫Õ∑÷‘ÿ¥´ ‰"
+TCPChksumOffv4                  ="TCP –£—È∫Õ∑÷‘ÿ¥´ ‰ (IPv4)"
+UDPChksumOffv4                  ="UDP –£—È∫Õ∑÷‘ÿ¥´ ‰ (IPv4)"
+LsoV2IPv4                       ="¥Û–Õ∑¢ÀÕ∑÷‘ÿ V2 (IPv4)"
+InterruptModeration             ="÷–∂œ≤√æˆ"
+TCPChksumOffv6                  ="TCP –£—È∫Õ∑÷‘ÿ¥´ ‰ (IPv6)"
+UDPChksumOffv6                  ="UDP –£—È∫Õ∑÷‘ÿ¥´ ‰ (IPv6)"
+LsoV2IPv6                       ="¥Û–Õ∑¢ÀÕ∑÷‘ÿ V2 (IPv6)"
+ChksumOffTxRx                   ="“—∆Ù”√ Rx ∫Õ Tx"
+ChksumOffTx                     ="“—∆Ù”√ Tx"
+ChksumOffRx                     ="“—∆Ù”√ Rx"
+TransmitBuffers                 ="¥´ ‰ª∫≥Â«¯"
+ReceiveBuffers                  ="Ω” ’ª∫≥Â«¯"
+RSS                             ="Ω” ’∑Ωµ˜’˚"
+1queue                          ="1 ∏ˆ∂”¡–"
+2queues                         ="2 ∏ˆ∂”¡–"
+NumRssQueues2                   ="RSS ∂”¡–µƒ◊Ó¥Û ˝ƒø"
+RSSProfile                      ="RSS ∏∫‘ÿ∆Ω∫‚≈‰÷√ Ω"
+Closest_Processor               ="◊ÓΩ¸µƒ¥¶¿Ì∆˜"
+Closest_Processor_Static        ="◊ÓΩ¸µƒ¥¶¿Ì∆˜£®æ≤Ã¨£©"
+NUMA_Scaling                    ="NUMA µ˜’˚"
+NUMA_Scaling_Static             ="NUMA µ˜’˚£®æ≤Ã¨£©"
+Conservative_Scaling            ="±£ ÿµ˜’˚"
+RssBaseProcNumber               ="∆Ù∂Ø RSS CPU"
+NumaNodeId                      =" ◊—°µƒ NUMA Ω⁄µ„"
+default                         ="œµÕ≥ƒ¨»œ÷µ"
+node0                           ="Ω⁄µ„ 0"
+node1                           ="Ω⁄µ„ 1"
+node2                           ="Ω⁄µ„ 2"
+node3                           ="Ω⁄µ„ 3"
+node4                           ="Ω⁄µ„ 4"
+node5                           ="Ω⁄µ„ 5"
+node6                           ="Ω⁄µ„ 6"
+node7                           ="Ω⁄µ„ 7"
+PriorityVLANTag2                =" ˝æ›∞¸”≈œ»º∂∫Õ VLAN"
+PriorityVlanDisabled2           ="“—Ω˚”√ ˝æ›∞¸”≈œ»º∂∫Õ VLAN"
+PriorityEnabled2                ="“—∆Ù”√ ˝æ›∞¸”≈œ»º∂"
+PriorityVlanEnabled2            ="“—∆Ù”√ ˝æ›∞¸”≈œ»º∂∫Õ VLAN"
+VlanEnabled                     ="“—∆Ù”√ VLAN"
+Off                             ="πÿ±’"
+Enabled                         ="∆Ù”√"
+Disabled                        ="Ω˚”√"
+Bytes4088                       ="4088 ◊÷Ω⁄"
+Bytes9014                       ="9014 ◊÷Ω⁄"
+LAA                             ="±æµÿπ‹¿Ìµÿ÷∑"
+JumboPacket                     ="æﬁ÷° ˝æ›∞¸"
+LogLinkState                    ="º«¬º¡¥Ω”◊¥Ã¨ ¬º˛"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0404] ; Chinese (Traditional)
+InterruptThrottleRate           ="ß√¬_∏`¨yª÷≥t≤v"
+Adaptive                        ="Ω’æ„© "
+Extreme                         ="∑•∞™"
+Balanced                        ="•≠ø≈™∫"
+High                            ="∞™"
+Medium                          ="§§"
+Low                             ="ßC"
+IPChksumOffv4                   ="IPv4 ¿À¨d≠»®¯∏¸"
+TCPChksumOffv4                  ="TCP ¿À¨d≠»®¯∏¸ (IPv4)"
+UDPChksumOffv4                  ="UDP ¿À¨d≠»®¯∏¸ (IPv4)"
+LsoV2IPv4                       ="§j∂q∂«∞e®¯∏¸ V2 (IPv4)"
+InterruptModeration             ="ß√¬_Ω’∏`"
+TCPChksumOffv6                  ="TCP ¿À¨d≠»®¯∏¸ (IPv6)"
+UDPChksumOffv6                  ="UDP ¿À¨d≠»®¯∏¸ (IPv6)"
+LsoV2IPv6                       ="§j∂q∂«∞e®¯∏¸ V2 (IPv6)"
+ChksumOffTxRx                   ="Rx ªP Tx §w±“•Œ"
+ChksumOffTx                     ="Tx §w±“•Œ"
+ChksumOffRx                     ="Rx §w±“•Œ"
+TransmitBuffers                 ="∂«øÈΩwΩƒ∞œ"
+ReceiveBuffers                  ="±µ¶¨ΩwΩƒ∞œ"
+RSS                             ="±µ¶¨∫›Ω’æ„"
+1queue                          ="1 ≠”¶Ó¶C"
+2queues                         ="2 ≠”¶Ó¶C"
+NumRssQueues2                   ="±µ¶¨∫›Ω’æ„¶Ó¶C™∫≥Ã§jº∆•ÿ"
+RSSProfile                      ="±µ¶¨∫›Ω’æ„∏¸∂q•≠ø≈≥]©w¿…"
+Closest_Processor               ="≥Ã±µ™Ò™∫≥B≤zæπ"
+Closest_Processor_Static        ="≥Ã±µ™Ò™∫≥B≤zæπ°]¿R∫A°^"
+NUMA_Scaling                    ="NUMA Ω’æ„"
+NUMA_Scaling_Static             ="NUMA Ω’æ„°]¿R∫A°^"
+Conservative_Scaling            ="´O¶uΩ’æ„"
+RssBaseProcNumber               ="±“∞ ±µ¶¨∫›Ω’æ„ CPU"
+NumaNodeId                      ="∞æ¶n™∫ NUMA ∏`¬I"
+default                         ="®t≤Œπw≥]≠»"
+node0                           ="∏`¬I 0"
+node1                           ="∏`¬I 1"
+node2                           ="∏`¬I 2"
+node3                           ="∏`¬I 3"
+node4                           ="∏`¬I 4"
+node5                           ="∏`¬I 5"
+node6                           ="∏`¬I 6"
+node7                           ="∏`¬I 7"
+PriorityVLANTag2                ="´ •]¿u•˝∂∂ß«ªP VLAN"
+PriorityVlanDisabled2           ="´ •]¿u•˝∂∂ß«ªP VLAN §w∞±•Œ"
+PriorityEnabled2                ="´ •]¿u•˝∂∂ß«§w±“•Œ"
+PriorityVlanEnabled2            ="´ •]¿u•˝∂∂ß«ªP VLAN §w±“•Œ"
+VlanEnabled                     ="VLAN §w±“•Œ"
+Off                             ="√ˆ≥¨"
+Enabled                         ="±“•Œ"
+Disabled                        ="∞±•Œ"
+Bytes4088                       ="4088 ¶Ï§∏≤’"
+Bytes9014                       ="9014 ¶Ï§∏≤’"
+LAA                             ="•ª¶a∫ﬁ≤z¶Ïß}"
+JumboPacket                     ="∂W§j´¨´ •]"
+LogLinkState                    ="µnø˝≥sµ≤™¨∫A®∆•Û"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0407] ; German (Germany)
+InterruptThrottleRate           ="Interrupt-Drosselungsrate"
+Adaptive                        ="Adaptiv"
+Extreme                         ="Extrem"
+Balanced                        ="Ausgeglichen"
+High                            ="Hoch"
+Medium                          ="Mittel"
+Low                             ="Niedrig"
+IPChksumOffv4                   ="IPv4-Pr¸fsummen abladen"
+TCPChksumOffv4                  ="TCP-Pr¸fsummen abladen (IPv4)"
+UDPChksumOffv4                  ="UDP-Pr¸fsummen abladen (IPv4)"
+LsoV2IPv4                       ="Large-Send-Offload V2 (IPv4)"
+InterruptModeration             ="Interrupt-Drosselung"
+TCPChksumOffv6                  ="TCP-Pr¸fsummen abladen (IPv6)"
+UDPChksumOffv6                  ="UDP-Pr¸fsummen abladen (IPv6)"
+LsoV2IPv6                       ="Large-Send-Offload V2 (IPv6)"
+ChksumOffTxRx                   ="Rx und Tx aktiviert"
+ChksumOffTx                     ="Tx aktiviert"
+ChksumOffRx                     ="Rx aktiviert"
+TransmitBuffers                 ="‹bertragungspuffer"
+ReceiveBuffers                  ="Empfangspuffer"
+RSS                             ="RSS (Empfangsseitige Skalierung)"
+1queue                          ="1 Warteschlange"
+2queues                         ="2 Warteschlangen"
+NumRssQueues2                   ="Max. Anzahl RSS-Warteschlangen"
+RSSProfile                      ="RSS-Load-Balancing-Profil"
+Closest_Processor               ="N‰chster Prozessor"
+Closest_Processor_Static        ="N‰chster Prozessor (statisch)"
+NUMA_Scaling                    ="NUMA-Skalierung"
+NUMA_Scaling_Static             ="NUMA-Skalierung (statisch)"
+Conservative_Scaling            ="Konservative Skalierung"
+RssBaseProcNumber               ="Start-RSS-CPU"
+NumaNodeId                      ="Bevorzugter NUMA-Knoten"
+default                         ="Systemstandard"
+node0                           ="Knoten 0"
+node1                           ="Knoten 1"
+node2                           ="Knoten 2"
+node3                           ="Knoten 3"
+node4                           ="Knoten 4"
+node5                           ="Knoten 5"
+node6                           ="Knoten 6"
+node7                           ="Knoten 7"
+PriorityVLANTag2                ="Paketpriorit‰t und VLAN"
+PriorityVlanDisabled2           ="Paketpriorit‰t und VLAN deaktiviert"
+PriorityEnabled2                ="Paketpriorit‰t aktiviert"
+PriorityVlanEnabled2            ="Paketpriorit‰t und VLAN aktiviert"
+VlanEnabled                     ="VLAN aktiviert"
+Off                             ="Aus"
+Enabled                         ="Aktiviert"
+Disabled                        ="Deaktiviert"
+Bytes4088                       ="4088 Byte"
+Bytes9014                       ="9014 Byte"
+LAA                             ="Lokal verwaltete Adresse"
+JumboPacket                     ="Jumbo Packet"
+LogLinkState                    ="Verbindungsereignis protokollieren"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0C0A] ; Spanish (Spain)
+InterruptThrottleRate           ="Velocidad de obstrucciÛn de la interrupciÛn"
+Adaptive                        ="AdaptaciÛn"
+Extreme                         ="Extremo"
+Balanced                        ="Equilibrada"
+High                            ="Alto"
+Medium                          ="Medio"
+Low                             ="Bajo"
+IPChksumOffv4                   ="Descarga de suma de comprobaciÛn de IPv4"
+TCPChksumOffv4                  ="Descarga de suma de comprobaciÛn TCP (IPv4)"
+UDPChksumOffv4                  ="Descarga de suma de comprobaciÛn UDP (IPv4)"
+LsoV2IPv4                       ="Descarga grande de envÌo V2 (IPv4)"
+InterruptModeration             ="ModeraciÛn de interrupciones"
+TCPChksumOffv6                  ="Descarga de suma de comprobaciÛn TCP (IPv6)"
+UDPChksumOffv6                  ="Descarga de suma de comprobaciÛn UDP (IPv6)"
+LsoV2IPv6                       ="Descarga grande de envÌo V2 (IPv6)"
+ChksumOffTxRx                   ="RecepciÛn y transmisiÛn habilitadas"
+ChksumOffTx                     ="TransmisiÛn habilitada"
+ChksumOffRx                     ="RecepciÛn habilitada"
+TransmitBuffers                 ="B˙feres de transmisiÛn"
+ReceiveBuffers                  ="B˙feres de recepciÛn"
+RSS                             ="Receive Side Scaling"
+1queue                          ="1 cola"
+2queues                         ="2 colas"
+NumRssQueues2                   ="N˙mero m·ximo de colas de RSS"
+RSSProfile                      ="Perfil de distribuciÛn de carga de RSS"
+Closest_Processor               ="Procesador m·s cercano"
+Closest_Processor_Static        ="Procesador est·tico m·s cercano"
+NUMA_Scaling                    ="Escalado NUMA"
+NUMA_Scaling_Static             ="Escalado est·tico NUMA"
+Conservative_Scaling            ="Escalado conservador"
+RssBaseProcNumber               ="CPU RSS inicial"
+NumaNodeId                      ="Nodo NUMA preferido"
+default                         ="Config. predeterminada del sistema"
+node0                           ="Nodo 0"
+node1                           ="Nodo 1"
+node2                           ="Nodo 2"
+node3                           ="Nodo 3"
+node4                           ="Nodo 4"
+node5                           ="Nodo 5"
+node6                           ="Nodo 6"
+node7                           ="Nodo 7"
+PriorityVLANTag2                ="Prioridad de paquetes y VLAN"
+PriorityVlanDisabled2           ="Prioridad de paquetes y VLAN deshabilitadas"
+PriorityEnabled2                ="Prioridad de paquetes habilitada"
+PriorityVlanEnabled2            ="Prioridad de paquetes y VLAN habilitadas"
+VlanEnabled                     ="VLAN habilitada"
+Off                             ="Desactivado"
+Enabled                         ="Habilitado"
+Disabled                        ="Deshabilitado"
+Bytes4088                       ="4088 bytes"
+Bytes9014                       ="9014 bytes"
+LAA                             ="DirecciÛn administrada localmente"
+JumboPacket                     ="Paquete jumbo"
+LogLinkState                    ="Registrar sucesos del estado del enlace"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.040C] ; French (France)
+InterruptThrottleRate           ="Taux de gestion des interruptions"
+Adaptive                        ="Variable"
+Extreme                         ="ExtrÍme"
+Balanced                        ="…quilibrÈ(e)"
+High                            ="Haut"
+Medium                          ="Moyen"
+Low                             ="Faible"
+IPChksumOffv4                   ="DÈlester somme de contrÙle IPv4"
+TCPChksumOffv4                  ="DÈlester somme de contrÙle TCP (IPv4)"
+UDPChksumOffv4                  ="DÈlester somme de contrÙle UDP (IPv4)"
+LsoV2IPv4                       ="DÈlester envoi important v2 (IPv4)"
+InterruptModeration             ="Gestion des interruptions"
+TCPChksumOffv6                  ="DÈlester somme de contrÙle TCP (IPv6)"
+UDPChksumOffv6                  ="DÈlester somme de contrÙle UDP (IPv6)"
+LsoV2IPv6                       ="DÈlester envoi important v2 (IPv6)"
+ChksumOffTxRx                   ="Rx et Tx activÈes"
+ChksumOffTx                     ="Tx activÈe"
+ChksumOffRx                     ="Rx activÈe"
+TransmitBuffers                 ="Tampons d'Èmission"
+ReceiveBuffers                  ="Tampons de rÈception"
+RSS                             ="Partage du trafic entrant (RSS)"
+1queue                          ="1 file d'attente"
+2queues                         ="2 files d'attente"
+NumRssQueues2                   ="Nombre maximum de files d'attente RSS"
+RSSProfile                      ="Profil d'Èquilibrage de la charge RSS"
+Closest_Processor               ="Processeur le plus proche"
+Closest_Processor_Static        ="Processeur statique le plus proche"
+NUMA_Scaling                    ="Scaling NUMA"
+NUMA_Scaling_Static             ="Scaling statique NUMA"
+Conservative_Scaling            ="Scaling conservatif"
+RssBaseProcNumber               ="Processeur RSS de dÈpart"
+NumaNodeId                      ="Noeud NUMA prÈfÈrÈ"
+default                         ="Valeurs systËme par dÈfaut"
+node0                           ="Noeud 0"
+node1                           ="Noeud 1"
+node2                           ="Noeud 2"
+node3                           ="Noeud 3"
+node4                           ="Noeud 4"
+node5                           ="Noeud 5"
+node6                           ="Noeud 6"
+node7                           ="Noeud 7"
+PriorityVLANTag2                ="PrioritÈ des paquets et VLAN"
+PriorityVlanDisabled2           ="PrioritÈ des paquets et VLAN dÈsactivÈs"
+PriorityEnabled2                ="PrioritÈ des paquets activÈe"
+PriorityVlanEnabled2            ="PrioritÈ des paquets et VLAN activÈs"
+VlanEnabled                     ="VLAN activÈ"
+Off                             ="DÈsactivÈ(e)"
+Enabled                         ="ActivÈ(e)"
+Disabled                        ="DÈsactivÈ(e)"
+Bytes4088                       ="4088 octets"
+Bytes9014                       ="9014 octets"
+LAA                             ="Adresse administrÈe localement"
+JumboPacket                     ="Paquets Ètendus"
+LogLinkState                    ="Consigner les ÈvÈnements díÈtat de liaison"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0410] ; Italian (Italy)
+InterruptThrottleRate           ="Velocit‡ di rallentamento dell'interrupt"
+Adaptive                        ="Adattivo"
+Extreme                         ="Estremo"
+Balanced                        ="Bilanciato"
+High                            ="Alto"
+Medium                          ="Medio"
+Low                             ="Basso"
+IPChksumOffv4                   ="Offload di checksum IPv4"
+TCPChksumOffv4                  ="Offload di checksum TCP (IPv4)"
+UDPChksumOffv4                  ="Offload di checksum UDP (IPv4)"
+LsoV2IPv4                       ="Large Send Offload V2 (IPv4)"
+InterruptModeration             ="Regolazione di interrupt"
+TCPChksumOffv6                  ="Offload di checksum TCP (IPv6)"
+UDPChksumOffv6                  ="Offload di checksum UDP (IPv6)"
+LsoV2IPv6                       ="Large Send Offload V2 (IPv6)"
+ChksumOffTxRx                   ="Rx e Tx abilitate"
+ChksumOffTx                     ="Tx abilitata"
+ChksumOffRx                     ="Rx abilitata"
+TransmitBuffers                 ="Trasmetti buffer"
+ReceiveBuffers                  ="Ricevi buffer"
+RSS                             ="Receive Side Scaling"
+1queue                          ="1 coda"
+2queues                         ="2 code"
+NumRssQueues2                   ="Numero massimo di code RSS"
+RSSProfile                      ="Profilo di bilanciamento del carico RSS"
+Closest_Processor               ="Processore pi˘ vicino"
+Closest_Processor_Static        ="Processore statico pi˘ vicino"
+NUMA_Scaling                    ="Scaling NUMA"
+NUMA_Scaling_Static             ="Scaling statico NUMA"
+Conservative_Scaling            ="Scaling conservativo"
+RssBaseProcNumber               ="CPU RSS iniziale"
+NumaNodeId                      ="Nodo NUMA preferito"
+default                         ="Impostazioni predefinite del sistema"
+node0                           ="Nodo 0"
+node1                           ="Nodo 1"
+node2                           ="Nodo 2"
+node3                           ="Nodo 3"
+node4                           ="Nodo 4"
+node5                           ="Nodo 5"
+node6                           ="Nodo 6"
+node7                           ="Nodo 7"
+PriorityVLANTag2                ="Priorit‡ pacchetti e VLAN"
+PriorityVlanDisabled2           ="Priorit‡ pacchetti e VLAN disattivate"
+PriorityEnabled2                ="Priorit‡ pacchetti attivata"
+PriorityVlanEnabled2            ="Priorit‡ pacchetti e VLAN attivate"
+VlanEnabled                     ="VLAN abilitata"
+Off                             ="Disattivato"
+Enabled                         ="Attivata"
+Disabled                        ="Disattivata"
+Bytes4088                       ="4088 byte"
+Bytes9014                       ="9014 byte"
+LAA                             ="Indirizzo amministrato localmente"
+JumboPacket                     ="Pacchetti Jumbo"
+LogLinkState                    ="Registra evento stato del collegamento"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0411] ; Japanese (Japan)
+InterruptThrottleRate           ="äÑÇËçûÇ›â¡å∏ó¶"
+Adaptive                        ="ÉAÉ_ÉvÉeÉBÉu"
+Extreme                         ="ç≈ëÂ"
+Balanced                        ="ÉoÉâÉìÉX"
+High                            ="çÇ"
+Medium                          ="íÜ"
+Low                             ="í·"
+IPChksumOffv4                   ="IPv4 É`ÉFÉbÉNÉTÉÄÇÃÉIÉtÉçÅ[Éh"
+TCPChksumOffv4                  ="TCP É`ÉFÉbÉNÉTÉÄÇÃÉIÉtÉçÅ[Éh (IPv4)"
+UDPChksumOffv4                  ="UDP É`ÉFÉbÉNÉTÉÄÇÃÉIÉtÉçÅ[Éh (IPv4)"
+LsoV2IPv4                       ="ëÂó ëóêMÉIÉtÉçÅ[Éh V2 (IPv4)"
+InterruptModeration             ="äÑÇËçûÇ›â¡å∏"
+TCPChksumOffv6                  ="TCP É`ÉFÉbÉNÉTÉÄÇÃÉIÉtÉçÅ[Éh (IPv6)"
+UDPChksumOffv6                  ="UDP É`ÉFÉbÉNÉTÉÄÇÃÉIÉtÉçÅ[Éh (IPv6)"
+LsoV2IPv6                       ="ëÂó ëóêMÉIÉtÉçÅ[Éh V2 (IPv6)"
+ChksumOffTxRx                   ="éÛêM/ëóêM óLå¯"
+ChksumOffTx                     ="ëóêM óLå¯"
+ChksumOffRx                     ="éÛêM óLå¯"
+TransmitBuffers                 ="ëóêMÉoÉbÉtÉ@Å["
+ReceiveBuffers                  ="éÛêMÉoÉbÉtÉ@Å["
+RSS                             ="éÛêMë§ÉXÉPÅ[ÉäÉìÉO"
+1queue                          ="1 ÉLÉÖÅ["
+2queues                         ="2 ÉLÉÖÅ["
+NumRssQueues2                   ="RSS ÉLÉÖÅ[ÇÃç≈ëÂêî"
+RSSProfile                      ="RSS ÉçÅ[ÉhÅEÉoÉâÉìÉVÉìÉOÅEÉvÉçÉtÉ@ÉCÉã"
+Closest_Processor               ="ç≈Ç‡ãﬂÇ¢ÉvÉçÉZÉbÉTÅ["
+Closest_Processor_Static        ="ç≈Ç‡ãﬂÇ¢ÉvÉçÉZÉbÉTÅ[ÅEÉXÉ^ÉeÉBÉbÉN"
+NUMA_Scaling                    ="NUMA ÉXÉPÅ[ÉäÉìÉO"
+NUMA_Scaling_Static             ="NUMA ÉXÉPÅ[ÉäÉìÉOÅEÉXÉ^ÉeÉBÉbÉN"
+Conservative_Scaling            ="ÉRÉìÉTÅ[ÉoÉeÉBÉuÅEÉXÉPÅ[ÉäÉìÉO"
+RssBaseProcNumber               ="RSS CPU ÇÃäJén"
+NumaNodeId                      ="óDêÊ NUMA ÉmÅ[Éh"
+default                         ="ÉVÉXÉeÉÄ ÉfÉtÉHÉãÉg"
+node0                           ="ÉmÅ[Éh 0"
+node1                           ="ÉmÅ[Éh 1"
+node2                           ="ÉmÅ[Éh 2"
+node3                           ="ÉmÅ[Éh 3"
+node4                           ="ÉmÅ[Éh 4"
+node5                           ="ÉmÅ[Éh 5"
+node6                           ="ÉmÅ[Éh 6"
+node7                           ="ÉmÅ[Éh 7"
+PriorityVLANTag2                ="ÉpÉPÉbÉgóDêÊìxÇ∆ VLAN"
+PriorityVlanDisabled2           ="ÉpÉPÉbÉgóDêÊìxÇ∆ VLAN ñ≥å¯"
+PriorityEnabled2                ="ÉpÉPÉbÉgóDêÊìxóLå¯"
+PriorityVlanEnabled2            ="ÉpÉPÉbÉgóDêÊìxÇ∆ VLAN óLå¯"
+VlanEnabled                     ="VLAN óLå¯"
+Off                             ="ÉIÉt"
+Enabled                         ="óLå¯"
+Disabled                        ="ñ≥å¯"
+Bytes4088                       ="4088 ÉoÉCÉg"
+Bytes9014                       ="9014 ÉoÉCÉg"
+LAA                             ="ÉçÅ[ÉJÉãä«óùÇ≥ÇÍÇÈÉAÉhÉåÉX"
+JumboPacket                     ="ÉWÉÉÉìÉ{ÉpÉPÉbÉg"
+LogLinkState                    ="ÉäÉìÉNÅEÉXÉeÅ[ÉgÅEÉCÉxÉìÉgÇÃÉçÉO"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0412] ; Korean (Korea)
+InterruptThrottleRate           ="¿Œ≈Õ∑¥∆Æ ¡∂¿˝ º”µµ"
+Adaptive                        ="¿˚¿¿"
+Extreme                         ="√÷¥Î"
+Balanced                        ="±’«¸"
+High                            ="≥Ù¿Ω"
+Medium                          ="¡ﬂ∞£"
+Low                             ="≥∑¿Ω"
+IPChksumOffv4                   ="IPv4 √º≈©º∂ ø¿«¡∑ŒµÂ"
+TCPChksumOffv4                  ="TCP √º≈©º∂ ø¿«¡∑ŒµÂ(IPv4)"
+UDPChksumOffv4                  ="UDP √º≈©º∂ ø¿«¡∑ŒµÂ(IPv4)"
+LsoV2IPv4                       ="¥Î«¸ ¿¸º€ ø¿«¡∑ŒµÂ V2(IPv4)"
+InterruptModeration             ="¿Œ≈Õ∑¥∆Æ ¡∂¿˝"
+TCPChksumOffv6                  ="TCP √º≈©º∂ ø¿«¡∑ŒµÂ(IPv6)"
+UDPChksumOffv6                  ="UDP √º≈©º∂ ø¿«¡∑ŒµÂ(IPv6)"
+LsoV2IPv6                       ="¥Î«¸ ¿¸º€ ø¿«¡∑ŒµÂ V2(IPv6)"
+ChksumOffTxRx                   ="Rx & Tx »∞º∫»≠µ "
+ChksumOffTx                     ="Tx »∞º∫»≠µ "
+ChksumOffRx                     ="Rx »∞º∫»≠µ "
+TransmitBuffers                 ="¿¸º€ πˆ∆€"
+ReceiveBuffers                  ="ºˆΩ≈ πˆ∆€"
+RSS                             ="ºˆΩ≈√¯ πË¿≤"
+1queue                          ="1∞≥¿« ¥Î±‚ø≠"
+2queues                         ="2∞≥¿« ¥Î±‚ø≠"
+NumRssQueues2                   ="√÷¥Î RSS ¥Î±‚ø≠ ºˆ"
+RSSProfile                      ="RSS ∑ŒµÂ πÎ∑±ΩÃ «¡∑Œ∆ƒ¿œ"
+Closest_Processor               ="∞°¿Â ∞°±ÓøÓ «¡∑Œººº≠"
+Closest_Processor_Static        ="∞°¿Â ∞°±ÓøÓ «¡∑Œººº≠(¡§¿˚)"
+NUMA_Scaling                    ="NUMA ¡∂¡§"
+NUMA_Scaling_Static             ="NUMA ¡∂¡§(¡§¿˚)"
+Conservative_Scaling            ="∫∏ºˆ¿˚ ¡∂¡§"
+RssBaseProcNumber               ="RSS CPU Ω√¿€"
+NumaNodeId                      ="±‚∫ª º≥¡§ NUMA ≥ÎµÂ"
+default                         ="Ω√Ω∫≈€ ±‚∫ª∞™"
+node0                           ="≥ÎµÂ 0"
+node1                           ="≥ÎµÂ 1"
+node2                           ="≥ÎµÂ 2"
+node3                           ="≥ÎµÂ 3"
+node4                           ="≥ÎµÂ 4"
+node5                           ="≥ÎµÂ 5"
+node6                           ="≥ÎµÂ 6"
+node7                           ="≥ÎµÂ 7"
+PriorityVLANTag2                ="∆–≈∂ øÏº±º¯¿ß π◊ VLAN"
+PriorityVlanDisabled2           ="∆–≈∂ øÏº±º¯¿ß π◊ VLAN ∫Ò»∞º∫»≠µ "
+PriorityEnabled2                ="∆–≈∂ øÏº±º¯¿ß »∞º∫»≠µ "
+PriorityVlanEnabled2            ="∆–≈∂ øÏº±º¯¿ß π◊ VLAN »∞º∫»≠µ "
+VlanEnabled                     ="VLAN »∞º∫»≠µ "
+Off                             ="ø¿«¡"
+Enabled                         ="»∞º∫»≠µ "
+Disabled                        ="∫Ò»∞º∫»≠µ "
+Bytes4088                       ="4088πŸ¿Ã∆Æ"
+Bytes9014                       ="9014πŸ¿Ã∆Æ"
+LAA                             ="∑Œƒ√ ∞¸∏Æ ¡÷º“"
+JumboPacket                     ="¡°∫∏ ∆–≈∂"
+LogLinkState                    ="∏µ≈© ªÛ≈¬ ¿Ã∫•∆Æ ±‚∑œ"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0416] ; Portuguese (Brazil)
+InterruptThrottleRate           ="Taxa de moderaÁ„o de interrupÁıes"
+Adaptive                        ="Adaptativa"
+Extreme                         ="Extremo"
+Balanced                        ="Equilibrado"
+High                            ="Alto"
+Medium                          ="MÈdio"
+Low                             ="Baixo"
+IPChksumOffv4                   ="Descarga de Checksum IPv4"
+TCPChksumOffv4                  ="Descarga de Checksum de TCP (IPv4)"
+UDPChksumOffv4                  ="Descarga de Checksum UDP (IPv4)"
+LsoV2IPv4                       ="Descarga de envio grande V2 (IPv4)"
+InterruptModeration             ="ModeraÁ„o de interrupÁıes"
+TCPChksumOffv6                  ="Descarga de Checksum de TCP (IPv6)"
+UDPChksumOffv6                  ="Descarga de Checksum UDP (IPv6)"
+LsoV2IPv6                       ="Descarga de envio grande V2 (IPv6)"
+ChksumOffTxRx                   ="Rx e Tx habilitados"
+ChksumOffTx                     ="Tx habilitado"
+ChksumOffRx                     ="Rx habilitado"
+TransmitBuffers                 ="Buffers de transmiss„o"
+ReceiveBuffers                  ="Buffers de recepÁ„o"
+RSS                             ="Escala de recepÁ„o"
+1queue                          ="1 fila"
+2queues                         ="2 filas"
+NumRssQueues2                   ="N∫ m·x. de filas de RSS"
+RSSProfile                      ="Perfil de equilÌbrio de carga de RSS"
+Closest_Processor               ="Processador mais prÛximo"
+Closest_Processor_Static        ="Processador est·tico mais prÛximo"
+NUMA_Scaling                    ="Escala NUMA"
+NUMA_Scaling_Static             ="Escala est·tica NUMA"
+Conservative_Scaling            ="Escala conservadora"
+RssBaseProcNumber               ="Iniciando a CPU de RSS"
+NumaNodeId                      ="NÛ NUMA preferencial"
+default                         ="Padr„o do sistema"
+node0                           ="NÛ 0"
+node1                           ="NÛ 1"
+node2                           ="NÛ 2"
+node3                           ="NÛ 3"
+node4                           ="NÛ 4"
+node5                           ="NÛ 5"
+node6                           ="NÛ 6"
+node7                           ="NÛ 7"
+PriorityVLANTag2                ="Prioridade de pacotes e VLAN"
+PriorityVlanDisabled2           ="Prioridade de pacotes e VLAN desabilitadas"
+PriorityEnabled2                ="Prioridade de pacotes habilitada"
+PriorityVlanEnabled2            ="Prioridade de pacotes e VLAN habilitadas"
+VlanEnabled                     ="VLAN habilitada"
+Off                             ="Desligado"
+Enabled                         ="Habilitado"
+Disabled                        ="Desabilitado"
+Bytes4088                       ="4088 Bytes"
+Bytes9014                       ="9014 Bytes"
+LAA                             ="EndereÁo administrado localmente (LAA)"
+JumboPacket                     ="Pacote grande"
+LogLinkState                    ="Evento de estado de link de registro"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+
+[Strings.0C04] ; Chinese (Traditional)
+InterruptThrottleRate           ="ß√¬_∏`¨yª÷≥t≤v"
+Adaptive                        ="Ω’æ„© "
+Extreme                         ="∑•∞™"
+Balanced                        ="•≠ø≈™∫"
+High                            ="∞™"
+Medium                          ="§§"
+Low                             ="ßC"
+IPChksumOffv4                   ="IPv4 ¿À¨d≠»®¯∏¸"
+TCPChksumOffv4                  ="TCP ¿À¨d≠»®¯∏¸ (IPv4)"
+UDPChksumOffv4                  ="UDP ¿À¨d≠»®¯∏¸ (IPv4)"
+LsoV2IPv4                       ="§j∂q∂«∞e®¯∏¸ V2 (IPv4)"
+InterruptModeration             ="ß√¬_Ω’∏`"
+TCPChksumOffv6                  ="TCP ¿À¨d≠»®¯∏¸ (IPv6)"
+UDPChksumOffv6                  ="UDP ¿À¨d≠»®¯∏¸ (IPv6)"
+LsoV2IPv6                       ="§j∂q∂«∞e®¯∏¸ V2 (IPv6)"
+ChksumOffTxRx                   ="Rx ªP Tx §w±“•Œ"
+ChksumOffTx                     ="Tx §w±“•Œ"
+ChksumOffRx                     ="Rx §w±“•Œ"
+TransmitBuffers                 ="∂«øÈΩwΩƒ∞œ"
+ReceiveBuffers                  ="±µ¶¨ΩwΩƒ∞œ"
+RSS                             ="±µ¶¨∫›Ω’æ„"
+1queue                          ="1 ≠”¶Ó¶C"
+2queues                         ="2 ≠”¶Ó¶C"
+NumRssQueues2                   ="±µ¶¨∫›Ω’æ„¶Ó¶C™∫≥Ã§jº∆•ÿ"
+RSSProfile                      ="±µ¶¨∫›Ω’æ„∏¸∂q•≠ø≈≥]©w¿…"
+Closest_Processor               ="≥Ã±µ™Ò™∫≥B≤zæπ"
+Closest_Processor_Static        ="≥Ã±µ™Ò™∫≥B≤zæπ°]¿R∫A°^"
+NUMA_Scaling                    ="NUMA Ω’æ„"
+NUMA_Scaling_Static             ="NUMA Ω’æ„°]¿R∫A°^"
+Conservative_Scaling            ="´O¶uΩ’æ„"
+RssBaseProcNumber               ="±“∞ ±µ¶¨∫›Ω’æ„ CPU"
+NumaNodeId                      ="∞æ¶n™∫ NUMA ∏`¬I"
+default                         ="®t≤Œπw≥]≠»"
+node0                           ="∏`¬I 0"
+node1                           ="∏`¬I 1"
+node2                           ="∏`¬I 2"
+node3                           ="∏`¬I 3"
+node4                           ="∏`¬I 4"
+node5                           ="∏`¬I 5"
+node6                           ="∏`¬I 6"
+node7                           ="∏`¬I 7"
+PriorityVLANTag2                ="´ •]¿u•˝∂∂ß«ªP VLAN"
+PriorityVlanDisabled2           ="´ •]¿u•˝∂∂ß«ªP VLAN §w∞±•Œ"
+PriorityEnabled2                ="´ •]¿u•˝∂∂ß«§w±“•Œ"
+PriorityVlanEnabled2            ="´ •]¿u•˝∂∂ß«ªP VLAN §w±“•Œ"
+VlanEnabled                     ="VLAN §w±“•Œ"
+Off                             ="√ˆ≥¨"
+Enabled                         ="±“•Œ"
+Disabled                        ="∞±•Œ"
+Bytes4088                       ="4088 ¶Ï§∏≤’"
+Bytes9014                       ="9014 ¶Ï§∏≤’"
+LAA                             ="•ª¶a∫ﬁ≤z¶Ïß}"
+JumboPacket                     ="∂W§j´¨´ •]"
+LogLinkState                    ="µnø˝≥sµ≤™¨∫A®∆•Û"
+ServiceName                     = "vxs"
+Intel                           = "Intel"
+EventLogMessageDllPath          = "%SystemRoot%\System32\netevent.dll;%SystemRoot%\System32\vxsmsg.dll"
+DiskName                        = "Intel(R) 10G Virtual Network Device Driver Disk"
+Service.Displayname             = "Intel(R) 10G-S Virtual Network Connection"
+
+;-----------------------------------------------------------------------------
+; Device Description Strings
+;-----------------------------------------------------------------------------
+E1564VF.DeviceDesc              = "Intel(R) X550 Virtual Function"
+E15A8VF.DeviceDesc              = "Intel(R) X552 Virtual Function"
+E15C5VF.DeviceDesc              = "Intel(R) X553 Virtual Function"
+
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+;-----------------------------------------------------------------------------
+

@@ -1,0 +1,214 @@
+;******************************************************************************
+;*
+;*                           Hilscher GmbH
+;*
+;*            netX Device Driver Setup Information File
+;*
+;*******************************************************************************
+;* File name: netX_usb_cdc.inf.inf
+;*******************************************************************************
+; Windows 2000, XP, 7 setup file for netX-chip based devices with USB connection (CDC)
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%HILSCHER%
+DriverVer=05/17/2013,6.0.11.0
+CatalogFile=netX_usb_cdc.cat
+
+[Manufacturer]
+%HILSCHER%=HILSCHER,NTamd64,NTx86
+
+[SourceDisksFiles]
+
+[SourceDisksNames]
+
+[HILSCHER]
+%HILSCHER_CDC_netTAP%=Reader, USB\VID_1939&PID_0001
+%HILSCHER_CDC_boot_mon%=Reader, USB\VID_1939&PID_0002
+%HILSCHER_CDC_proxy_dev%=Reader, USB\VID_1939&PID_0003
+%HILSCHER_CDC_NXHX500_RE%=Reader, USB\VID_1939&PID_0004
+%HILSCHER_CDC_NXHX500_ETM%=Reader, USB\VID_1939&PID_0005
+%HILSCHER_CDC_NXHX50_RE%=Reader, USB\VID_1939&PID_0006
+%HILSCHER_CDC_NXHX50_ETM%=Reader, USB\VID_1939&PID_0007
+%HILSCHER_CDC_NXSTK50_RE%=Reader, USB\VID_1939&PID_0008
+%HILSCHER_CDC_NXSTK50_FB%=Reader, USB\VID_1939&PID_0009
+%HILSCHER_CDC_NL50U_DP%=Reader, USB\VID_1939&PID_000A
+%HILSCHER_CDC_NET_PLC%=Reader, USB\VID_1939&PID_000B
+; USB\VID_1939&PID_000C reserved for netX10 ROM-Loader
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_000D
+%HILSCHER_CDC_CIFX%=Reader, USB\VID_1939&PID_000F
+%HILSCHER_CDC_NX50%=Reader, USB\VID_1939&PID_0010
+%HILSCHER_CDC_NX100%=Reader, USB\VID_1939&PID_0011
+%HILSCHER_CDC_NX500%=Reader, USB\VID_1939&PID_0012
+%HILSCHER_CDC_netBRICK%=Reader, USB\VID_1939&PID_0013
+; USB\VID_1939&PID_0015 reserved for netX 500 Romcode V2
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0016
+%HILSCHER_CDC_EU5C_SWD%=Reader, USB\VID_1939&PID_0017
+; USB\VID_1939&PID_0018 reserved for netX51 ROM-Loader
+; USB\VID_1939&PID_0019 reserved for netX52 ROM-Loader
+%HILSCHER_CDC_netHMI%=Reader, USB\VID_1939&PID_001A
+%HILSCHER_CDC_netSMART%=Reader, USB\VID_1939&PID_001B
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_001C
+%HILSCHER_CDC_netHOST%=Reader, USB\VID_1939&PID_001D
+; USB\VID_1939&PID_0100 and up are reserved for netX10 devices
+%HILSCHER_CDC_NX51%=Reader, USB\VID_1939&PID_0130&MI_00
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_0131&MI_00
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0132&MI_00
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_0133&MI_00
+%HILSCHER_CDC_NX52%=Reader, USB\VID_1939&PID_0200&MI_00
+%HILSCHER_CDC_NXDEVELOPMENT%=Reader, USB\VID_1939&PID_0FFF
+
+[HILSCHER.NTx86]
+%HILSCHER_CDC_netTAP%=Reader, USB\VID_1939&PID_0001
+%HILSCHER_CDC_boot_mon%=Reader, USB\VID_1939&PID_0002
+%HILSCHER_CDC_proxy_dev%=Reader, USB\VID_1939&PID_0003
+%HILSCHER_CDC_NXHX500_RE%=Reader, USB\VID_1939&PID_0004
+%HILSCHER_CDC_NXHX500_ETM%=Reader, USB\VID_1939&PID_0005
+%HILSCHER_CDC_NXHX50_RE%=Reader, USB\VID_1939&PID_0006
+%HILSCHER_CDC_NXHX50_ETM%=Reader, USB\VID_1939&PID_0007
+%HILSCHER_CDC_NXSTK50_RE%=Reader, USB\VID_1939&PID_0008
+%HILSCHER_CDC_NXSTK50_FB%=Reader, USB\VID_1939&PID_0009
+%HILSCHER_CDC_NL50U_DP%=Reader, USB\VID_1939&PID_000A
+%HILSCHER_CDC_NET_PLC%=Reader, USB\VID_1939&PID_000B
+; USB\VID_1939&PID_000C reserved for netX10 ROM-Loader
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_000D
+%HILSCHER_CDC_CIFX%=Reader, USB\VID_1939&PID_000F
+%HILSCHER_CDC_NX50%=Reader, USB\VID_1939&PID_0010
+%HILSCHER_CDC_NX100%=Reader, USB\VID_1939&PID_0011
+%HILSCHER_CDC_NX500%=Reader, USB\VID_1939&PID_0012
+%HILSCHER_CDC_netBRICK%=Reader, USB\VID_1939&PID_0013
+; USB\VID_1939&PID_0015 reserved for netX 500 Romcode V2
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0016
+%HILSCHER_CDC_EU5C_SWD%=Reader, USB\VID_1939&PID_0017
+; USB\VID_1939&PID_0018 reserved for netX51 ROM-Loader
+; USB\VID_1939&PID_0019 reserved for netX52 ROM-Loader
+%HILSCHER_CDC_netHMI%=Reader, USB\VID_1939&PID_001A
+%HILSCHER_CDC_netSMART%=Reader, USB\VID_1939&PID_001B
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_001C
+%HILSCHER_CDC_netHOST%=Reader, USB\VID_1939&PID_001D
+; USB\VID_1939&PID_0100 and up are reserved for netX10 devices
+%HILSCHER_CDC_NX51%=Reader, USB\VID_1939&PID_0130&MI_00
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_0131&MI_00
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0132&MI_00
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_0133&MI_00
+%HILSCHER_CDC_NX52%=Reader, USB\VID_1939&PID_0200&MI_00
+%HILSCHER_CDC_NXDEVELOPMENT%=Reader, USB\VID_1939&PID_0FFF
+
+[HILSCHER.NTamd64]
+%HILSCHER_CDC_netTAP%=Reader, USB\VID_1939&PID_0001
+%HILSCHER_CDC_boot_mon%=Reader, USB\VID_1939&PID_0002
+%HILSCHER_CDC_proxy_dev%=Reader, USB\VID_1939&PID_0003
+%HILSCHER_CDC_NXHX500_RE%=Reader, USB\VID_1939&PID_0004
+%HILSCHER_CDC_NXHX500_ETM%=Reader, USB\VID_1939&PID_0005
+%HILSCHER_CDC_NXHX50_RE%=Reader, USB\VID_1939&PID_0006
+%HILSCHER_CDC_NXHX50_ETM%=Reader, USB\VID_1939&PID_0007
+%HILSCHER_CDC_NXSTK50_RE%=Reader, USB\VID_1939&PID_0008
+%HILSCHER_CDC_NXSTK50_FB%=Reader, USB\VID_1939&PID_0009
+%HILSCHER_CDC_NL50U_DP%=Reader, USB\VID_1939&PID_000A
+%HILSCHER_CDC_NET_PLC%=Reader, USB\VID_1939&PID_000B
+; USB\VID_1939&PID_000C reserved for netX10 ROM-Loader
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_000D
+%HILSCHER_CDC_CIFX%=Reader, USB\VID_1939&PID_000F
+%HILSCHER_CDC_NX50%=Reader, USB\VID_1939&PID_0010
+%HILSCHER_CDC_NX100%=Reader, USB\VID_1939&PID_0011
+%HILSCHER_CDC_NX500%=Reader, USB\VID_1939&PID_0012
+%HILSCHER_CDC_netBRICK%=Reader, USB\VID_1939&PID_0013
+; USB\VID_1939&PID_0015 reserved for netX 500 Romcode V2
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0016
+%HILSCHER_CDC_EU5C_SWD%=Reader, USB\VID_1939&PID_0017
+; USB\VID_1939&PID_0018 reserved for netX51 ROM-Loader
+; USB\VID_1939&PID_0019 reserved for netX52 ROM-Loader
+%HILSCHER_CDC_netHMI%=Reader, USB\VID_1939&PID_001A
+%HILSCHER_CDC_netSMART%=Reader, USB\VID_1939&PID_001B
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_001C
+%HILSCHER_CDC_netHOST%=Reader, USB\VID_1939&PID_001D
+; USB\VID_1939&PID_0100 and up are reserved for netX10 devices
+%HILSCHER_CDC_NX51%=Reader, USB\VID_1939&PID_0130&MI_00
+%HILSCHER_CDC_COMX%=Reader, USB\VID_1939&PID_0131&MI_00
+%HILSCHER_CDC_netJACK%=Reader, USB\VID_1939&PID_0132&MI_00
+%HILSCHER_CDC_netRAPID%=Reader, USB\VID_1939&PID_0133&MI_00
+%HILSCHER_CDC_NX52%=Reader, USB\VID_1939&PID_0200&MI_00
+%HILSCHER_CDC_NXDEVELOPMENT%=Reader, USB\VID_1939&PID_0FFF
+
+[DestinationDirs]
+DefaultDestDir=12
+
+[Reader.NT]
+include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=Reader.NT.AddReg
+
+[Reader.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum19390001,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum19390013,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum19390017,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum1939000D,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum1939000F,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum19390016,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum1939001A,0x00000001,01
+HKLM, SYSTEM\CurrentControlSet\Control\UsbFlags, IgnoreHWSerNum1939001D,0x00000001,01
+
+[Reader.NT.HW]
+AddReg=Reader.NT.HW.AddReg
+
+[Reader.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+[Reader.NT.Services]
+include=mdmcpq.inf
+AddService = hilusbser, 0x00000002, Service_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+; -------------- Serenum Driver install section
+[Serenum_Service_Inst]
+DisplayName    = %Serenum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[Service_Inst]
+DisplayName = %Serial.SvcDesc%
+ServiceType = 1 ; SERVICE_KERNEL_DRIVER
+StartType = 3 ; SERVICE_DEMAND_START
+ErrorControl = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\usbser.sys
+LoadOrderGroup = Base
+
+[Strings]
+HILSCHER = "Hilscher GmbH"
+HILSCHER_CDC_netTAP = "Hilscher netTAP"
+HILSCHER_CDC_boot_mon = "Hilscher netX boot monitor"
+HILSCHER_CDC_proxy_dev = "Hilscher netX proxy device"
+HILSCHER_CDC_NXHX500_RE = "Hilscher NXHX500-RE"
+HILSCHER_CDC_NXHX500_ETM = "Hilscher NXHX500-ETM"
+HILSCHER_CDC_NXHX50_RE = "Hilscher NXHX50-RE"
+HILSCHER_CDC_NXHX50_ETM = "Hilscher NXHX50-ETM"
+HILSCHER_CDC_NXSTK50_RE = "Hilscher NXSTK50-RE"
+HILSCHER_CDC_NXSTK50_FB = "Hilscher NXSTK50-FB"
+HILSCHER_CDC_NL50U_DP = "Hilscher netLINK"
+HILSCHER_CDC_NET_PLC = "Hilscher netPLC"
+HILSCHER_CDC_COMX = "Hilscher comX"
+HILSCHER_CDC_CIFX = "Hilscher cifX"
+HILSCHER_CDC_NX50 = "Hilscher netX 50"
+HILSCHER_CDC_NX100 = "Hilscher netX 100"
+HILSCHER_CDC_NX500 = "Hilscher netX 500"
+HILSCHER_CDC_NX51 = "Hilscher netX 51"
+HILSCHER_CDC_NX52 = "Hilscher netX 52"
+HILSCHER_CDC_netBRICK = "Hilscher netBRICK"
+HILSCHER_CDC_netJACK = "Hilscher netJACK"
+HILSCHER_CDC_EU5C_SWD = "Hilscher EU5C-SWD"
+HILSCHER_CDC_netHMI = "Hilscher netHMI"
+HILSCHER_CDC_netSMART = "Hilscher netSMART"
+HILSCHER_CDC_netRAPID = "Hilscher netRAPID"
+HILSCHER_CDC_netHOST = "Hilscher netHOST"
+
+HILSCHER_CDC_NXDEVELOPMENT = "Hilscher netX Development"
+Serial.SvcDesc = "netX USB Serial emulation driver"
+Serenum.SVCDESC = "Serenum Filter Driver"

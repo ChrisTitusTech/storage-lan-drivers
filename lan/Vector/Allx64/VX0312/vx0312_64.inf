@@ -1,0 +1,132 @@
+; Copyright 2015 Vector Informatik GmbH
+[Version]
+Signature      = "$CHICAGO$"
+Class          = Vector-Hardware
+ClassGuid      = {D20399E0-47BD-4219-8C5B-A10B87CEB545}
+Provider=%MFGNAME%
+DriverVer=09/23/2015,9.4.28.0
+CatalogFile.NTamd64=vx0312_64.cat
+
+
+[Manufacturer]
+%MFGNAME%=DeviceList, NTamd64.6.1
+
+;------------------------------------------------------------------------------
+;  Supported Devices
+;------------------------------------------------------------------------------
+; Windows 7 and later versions
+[DeviceList.NTamd64.6.1]
+; DisplayName            Section           DeviceId
+; -----------            -------           --------
+%vx0312.DRVDESC%=vx0312_Inst, USB\VID_1248&PID_1500
+;-------------------------------------------------------------------------
+; Class Section
+;-------------------------------------------------------------------------
+[ClassInstall32]
+Addreg         = CANClassReg
+
+[CANClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+;-------------------------------------------------------------------------
+; Device Install Section
+;-------------------------------------------------------------------------
+[ControlFlags]
+ExcludeFromSelect = *
+
+;------------------------------------------------------------------------------
+;  Installation Disk Information
+;------------------------------------------------------------------------------
+[SourceDisksFiles]
+vx0312.sys = 1
+
+[SourceDisksNames]
+1=%DISK_NAME%,
+
+;------------------------------------------------------------------------------
+; DestinationDirs 
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir=12
+
+;------------------------------------------------------------------------------
+;  Windows 2000 / XP Sections
+;------------------------------------------------------------------------------
+[vx0312_Inst.NTamd64]
+CopyFiles      = @vx0312.sys
+AddReg	       = vx0312.registry,options.registry
+
+[vx0312_Inst.NTamd64.Services]
+AddService     = vx0312,0x00000002,vx0312_Service
+
+[vx0312_Service]
+DisplayName    = %vx0312.SVCDESC%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vx0312.sys
+
+;-------------------------------------------------------------------------
+; WDF Coinstaller installation
+;-------------------------------------------------------------------------
+[DestinationDirs]
+CoInstaller_CopyFiles = 11
+
+[vx0312_Inst.NTamd64.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01009.dll
+
+[SourceDisksFiles]
+WdfCoInstaller01009.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01009.dll,WdfCoInstaller"
+
+[vx0312_Inst.NTamd64.Wdf]
+KmdfService    = vx0312, vx0312_wdfsect
+
+[vx0312_wdfsect]
+KmdfLibraryVersion = 1.9
+
+;------------------------------------------------------------------------------
+;  Add Registry Entrys
+;------------------------------------------------------------------------------
+[vx0312.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",MaxCards,0x10001,8
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",TimerEligibility,0x10001,0x300
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",ChannelsPerCard,0x10001,3
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",HwType,0x10001,91
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",HwName,,"vx0312"
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",DriverName,,vx0312
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Drivers\VX0312",UseDeviceInterface,0x10001,1
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VX0312",UseCardSerialNumber,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Hardware\VX0312",RxTransferCycleTime,0x10003,250
+
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.Ethernet0",hwType,0x10003,91
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.Ethernet0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape.Ethernet0",hwChannel,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwType,0x10003,91
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwIndex,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Software\CANape0",hwChannel,0x10003,1
+
+[options.registry]
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",OEMInstallation,0x10001,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",DebugFlags,0x10003,0
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",EnableTimeSync,0x10003,1
+HKLM,"SOFTWARE\VECTOR\CANDriver 1.0\Options",VirtualBus,0x10003,1
+
+;------------------------------------------------------------------------------
+;  String Definitions
+;------------------------------------------------------------------------------
+[Strings]
+;DriverSetupDirectory="VX0312"
+MFGNAME="Vector Informatik GmbH"
+ClassName      = "Vector-Hardware"
+vx0312.SVCDESC = "VX0312"
+vx0312.DRVDESC = "VX0312"
+DISK_NAME      = "VX03XX-Driver"
