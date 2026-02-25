@@ -1,0 +1,67 @@
+[Disks] 
+disk0 = "Marvell SATA Driver Diskette", \mv61xx, \
+disk1 = "Marvell SATA Driver Diskette", \mv61xx, \i386
+disk2 = "Marvell SATA Driver Diskette", \mv61xx, \amd64
+
+[Defaults] 
+SCSI = i386_mvxxmm
+
+[SCSI] 
+i386_mvxxmm   = "Marvell Shared Library for 32bit (Install First)", mv61xx 
+i386_61xx  = "Marvell 61xx SATA Controller 32bit Driver", mv61xx
+amd64_mvxxmm   = "Marvell Shared Library for 64bit (Install First)", mv61xx 
+amd64_61xx  = "Marvell 61xx SATA Controller 64bit Driver", mv61xx
+
+[Files.SCSI.i386_61xx] 
+inf	= disk1, mv61xx.inf
+inf 	= disk1, mvnodrv.inf
+driver	= disk1, mv61xx.sys, mv61xx
+catalog = disk1, mv61xx.cat
+dll     = disk1, mvcoinst.dll
+
+[Files.SCSI.amd64_61xx] 
+inf	= disk2, mv61xx.inf
+inf 	= disk2, mvnodrv.inf
+driver	= disk2, mv61xx.sys, mv61xx
+catalog = disk2, mv61xx.cat
+dll     = disk2, mvcoinst.dll
+
+
+[Files.SCSI.i386_mvxxmm] 
+driver	= disk1, mv61xxmm.sys, mv61xx
+
+[Files.SCSI.amd64_mvxxmm] 
+driver	= disk2, mv61xxmm.sys, mv61xx
+
+
+[HardwareIds.SCSI.i386_61xx] 
+id = "PCI\VEN_11AB&DEV_6101", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6111", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6121", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6122", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6145", "mv61xx"  
+
+[HardwareIds.SCSI.i386_mvxxmm] 
+id = "PCI\VEN_11AB&DEV_6101", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6111", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6121", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6122", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6145", "mv61xx"  
+
+[HardwareIds.SCSI.amd64_61xx] 
+id = "PCI\VEN_11AB&DEV_6101", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6111", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6121", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6122", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6145", "mv61xx" 
+
+[HardwareIds.SCSI.amd64_mvxxmm] 
+id = "PCI\VEN_11AB&DEV_6101", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6111", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6121", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6122", "mv61xx" 
+id = "PCI\VEN_11AB&DEV_6145", "mv61xx" 
+
+
+[Config.mv61xx]
+value = parameters\PnpInterface,5,REG_DWORD,1

@@ -1,0 +1,170 @@
+
+;*****************************************************************************
+;
+; STT_umsc.inf   -- Install the STT USB 3.0 Drive (WDM)
+;
+; Copyright (c) 1997-2010 MCCI Corporation
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=02/11/2010,5.18.0.0
+CatalogFile=STT_umsc.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+SUPERTALWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_umsc.sys",,\i386
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_umsc.sys",,\amd64
+
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+STT_umsc.sys = 1
+STT_crnt.sys = 1
+STT_whnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%SUPERTAL%=SUPERTAL, NTamd64
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[SUPERTAL]
+%SUPERTAL.Wdm.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0300&STT_
+%SUPERTAL.Wdm.Desc2% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0301&STT_
+%SUPERTAL.Wdm.Desc3% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0302&STT_
+%SUPERTAL.Wdm.Desc4% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0303&STT_
+%SUPERTAL.Wdm.Desc5% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0304&STT_
+%SUPERTAL.Wdm.Desc5% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0305&STT_
+
+[SUPERTAL.NTamd64]
+%SUPERTAL.Wdm.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0300&STT_
+%SUPERTAL.Wdm.Desc2% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0301&STT_
+%SUPERTAL.Wdm.Desc3% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0302&STT_
+%SUPERTAL.Wdm.Desc4% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0303&STT_
+%SUPERTAL.Wdm.Desc5% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0304&STT_
+%SUPERTAL.Wdm.Desc5% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0305&STT_
+
+;-----------------------------------------------------------------------------
+; How to install them:  On W9x, the [section] name is used directly.
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[SUPERTAL.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.Install.NT]
+DriverVer=02/11/2010,5.18.0.0
+AddReg          = SUPERTALWdm.AddReg, SUPERTALWdm.NT.AddReg
+CopyFiles       = SUPERTALWdm.NT.CopyFiles
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.Install.NT.Services]
+AddService      = STT_umsc, 2, SUPERTALWdm.AddService
+
+[SUPERTALWdm.AddService]
+DisplayName             = %SUPERTAL.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\STT_umsc.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.AddReg]
+HKR,,CRUpperDescription,,%UpperDescription%
+HKR,,CREnum,,STT_CR
+;HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.NT.AddReg]
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.NT.CopyFiles]
+STT_umsc.sys
+STT_wh.sys,STT_whnt.sys
+STT_cr.sys,STT_crnt.sys
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Super Talent Technology Corporation"
+SUPERTAL = "Super Talent Technology Corporation"
+DiskString = "STT USB 3.0 Drive Installation Disk"
+
+SUPERTAL.Wdm.Desc = "STT USB 3.0 RAIDDrive (WDM)"
+SUPERTAL.Service.Desc = "STT USB 3.0 Drive (WDM)"
+
+UpperDescription = "STT USB 3.0 Miniport (for Storage Device)"
+
+CustomerDataPath = "SuperTalent Fast USB"
+DriverSet = "SuperTalent Fast USB Software"
+UninstallFile = "STT_Uninstall.exe"
+McciOptions = "Uninstallable"
+
+SUPERTAL.Wdm.Desc2 = "STT USB 3.0 RAID AES (WDM)"
+SUPERTAL.Wdm.Desc3 = "STT USB 3.0 SATA (WDM)"
+SUPERTAL.Wdm.Desc4 = "STT USB 3.0 SATA AES (WDM)"
+SUPERTAL.Wdm.Desc5 = "STT USB 3.0 HardDrive (WDM)"
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

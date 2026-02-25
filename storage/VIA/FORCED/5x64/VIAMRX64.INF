@@ -1,0 +1,88 @@
+; VIAMRX64.INF for AMDx86_64
+; All rights reserved by  VIA Technologies, Inc. 2003
+
+[Version]
+CatalogFile=viamrx64.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%VIA%
+DriverVer=11/26/2010, 5.2.7600.601
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CopyRAID.NT = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%VIA%=VIA,NTamd64
+
+[VIA.NTamd64]
+%PCI\VEN_1106&DEV_3349.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_3349&CC_0104
+%PCI\VEN_1106&DEV_6287.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_6287&CC_0106
+%PCI\VEN_1106&DEV_0591.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_0591&CC_0104
+%PCI\VEN_1106&DEV_3249.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_3249&CC_0104
+%PCI\VEN_1106&DEV_3149.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_3149&CC_0104
+%PCI\VEN_1106&DEV_3164.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_3164&CC_0104
+%PCI\VEN_1106&DEV_0581.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_0581&CC_0104
+%PCI\VEN_1106&DEV_7372.DeviceDesc% = viamrx64 , PCI\VEN_1106&DEV_7372&CC_0104
+
+[VIAMRX64.NTamd64]
+CopyFiles=CopyRAID.NT
+Reboot
+
+[VIAMRX64.NTamd64.Services]
+AddService = viamrx64, 2, VIAMRAID_Service_Inst, Miniport_EventLog_Inst
+
+
+[VIAMRAID_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\viamrx64.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnp_pci_addreg
+
+[pnp_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "CreateInitiatorLU", 0x00010001, 0x00000001
+HKR, "Parameters", "BusType", 0x00010001, 0x00000008
+HKR,, "Feature", %REG_DWORD%, 0
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[CopyRAID.NT]
+viamrx64.sys
+
+
+[SourceDisksFiles]
+viamrx64.inf = 1
+viamrx64.sys = 1
+
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[strings]
+VIA="VIA Technologies, Inc."
+PCI\VEN_1106&DEV_3349.DeviceDesc="VIA RAID Controller - 3349"
+PCI\VEN_1106&DEV_6287.DeviceDesc="VIA AHCI Controller - 6287"
+PCI\VEN_1106&DEV_0591.DeviceDesc="VIA RAID Controller - 0591"
+PCI\VEN_1106&DEV_3249.DeviceDesc="VIA RAID Controller - 3249"
+PCI\VEN_1106&DEV_3149.DeviceDesc="VIA RAID Controller - 3149"
+PCI\VEN_1106&DEV_3164.DeviceDesc="VIA RAID Controller - 3164"
+PCI\VEN_1106&DEV_0581.DeviceDesc="VIA MSP RAID Controller - 0581"
+PCI\VEN_1106&DEV_7372.DeviceDesc="VIA RAID Controller - 7372"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="VIA RAID Driver Diskette"
+DISKNAME2="Windows system"

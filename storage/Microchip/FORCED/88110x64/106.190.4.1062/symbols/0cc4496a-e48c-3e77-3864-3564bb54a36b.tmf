@@ -1,0 +1,288 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+0cc4496a-e48c-3e77-3864-3564bb54a36b 2016 // SRC=DevMap.c MJ= MN=
+#typev devmap_c186 10 "%0%10!s!   The Group number=%11!d! is already in the group list." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagInit FUNC=AddGroupToList
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+}
+#typev devmap_c202 11 "%0%10!s!   Successfully added Group Number=%11!d! into group list at GroupList[%12!d!]." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagInit FUNC=AddGroupToList
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+usListIndex, ItemLong -- 12
+}
+#typev devmap_c211 12 "%0%10!s!  !Failed add the new groupNumber=%11!d! into the group list.  No free slots!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=AddGroupToList
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+}
+#typev devmap_c1535 32 "%0%10!s!   Successfully allocated %11!d! bytes per Lun memory for device at (%12!d!, %13!d!, %14!d!)." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagMemory FUNC=AllocateAndInitMemoryForLun
+{
+IDSTR2, ItemString -- 10
+ulLunMemorySize, ItemLong -- 11
+pdata->Bus, ItemLong -- 12
+pdata->Target, ItemLong -- 13
+pdata->Lun, ItemLong -- 14
+}
+#typev devmap_c1458 31 "%0%10!s!  !Failed to allocated %11!d! bytes per Lun memory for device at (%12!d!, %13!d!, %14!d!)!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=AllocateAndInitMemoryForLun
+{
+IDSTR2, ItemString -- 10
+ulLunMemorySize, ItemLong -- 11
+pdata->Bus, ItemLong -- 12
+pdata->Target, ItemLong -- 13
+pdata->Lun, ItemLong -- 14
+}
+#typev devmap_c1337 30 "%0%10!s!   Disabled AIO for PHYSICAL device at (%11!d!, %12!d!, %13!d!)." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=InitPhysicalDeviceAioPathStatus
+{
+IDSTR2, ItemString -- 10
+pdata->Bus, ItemLong -- 11
+pdata->Target, ItemLong -- 12
+pdata->Lun, ItemLong -- 13
+}
+#typev devmap_c1328 29 "%0%10!s!   Enabled AIO for PHYSICAL device at (%11!d!, %12!d!, %13!d!)." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=InitPhysicalDeviceAioPathStatus
+{
+IDSTR2, ItemString -- 10
+pdata->Bus, ItemLong -- 11
+pdata->Target, ItemLong -- 12
+pdata->Lun, ItemLong -- 13
+}
+#typev devmap_c1586 34 "%0%10!s!   No need to allocate Per Lun memory for MISSING or FAILED device at (%11!d!, %12!d!, %13!d!)." //   LEVEL=DbgLvlVerbose FLAGS=DbgFlagInit FUNC=InitializeLunMemory
+{
+IDSTR2, ItemString -- 10
+pdata->Bus, ItemLong -- 11
+pdata->Target, ItemLong -- 12
+pdata->Lun, ItemLong -- 13
+}
+#typev devmap_c1576 36 "%0%10!s!  !Failed to release per lun memory!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=InitializeLunMemory
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c1576 35 "%0%10!s!  !Failed to release raid map disk data!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=InitializeLunMemory
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c1566 33 "%0%10!s!   Deleting Per Lun memory for MISSING or FAILED device at (%11!d!, %12!d!, %13!d!)." //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=InitializeLunMemory
+{
+IDSTR2, ItemString -- 10
+pdata->Bus, ItemLong -- 11
+pdata->Target, ItemLong -- 12
+pdata->Lun, ItemLong -- 13
+}
+#typev devmap_c850 16 "%0%10!s!  !Record index=%11!d! was not assigned an address.  Not able to locate or create a TargetId.!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunToTargetId
+{
+IDSTR2, ItemString -- 10
+ulRecordIndex, ItemLong -- 11
+}
+#typev devmap_c865 17 "%0%10!s!   Record index=%11!d! was assigned the address bus=%12!d!, TargetId=%13!d!, Lun=%14!d!." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=MapAddLunToTargetId
+{
+IDSTR2, ItemString -- 10
+ulRecordIndex, ItemLong -- 11
+ulBusNum, ItemLong -- 12
+ucTargetIdUsed, ItemLong -- 13
+pTarget->LeafUsed, ItemLong -- 14
+}
+#typev devmap_c967 20 "%0%10!s!  !Unable to map LUN reported by firmware.  All targets on bus %11!d! are full.  Requested BTL (%12!d!, %13!d!, %14!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+BusNum, ItemLong -- 11
+BusNum, ItemLong -- 12
+TargetNum, ItemLong -- 13
+LunNum, ItemLong -- 14
+}
+#typev devmap_c1113 25 "%0%10!s!  !WARNING: Lun already mapped to (%11!d!, %12!d!, %13!d!).  Adding lun to existing free slot at (%14!d!, %15!d!, %16!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+BusNum, ItemLong -- 11
+ulTargetNumToUse, ItemLong -- 12
+ulLunNumToUse, ItemLong -- 13
+BusNum, ItemLong -- 14
+ulTargetNumToUse, ItemLong -- 15
+ulLunCounter, ItemLong -- 16
+}
+#typev devmap_c1097 24 "%0%10!s!  !WARNING: Lun already mapped to (%11!d!, %12!d!, %13!d!).  Adding new lun to target at (%14!d!, %15!d!, %16!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+BusNum, ItemLong -- 11
+ulTargetNumToUse, ItemLong -- 12
+ulLunNumToUse, ItemLong -- 13
+BusNum, ItemLong -- 14
+ulTargetNumToUse, ItemLong -- 15
+pTarget->LeafUsed, ItemLong -- 16
+}
+#typev devmap_c1127 26 "%0%10!s!  !WARNING: No free luns on target %11!d!.  Re-running target logic to choose new target!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+ulTargetNumToUse, ItemLong -- 11
+}
+#typev devmap_c1013 22 "%0%10!s!  !WARNING: Driver unable to honor firmware requested lun %11!d! on target %12!d!.  Attempting to use existing free slot at (%13!d!, %14!d!, %15!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+LunNum, ItemLong -- 11
+ulTargetNumToUse, ItemLong -- 12
+BusNum, ItemLong -- 13
+ulTargetNumToUse, ItemLong -- 14
+ulLunCounter, ItemLong -- 15
+}
+#typev devmap_c1026 23 "%0%10!s!  !WARNING: Driver unable to honor firmware requested lun %11!d! on target %12!d!.  Target is full.  Re-running target logic to choose new target!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+LunNum, ItemLong -- 11
+ulTargetNumToUse, ItemLong -- 12
+}
+#typev devmap_c997 21 "%0%10!s!  !WARNING: Driver unable to honor firmware requested lun %11!d! on target %12!d!.  Attempting to use next free lun (%13!d!, %14!d!, %15!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+LunNum, ItemLong -- 11
+ulTargetNumToUse, ItemLong -- 12
+BusNum, ItemLong -- 13
+ulTargetNumToUse, ItemLong -- 14
+pTarget->LeafUsed, ItemLong -- 15
+}
+#typev devmap_c949 19 "%0%10!s!  !WARNING: Driver unable to honor firmware requested target %11!d!.  Unable to create new target.  Using existing target %12!d! on bus %13!d!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+TargetNum, ItemLong -- 11
+ulTargetCounter, ItemLong -- 12
+BusNum, ItemLong -- 13
+}
+#typev devmap_c932 18 "%0%10!s!  !WARNING: Driver unable to honor firmware requested target %11!d!.  Creating a new target %12!d! on bus %13!d!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapAddLunWithLunNumber
+{
+IDSTR2, ItemString -- 10
+TargetNum, ItemLong -- 11
+pBus->LeafUsed, ItemLong -- 12
+BusNum, ItemLong -- 13
+}
+#typev devmap_c2440 41 "%0
+
+%10!s!  Illegal index. Lun must be 0-254.  Lun=%11!d!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MapTraverseTrieStartStop
+{
+IDSTR2, ItemString -- 10
+ucCurrentLun, ItemLong -- 11
+}
+#typev devmap_c2434 40 "%0
+
+%10!s!  Illegal index. Target must be 1-127.  Target=%11!d!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MapTraverseTrieStartStop
+{
+IDSTR2, ItemString -- 10
+ucCurrentTarget, ItemLong -- 11
+}
+#typev devmap_c2428 39 "%0
+
+%10!s!  Illegal index. Physical bus must be 2 or 3.  Bus=%11!d!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MapTraverseTrieStartStop
+{
+IDSTR2, ItemString -- 10
+ucCurrentBus, ItemLong -- 11
+}
+#typev devmap_c2422 38 "%0
+
+%10!s!  Illegal index. Logical bus must be 0 or 1.  Bus=%11!d!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapTraverseTrieStartStop
+{
+IDSTR2, ItemString -- 10
+ucCurrentBus, ItemLong -- 11
+}
+#typev devmap_c2971 45 "%0%10!s!   Record[%11!d!] Handle changed from 0x%12!x! -> 0x%13!x!.  TimeStamp=%14!I64u!msec" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MapUpdateRecords
+{
+IDSTR2, ItemString -- 10
+usDriverDeviceRecordCounter, ItemLong -- 11
+pMap->Data[Type].Records[usDriverDeviceRecordCounter].Key.Extended.PhyExtAdd2.ulByPassHandle, ItemLong -- 12
+((PREPORTLUN_DATA)pucCurrentReportedDevice)->Extended.PhyExtAdd2.ulByPassHandle, ItemLong -- 13
+ullTimeStamp, ItemULongLong -- 14
+}
+#typev devmap_c2938 44 "%0%10!s!   Record[%11!d!] Handle changed from 0x%12!x! -> 0x%13!x!.  TimeStamp=%14!I64u!msecs" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapUpdateRecords
+{
+IDSTR2, ItemString -- 10
+usDriverDeviceRecordCounter, ItemLong -- 11
+pMap->Data[Type].Records[usDriverDeviceRecordCounter].Key.Extended.PhyExtAdd2.ulByPassHandle, ItemLong -- 12
+((PREPORTLUN_DATA)pucCurrentReportedDevice)->Extended.PhyExtAdd2.ulByPassHandle, ItemLong -- 13
+ullTimeStamp, ItemULongLong -- 14
+}
+#typev devmap_c2753 43 "%0%10!s! !!!Firmware Needs Upgrading.  Report Physical Luns Extended 3 required support!!!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MapUpdateRecords
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c2650 42 "%0%10!s!   Re-using dev map record. RecordType=%11!s! ptr=%12!p! FromArena=%13!d!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MapUpdateRecords
+{
+IDSTR2, ItemString -- 10
+pTypeString, ItemString -- 11
+pReUseRecordBuf, ItemPtr -- 12
+fMemInArena, ItemLong -- 13
+}
+#typev devmap_c3557 13 "%0%10!s!   Successfully updated ucLastTargetUsed=%11!d! for the group number=%12!d!." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+ucLastTargetIdUsed, ItemLong -- 11
+usRecordGroupNumber, ItemLong -- 12
+}
+#typev devmap_c3557 14 "%0%10!s!  !Group number=%11!d! was not found, ucLastTargetUsed field not updated!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usRecordGroupNumber, ItemLong -- 11
+}
+#typev devmap_c3447 50 "%0%10!s!   !Driver does not support devices reported as type=%11!d! (Parallel SCSI)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+ePHYSICAL_DEVICE_TYPE_PARALLEL_SCSI, ItemLong -- 11
+}
+#typev devmap_c3435 49 "%0%10!s!   New physical device record index=%11!d! needs a node assignment. aka assigned a (BUS,TargetId,Lun) address." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usCurrentRecordIndex, ItemLong -- 11
+}
+#typev devmap_c3402 47 "%0%10!s!   The last physical device belonging to group=%11!d! was mapped using TargetId=%12!d!." //   LEVEL=DbgLvlRescan FLAGS=DbgFlagRescan FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+ucLastTargetIdUsed, ItemLong -- 12
+}
+#typev devmap_c3397 46 "%0%10!s!   group=%11!d! has not had any device assigned to it yet. The next chronological free targetId may be used to map device." //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+}
+#typev devmap_c3410 48 "%0%10!s!  !This record's Group number=%11!d! was not found in the group list.  Don't know what TargetId to map this device too!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usGroupNumber, ItemLong -- 11
+}
+#typev devmap_c3390 15 "%0%10!s!  !The specified group number=%11!d! was not found in the group list!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MapUpdateTrie
+{
+IDSTR2, ItemString -- 10
+usRecordGroupNumber, ItemLong -- 11
+}
+#typev devmap_c3910 51 "%0%10!s! !PathId/TargetID/Lun is invalid!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiGetDevRecord
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c3925 52 "%0%10!s! !Targeted device may be MISSING, FAILED or EMPTY!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiGetDevRecord
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c1239 28 "%0%10!s! !Failed to set queue depth to %11!u! for device (%12!u!,%13!u!,%14!2u!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIo FUNC=MiSetDeviceQueueDepth
+{
+IDSTR2, ItemString -- 10
+ulQueueDepth, ItemLong -- 11
+pdata->Bus, ItemLong -- 12
+pdata->Target, ItemLong -- 13
+pdata->Lun, ItemLong -- 14
+}
+#typev devmap_c1233 27 "%0%10!s!   (%11!u!,%12!u!,%13!2u!) Set queue depth=%14!u! (prev=%15!u! max=%16!u!) drives=%17!u! type=%18!s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagIo FUNC=MiSetDeviceQueueDepth
+{
+IDSTR2, ItemString -- 10
+pdata->Bus, ItemLong -- 11
+pdata->Target, ItemLong -- 12
+pdata->Lun, ItemLong -- 13
+ulQueueDepth, ItemLong -- 14
+ulPrevious, ItemLong -- 15
+pDevX->IoLimits.ulMaxDepthPerLun, ItemLong -- 16
+ulNumDrives, ItemLong -- 17
+szDriveType, ItemString -- 18
+}
+#typev devmap_c1640 36 "%0%10!s!  !Failed to release per lun memory!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=ReleaseLunMemory
+{
+IDSTR2, ItemString -- 10
+}
+#typev devmap_c1626 35 "%0%10!s!  !Failed to release raid map disk data!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=ReleaseLunMemory
+{
+IDSTR2, ItemString -- 10
+}

@@ -1,0 +1,213 @@
+;/*++
+; inic162x.inf
+;
+; Installation inf for Initio SATA Host Adapter.
+;
+; (c) Copyright 2009-2010 Initio 
+;--*/
+
+[Version]
+Signature="$Windows NT$"
+Provider=%Initio%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+DriverVer=03/03/2010, 5.13.10.0303
+CatalogFile=Inic162x.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+[Manufacturer]
+%MfgName% = HARDWARE_ID,NTx86.5,NTx86.6.0,NTx86.6.1,NTamd64.5,NTamd64.6.0,NTamd64.6.1
+
+
+[HARDWARE_ID]  			; win2000
+%Device_1622%=Device_Inst.Win2000, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Win2000, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Win2000, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+[HARDWARE_ID.NTx86.5]		; XP(32-bit) 2003(32-bit)
+%Device_1622%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+[HARDWARE_ID.NTx86.6.0]   	; Vista (32-bit) 2008(32-bit)
+%Device_1622%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+[HARDWARE_ID.NTx86.6.1]   	; Win7 (32-bit)
+%Device_1622%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+
+[HARDWARE_ID.NTamd64.5]
+%Device_1622%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Xp, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+[HARDWARE_ID.NTamd64.6.0]
+%Device_1622%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Vista, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+[HARDWARE_ID.NTamd64.6.1]
+%Device_1622%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device_1623%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16231101
+%Device_1627%=Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16271101
+%Device_RAID%=Null_Device, SCSI\INITIO__RAID_INTERFACE__1
+
+;;=========================
+;; Install RAID Interface
+;;=========================
+[Null_Device]
+
+[Null_Device.Services]
+AddService = ,2
+
+;;================
+;; Install Driver
+;;================
+[Device_Inst.Win2000]
+CopyFiles=INI_CopyList.Win2000
+
+[Device_Inst.Xp]			 ; to prevent IA64 and other unseen ones
+
+[Device_Inst.Xp.NTx86]
+CopyFiles=INI_CopyList.Xp_32bit
+
+[Device_Inst.Xp.NTamd64]
+CopyFiles=INI_CopyList.Xp_64bit
+
+
+[Device_Inst.Vista]			; to prevent IA64 and other unseen ones
+
+[Device_Inst.Vista.NTx86]
+CopyFiles=INI_CopyList.Vista_32bit
+
+[Device_Inst.Vista.NTamd64]
+CopyFiles=INI_CopyList.Vista_64bit
+
+
+[Device_Inst.Win7]			; to prevent IA64 and other unseen ones
+
+[Device_Inst.Win7.NTx86]
+CopyFiles=INI_CopyList.Win7_32bit;
+
+[Device_Inst.Win7.NTamd64]
+CopyFiles=INI_CopyList.Win7_64bit;
+
+
+[SourceDisksNames]
+1=%DISK_NAME%
+
+[SourceDisksFiles]
+inic162xW2k86.sys = 1
+inic162xWxp86.sys = 1
+inic162xWxp64.sys = 1
+inic162xWlh86.sys = 1
+inic162xWlh64.sys = 1
+inic162xWin732.sys = 1
+inic162xWin764.sys = 1
+
+
+[INI_CopyList]              ; empty section. Used to prevent INF use from 9x & ME
+
+[INI_CopyList.NTia64]       ; empty section. Used to prevent INF use from Intel Itanium platforms
+
+[INI_CopyList.Win2000]
+inic162x.sys,inic162xW2k86.sys
+
+[INI_CopyList.Xp_32bit]
+inic162x.sys,inic162xWxp86.sys
+
+[INI_CopyList.Xp_64bit]
+inic162x.sys,inic162xWxp64.sys
+
+[INI_CopyList.Vista_32bit]
+inic162x.sys,inic162xWlh86.sys
+
+[INI_CopyList.Vista_64bit]
+inic162x.sys,inic162xWlh64.sys
+
+[INI_CopyList.Win7_32bit]
+inic162x.sys,inic162xWin732.sys;
+
+[INI_CopyList.Win7_64bit]
+inic162x.sys,inic162xWin764.sys;
+
+
+[Device_Inst.Win2000.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+
+[Device_Inst.Xp.Services]
+
+[Device_Inst.Xp.NTx86.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+[Device_Inst.Xp.NTamd64.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+
+[Device_Inst.Vista.Services]
+
+[Device_Inst.Vista.NTx86.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+[Device_Inst.Vista.NTamd64.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+
+[Device_Inst.Win7.Services]
+
+[Device_Inst.Win7.NTx86.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+[Device_Inst.Win7.NTamd64.Services]
+AddService = INIC162x, 2, Device_Inst_Service_Inst, Miniport_EventLog_Inst
+
+
+[Device_Inst_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\inic162x.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnp_pci_addreg
+;;AddReg         = bus_type_scsi
+
+
+[pnp_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+
+;;[bus_type_scsi]
+;;HKR, "Parameters", "BusType", 0x00010001, 0x00000001 ;BusTypeScsi
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\iologmsg.dll;%%SystemRoot%%\System32\drivers\inic162x.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+Initio  = "INITIO Corp."
+MfgName = "Initio Corp."
+Device_1622 = "Initio INIC1622 S-ATA Raid Controller"
+Device_1623 = "Initio INIC1623 S-ATA Raid Controller"
+Device_1627 = "Initio INIC1623 S-ATA Card Bus RAID Controller"
+Device_RAID = "Initio Raid Interface"
+DISK_NAME   = "Initio INIC162x S-ATA RAID Controller Driver Installation Disk"
+
+REG_EXPAND_SZ   = 0x00020000
+REG_DWORD       = 0x00010001

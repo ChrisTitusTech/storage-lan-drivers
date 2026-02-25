@@ -1,0 +1,288 @@
+;*****************************************************************************
+;
+; STT_stor.inf   -- Install the STT USB 3.0 Miniport (Storage Driver)
+;
+; Copyright (c) 1997-2010 MCCI Corporation
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider%
+DriverVer=02/11/2010,5.18.0.0
+Compatible = 1
+CatalogFile=STT_umsc.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 12           ; LDID_SYS
+SUPERTAL.xpstor.CopyFiles = 12  ; LDID_SYS
+SUPERTAL.storport.CopyFiles = 12  ; LDID_SYS
+SUPERTAL.xpstor.nt.CopyFiles = 12
+SUPERTAL.storport.nt.CopyFiles = 12
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_stpt.sys",,\i386
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_stpt.sys",,\amd64
+
+[SourceDisksFiles]
+STT_xpsp.sys=1
+STT_stpt.sys=1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%SUPERTAL%=SUPERTAL,NTamd64
+
+;-----------------------------------------------------------------------------
+; The Storage devices
+;-----------------------------------------------------------------------------
+[SUPERTAL]
+%StorportDesc% = SUPERTAL.storport, STT_CR\{08DE8C6C-B83A-4aaf-B86B-7F1266036D56}
+%ScsiportDesc% = SUPERTAL.xpstor, STT_CR\{01D584F8-9C21-4648-B377-7CA048147AD8}
+
+[SUPERTAL.NTamd64]
+%StorportDesc% = SUPERTAL.storport, STT_CR\{08DE8C6C-B83A-4aaf-B86B-7F1266036D56}
+%ScsiportDesc% = SUPERTAL.xpstor, STT_CR\{01D584F8-9C21-4648-B377-7CA048147AD8}
+
+;*****************************************************************************
+;
+; services:
+;
+;	You would think that '\' continuation would make the following 
+;	more readable.  It only succeeds in breaking things.  Keep all this
+;	on one line!
+;
+;*****************************************************************************
+
+[SUPERTAL.storport.nt]
+AddReg = SUPERTAL.stor.reg.nt,SUPERTAL.storport.reg.nt,SUPERTAL.stor.Gen.Resources,SUPERTAL.xpstor.Gen.Params
+CopyFiles = SUPERTAL.storport.nt.CopyFiles
+
+[SUPERTAL.xpstor.nt]
+AddReg = SUPERTAL.stor.reg.nt,SUPERTAL.xpstor.reg.nt,SUPERTAL.stor.Gen.Resources,SUPERTAL.storport.Gen.Params
+CopyFiles = SUPERTAL.xpstor.nt.CopyFiles
+
+;-----------------------------------------------------------------------------
+; Install all the normal things in the registry 
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; General Resources
+;-----------------------------------------------------------------------------
+[SUPERTAL.stor.Gen.Resources]
+
+;-----------------------------------------------------------------------------
+; General Params.
+;-----------------------------------------------------------------------------
+
+[SUPERTAL.xpstor.Gen.Params]
+HKR,,DeviceName,,"%SUPERTAL.xpstor.guid%"
+
+[SUPERTAL.storport.Gen.Params]
+HKR,,DeviceName,,"%SUPERTAL.storport.guid%"
+
+;-----------------------------------------------------------------------------
+;	Storage devload info for Win2K and above
+;-----------------------------------------------------------------------------
+[SUPERTAL.stor.reg.nt]
+HKR,,DriverDesc,,%SUPERTAL.stor.DriverDesc%
+
+[SUPERTAL.xpstor.reg.nt]
+HKR,Adapter,DeviceId,,%SUPERTAL.xpstor.guid%
+HKR,Adapter,Service,,"STT_xpsp"
+
+[SUPERTAL.storport.reg.nt]
+HKR,Adapter,DeviceId,,%SUPERTAL.storport.guid%
+HKR,Adapter,Service,,"STT_stpt"
+
+
+[SUPERTAL.storport.NT.Services]
+AddService      = STT_stpt, 2, SUPERTAL.storport.AddService, Miniport_EventLog_Inst
+
+[SUPERTAL.storport.AddService]
+DisplayName             = %SUPERTAL.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\STT_stpt.sys
+LoadOrderGroup          = Base
+AddReg                  = pnpsafe_internal_addreg
+AddReg                  = bus_type_usb
+
+[SUPERTAL.xpstor.NT.Services]
+AddService      = STT_xpsp, 2, SUPERTAL.xpstor.AddService, Miniport_EventLog_Inst
+
+[SUPERTAL.xpstor.AddService]
+DisplayName             = %SUPERTAL.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\STT_xpsp.sys
+LoadOrderGroup          = Base
+AddReg                  = pnpsafe_internal_addreg
+;AddReg                  = pnpsafe_isa_addreg
+;AddReg                  = pnpsafe_eisa_addreg
+;AddReg                  = pnpsafe_mc_addreg
+;AddReg                  = pnpsafe_tc_addreg
+;AddReg                  = pnpsafe_pci_addreg
+;AddReg                  = pnpsafe_vme_addreg
+;AddReg                  = pnpsafe_nu_addreg
+;AddReg                  = pnpsafe_pcmcia_addreg
+;AddReg                  = pnpsafe_cbus_addreg
+;AddReg                  = pnpsafe_mpi_addreg
+;AddReg                  = pnpsafe_mpsa_addreg
+;AddReg                  = pnpsafe_proc_addreg
+;AddReg                  = pnpsafe_intpower_addreg
+;AddReg                  = pnpsafe_pnpisa_addreg
+AddReg                  = pnpsafe_pnpbus_addreg
+;AddReg                  = pnpsafe_vmcs_addreg
+;AddReg                  = pnpsafe_max_addreg
+;AddReg                  = bus_type_usb
+;AddReg                  = bus_type_scsi
+;AddReg                  = bus_type_virtual
+
+[pnpsafe_internal_addreg]
+HKR, "Parameters\PnpInterface", "0", 0x00010001, 0x00000001
+
+[pnpsafe_isa_addreg]
+HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+
+[pnpsafe_eisa_addreg]
+HKR, "Parameters\PnpInterface", "2", 0x00010001, 0x00000001
+
+[pnpsafe_mc_addreg]
+HKR, "Parameters\PnpInterface", "3", 0x00010001, 0x00000001
+
+[pnpsafe_tc_addreg]
+HKR, "Parameters\PnpInterface", "4", 0x00010001, 0x00000001
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[pnpsafe_vme_addreg]
+HKR, "Parameters\PnpInterface", "6", 0x00010001, 0x00000001
+
+[pnpsafe_nu_addreg]
+HKR, "Parameters\PnpInterface", "7", 0x00010001, 0x00000001
+
+[pnpsafe_pcmcia_addreg]
+HKR, "Parameters\PnpInterface", "8", 0x00010001, 0x00000001
+
+[pnpsafe_cbus_addreg]
+HKR, "Parameters\PnpInterface", "9", 0x00010001, 0x00000001
+
+[pnpsafe_mpi_addreg]
+HKR, "Parameters\PnpInterface", "10", 0x00010001, 0x00000001
+
+[pnpsafe_mpsa_addreg]
+HKR, "Parameters\PnpInterface", "11", 0x00010001, 0x00000001
+
+[pnpsafe_proc_addreg]
+HKR, "Parameters\PnpInterface", "12", 0x00010001, 0x00000001
+
+[pnpsafe_intpower_addreg]
+HKR, "Parameters\PnpInterface", "13", 0x00010001, 0x00000001
+
+[pnpsafe_pnpisa_addreg]
+HKR, "Parameters\PnpInterface", "14", 0x00010001, 0x00000001
+
+[pnpsafe_pnpbus_addreg]
+HKR, "Parameters\PnpInterface", "15", 0x00010001, 0x00000001
+
+[pnpsafe_vmcs_addreg]
+HKR, "Parameters\PnpInterface", "16", 0x00010001, 0x00000001
+
+[pnpsafe_max_addreg]
+HKR, "Parameters\PnpInterface", "17", 0x00010001, 0x00000001
+
+[bus_type_usb]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000007
+
+[bus_type_scsi]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[bus_type_virtual]
+HKR, "Parameters", "BusType", 0x00010001, 0x0000000E
+
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+
+;-----------------------------------------------------------------------------
+; Some copyfiles sections
+;-----------------------------------------------------------------------------
+[SUPERTAL.xpstor.CopyFiles]
+STT_xpsp.sys
+
+[SUPERTAL.storport.CopyFiles]
+STT_stpt.sys
+
+[SUPERTAL.xpstor.nt.CopyFiles]
+STT_xpsp.sys
+
+[SUPERTAL.storport.nt.CopyFiles]
+STT_stpt.sys
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Super Talent Technology Corporation"
+SUPERTAL = "Super Talent Technology Corporation"
+DiskString = "STT USB 3.0 Drive Installation Disk"
+
+SUPERTAL.stor.DriverDesc = "STT USB 3.0 Miniport (Storage Driver)"
+ScsiportDesc = "STT USB 3.0 Miniport (Scsiport)"
+StorportDesc = "STT USB 3.0 Miniport (Storport)"
+SUPERTAL.Service.Desc = "STT USB 3.0 Miniport (Storage Driver)"
+
+CustomerDataPath = "SuperTalent Fast USB"
+DriverSet = "SuperTalent Fast USB Software"
+UninstallFile = "STT_Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+SUPERTAL.storport.guid = "STT_CR\{08DE8C6C-B83A-4aaf-B86B-7F1266036D56}"
+SUPERTAL.xpstor.guid = "STT_CR\{01D584F8-9C21-4648-B377-7CA048147AD8}"
+
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+
+
+;*** end of file ***

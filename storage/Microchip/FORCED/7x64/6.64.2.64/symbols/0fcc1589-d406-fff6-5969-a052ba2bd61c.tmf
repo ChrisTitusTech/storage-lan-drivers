@@ -1,0 +1,53 @@
+// PDB:  objfre_win7_amd64\amd64\SmartPqi.pdb
+// PDB:  Last Updated :2017-9-6:21:8:18:758 (UTC) [tracepdb]
+0fcc1589-d406-fff6-5969-a052ba2bd61c 2008 // SRC=buildio.c MJ= MN=
+#typev  buildio_c5107 22 "%0%10!s!   ******************** RETURNING FROM SLEEP S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR, ItemString -- 10
+}
+#typev  buildio_c5100 21 "%0%10!s!   ******************** RETURNING FROM SLEEP S1 (STANDBY), S3 or S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR, ItemString -- 10
+}
+#typev  buildio_c5070 20 "%0%10!s!   ******************** ENTER SLEEP S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR, ItemString -- 10
+}
+#typev  buildio_c5065 19 "%0%10!s!   ******************** ENTER SLEEP S1 (STANDBY) or S3 MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR, ItemString -- 10
+}
+#typev  buildio_c4694 12 "%0%10!s!   Received a PnP SRB for the controller." //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPnpSrb
+{
+IDSTR, ItemString -- 10
+}
+#typev  buildio_c5838 42 "%0%10!s! !Bad function code in SRB. Function code:    %11!x!!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=CallBack_BuildIO
+{
+IDSTR, ItemString -- 10
+pSrb->Function, ItemLong -- 11
+}
+#typev  buildio_c5802 41 "%0%10!s! !SRB function not implemented, Function code:  %11!x!!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=CallBack_BuildIO
+{
+IDSTR, ItemString -- 10
+pSrb->Function, ItemLong -- 11
+}
+#typev  buildio_c5766 40 "%0%10!s!   Received BuildIO SRB to Shutdown.  pSrb=%11!#p!. (%12!d!,%13!d!,%14!d!)" //   LEVEL=2 FLAGS=DbgFlagShutdown FUNC=CallBack_BuildIO
+{
+IDSTR, ItemString -- 10
+pSrb, ItemPtr -- 11
+pSrb->PathId, ItemLong -- 12
+pSrb->TargetId, ItemLong -- 13
+pSrb->Lun, ItemLong -- 14
+}
+#typev  buildio_c5750 39 "%0%10!s! !****Received BuildIO SRB to reset Device at (%11!d!, %12!d!, %13!d!) ****!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=CallBack_BuildIO
+{
+IDSTR, ItemString -- 10
+ucBus, ItemLong -- 11
+ucTargetId, ItemLong -- 12
+ucLun, ItemLong -- 13
+}
+#typev  buildio_c5744 38 "%0%10!s! !****Received BuildIO SRB to reset bus %11!d! ****!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=CallBack_BuildIO
+{
+IDSTR, ItemString -- 10
+ucBus, ItemLong -- 11
+}

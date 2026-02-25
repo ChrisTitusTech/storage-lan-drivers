@@ -1,0 +1,186 @@
+;
+; arc.inf for Adaptec RAID controllers.
+; This INF installs the x64 miniport and its coinstaller.
+;
+; Copyright 2009 Adaptec, Inc. All rights reserved.
+; 
+; This software contains the valuable trade secrets of Adaptec or its licensors.
+; The software is protected under international copyright laws and treaties.
+; This software may only be used in accordance with the terms of its accompanying license agreement.
+;
+  
+[Version]
+Signature = "$Windows NT$"
+Class = SCSIAdapter
+ClassGUID = {4d36e97b-e325-11ce-bfc1-08002be10318}
+Provider = %ADPT%
+CatalogFile = arc.cat
+DriverVer=11/29/2012,7.1.0.30034
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+1 = %disk1%, raidisk1,
+
+[SourceDisksFiles]
+arc.sys = 1
+
+[DeviceDriverFiles]
+arc.sys, arc.sys, narc.sys, 0x00000000
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+
+; ===============================================================
+; =================== Table of contents =========================
+; ===============================================================
+
+
+[Manufacturer]
+%ADPT% = ADPT, NTamd64
+
+;------------------------------------;
+; Windows XP 64-bit & above (64-bit) ;
+;------------------------------------;
+[ADPT.NTamd64]
+%adptVulcan.DeviceDesc% = arc_Inst, 		PCI\VEN_9005&DEV_0285&SUBSYS_02859005
+
+%adptVulcan.DeviceDesc% = arc_Inst, 		PCI\VEN_9005&DEV_0285&SUBSYS_02879005
+
+%adptCrusader.DeviceDesc% = arc_Inst, 	        PCI\VEN_9005&DEV_0285&SUBSYS_02869005
+					
+%adptSkyhawkscsi.DeviceDesc% = arc_Inst, 	PCI\VEN_9005&DEV_0285&SUBSYS_028A9005
+
+%adptSkyhawksata.DeviceDesc% = arc_Inst, 	PCI\VEN_9005&DEV_0285&SUBSYS_028E9005
+					
+%adptTerminatorscsi.DeviceDesc% = arc_Inst, 	PCI\VEN_9005&DEV_0285&SUBSYS_028B9005
+
+%adptTerminatorsata.DeviceDesc% = arc_Inst, 	PCI\VEN_9005&DEV_0285&SUBSYS_028F9005
+
+%adptJaguar.DeviceDesc% = arc_Inst, 		PCI\VEN_9005&DEV_0285&SUBSYS_02909005
+
+%adptCorsair8.DeviceDesc% = arc_Inst, 	        PCI\VEN_9005&DEV_0285&SUBSYS_02929005
+
+%adptCorsair16.DeviceDesc% = arc_Inst, 	        PCI\VEN_9005&DEV_0285&SUBSYS_02939005
+
+%adptLancer2ch.DeviceDesc% = arc_Inst,  	PCI\VEN_9005&DEV_0286&SUBSYS_028C9005
+
+%adptLancer1ch.DeviceDesc% = arc_Inst,  	PCI\VEN_9005&DEV_0286&SUBSYS_028D9005
+
+%adptBearcat.DeviceDesc% = arc_Inst,  	        PCI\VEN_9005&DEV_0285&SUBSYS_3227103C
+
+%ICPLancer2ch.DeviceDesc% = arc_Inst,  	        PCI\VEN_9005&DEV_0286&SUBSYS_029E9005
+
+%ICPLancer1ch.DeviceDesc% = arc_Inst,  	        PCI\VEN_9005&DEV_0286&SUBSYS_029F9005
+
+
+;----------------------------------------------------------;
+; Block Windows 2000 and all other 32-bit Windows versions ;
+;----------------------------------------------------------;
+[ADPT]
+; empty
+
+
+; ==============================================================
+; =================== Install Sections =========================
+; ==============================================================
+
+;-------------------------------------------;
+; Install section for the Storport miniport ;
+;-------------------------------------------;
+[arc_Inst.NT]
+CopyFiles = DeviceDriverFiles
+AddReg = ScsiDiskReg
+
+[arc_Inst.NT.Services]
+AddService = arc, %SPSVCINST_ASSOCSERVICE%, arc_Service_Inst
+
+[arc_Inst.NT.HW]
+Include=machine.inf
+Needs=PciASPMOptOut
+
+; ==============================================================
+; ================== Service install sections ==================
+; ==============================================================
+
+[arc_Service_Inst]
+DisplayName    = %arc_ServiceName%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\arc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = arc_Parameters_Inst
+AddReg         = Bus_Type_Raid
+
+
+; =======================================================
+; ================== Registry sections ==================
+; =======================================================
+
+;----------------------------------------------------------------;
+; Hardware-specific registry additions (under Parameters subkey) ;
+;----------------------------------------------------------------;
+[arc_Parameters_Inst]
+HKR, "Parameters\PnpInterface", "5", %FLG_ADDREG_TYPE_REG_DWORD%, 1
+HKR, "Parameters\Device", "NumberOfRequests", %FLG_ADDREG_TYPE_REG_DWORD%, 254
+HKR, "Parameters\Device", "DriverParameter", %FLG_ADDREG_TYPE_SZ%, "BLEDCheck=1"
+
+[Bus_Type_Raid]
+HKR, "Parameters", "BusType", %FLG_ADDREG_TYPE_REG_DWORD%, 0x00000008
+
+
+;-------------------------;
+; Misc. registry sections ;
+;-------------------------;
+[ScsiDiskReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x0000003C
+
+
+; ======================================================
+; ================== Strings sections ==================
+; ======================================================
+
+[Strings]
+
+ADPT = "Adaptec"
+disk1 = "Adaptec RAID Windows 2003 X64 Device Drivers"
+adptVulcan.DeviceDesc = "Adaptec SCSI RAID 2200S Controller"
+adptCrusader.DeviceDesc = "Adaptec SCSI RAID 2120S Controller"
+adptSkyhawkscsi.DeviceDesc = "Adaptec SCSI RAID 2020ZCR Controller"
+adptSkyhawksata.DeviceDesc = "Adaptec SATA RAID 2020SA Controller"
+adptTerminatorscsi.DeviceDesc = "Adaptec SCSI RAID 2025ZCR Controller"
+adptTerminatorsata.DeviceDesc = "Adaptec SATA RAID 2025SA Controller"
+adptJaguar.DeviceDesc = "Adaptec SATA RAID 2410SA Controller"
+adptCorsair8.DeviceDesc = "Adaptec SATA RAID 2810SA Controller"
+adptCorsair16.DeviceDesc = "Adaptec SATA RAID 21610SA Controller"
+adptLancer2ch.DeviceDesc = "Adaptec SCSI RAID 2230S Controller"
+adptLancer1ch.DeviceDesc = "Adaptec SCSI RAID 2130S Controller"
+adptBearcat.DeviceDesc = "Adaptec SATA RAID 2610SA Controller"
+ICPLancer2ch.DeviceDesc = "ICP SCSI RAID ICP9024RO Controller"
+ICPLancer1ch.DeviceDesc = "ICP SCSI RAID ICP9014RO Controller"
+arc_ServiceName = "Adaptec RAID Storport's Miniport Driver"
+
+
+;=================================================================
+;========== Handy macro substitutions (non-localizable) ==========
+;=================================================================
+COPYFLG_FORCE_FILE_IN_USE = 0x00000008 
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SPSVCINST_NOCLOBBER_DISPLAYNAME = 0x00000008
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_WIN32_OWN_PROCESS = 0x10
+SERVICE_BOOT_START     = 0
+SERVICE_SYSTEM_START   = 1
+SERVICE_AUTO_START     = 2
+SERVICE_DEMAND_START   = 3
+SERVICE_NO_START       = 4
+SERVICE_ERROR_IGNORE   = 0
+SERVICE_ERROR_NORMAL   = 1
+FLG_ADDREG_TYPE_SZ = 0x00000000
+FLG_ADDREG_TYPE_EXPAND_SZ = 0x00020000
+FLG_ADDREG_TYPE_MULTI_SZ = 0x00010000
+FLG_ADDREG_TYPE_REG_DWORD  = 0x00010001
+

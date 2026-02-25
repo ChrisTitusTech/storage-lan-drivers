@@ -1,0 +1,7 @@
+// PDB:  Win10_Release\x64\\SmartPqi.pdb
+// PDB:  Last Updated :2017-09-06:21:09:48:105 (UTC) [tracepdb]
+a8fd988c-957c-397c-3525-ec13e870b9b4 2016 // SRC=Asic.c MJ= MN=
+#typev asic_c498 10 "%0%10!s! !Administrator OQ_CI register not found. Faild Admistrator Queue Pair setup!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiCreateAdminQueuePair
+{
+IDSTR, ItemString -- 10
+}

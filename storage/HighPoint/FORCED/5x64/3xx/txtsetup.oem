@@ -1,0 +1,26 @@
+#
+# TXTSETUP.OEM for HighPoint HPT3xx ATA RAID Controller
+#
+
+[Disks]
+d1 = "HighPoint HPT3xx Controller Driver Diskette", \Disk1, \
+
+[Defaults]
+scsi = hpt3xxamd64
+
+[scsi]
+hpt3xxamd64 = "HighPoint HPT3xx Controller for Windows x64", hpt3xx
+
+[Files.scsi.hpt3xxamd64]
+driver = d1, hpt3xx.sys, hpt3xx
+inf    = d1, hpt3xx.inf
+catalog= d1, hpt3xx.cat
+
+[HardwareIds.scsi.hpt3xxamd64]
+id = "PCI\VEN_1103&DEV_0004","hpt3xx"
+id = "PCI\VEN_1103&DEV_0005","hpt3xx"
+id = "PCI\VEN_1103&DEV_0006","hpt3xx"
+
+[Config.hpt3xx]
+value = "", Tag, REG_DWORD, 1
+value = Parameters\PnpInterface, 5, REG_DWORD, 1

@@ -1,0 +1,42 @@
+;=============================================================================
+; Copyright (c) 2009. Marvell International Ltd.
+;
+; INF for Windows 2K, Windows XP, Windows server 2003 and Windows Vista
+;
+;=============================================================================
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%Marvell%
+CatalogFile=nvumis.cat
+DriverVer=02/23/2011,1.0.0.1022
+
+[SourceDisksFiles]
+
+[SourceDisksNames]
+
+;[ControlFlags]
+;ExcludeFromSelect = *
+
+[Manufacturer]
+%Marvell%=Marvell,ntamd64
+
+[Marvell.ntamd64]
+%Marvell.AHCIDesc%      = NODRV,PCI\VEN_1B4B&DEV_91F3
+%Marvell.NVMHCIDesc%    = NODRV,PCI\VEN_1B4B&DEV_91E3&CC_0108
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+Marvell= "Marvell Inc."
+Marvell.AHCIDesc = "Marvell Flash AHCI"
+Marvell.NVMHCIDesc = "Marvell Flash NVMHCI"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002

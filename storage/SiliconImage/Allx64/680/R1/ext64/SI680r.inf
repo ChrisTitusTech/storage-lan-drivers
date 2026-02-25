@@ -1,0 +1,116 @@
+; This INF file installs the Silicon Image Raid driver for the SiI 680
+; ATA/133 controller on systems using 64-bit extended processors.
+;
+; Copyright (C) 2003 - 2007 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=PnP680r.cat
+DriverVer=04/01/2010, 1.0.5.0
+
+
+[SourceDisksNames.amd64]
+1="Silicon Image ATA/133 Medley Raid Driver Installation Disk",Si680r.inf,\ext64,
+
+[SourceDisksFiles.amd64]
+PnP680r.sys	= 1
+SilSupp.dll	= 1
+
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DllFiles		= 11
+
+
+[DriverFiles]
+PnP680r.sys,,,0x20
+
+[DllFiles]
+SilSupp.dll,,,0x20
+
+
+[Manufacturer]
+%SI%=SI_HDC,NTamd64
+
+[SI_HDC.NTamd64]
+%PCI\VEN_1095&DEV_0680.DeviceDesc%=SI_680_XP, PCI\VEN_1095&DEV_0680&SUBSYS_36801095
+
+
+[ControlFlags]
+ExcludeFromSelect.ntx86=*
+
+
+
+;; Driver install sections
+;;
+[SI_680_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_680_XP.NTamd64.Services]
+AddService=Pnp680r,0x00000002,SI_680_Service_Install, Miniport_EventLog_Inst
+
+[SI_680_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_680_CoInstall_AddReg
+
+
+[SI_680_CoInstall_AddReg]
+HKR,,CoInstallers32,0x00010000,"SilSupp.dll, CoInstHandler"
+
+
+[SI_680_Service_Install]
+DisplayName=%SI680r.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\pnp680r.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 64
+HKR,Parameters\Device,MaximumSGList,0x00010001, 33
+
+; Set controller's bus type to RAID.
+[BusType_AddReg]
+HKR, Parameters, BusType, 0x00010001, 8
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+
+
+; List of controller subsystem IDs to be supported by the PnP680r.sys driver.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_0680.DeviceDesc%,0x00010001, 0x36801095
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+SI="Silicon Image"
+
+PCI\VEN_1095&DEV_0680.DeviceDesc="Silicon Image SiI 0680 ATA/133 RAID Controller"
+SI680r.SvcDesc="SiI 680 ATA RAID Controller"

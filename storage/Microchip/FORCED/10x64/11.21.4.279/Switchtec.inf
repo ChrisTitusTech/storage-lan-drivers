@@ -1,0 +1,190 @@
+;
+; Switchtec.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=switch
+ClassGuid={1DED99DE-B4AE-442D-A180-B5FF691AE552}
+Provider=%ManufacturerName%
+CatalogFile=Switchtec.cat
+DriverVer = 04/17/2018,11.21.4.279
+
+[DestinationDirs]
+DefaultDestDir = 12
+Switchtec_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SwitchClassReg
+
+[SwitchClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+Switchtec.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%PFX_24xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8531&CC_058000
+%PFX_24xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8531&CC_068000
+%PFX_32xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8532&CC_058000
+%PFX_32xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8532&CC_068000
+%PFX_48xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8533&CC_058000
+%PFX_48xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8533&CC_068000
+%PFX_64xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8534&CC_058000
+%PFX_64xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8534&CC_068000
+%PFX_80xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8535&CC_058000
+%PFX_80xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8535&CC_068000
+%PFX_96xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8536&CC_058000
+%PFX_96xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8536&CC_068000
+
+%PSX_24xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8541&CC_058000
+%PSX_24xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8541&CC_068000
+%PSX_32xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8542&CC_058000
+%PSX_32xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8542&CC_068000
+%PSX_48xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8543&CC_058000
+%PSX_48xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8543&CC_068000
+%PSX_64xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8544&CC_058000
+%PSX_64xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8544&CC_068000
+%PSX_80xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8545&CC_058000
+%PSX_80xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8545&CC_068000
+%PSX_96xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8546&CC_058000
+%PSX_96xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8546&CC_068000
+
+%PFXL_24xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8561&CC_058000
+%PFXL_24xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8561&CC_068000
+%PFXL_32xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8562&CC_058000
+%PFXL_32xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8562&CC_068000
+%PFXL_48xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8563&CC_058000
+%PFXL_48xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8563&CC_068000
+%PFXL_64xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8564&CC_058000
+%PFXL_64xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8564&CC_068000
+%PFXL_80xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8565&CC_058000
+%PFXL_80xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8565&CC_068000
+%PFXL_96xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8566&CC_058000
+%PFXL_96xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8566&CC_068000
+
+%PFXI_24xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8571&CC_058000
+%PFXI_24xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8571&CC_068000
+%PFXI_32xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8572&CC_058000
+%PFXI_32xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8572&CC_068000
+%PFXI_48xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8573&CC_058000
+%PFXI_48xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8573&CC_068000
+%PFXI_64xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8574&CC_058000
+%PFXI_64xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8574&CC_068000
+%PFXI_80xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8575&CC_058000
+%PFXI_80xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8575&CC_068000
+%PFXI_96xG3_MGMT.DRVDESC% = Switchtec_Device, PCI\VEN_11F8&DEV_8576&CC_058000
+%PFXI_96xG3_NTB.DRVDESC%  = Switchtec_Device, PCI\VEN_11F8&DEV_8576&CC_068000
+
+[Switchtec_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+Switchtec.sys
+
+;-------------- Service installation
+[Switchtec_Device.NT.Services]
+AddService = Switchtec,%SPSVCINST_ASSOCSERVICE%, Switchtec_Service_Inst
+
+; -------------- Switchtec driver install sections
+[Switchtec_Service_Inst]
+DisplayName    = %Switchtec.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\Switchtec.sys
+
+;
+;--- Switchtec_Device Coinstaller installation ------
+;
+
+[Switchtec_Device.NT.CoInstallers]
+AddReg=Switchtec_Device_CoInstaller_AddReg
+CopyFiles=Switchtec_Device_CoInstaller_CopyFiles
+
+[Switchtec_Device_CoInstaller_AddReg]
+;
+
+
+[Switchtec_Device_CoInstaller_CopyFiles]
+;
+
+
+[Switchtec_Device.NT.Wdf]
+KmdfService =  Switchtec, Switchtec_wdfsect
+[Switchtec_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="MicroSemi Corporation"
+ClassName="PCIe Switches"
+DiskName = "Switchtec Management Driver"
+Switchtec.SVCDESC = "Switchtec Management Service"
+
+PFX_24xG3_MGMT.DRVDESC =  "Switchtec PFX 24xG3 Management EP"
+PFX_24xG3_NTB.DRVDESC  =  "Switchtec PFX 24xG3 NTB EP"
+PFX_32xG3_MGMT.DRVDESC =  "Switchtec PFX 32xG3 Management EP"
+PFX_32xG3_NTB.DRVDESC  =  "Switchtec PFX 32xG3 NTB EP"
+PFX_48xG3_MGMT.DRVDESC =  "Switchtec PFX 48xG3 Management EP"
+PFX_48xG3_NTB.DRVDESC  =  "Switchtec PFX 48xG3 NTB EP"
+PFX_64xG3_MGMT.DRVDESC =  "Switchtec PFX 64xG3 Management EP"
+PFX_64xG3_NTB.DRVDESC  =  "Switchtec PFX 64xG3 NTB EP"
+PFX_80xG3_MGMT.DRVDESC =  "Switchtec PFX 80xG3 Management EP"
+PFX_80xG3_NTB.DRVDESC  =  "Switchtec PFX 80xG3 NTB EP"
+PFX_96xG3_MGMT.DRVDESC =  "Switchtec PFX 96xG3 Management EP"
+PFX_96xG3_NTB.DRVDESC  =  "Switchtec PFX 96xG3 NTB EP"
+
+PSX_24xG3_MGMT.DRVDESC =  "Switchtec PSX 24xG3 Management EP"
+PSX_24xG3_NTB.DRVDESC  =  "Switchtec PSX 24xG3 NTB EP"
+PSX_32xG3_MGMT.DRVDESC =  "Switchtec PSX 32xG3 Management EP"
+PSX_32xG3_NTB.DRVDESC  =  "Switchtec PSX 32xG3 NTB EP"
+PSX_48xG3_MGMT.DRVDESC =  "Switchtec PSX 48xG3 Management EP"
+PSX_48xG3_NTB.DRVDESC  =  "Switchtec PSX 48xG3 NTB EP"
+PSX_64xG3_MGMT.DRVDESC =  "Switchtec PSX 64xG3 Management EP"
+PSX_64xG3_NTB.DRVDESC  =  "Switchtec PSX 64xG3 NTB EP"
+PSX_80xG3_MGMT.DRVDESC =  "Switchtec PSX 80xG3 Management EP"
+PSX_80xG3_NTB.DRVDESC  =  "Switchtec PSX 80xG3 NTB EP"
+PSX_96xG3_MGMT.DRVDESC =  "Switchtec PSX 96xG3 Management EP"
+PSX_96xG3_NTB.DRVDESC  =  "Switchtec PSX 96xG3 NTB EP"
+
+PFXL_24xG3_MGMT.DRVDESC = "Switchtec PFXL 24xG3 Management EP"
+PFXL_24xG3_NTB.DRVDESC  = "Switchtec PFXL 24xG3 NTB EP"
+PFXL_32xG3_MGMT.DRVDESC = "Switchtec PFXL 32xG3 Management EP"
+PFXL_32xG3_NTB.DRVDESC  = "Switchtec PFXL 32xG3 NTB EP"
+PFXL_48xG3_MGMT.DRVDESC = "Switchtec PFXL 48xG3 Management EP"
+PFXL_48xG3_NTB.DRVDESC  = "Switchtec PFXL 48xG3 NTB EP"
+PFXL_64xG3_MGMT.DRVDESC = "Switchtec PFXL 64xG3 Management EP"
+PFXL_64xG3_NTB.DRVDESC  = "Switchtec PFXL 64xG3 NTB EP"
+PFXL_80xG3_MGMT.DRVDESC = "Switchtec PFXL 80xG3 Management EP"
+PFXL_80xG3_NTB.DRVDESC  = "Switchtec PFXL 80xG3 NTB EP"
+PFXL_96xG3_MGMT.DRVDESC = "Switchtec PFXL 96xG3 Management EP"
+PFXL_96xG3_NTB.DRVDESC  = "Switchtec PFXL 96xG3 NTB EP"
+
+PFXI_24xG3_MGMT.DRVDESC = "Switchtec PFXI 24xG3 Management EP"
+PFXI_24xG3_NTB.DRVDESC  = "Switchtec PFXI 24xG3 NTB EP"
+PFXI_32xG3_MGMT.DRVDESC = "Switchtec PFXI 32xG3 Management EP"
+PFXI_32xG3_NTB.DRVDESC  = "Switchtec PFXI 32xG3 NTB EP"
+PFXI_48xG3_MGMT.DRVDESC = "Switchtec PFXI 48xG3 Management EP"
+PFXI_48xG3_NTB.DRVDESC  = "Switchtec PFXI 48xG3 NTB EP"
+PFXI_64xG3_MGMT.DRVDESC = "Switchtec PFXI 64xG3 Management EP"
+PFXI_64xG3_NTB.DRVDESC  = "Switchtec PFXI 64xG3 NTB EP"
+PFXI_80xG3_MGMT.DRVDESC = "Switchtec PFXI 80xG3 Management EP"
+PFXI_80xG3_NTB.DRVDESC  = "Switchtec PFXI 80xG3 NTB EP"
+PFXI_96xG3_MGMT.DRVDESC = "Switchtec PFXI 96xG3 Management EP"
+PFXI_96xG3_NTB.DRVDESC  = "Switchtec PFXI 96xG3 NTB EP"

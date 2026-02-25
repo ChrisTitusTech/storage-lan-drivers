@@ -1,0 +1,33 @@
+#		       TXTSETUP.OEM
+#
+#		   Created by GenINF.
+
+
+[Disks]
+disk0 = "ACARD SCSI Adapterdrivers",\GINFD0,\x64
+disk1 = "ACARD SCSI Adapterdrivers",\GINFD0,\x86
+
+[Defaults]
+SCSI = AEC67162x
+
+[SCSI]
+AEC67162a = "ACARD AEC-67162/S/SC SCSI ADAPTER x64 platform."
+AEC67162x = "ACARD AEC-67162/S/SC SCSI ADAPTER x86 Compatible. (Normal PCs)"
+
+
+[Files.SCSI.AEC67162a]
+inf = disk0, aec67162.inf
+driver = disk0, aec67162.sys,AEC67162
+
+[Files.SCSI.AEC67162x]
+inf = disk1, aec67162.inf
+driver = disk1, aec67162.sys,AEC67162
+
+
+[HardwareIds.SCSI.AEC67162a]
+id = "PCI\VEN_1191&DEV_808a","AEC67162a"
+
+[HardwareIds.SCSI.AEC67162x]
+id = "PCI\VEN_1191&DEV_808a","AEC67162x"
+
+

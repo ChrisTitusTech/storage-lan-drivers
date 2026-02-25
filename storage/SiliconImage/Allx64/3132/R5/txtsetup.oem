@@ -1,0 +1,66 @@
+; This file installs the SiI 3132 Serial ATA Soft RAID 5 driver as part of
+; text mode setup on 64-bit versions of Windows XP and Windows Server 2003.
+;
+; Copyright (C) 2008 by Silicon Image, Inc.
+; All rights reserved
+
+[Disks]
+disk1 = "Silicon Image SiI 3132 SoftRAID 5 Driver Installation Disk",\Si3132r5.inf,\
+
+[Defaults]
+SCSI = Si3132r5_AMD64
+
+[SCSI]                  ; HwComponent section
+Si3132r5_AMD64 = "Silicon Image SiI 3132 SoftRAID 5 Controller (64-bit Extended)"
+
+[Files.SCSI.Si3132r5_AMD64]
+driver = disk1,Si3132r5.sys, Si3132r5
+driver = disk1,SiWinAcc.sys, SiFilter
+driver = disk1,SiRemFil.sys, SiRemFil
+inf = disk1,Si3132r5.inf
+dll = disk1,SilSupp.dll
+inf = disk1,SIPPD.inf
+catalog = disk1, Si3132r5.cat
+
+[HardwareIds.SCSI.Si3132r5_AMD64]
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_71321095", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_71328086", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_81771043", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_820F1043", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_71001462", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_71601462", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_71581462", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_72201462", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_B0031458", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_902C1695", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_056EA0A0", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CAA105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CAC105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CAE105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8E105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8C105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8A105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C88105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C86105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0D11105B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_105B147B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_105C147B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_105D147B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_105E147B", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_300A148C", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_53081019", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_2C0A17F2", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0011182D", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_8177103c", "Si3132r5"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_F001147B", "Si3132r5"
+
+[Config.Si3132r5]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "HDS724040KLSA80                         KFAOA32A", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722525VLSA80                         V36OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722516VLSA80                         V34OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "Maxtor 7B250S0                          BANC1B70", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541060G9SA00                         MB3OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541080G9SA00                         MB4OC60D", REG_SZ, "DisableSataQueueing"

@@ -1,0 +1,178 @@
+[Disks] 
+disk0 = "Marvell SATA Driver Diskette", \mvs91xx, \
+disk1 = "Marvell SATA Driver Diskette", \mvs91xx, \i386
+disk2 = "Marvell SATA Driver Diskette", \mvs91xx, \amd64
+
+[Defaults] 
+SCSI = i386_s91xx
+
+[SCSI] 
+i386_mvxxmm   = "Marvell shared library for 32bit (install first)", mvs91xx 
+i386_s91xx   = "Marvell 91xx SATA Controller 32bit Driver", mvs91xx 
+amd64_mvxxmm   = "Marvell shared library for 64bit (install first)", mvs91xx 
+amd64_s91xx  = "Marvell 91xx SATA Controller 64bit Driver", mvs91xx
+
+[Files.SCSI.i386_s91xx] 
+inf	= disk1, mvs91xx.inf
+driver	= disk1, mvs91xx.sys, mvs91xx
+catalog = disk1, mvs91xx.cat
+dll = disk1, mv91xxm.dll
+
+
+[Files.SCSI.amd64_s91xx] 
+inf	= disk2, mvs91xx.inf
+driver	= disk2, mvs91xx.sys, mvs91xx
+catalog = disk2, mvs91xx.cat
+dll = disk2, mv91xxm.dll
+
+
+[Files.SCSI.i386_mvxxmm] 
+driver	= disk1, mvxxmm.sys, mvs91xx
+
+
+[Files.SCSI.amd64_mvxxmm] 
+driver	= disk2, mvxxmm.sys, mvs91xx
+
+
+[HardwareIds.SCSI.i386_s91xx] 
+id = "PCI\VEN_1B4B&DEV_9171&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9179&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9191&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9172&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_917A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9192&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9182&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A2&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9170&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9186&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918E&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A6&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9220&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9230&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9215&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9235&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9123&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_914D&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9128&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9130&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91B0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9120&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_90A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A8&CC_0101", "mvs91xx" 
+
+[HardwareIds.SCSI.i386_mvxxmm] 
+id = "PCI\VEN_1B4B&DEV_9171&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9179&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9191&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9172&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_917A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9192&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9182&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A2&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9170&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9186&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918E&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A6&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9220&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9230&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9215&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9235&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9123&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_914D&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9128&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9130&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91B0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9120&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_90A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A8&CC_0101", "mvs91xx" 
+
+[HardwareIds.SCSI.amd64_s91xx] 
+id = "PCI\VEN_1B4B&DEV_9171&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9179&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9191&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9172&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_917A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9192&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9182&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A2&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9170&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9186&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918E&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A6&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9220&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9230&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9215&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9235&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9123&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_914D&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9128&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9130&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91B0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9120&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_90A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A8&CC_0101", "mvs91xx" 
+
+[HardwareIds.SCSI.amd64_mvxxmm] 
+id = "PCI\VEN_1B4B&DEV_9171&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9179&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9191&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9172&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_917A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9192&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9182&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918A&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A2&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9170&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9186&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_918E&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A6&CC_0104", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9220&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9230&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9215&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9235&CC_0106", "mvs91xx" 
+
+id = "PCI\VEN_1B4B&DEV_9123&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_914D&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9128&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9130&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91B0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_9120&CC_0106", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A0&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_90A3&CC_0101", "mvs91xx" 
+id = "PCI\VEN_1B4B&DEV_91A8&CC_0101", "mvs91xx" 
+
+[Config.mvs91xx]
+value = parameters\PnpInterface,5,REG_DWORD,1

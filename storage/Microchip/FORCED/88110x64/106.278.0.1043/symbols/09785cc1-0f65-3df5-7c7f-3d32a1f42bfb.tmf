@@ -1,0 +1,56 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+09785cc1-0f65-3df5-7c7f-3d32a1f42bfb 2016 // SRC=Ioctl.c MJ= MN=
+#typev ioctl_c1112 16 "%0%10!s! !Received IOCTL request (%11!s!) for a controller that is FAILED/Offline!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiCompleteIoctlHbaOffline
+{
+IDSTR2, ItemString -- 10
+msg, ItemString -- 11
+}
+#typev ioctl_c979 11 "%0%10!s!   !Received a mal-formed IOCTL for device at (%11!d! %12!d! %13!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiProcessIoctl
+{
+IDSTR2, ItemString -- 10
+TargetAddress.BTL.ucPathId, ItemLong -- 11
+TargetAddress.BTL.ucTargetId, ItemLong -- 12
+TargetAddress.BTL.ucLun, ItemLong -- 13
+}
+#typev ioctl_c1082 15 "%0%10!s!   Received an unsupported or unrecognized IOCTL for device at (%11!d!, %12!d!, %13!d!).  ControlCode=0x%14!x!. Signature=%15!.8s!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiProcessIoctl
+{
+IDSTR2, ItemString -- 10
+TargetAddress.BTL.ucPathId, ItemLong -- 11
+TargetAddress.BTL.ucTargetId, ItemLong -- 12
+TargetAddress.BTL.ucLun, ItemLong -- 13
+pIoctlHeader->ControlCode, ItemLong -- 14
+pIoctlHeader->Signature, ItemString -- 15
+}
+#typev ioctl_c1068 14 "%0%10!s!   Received unsupported SCSIDISK IOCTL for device at (%11!d!, %12!d!, %13!d!).  ControlCode=0x%14!x!." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=MiProcessIoctl
+{
+IDSTR2, ItemString -- 10
+TargetAddress.BTL.ucPathId, ItemLong -- 11
+TargetAddress.BTL.ucTargetId, ItemLong -- 12
+TargetAddress.BTL.ucLun, ItemLong -- 13
+pIoctlHeader->ControlCode, ItemLong -- 14
+}
+#typev ioctl_c994 13 "%0%10!s!   !Received a mal-formed IOCTL for device at (%11!d! %12!d! %13!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=MiProcessIoctl
+{
+IDSTR2, ItemString -- 10
+TargetAddress.BTL.ucPathId, ItemLong -- 11
+TargetAddress.BTL.ucTargetId, ItemLong -- 12
+TargetAddress.BTL.ucLun, ItemLong -- 13
+}
+#typev ioctl_c987 12 "%0%10!s!   Received IOCTL signature=%11!.8s! for device at (%12!d! %13!d! %14!d!)." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=MiProcessIoctl
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->Signature, ItemString -- 11
+TargetAddress.BTL.ucPathId, ItemLong -- 12
+TargetAddress.BTL.ucTargetId, ItemLong -- 13
+TargetAddress.BTL.ucLun, ItemLong -- 14
+}
+#typev ioctl_c872 10 "%0%10!s! !!Access to Protocol=0x%11!x! Cmd=0x%12!x! CC=0x%13!x! Denied! Required=0x%14!x! Granted=0x%15!x!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=VerifySecurity
+{
+IDSTR2, ItemString -- 10
+ucProtocol, ItemLong -- 11
+ucCommand, ItemLong -- 12
+ulControlCode, ItemLong -- 13
+ulReqSecLev, ItemLong -- 14
+pDevX->IoctlSecurity.ulGrantedSecLev, ItemLong -- 15
+}

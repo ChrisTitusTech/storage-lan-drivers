@@ -1,0 +1,120 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3903ddd0-b421-3268-67c4-406947c5f8c5 2016 // SRC=ConfigTable.c MJ= MN=
+#typev configtable_c694 21 "%0%10!s!   !Failed to get updated config table!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=CompleteVendorGeneralConfigTableUpdate
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c654 20 "%0%10!s!  RAID Write levels enabled: RAID1/10=%11!d! RAID5/50=%12!d! RAID6/60=%13!d!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CompleteVendorGeneralConfigTableUpdate
+{
+IDSTR2, ItemString -- 10
+pSupport->fAioWriteRaid1_10, ItemLong -- 11
+pSupport->fAioWriteRaid5_50, ItemLong -- 12
+pSupport->fAioWriteRaid6_60, ItemLong -- 13
+}
+#typev configtable_c654 19 "%0%10!s!   Allowing AIO Writes to be enabled" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CompleteVendorGeneralConfigTableUpdate
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c866 30 "%0%10!s!    - MaxSGsSupported = 0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->Section.pConfigGenInfo->ulMaxSGsSupported, ItemLong -- 11
+}
+#typev configtable_c864 29 "%0%10!s!    - MaxSgSize = 0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->Section.pConfigGenInfo->ulMaxSgSize, ItemLong -- 11
+}
+#typev configtable_c862 28 "%0%10!s!    - MaxCntrlIo = 0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->Section.pConfigGenInfo->ulMaxCntrlIo, ItemLong -- 11
+}
+#typev configtable_c860 27 "%0%10!s!   GENERAL_INFO sectionId=0, size = %11!d! bytes" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->Section.pConfigGenInfo->ulSectionSize, ItemLong -- 11
+}
+#typev configtable_c856 26 "%0%10!s!   Config Table Size = %11!d! bytes" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->ulConfigTableSize, ItemLong -- 11
+}
+#typev configtable_c853 25 "%0%10!s!     Signature = %11!.8s!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->pConfigTable->Signature, ItemString -- 11
+}
+#typev configtable_c850 24 "%0
+%10!s!   ******SmartPqi Configuration Table = 0x%11!p! ******" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=DisplayConfigTable
+{
+IDSTR2, ItemString -- 10
+pConfigTable->pConfigTable, ItemPtr -- 11
+}
+#typev configtable_c361 15 "%0%10!s!   No config table features available with this firmware." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiChkAndRequestFeaturesEnabled
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c481 14 "%0%10!s!   Before FeaturesEnabled[%11!d!] = 0x%12!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiChkAndRequestFeaturesEnabled
+{
+IDSTR2, ItemString -- 10
+usFeatureSetIndex, ItemLong -- 11
+pManageConfigTable->Section.pFeaturesEnabled[usFeatureSetIndex], ItemLong -- 12
+}
+#typev configtable_c375 16 "%0%10!s!   No features available with this firmware. Assuming not supported." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiChkAndRequestFeaturesEnabled
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c815 23 "%0%10!s!  %11!5d!=%12!17s!: %13!3d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiChkForAllFwErrataFixes
+{
+IDSTR2, ItemString -- 10
+ii, ItemLong -- 11
+pString, ItemString -- 12
+bSupported, ItemLong -- 13
+}
+#typev configtable_c815 22 "%0
+%10!s!  Fixes=%11!17s!: %12!3s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiChkForAllFwErrataFixes
+{
+IDSTR2, ItemString -- 10
+'Description', ItemString -- 11
+'Sup', ItemString -- 12
+}
+#typev configtable_c948 32 "%0%10!s! !!!Controller Configuration Table signature not valid!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiGetConfigTableInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c923 31 "%0%10!s! !!!Controller Configuration too Small!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiGetConfigTableInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev configtable_c259 13 "%0%10!s!  %11!4d!=%12!30s!: %13!3d! %14!3d! %15!3d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPrintAllFeatures
+{
+IDSTR2, ItemString -- 10
+ii, ItemLong -- 11
+pString, ItemString -- 12
+bSupported, ItemLong -- 13
+bRequested, ItemLong -- 14
+bEnabled, ItemLong -- 15
+}
+#typev configtable_c249 12 "%0
+%10!s!  Feat=%11!30s!: %12!3s! %13!3s! %14!3s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPrintAllFeatures
+{
+IDSTR2, ItemString -- 10
+'Description', ItemString -- 11
+'Sup', ItemString -- 12
+'Req', ItemString -- 13
+'Ena', ItemString -- 14
+}
+#typev configtable_c246 11 "%0
+%10!s!   ************* Table %11!s! *************" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPrintAllFeatures
+{
+IDSTR2, ItemString -- 10
+pHeaderString, ItemString -- 11
+}
+#typev configtable_c201 10 "%0%10!s! Enabled Feature %11!d!=%12!s!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagPower FUNC=MiRequestFeatureEnable
+{
+IDSTR2, ItemString -- 10
+eFeature, ItemLong -- 11
+pFeatureString, ItemString -- 12
+}

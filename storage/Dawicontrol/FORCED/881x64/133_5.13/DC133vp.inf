@@ -1,0 +1,38 @@
+; DC-133 Virtual RAID Processor Installationfile (x86/x64)
+; Copyright (C) 2010 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=07/05/2018, 5.13
+CatalogFile=DC133.cat
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[Manufacturer]
+%StrgCompany%=DC133_VP_Section, NTx86, NTamd64
+
+[DC133_VP_Section]
+%StrgDevice%=DC133_VP_Install, SCSI\ProcessorDC-133__Virtual_RAID____
+
+[DC133_VP_Section.NTx86]
+%StrgDevice%=DC133_VP_Install, SCSI\ProcessorDC-133__Virtual_RAID____
+
+[DC133_VP_Section.NTamd64]
+%StrgDevice%=DC133_VP_Install, SCSI\ProcessorDC-133__Virtual_RAID____
+
+[DC133_VP_Install]
+
+[DC133_VP_Install.Services]
+AddService= , 2
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-133 Virtual RAID Processor"

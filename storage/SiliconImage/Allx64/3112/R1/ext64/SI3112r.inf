@@ -1,0 +1,337 @@
+; This INF file installs the Silicon Image Serial ATA Raid driver
+; for the SiI 3x12 controller on systems using the AMD64/EM64T
+; processor.
+;
+; Copyright (C) 2003-2007 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=SI3112r.cat
+DriverVer=02/02/2010, 1.0.17.1
+
+
+[SourceDisksNames.amd64]
+1="Silicon Image SiI 3x12 SATARaid Driver Installation Disk",SI3112r.inf,\ext64,
+
+[SourceDisksFiles.amd64]
+SI3112r.sys	= 1
+SilSupp.dll	= 1
+SiWinAcc.sys	= 1
+
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DllFiles	= 11
+
+[DriverFiles]
+SI3112r.sys,,,0x20
+SiWinAcc.sys,,,0x20
+
+[DllFiles]
+SilSupp.dll,,,0x20
+
+[Manufacturer]
+%SI%=SI_HDC,NTamd64
+%ATI%=ATI_HDC,NTamd64
+
+[SI_HDC.NTamd64]
+%PCI\VEN_1095&DEV_3112.DeviceDesc%=SI_3112_XP, PCI\VEN_1095&DEV_3112&SUBSYS_61121095
+%PCI\VEN_1095&DEV_3112.DeviceDesc%=SI_3112_XP, PCI\VEN_1095&DEV_3112&SUBSYS_0C22105B
+%PCI\VEN_1095&DEV_3112.DeviceDesc%=SI_3112_XP, PCI\VEN_1095&DEV_3112&SUBSYS_0C2A105B
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_0C22105B
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_0C2A105B
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_65121095
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_91451462
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_006C1025
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_010D1025
+%PCI\VEN_1095&DEV_3512.DeviceDesc%=SI_3512_XP, PCI\VEN_1095&DEV_3512&SUBSYS_0010182D
+
+
+; ATI subsystem IDs 
+[ATI_HDC.NTamd64]
+%PCI\VEN_1002&DEV_4379.DeviceDesc%=ATI_4379, PCI\VEN_1002&DEV_4379&SUBSYS_43791002
+%PCI\VEN_1002&DEV_437A.DeviceDesc%=ATI_437A, PCI\VEN_1002&DEV_437A&SUBSYS_437A1002
+%PCI\VEN_1002&DEV_436E.DeviceDesc%=ATI_436E, PCI\VEN_1002&DEV_436E&SUBSYS_436E1002
+
+
+
+
+[ControlFlags]
+ExcludeFromSelect.ntx86=*
+
+;; Driver install sections
+;;
+[SI_3112_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_3112_XP.NTamd64.Services]
+AddService=SI3112r,0x00000002,SI_3112_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,0,FilterService_Install
+
+[SI_3112_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3X12_CoInstall_AddReg
+
+[SI_3112_XP.NTamd64.HW]
+HKR, ScsiPort, NeedsSystemShutdownNotification, 0x00010001, 1
+
+
+[SI_3512_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_3512_XP.NTamd64.Services]
+AddService=SI3112r,0x00000002,SI_3512_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,0,FilterService_Install
+
+[SI_3512_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3X12_CoInstall_AddReg
+
+[SI_3512_XP.NTamd64.HW]
+HKR, ScsiPort, NeedsSystemShutdownNotification, 0x00010001, 1
+
+
+[ATI_436E.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[ATI_436E.NTamd64.Services]
+AddService=SI3112r,0x00000002,ATI_436E_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,,FilterService_Install
+
+[ATI_436E.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3X12_CoInstall_AddReg
+
+
+[ATI_4379.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[ATI_4379.NTamd64.Services]
+AddService=SI3112r,0x00000002,ATI_4379_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,,FilterService_Install
+
+[ATI_4379.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3X12_CoInstall_AddReg
+
+
+[ATI_437A.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[ATI_437A.NTamd64.Services]
+AddService=SI3112r,0x00000002,ATI_437A_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,,FilterService_Install
+
+[ATI_437A.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3X12_CoInstall_AddReg
+
+[SI_3X12_CoInstall_AddReg]
+HKR,,CoInstallers32,0x00010000,"SilSupp.dll, CoInstHandler"
+
+
+[SI_3112_Service_Install]
+DisplayName=%SI3112r.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3112r.sys
+LoadOrderGroup=Scsi miniport
+DelReg=ProblemDeviceList_DelReg
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[SI_3512_Service_Install]
+DisplayName=%SI3512r.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3112r.sys
+LoadOrderGroup=Scsi miniport
+DelReg=ProblemDeviceList_DelReg
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+[ATI_436E_Service_Install]
+DisplayName=%ATI436E.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3112r.sys
+LoadOrderGroup=Scsi miniport
+DelReg=ProblemDeviceList_DelReg
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+[ATI_4379_Service_Install]
+DisplayName=%ATI4379.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3112r.sys
+LoadOrderGroup=Scsi miniport
+DelReg=ProblemDeviceList_DelReg
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+[ATI_437A_Service_Install]
+DisplayName=%ATI437A.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3112r.sys
+LoadOrderGroup=Scsi miniport
+DelReg=ProblemDeviceList_DelReg
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[FilterService_Install]
+DisplayName=SATALink driver accelerator
+ServiceType=1
+StartType=0
+ErrorControl=0
+ServiceBinary=%12%\SiWinAcc.sys
+LoadOrderGroup=Filter
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 64
+;HKR,Parameters\Device,MaximumSGList,0x00010001, 33
+HKR, Parameters\Device, CreateInitiatorLU, 0x00010001, 1
+
+; Set controller's bus type to RAID.
+[BusType_AddReg]
+HKR, Parameters, BusType, 0x00010001, 8
+
+; List of possible obsolete problem device list entries that should be
+; removed prior to the addition of the replacement problem device list
+; entries.
+[ProblemDeviceList_DelReg]
+HKR,ProblemDevices, %ObsProblemDev1Name%
+HKR,ProblemDevices, %ObsProblemDev2Name%
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+HKR,ProblemDevices, %ProblemDev1Name%, 0, %ProblemDev1Value%
+HKR,ProblemDevices, %ProblemDev2Name%, 0, %ProblemDev2Value%
+HKR,ProblemDevices, %ProblemDev3Name%, 0, %ProblemDev3Value%
+HKR,ProblemDevices, %ProblemDev4Name%, 0, %ProblemDev4Value%
+HKR,ProblemDevices, %ProblemDev5Name%, 0, %ProblemDev5Value%
+HKR,ProblemDevices, %ProblemDev6Name%, 0, %ProblemDev6Value%
+HKR,ProblemDevices, %ProblemDev7Name%, 0, %ProblemDev7Value%
+HKR,ProblemDevices, %ProblemDev8Name%, 0, %ProblemDev8Value%
+HKR,ProblemDevices, %ProblemDev9Name%, 0, %ProblemDev9Value%
+HKR,ProblemDevices, %ProblemDev10Name%, 0, %ProblemDev10Value%
+HKR,ProblemDevices, %ProblemDev11Name%, 0, %ProblemDev11Value%
+HKR,ProblemDevices, %ProblemDev12Name%, 0, %ProblemDev12Value%
+
+
+; List of controller subsystem IDs to be supported by the SI3112r.sys driver.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_3112.DeviceDesc%,0x00010001, 0x61121095
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_3512.DeviceDesc%,0x00010001, 0x65121095
+HKR,SupportedSubsystemIDs,%PCI\VEN_1002&DEV_4379.DeviceDesc%,0x00010001, 0x43791002
+HKR,SupportedSubsystemIDs,%PCI\VEN_1002&DEV_437A.DeviceDesc%,0x00010001, 0x437A1002
+HKR,SupportedSubsystemIDs,%PCI\VEN_1002&DEV_436E.DeviceDesc%,0x00010001, 0x436E1002
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3112.DeviceDesc% (Foxconn 0C22)",0x00010001, 0x0C22105B
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3112.DeviceDesc% (Foxconn 0C2A)",0x00010001, 0x0C2A105B
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (Foxconn 0C22)",0x00010001, 0x0C22105B
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (Foxconn 0C2A)",0x00010001, 0x0C2A105B
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (MSI 9145)",0x00010001, 0x91451462
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (ACER 006C)",0x00010001, 0x006C1025
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (ACER 010D)",0x00010001, 0x010D1025
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3512.DeviceDesc% (SITECOM 0010)",0x00010001, 0x0010182D
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+SI="Silicon Image"
+ATI="ATI"
+
+PCI\VEN_1095&DEV_3112.DeviceDesc="Silicon Image SiI 3112 SATARaid Controller"
+SI3112r.SvcDesc="SiI-3112 SATARaid Controller"
+
+PCI\VEN_1095&DEV_3512.DeviceDesc="Silicon Image SiI 3512 SATARaid Controller"
+SI3512r.SvcDesc="SiI-3512 SATARaid Controller"
+
+PCI\VEN_1002&DEV_436E.DeviceDesc="ATI 436E SATARaid Controller"
+ATI436E.SvcDesc="ATI 436E SATARaid Controller"
+
+PCI\VEN_1002&DEV_4379.DeviceDesc="ATI 4379 SATARaid Controller"
+ATI4379.SvcDesc="ATI 4379 SATARaid Controller"
+
+PCI\VEN_1002&DEV_437A.DeviceDesc="ATI 437A SATARaid Controller"
+ATI437A.SvcDesc="ATI 437A SATARaid Controller"
+
+ObsProblemDev1Name="ST330013AS                              108b    "
+ObsProblemDev2Name="ST330013AS                              1.20    "
+
+
+ProblemDev1Name="Maxtor 4D060H3                          DAK05GK0"
+ProblemDev1Value="MaxMode = UDMA-5"
+
+ProblemDev2Name="ST320012AS"
+ProblemDev2Value="Mod15Write"
+
+ProblemDev3Name="ST330013AS"
+ProblemDev3Value="Mod15Write"
+
+ProblemDev4Name="ST340017AS"
+ProblemDev4Value="Mod15Write"
+
+ProblemDev5Name="ST360015AS"
+ProblemDev5Value="Mod15Write"
+
+ProblemDev6Name="ST380023AS"
+ProblemDev6Value="Mod15Write"
+
+ProblemDev7Name="ST3120023AS"
+ProblemDev7Value="Mod15Write"
+
+ProblemDev8Name="ST340014ASL"
+ProblemDev8Value="Mod15Write"
+
+ProblemDev9Name="ST360014ASL"
+ProblemDev9Value="Mod15Write"
+
+ProblemDev10Name="ST380011ASL"
+ProblemDev10Value="Mod15Write"
+
+ProblemDev11Name="ST3120022ASL"
+ProblemDev11Value="Mod15Write"
+
+ProblemDev12Name="ST3160021ASL"
+ProblemDev12Value="Mod15Write"

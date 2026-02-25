@@ -1,0 +1,51 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+f3b08902-79b6-34fb-452b-e5e900842f98 2016 // SRC=Bmic.c MJ= MN=
+#typev bmic_c1077 15 "%0%10!s!   Controller Based Encryption (CBE) is supported on NVMe devices" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=ProcessSenseFeatureIoPage
+{
+IDSTR2, ItemString -- 10
+}
+#typev bmic_c1069 14 "%0%10!s!   Fw supports AIO path Advanced Writes functionality" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=ProcessSenseFeatureIoPage
+{
+IDSTR2, ItemString -- 10
+}
+#typev bmic_c1059 13 "%0%10!s!   Fw supports Legacy AIO path functionality" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=ProcessSenseFeatureIoPage
+{
+IDSTR2, ItemString -- 10
+}
+#typev bmic_c535 11 "%0
+%10!s!   Sending BMIC Flush Cache Command." //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=SendFlushCache
+{
+IDSTR2, ItemString -- 10
+}
+#typev bmic_c843 12 "%0%10!s!   Received Flash ROM 0xF7 via IOCTL. Using %11!u! unchanged heart beat as criteria for controller lockup." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=SendWriteFlashROMImage
+{
+IDSTR2, ItemString -- 10
+MI_CTRL_LOCKUP_CRITERIA_DURING_FLASH, ItemLong -- 11
+}
+#typev bmic_c455 18 "%0   week day = %10!u!
+" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=SendWriteHostWellness
+{
+pTimeFields->Weekday, ItemLong -- 10
+}
+#typev bmic_c455 17 "%0   Current Date/Time = %10!u!.%11!u!.%12!u! %13!02u!:%14!02u!:%15!02u!.%16!03u!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=SendWriteHostWellness
+{
+pTimeFields->Year, ItemLong -- 10
+pTimeFields->Month, ItemLong -- 11
+pTimeFields->Day, ItemLong -- 12
+pTimeFields->Hour, ItemLong -- 13
+pTimeFields->Minute, ItemLong -- 14
+pTimeFields->Second, ItemLong -- 15
+pTimeFields->Milliseconds, ItemLong -- 16
+}
+#typev bmic_c455 16 "%0%10!s!   " //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=SendWriteHostWellness
+{
+IDSTR2, ItemString -- 10
+}
+#typev bmic_c59 10 "%0%10!s!  !Unable to send BMIC %11!s! (0x%12!x!, detail=0x%13!x!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIo FUNC=SubmitBmicRequest
+{
+IDSTR2, ItemString -- 10
+pBmicString, ItemString -- 11
+pBmicCdb->ucCommand, ItemLong -- 12
+pBmicCdb->ulBmicDetail, ItemLong -- 13
+}

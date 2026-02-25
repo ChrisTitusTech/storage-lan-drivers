@@ -1,0 +1,15 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+a553a937-df5e-366b-c235-6b973d18f491 2016 // SRC=ScatterGather.c MJ= MN=
+#typev scattergather_c138 11 "%0
+%10!s!   Calculated maximum Scatter Gathers that the driver is going to use = %11!d!. 
+" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagRegistry FUNC=MiSetMaxScatterGathers
+{
+IDSTR2, ItemString -- 10
+usMaxSGsUsed, ItemLong -- 11
+}
+#typev scattergather_c126 10 "%0%10!s!   Using registry value %11!d! for maximum Scatter Gathers." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagRegistry FUNC=MiSetMaxScatterGathers
+{
+IDSTR2, ItemString -- 10
+pDevX->RegVar.usRegMaxScatterGathers, ItemLong -- 11
+}

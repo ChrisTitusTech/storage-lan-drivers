@@ -1,0 +1,124 @@
+;=============================================================================
+; Copyright (c) 2011. OCZ Technology Group, Inc.
+; 
+; INF for: Windows Server 2003, Windows Vista, 
+;          Windows 7, and Windows Server 2008
+;					(64-bit)
+;============================================================================= 
+ 
+[Version] 
+signature = "$Windows NT$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider% 
+DriverVer=09/14/2011,1.0.0.10360
+CatalogFile=ocz12xx.cat
+
+[DestinationDirs] 
+ocz12xx.Files.amd64_12 = 12 
+
+[SourceDisksNames.amd64]
+0=%Desc_amd640%
+
+[SourceDisksFiles.amd64]
+ocz12xx.sys=0,
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer] 
+%MfgName%=OCZ,ntamd64
+
+; OCZ products with OCZ bios
+[OCZ.ntamd64]
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1240
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1280
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1221
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1222
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1241
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1242
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1243
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1283
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1244
+%ocz12xxDesc%=ocz12xx_Inst,PCI\VEN_1B85&DEV_1284
+
+[ocz12xx_Inst.ntamd64] 
+CopyFiles = ocz12xx.Files.amd64_12
+CopyINF = ocznodrv.inf,
+AddReg = ocz12xx_Registry_Update,
+
+
+;  ******** Change disk time out value from default 10s to 60s ********
+[ocz12xx_Registry_Update]
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x3C
+
+[ocz12xx_Inst.ntamd64.Services] 
+AddService = ocz12xx,0x00000002,ocz12xx_Service_Instamd64, ocz12xx_EventLog_Inst 
+
+[ocz12xx_Service_Instamd64] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_NORMAL% 
+ServiceBinary = %12%\ocz12xx.sys 
+LoadOrderGroup = "SCSI Miniport"
+AddReg = pnpsafe_pci_addreg
+;AddReg = bus_type_raid_addreg
+AddReg = bus_type_scsi_addreg
+
+; ******** Uninstall section ********
+;[DefaultUninstall]
+;DelFiles = ocz12xx.DelFiles
+
+;[DefaultUninstall.Services]
+;DelService = ocz12xx
+
+;[ocz12xx.DelFiles]
+;ocz12xx.sys,,,
+;  **********************************
+
+[ocz12xx.Files.amd64_12] 
+ocz12xx.sys
+
+[ocz12xx_EventLog_Inst] 
+AddReg = ocz12xx_EventLog_Inst.AddReg 
+ 
+[ocz12xx_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ocz12xx.sys" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x000000FF
+HKR, "Parameters\Device", "MaximumSGList", 0x00010001, 0x000000FF
+
+;[bus_type_raid_addreg]
+;HKR, "Parameters", "BusType", 0x00010001, 0x00000008
+
+[bus_type_scsi_addreg]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+Provider    = "OCZ Technology Group, Inc." 
+MfgName     = "OCZ Technology Group, Inc." 
+Desc_amd640 = "OCZ 12xx SCSI Controller Driver" 
+ocz12xxDesc = "OCZ 12xx SCSI Controller" 
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 
+

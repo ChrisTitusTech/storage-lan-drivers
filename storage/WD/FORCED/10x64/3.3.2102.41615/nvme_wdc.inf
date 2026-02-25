@@ -1,0 +1,366 @@
+;
+;*************************************************************
+;Copyright (c) 2013-2019 Western Digital Corporation or its affiliates.                               
+;                                                          
+;All rights reserved.                                            
+;                                                 
+;*************************************************************
+;                                                               
+;Redistribution and use in source and binary forms, with or without modification, are permitted provided
+;that the following conditions are met:
+;Redistributions of source code must retain the above copyright notice, this list of conditions and the
+;following disclaimer.
+;Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+;following disclaimer in the documentation and/or other materials provided with the distribution.
+;                                                          
+;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+;WARRANTIES, INCLUDING, BUT NOT LIMITED TO,THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+;PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+;ANY DIRECT,INDIRECT, INCIDENTAL, SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+;TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+;HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+;NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+;POSSIBILITY OF SUCH DAMAGE.
+;                                                                         
+;*************************************************************
+;
+; Installation inf for the Western Digital NVMe Storport Miniport driver
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%WD%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+DriverVer = 02/16/2021,3.3.2102.41615
+DriverPackageType=PlugAndPlay
+CatalogFile = nvme_wdc.cat
+DriverPackageDisplayName=%DESC%
+
+[Manufacturer]
+%WD% = WD, NTamd64.6.3, NTamd64.10.0
+%SDISK% = SDISK, NTamd64.6.3, NTamd64.10.0
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[DestinationDirs]
+DefaultDestDir   = 12
+
+[nvme_Service_Inst_SN2xx]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN2xx
+
+[nvme_Service_Inst_SD1]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SD1
+
+[nvme_Service_Inst_SN7xx]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN7xx
+
+[nvme_Service_Inst_SN340]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN340
+
+[nvme_Service_Inst_SN630]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN630
+
+[nvme_Service_Inst_SN640]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN640
+
+[nvme_Service_Inst_SN840]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\nvme_wdc.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters_SN840
+
+[nvme_EventLog_Inst]
+AddReg = nvme_EventLog_AddReg
+
+[nvme_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\nvme_wdc.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", %REG_DWORD%, 0x00000001
+HKR, "Parameters", "BusType", %REG_DWORD%, 0x00000011
+
+[product-files]
+nvme_wdc.sys,nvme_wdc.sys,,2
+
+[msi_addreg]
+HKR, Interrupt Management, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported,       %REG_DWORD%,   1
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, %REG_DWORD%,   128
+HKR, Interrupt Management\Affinity Policy, 0x00000010
+HKR, Interrupt Management\Affinity Policy, DevicePolicy, %REG_DWORD%, 5 ;IrqPolicySpreadMessagesAcrossAllProcessors
+HKR, Interrupt Management\Affinity Policy, DevicePriority, %REG_DWORD%, 3
+HKR, Interrupt Management\Affinity Policy, GroupPolicy, %REG_DWORD%, 1
+
+[Parameters_SN2xx]
+;*****WD UltraStar SN200 and SN260 parms
+HKR, Parameters\Device, SN2xx\Namespaces,         %REG_DWORD%, 0x00000080 ; max number of namespaces supported
+HKR, Parameters\Device, SN2xx\MaxTXSize,          %REG_DWORD%, 0x00080000 ; max transfer size (512k)
+HKR, Parameters\Device, SN2xx\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN2xx\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN2xx\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SD1]
+;*****SN620 SSD parms
+HKR, Parameters\Device, SD1\Namespaces,         %REG_DWORD%, 0x00000001 ; max number of namespaces supported
+HKR, Parameters\Device, SD1\MaxTXSize,          %REG_DWORD%, 0x00020000 ; max transfer size (128K)
+HKR, Parameters\Device, SD1\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SD1\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SD1\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SN7xx]
+;*****SN720 and SN730 SSD parms
+HKR, Parameters\Device, SN7xx\Namespaces,         %REG_DWORD%, 0x00000001 ; max number of namespaces supported
+HKR, Parameters\Device, SN7xx\MaxTXSize,          %REG_DWORD%, 0x00020000 ; max transfer size (128K)
+HKR, Parameters\Device, SN7xx\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN7xx\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN7xx\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SN340]
+;*****SN340 SSD parms
+HKR, Parameters\Device, SN340\Namespaces,         %REG_DWORD%, 0x00000001 ; max number of namespaces supported
+HKR, Parameters\Device, SN340\MaxTXSize,          %REG_DWORD%, 0x00080000 ; max transfer size (512k)
+HKR, Parameters\Device, SN340\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN340\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN340\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SN630]
+;*****WD UltraStar SN630 parms
+HKR, Parameters\Device, SN630\Namespaces,         %REG_DWORD%, 0x00000001 ; max number of namespaces supported
+HKR, Parameters\Device, SN630\MaxTXSize,          %REG_DWORD%, 0x00080000 ; max transfer size (512k)
+HKR, Parameters\Device, SN630\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN630\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN630\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SN640]
+;*****WD UltraStar SN640 parms
+HKR, Parameters\Device, SN640\Namespaces,         %REG_DWORD%, 0x00000080 ; max number of namespaces supported
+HKR, Parameters\Device, SN640\MaxTXSize,          %REG_DWORD%, 0x00080000 ; max transfer size (512K)
+HKR, Parameters\Device, SN640\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN640\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN640\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+[Parameters_SN840]
+;*****WD UltraStar SN840 parms
+HKR, Parameters\Device, SN840\Namespaces,         %REG_DWORD%, 0x00000080 ; max number of namespaces supported
+HKR, Parameters\Device, SN840\MaxTXSize,          %REG_DWORD%, 0x00080000 ; max transfer size (512K)
+HKR, Parameters\Device, SN840\EnablePRACT,        %REG_DWORD%, 0x00000001 ; Enable use of PRACT if required
+HKR, Parameters\Device, SN840\PRCHK,              %REG_DWORD%, 0x00000004 ; Value to use for PRCHK if required
+HKR, Parameters\Device, SN840\NumAE,              %REG_DWORD%, 0x00000004 ; Number of Async Events
+
+;******************************************************************************
+;*
+;* 64-BIT X86 ARCHITECTURE
+;*
+;* This section specifies the 64-bit architecture specific INF file entries
+;* required to install a driver as a 64-bit compatible driver.
+;*
+;******************************************************************************
+
+[SourceDisksFiles.amd64]
+nvme_wdc.sys = 1,,,
+
+; OS specific directives
+; Windows Server 2008 R2 ***********************************************
+
+; Windows Server 2012 **************************************************
+
+; Windows Server 2012 R2************************************************
+
+[WD.NTamd64.6.3]
+; WD Ultrastar SN2XX
+%WDNvmeG2.DeviceDesc% = nvme_inst_SN2xx, PCI\VEN_1C58&DEV_0023&CC_010802
+
+; SN720
+%SDISKNvmeG2.DeviceDesc% = nvme_inst_SN7xx, PCI\VEN_15B7&DEV_5002&CC_010802
+
+; SN730
+%SDISKNvmeG4.DeviceDesc% = nvme_inst_SN7xx, PCI\VEN_15B7&DEV_5006&CC_010802
+
+; SN340
+%SDISKNvmeG5.DeviceDesc% = nvme_inst_SN340, PCI\VEN_15B7&DEV_500D&CC_010802
+
+; SN620
+[SDISK.NTamd64.6.3]
+%SDISKNvmeG1.DeviceDesc% = nvme_inst_sd1, PCI\VEN_15B7&DEV_2001&CC_010802
+; WD Ultrastar SN630 (U.2)
+%WDNvmeSB2200.DeviceDesc% = nvme_inst_SN630, PCI\VEN_1B96&DEV_2200&CC_010802
+
+; WD Ultrastar SN630 (M.2)
+%WDNvmeSB2201.DeviceDesc% = nvme_inst_SN630, PCI\VEN_1B96&DEV_2201&CC_010802
+
+; WD Ultrastar SN640 (U.2)
+%WDNvmeSB2400.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2400&CC_010802
+
+; WD Ultrastar SN640 (M.2)
+%WDNvmeSB2401.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2401&CC_010802
+
+; WD Ultrastar SN640 (E1.L)
+%WDNvmeSB2402.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2402&CC_010802
+
+; WD Ultrastar SN640 (E1.S)
+%WDNvmeSB2404.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2404&CC_010802
+
+; WD Ultrastar SN840 (U.2)
+%WDNvmeSB2500.DeviceDesc% = nvme_inst_SN840, PCI\VEN_1B96&DEV_2500&CC_010802
+
+; Windows Server 2016 and 2019 *****************************************
+
+[WD.NTamd64.10.0]
+; WD Ultrastar SN2xx
+%WDNvmeG2.DeviceDesc% = nvme_inst_SN2xx, PCI\VEN_1C58&DEV_0023&CC_010802
+
+; SN720
+%SDISKNvmeG2.DeviceDesc% = nvme_inst_SN7xx, PCI\VEN_15B7&DEV_5002&CC_010802
+
+; SN730
+%SDISKNvmeG4.DeviceDesc% = nvme_inst_SN7xx, PCI\VEN_15B7&DEV_5006&CC_010802
+
+; SN340
+%SDISKNvmeG5.DeviceDesc% = nvme_inst_SN340, PCI\VEN_15B7&DEV_500D&CC_010802
+
+[SDISK.NTamd64.10.0]
+; WD Ultrastar SN620
+%SDISKNvmeG1.DeviceDesc% = nvme_inst_sd1, PCI\VEN_15B7&DEV_2001&CC_010802
+
+; WD Ultrastar SN630 (U.2)
+%WDNvmeSB2200.DeviceDesc% = nvme_inst_SN630, PCI\VEN_1B96&DEV_2200&CC_010802
+
+; WD Ultrastar SN630 (M.2)
+%WDNvmeSB2201.DeviceDesc% = nvme_inst_SN630, PCI\VEN_1B96&DEV_2201&CC_010802
+
+; WD Ultrastar SN640 (U.2)
+%WDNvmeSB2400.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2400&CC_010802
+
+; WD Ultrastar  SN640 (M.2)
+%WDNvmeSB2401.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2401&CC_010802
+
+; WD Ultrastar SN640 (E1.L)
+%WDNvmeSB2402.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2402&CC_010802
+
+; WD Ultrastar SN640 (E1.S)
+%WDNvmeSB2404.DeviceDesc% = nvme_inst_SN640, PCI\VEN_1B96&DEV_2404&CC_010802
+
+; WD Ultrastar SN840 (U.2)
+%WDNvmeSB2500.DeviceDesc% = nvme_inst_SN840, PCI\VEN_1B96&DEV_2500&CC_010802
+
+; Copyfiles section*******************************************************
+[nvme_inst_SN2xx.NTamd64]
+CopyFiles = product-files
+[nvme_inst_sd1.NTamd64]
+CopyFiles = product-files
+[nvme_inst_SN7xx.NTamd64]
+CopyFiles = product-files
+[nvme_inst_SN340.NTamd64]
+CopyFiles = product-files
+[nvme_inst_SN630.NTamd64]
+CopyFiles = product-files
+[nvme_inst_SN640.NTamd64]
+CopyFiles = product-files
+[nvme_inst_SN840.NTamd64]
+CopyFiles = product-files
+
+; HW Section**************************************************************
+[nvme_inst_SN2xx.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_sd1.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_SN7xx.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_SN340.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_SN630.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_SN640.NTamd64.HW]
+AddReg = msi_addreg
+[nvme_inst_SN840.NTamd64.HW]
+AddReg = msi_addreg
+
+; Services Section********************************************************
+[nvme_inst_SN2xx.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN2xx, nvme_EventLog_Inst
+[nvme_inst_sd1.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_sd1, nvme_EventLog_Inst
+[nvme_inst_SN7xx.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN7xx, nvme_EventLog_Inst
+[nvme_inst_SN340.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN340, nvme_EventLog_Inst
+[nvme_inst_SN630.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN630, nvme_EventLog_Inst
+[nvme_inst_SN640.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN640, nvme_EventLog_Inst
+[nvme_inst_SN840.NTamd64.Services]
+AddService = nvme_wdc, 0x00000002 , nvme_Service_Inst_SN840, nvme_EventLog_Inst
+
+[Strings]
+;
+; Localizable Strings
+;
+diskId1 = "WD NVMe Device Driver Installation Disk"
+WDNvmeG2.DeviceDesc = "WD Ultrastar SN2xx PCIe SSD Controller"
+WDNvmeSB2200.DeviceDesc = "WD Ultrastar SN630 (U.2)"
+WDNvmeSB2201.DeviceDesc = "WD Ultrastar SN630 (M.2)"
+WDNvmeSB2500.DeviceDesc = "WD Ultrastar SN840 (U.2)"
+WDNvmeSB2400.DeviceDesc = "WD Ultrastar SN640 (U.2)"
+WDNvmeSB2401.DeviceDesc = "WD Ultrastar SN640 (M.2)"
+WDNvmeSB2402.DeviceDesc = "WD Ultrastar SN640 (E1.L)"
+WDNvmeSB2404.DeviceDesc = "WD Ultrastar SN640 (E1.S)"
+SDISKNvmeG2.DeviceDesc = "Western Digital PC SN720"
+SDISKNvmeG4.DeviceDesc = "Western Digital PC SN730"
+SDISKNvmeG5.DeviceDesc = "WD Ultrastar DC SN340"
+
+WD = "Western Digital Corporation or its affiliates."
+SDISK = "Western Digital Corporation or its affiliates."
+SDISKNvmeG1.DeviceDesc = "WD Ultrastar DC SN620 PCIe SSD Controller"
+DESC = "WD NVMe Storport Miniport Device Driver"
+
+;
+; Non-Localizable Strings
+;
+REG_EXPAND_SZ  = 0x00020000
+REG_DWORD      = 0x00010001
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1

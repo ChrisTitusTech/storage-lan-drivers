@@ -1,0 +1,77 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+1934bf13-9f8b-3968-c9b2-a7c3c9acec54 2016 // SRC=Buildio.c MJ= MN=
+#typev buildio_c1408 28 "%0%10!s! !****Received BuildIO SRB to reset Device at (%11!d!, %12!d!, %13!d!) ****!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=BuildIoNonScsiRequest
+{
+IDSTR2, ItemString -- 10
+ucPath, ItemLong -- 11
+ucTarget, ItemLong -- 12
+ucLun, ItemLong -- 13
+}
+#typev buildio_c1402 27 "%0%10!s! !****Received BuildIO SRB to reset bus %11!d! ****!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=BuildIoNonScsiRequest
+{
+IDSTR2, ItemString -- 10
+pAddrType->BTL.ucPathId, ItemLong -- 11
+}
+#typev buildio_c1378 26 "%0%10!s!   Received BuildIO SRB to Shutdown.  pSrb=%11!#p!. (%12!d!,%13!d!,%14!d!)" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagShutdown FUNC=BuildIoNonScsiRequest
+{
+IDSTR2, ItemString -- 10
+pSrb, ItemPtr -- 11
+ucPath, ItemLong -- 12
+ucTarget, ItemLong -- 13
+ucLun, ItemLong -- 14
+}
+#typev buildio_c1332 25 "%0%10!s!   BuildIO SRB (%11!s!) func=0x%12!x!=%13!s!. pSrb=%14!#p! (%15!u!,%16!u!,%17!u!)" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIo FUNC=BuildIoNonScsiRequest
+{
+IDSTR2, ItemString -- 10
+fExtendedSrbType ? 'extended' : 'legacy', ItemString -- 11
+ulSrbFunction, ItemLong -- 12
+pSrbString, ItemString -- 13
+pSrb, ItemPtr -- 14
+ucPath, ItemLong -- 15
+ucTarget, ItemLong -- 16
+ucLun, ItemLong -- 17
+}
+#typev buildio_c381 10 "%0%10!s!  !Dirty Shutdown. One or more Driver shutdown tasks failed!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagShutdown FUNC=MiDriverCleanup
+{
+IDSTR2, ItemString -- 10
+}
+#typev buildio_c1254 24 "%0%10!s!   !Unsupported SRB (%11!s!) func=0x%12!x!=%13!s!.  pSrb=%14!#p! (%15!u!,%16!u!,%17!u!)" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIo FUNC=MiHandleUnsupportedSrb
+{
+IDSTR2, ItemString -- 10
+fExtendedSrbType ? 'extended' : 'legacy', ItemString -- 11
+ulSrbFunction, ItemLong -- 12
+pSrbString, ItemString -- 13
+pMiSrb, ItemPtr -- 14
+ucPath, ItemLong -- 15
+ucTarget, ItemLong -- 16
+ucLun, ItemLong -- 17
+}
+#typev buildio_c795 13 "%0%10!s!   Driver will not do PQI reset for this PnP callback" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiProcessPnpSrb
+{
+IDSTR, ItemString -- 10
+}
+#typev buildio_c705 12 "%0%10!s!   Received a PnP SRB for the controller." //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPnpSrb
+{
+IDSTR, ItemString -- 10
+}
+#typev buildio_c673 11 "%0%10!s!   Received a Extended PnP SRB for the controller." //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPnpSrb
+{
+IDSTR, ItemString -- 10
+}
+#typev buildio_c1121 23 "%0%10!s!   ******************** RETURNING FROM SLEEP S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR2, ItemString -- 10
+}
+#typev buildio_c1112 22 "%0%10!s!   ******************** RETURNING FROM SLEEP S1 (STANDBY), S3 or S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR2, ItemString -- 10
+}
+#typev buildio_c1070 19 "%0%10!s!   ******************** ENTER SLEEP S3 or S4 (HIBERNATE) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR2, ItemString -- 10
+}
+#typev buildio_c1064 18 "%0%10!s!   ******************** ENTER SLEEP S1 (STANDBY) MODE ********************" //   LEVEL=2 FLAGS=DbgFlagPower FUNC=MiProcessPowerSRB
+{
+IDSTR2, ItemString -- 10
+}

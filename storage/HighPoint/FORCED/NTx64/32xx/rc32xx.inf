@@ -1,0 +1,99 @@
+; 
+; rc32xx.INF
+; 
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%HIGHPOINT%
+CatalogFile= rc32xx.CAT
+DriverVer=03/15/2012, 1.1.12.0315
+
+[DestinationDirs]
+DefaultDestDir  = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+; ExcludeFromSelect = *
+
+[Manufacturer]
+%HIGHPOINT%=HighPoint, NTamd64
+
+[HighPoint.NTamd64]
+%rc3240.DeviceDesc%=rc32xxPCI,PCI\VEN_1103&DEV_3240
+%rc3244.DeviceDesc%=rc32xxPCI,PCI\VEN_1103&DEV_3244
+%rc3280.DeviceDesc%=rc32xxPCI,PCI\VEN_1103&DEV_3280
+%rc3288.DeviceDesc%=rc32xxPCI,PCI\VEN_1103&DEV_3288
+%SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc% = NODRV, SCSI\ProcessorHPT_____RCM_DEVICE______
+
+[NODRV]
+AddReg=NODRV_AddReg
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[rc32xxPCI.NTamd64]
+CopyFiles=@rc32xx.sys
+Reboot
+
+[rc32xxPCI.NTamd64.HW]
+AddReg = rc32xxPCI_AddReg_HW
+
+[rc32xxPCI.NTamd64.Services]
+AddService = rc32xx, %SPSVCINST_ASSOCSERVICE%, rc32xxPCI_Service_Inst, Miniport_EventLog_Inst
+
+[rc32xxPCI_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\rc32xx.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[Hptpro_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+LoadOrderGroup = Filter
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x3c
+
+[rc32xxPCI_AddReg_HW]
+HKR, "ScsiPort", "NeedsSystemShutdownNotification", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,,
+
+[SourceDisksFiles]
+rc32xx.sys = 1,,
+
+
+[NODRV_AddReg]
+;Dummy AddReg section 
+
+[strings]
+HighPoint="HighPoint"
+rc3240.DeviceDesc="RocketCache 3240X8 HBA Controller"
+rc3244.DeviceDesc="RocketCache 3244X8 HBA Controller"
+rc3280.DeviceDesc="RocketCache 3280 HBA Controller"
+rc3288.DeviceDesc="RocketCache 3288 HBA Controller"
+SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc = "HighPoint RCM Device"
+InstallDisk = "RocketCache 32XX HBA Controller Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

@@ -1,0 +1,212 @@
+;----------------------------------------------------------------
+;
+; AdpU160m.INF -- This is a preliminary INF that installs support
+;                 for the Adaptec PCI SCSI devices under Windows7
+;
+; Copyright (c) 2010 Adaptec Incorporated
+;
+;----------------------------------------------------------------
+
+;----------------------------------------------------------------
+;
+; [Version]
+;
+; Class and ClassGUID are defined in devguid.h
+;
+;----------------------------------------------------------------
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_PROVIDER%
+CatalogFile=adpu160m.cat
+DriverVer=02/22/2010,7.5.645.100
+
+
+;----------------------------------------------------------------
+;
+; [SourceDisksNames]
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+;----------------------------------------------------------------
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,
+
+;----------------------------------------------------------------
+;
+; [SourceDisksFiles.x86]
+;
+; filename_on_source = diskid[,[subdir][,size]]
+;
+;----------------------------------------------------------------
+[SourceDisksFiles]
+adpu160m.sys= 1,,,,,,,,
+
+;----------------------------------------------------------------
+;
+; [Manufactuerer]
+;
+; manufacturer-name 
+; %strkey%=models-section-name
+; [%strkey%=models-section-name] ...
+;
+;----------------------------------------------------------------
+; Table of Contents
+[Manufacturer]
+%ADP%= ADAPTEC,NTx86,NTamd64
+
+;----------------------------------------------------------------
+;
+; [ControlFlags]
+;
+;----------------------------------------------------------------
+[ControlFlags]
+;
+; Exclude the following PnP devices from Select Device list.
+;
+ExcludeFromSelect = *
+
+;----------------------------------------------------------------
+;
+; Models
+;
+; device-description=install-section-name,hw-id[,compatible-id...]
+;
+; "*" indicates that device is supported by more than one
+;     enumerator.
+;
+;----------------------------------------------------------------
+[ADAPTEC]
+
+[ADAPTEC.NTx86]
+%PCI\VEN_9005&DEV_00CF.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00CF
+%PCI\VEN_9005&DEV_00C0.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0
+%PCI\VEN_9005&DEV_008F.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_008F
+%PCI\VEN_9005&DEV_0080.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080
+%PCI\VEN_9005&DEV_0081.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0081
+%PCI\VEN_9005&DEV_00CF&CC_0100.DeviceDesc%    = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&CC_0100
+%PCI\VEN_9005&DEV_00CF&CC_010000.DeviceDesc%  = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&CC_010000
+%PCI\VEN_9005&DEV_00CF&SUBSYS_019D1014.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&SUBSYS_019D1014
+%PCI\VEN_9005&DEV_00C0&SUBSYS_F6209005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0&SUBSYS_F6209005
+%PCI\VEN_9005&DEV_00C0&SUBSYS_F6200E11.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0&SUBSYS_F6200E11
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2A09005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2A09005
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2A00E11.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2A00E11
+%PCI\VEN_9005&DEV_0080&SUBSYS_62A09005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_62A09005
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2209005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2209005
+%PCI\VEN_9005&DEV_0081&SUBSYS_62A19005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0081&SUBSYS_62A19005
+%PCI\VEN_9005&DEV_0082&SUBSYS_02109005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0082&SUBSYS_02109005
+
+[ADAPTEC.NTamd64]
+%PCI\VEN_9005&DEV_00CF.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00CF
+%PCI\VEN_9005&DEV_00C0.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0
+%PCI\VEN_9005&DEV_008F.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_008F
+%PCI\VEN_9005&DEV_0080.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080
+%PCI\VEN_9005&DEV_0081.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0081
+%PCI\VEN_9005&DEV_00CF&CC_0100.DeviceDesc%    = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&CC_0100
+%PCI\VEN_9005&DEV_00CF&CC_010000.DeviceDesc%  = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&CC_010000
+%PCI\VEN_9005&DEV_00CF&SUBSYS_019D1014.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00CF&SUBSYS_019D1014
+%PCI\VEN_9005&DEV_00C0&SUBSYS_F6209005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0&SUBSYS_F6209005
+%PCI\VEN_9005&DEV_00C0&SUBSYS_F6200E11.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_00C0&SUBSYS_F6200E11
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2A09005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2A09005
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2A00E11.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2A00E11
+%PCI\VEN_9005&DEV_0080&SUBSYS_62A09005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_62A09005
+%PCI\VEN_9005&DEV_0080&SUBSYS_E2209005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0080&SUBSYS_E2209005
+%PCI\VEN_9005&DEV_0081&SUBSYS_62A19005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0081&SUBSYS_62A19005
+%PCI\VEN_9005&DEV_0082&SUBSYS_02109005.DeviceDesc% = adpu160m_Inst, PCI\VEN_9005&DEV_0082&SUBSYS_02109005
+;----------------------------------------------------------------
+;
+; Install
+;
+;----------------------------------------------------------------
+[adpu160m_Inst.NT]
+CopyFiles=@adpu160m.sys
+
+;----------------------------------------------------------------
+;
+; Services
+;
+; Flag = 0x1 (SPSVCINST_TAGTOFRONT)
+;        Make sure that device loads at
+;        the front of its group
+;
+;----------------------------------------------------------------
+[adpu160m_Inst.NT.Services]
+AddService = adpu160m,0x2,adpu160m_Service_Inst,Miniport_EventLog_Inst
+
+[adpu160m_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\adpu160m.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;[num_of_requests]
+HKLM,"SYSTEM\CurrentControlSet\Services\adpu160m\Parameters\Device","NumberOfRequests",0x10001,255
+
+;----------------------------------------------------------------
+;
+; Event Log Install
+;
+;The NT EventLog entries are the same for all SCSI miniports.
+;
+;----------------------------------------------------------------
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+;----------------------------------------------------------------
+;
+; [DestinationDirs]
+;
+; file-list-section=dirid[,subdir]] ... 
+;
+;----------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 12             ; DIRID_DRIVERS (this is IOSubsys on
+                                ; Win95, and System32\Drivers on NT)
+
+;----------------------------------------------------------------
+;
+; [Strings]
+;
+;----------------------------------------------------------------
+[Strings]
+INF_PROVIDER="Adaptec"
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Ultra160 Windows FMS4.0 SP5"
+
+;**************************
+; Adaptec Ultra160 SCSI Controllers
+;
+;
+PCI\VEN_9005&DEV_00C0.DeviceDesc =                 "Adaptec SCSI Card 39160 - Ultra160 SCSI (Generic)"
+;VM - PCI\VEN_9005&DEV_00CF.DeviceDesc =           "Adaptec AIC-7899 Ultra160 PCI SCSI Card"
+;VM - PCI\VEN_9005&DEV_008F.DeviceDesc =           "Adaptec AIC-7892 Ultra160 PCI SCSI Card"
+PCI\VEN_9005&DEV_0080.DeviceDesc =                 "Adaptec SCSI Card 29160 - Ultra160 SCSI (Generic)"
+PCI\VEN_9005&DEV_0081.DeviceDesc =                 "Adaptec SCSI Card 19160 - Ultra160 SCSI (Generic)"
+PCI\VEN_9005&DEV_00C0&SUBSYS_F6209005.DeviceDesc = "Adaptec SCSI Card 39160 - Ultra160 SCSI"
+PCI\VEN_9005&DEV_00C0&SUBSYS_F6200E11.DeviceDesc = "Compaq 64-bit/66MHz Dual Channel Wide Ultra3 SCSI Adapter"
+PCI\VEN_9005&DEV_0080&SUBSYS_E2A09005.DeviceDesc = "Adaptec SCSI Card 29160 - Ultra160 SCSI"
+PCI\VEN_9005&DEV_0080&SUBSYS_E2A00E11.DeviceDesc = "Compaq 64-bit/66MHz Wide Ultra3 SCSI Adapter"
+PCI\VEN_9005&DEV_0080&SUBSYS_62A09005.DeviceDesc = "Adaptec SCSI Card 29160N - Ultra160 SCSI"
+PCI\VEN_9005&DEV_0080&SUBSYS_E2209005.DeviceDesc = "Adaptec SCSI Card 29160LP - Ultra160 SCSI"
+PCI\VEN_9005&DEV_0081&SUBSYS_62A19005.DeviceDesc = "Adaptec SCSI Card 19160 - Ultra160 SCSI"
+PCI\VEN_9005&DEV_0082&SUBSYS_02109005.DeviceDesc = "Adaptec 2915/2930LP PCI SCSI Controller"
+
+;**************************
+; Adaptec Ultra160 ASIC's
+;
+PCI\VEN_9005&DEV_008F.DeviceDesc = "Adaptec AIC-7892 - Ultra160 SCSI"
+PCI\VEN_9005&DEV_00CF.DeviceDesc = "Adaptec AIC-7899 Ultra160 PCI SCSI Card"
+PCI\VEN_9005&DEV_00CF&CC_0100.DeviceDesc = "Adaptec AIC-7899 Ultra160 PCI SCSI Card"
+PCI\VEN_9005&DEV_00CF&CC_010000.DeviceDesc = "Adaptec AIC-7899 Ultra160 PCI SCSI Card"
+PCI\VEN_9005&DEV_00CF&SUBSYS_019D1014.DeviceDesc = "Adaptec AIC-7899 Ultra160 PCI SCSI Card"

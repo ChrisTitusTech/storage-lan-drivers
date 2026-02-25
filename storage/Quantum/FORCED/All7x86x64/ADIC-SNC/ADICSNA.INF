@@ -1,0 +1,271 @@
+; Comprehensive Storage Network Controller Installer for Windows 2000/XP/2003/Vista/2008
+; Copyright © 2009 Quantum Corporation
+; Version:  7.5.2.0
+;           06/20/2009
+
+[Version]
+Signature="$Windows NT$"        ;---- Valid for all NT-based operating systems
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ADIC%
+DriverVer=06/20/2009,7.5.2.0
+CatalogFile=ADICSNA.cat
+
+[Manufacturer]
+%PATHLIGHT%=PATHLIGHT, ntia64, ntamd64
+%DELL%=DELL, ntia64, ntamd64
+%ADIC%=ADIC, ntia64, ntamd64
+%IBM%=IBM, ntia64, ntamd64
+%SEIMENS%=SEIMENS, ntia64, ntamd64
+%QUANTUM%=QUANTUM, ntia64, ntamd64
+
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+; 
+[PATHLIGHT]
+
+%SCSI\ArrayPathlight_Gateway.DeviceDesc% = NODRV,SCSI\ArrayPATHLGHTSAN_Gateway_____
+%SCSI\ArrayPathlight_Router.DeviceDesc%  = NODRV,SCSI\ArrayPATHLGHTSAN_Router______
+
+[DELL]
+
+%SCSI\ArrayDell_PV-136T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-FC______
+%SCSI\ArrayDell_PV-136T-SNC2.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-SNC2____
+%SCSI\ArrayDell_PV-132T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-132T-FC______
+%SCSI\ArrayDELL_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayDELL____SNC_5100________
+%SCSI\ArrayDELL_Pathlight5000.DeviceDesc% = NODRV,SCSI\ArrayDELL____Pathlight_5000__
+
+[ADIC]
+
+%SCSI\ProcessorADIC_450x.DeviceDesc% = NODRV,  SCSI\ProcessorADIC____SNC_450x________
+%SCSI\ArrayADIC_ScalarSNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_SNC______
+%SCSI\ArrayADIC_Pathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_5000__
+%SCSI\ArrayADIC_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_5100________
+%SCSI\ArrayADIC_SNC_4000.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_4000________
+%SCSI\ArrayADIC_PathlightVX.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_VX____
+%SCSI\ArrayADIC_Scalar100.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_100______
+%SCSI\ArrayADIC_Scalar1000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_1000_____
+%SCSI\ArrayADIC_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i2000____
+%SCSI\ArrayADIC_Scalar10k.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_10K______
+%SCSI\ArrayADIC_FCIOB.DeviceDesc% = NODRV,SCSI\ArrayADIC____FC_IOB__________
+%SCSI\ArrayADIC_SNC6101.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6101________
+%SCSI\ArrayADIC_SNC6404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6404________
+%SCSI\ArrayADIC_SNC6104.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6104________
+%SCSI\ArrayADIC_SNC7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_7404________
+%SCSI\ArrayADIC_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____FCB7404_________
+%SCSI\ArrayADIC_SNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_____________
+%SCSI\ArrayADIC_Scalarv200.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_v200_____
+%SCSI\ArrayADIC_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i500_____
+
+[QUANTUM]
+
+%SCSI\ArrayQUANTUM_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i500_____
+%SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i2000____
+%SCSI\ArrayQUANTUM_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_FCB7404_________
+
+[IBM]
+
+%SCSI\ArrayIBM_Gateway_Module.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Gateway_Module__
+%SCSI\ArrayIBM_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayIBM_____SNC_5100________
+%SCSI\ArrayPathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Pathlight_5000__
+
+[SEIMENS]
+
+%SCSI\ArraySEIMENS_FCR2.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_FCR2____________
+%SCSI\ArraySEIMENS_SNC_5100.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_SNC_5100________
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+; 
+[PATHLIGHT.NTamd64]
+
+%SCSI\ArrayPathlight_Gateway.DeviceDesc% = NODRV,SCSI\ArrayPATHLGHTSAN_Gateway_____
+%SCSI\ArrayPathlight_Router.DeviceDesc%  = NODRV,SCSI\ArrayPATHLGHTSAN_Router______
+
+[DELL.NTamd64]
+
+%SCSI\ArrayDell_PV-136T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-FC______
+%SCSI\ArrayDell_PV-136T-SNC2.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-SNC2____
+%SCSI\ArrayDell_PV-132T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-132T-FC______
+%SCSI\ArrayDELL_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayDELL____SNC_5100________
+%SCSI\ArrayDELL_Pathlight5000.DeviceDesc% = NODRV,SCSI\ArrayDELL____Pathlight_5000__
+
+[ADIC.NTamd64]
+
+%SCSI\ProcessorADIC_450x.DeviceDesc% = NODRV,  SCSI\ProcessorADIC____SNC_450x________
+%SCSI\ArrayADIC_ScalarSNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_SNC______
+%SCSI\ArrayADIC_Pathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_5000__
+%SCSI\ArrayADIC_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_5100________
+%SCSI\ArrayADIC_SNC_4000.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_4000________
+%SCSI\ArrayADIC_PathlightVX.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_VX____
+%SCSI\ArrayADIC_Scalar100.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_100______
+%SCSI\ArrayADIC_Scalar1000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_1000_____
+%SCSI\ArrayADIC_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i2000____
+%SCSI\ArrayADIC_Scalar10k.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_10K______
+%SCSI\ArrayADIC_FCIOB.DeviceDesc% = NODRV,SCSI\ArrayADIC____FC_IOB__________
+%SCSI\ArrayADIC_SNC6101.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6101________
+%SCSI\ArrayADIC_SNC6404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6404________
+%SCSI\ArrayADIC_SNC6104.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6104________
+%SCSI\ArrayADIC_SNC7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_7404________
+%SCSI\ArrayADIC_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____FCB7404_________
+%SCSI\ArrayADIC_SNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_____________
+%SCSI\ArrayADIC_Scalarv200.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_v200_____
+%SCSI\ArrayADIC_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i500_____
+
+[QUANTUM.NTamd64]
+
+%SCSI\ArrayQUANTUM_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i500_____
+%SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i2000____
+%SCSI\ArrayQUANTUM_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_FCB7404_________
+
+[IBM.NTamd64]
+
+%SCSI\ArrayIBM_Gateway_Module.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Gateway_Module__
+%SCSI\ArrayIBM_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayIBM_____SNC_5100________
+%SCSI\ArrayPathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Pathlight_5000__
+
+[SEIMENS.NTamd64]
+
+%SCSI\ArraySEIMENS_FCR2.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_FCR2____________
+%SCSI\ArraySEIMENS_SNC_5100.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_SNC_5100________
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+; 
+[PATHLIGHT.NTia64]
+
+%SCSI\ArrayPathlight_Gateway.DeviceDesc% = NODRV,SCSI\ArrayPATHLGHTSAN_Gateway_____
+%SCSI\ArrayPathlight_Router.DeviceDesc%  = NODRV,SCSI\ArrayPATHLGHTSAN_Router______
+
+[DELL.NTia64]
+
+%SCSI\ArrayDell_PV-136T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-FC______
+%SCSI\ArrayDell_PV-136T-SNC2.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-136T-SNC2____
+%SCSI\ArrayDell_PV-132T-FC.DeviceDesc% = NODRV,SCSI\ArrayDELL____PV-132T-FC______
+%SCSI\ArrayDELL_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayDELL____SNC_5100________
+%SCSI\ArrayDELL_Pathlight5000.DeviceDesc% = NODRV,SCSI\ArrayDELL____Pathlight_5000__
+
+[ADIC.NTia64]
+
+%SCSI\ProcessorADIC_450x.DeviceDesc% = NODRV,  SCSI\ProcessorADIC____SNC_450x________
+%SCSI\ArrayADIC_ScalarSNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_SNC______
+%SCSI\ArrayADIC_Pathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_5000__
+%SCSI\ArrayADIC_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_5100________
+%SCSI\ArrayADIC_SNC_4000.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_4000________
+%SCSI\ArrayADIC_PathlightVX.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_VX____
+%SCSI\ArrayADIC_Scalar100.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_100______
+%SCSI\ArrayADIC_Scalar1000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_1000_____
+%SCSI\ArrayADIC_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i2000____
+%SCSI\ArrayADIC_Scalar10k.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_10K______
+%SCSI\ArrayADIC_FCIOB.DeviceDesc% = NODRV,SCSI\ArrayADIC____FC_IOB__________
+%SCSI\ArrayADIC_SNC6101.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6101________
+%SCSI\ArrayADIC_SNC6404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6404________
+%SCSI\ArrayADIC_SNC6104.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6104________
+%SCSI\ArrayADIC_SNC7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_7404________
+%SCSI\ArrayADIC_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____FCB7404_________
+%SCSI\ArrayADIC_SNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_____________
+%SCSI\ArrayADIC_Scalarv200.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_v200_____
+%SCSI\ArrayADIC_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i500_____
+
+[QUANTUM.NTia64]
+
+%SCSI\ArrayQUANTUM_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i500_____
+%SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i2000____
+%SCSI\ArrayQUANTUM_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_FCB7404_________
+
+[IBM.NTia64]
+
+%SCSI\ArrayIBM_Gateway_Module.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Gateway_Module__
+%SCSI\ArrayIBM_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayIBM_____SNC_5100________
+%SCSI\ArrayPathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayIBM_____Pathlight_5000__
+
+[SEIMENS.NTia64]
+
+%SCSI\ArraySEIMENS_FCR2.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_FCR2____________
+%SCSI\ArraySEIMENS_SNC_5100.DeviceDesc% = NODRV,SCSI\ArraySEIMENS_SNC_5100________
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+
+
+[NODRV]
+AddReg = NODRV_AddReg
+
+[NODRV_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[Strings]
+REG_EXPAND_SZ          = 0x00020000
+
+PATHLIGHT = "Pathlight Technology Inc."
+PTI = "Pathlight Technology, Inc."
+SCSI\ArrayPathlight_Gateway.DeviceDesc = "PTI SAN Gateway"
+SCSI\ArrayPathlight_Router.DeviceDesc = "PTI SAN Router"
+
+DELL = "Dell"
+SCSI\ArrayDell_PV-136T-FC.DeviceDesc = "Dell PV-136T-FC"
+SCSI\ArrayDell_PV-132T-FC.DeviceDesc = "Dell PV-132T-FC"
+SCSI\ArrayDELL_SNC_5100.DeviceDesc = "Dell SNC 5100"
+SCSI\ArrayDELL_Pathlight5000.DeviceDesc = "Dell Pathlight 5000"
+SCSI\ArrayDELL_PV-136T-SNC2.DeviceDesc = "Dell PV-136T-SNC2"
+
+ADIC = "ADIC"
+SCSI\ArrayADIC_SNC_5100.DeviceDesc = "ADIC SNC 5100"
+SCSI\ArrayADIC_Pathlight_5000.DeviceDesc = "ADIC Pathlight 5000"
+SCSI\ArrayADIC_ScalarSNC.DeviceDesc = "ADIC Scalar SNC"
+SCSI\ArrayADIC_SNC.DeviceDesc = "ADIC SNC"
+SCSI\ArrayADIC_SNC_4000.DeviceDesc = "ADIC SNC 4000"
+SCSI\ArrayADIC_PathlightVX.DeviceDesc = "Pathlight VX"
+SCSI\ArrayADIC_Scalar100.DeviceDesc = "Scalar 100"
+SCSI\ArrayADIC_Scalar1000.DeviceDesc = "Scalar 1000"
+SCSI\ArrayADIC_Scalari500.DeviceDesc = "Scalar i500"
+SCSI\ArrayADIC_Scalari2000.DeviceDesc = "Scalar i2000"
+SCSI\ArrayADIC_Scalar10k.DeviceDesc = "Scalar 10K"
+SCSI\ArrayADIC_FCIOB.DeviceDesc = "FC IOB"
+SCSI\ArrayADIC_SNC6104.DeviceDesc = "ADIC SNC 6104"
+SCSI\ArrayADIC_SNC6404.DeviceDesc = "ADIC SNC 6404"
+SCSI\ArrayADIC_SNC6101.DeviceDesc = "ADIC SNC 6101"
+SCSI\ArrayADIC_SNC7404.DeviceDesc = "ADIC SNC 7404"
+SCSI\ArrayADIC_FCB7404.DeviceDesc = "ADIC FCB7404"
+SCSI\ArrayADIC_Scalarv200.DeviceDesc = "Scalar v200"
+SCSI\ProcessorADIC_450x.DeviceDesc = "ADIC SNC 450x"
+
+QUANTUM = "QUANTUM"
+SCSI\ArrayQUANTUM_Scalari500.DeviceDesc = "Scalar i500"
+SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc = "Scalar i2000"
+SCSI\ArrayQUANTUM_FCB7404.DeviceDesc = "Quantum FCB7404"
+
+IBM = "IBM"
+SCSI\ArrayIBM_Gateway_Module.DeviceDesc = "IBM Gateway Module"
+SCSI\ArrayIBM_SNC_5100.DeviceDesc = "IBM SNC 5100"
+SCSI\ArrayPathlight_5000.DeviceDesc = "IBM Pathlight 5000"
+
+SEIMENS = "SEIMENS"
+SCSI\ArraySEIMENS_FCR2.DeviceDesc = "SEIMENS FCR2"
+SCSI\ArraySEIMENS_SNC_5100.DeviceDesc = "SEIMENS SNC 5100"
+
+;*******************************************
+;Handy macro substitutions (non-localizable) 
+SPSVCINST_ASSOCSERVICE = 0x00000002

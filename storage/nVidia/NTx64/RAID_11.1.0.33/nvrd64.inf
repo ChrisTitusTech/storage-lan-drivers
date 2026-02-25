@@ -1,0 +1,315 @@
+; Copyright (C) 2002-2009  NVIDIA Corporation
+; Unauthorized copying or use without explicit permission of NVIDIA
+; is prohibited
+;
+[Version] 
+Signature = "$Windows NT$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318} 
+Provider=%NVIDIA% 
+CatalogFile=nvraid.cat
+DriverVer=08/04/2009,11.1.0.33
+
+[DestinationDirs] 
+nvraid.Files.x86_12 = 12
+nvraid.CoInstFiles = 11 
+NVStor.Files.x86_12 = 12 
+NVStor.CoInstFiles = 11
+
+
+[SourceDisksNames.amd64]
+0=%Desc_x860%
+
+[SourceDisksFiles.amd64]
+nvstor64.sys=0
+nvrd64.sys=0
+nvraidco.dll=0
+NvRCoDa.dll=0
+NvRCoDe.dll=0
+NvRCoEng.dll=0
+NvRCoENU.dll=0
+NvRCoEs.dll=0
+NvRCoEsm.dll=0
+NvRCoFi.dll=0
+NvRCoFr.dll=0
+NvRCoIt.dll=0
+NvRCoJa.dll=0
+NvRCoKo.dll=0
+NvRCoNl.dll=0
+NvRCoNo.dll=0
+NvRCoPtb.dll=0
+NvRCoRu.dll=0
+NvRCoSv.dll=0
+NvRCoZhc.dll=0
+NvRCoZht.dll=0
+
+[Manufacturer] 
+%NVIDIA%=NVIDIA, ntamd64.6.0, ntamd64.6.1
+
+
+[NVIDIA.ntamd64.6.0]
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0266&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0267&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_037F&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_03F6&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_07F8&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0AD9&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0AD8&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0ABD&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0ABC&CC_0104
+%NVRAID_DESC%=nvraid,SCSI\NVIDIA__Raid_Disk________
+%NVRAID_DESC%=nvraid,SCSI\__NVIDIA_______Raid_Disk
+%NVRAID_DESC%=nvraid,SCSI\NVIDIA__Raid_Disk_20_____
+%NVRAID_DESC%=nvraid,SCSI\__NVIDIA____Raid_Disk_20
+%NVRAID_BUS_DESC%=nvraidbus,*_NVRAIDBUS
+%NVRAID_BUS_DESC%=nvraidbus,*NVRAIDBUS
+%NVRAID_BUS_DESC%=nvraidbus,*NVRAID20
+
+[NVIDIA.ntamd64.6.1]
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0266&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0267&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_037F&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_03F6&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_07F8&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0AD9&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0AD8&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0ABD&CC_0104
+%NVSTOR_DESC%=NVStor_Inst,PCI\VEN_10DE&DEV_0ABC&CC_0104
+%NVRAID_DESC%=nvraid,SCSI\NVIDIA__Raid_Disk________
+%NVRAID_DESC%=nvraid,SCSI\__NVIDIA_______Raid_Disk
+%NVRAID_DESC%=nvraid,SCSI\NVIDIA__Raid_Disk_20_____
+%NVRAID_DESC%=nvraid,SCSI\__NVIDIA____Raid_Disk_20
+%NVRAID_BUS_DESC%=nvraidbus,*_NVRAIDBUS
+%NVRAID_BUS_DESC%=nvraidbus,*NVRAIDBUS
+%NVRAID_BUS_DESC%=nvraidbus,*NVRAID20
+
+
+                                           
+[NVStor_Inst.ntamd64] 
+CopyFiles = NVStor.Files.x86_12
+
+[NVStor_Inst.ntamd64.HW] 
+AddReg=NVStor_Inst.ntamd64.AddReg.HW
+
+[NVStor_Inst.ntamd64.AddReg.HW]
+; allow access from system and administrator only
+HKR,,"Security",,"D:P(A;;GA;;;SY)(A;;GA;;;BA)"
+
+[NVStor_Inst.ntamd64.CoInstallers]
+CopyFiles = NVStor.CoInstFiles
+AddReg = NVStor_Inst.CoInst_AddReg
+
+[NVStor_Inst.CoInst_AddReg]
+HKR,,CoInstallers32,0x00010000,		\
+	"nvraiins.dll, NvRaidCoInstaller"
+
+HKR, Uninstall, Name,0,"NVIDIA IDE Driver"
+HKR, Uninstall, INFSrcDir, 0, %01% 
+
+[NVStor_Inst.ntamd64.Services] 
+AddService = nvstor64,0x00000002,NVStor_Service_Instx86,NVStor_EventLog_Instx86
+
+[NVStor_Service_Instx86] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_CRITICAL% 
+ServiceBinary = %12%\nvstor64.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg = NVStor_DisableFltCache_AddReg
+AddReg = pnpsafe_pci_addreg
+
+[NVStor_EventLog_Instx86]
+AddReg = NVStor_EventLog_AddReg
+
+[NVStor_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\nvstor64.sys"
+HKR,,TypesSupported,0x00010001,7 
+
+[NVStor_DisableFltCache_AddReg]
+HKR,,DisableFilterCache,0x00010001,1
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", %REG_DWORD%, 0x00000001
+HKR, "Parameters", "BusType", %REG_DWORD%, 0x00000008 ;; bus type =  RAID (0x8)
+
+
+[NVStor.Files.x86_12] 
+nvstor64.sys
+
+[NVStor.CoInstFiles]
+nvraidco.dll
+nvraiins.dll,nvraidco.dll
+NvRCoDa.dll
+NvRCoDe.dll
+NvRCoEng.dll
+NvRCoENU.dll
+NvRCoEs.dll
+NvRCoEsm.dll
+NvRCoFi.dll
+NvRCoFr.dll
+NvRCoIt.dll
+NvRCoJa.dll
+NvRCoKo.dll
+NvRCoNl.dll
+NvRCoNo.dll
+NvRCoPtb.dll
+NvRCoRu.dll
+NvRCoSv.dll
+NvRCoZhc.dll
+NvRCoZht.dll
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;For RAID MSI
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[NVStorMSI_Inst.ntamd64] 
+CopyFiles = NVStor.Files.x86_12
+
+[NVStorMSI_Inst.ntamd64.HW] 
+AddReg=NVStor_Inst.ntamd64.AddReg.HW
+AddReg=NVStorMSI_Inst.ntamd64.AddReg.HW
+
+[NVStorMSI_Inst.ntamd64.AddReg.HW]
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",0x00000010
+HKR, "Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+ 
+[NVStorMSI_Inst.ntamd64.CoInstallers]
+CopyFiles = NVStor.CoInstFiles
+AddReg = NVStor_Inst.CoInst_AddReg
+
+[NVStorMSI_Inst.ntamd64.Services] 
+AddService = nvstor64,0x00000002,NVStor_Service_Instx86,NVStor_EventLog_Instx86
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RAID host controller
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[nvraidbus.ntamd64] 
+CopyFiles = nvraid.Files.x86_12 
+
+[nvraidbus.ntamd64.WMI]
+WMIInterface = {3A4C83DA-EBD8-46b9-8213-3E83900F2D91},1,WMIAllAu
+WMIInterface = {F40FA275-BAE5-404b-9679-19EBF356E2E9},1,WMIAllAu
+WMIInterface = {23220FD0-D462-4131-BBF3-FF6B8D90E4AF},1,WMIAllAu
+WMIInterface = {F0DD2170-0611-4d53-AADC-D8757AC994FD},1,WMIAllAu
+WMIInterface = {8B6E60C0-0669-4786-A1AF-50536F97E0F2},1,WMIAllAu
+WMIInterface = {DCF5BD3E-12D9-4db8-AB27-EFBE00FB5056},1,WMIAllAu
+WMIInterface = {7ECAF9CD-3ABC-4cdc-A96B-E515309BD04D},1,WMIAllAu
+WMIInterface = {87E56248-8084-49f6-A95E-5D9E4BAB2C3B},1,WMIAllAu
+WMIInterface = {25C435D7-AE36-4ad0-883F-F82E68B42CEA},1,WMIAllAu
+WMIInterface = {96597DF0-2ED6-46c6-B212-C956620D6BDC},1,WMIAllAu
+WMIInterface = {377abb5d-b242-11db-96e5-005056c00008},1,WMIAllAu
+WMIInterface = {DB739B75-765A-48c7-AA03-AA75F186CDBA},1,WMIAllAu
+
+[WMIAllAu]
+security = "O:BAG:BAD:(A;;GA;;;AU)" 
+
+[nvraidbus.ntamd64.Services] 
+AddService = nvrd64,0x00000002,nvraid_Service_Inst, 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RAID device (disk)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[nvraid.ntamd64] 
+CopyFiles = nvraid.Files.x86_12 
+
+[nvraid.ntamd64.Services] 
+AddService = nvrd64,0x00000002,nvraid_Service_Inst,nvraid_EventLog_Instx86 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RAID driver service section
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[nvraid_Service_Inst] 
+DisplayName    = %nvraidbus.SvcDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+LoadOrderGroup = System Bus Extender
+ServiceBinary  = %12%\nvrd64.sys
+AddReg = nvraid_DisableCoalesce_AddReg
+DelReg = nvraid_DisableCoalesce_AddReg
+
+[nvraid_DisableCoalesce_AddReg]
+HKR,,DisableCoalesce,0x00010001,1
+HKR, "Parameters", "BusType", %REG_DWORD%, 0x00000008 ;; bus type = RAID (0x8)
+
+[nvraid_EventLog_Instx86]
+AddReg = nvraid_EventLog_AddReg
+
+[nvraid_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\nvrd64.sys"
+HKR,,TypesSupported,0x00010001,7 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RAID host controller coinstaller
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[nvraidbus.ntamd64.CoInstallers]
+CopyFiles = nvraid.CoInstFiles
+AddReg = nvraid.CoInst_AddReg
+
+[nvraid.CoInst_AddReg]
+HKR,,CoInstallers32,0x00010000,"nvraiins.dll, NvRaidCoInstaller"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; RAID device coinstaller
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[nvraid.ntamd64.CoInstallers]
+CopyFiles = nvraid.CoInstFiles
+AddReg = nvraid.CoInst_AddReg
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; copy file sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[nvraid.Files.x86_12] 
+nvrd64.sys
+
+[nvraid.CoInstFiles]
+nvraidco.dll
+nvraiins.dll,nvraidco.dll
+NvRCoDa.dll
+NvRCoDe.dll
+NvRCoEng.dll
+NvRCoENU.dll
+NvRCoEs.dll
+NvRCoEsm.dll
+NvRCoFi.dll
+NvRCoFr.dll
+NvRCoIt.dll
+NvRCoJa.dll
+NvRCoKo.dll
+NvRCoNl.dll
+NvRCoNo.dll
+NvRCoPtb.dll
+NvRCoRu.dll
+NvRCoSv.dll
+NvRCoZhc.dll
+NvRCoZht.dll
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+NVIDIA= "NVIDIA Corporation" 
+Desc_x860= "SRCDATA" 
+NVSTOR_DESC= "NVIDIA nForce Serial ATA Controller"
+DisplayClassName= "NVIDIA RAID CLASS"
+NVRAID_DESC= "NVIDIA nForce RAID Device" 
+NVRAID_BUS_DESC= "NVIDIA nForce RAID Controller" 
+nvraidbus.SvcDesc= "NVIDIA nForce RAID Driver"
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 

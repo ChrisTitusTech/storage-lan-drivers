@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\adpu320\Parameters\Device]
+"MaximumSGList"=dword:00000011
+
+

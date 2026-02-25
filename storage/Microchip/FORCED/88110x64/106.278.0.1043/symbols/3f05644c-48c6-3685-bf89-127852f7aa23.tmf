@@ -1,0 +1,20 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3f05644c-48c6-3685-bf89-127852f7aa23 2016 // SRC=IoctlTopology.c MJ= MN=
+#typev ioctltopology_c158 11 "%0%10!s!  !Received an unsupported or unrecognized TOPOLOGY IOCTL!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessQueryPhysicalTopologyIoctl
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctltopology_c270 13 "%0%10!s!  Need bigger buffer size to report Topology. Required buffer = %11!d! bytes." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=ProcessQueryPhysicalTopologyIoctl
+{
+IDSTR2, ItemString -- 10
+ulRequiredBufferLength, ItemLong -- 11
+}
+#typev ioctltopology_c172 12 "%0%10!s!  !Data buffer too small to process IOCTL_STORAGE_QUERY_PROPERTY->TOPOLOGY!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessQueryPhysicalTopologyIoctl
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctltopology_c150 10 "%0%10!s!   Received IOCTL_STORAGE_QUERY_PROPERTY->TOPOLOGY." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=ProcessQueryPhysicalTopologyIoctl
+{
+IDSTR2, ItemString -- 10
+}

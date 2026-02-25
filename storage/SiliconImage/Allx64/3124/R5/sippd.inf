@@ -1,0 +1,43 @@
+; This INF file installs the Silicon Image Serial ATA Pseudo Processor
+; device on systems running Windows NT 4.0, Windows 2000, and Windows XP.
+;
+; Copyright (C) 2004 - 2005 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class = System
+ClassGuid = {4d36e97d-e325-11ce-bfc1-08002be10318} 
+Provider=%SI%
+CatalogFile=Si3124r5.cat
+LayoutFile=layout.inf
+DriverVer=07/29/2011, 1.5.24.0
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%SI%=PseudoDevice,NTx86,NTamd64
+
+[PseudoDevice]
+%Pseudo_Device% = PseudoInstall, SCSI\ProcessorSI______Pseudo_Device___
+
+[PseudoDevice.NTx86]
+%Pseudo_Device% = PseudoInstall, SCSI\ProcessorSI______Pseudo_Device___
+
+[PseudoDevice.NTamd64]
+%Pseudo_Device% = PseudoInstall, SCSI\ProcessorSI______Pseudo_Device___
+
+[PseudoInstall]
+
+[PseudoInstall.NTx86]
+
+[PseudoInstall.NTamd64]
+
+[Strings]
+SI = "Silicon Image"
+Pseudo_Device = "Silicon Image's Pseudo Processor Device"

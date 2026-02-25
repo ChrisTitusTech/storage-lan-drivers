@@ -1,0 +1,51 @@
+;************************************************************************************
+;              oemsetup.inf - (Windows 2003 and above only)
+;
+;		This is the INF file for Windows 2003 and above for the ARECA 
+;					SATA/SAS PCI RAID HOST Adapter SCSI Cards 
+;
+;		*********************************************************************
+;		*                                                                   *
+;		*  Copyright 2002 ARECA, Inc. All rights reserved.                  *
+;		*                                                                   *
+;		*  This file is property of ARECA, Inc. and is licensed for         *
+;		*  use as is.  The receipt of or possession of this file does not   *
+;		*  convey any rights to modify its contents, in whole, or in part,  *
+;		*  without the specific written consent of ARECA, Inc.              *
+;		*                                                                   *
+;		*********************************************************************
+;************************************************************************************
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ARECA%
+DriverVer=10/06/2011,6.20.00.22
+CatalogFile.ntamd64=arcmsr.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%ARECA%=ARECA, ntamd64
+
+[ARECA.ntamd64]
+%Areca.DeviceDesc%     = ARCVDEV, SCSI\Other__RAID___DummyDevice____
+
+[ARCVDEV.ntamd64]
+
+;****************************************************
+; this is blank to just allow the install to succeed
+;****************************************************
+[ARCVDEV.ntamd64.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; areca raid virtual device service install
+
+[strings]
+ARECA                   = "Areca Technology Corporation"
+Areca.DeviceDesc        = "Areca VIRTUAL SCSI RAID Device"
+
+;****************************************************
+;Handy macro substitutions (non-localizable)
+;****************************************************
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

@@ -1,0 +1,88 @@
+;/*++
+;
+;Copyright (c) 2004-2014 IBM Corporation All Rights Reserved
+;
+;Module Name:
+;
+;    IBMCGBS.INF
+;
+;    NOTE: Do not change the title IBMCGBS.INF in this introductory text without also changing
+;    the uninstall procedure. Uninstall uses a string compare to determine whether the file 
+;    should be removed.
+;
+;Abstract:
+;    INF file for installing changer bus enumerator driver
+;
+;--*/
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%IBM%
+CatalogFile="ibmcgbs.cat"
+DriverVer=01/06/2017,6.2.6.0
+
+[DestinationDirs]
+Drivers_Dir2k16 = 12
+
+[SourceDisksNames]
+1 = %DiskId%,,,""
+
+[SourceDisksFiles]
+ibmcgbs2k16.sys = 1
+
+;*****************************************
+; ChangerBus  Install Section
+;*****************************************
+
+[Manufacturer]
+%IBM%=IBM, NT.6.3, NTamd64.6.3
+
+[IBM]
+
+[IBM.NT.6.3]
+%ChangerBus.DeviceDesc%=ChangerBus_Device2k16, root\ibmcgbs2k16
+
+[IBM.NTamd64.6.3]
+%ChangerBus.DeviceDesc%=ChangerBus_Device2k16, root\ibmcgbs2k16
+
+[ChangerBus_Device2k16]
+CopyFiles=Drivers_Dir2k16
+
+[Drivers_Dir2k16]
+ibmcgbs2k16.sys
+
+;-------------- Service installation
+[ChangerBus_Device2k16.Services]
+AddService = ibmcgbs2k16,%SPSVCINST_ASSOCSERVICE%, ibmcgbs2k16_Service_Inst, ibmcgbs2k16_EventLog_Inst
+
+; -------------- busenum driver install sections
+[ibmcgbs2k16_Service_Inst]
+DisplayName    = %busenum.SVCDESC%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ibmcgbs2k16.sys
+LoadOrderGroup = Extended Base
+
+; -------------- busenum driver event logging sections
+[ibmcgbs2k16_EventLog_Inst]
+AddReg = ibmcgbs2k16_EventLog_AddReg
+
+[ibmcgbs2k16_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\ibmcgbs2k16.sys"
+; enclosing quotes on preceding entry prevent semicolon from being interpreted as a comment
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+IBM                     = "IBM Corporation"
+SPSVCINST_ASSOCSERVICE  = 0x00000002
+SERVICE_DEMAND_START	= 0x3
+SERVICE_BOOT_START 	= 0x0
+SERVICE_KERNEL_DRIVER 	= 0x1
+SERVICE_ERROR_NORMAL	= 0x1
+DiskId                  = "Changer Bus Installation Disk"
+ChangerBus.DeviceDesc   = "Changer Bus Enumerator"
+busenum.SVCDESC         = "IBM Changer Bus Enumerator"
+REG_EXPAND_SZ           = 0x00020000
+REG_DWORD               = 0x00010001

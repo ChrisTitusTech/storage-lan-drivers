@@ -1,0 +1,86 @@
+[Disks]
+d1 =  "Adaptec SAS/SATA-II RAID Windows XP/2003 x64 Device Drivers", \raidisk1, \
+ 
+[Defaults]
+scsi = aacsas
+
+[Scsi]
+aacsas = "Adaptec SAS/SATA-II RAID Controller (x64 device drivers)", aacsas
+
+[Files.Scsi.aacsas]
+driver = d1, aacsas.sys, aacsas
+catalog = d1, aacsas.cat
+inf = d1, aacsas.inf
+inf = d1, aacmgt.inf
+driver = d1, aaccin.dll, none
+
+[Config.aacsas]
+value = "", Type, REG_DWORD, 1
+value = "", Start, REG_DWORD, 0
+value = "", Group, REG_SZ, "SCSI miniport"
+value = "", ErrorControl, REG_DWORD, 1
+value = Parameters\Device, NumberOfRequests, REG_DWORD, 0fe
+value = Parameters\Device, UncachedExtAlignment, REG_DWORD, e
+value = Parameters\PnpInterface, 5, REG_DWORD, 1
+
+[HardwareIds.scsi.aacsas]
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02989005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02f21014", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02999005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_029A9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02A49005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02A59005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_95801014", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_034D1014", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029B9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029C9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029D9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A09005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A19005", "aacsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A69005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B59005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B69005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B79005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B09005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B515D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B615D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B89005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B99005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BA9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BB9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BC9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BD9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BE9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BF9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C09005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C19005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C29005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C39005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C49005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C59005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C69005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C79005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C89005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C915D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CA15D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_7AAC108E", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_7AAE108E", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_0286108E", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_0287108E", "aacsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CB9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CC9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CD9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CE9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CF9005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D09005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D19005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D215D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D315D9", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D49005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D59005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D69005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D79005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D89005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D99005", "aacsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02DA9005", "aacsas"
+

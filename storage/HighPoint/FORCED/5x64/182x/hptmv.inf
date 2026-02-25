@@ -1,0 +1,92 @@
+; 
+; hptmv.INF
+; 
+; INF file of RR182x/181x controller for Windows 2003 AMD64 version
+; Copyright (c) HighPoint Technologies, Inc. All rights reserved
+;
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%HIGHPOINT%
+CatalogFile= hptmv.CAT
+DriverVer=08/01/2006, 1.1.9.801
+
+[DestinationDirs]
+DefaultDestDir  = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+; ExcludeFromSelect = *
+
+[Manufacturer]
+%HIGHPOINT%=HighPoint, NTamd64.5.1
+
+[HighPoint.NTamd64.5.1]
+%hptmv.DeviceDesc%=hptmvPCI,PCI\VEN_11AB&DEV_5081
+%SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc% = NODRV, SCSI\ProcessorHPT_____RCM_DEVICE______
+
+[NODRV]
+AddReg=NODRV_AddReg
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[hptmvPCI.NTamd64.5.1]
+CopyFiles=@hptmv.sys
+;CopyFiles=@hptpro.sys
+Reboot
+
+[hptmvPCI.NTamd64.5.1.Services]
+AddService = hptmv, %SPSVCINST_ASSOCSERVICE%, hptmvPCI_Service_Inst, Miniport_EventLog_Inst
+;AddService = hptpro,,Hptpro_Service_Inst
+
+[hptmvPCI_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\hptmv.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[Hptpro_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+;ServiceBinary  = %12%\hptpro.sys
+LoadOrderGroup = Filter
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,,
+
+[SourceDisksFiles]
+;;hptmv.inf = 1,,
+hptmv.sys = 1,,
+
+
+[NODRV_AddReg]
+;Dummy AddReg section 
+
+[strings]
+HighPoint="HighPoint"
+hptmv.DeviceDesc="RocketRAID 182x/181x SATA Controller"
+SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc = "HighPoint RCM Device"
+InstallDisk = "RocketRAID 182x/181x SATA Controller Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

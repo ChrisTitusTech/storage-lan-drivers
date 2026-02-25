@@ -1,0 +1,62 @@
+; DC-622e RAID Installationfile (x64)
+; Copyright (C) 2014 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=07/05/2018, 5.13
+CatalogFile=DC622e.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC622e.SYS = 1
+
+[Manufacturer]
+%StrgCompany%=DC622e_Section, NTamd64
+
+[DC622e_Section.NTamd64]
+%StrgDevice%=DC622e_Install, PCI\VEN_1B4B&DEV_9182&SUBSYS_622EDC93
+
+[DC622e_Install]
+CopyFiles=@DC622e.sys
+CopyInf=DC622evp.inf
+
+[DC622e_Install.Services]
+AddService = DC622e, 2, DC622e_Service_Inst, DC622e_EventLog_Inst
+
+[DC622e_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC622e.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC622e_PNP_AddReg
+AddReg         = DC622e_Parm_AddReg
+
+[DC622e_EventLog_Inst]
+AddReg = DC622e_EventLog_AddReg
+
+[DC622e_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC622e_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKLM,"System\CurrentControlSet\Services\Disk", "TimeoutValue", 0x00010001, 0x0000003c
+
+[DC622e_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, "Sleepmode=1, ForceWrCache=0, NCQ=1, RebuildDelay=2"
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x00000020
+HKR, "Parameters\Device", "MaximumSGList", 0x00010001, 0x00000081
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="Dawicontrol DC-622e RAID Controller"
+StrgDiskLabel="Installation Disk"

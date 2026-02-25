@@ -1,0 +1,63 @@
+; DC-4300/4320 RAID Installationfile (x64)
+; Copyright (C) 2010 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=07/05/2018, 5.13
+CatalogFile=DC4300.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC4300.sys = 1
+
+[Manufacturer]
+%StrgCompany%=DC4300_Section, NTamd64
+
+[DC4300_Section.NTamd64]
+%StrgDevice%=DC4300_Install, PCI\VEN_1095&DEV_3124
+%StrgDevice%=DC4300_Install, PCI\VEN_1095&DEV_3124&SUBSYS_4300DC93
+
+[DC4300_Install]
+CopyFiles=@DC4300.sys
+CopyInf=DC4300vp.inf
+
+[DC4300_Install.Services]
+AddService = DC4300, 2, DC4300_Service_Inst, DC4300_EventLog_Inst
+
+[DC4300_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC4300.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC4300_PNP_AddReg
+AddReg         = DC4300_Parm_AddReg
+
+[DC4300_EventLog_Inst]
+AddReg = DC4300_EventLog_AddReg
+
+[DC4300_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC4300_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKLM,"System\CurrentControlSet\Services\Disk", "TimeoutValue", 0x00010001, 0x0000003c
+
+[DC4300_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, "Sleepmode=1, ForceWrCache=0, NCQ=1, RebuildDelay=2"
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x00000020
+HKR, "Parameters\Device", "MaximumSGList", 0x00010001, 0x00000081
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="Dawicontrol DC-4300/4320 RAID Controller"
+StrgDiskLabel="Installation Disk"

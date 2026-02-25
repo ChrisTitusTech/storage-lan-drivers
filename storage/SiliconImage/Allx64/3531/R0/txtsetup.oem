@@ -1,0 +1,63 @@
+; This file installs the SiI 3531 Serial ATA SATALink 5 driver as part of
+; text mode setup on 64-bit versions of Windows XP and Windows Server 2003.
+;
+; Copyright (C) 2006 by Silicon Image, Inc.
+; All rights reserved
+
+[Disks]
+disk1 = "Silicon Image SiI 3531 SATALink Driver Installation Disk",\Si3531.inf,\
+
+[Defaults]
+SCSI = Si3531_AMD64
+
+[SCSI]                  ; HwComponent section
+Si3531_AMD64 = "Silicon Image SiI 3531 SATALink Controller (64-bit Extended)"
+
+[Files.SCSI.Si3531_AMD64]
+driver = disk1,Si3531.sys, Si3531
+driver = disk1,SiWinAcc.sys, SiFilter
+driver = disk1,SiRemFil.sys, SiRemFil
+inf = disk1,Si3531.inf
+dll = disk1,SilSupp.dll
+inf = disk1,SIPPD.inf
+catalog = disk1, Si3531.cat
+
+[HardwareIds.SCSI.Si3531_AMD64]
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_35311095", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_14981043", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_82501043", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_320A1462", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_30D4103C", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11071734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_90A01019", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_30d4103c", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_8958152D", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_408317C0", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_0690107B", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_111F1734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_2F121509", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_3FAD1462", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_30DE103C", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_408517C0", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_2001103C", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11411734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11421734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11441734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11451734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11461734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_11471734", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_01781025", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_008C1B0A", "Si3531"
+id = "PCI\VEN_1095&DEV_3531&SUBSYS_2B00103C", "Si3531"
+
+[Config.Si3531]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "HDS724040KLSA80                         KFAOA32A", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722525VLSA80                         V36OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722516VLSA80                         V34OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "Maxtor 7B250S0                          BANC1B70", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541060G9SA00                         MB3OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541080G9SA00                         MB4OC60D", REG_SZ, "DisableSataQueueing"
+

@@ -1,0 +1,59 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3d9b2f8f-5acf-3a1b-391e-1e010f5f2076 2016 // SRC=Asic.c MJ= MN=
+#typev asic_c315 17 "%0%10!s!  !Administrator Queue Pair was not created!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiCreateAdminQueuePair
+{
+IDSTR2, ItemString -- 10
+}
+#typev asic_c303 16 "%0%10!s!   Administrator Queue Pair was successfully created." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCreateAdminQueuePair
+{
+IDSTR2, ItemString -- 10
+}
+#typev asic_c262 15 "%0%10!s! !Administrator OQ_CI register not found. Faild Admistrator Queue Pair setup!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiCreateAdminQueuePair
+{
+IDSTR2, ItemString -- 10
+}
+#typev asic_c238 14 "%0%10!s! !Administrator IQ_PI register not found. Faild Admistrator Queue Pair setup!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiCreateAdminQueuePair
+{
+IDSTR2, ItemString -- 10
+}
+#typev asic_c159 11 "%0%10!s!  !Additional Details=0x%11!x!`%12!08x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiPollConfigFunctionForIdle
+{
+IDSTR2, ItemString -- 10
+ulTempUpper, ItemLong -- 11
+ulTempLower, ItemLong -- 12
+}
+#typev asic_c159 10 "%0%10!s!  !PQI Device Error Register: EC=%11!u!, ECQ=%12!u!, BytePointerOffset=%13!d!, BitPointer=%14!d! !" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiPollConfigFunctionForIdle
+{
+IDSTR2, ItemString -- 10
+pErrorValue->ucErrorCode, ItemLong -- 11
+pErrorValue->ucErorCodeQualifier, ItemLong -- 12
+pErrorValue->ucBytePointerOffset, ItemLong -- 13
+pErrorValue->BitPointer, ItemLong -- 14
+}
+#typev asic_c151 13 "%0%10!s!  !Pqi Status=0x%11!x!. Dev State=%12!s!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiPollConfigFunctionForIdle
+{
+IDSTR2, ItemString -- 10
+PqiStatusReg.AsUlong, ItemLong -- 11
+pStateString, ItemString -- 12
+}
+#typev asic_c123 12 "%0%10!s!  !FUNCTION AND STATUS CODE field not idle after 1 second! Status=0x%11!x!=%12!s!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiPollConfigFunctionForIdle
+{
+IDSTR2, ItemString -- 10
+ucStatus, ItemLong -- 11
+pStatusString, ItemString -- 12
+}
+#typev asic_c67 11 "%0%10!s!  !Additional Details=0x%11!x!`%12!08x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=SOPGetDeviceError
+{
+IDSTR2, ItemString -- 10
+ulTempUpper, ItemLong -- 11
+ulTempLower, ItemLong -- 12
+}
+#typev asic_c59 10 "%0%10!s!  !PQI Device Error Register: EC=%11!u!, ECQ=%12!u!, BytePointerOffset=%13!d!, BitPointer=%14!d! !" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=SOPGetDeviceError
+{
+IDSTR2, ItemString -- 10
+pErrorValue->ucErrorCode, ItemLong -- 11
+pErrorValue->ucErorCodeQualifier, ItemLong -- 12
+pErrorValue->ucBytePointerOffset, ItemLong -- 13
+pErrorValue->BitPointer, ItemLong -- 14
+}

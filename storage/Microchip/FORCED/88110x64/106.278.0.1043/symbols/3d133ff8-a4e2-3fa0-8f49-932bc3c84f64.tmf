@@ -1,0 +1,169 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3d133ff8-a4e2-3fa0-8f49-932bc3c84f64 2016 // SRC=Msix.c MJ= MN=
+#typev msix_c1355 37 "%0
+%10!s!   The driver is running in Line Based Interrupt mode.
+" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiCheckInterruptMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1343 36 "%0%10!s!   Legacy MSI is enabled. perVectorMask=%11!d!. req=%12!d!. alloc=%13!d!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiCheckInterruptMode
+{
+IDSTR, ItemString -- 10
+perVectorMask, ItemLong -- 11
+requestedVect, ItemLong -- 12
+allocVect, ItemLong -- 13
+}
+#typev msix_c1325 35 "%0%10!s!   MSI-x is disabled. Trying MSI...." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiCheckInterruptMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1314 34 "%0%10!s!   MSI-x is enabled. Table Size = %11!d!. Mask=%12!d!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiCheckInterruptMode
+{
+IDSTR, ItemString -- 10
+pMsiXcapReg->MessageControl.TableSize + 1, ItemLong -- 11
+mask, ItemLong -- 12
+}
+#typev msix_c1297 33 "%0%10!s! !!!Could not get PCI information.!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiCheckInterruptMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1020 11 "%0
+%10!s!   The number of messages(AKA vectors) actually allocated to controller = %11!d!.
+" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetMessageInfo
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->HbaConfiguration.usAllocatedMessageCnt, ItemLong -- 11
+}
+#typev msix_c974 10 "%0
+%10!s!   The number of messages(AKA vectors) actually allocated to controller = %11!d!.
+" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetMessageInfo
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->HbaConfiguration.usAllocatedMessageCnt, ItemLong -- 11
+}
+#typev msix_c1473 38 "%0%10!s!   %11!s! completed in %12!d! msecs." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=PollOQForCompletion
+{
+IDSTR2, ItemString -- 10
+GenericCommandToAscii(eCommandType. ucCommand), ItemString -- 11
+DEFAULT_INTERVALS_TO_MSEC(ulLoopCnt), ItemLong -- 12
+}
+#typev msix_c1480 39 "%0%10!s!  !%11!s! did not complete.  Waited %12!d! second(s) before timing out!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=PollOQForCompletion
+{
+IDSTR2, ItemString -- 10
+GenericCommandToAscii(eCommandType. ucCommand), ItemString -- 11
+ulTimeout, ItemLong -- 12
+}
+#typev msix_c1091 24 "%0%10!s!   Pending bits register = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p32BitMsiCapReg->PendingBits, ItemLong -- 11
+}
+#typev msix_c1090 23 "%0%10!s!   Mask bits register = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p32BitMsiCapReg->MaskBits, ItemLong -- 11
+}
+#typev msix_c1089 22 "%0%10!s!   The controller supports MSI per-vector masking." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1085 21 "%0%10!s!   Message data = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p32BitMsiCapReg->MessageData, ItemLong -- 11
+}
+#typev msix_c1084 20 "%0%10!s!   Message address = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p32BitMsiCapReg->MessageAddress, ItemLong -- 11
+}
+#typev msix_c1060 19 "%0%10!s!   Mask bits register = 0x%11!x!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->MaskBits, ItemLong -- 11
+}
+#typev msix_c1053 18 "%0%10!s!   Pending bits register = 0x%11!x!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->PendingBits, ItemLong -- 11
+}
+#typev msix_c1052 17 "%0%10!s!   Mask bits register = 0x%11!x!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->MaskBits, ItemLong -- 11
+}
+#typev msix_c1051 16 "%0%10!s!   The controller supports MSI per-vector masking." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1047 15 "%0%10!s!   Message data = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->MessageData, ItemLong -- 11
+}
+#typev msix_c1046 14 "%0%10!s!   Message upper address = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->MessageUpperAddress, ItemLong -- 11
+}
+#typev msix_c1045 13 "%0%10!s!   Message address = 0x%11!x! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+p64BitMsiCapReg->MessageAddress, ItemLong -- 11
+}
+#typev msix_c1044 12 "%0%10!s!   The controller is capable of sending a 64-bit message address." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrepareForMsiMode
+{
+IDSTR, ItemString -- 10
+}
+#typev msix_c1211 32 "%0%10!s!   %11!3u!-%12!3u!:  0x%13!I64x!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+ulMessageId, ItemLong -- 11
+ulMessageId+63, ItemLong -- 12
+*pPBA, ItemLongLongX -- 13
+}
+#typev msix_c1204 31 "%0%10!s!   PBA Start=%11!p!. (offset was 0x%12!x!)
+" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+pMsiInfo->pPBATable, ItemPtr -- 11
+pMsiInfo->ulMsiXPBAOffset, ItemLong -- 12
+}
+#typev msix_c1199 30 "%0%10!s!   %11!3u!  0x%12!04x!`%13!08x!  %14!d! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+ulMessageId, ItemLong -- 11
+pMsiEntry->ulUpperMsgAddress, ItemLong -- 12
+pMsiEntry->LowerMsgAddress, ItemLong -- 13
+pMsiEntry->VectorControl.MaskBit, ItemLong -- 14
+}
+#typev msix_c1195 29 "%0%10!s!   ... (Skipping %11!u! vectors) ... " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+pMsiInfo->ulMaxMsiXVector - ulMessageId - 1, ItemLong -- 11
+}
+#typev msix_c1190 28 "%0%10!s!   %11!3u!  0x%12!04x!`%13!08x!  %14!d! " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+ulMessageId, ItemLong -- 11
+pMsiEntry->ulUpperMsgAddress, ItemLong -- 12
+pMsiEntry->LowerMsgAddress, ItemLong -- 13
+pMsiEntry->VectorControl.MaskBit, ItemLong -- 14
+}
+#typev msix_c1184 27 "%0%10!s!    ID   Upper`Lower     Mask " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev msix_c1182 26 "%0%10!s!   MSI-X Start=%11!p!. (offset was 0x%12!x!)
+" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+pMsiInfo->pMsiXTable, ItemPtr -- 11
+pMsiInfo->ulMsiXTableOffset, ItemLong -- 12
+}
+#typev msix_c1181 25 "%0%10!s!   MSI-X Table Size=%11!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=PrintMsiXTable
+{
+IDSTR2, ItemString -- 10
+pMsiInfo->ulMaxMsiXVector, ItemLong -- 11
+}

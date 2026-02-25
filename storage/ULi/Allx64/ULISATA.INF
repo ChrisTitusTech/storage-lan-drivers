@@ -1,0 +1,131 @@
+; ULi SATA Setup information file for x64 system
+; Copyright 2006 ULi Corporation.
+
+[Version]
+signature	= "$Windows NT$"
+Class		= SCSIAdapter
+ClassGUID	= {4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider	= %ULi%
+;CatalogFile	= ULisata.cat
+DriverVer	= 07/19/2006, 1.0.6.1
+
+[Manufacturer]
+%ULi%=ULi,ntamd64
+
+[DestinationDirs]
+; dirid = \Drivers on WinNT platforms
+DefaultDestDir 				= 12 
+ULiSATAM5287.CopyFiles.ntamd64_12 	= 12
+ULiSATAM5288.CopyFiles.ntamd64_12 	= 12
+ULiSATAM5289.CopyFiles.ntamd64_12 	= 12 
+
+[ControlFlags]
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5287
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5287&SUBSYS_528710B9
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5288
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5288&SUBSYS_528710B9
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5289
+;ExcludeFromSelect = PCI\VEN_10B9&DEV_5289&SUBSYS_528910B9
+
+[ULi.ntamd64]
+; DisplayName                                        Section         DeviceID
+; ------------------------------------------------   -------------   -------------------------------------
+%PCI\VEN_10B9&DEV_5287.DeviceDesc%                 = ULiSATAM5287,  PCI\VEN_10B9&DEV_5287
+%PCI\VEN_10B9&DEV_5287&SUBSYS_528710B9.DeviceDesc% = ULiSATAM5287,  PCI\VEN_10B9&DEV_5287&SUBSYS_528710B9
+%PCI\VEN_10B9&DEV_5288.DeviceDesc% 		   = ULiSATAM5288,  PCI\VEN_10B9&DEV_5288
+%PCI\VEN_10B9&DEV_5288&SUBSYS_528810B9.DeviceDesc% = ULiSATAM5288,  PCI\VEN_10B9&DEV_5288&SUBSYS_528810B9
+%PCI\VEN_10B9&DEV_5289.DeviceDesc%                 = ULiSATAM5289,  PCI\VEN_10B9&DEV_5289
+%PCI\VEN_10B9&DEV_5289&SUBSYS_528910B9.DeviceDesc% = ULiSATAM5289,  PCI\VEN_10B9&DEV_5289&SUBSYS_528910B9
+;--------------------------------------------------  -----------------------------------------------------
+
+[ULiSATAM5287.ntamd64]
+CopyFiles=ULiSATAM5287.CopyFiles.ntamd64_12
+Reboot
+
+[ULiSATAM5288.ntamd64]
+CopyFiles=ULiSATAM5288.CopyFiles.ntamd64_12
+Reboot
+
+[ULiSATAM5289.ntamd64]
+CopyFiles=ULiSATAM5289.CopyFiles.ntamd64_12
+Reboot
+
+[ULiSATAM5287.CopyFiles.ntamd64_12]
+m5287.sys
+
+[ULiSATAM5288.CopyFiles.ntamd64_12]
+m5288.sys
+
+[ULiSATAM5289.CopyFiles.ntamd64_12]
+m5289.sys
+
+[ULiSATAM5287.ntamd64.Services]
+AddService = m5287, 2, ULiSATAM5287_Service_Inst, Miniport_EventLog_Inst
+
+[ULiSATAM5288.ntamd64.Services]
+AddService = m5288, 2, ULiSATAM5288_Service_Inst, Miniport_EventLog_Inst
+
+[ULiSATAM5289.ntamd64.Services]
+AddService = m5289, 2, ULiSATAM5289_Service_Inst, Miniport_EventLog_Inst
+
+[ULiSATAM5287_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\m5287.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[ULiSATAM5288_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\m5288.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[ULiSATAM5289_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\m5289.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters", "EnableNCQ", %REG_BINARY%,0,0,0,0
+HKR, "Parameters", "DisableWC", %REG_BINARY%,0,0,0,0
+HKR, "Parameters", "EnableFUA", %REG_BINARY%,0
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,%11%%IOLOGMSGDLL%
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+2 = %DISKNAME2%,,,,
+
+[SourceDisksFiles]
+m5287.sys = 1,,
+m5288.sys = 1,,
+m5289.sys = 1,,
+
+[strings]
+ULi="ULi Electronics Inc."
+PCI\VEN_10B9&DEV_5289.DeviceDesc			="ULi SATA/RAID Controller (M1689/M1567)"
+PCI\VEN_10B9&DEV_5289&SUBSYS_528910B9.DeviceDesc	="ULi SATA/RAID Controller (M1689/M1567)"
+PCI\VEN_10B9&DEV_5287.DeviceDesc			="ULi SATA/RAID Controller (M1573)"
+PCI\VEN_10B9&DEV_5287&SUBSYS_528710B9.DeviceDesc	="ULi SATA/RAID Controller (M1573)"
+PCI\VEN_10B9&DEV_5288.DeviceDesc			="ULi SATA/RAID Controller (M1575/M1697)"
+PCI\VEN_10B9&DEV_5288&SUBSYS_528810B9.DeviceDesc	="ULi SATA/RAID Controller (M1575/M1697)"
+REG_EXPAND_SZ						=0x00020000
+REG_DWORD						=0x00010001
+REG_BINARY             					=0x00000001
+IOLOGMSGDLL						="\IoLogMsg.dll"
+DISKNAME1						="ULi SATA Controller Driver Diskette"
+DISKNAME2="Windows system"
+

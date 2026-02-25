@@ -1,0 +1,57 @@
+; This file installs the SiI 3114 non-RAID serial ATA driver as part of text
+; mode setup on 64-bit versions of Windows XP, Windows Server 2003,
+; and Windows Vista.
+;
+; Copyright (C) 2003 - 2008 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image SiI 3114 SATALink Driver Installation Disk",\ia64\Si3114.inf,\ia64
+disk2 = "Silicon Image SiI 3114 SATALink Driver Installation Disk",\amd64\Si3114.inf,\amd64
+
+
+[Defaults]
+SCSI = Si3114_AMD64
+
+
+[SCSI]                  ; HwComponent section
+Si3114_AMD64 = "Silicon Image SiI 3114 SATALink Controller (64-bit Extended)"
+Si3114_IA64 = "Silicon Image SiI 3114 SATALink Controller (Itanium)"
+
+
+[Files.SCSI.Si3114_AMD64]
+driver = disk2,si3114.sys, Si3114
+driver = disk2,SiWinAcc.sys, SiFilter
+inf = disk2,SI3114.inf
+dll = disk2,SilSupp.dll
+catalog = disk2, Si3114.cat
+
+
+[Files.SCSI.Si3114_IA64]
+driver = disk1,si3114.sys, Si3114
+driver = disk1,SiWinAcc.sys, SiFilter
+inf = disk1,SI3114.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, Si3114.cat
+
+
+[HardwareIds.SCSI.Si3114_AMD64]
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_31141095", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_288610F1", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_31148086", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_003915D4", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_B0021458", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_31141458", "Si3114"
+
+
+[HardwareIds.SCSI.Si3114_IA64]
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_31141095", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_288610F1", "Si3114"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_31148086", "Si3114"
+
+
+[Config.Si3114]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"

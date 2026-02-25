@@ -1,0 +1,56 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  TxtSetup.OEM
+; ****************************************************************************
+; ****************************************************************************
+
+[Disks]
+disk1 = "J_36X", jraid_f.inf, \
+disk2 = "J_36X", jraid_f.inf, \
+
+[Defaults]
+scsi = J_I386
+
+;----------- Component Section -----------
+
+[scsi]
+J_Amd64         =  "Storage Driver for JMicron JMB36X Controller (x64)"
+
+;-------------------------------------------
+
+[Files.scsi.J_I386]
+driver  = disk1, jraid.sys, Jraid
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+;-------------------------------------------
+
+[Files.scsi.J_Amd64]
+driver  = disk2, jraid.sys, Jraid
+inf     = disk2, jraid_f.inf
+catalog = disk2, jraid.cat
+
+;-------------------------------------------
+
+[Config.Jraid]
+value = parameters\PnpInterface,5,REG_DWORD,1
+
+;--------------------------------------------
+
+[HardwareIds.scsi.J_I386]
+id = "PCI\VEN_197B&DEV_2360", "Jraid"
+id = "PCI\VEN_197B&DEV_2361", "Jraid"
+id = "PCI\VEN_197B&DEV_2362", "Jraid"
+id = "PCI\VEN_197B&DEV_2363", "Jraid"
+id = "PCI\VEN_197B&DEV_2364", "Jraid"
+id = "PCI\VEN_197B&DEV_2366", "Jraid"
+id = "PCI\VEN_197B&DEV_2369", "Jraid"
+
+[HardwareIds.scsi.J_Amd64]
+id = "PCI\VEN_197B&DEV_2360", "Jraid"
+id = "PCI\VEN_197B&DEV_2361", "Jraid"
+id = "PCI\VEN_197B&DEV_2362", "Jraid"
+id = "PCI\VEN_197B&DEV_2363", "Jraid"
+id = "PCI\VEN_197B&DEV_2364", "Jraid"
+id = "PCI\VEN_197B&DEV_2366", "Jraid"
+id = "PCI\VEN_197B&DEV_2369", "Jraid"

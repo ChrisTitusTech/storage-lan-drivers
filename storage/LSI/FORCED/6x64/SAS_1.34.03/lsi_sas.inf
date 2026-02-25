@@ -1,0 +1,175 @@
+;
+; LSI_SAS.INF - version Vx86.0 (Windows Vista x86)
+;
+; This is the INF file for Windows Vista/Longhorn for the LSI_SAS
+; based PCI MPT environment (Serial Attached SCSI devices)
+;
+; ********************************************************************
+;                                                                    *
+;   Copyright 2007 LSI Corporation, Inc. All rights reserved.        *
+;                                                                    *
+;   This file is property of LSI Corporation, Inc. and is licensed   *
+;   for use as is.  The receipt of or possession of this file does   *
+;   convey any rights to modify its contents, in whole, or in part,  *
+;   without the specific written consent of LSI Corporation.         *
+;                                                                    *
+; ********************************************************************
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=06/13/2011,1.34.03.00
+CatalogFile.ntamd64=svlhx64.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+LSI_EXE_CopyFiles = 11 ; %SystemDrive%\windows\system32
+LSI_CFGDEF_CopyFiles = 24, ProgramData\LSI\Wdcfg
+
+[SourceDisksFiles.amd64]
+lsi_sas.sys = 1
+lsinodrv.inf = 1
+wdcfg.exe = 1
+DriverConfigParam.def = 1
+
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[Manufacturer]
+%LSI%=LSI, NTamd64
+%DELL%=DELL, NTamd64
+
+[LSI.NTamd64]
+%DevDesc8% = LSI_SAS_Inst, PCI\VEN_1000&DEV_0050
+%DevDesc9% = LSI_SAS_Inst, PCI\VEN_1000&DEV_0054
+%DevDesc10% = LSI_SAS_Inst, PCI\VEN_1000&DEV_0058
+%DevDesc11% = LSI_SAS_Inst, PCI\VEN_1000&DEV_0056
+%DevDesc12% = LSI_SAS_Inst, PCI\VEN_1000&DEV_0062
+
+[DELL.NTamd64]
+%DevDescD1% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F041028
+%DevDescD3% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F061028
+%DevDescD4% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F071028
+%DevDescD5% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F081028
+%DevDescD6% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0054&SUBSYS_1F091028
+%DevDescD7% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F0E1028
+%DevDescD8% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F0F1028
+%DevDescD9% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_1F101028
+%DevDescD10% = LSI_SAS_Dell_Inst, PCI\VEN_1000&DEV_0058&SUBSYS_021D1028
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[LSI_SAS_Inst]
+CopyFiles = LSI_SAS_CopyFiles
+CopyFiles = LSI_EXE_CopyFiles
+CopyFiles = LSI_CFGDEF_CopyFiles
+AddReg = LSI_SAS_AddReg
+AddReg = LSI_WDCFG_AddReg
+CopyINF = lsinodrv.inf
+
+[LSI_SAS_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+Include = machine.inf
+Needs = PciIoSpaceNotRequired
+
+[LSI_SAS_Inst.Services]
+AddService = LSI_SAS, %SPSVCINST_ASSOCSERVICE%, LSI_SAS_Service_Inst, Miniport_EventLog_Inst
+
+[LSI_SAS_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Lsi_sas\Parameters\Device,DriverParameter,0x00000002,"PlaceHolder=0;"
+
+[LSI_SAS_Dell_Inst]
+CopyFiles = LSI_SAS_CopyFiles
+CopyFiles = LSI_EXE_CopyFiles
+CopyFiles = LSI_CFGDEF_CopyFiles
+AddReg = LSI_SAS_Dell_AddReg
+AddReg = LSI_WDCFG_AddReg
+
+[LSI_SAS_Dell_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+Include = machine.inf
+Needs = PciIoSpaceNotRequired
+
+[LSI_SAS_Dell_Inst.Services]
+AddService = LSI_SAS, %SPSVCINST_ASSOCSERVICE%, LSI_SAS_Service_Inst, Miniport_EventLog_Inst
+
+[LSI_SAS_Dell_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Lsi_sas\Parameters\Device,DriverParameter,0x00000002,"PlaceHolder=0;"
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x000000A0
+HKLM,SYSTEM\CurrentControlSet\Services\Lsi_sas\Parameters\Device,MaximumSGList,0x00010001,0xFF
+HKLM,SYSTEM\CurrentControlSet\Services\Lsi_sas\Parameters\Device,NumberOfRequests,0x00010001,0xFF
+
+[LSI_WDCFG_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Control\Wdcfg,TargetDriver,0x00000000,"LSI_SAS"
+
+[LSI_SAS_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\lsi_sas.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_sas
+
+[LSI_SAS_CopyFiles]
+lsi_sas.sys,,,1
+
+[LSI_EXE_CopyFiles]
+wdcfg.exe,,,2
+
+[LSI_CFGDEF_CopyFiles]
+DriverConfigParam.def,,,2
+
+[Shutdown_addreg]
+HKR,"ScsiPort","NeedsSystemShutdownNotification",0x00010001,1
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[bus_type_sas]
+HKR, "Parameters", "BusType", 0x00010001, 0x0000000A
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+LSI = "LSI Corporation"
+DELL = "Dell Inc."
+DiskDesc = "LSI PCI Fusion-MPT SAS Driver Install Disk (StorPort)"
+DevDesc8 = "LSI Adapter, SAS 3000 series, 4-port with 1064 -StorPort"
+DevDesc9 = "LSI Adapter, SAS 3000 series, 8-port with 1068 -StorPort"
+DevDesc10 = "LSI Adapter, SAS 3000 series, 8-port with 1068E -StorPort"
+DevDesc11 = "LSI Adapter, SAS 3000 series, 4-port with 1064E -StorPort"
+DevDesc12 = "LSI Adapter, SAS RAID-on-Chip, 8-port with 1078 -StorPort"
+DevDescD1 = "Dell SAS 5/E Adapter Controller"
+DevDescD3 = "Dell SAS 5/i Integrated Controller"
+DevDescD4 = "Dell SAS 5/iR Integrated Controller"
+DevDescD5 = "Dell SAS 5/iR Integrated Controller"
+DevDescD6 = "Dell SAS 5/iR Adapter Controller"
+DevDescD7 = "Dell SAS 6/iR Adapter Controller"
+DevDescD8 = "Dell SAS 6/iR Integrated Blades Controller"
+DevDescD9 = "Dell SAS 6/iR Integrated Controller"
+DevDescD10 = "Dell SAS 6/iR Integrated Workstation Controller"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

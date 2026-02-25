@@ -1,0 +1,293 @@
+; MAGCHGRF.INF -- This file contains descriptions of all the Medium Changers
+;                supported in Windows
+;
+; NOTE: Do not change the title MAGCHGRF.INF in this introductory text without also changing
+; the uninstall procedure. Uninstall uses a string compare to determine whether the file 
+; should be removed.
+;
+; Copyright (c) 2000-2016 IBM Corporation
+
+[version]
+signature="$Windows NT$"
+Class=MediumChanger
+ClassGUID={CE5939AE-EBDE-11d0-B181-0000F8753EC4}
+Provider=%IBM%
+CatalogFile="ibmcg.cat"
+DriverVer=01/06/2017,6.2.6.0
+[SourceDisksNames]
+1=%diskName%
+
+[SourceDisksFiles]
+ibmcg2k12.sys=1
+ibmcgft2k12.sys=1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+SysCpSection_2k12 = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%IBM%=IBM, NT.6.2, NTamd64.6.2, NT.6.3, NTamd64.6.3
+%ADIC%=ADIC, NT.6.2, NTamd64.6.2, NT.6.3, NTamd64.6.3
+%QUANTUM%=QUANTUM, NT.6.2, NTamd64.6.2, NT.6.3, NTamd64.6.3
+%HP%=HP, NT.6.2, NTamd64.6.2, NT.6.3, NTamd64.6.3
+
+;********************************
+;IBM-manufacturer IBM device list
+[IBM]
+
+[IBM.NT.6.2]
+
+%ibmcg3590b11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590B11________
+%ibmcg3590e11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590E11________
+%ibmcg3590h11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590H11________
+
+%ibm3572.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3572-TL_________
+%ibm3573.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3573-TL_________
+%ibm3581.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA______
+%ibm3581TA2.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA2_____
+%ibm3581LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232LX_________
+%ibm3581SX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232SX_________
+%ibm3573LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____33622LX_________
+%ibm3573_14.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____33614LX_________
+%ibm3582.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3582-TL______
+%ibm3583.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3583-TL______
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L22________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L32________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L42________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L52________
+
+%ibm3576.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3576-MTL________
+%ibm3577.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3577-TL_________
+
+[IBM.NTamd64.6.2]
+
+%ibmcg3590b11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590B11________
+%ibmcg3590e11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590E11________
+%ibmcg3590h11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590H11________
+
+%ibm3572.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3572-TL_________
+%ibm3573.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3573-TL_________
+%ibm3581.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA______
+%ibm3581TA2.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA2_____
+%ibm3581LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232LX_________
+%ibm3581SX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232SX_________
+%ibm3573LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____33622LX_________
+%ibm3573_14.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____33614LX_________
+%ibm3582.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3582-TL______
+%ibm3583.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3583-TL______
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L22________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L32________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L42________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L52________
+
+%ibm3576.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3576-MTL________
+%ibm3577.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3577-TL_________
+
+[IBM.NT.6.3]
+
+%ibmcg3590b11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590B11________
+%ibmcg3590e11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590E11________
+%ibmcg3590h11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590H11________
+
+%ibm3572.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3572-TL_________
+%ibm3573.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3573-TL_________
+%ibm3581.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA______
+%ibm3581TA2.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA2_____
+%ibm3581LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232LX_________
+%ibm3581SX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232SX_________
+%ibm3573LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____33622LX_________
+%ibm3573_14.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____33614LX_________
+%ibm3582.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3582-TL______
+%ibm3583.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3583-TL______
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L22________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L32________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L42________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L52________
+
+%ibm3576.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3576-MTL________
+%ibm3577.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3577-TL_________
+
+[IBM.NTamd64.6.3]
+
+%ibmcg3590b11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590B11________
+%ibmcg3590e11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590E11________
+%ibmcg3590h11.DeviceDesc% = ibmcg2k12_Inst, SCSI\ChangerIBM_____03590H11________
+
+%ibm3572.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3572-TL_________
+%ibm3573.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3573-TL_________
+%ibm3581.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA______
+%ibm3581TA2.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3581-TA2_____
+%ibm3581LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232LX_________
+%ibm3581SX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____36232SX_________
+%ibm3573LX.DeviceDesc%        = ibmcg2k12_Inst, SCSI\ChangerIBM_____33622LX_________
+%ibm3573_14.DeviceDesc%       = ibmcg2k12_Inst, SCSI\ChangerIBM_____33614LX_________
+%ibm3582.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3582-TL______
+%ibm3583.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____ULT3583-TL______
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L22________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L32________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L42________
+%ibm3584.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____03584L52________
+
+%ibm3576.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3576-MTL________
+%ibm3577.DeviceDesc%          = ibmcg2k12_Inst, SCSI\ChangerIBM_____3577-TL_________
+
+[ADIC]
+
+[ADIC.NT.6.2]
+%ADICi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i500_____     
+%ADICi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i6000____    
+
+[ADIC.NTamd64.6.2]
+%ADICi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i500_____     
+%ADICi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i6000____    
+
+[ADIC.NT.6.3]
+%ADICi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i500_____     
+%ADICi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i6000____    
+
+[ADIC.NTamd64.6.3]
+%ADICi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i500_____     
+%ADICi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerADIC____Scalar_i6000____    
+
+[QUANTUM]
+
+[QUANTUM.NT.6.2]
+%QUANTUMi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____     
+%QUANTUMi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i6000____ 
+%QUANTUMi3i6.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i3-i6____   
+
+[QUANTUM.NTamd64.6.2]
+%QUANTUMi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____     
+%QUANTUMi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i6000____ 
+%QUANTUMi3i6.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i3-i6____      
+
+[QUANTUM.NT.6.3]
+%QUANTUMi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____     
+%QUANTUMi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i6000____ 
+%QUANTUMi3i6.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i3-i6____      
+
+[QUANTUM.NTamd64.6.3]
+%QUANTUMi500.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____     
+%QUANTUMi6000.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i6000____ 
+%QUANTUMi3i6.DeviceDesc%      = ibmcg2k12_Inst, SCSI\ChangerQUANTUM_Scalar_i3-i6____
+
+[HP]
+
+[HP.NT.6.2]
+%HPMSL6480.DeviceDesc%  = ibmcg2k12_Inst, SCSI\ChangerHP______MSL6480_________
+%HPMSG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______MSL_G3_Series___
+%HPMSG2.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______1x8_G2_AUTOLDR__
+%HPESG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______ESL_G3_Series___
+
+[HP.NTamd64.6.2]
+%HPMSL6480.DeviceDesc%  = ibmcg2k12_Inst, SCSI\ChangerHP______MSL6480_________
+%HPMSG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______MSL_G3_Series___
+%HPMSG2.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______1x8_G2_AUTOLDR__
+%HPESG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______ESL_G3_Series___
+
+[HP.NT.6.3]
+%HPMSL6480.DeviceDesc%  = ibmcg2k12_Inst, SCSI\ChangerHP______MSL6480_________
+%HPMSG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______MSL_G3_Series___
+%HPMSG2.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______1x8_G2_AUTOLDR__
+%HPESG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______ESL_G3_Series___
+
+[HP.NTamd64.6.3]
+%HPMSL6480.DeviceDesc%  = ibmcg2k12_Inst, SCSI\ChangerHP______MSL6480_________
+%HPMSG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______MSL_G3_Series___
+%HPMSG2.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______1x8_G2_AUTOLDR__
+%HPESG3.DeviceDesc%     = ibmcg2k12_Inst, SCSI\ChangerHP______ESL_G3_Series___
+
+[ibmcg2k12_Inst]
+UseInfDeviceDesc=1
+CopyFiles = SysCpSection_2k12
+
+[ibmcg2k12_Inst.HW]
+AddReg = filter_addreg2k12
+
+[filter_addreg2k12]
+HKR,,"UpperFilters", 0x00010000, "IBMCgFt2k12"
+
+[SysCpSection_2k12]
+ibmcg2k12.sys
+ibmcgft2k12.sys
+
+[ibmcg2k12_Inst.Services]
+AddService = ibmcg2k12, %SPSVCINST_ASSOCSERVICE%, ibmcg2k12_Service_Inst, ibmcg2k12_EventLog_Inst
+AddService = IBMCgFt2k12,,IBMCgFt2k12_Service_Inst
+
+[IBMCgFt2k12_Service_Inst]
+DisplayName  = %IBMCgFt.SVCDESC%
+ServiceType  = 1
+StartType    = 3
+ErrorControl = 1
+ServiceBinary = %12%\IBMCgFt2k12.sys
+
+[ibmcg2k12_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ibmcg2k12.sys
+AddReg         = NotifyFailover_AddReg
+
+[NotifyFailover_AddReg]
+HKR,,"FailoverDriver", 0x00010001,0x1
+
+[ibmcg2k12_EventLog_Inst]
+AddReg = ibmcg2k12_EventLog_AddReg
+
+[ibmcg2k12_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\ibmcg2k12.sys"
+; enclosing quotes on preceding entry prevent semicolon from being interpreted as a comment
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+IBM="IBM Corporation"
+
+ibmcg3590b11.DeviceDesc="IBM Magstar 3590 Media Changer"
+ibmcg3590e11.DeviceDesc="IBM Magstar 3590 Media Changer"
+ibmcg3590h11.DeviceDesc="IBM Magstar 3590 Media Changer"
+
+ibm3572.DeviceDesc="IBM TotalStorage 3572 Tape Library"
+ibm3573.DeviceDesc="IBM TotalStorage 3573 Tape Library"
+ibm3581.DeviceDesc="IBM 3581 LTO Autoloader"
+ibm3581TA2.DeviceDesc="IBM 3581 TA2 LTO Autoloader"
+ibm3581LX.DeviceDesc="36232LX LTO Autoloader"
+ibm3581SX.DeviceDesc="36232SX LTO Autoloader"
+ibm3573LX.DeviceDesc="33622LX LTO Autoloader"
+ibm3573_14.DeviceDesc="33614LX LTO Medium Changer"
+ibm3582.DeviceDesc="IBM 3582 LTO Library"
+ibm3583.DeviceDesc="IBM 3583 LTO Library"
+ibm3584.DeviceDesc="IBM 3584 Tape Library"
+
+ibm3576.DeviceDesc="IBM TotalStorage 3576 Modular Tape Library"
+ibm3577.DeviceDesc="IBM 3577 Tape Library"
+
+ADIC="ADIC"
+ADICi500.DeviceDesc="ADIC Scalar i500"     
+ADICi6000.DeviceDesc="ADIC Scalar i6000"    
+
+QUANTUM="QUANTUM"
+QUANTUMi500.DeviceDesc="QUANTUM Scalar i500"     
+QUANTUMi6000.DeviceDesc="QUANTUM Scalar i6000" 
+QUANTUMi3i6.DeviceDesc="QUANTUM Scalar i3-i6"
+
+HP="HP"
+HPMSL6480.DeviceDesc  = "HP MSL6480"
+HPMSG3.DeviceDesc     = "HP MSL2024"
+HPMSG2.DeviceDesc     = "HP 1/8 G2 Tape Autoloader"
+HPESG3.DeviceDesc     = "HP ESL G3"
+
+diskName="IBM Tape/Changer Driver Setup Disk"
+IBMCgFt.SVCDESC="IBM Changer Filter Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

@@ -1,0 +1,532 @@
+[version]
+Signature   = "$Windows NT$"
+Class       = Net
+ClassGUID   = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider    = %Provider%
+DriverVer = 10/07/2021,5.123.21.1007
+PnpLockDown = 1
+CatalogFile = IntelGbE.cat
+
+[ControlFlags]
+ExcludeFromSelect={b85b7c50-6a01-11d2-b841-00c04fad5171}\IntelGbE
+
+[Manufacturer]
+%Manufacturer% = Intel,NTamd64
+
+[Intel.NTamd64]
+%IntelGbE.DeviceDesc_7102%    = IntelGbE_7102.ndi,                pci\VEN_16C3&DEV_7102 ;HAPS
+%IntelGbE.DeviceDesc_34ac%    = IntelGbE_34ac.ndi,                pci\VEN_8086&DEV_34ac ;ILP
+%IntelGbE.DeviceDesc_4b30%    = IntelGbE_4b30.ndi,                pci\VEN_8086&DEV_4b30 ;ER1G
+%IntelGbE.DeviceDesc_4b31%    = IntelGbE_4b31.ndi,                pci\VEN_8086&DEV_4b31 ;ES1G
+%IntelGbE.DeviceDesc_4b32%    = IntelGbE_4b32.ndi,                pci\VEN_8086&DEV_4b32 ;ES2G5
+%IntelGbE.DeviceDesc_4ba0%    = IntelGbE_4ba0_4bb0.ndi,           pci\VEN_8086&DEV_4ba0 ;OR1G
+%IntelGbE.DeviceDesc_4ba1%    = IntelGbE_4ba1_4bb1.ndi,           pci\VEN_8086&DEV_4ba1 ;OS1G
+%IntelGbE.DeviceDesc_4ba2%    = IntelGbE_4ba2_4bb2.ndi,           pci\VEN_8086&DEV_4ba2 ;OS2G5
+%IntelGbE.DeviceDesc_4bb0%    = IntelGbE_4ba0_4bb0.ndi,           pci\VEN_8086&DEV_4bb0 ;OR1G
+%IntelGbE.DeviceDesc_4bb1%    = IntelGbE_4ba1_4bb1.ndi,           pci\VEN_8086&DEV_4bb1 ;OS1G
+%IntelGbE.DeviceDesc_4bb2%    = IntelGbE_4ba2_4bb2.ndi,           pci\VEN_8086&DEV_4bb2 ;OS2G5
+%IntelGbE.DeviceDesc_a0ac%    = IntelGbE_a0ac.ndi,                pci\VEN_8086&DEV_a0ac ;TS1G
+%IntelGbE.DeviceDesc_43ac%    = IntelGbE_43ac_43a2.ndi,           pci\VEN_8086&DEV_43ac ;THS1G
+%IntelGbE.DeviceDesc_43a2%    = IntelGbE_43ac_43a2.ndi,           pci\VEN_8086&DEV_43a2 ;THS1G
+
+;----------------------------------------------------------------------------
+; Original - Backup
+;[IntelGbE.ndi]
+;Characteristics    = 0x4 ; NCF_PHYSICAL
+;*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+;*MediaType         = 0x0 ; NdisMedium802_3
+;*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+;AddReg             = IntelGbE.Reg
+;AddReg		       = IntelGbEVMQ.Reg
+;AddReg            = IntelGbEQOS.Reg
+;AddReg            = IntelGbEMSI.Reg
+;AddReg             = IntelGbEMTU.Reg
+;AddReg             = IntelGbEPromiscuousMode.Reg
+;AddReg             = IntelGbESpeedDuplex.Reg
+;CopyFiles          = IntelGbE.CopyFiles
+;AddReg             = IntelGbExPCS.Reg
+
+
+; MSI Support
+[IntelGbE_4ba0_4bb0.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4ba1_4bb1.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4ba2_4bb2.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4b30.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4b31.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4b32.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_34ac.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_a0ac.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_43ac_43a2.ndi.hw]
+AddReg             = IntelGbEMSI.Reg
+
+[IntelGbE_4ba0_4bb0.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4ba0_4bb0.Params
+[IntelGbE_4ba0_4bb0.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_4ba1_4bb1.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4ba1_4ba2_4bb1_4bb2.Params
+[IntelGbE_4ba1_4bb1.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_4ba2_4bb2.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb_2p5Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4ba1_4ba2_4bb1_4bb2.Params
+[IntelGbE_4ba2_4bb2.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_4b30.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4b30.Params
+[IntelGbE_4b30.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_4b31.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4b31_4b32.Params
+[IntelGbE_4b31.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_4b32.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb_2p5Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 4b31_4b32.Params
+[IntelGbE_4b32.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_34ac.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 34ac.Params
+[IntelGbE_34ac.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_7102.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg
+AddReg             = IntelGbEWakeOnMagicPacket.Reg, IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 7102.Params
+[IntelGbE_7102.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_a0ac.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb_2p5Gb.Reg
+AddReg             = IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = a0ac.Params
+[IntelGbE_a0ac.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+[IntelGbE_43ac_43a2.ndi]
+Characteristics    = 0x4 ; NCF_PHYSICAL
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 0  ; NdisPhysicalMedium802_3
+AddReg             = IntelGbE.Reg
+AddReg             = IntelGbEJumboFrame.Reg, IntelGbEPromiscuousMode.Reg, IntelGbESpeedDuplex_10Mb_100Mb_1Gb_2p5Gb.Reg
+AddReg             = IntelGbENetworkAddress.Reg, IntelGbEPriorityVLANTag.Reg, IntelGbEVlanId.Reg
+;AddReg             = IntelGbESelectiveSuspend.Reg
+AddReg             = IntelGbELedProgramming.Reg, EnergyEfficientEthernet.Reg
+CopyFiles          = IntelGbE.CopyFiles
+AddReg             = 43ac_43a2.Params
+[IntelGbE_43ac_43a2.ndi.Services]
+AddService         = IntelGbE, 2, IntelGbE.Service, IntelGbE.EventLog
+
+
+;-----------------------------------------------------------------------------
+; Registry parameters.
+;
+
+[4ba0_4bb0.Params]
+HKR, , xPCS,        0, "0"
+HKR, , PhyAddr,     0, "1" ; 88E1512_PHY
+HKR, , PSE,         0, "1"
+HKR, , Serdes      ,0, "0"
+HKR, , PhyInterface,0, "0" ; RGMII
+
+[4ba1_4ba2_4bb1_4bb2.Params]
+HKR, , xPCS,        0, "1"
+HKR, , PhyAddr,     0, "1" ; 88E1512_PHY
+HKR, , PSE,         0, "1"
+HKR, , Serdes      ,0, "1"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[4b30.Params]
+HKR, , xPCS,        0, "0"
+HKR, , PhyAddr,     0, "1" ; 88E1512_PHY
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "0"
+HKR, , PhyInterface,0, "0" ; RGMII
+
+[4b31_4b32.Params]
+HKR, , xPCS,        0, "1"
+HKR, , PhyAddr,     0, "1" ; 88E1512_PHY
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "1"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[34ac.Params]
+HKR, , xPCS,        0, "1"
+HKR, , PhyAddr,     0, "1" ; 88E1512_PHY
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "1"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[7102.Params]
+HKR, , xPCS,        0, "0"
+HKR, , PhyAddr,     0, "0" ; 88E1111_PHY
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "0"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[a0ac.Params]
+HKR, , xPCS,        0, "1"
+HKR, , PhyAddr,     0, "1"
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "1"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[43ac_43a2.Params]
+HKR, , xPCS,        0, "1"
+HKR, , PhyAddr,     0, "1"
+HKR, , PSE,         0, "0"
+HKR, , Serdes      ,0, "1"
+HKR, , PhyInterface,0, "1" ; SGMII
+
+[IntelGbEMSI.Reg]
+HKR,Interrupt Management,,0x00000010
+HKR,Interrupt Management\MessageSignaledInterruptProperties,,0x00000010
+HKR,Interrupt Management\MessageSignaledInterruptProperties,MSISupported,0x00010001,1
+;HKR,Interrupt Management\MessageSignaledInterruptProperties,MessageNumberLimit,0x00010001,32
+
+; Sets up VMQ related parameters
+;[IntelGbEVMQ.Reg]
+;HKR, Ndi\Params\*VMQ,                       ParamDesc,              0, %*VMQ%
+;HKR, Ndi\Params\*VMQ,                       default,                0, "1"
+;HKR, Ndi\Params\*VMQ\Enum,                  "0",                    0, %Disabled%
+;HKR, Ndi\Params\*VMQ\Enum,                  "1",                    0, %Enabled%
+;HKR, Ndi\Params\*VMQ,                       type,                   0, "enum"
+
+;HKR, Ndi\Params\*VMQLookaheadSplit,         ParamDesc,              0, %*VMQLookaheadSplit%
+;HKR, Ndi\Params\*VMQLookaheadSplit,         default,                0, "1"
+;HKR, Ndi\Params\*VMQLookaheadSplit\Enum,    "0",                    0, %Disabled%
+;HKR, Ndi\Params\*VMQLookaheadSplit\Enum,    "1",                    0, %Enabled%
+;HKR, Ndi\Params\*VMQLookaheadSplit,         type,                   0, "enum"
+
+;HKR, Ndi\Params\*VMQVlanFiltering,          ParamDesc,              0, %*VMQVlanFiltering%
+;HKR, Ndi\Params\*VMQVlanFiltering,          default,                0, "1"
+;HKR, Ndi\Params\*VMQVlanFiltering\Enum,     "0",                    0, %Disabled%
+;HKR, Ndi\Params\*VMQVlanFiltering\Enum,     "1",                    0, %Enabled%
+;HKR, Ndi\Params\*VMQVlanFiltering,          type,                   0, "enum"
+
+[IntelGbESpeedDuplex_10Mb_100Mb_1Gb.Reg]
+HKR, Ndi\params\SpeedDuplex,      ParamDesc, 0, "Speed & Duplex"
+HKR, Ndi\params\SpeedDuplex,      Type,      0, "enum"
+HKR, Ndi\params\SpeedDuplex,      Default,   0, "0"
+HKR, Ndi\params\SpeedDuplex\enum, "0",       0, "Auto Negotiation"
+HKR, Ndi\params\SpeedDuplex\enum, "1",       0, "10 Mbps Half Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "2",       0, "10 Mbps Full Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "3",       0, "100 Mbps Half Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "4",       0, "100 Mbps Full Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "6",       0, "1.0 Gbps Full Duplex"
+
+[IntelGbESpeedDuplex_10Mb_100Mb_1Gb_2p5Gb.Reg]
+HKR, Ndi\params\SpeedDuplex,      ParamDesc, 0, "Speed & Duplex"
+HKR, Ndi\params\SpeedDuplex,      Type,      0, "enum"
+HKR, Ndi\params\SpeedDuplex,      Default,   0, "0"
+HKR, Ndi\params\SpeedDuplex\enum, "0",       0, "Auto Negotiation"
+HKR, Ndi\params\SpeedDuplex\enum, "1",       0, "10 Mbps Half Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "2",       0, "10 Mbps Full Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "3",       0, "100 Mbps Half Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "4",       0, "100 Mbps Full Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "6",       0, "1.0 Gbps Full Duplex"
+HKR, Ndi\params\SpeedDuplex\enum, "2500",    0, "2.5 Gbps Full Duplex"
+
+;[IntelGbEQOS.Reg]
+;HKR, Ndi\Params\*QOS,                       ParamDesc,              0, %*QOS%
+;HKR, Ndi\Params\*QOS,                       default,                0, "1"
+;HKR, Ndi\Params\*QOS,                       type,                   0, "enum"
+;HKR, Ndi\Params\*QOS\Enum,                  "0",                    0, %Disabled%
+;HKR, Ndi\Params\*QOS\Enum,                  "1",                    0, %Enabled%
+
+[IntelGbEPriorityVLANTag.Reg]
+HKR, Ndi\Params\*PriorityVLANTag,       ParamDesc, , %*PriorityVLANTag%
+HKR, Ndi\Params\*PriorityVLANTag,       default,   , "3"
+HKR, Ndi\Params\*PriorityVLANTag,       type,      , "enum"
+HKR, Ndi\Params\*PriorityVLANTag\enum,  0,         ,  %PriorityVLANDisabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,  1,         ,  %PriorityEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,  2,         ,  %VLANEnabled%
+HKR, Ndi\Params\*PriorityVLANTag\enum,  3,         ,  %PriorityVLANEnabled%
+
+[IntelGbEPromiscuousMode.Reg]
+HKR, Ndi\Params\PromiscuousMode,           ParamDesc, 0, %PromiscuousMode%
+HKR, Ndi\Params\PromiscuousMode,           default,   0, "0"
+HKR, Ndi\Params\PromiscuousMode,           type,      0, "enum"
+HKR, Ndi\Params\PromiscuousMode\Enum,      "0",       0, %Disabled%
+HKR, Ndi\Params\PromiscuousMode\Enum,      "1",       0, %Enabled%
+
+[IntelGbEWakeOnMagicPacket.Reg]
+HKR, Ndi\params\*WakeOnMagicPacket,        ParamDesc, 0, %*WakeOnMagicPacket%
+HKR, Ndi\params\*WakeOnMagicPacket,        default,   0, "1"
+HKR, Ndi\params\*WakeOnMagicPacket,        type,      0, "enum"
+HKR, Ndi\params\*WakeOnMagicPacket\Enum,   "0",       0, %Disabled%
+HKR, Ndi\params\*WakeOnMagicPacket\Enum,   "1",       0, %Enabled%
+
+[IntelGbENetworkAddress.Reg]
+HKR, Ndi\params\NetworkAddress,            ParamDesc, 0, %LAA%
+HKR, Ndi\params\NetworkAddress,            Default,   0, ""
+HKR, Ndi\params\NetworkAddress,            type,      0, "edit"
+HKR, NDI\params\NetworkAddress,            LimitText, 0, "12"
+HKR, NDI\params\NetworkAddress,            UpperCase, 0, "1"
+HKR, NDI\params\NetworkAddress,            optional,  0, "1"
+
+[IntelGbEVlanId.Reg]
+HKR, Ndi\params\VlanId,                 ParamDesc,     0, "VLAN ID"
+HKR, Ndi\params\VlanId,                 default,       0, "0"
+HKR, Ndi\params\VlanId,                 type,          0, "long"
+HKR, Ndi\params\VlanId,                 min,           0, "0"
+HKR, Ndi\params\VlanId,                 max,           0, "4094"
+HKR, Ndi\params\VlanId,                 step,          0, "1"
+HKR, Ndi\params\VlanId,                 base,          0, "10"
+
+;[IntelGbESelectiveSuspend.Reg]
+;HKR, Ndi\Params\*SelectiveSuspend,           ParamDesc, 0, %*SelectiveSuspend%
+;HKR, Ndi\Params\*SelectiveSuspend,           default,   0, "1"
+;HKR, Ndi\Params\*SelectiveSuspend,           type,      0, "enum"
+;HKR, Ndi\Params\*SelectiveSuspend\Enum,      "0",       0, %Disabled%
+;HKR, Ndi\Params\*SelectiveSuspend\Enum,      "1",       0, %Enabled%
+
+;HKR, Ndi\Params\*SSIdleTimeout,              ParamDesc, 0, %*SSIdleTimeout%
+;HKR, Ndi\Params\*SSIdleTimeout,              default,   0, "5"
+;HKR, Ndi\Params\*SSIdleTimeout,              type,      0, "int"
+;HKR, Ndi\Params\*SSIdleTimeout,              min,       0, "1"
+;HKR, Ndi\Params\*SSIdleTimeout,              max,       0, "60"
+;HKR, Ndi\Params\*SSIdleTimeout,              step,      0, "1"
+;HKR, Ndi\Params\*SSIdleTimeout,              Base,      0, "10"
+
+[IntelGbEJumboFrame.Reg]
+HKR, Ndi\Params\*JumboPacket,                  ParamDesc, 0, %*JumboPacket%
+HKR, Ndi\Params\*JumboPacket,                  type,      0, "enum"
+HKR, Ndi\Params\*JumboPacket,                  default,   0, "0"
+HKR, Ndi\Params\*JumboPacket\Enum,             "0",       0, %Disabled%
+HKR, Ndi\Params\*JumboPacket\Enum,             "4074",    0, "4088 Bytes"
+HKR, Ndi\Params\*JumboPacket\Enum,             "9000",    0, "9014 Bytes"
+
+[IntelGbELedProgramming.Reg]
+HKR, Ndi\Params\PhyLed0Value,         ParamDesc,     0, "Phy Led [0] (in Hexadecimal)"
+HKR, Ndi\Params\PhyLed0Value,         default,       0, ""
+HKR, Ndi\Params\PhyLed0Value,         type,          0, "edit"
+HKR, NDI\params\PhyLed0Value,         LimitText,     0, "4"
+HKR, NDI\params\PhyLed0Value,         UpperCase,     0, "1"
+HKR, Ndi\Params\PhyLed0Value,         optional,      0, "1"
+
+HKR, Ndi\Params\PhyLed1Value,         ParamDesc,     0, "Phy Led [1] (in Hexadecimal)"
+HKR, Ndi\Params\PhyLed1Value,         default,       0, ""
+HKR, Ndi\Params\PhyLed1Value,         type,          0, "edit"
+HKR, NDI\params\PhyLed1Value,         LimitText,     0, "4"
+HKR, NDI\params\PhyLed1Value,         UpperCase,     0, "1"
+HKR, Ndi\Params\PhyLed1Value,         optional,      0, "1"
+
+HKR, Ndi\Params\PhyLed2Value,         ParamDesc,     0, "Phy Led [2] (in Hexadecimal)"
+HKR, Ndi\Params\PhyLed2Value,         default,       0, ""
+HKR, Ndi\Params\PhyLed2Value,         type,          0, "edit"
+HKR, NDI\params\PhyLed2Value,         LimitText,     0, "4"
+HKR, NDI\params\PhyLed2Value,         UpperCase,     0, "1"
+HKR, Ndi\Params\PhyLed2Value,         optional,      0, "1"
+
+HKR, Ndi\Params\PhyLed3Value,         ParamDesc,     0, "Phy Led [3] (in Hexadecimal)"
+HKR, Ndi\Params\PhyLed3Value,         default,       0, ""
+HKR, Ndi\Params\PhyLed3Value,         type,          0, "edit"
+HKR, NDI\params\PhyLed3Value,         LimitText,     0, "4"
+HKR, NDI\params\PhyLed3Value,         UpperCase,     0, "1"
+HKR, Ndi\Params\PhyLed3Value,         optional,      0, "1"
+
+[EnergyEfficientEthernet.Reg]
+HKR, Ndi\params\*EEE,				  ParamDesc,     0,  %EnergyEfficientEthernet%
+HKR, Ndi\params\*EEE,				  default,       0,  "1"
+HKR, Ndi\params\*EEE,				  type,          0,  "enum"
+HKR, Ndi\params\*EEE\enum,			  "0",           0,  %Disabled%
+HKR, Ndi\params\*EEE\enum,			  "1",           0,  %Enabled%
+
+;-----------------------------------------------------------------------------
+; Microsoft Virtual Miniport Common
+;
+[IntelGbE.Reg]
+HKR,    ,                         BusNumber,           0, "0" 
+HKR, Ndi,                         Service,             0, "IntelGbE"
+HKR, Ndi\Interfaces,              UpperRange,          0, "ndis5"
+HKR, Ndi\Interfaces,              LowerRange,          0, "ethernet"
+
+;-----------------------------------------------------------------------------
+; Driver and Service Section
+;
+[IntelGbE.CopyFiles]
+IntelGbE.sys,,,2
+
+[IntelGbE.Service]
+DisplayName        = %IntelGbE.Service.DispName%
+ServiceType        = 1 ;%SERVICE_KERNEL_DRIVER%
+StartType          = 3 ;%SERVICE_DEMAND_START%
+ErrorControl       = 1 ;%SERVICE_ERROR_NORMAL%
+ServiceBinary      = %13%\IntelGbE.sys
+AddReg             = TextModeFlags.Reg
+
+[IntelGbE.EventLog]
+AddReg             = IntelGbE.AddEventLog.Reg
+
+[IntelGbE.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\netevent.dll"
+HKR, , TypesSupported,   0x00010001, 7
+
+[TextModeFlags.Reg]
+HKR, Parameters, TextModeFlags, 0x00010001, 0x0001
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+IntelGbE.sys  = 1,,
+
+;-----------------------------------------------------------------------------
+; DestinationDirs
+;
+[DestinationDirs]
+IntelGbE.CopyFiles = 13
+
+;-----------------------------------------------------------------------------
+; Localizable Strings
+;
+[Strings]
+Provider                     = "Intel"
+Manufacturer                 = "Intel Corporation"
+IntelGbE.DeviceDesc_7102     = "Ethernet - HAPS DX - Dev7102"
+IntelGbE.DeviceDesc_34ac     = "Intel(R) EC1000S 1.0GbE Dev34ac"
+IntelGbE.DeviceDesc_4b30     = "Intel(R) EC1000R 1.0GbE Connection"
+IntelGbE.DeviceDesc_4b31     = "Intel(R) EC1000S 1.0GbE Connection"
+IntelGbE.DeviceDesc_4b32     = "Intel(R) EC1000S 1.0GbE Connection & Intel(R) EC2500S 2.5GbE Connection"
+IntelGbE.DeviceDesc_4ba0     = "Intel(R) EC1000R 1.0GbE Connection"
+IntelGbE.DeviceDesc_4ba1     = "Intel(R) EC1000S 1.0GbE Connection"
+IntelGbE.DeviceDesc_4ba2     = "Intel(R) EC2500S 2.5GbE Connection"
+IntelGbE.DeviceDesc_4bb0     = "Intel(R) EC1000R 1.0GbE Connection"
+IntelGbE.DeviceDesc_4bb1     = "Intel(R) EC1000S 1.0GbE Connection"
+IntelGbE.DeviceDesc_4bb2     = "Intel(R) EC2500S 2.5GbE Connection"
+IntelGbE.DeviceDesc_a0ac     = "Intel(R) EC1000S 1.0GbE Connection & Intel(R) EC2500S 2.5GbE Connection"
+IntelGbE.DeviceDesc_43ac     = "Intel(R) EC1000S 1.0GbE Connection & Intel(R) EC2500S 2.5GbE Connection"
+IntelGbE.DeviceDesc_43a2     = "Intel(R) EC1000S 1.0GbE Connection & Intel(R) EC2500S 2.5GbE Connection"
+
+IntelGbE.Service.DispName    = "Intel GbE"
+DiskId1                      = "Intel GbE Installation Disk #1"
+
+*VMQ                         = "Virtual Machine Queues"
+*VMQLookaheadSplit           = "Look Ahead Split"
+*VMQVlanFiltering            = "VMQ VLAN ID Filtering"
+*QOS                         = "NDIS QOS"
+*PriorityVLANTag             = "Priority & VLAN"
+PromiscuousMode              = "Promiscuous Mode"
+xPCS                         = "DesignWare Cores Ethernet PCS"
+
+Disabled                     = "Disabled"
+Enabled                      = "Enabled"
+PriorityVLANDisabled         = "Priority & VLAN Disabled"
+PriorityEnabled              = "Priority Enabled"
+VLANEnabled                  = "VLAN Enabled"
+PriorityVLANEnabled          = "Priority & VLAN Enabled"
+*WakeOnMagicPacket           = "Wake on Magic Packet"
+LAA                          = "Locally Administered Address"
+*SelectiveSuspend            = "Selective Suspend"
+*SSIdleTimeout               = "Selective suspend idle time-out in units of seconds"
+*JumboPacket                 = "Jumbo Frame"
+EnergyEfficientEthernet      = "Energy Efficient Ethernet"

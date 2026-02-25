@@ -1,0 +1,47 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+22a7c21b-fca5-3d4a-50a2-f3a096754305 2016 // SRC=RaidMapper.c MJ= MN=
+#typev raidmapper_c830 13 "%0%10!s!  !Logical drive != eLogical_Drive_Ok.  RAID MAP[%11!d!] ByPassHandle == 0!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=AllocSpaceForRaidDisk
+{
+IDSTR2, ItemString -- 10
+ii, ItemLong -- 11
+}
+#typev raidmapper_c814 12 "%0%10!s!  !A Logical drive in a good state has RAID MAP[%11!d!] ByPassHandle == 0!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=AllocSpaceForRaidDisk
+{
+IDSTR2, ItemString -- 10
+ii, ItemLong -- 11
+}
+#typev raidmapper_c790 11 "%0%10!s!   Allocating %11!d! bytes (%12!d! entries) for raid map" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=AllocSpaceForRaidDisk
+{
+IDSTR2, ItemString -- 10
+ulDiskAllocSize, ItemLong -- 11
+ulMaxIndex, ItemLong -- 12
+}
+#typev raidmapper_c775 10 "%0%10!s!  !Raid Map changed unexpectedly.  If resuming from sleep/hibernate this is expected!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=AllocSpaceForRaidDisk
+{
+IDSTR2, ItemString -- 10
+}
+#typev raidmapper_c930 16 "%0%10!s!   Flags: NeverSpan Read/Write=%11!d!/%12!d!. ManageGroup=%13!d!" //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=PrepareSupportForRaidMap
+{
+pDevX->szBdf, ItemString -- 10
+pHint->fIoIsAlwaysSingleColumn, ItemLong -- 11
+pHint->fIoIsAlwaysSingleColumn, ItemLong -- 12
+pHint->fManageGroup, ItemLong -- 13
+}
+#typev raidmapper_c927 15 "%0%10!s!   PerLun: FT=%11!6s! BlocksPerRow=0x%12!06X! Tot=0x%13!08X!. MaxIndex=%14!d!" //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=PrepareSupportForRaidMap
+{
+pDevX->szBdf, ItemString -- 10
+pFTString, ItemString -- 11
+pHint->ulBlocksPerRow, ItemLong -- 12
+pHint->ulTotalBlocksPerRow, ItemLong -- 13
+pHint->ulMaxIndex, ItemLong -- 14
+}
+#typev raidmapper_c924 14 "%0
+%10!s!   RaidMap: DataPerRow=%11!d! ParityPerRow=%12!d! RowCount=%13!d! LayoutMapCnt=%14!d!" //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=PrepareSupportForRaidMap
+{
+pDevX->szBdf, ItemString -- 10
+pRaidMap->usDataDisksPerRow, ItemLong -- 11
+pRaidMap->usMetdataDisksPerRow, ItemLong -- 12
+pRaidMap->usRowCount, ItemLong -- 13
+pRaidMap->usLayoutMapCnt, ItemLong -- 14
+}

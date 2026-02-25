@@ -1,0 +1,94 @@
+[Version]
+Signature      = "$WINDOWS NT$"
+Class          = System
+ClassGuid      = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider       = %CompanyName%
+CatalogFile    = mgmtep.cat
+DriverVer      = 05/17/2017,1.0.0.00
+
+[Manufacturer]
+%CompanyName%     = Models, NTx86, NTia64, NTamd64
+
+[Models]
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8531&SUBSYS_853111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8532&SUBSYS_853211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8533&SUBSYS_853311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8534&SUBSYS_853411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8535&SUBSYS_853511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8536&SUBSYS_853611F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8541&SUBSYS_854111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8542&SUBSYS_854211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8543&SUBSYS_854311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8544&SUBSYS_854411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8545&SUBSYS_854511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8546&SUBSYS_854611F8
+
+[Models.NTx86]
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8531&SUBSYS_853111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8532&SUBSYS_853211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8533&SUBSYS_853311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8534&SUBSYS_853411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8535&SUBSYS_853511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8536&SUBSYS_853611F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8541&SUBSYS_854111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8542&SUBSYS_854211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8543&SUBSYS_854311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8544&SUBSYS_854411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8545&SUBSYS_854511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8546&SUBSYS_854611F8
+
+[Models.NTia64]
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8531&SUBSYS_853111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8532&SUBSYS_853211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8533&SUBSYS_853311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8534&SUBSYS_853411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8535&SUBSYS_853511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8536&SUBSYS_853611F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8541&SUBSYS_854111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8542&SUBSYS_854211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8543&SUBSYS_854311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8544&SUBSYS_854411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8545&SUBSYS_854511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8546&SUBSYS_854611F8
+
+[Models.NTamd64]
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8531&SUBSYS_853111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8532&SUBSYS_853211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8533&SUBSYS_853311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8534&SUBSYS_853411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8535&SUBSYS_853511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8536&SUBSYS_853611F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8541&SUBSYS_854111F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8542&SUBSYS_854211F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8543&SUBSYS_854311F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8544&SUBSYS_854411F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8545&SUBSYS_854511F8
+%mgmtep.devname%    = COMMON_DRV, PCI\VEN_11F8&DEV_8546&SUBSYS_854611F8
+
+[COMMON_DRV]
+AddReg         = COMMON_DRV_ADD_REGISTRY_ENTRIES
+CopyFiles      = COMMON_DRV_COPY_FILES
+
+[COMMON_DRV_ADD_REGISTRY_ENTRIES]
+; There is nothing of value to put in the registry 
+   
+[COMMON_DRV_COPY_FILES]
+; There are NO files that we need to copy
+
+[COMMON_DRV.Services]
+AddService     = ,2
+
+[SourceDisksNames]
+; No source because there are no files that we need to copy
+
+[SourceDisksFiles]
+; No source because there are no files that we need to copy
+
+[DestinationDirs]
+; If there are no files to copy then a destination is not needed
+DefaultDestDir = 11  ;  \system32 directory on NT-based systems
+
+[strings]
+; Product Strings 
+CompanyName        = "Microsemi"
+mgmtep.devname     =  "Switchtec Management EP"

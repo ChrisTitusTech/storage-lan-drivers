@@ -1,0 +1,60 @@
+; This file installs the SiI 3114 Serial ATA Soft RAID 5 driver as part of
+; text mode setup on 64-bit versions of Windows XP and Windows Server 2003.
+;
+; Copyright (C) 2005 by Silicon Image, Inc.
+; All rights reserved
+
+[Disks]
+disk1 = "Silicon Image SiI 3114 SoftRAID 5 Driver Installation Disk",\Si3114r5.inf,\
+
+[Defaults]
+SCSI = Si3114r5_AMD64
+
+[SCSI]                  ; HwComponent section
+Si3114r5_AMD64 = "Silicon Image SiI 3114 SoftRAID 5 Controller (64-bit Extended)"
+
+[Files.SCSI.Si3114r5_AMD64]
+driver = disk1,Si3114r5.sys, Si3114r5
+driver = disk1,SiWinAcc.sys, SiFilter
+driver = disk1,SiRemFil.sys, SiRemFil
+inf = disk1,Si3114r5.inf
+dll = disk1,SilSupp.dll
+inf = disk1,SIPPD.inf
+catalog = disk1, Si3114r5.cat
+
+[HardwareIds.SCSI.Si3114r5_AMD64]
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_71141095", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_71148086", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_81361043", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_81671043", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_902A1695", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_310215BD", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_052FA0A0", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_104A147B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_104B147B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_B0041458", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_71001462", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_71251462", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_72291462", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_471015D5", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0C25105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CC1105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCA105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCB105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCC105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCD105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCE105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_0CCF105B", "Si3114r5"
+id = "PCI\VEN_1095&DEV_3114&SUBSYS_71141458", "Si3114r5"
+
+[Config.Si3114r5]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "HDS724040KLSA80                         KFAOA32A", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722525VLSA80                         V36OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722516VLSA80                         V34OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "Maxtor 7B250S0                          BANC1B70", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541060G9SA00                         MB3OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541080G9SA00                         MB4OC60D", REG_SZ, "DisableSataQueueing"
+

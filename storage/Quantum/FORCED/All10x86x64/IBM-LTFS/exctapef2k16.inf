@@ -1,0 +1,279 @@
+; MAGTAPEF.INF -- This file contains descriptions of all the Tape Drives
+;                supported in Windows
+;
+; NOTE: Do not change the title MAGTAPEF.INF in this introductory text without also changing
+; the uninstall procedure. Uninstall uses a string compare to determine whether the file 
+; should be removed.
+;
+; Copyright (c) 2000-2014 IBM Corporation
+
+[version]
+signature="$Windows NT$"
+Class=TapeDrive
+ClassGUID={6D807884-7D21-11CF-801C-08002BE10318}
+Provider=%IBM%
+CatalogFile="ibmtp.cat"
+DriverVer=01/17/2017,6.2.6.1
+
+[SourceDisksNames]
+1=%diskName%
+
+[SourceDisksFiles]
+ibmtp2k16.sys=1
+ibmtpft2k16.sys=1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+SysCpSection_2k16 = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%IBM%=IBM, NT.6.3, NTamd64.6.3
+%HP%=HP, NT.6.3, NTamd64.6.3
+
+;********************************
+;IBM-manufacturer IBM device list
+
+[IBM]
+
+[IBM.NT.6.3]
+
+%ibmtp3490c2a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03490C2A03490C2A
+
+%ibmtp3590b11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B11________
+%ibmtp3590b12.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B12________
+%ibmtp3590b1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B1A________
+%ibmtp3590e11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E11________
+%ibmtp3590e12.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E12________
+%ibmtp3590e1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E1A________
+%ibmtp3590h11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590H11________
+%ibmtp3590h1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590H1A________
+
+%ibmtp3592j1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592J1A________
+%ibmtp3592e05.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E05________
+%ibmtp3592e06.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E06________
+%ibmtp3592e07.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E07________
+%ibmtp3592e08.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E08________
+
+%ibmtpoem.DeviceDesc%      = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD1_____
+%ibmtp3580.DeviceDesc%     = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD1_____
+%ibmtpoemG2.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD2_____
+%ibmtp3580G2.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD2_____
+%ibmtpoemG3.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD3_____
+%ibmtp3580G3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD3_____
+%ibmtpoemH3.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH3_____
+%ibmtp3580H3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH3_____
+%ibmtpeSrvH3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_3____
+%ibmtpoemG4.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD4_____
+%ibmtp3580G4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD4_____
+%ibmtpoemH4.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH4_____
+%ibmtp3580H4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH4_____
+%ibmtpeSrvH4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_4____
+%ibmtpoemG5.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD5_____
+%ibmtp3580G5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD5_____
+%ibmtpoemH5.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH5_____
+%ibmtp3580H5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH5_____
+%ibmtpeSrvH5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_5____
+%ibmtpoemG6.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD6_____
+%ibmtp3580G6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD6_____
+%ibmtpoemH6.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH6_____
+%ibmtp3580H6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH6_____
+%ibmtpeSrvH6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_6____
+%ibmtpeUsbH6.DeviceDesc%   = ibmtp2k16_Inst,  USBSTOR\SequentialIBM_____ULT3580-HH6__
+%ibmtpoemG7.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD7_____
+%ibmtp3580G7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD7_____
+%ibmtpoemH7.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH7_____
+%ibmtp3580H7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH7_____
+%ibmtpeSrvH7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_7____
+%ibmtpeUsbH7.DeviceDesc%   = ibmtp2k16_Inst,  USBSTOR\SequentialIBM_____ULT3580-HH7__
+
+[IBM.NTamd64.6.3]
+
+%ibmtp3490c2a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03490C2A03490C2A
+
+%ibmtp3590b11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B11________
+%ibmtp3590b12.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B12________
+%ibmtp3590b1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590B1A________
+%ibmtp3590e11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E11________
+%ibmtp3590e12.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E12________
+%ibmtp3590e1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590E1A________
+%ibmtp3590h11.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590H11________
+%ibmtp3590h1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03590H1A________
+
+%ibmtp3592j1a.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592J1A________
+%ibmtp3592e05.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E05________
+%ibmtp3592e06.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E06________
+%ibmtp3592e07.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E07________
+%ibmtp3592e08.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialIBM_____03592E08________
+
+%ibmtpoem.DeviceDesc%      = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD1_____
+%ibmtp3580.DeviceDesc%     = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD1_____
+%ibmtpoemG2.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD2_____
+%ibmtp3580G2.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD2_____
+%ibmtpoemG3.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD3_____
+%ibmtp3580G3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD3_____
+%ibmtpoemH3.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH3_____
+%ibmtp3580H3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH3_____
+%ibmtpeSrvH3.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_3____
+%ibmtpoemG4.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD4_____
+%ibmtp3580G4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD4_____
+%ibmtpoemH4.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH4_____
+%ibmtp3580H4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH4_____
+%ibmtpeSrvH4.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_4____
+%ibmtpoemG5.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD5_____
+%ibmtp3580G5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD5_____
+%ibmtpoemH5.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH5_____
+%ibmtp3580H5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH5_____
+%ibmtpeSrvH5.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_5____
+%ibmtpoemG6.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD6_____
+%ibmtp3580G6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD6_____
+%ibmtpoemH6.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH6_____
+%ibmtp3580H6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH6_____
+%ibmtpeSrvH6.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_6____
+%ibmtpeUsbH6.DeviceDesc%   = ibmtp2k16_Inst,  USBSTOR\SequentialIBM_____ULT3580-HH6__
+%ibmtpoemG7.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-TD7_____
+%ibmtp3580G7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-TD7_____
+%ibmtpoemH7.DeviceDesc%    = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULTRIUM-HH7_____
+%ibmtp3580H7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____ULT3580-HH7_____
+%ibmtpeSrvH7.DeviceDesc%   = ibmtp2k16_Inst,  SCSI\SequentialIBM_____HH_LTO_Gen_7____
+%ibmtpeUsbH7.DeviceDesc%   = ibmtp2k16_Inst,  USBSTOR\SequentialIBM_____ULT3580-HH7__
+
+[HP]
+
+[HP.NT.6.3]
+
+%HPLTO7.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialHP______Ultrium_7-SCSI__
+
+[HP.NTamd64.6.3]
+
+%HPLTO7.DeviceDesc% = ibmtp2k16_Inst, SCSI\SequentialHP______Ultrium_7-SCSI__
+
+[ibmtp2k16_Inst]
+UseInfDeviceDesc=1
+CopyFiles = SysCpSection_2k16
+
+[ibmtp2k16_Inst.HW]
+AddReg=Grant_acc_AddReg
+
+[ibmtp2k16_Inst.HW]
+AddReg = filter_addreg2k16
+
+[filter_addreg2k16]
+HKR,,"UpperFilters", 0x00010000, "IBMTpFt2k16"
+
+[Grant_acc_AddReg]
+HKR,,Security,,"D:P(A;;GRGW;;;BO)(A;;GA;;;BA)(A;;GA;;;SY)"
+
+[SysCpSection_2k16]
+ibmtp2k16.sys
+ibmtpft2k16.sys
+
+[ibmtp2k16_Inst.Services]
+AddService = ibmtp2k16, %SPSVCINST_ASSOCSERVICE%, ibmtp2k16_Service_Inst, ibmtp2k16_EventLog_Inst
+AddService = IBMTpFt2k16,,IBMTpFt2k16_Service_Inst
+
+[IBMTpFt2k16_Service_Inst]
+DisplayName   = %IBMTpFt.SVCDESC%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\IBMTpFt2k16.sys
+AddReg        = SystemDrive_addreg
+
+[SystemDrive_addreg]
+HKR,,"SystemDrive",%REG_SZ%,%24%
+
+[ibmtp2k16_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ibmtp2k16.sys
+AddReg         = NotifyFailover_AddReg
+
+[NotifyFailover_AddReg]
+HKR,,"FailoverDriver", 0x00010001,0x1
+HKR,,"SystemDrive",%REG_SZ%,%24%
+
+[ibmtp2k16_EventLog_Inst]
+AddReg = ibmtp2k16_EventLog_AddReg
+
+[ibmtp2k16_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\ibmtp2k16.sys"
+; enclosing quotes on preceding entry prevent semicolon from being interpreted as a comment
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+IBM="IBM Corporation"
+
+ibmtp3490c2a.DeviceDesc="IBM MAGSTAR 3490 TAPE DRIVE"
+
+ibmtp3590b11.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590b12.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590b1a.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590e11.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590e12.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590e1a.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590h11.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+ibmtp3590h1a.DeviceDesc="IBM MAGSTAR 3590 TAPE DRIVE"
+
+ibmtp3592j1a.DeviceDesc="IBM TOTALSTORAGE 3592 TAPE DRIVE"
+ibmtp3592e05.DeviceDesc="IBM TOTALSTORAGE 3592 TAPE DRIVE"
+ibmtp3592e06.DeviceDesc="IBM TOTALSTORAGE 3592 TAPE DRIVE"
+ibmtp3592e07.DeviceDesc="IBM TOTALSTORAGE 3592 TAPE DRIVE"
+ibmtp3592e08.DeviceDesc="IBM TOTALSTORAGE 3592 TAPE DRIVE"
+
+ibmtpoem.DeviceDesc="IBM ULTRIUM TAPE DRIVE"
+ibmtp3580.DeviceDesc="IBM ULTRIUM 3580 TAPE DRIVE"
+ibmtpoemG2.DeviceDesc="IBM ULTRIUM II TAPE DRIVE"
+ibmtp3580G2.DeviceDesc="IBM ULTRIUM II 3580 TAPE DRIVE"
+
+ibmtpoemG3.DeviceDesc="IBM ULTRIUM III TAPE DRIVE"
+ibmtp3580G3.DeviceDesc="IBM ULTRIUM III 3580 TAPE DRIVE"
+ibmtpoemH3.DeviceDesc="IBM ULTRIUM 3 HH TAPE DRIVE"
+ibmtp3580H3.DeviceDesc="IBM ULTRIUM 3 HH 3580 TAPE DRIVE"
+ibmtpeSrvH3.DeviceDesc="Half-High LTO Gen-3 Tape Drive for IBM eServer Attach"
+
+ibmtpoemG4.DeviceDesc="IBM ULTRIUM 4 TAPE DRIVE"
+ibmtp3580G4.DeviceDesc="IBM ULTRIUM 4 3580 TAPE DRIVE"
+ibmtpoemH4.DeviceDesc="IBM ULTRIUM 4 HH TAPE DRIVE"
+ibmtp3580H4.DeviceDesc="IBM ULTRIUM 4 HH 3580 TAPE DRIVE"
+ibmtpeSrvH4.DeviceDesc="Half-High LTO Gen-4 Tape Drive for IBM eServer Attach"
+
+ibmtpoemG5.DeviceDesc="IBM ULTRIUM 5 TAPE DRIVE"
+ibmtp3580G5.DeviceDesc="IBM ULTRIUM 5 3580 TAPE DRIVE"
+ibmtpoemH5.DeviceDesc="IBM ULTRIUM 5 HH TAPE DRIVE"
+ibmtp3580H5.DeviceDesc="IBM ULTRIUM 5 HH 3580 TAPE DRIVE"
+ibmtpeSrvH5.DeviceDesc="Half-High LTO Gen-5 Tape Drive for IBM eServer Attach"
+
+ibmtpoemG6.DeviceDesc="IBM ULTRIUM 6 TAPE DRIVE"
+ibmtp3580G6.DeviceDesc="IBM ULTRIUM 6 3580 TAPE DRIVE"
+ibmtpoemH6.DeviceDesc="IBM ULTRIUM 6 HH TAPE DRIVE"
+ibmtp3580H6.DeviceDesc="IBM ULTRIUM 6 HH 3580 TAPE DRIVE"
+ibmtpeSrvH6.DeviceDesc="Half-High LTO Gen-6 Tape Drive for IBM eServer Attach"
+ibmtpeUsbH6.DeviceDesc="IBM ULT3580 USB HH6"
+
+ibmtpoemG7.DeviceDesc="IBM ULTRIUM 7 TAPE DRIVE"
+ibmtp3580G7.DeviceDesc="IBM ULTRIUM 7 3580 TAPE DRIVE"
+ibmtpoemH7.DeviceDesc="IBM ULTRIUM 7 HH TAPE DRIVE"
+ibmtp3580H7.DeviceDesc="IBM ULTRIUM 7 HH 3580 TAPE DRIVE"
+ibmtpeSrvH7.DeviceDesc="Half-High LTO Gen-7 Tape Drive for IBM eServer Attach"
+ibmtpeUsbH7.DeviceDesc="IBM ULT3580 USB HH7"
+
+HP="HP"
+
+HPLTO7.DeviceDesc = "HP Ultrium 7"
+
+diskName="IBM Tape/Changer Driver Setup Disk"
+IBMTpFt.SVCDESC="IBM Tape Filter Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_SZ                 = 0x00000000

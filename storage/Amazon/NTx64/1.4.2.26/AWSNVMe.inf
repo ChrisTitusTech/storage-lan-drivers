@@ -1,0 +1,301 @@
+; AWS NVMe Driver INF
+; Copyright (c) 2017-2019 Amazon Web Services, Inc.  All rights reserved.
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider    = %Amazon%
+CatalogFile = AWSNVMe.cat
+DriverVer = 02/03/2023,1.4.2.26
+
+;
+; Source file information
+;
+
+[SourceDisksNames]
+1 = %InstallDiskName%,,,
+
+[SourceDisksFiles]
+AWSNVMe62.sys  = 1
+AWSNVMe63.sys  = 1
+AWSNVMe100.sys = 1
+
+[DestinationDirs]
+DefaultDestDir         = 12
+AWSNVMe_CopyFiles.6.2  = 12
+AWSNVMe_CopyFiles.6.3  = 12
+AWSNVMe_CopyFiles.10.0 = 12
+
+[Manufacturer]
+%Amazon% = AWSNVME, NTamd64.6.2, NTamd64.6.3, NTamd64.10.0
+
+; Windows Server 2012
+[AWSNVME.NTamd64.6.2]
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.2_EBS,    PCI\VEN_1D0F&DEV_0061
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.2_EBS,    PCI\VEN_1D0F&DEV_0065
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.2_EBS,    PCI\VEN_1D0F&DEV_8061
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.2_IS,     PCI\VEN_1D0F&DEV_CD00
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.2_IS,     PCI\VEN_1D0F&DEV_CD01
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.2_IS_02,  PCI\VEN_1D0F&DEV_CD02
+
+; Windows Server 2012 R2
+[AWSNVME.NTamd64.6.3]
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.3_EBS,    PCI\VEN_1D0F&DEV_0061
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.3_EBS,    PCI\VEN_1D0F&DEV_0065
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.6.3_EBS,    PCI\VEN_1D0F&DEV_8061
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.3_IS,     PCI\VEN_1D0F&DEV_CD00
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.3_IS,     PCI\VEN_1D0F&DEV_CD01
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.6.3_IS_02,  PCI\VEN_1D0F&DEV_CD02
+
+; Windows Server 2016+
+[AWSNVME.NTamd64.10.0]
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.10.0_EBS,    PCI\VEN_1D0F&DEV_0061
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.10.0_EBS,    PCI\VEN_1D0F&DEV_0065
+"AWS NVMe Elastic Block Storage Adapter" = AWSNVMe_Inst.10.0_EBS,    PCI\VEN_1D0F&DEV_8061
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.10.0_IS,     PCI\VEN_1D0F&DEV_CD00
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.10.0_IS,     PCI\VEN_1D0F&DEV_CD01
+"AWS NVMe Instance Storage Adapter"      = AWSNVMe_Inst.10.0_IS_02,  PCI\VEN_1D0F&DEV_CD02
+
+; Windows Server 2012 EBS
+[AWSNVMe_Inst.6.2_EBS]
+CopyFiles = AWSNVMe_CopyFiles.6.2
+
+; Windows Server 2012 Instance Storage
+[AWSNVMe_Inst.6.2_IS]
+CopyFiles = AWSNVMe_CopyFiles.6.2
+
+; Windows Server 2012 HDD Instance Storage
+[AWSNVMe_Inst.6.2_IS_02]
+CopyFiles = AWSNVMe_CopyFiles.6.2
+
+; Windows Server 2012 R2 EBS
+[AWSNVMe_Inst.6.3_EBS]
+CopyFiles = AWSNVMe_CopyFiles.6.3
+
+; Windows Server 2012 R2 Instance Storage
+[AWSNVMe_Inst.6.3_IS]
+CopyFiles = AWSNVMe_CopyFiles.6.3
+
+; Windows Server 2012 R2 HDD Instance Storage
+[AWSNVMe_Inst.6.3_IS_02]
+CopyFiles = AWSNVMe_CopyFiles.6.3
+
+; Windows Server 2016+ EBS
+[AWSNVMe_Inst.10.0_EBS]
+CopyFiles = AWSNVMe_CopyFiles.10.0
+
+; Windows Server 2016+ Instance Storage
+[AWSNVMe_Inst.10.0_IS]
+CopyFiles = AWSNVMe_CopyFiles.10.0
+
+; Windows Server 2016+ HDD Instance Storage
+[AWSNVMe_Inst.10.0_IS_02]
+CopyFiles = AWSNVMe_CopyFiles.10.0
+
+; Windows Server 2012 EBS
+[AWSNVMe_Inst.6.2_EBS.HW]
+AddReg = AWSNVMe_Inst_AddReg_EBS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_EBS
+
+; Windows Server 2012 Instance Storage
+[AWSNVMe_Inst.6.2_IS.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Windows Server 2012 HDD Instance Storage
+[AWSNVMe_Inst.6.2_IS_02.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS_02
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Windows Server 2012 R2 EBS
+[AWSNVMe_Inst.6.3_EBS.HW]
+AddReg = AWSNVMe_Inst_AddReg_EBS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_EBS
+
+; Windows Server 2012 R2 Instance Storage
+[AWSNVMe_Inst.6.3_IS.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Windows Server 2012 R2 HDD Instance Storage
+[AWSNVMe_Inst.6.3_IS_02.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS_02
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Windows Server 2016+ EBS
+[AWSNVMe_Inst.10.0_EBS.HW]
+AddReg = AWSNVMe_Inst_AddReg_EBS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_EBS
+
+; Windows Server 2016+ Instance Storage
+[AWSNVMe_Inst.10.0_IS.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Windows Server 2016+ HDD Instance Storage
+[AWSNVMe_Inst.10.0_IS_02.HW]
+AddReg = AWSNVMe_Inst_AddReg_IS_02
+AddReg = AWSNVMe_Inst_AddReg
+AddReg = AWSNVMe_Inst_AddReg_Msi_IS
+
+; Per-Adapter Values for EBS
+[AWSNVMe_Inst_AddReg_EBS]
+HKR,"Parameters",,0x00000010
+HKR,"Parameters","MaxTransferSize", 0x00010001, 0x00040000
+
+; Per-Adapter Values for Instance Storage
+[AWSNVMe_Inst_AddReg_IS]
+HKR,"Parameters",,0x00000010
+HKR,"Parameters","MaxTransferSize", 0x00010001, 0x00020000
+
+; Per-Adapter Values for HDD Instance Storage
+[AWSNVMe_Inst_AddReg_IS_02]
+HKR,"Parameters",,0x00000010
+HKR,"Parameters","MaxTransferSize", 0x00010001, 0x00200000
+
+[AWSNVMe_Inst_AddReg]
+HKR,Interrupt Management,,0x00000010
+HKR,Interrupt Management\MessageSignaledInterruptProperties,,0x00000010
+
+;
+; The MSISupported entry determines whether the device supports MSIs. Set it to 1 to enable MSI support.
+;
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported, 0x00010001, 1
+
+;
+; Make sure all processors in group are used to serve interrupt from this device. IrqPolicySpreadMessagesAcrossAllProcessors (5)
+;
+HKR, Interrupt Management\Affinity Policy, DevicePolicy, 0x00010001, 5
+
+;
+; Specifies that the device's interrupts are of high priority. This setting is appropriate for devices that require low latency. IrqPriorityHigh (3)
+;
+HKR, Interrupt Management\Affinity Policy, DevicePriority, 0x00010001, 3
+
+;
+; Allow interrrupts to happen on processors beyond group 0. (e.g. might be in a single group other than 0)
+;
+HKR, Interrupt Management\Affinity Policy, GroupPolicy, 0x00010001, 1
+
+;
+; Enable the AutoLogger to always log WPP errors that we record (for debugging purposes)
+;
+HKLM, System\CurrentControlSet\Control\WMI\AutoLogger\AWSNVMe, Start, 0x00010001, 1
+HKLM, System\CurrentControlSet\Control\WMI\AutoLogger\AWSNVMe, Guid,  0x00000000, "{ED5ADA69-17DF-4705-8C93-FCCDD9C15263}"
+
+HKLM, System\CurrentControlSet\Control\WMI\AutoLogger\AWSNVMe\{C107E151-3ADA-40e8-ADA0-192CE7A0E958}, Enabled,     0x00010001, 1
+HKLM, System\CurrentControlSet\Control\WMI\AutoLogger\AWSNVMe\{C107E151-3ADA-40e8-ADA0-192CE7A0E958}, EnableFlags, 0x00010001, 1
+HKLM, System\CurrentControlSet\Control\WMI\AutoLogger\AWSNVMe\{C107E151-3ADA-40e8-ADA0-192CE7A0E958}, EnableLevel, 0x00010001, 2
+
+[AWSNVMe_Inst_AddReg_Msi_EBS]
+
+;
+; The MessageNumberLimit entry specifies the maximum number of MSIs to allocate.
+; EBS devices support 2 queue pairs, so we don't need more than 2 messages.'
+;
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001,  2
+
+[AWSNVMe_Inst_AddReg_Msi_IS]
+
+;
+; The MessageNumberLimit entry specifies the maximum number of MSIs to allocate.
+; For PCI 2.2, MessageNumberLimit must be 1, 2, 4, 8, or 16. For PCI 3.0, MessageNumberLimit can be any number up to 2,048.
+;
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, 0x00010001,   64
+
+; Windows Server 2012 EBS
+[AWSNVMe_Inst.6.2_EBS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2012 Instance Storage
+[AWSNVMe_Inst.6.2_IS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2012 HDD Instance Storage
+[AWSNVMe_Inst.6.2_IS_02.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2012 R2 EBS
+[AWSNVMe_Inst.6.3_EBS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2012 R2 Instance Storage
+[AWSNVMe_Inst.6.3_IS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2012 R2 HDD Instance Storage
+[AWSNVMe_Inst.6.3_IS_02.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2016+ EBS
+[AWSNVMe_Inst.10.0_EBS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2016+ Instance Storage
+[AWSNVMe_Inst.10.0_IS.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+; Windows Server 2016+ HDD Instance Storage
+[AWSNVMe_Inst.10.0_IS_02.Services]
+AddService = AWSNVMe, 2, AWSNVMe_Service_Inst, AWSNVMe_EventLog_Inst
+
+[AWSNVMe_Service_Inst]
+ServiceType    = 1 ; Kernel Driver
+StartType      = 0 ; Boot Start
+ErrorControl   = 1 ; Normal
+ServiceBinary  = %12%\AWSNVMe.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = PnpInterfacePCI_AddReg
+AddReg         = BusTypeNVMe_AddReg
+AddReg         = ConfigParams_AddReg
+
+; Windows Server 2012
+[AWSNVMe_CopyFiles.6.2]
+AWSNVMe.sys,AWSNVMe62.sys
+
+; Windows Server 2012 R2
+[AWSNVMe_CopyFiles.6.3]
+AWSNVMe.sys,AWSNVMe63.sys
+
+; Windows Server 2016+
+[AWSNVMe_CopyFiles.10.0]
+AWSNVMe.sys,AWSNVMe100.sys
+
+[PnpInterfacePCI_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+; BusTypeNvme is 17 (see STORAGE_BUS_TYPE)
+[BusTypeNVMe_AddReg]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000011
+
+[ConfigParams_AddReg]
+HKR, "Parameters\Device", "MaxTransferSize",            0x00010001, 0x00020000
+HKR, "Parameters\Device", "IoQueueEntries",             0x00010001, 0x00001000
+HKR, "Parameters\Device", "CachesData",                 0x00010001, 0x00000000
+HKR, "Parameters\Device", "SQES",                       0x00010001, 0x00000006
+HKR, "Parameters\Device", "CQES",                       0x00010001, 0x00000004
+HKR, "Parameters\Device", "ArbitrationMechanism",       0x00010001, 0x00000000
+HKR, "Parameters\Device", "DeallocRangesReturnZero",    0x00010001, 0x00000000
+HKR, "Parameters\Device", "MaxLbasPerDeallocate",       0x00010001, 0x10000000
+HKR, "Parameters\Device", "AggregationTime",            0x00010001, 0x00000000
+HKR, "Parameters\Device", "AggregationThreshold",       0x00010001, 0x00000001
+
+[AWSNVMe_EventLog_Inst]
+AddReg = AWSNVMe_EventLog_AddReg
+
+[AWSNVMe_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[Strings]
+InstallDiskName = "AWSNVMe Install Disk"
+Amazon = "Amazon Inc."

@@ -1,0 +1,111 @@
+; Copyright (c) 2005 AMCC
+; INF file for the AMCC 3ware 7000/8000 Series ATA RAID Controller
+; SCSI Miniport Driver for 32-bit Windows 2000, Windows XP, Windows 2003,
+; and 64-bit Editions of Windows XP and Windows 2003 for AMD64 and EMT64.
+
+[Version]
+Signature   ="$Windows NT$"
+Class       = SCSIAdapter
+ClassGUID   = {4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider    = %COMPANY_NAME%
+DriverVer   = 04/08/2008,1.15.00.052
+CatalogFile = AmccDrv7.cat
+
+[Manufacturer]
+%COMPANY_NAME% = AMCC,NTx86,NTamd64
+
+; for Windows 2000 systems
+[AMCC]
+%DEVICE_DESCRIPTION% = Install, PCI\VEN_13C1&DEV_1001&SUBSYS_100113C1
+
+; for Windows XP/2003 systems
+[AMCC.NTx86]
+%DEVICE_DESCRIPTION% = Install, PCI\VEN_13C1&DEV_1001&SUBSYS_100113C1
+
+; for Windows x64 systems
+[AMCC.NTamd64]
+%DEVICE_DESCRIPTION% = Install, PCI\VEN_13C1&DEV_1001&SUBSYS_100113C1
+
+[SourceDisksNames]
+1 = %DISK_DESCRIPTION%
+
+[SourceDisksFiles]
+3wDrv100.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Install.NT]
+CopyINF = 3wManage.inf
+CopyFiles = Driver_Copy
+DelFiles = Driver_Delete
+DelReg = Install_DelReg_Service
+
+[Driver_Copy]
+3wDrv100.sys,,,%COPYFLG_NOSKIP_NOCHECK%
+
+[Driver_Delete]
+3wFlt100.sys,,,%DELFLG_IN_USE%
+
+[Install_DelReg_Service]
+HKLM,SYSTEM\CurrentControlSet\Services\3wFlt100
+
+[Install.NT.HW]
+AddReg = Install_AddReg_HW
+DelReg = Install_DelReg_HW
+
+[Install_DelReg_HW]
+HKR,,UpperFilters
+
+[Install_AddReg_HW]
+HKR,%SCSIPORT_PARAMETERS%,%SEND_SHUTDOWN_NOTIFY%,%REG_DWORD%,1
+
+[Install.NT.Services]
+AddService = %DRIVER_NAME%,%SPSVCINST_ASSOCSERVICE%,Driver_Install,EventLog_Install
+
+[Driver_Install]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\%DRIVER_FILENAME%
+LoadOrderGroup = SCSI miniport
+AddReg = Parms_AddReg
+
+[Parms_AddReg]
+HKR,"Parameters\PnpInterface",%PCIBUS%,%REG_DWORD%,1
+HKLM,"System\CurrentControlSet\Control\3ware Storage Controller",%ADAPTER_EXPORT%,%REG_DWORD%,1
+HKLM,"System\CurrentControlSet\Services\Disk",%TIMEOUT_VALUE%,%REG_DWORD%,%TIMEOUT_SECONDS%
+
+[EventLog_Install]
+AddReg = EventLog_AddReg
+
+[EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\%DRIVER_FILENAME%"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+COMPANY_NAME            = "AMCC"
+DISK_DESCRIPTION        = "AMCC 3ware 7000/8000 Series Driver Installation Disk"
+DEVICE_DESCRIPTION      = "AMCC 3ware 7000/8000 Series ATA RAID Controller"
+
+DRIVER_NAME             = "3wDrv100"
+DRIVER_FILENAME         = "3wDrv100.sys"
+
+PCIBUS                  = 5
+TIMEOUT_SECONDS         = 31
+TIMEOUT_VALUE           = "TimeoutValue"
+ADAPTER_EXPORT          = "AdapterExport"
+SCSIPORT_PARAMETERS     = "ScsiPort"
+SEND_SHUTDOWN_NOTIFY    = "NeedsSystemShutdownNotification"
+
+SERVICE_BOOT_START      = 0
+SERVICE_ERROR_NORMAL    = 1
+SERVICE_KERNEL_DRIVER   = 1
+SPSVCINST_ASSOCSERVICE  = 2
+
+REG_DWORD               = 0x00010001
+REG_EXPAND_SZ           = 0x00020000
+REG_MULTI_SZ            = 0x00010000
+
+COPYFLG_NOSKIP_NOCHECK  = 0x00000006
+DELFLG_IN_USE           = 0x00000001

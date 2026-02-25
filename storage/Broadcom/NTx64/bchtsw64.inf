@@ -1,0 +1,99 @@
+;/*++
+;
+;Copyright (c) 2003-2004 BROADCOM Inc. All rights reserved.
+;
+;Module Name:
+;
+;    bchtsw64.INF
+;
+;Abstract:
+;    INF file for installing BROADCOM miniport device drivers
+;
+;--*/
+;        bchtsw64.inf
+; 
+;
+[Version] 
+Signature = "$CHICAGO$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%BROADCOM% 
+CatalogFile=bchtsw64.cat
+DriverVer=04/21/2009,1.1.8070.1
+
+[DestinationDirs] 
+Htsata.Files.x86_12 = 12
+
+[SourceDisksNames]
+0=%Desc_x860%
+
+[SourceDisksFiles]
+bchtsw64.sys=0,
+
+[Manufacturer] 
+%BROADCOM%=BROADCOM, ntamd64
+
+[BROADCOM.ntamd64]
+%HtsataDesc%=Htsata_Inst,PCI\VEN_1166&DEV_024A
+
+[Htsata_Inst.ntamd64] 
+CopyFiles = Htsata.Files.x86_12 
+
+[Htsata_Inst.ntamd64.Services] 
+AddService = bchtsw64,0x00000002,Htsata_Service_Instx86,Htsata_EventLog_Inst
+
+[Htsata_Service_Instx86] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_NORMAL% 
+ServiceBinary = %12%\bchtsw64.sys 
+LoadOrderGroup = "SCSI Storport"
+AddReg = pnpsafe_pci_addreg
+
+[Htsata.Files.x86_12] 
+bchtsw64.sys
+
+[Htsata_EventLog_Inst] 
+AddReg = Htsata_EventLog_Inst_AddReg 
+ 
+[Htsata_EventLog_Inst_AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\iologmsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+
+;BusType setting (default SATA) for HT1000.
+HKR,"Parameters", "BusType", %REG_DWORD%, 0x0000000b
+
+;Disable Powerup in Standby 
+; 0: Enable the powerup in standby feature
+; 1: Disable the powerup in standby feature
+; Further, check drive jumper setting, the jumper setting overrides the driver feature
+HKR,"Parameters\Device", "DisPwrUpInStandby", %REG_DWORD%, 0x00000001
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+BROADCOM= "Broadcom(r) Corporation" 
+Desc_x860= "Broadcom Corp SCSIAdapterdrivers"
+HtsataDesc= "Broadcom HT1000 SATA Controller(AMD64 Release)" 
+
+;  *******Non Localizable Strings******* 
+
+
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 

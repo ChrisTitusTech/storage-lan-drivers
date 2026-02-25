@@ -1,0 +1,146 @@
+;=============================================================================
+; Copyright (c) 2014. OCZ Storage Solutions
+;
+; 64-bit 10xx INF
+;============================================================================= 
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider% 
+CatalogFile=ocz10xx.cat
+DriverVer=02/28/2014,2.0.0.4774
+
+[DestinationDirs]
+;DefaultDestDir = 12
+CoInstaller_CopyFiles = 11
+ocz10xx.Files.amd64_12 = 12 
+
+[SourceDisksNames.amd64]
+0=%ocz10xxDesc%
+
+[SourceDisksFiles.amd64]
+Ocz10xx.sys=0,
+ocztrimfilter.sys=0,
+OczTrimCoinstaller.dll=0,
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer] 
+%MfgName%=OCZ,ntamd64
+
+[OCZ.ntamd64]
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1021&SUBSYS_10211B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1041&SUBSYS_10411B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1044&SUBSYS_10441B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1084&SUBSYS_10841B85
+
+[ocz10xx_Inst.ntamd64] 
+CopyFiles = ocz10xx.Files.amd64_12
+;AddReg = ocz10xx_Registry_Update,
+
+[ocz10xx_Inst.ntamd64.HW] 
+AddReg = InterruptMgmtValues
+Include=machine.inf
+Needs=PciASPMOptOut
+
+;  ******** Change disk time out value from default 10s to 60s ********
+;[ocz10xx_Registry_Update]
+;HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x3C
+
+; ***** For MSI interrupts uncomment the below section *****
+[InterruptMgmtValues]
+HKR,"Interrupt Management",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+
+[ocz10xx_Inst.ntamd64.Services] 
+AddService = ocz10xx,0x00000002,ocz10xx_Service_Install, ocz10xx_EventLog_Inst 
+AddService=ocztrimfilter, 0, ocztrimfilter_Install
+
+[ocz10xx_Service_Install] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_NORMAL% 
+ServiceBinary = %12%\ocz10xx.sys 
+LoadOrderGroup = "SCSI Miniport"
+AddReg = params_addreg
+AddReg = bus_type_scsi_addreg
+
+[ocztrimfilter_Install]
+DisplayName=OCZ PCIe SSD Trim Filter
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\ocztrimfilter.sys
+LoadOrderGroup="PnP Filter"
+
+[DiskTrimFilterCoinstaller_AddReg]
+HKLM,System\CurrentControlSet\Control\CoDeviceInstallers, \
+  {4D36E967-E325-11CE-BFC1-08002BE10318},0x00010008, "OczTrimCoinstaller.dll,OczTF_CoInstall"
+
+[ocz10xx_Inst.ntamd64.CoInstallers]
+CopyFiles=CoInstaller_CopyFiles
+AddReg = DiskTrimFilterCoinstaller_AddReg
+
+[CoInstaller_CopyFiles]
+OczTrimCoinstaller.dll
+
+; ******** Uninstall section ********
+[DefaultUninstall]
+DelFiles = ocz10xx.DelFiles
+
+[DefaultUninstall.Services]
+DelService = ocz10xx
+DelService = ocztrimfilter
+
+[ocz10xx.DelFiles]
+ocz10xx.sys,,,
+ocztrimfilter.sys,,,
+
+;  **********************************
+
+[ocz10xx.Files.amd64_12] 
+ocz10xx.sys
+ocztrimfilter.sys
+
+[ocz10xx_EventLog_Inst] 
+AddReg = ocz10xx_EventLog_Inst.AddReg 
+ 
+[ocz10xx_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ocz10xx.sys" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[params_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+HKR, "Parameters\Device", "DistributeDPCs", 0x00010001, 1
+
+[bus_type_scsi_addreg]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+Provider    = "OCZ Storage Solutions"
+MfgName     = "OCZ Storage Solutions"
+ocz10xxDesc = "OCZ 10xx SCSI Controller" 
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 
+

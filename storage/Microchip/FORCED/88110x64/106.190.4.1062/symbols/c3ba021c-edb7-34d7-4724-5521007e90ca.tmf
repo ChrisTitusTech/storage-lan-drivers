@@ -1,0 +1,806 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+c3ba021c-edb7-34d7-4724-5521007e90ca 2016 // SRC=PciConfig.c MJ= MN=
+#typev pciconfig_c1026 166 "%0%10!s!   Found CapId=0x%11!x!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=FindPciCapability
+{
+IDSTR2, ItemString -- 10
+CapId, ItemLong -- 11
+}
+#typev pciconfig_c1036 167 "%0%10!s!  !Could not find capability register Id = 0x%11!x! !" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=FindPciCapability
+{
+IDSTR2, ItemString -- 10
+CapId, ItemLong -- 11
+}
+#typev pciconfig_c893 163 "%0%10!s!   Capability register version=0x%11!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=FindPciExtCapability
+{
+IDSTR2, ItemString -- 10
+pPciExtCapHdr->Version, ItemLong -- 11
+}
+#typev pciconfig_c889 162 "%0%10!s!   Found Extended CapId=%11!s!(0x%12!x!)" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=FindPciExtCapability
+{
+IDSTR2, ItemString -- 10
+PciExtCapabilityIdToAscii(usExtCapId), ItemString -- 11
+usExtCapId, ItemLong -- 12
+}
+#typev pciconfig_c904 164 "%0%10!s!  !Could not find Extended capability register Id = %11!s!(0x%12!x!) !" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=FindPciExtCapability
+{
+IDSTR2, ItemString -- 10
+PciExtCapabilityIdToAscii(usExtCapId), ItemString -- 11
+usExtCapId, ItemLong -- 12
+}
+#typev pciconfig_c873 161 "%0%10!s!  !No Extended capability registers found!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=FindPciExtCapability
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c967 165 "%0%10!s!  !Could not get PCI information!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiReadPciConfigSpaceExtendedCapabilities
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c1138 170 "%0%10!s!     (After) Device Capabilites 2 Register = 0x%11!x!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR2, ItemString -- 10
+pCapability->DeviceControl2.CompletionTimeoutValue, ItemLong -- 11
+}
+#typev pciconfig_c1101 169 "%0%10!s!     (Before) Device Capabilites 2 Register = 0x%11!x!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR2, ItemString -- 10
+pCapability->DeviceControl2.CompletionTimeoutValue, ItemLong -- 11
+}
+#typev pciconfig_c1098 168 "%0%10!s!     PhysicalSlotNumber = %11!d!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR2, ItemString -- 10
+pCapability->SlotCapabilities.PhysicalSlotNumber, ItemLong -- 11
+}
+#typev pciconfig_c727 158 "%0%10!s!   ---End Second Header Log Register---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c724 157 "%0%10!s!   Second Header Log Register[3]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecHeaderLog[3], ItemLong -- 11
+}
+#typev pciconfig_c722 156 "%0%10!s!   Second Header Log Register[2]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecHeaderLog[2], ItemLong -- 11
+}
+#typev pciconfig_c720 155 "%0%10!s!   Second Header Log Register[1]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecHeaderLog[1], ItemLong -- 11
+}
+#typev pciconfig_c718 154 "%0%10!s!   Second Header Log Register[0]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecHeaderLog[0], ItemLong -- 11
+}
+#typev pciconfig_c711 153 "%0%10!s!   ---End SecCapabilitiesAndControl---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c708 152 "%0%10!s!   - SecondaryUncorrectableFirstErrorPtr=%11!x! (Bits 0-4)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecCapabilitiesAndControl.SecondaryUncorrectableFirstErrorPtr, ItemLong -- 11
+}
+#typev pciconfig_c702 151 "%0%10!s!   SecCapabilitiesAndControl=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecCapabilitiesAndControl.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c695 150 "%0%10!s!   ---End SecUncorrectableErrorSeverity---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c692 149 "%0%10!s!   - InternalBridgeError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.InternalBridgeError, ItemLong -- 11
+}
+#typev pciconfig_c688 148 "%0%10!s!   - SERRAsserted=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.SERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c684 147 "%0%10!s!   - PERRAsserted=%11!x! (Bit 11)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.PERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c680 146 "%0%10!s!   - DelayedTransactionDiscardTimerExpired=%11!x! (Bit 10)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.DelayedTransactionDiscardTimerExpired, ItemLong -- 11
+}
+#typev pciconfig_c676 145 "%0%10!s!   - UncorrectableAddressError=%11!x! (Bit 9)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.UncorrectableAddressError, ItemLong -- 11
+}
+#typev pciconfig_c672 144 "%0%10!s!   - UncorrectableAttributeError=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.UncorrectableAttributeError, ItemLong -- 11
+}
+#typev pciconfig_c668 143 "%0%10!s!   - UncorrectableDataError=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.UncorrectableDataError, ItemLong -- 11
+}
+#typev pciconfig_c664 142 "%0%10!s!   - UncorrectableSplitCompletion=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.UncorrectableSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c660 141 "%0%10!s!   - UnexpectedSplitCompletionError=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.UnexpectedSplitCompletionError, ItemLong -- 11
+}
+#typev pciconfig_c656 140 "%0%10!s!   - ReceivedMasterAbort=%11!x! (Bit 3)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.ReceivedMasterAbort, ItemLong -- 11
+}
+#typev pciconfig_c652 139 "%0%10!s!   - ReceivedTargetAbortr=%11!x! (Bit 2)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.ReceivedTargetAbort, ItemLong -- 11
+}
+#typev pciconfig_c648 138 "%0%10!s!   - MasterAbortOnSplitCompletion=%11!x! (Bit 1)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.MasterAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c644 137 "%0%10!s!   - TargetAbortOnSplitCompletion=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.TargetAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c640 136 "%0%10!s!   SecUncorrectableErrorSeverity=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorSeverity.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c633 135 "%0%10!s!   ---End SecUncorrectableErrorMask---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c630 134 "%0%10!s!   - InternalBridgeError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.InternalBridgeError, ItemLong -- 11
+}
+#typev pciconfig_c626 133 "%0%10!s!   - SERRAsserted=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.SERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c622 132 "%0%10!s!   - PERRAsserted=%11!x! (Bit 11)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.PERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c618 131 "%0%10!s!   - DelayedTransactionDiscardTimerExpired=%11!x! (Bit 10)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.DelayedTransactionDiscardTimerExpired, ItemLong -- 11
+}
+#typev pciconfig_c614 130 "%0%10!s!   - UncorrectableAddressError=%11!x! (Bit 9)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.UncorrectableAddressError, ItemLong -- 11
+}
+#typev pciconfig_c610 129 "%0%10!s!   - UncorrectableAttributeError=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.UncorrectableAttributeError, ItemLong -- 11
+}
+#typev pciconfig_c606 128 "%0%10!s!   - UncorrectableDataError=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.UncorrectableDataError, ItemLong -- 11
+}
+#typev pciconfig_c602 127 "%0%10!s!   - UncorrectableSplitCompletion=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.UncorrectableSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c598 126 "%0%10!s!   - UnexpectedSplitCompletionError=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.UnexpectedSplitCompletionError, ItemLong -- 11
+}
+#typev pciconfig_c594 125 "%0%10!s!   - ReceivedMasterAbort=%11!x! (Bit 3)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.ReceivedMasterAbort, ItemLong -- 11
+}
+#typev pciconfig_c590 124 "%0%10!s!   - ReceivedTargetAbortr=%11!x! (Bit 2)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.ReceivedTargetAbort, ItemLong -- 11
+}
+#typev pciconfig_c586 123 "%0%10!s!   - MasterAbortOnSplitCompletion=%11!x! (Bit 1)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.MasterAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c582 122 "%0%10!s!   - TargetAbortOnSplitCompletion=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.TargetAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c578 121 "%0%10!s!   SecUncorrectableErrorMask=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorMask.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c571 120 "%0%10!s!   ---End SecUncorrectableErrorStatus---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c568 119 "%0%10!s!   - InternalBridgeError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.InternalBridgeError, ItemLong -- 11
+}
+#typev pciconfig_c564 118 "%0%10!s!   - SERRAsserted=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.SERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c560 117 "%0%10!s!   - PERRAsserted=%11!x! (Bit 11)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.PERRAsserted, ItemLong -- 11
+}
+#typev pciconfig_c556 116 "%0%10!s!   - DelayedTransactionDiscardTimerExpired=%11!x! (Bit 10)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.DelayedTransactionDiscardTimerExpired, ItemLong -- 11
+}
+#typev pciconfig_c552 115 "%0%10!s!   - UncorrectableAddressError=%11!x! (Bit 9)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.UncorrectableAddressError, ItemLong -- 11
+}
+#typev pciconfig_c548 114 "%0%10!s!   - UncorrectableAttributeError=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.UncorrectableAttributeError, ItemLong -- 11
+}
+#typev pciconfig_c544 113 "%0%10!s!   - UncorrectableDataError=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.UncorrectableDataError, ItemLong -- 11
+}
+#typev pciconfig_c540 112 "%0%10!s!   - UncorrectableSplitCompletion=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.UncorrectableSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c536 111 "%0%10!s!   - UnexpectedSplitCompletionError=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.UnexpectedSplitCompletionError, ItemLong -- 11
+}
+#typev pciconfig_c532 110 "%0%10!s!   - ReceivedMasterAbort=%11!x! (Bit 3)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.ReceivedMasterAbort, ItemLong -- 11
+}
+#typev pciconfig_c528 109 "%0%10!s!   - ReceivedTargetAbortr=%11!x! (Bit 2)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.ReceivedTargetAbort, ItemLong -- 11
+}
+#typev pciconfig_c524 108 "%0%10!s!   - MasterAbortOnSplitCompletion=%11!x! (Bit 1)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.MasterAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c520 107 "%0%10!s!   - TargetAbortOnSplitCompletion=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.TargetAbortOnSplitCompletion, ItemLong -- 11
+}
+#typev pciconfig_c516 106 "%0%10!s!   SecUncorrectableErrorStatus=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->SecUncorrectableErrorStatus.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c509 105 "%0%10!s!   ---End Header Log Register---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c506 104 "%0%10!s!   Header Log Register[3]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->HeaderLog[3], ItemLong -- 11
+}
+#typev pciconfig_c504 103 "%0%10!s!   Header Log Register[2]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->HeaderLog[2], ItemLong -- 11
+}
+#typev pciconfig_c502 102 "%0%10!s!   Header Log Register[1]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->HeaderLog[1], ItemLong -- 11
+}
+#typev pciconfig_c500 101 "%0%10!s!   Header Log Register[0]=0x%11!x!" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->HeaderLog[0], ItemLong -- 11
+}
+#typev pciconfig_c490 100 "%0%10!s!   ---End CapabilitiesAndControl---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c487 99 "%0%10!s!   - Completion Timeout Prefix/Header Log Capable=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+(pAerCapReg->CapabilitiesAndControl.Reserved & 1), ItemLong -- 11
+}
+#typev pciconfig_c482 98 "%0%10!s!   - TlpPrefixLogPresent=%11!x! (Bit 11)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.TlpPrefixLogPresent, ItemLong -- 11
+}
+#typev pciconfig_c474 97 "%0%10!s!   - MultipleHeaderRecordingEnable=%11!x! (Bit 10)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.MultipleHeaderRecordingEnable, ItemLong -- 11
+}
+#typev pciconfig_c469 96 "%0%10!s!   - MultipleHeaderRecordingCapable=%11!x! (Bit 9)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.MultipleHeaderRecordingCapable, ItemLong -- 11
+}
+#typev pciconfig_c464 95 "%0%10!s!   - ECRCCheckEnable=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.ECRCCheckEnable, ItemLong -- 11
+}
+#typev pciconfig_c459 94 "%0%10!s!   - ECRCCheckCapable=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.ECRCCheckCapable, ItemLong -- 11
+}
+#typev pciconfig_c454 93 "%0%10!s!   - ECRCGenerationEnable=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.ECRCGenerationEnable, ItemLong -- 11
+}
+#typev pciconfig_c449 92 "%0%10!s!   - ECRCGenerationCapable=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.ECRCGenerationCapable, ItemLong -- 11
+}
+#typev pciconfig_c444 91 "%0%10!s!   - FirstErrorPointer=%11!x! (Bits 0-4)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.FirstErrorPointer, ItemLong -- 11
+}
+#typev pciconfig_c438 90 "%0%10!s!   CapabilitiesAndControl=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CapabilitiesAndControl.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c427 89 "%0%10!s!   ---End CorrectableErrorMask---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c424 88 "%0%10!s!   - HeaderLogOverflow=%11!x! (Bit 15)  Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.HeaderLogOverflow, ItemLong -- 11
+}
+#typev pciconfig_c420 87 "%0%10!s!   - CorrectedInternalError=%11!x! (Bit 14)  Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.CorrectedInternalError, ItemLong -- 11
+}
+#typev pciconfig_c416 86 "%0%10!s!   - AdvisoryNonFatalError=%11!x! (Bit 13)  Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.AdvisoryNonFatalError, ItemLong -- 11
+}
+#typev pciconfig_c411 85 "%0%10!s!   - ReplayTimerTimeout=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.ReplayTimerTimeout, ItemLong -- 11
+}
+#typev pciconfig_c407 84 "%0%10!s!   - ReplayNumRollover=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.ReplayNumRollover, ItemLong -- 11
+}
+#typev pciconfig_c403 83 "%0%10!s!   - BadDLLP=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.BadDLLP, ItemLong -- 11
+}
+#typev pciconfig_c399 82 "%0%10!s!   - BadTLP=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.BadTLP, ItemLong -- 11
+}
+#typev pciconfig_c395 81 "%0%10!s!   - ReceiverError=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.ReceiverError, ItemLong -- 11
+}
+#typev pciconfig_c390 80 "%0%10!s!   CorrectableErrorMask=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorMask.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c379 79 "%0%10!s!   ---End CorrectableErrorStatus---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c376 78 "%0%10!s!   - HeaderLogOverflow=%11!x! (Bit 15) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.HeaderLogOverflow, ItemLong -- 11
+}
+#typev pciconfig_c372 77 "%0%10!s!   - CorrectedInternalError=%11!x! (Bit 14) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.CorrectedInternalError, ItemLong -- 11
+}
+#typev pciconfig_c368 76 "%0%10!s!   - AdvisoryNonFatalError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.AdvisoryNonFatalError, ItemLong -- 11
+}
+#typev pciconfig_c364 75 "%0%10!s!   - ReplayTimerTimeout=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.ReplayTimerTimeout, ItemLong -- 11
+}
+#typev pciconfig_c360 74 "%0%10!s!   - ReplayNumRollover=%11!x! (Bit 8)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.ReplayNumRollover, ItemLong -- 11
+}
+#typev pciconfig_c356 73 "%0%10!s!   - BadDLLP=%11!x! (Bit 7)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.BadDLLP, ItemLong -- 11
+}
+#typev pciconfig_c352 72 "%0%10!s!   - BadTLP=%11!x! (Bit 6)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.BadTLP, ItemLong -- 11
+}
+#typev pciconfig_c348 71 "%0%10!s!   - ReceiverError=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.ReceiverError, ItemLong -- 11
+}
+#typev pciconfig_c343 70 "%0%10!s!   CorrectableErrorStatus=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->CorrectableErrorStatus.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c332 69 "%0%10!s!   ---End UncorrectableErrorSeverity---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c329 68 "%0%10!s!   - Poisoned TLP Egress Blocked Status=%11!x! (Bit 26)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+(pAerCapReg->UncorrectableErrorSeverity.Reserved3 & 1), ItemLong -- 11
+}
+#typev pciconfig_c324 67 "%0%10!s!   - TlpPrefixBlocked=%11!x! (Bit 25)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.TlpPrefixBlocked, ItemLong -- 11
+}
+#typev pciconfig_c320 66 "%0%10!s!   - AtomicOpEgressBlocked=%11!x! (Bit 24)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.AtomicOpEgressBlocked, ItemLong -- 11
+}
+#typev pciconfig_c316 65 "%0%10!s!   - MCBlockedTlp=%11!x! (Bit 23)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.MCBlockedTlp, ItemLong -- 11
+}
+#typev pciconfig_c312 64 "%0%10!s!   - UncorrectableInternalError=%11!x! (Bit 22) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.UncorrectableInternalError, ItemLong -- 11
+}
+#typev pciconfig_c308 63 "%0%10!s!   - AcsViolation=%11!x! (Bit 21)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.AcsViolation, ItemLong -- 11
+}
+#typev pciconfig_c304 62 "%0%10!s!   - UnsupportedRequestError=%11!x! (Bit 20)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.UnsupportedRequestError, ItemLong -- 11
+}
+#typev pciconfig_c300 61 "%0%10!s!   - ECRCError=%11!x! (Bit 19)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.ECRCError, ItemLong -- 11
+}
+#typev pciconfig_c296 60 "%0%10!s!   - MalformedTLP=%11!x! (Bit 18) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.MalformedTLP, ItemLong -- 11
+}
+#typev pciconfig_c292 59 "%0%10!s!   - ReceiverOverflow=%11!x! (Bit 17) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.ReceiverOverflow, ItemLong -- 11
+}
+#typev pciconfig_c288 58 "%0%10!s!   - UnexpectedCompletion=%11!x! (Bit 16)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.UnexpectedCompletion, ItemLong -- 11
+}
+#typev pciconfig_c284 57 "%0%10!s!   - CompleterAbort=%11!x! (Bit 15)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.CompleterAbort, ItemLong -- 11
+}
+#typev pciconfig_c280 56 "%0%10!s!   - CompletionTimeout=%11!x! (Bit 14)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.CompletionTimeout, ItemLong -- 11
+}
+#typev pciconfig_c276 55 "%0%10!s!   - FlowControlProtocolError=%11!x! (Bit 13) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.FlowControlProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c272 54 "%0%10!s!   - PoisonedTLP=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.PoisonedTLP, ItemLong -- 11
+}
+#typev pciconfig_c268 53 "%0%10!s!   - SurpriseDownError=%11!x! (Bit 5) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.SurpriseDownError, ItemLong -- 11
+}
+#typev pciconfig_c264 52 "%0%10!s!   - DataLinkProtocolError=%11!x! (Bit 4) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.DataLinkProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c260 51 "%0%10!s!   - Undefined=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.Undefined, ItemLong -- 11
+}
+#typev pciconfig_c255 50 "%0%10!s!   UncorrectableErrorSeverity=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorSeverity.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c244 49 "%0%10!s!   ---End UncorrectableErrorMask---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c241 48 "%0%10!s!   - Poisoned TLP Egress Blocked Status=%11!x! (Bit 26) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+(pAerCapReg->UncorrectableErrorMask.Reserved3 & 1), ItemLong -- 11
+}
+#typev pciconfig_c236 47 "%0%10!s!   - TlpPrefixBlocked=%11!x! (Bit 25)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.TlpPrefixBlocked, ItemLong -- 11
+}
+#typev pciconfig_c232 46 "%0%10!s!   - AtomicOpEgressBlocked=%11!x! (Bit 24)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.AtomicOpEgressBlocked, ItemLong -- 11
+}
+#typev pciconfig_c228 45 "%0%10!s!   - MCBlockedTlp=%11!x! (Bit 23)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.MCBlockedTlp, ItemLong -- 11
+}
+#typev pciconfig_c224 44 "%0%10!s!   - UncorrectableInternalError=%11!x! (Bit 22) Default=1" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.UncorrectableInternalError, ItemLong -- 11
+}
+#typev pciconfig_c220 43 "%0%10!s!   - AcsViolation=%11!x! (Bit 21)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.AcsViolation, ItemLong -- 11
+}
+#typev pciconfig_c216 42 "%0%10!s!   - UnsupportedRequestError=%11!x! (Bit 20)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.UnsupportedRequestError, ItemLong -- 11
+}
+#typev pciconfig_c212 41 "%0%10!s!   - ECRCError=%11!x! (Bit 19)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.ECRCError, ItemLong -- 11
+}
+#typev pciconfig_c208 40 "%0%10!s!   - MalformedTLP=%11!x! (Bit 18)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.MalformedTLP, ItemLong -- 11
+}
+#typev pciconfig_c204 39 "%0%10!s!   - ReceiverOverflow=%11!x! (Bit 17)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.ReceiverOverflow, ItemLong -- 11
+}
+#typev pciconfig_c200 38 "%0%10!s!   - UnexpectedCompletion=%11!x! (Bit 16)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.UnexpectedCompletion, ItemLong -- 11
+}
+#typev pciconfig_c196 37 "%0%10!s!   - CompleterAbort=%11!x! (Bit 15)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.CompleterAbort, ItemLong -- 11
+}
+#typev pciconfig_c192 36 "%0%10!s!   - CompletionTimeout=%11!x! (Bit 14)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.CompletionTimeout, ItemLong -- 11
+}
+#typev pciconfig_c188 35 "%0%10!s!   - FlowControlProtocolError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.FlowControlProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c184 34 "%0%10!s!   - PoisonedTLP=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.PoisonedTLP, ItemLong -- 11
+}
+#typev pciconfig_c180 33 "%0%10!s!   - SurpriseDownError=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.SurpriseDownError, ItemLong -- 11
+}
+#typev pciconfig_c176 32 "%0%10!s!   - DataLinkProtocolError=%11!x! (Bit 4)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.DataLinkProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c172 31 "%0%10!s!   - Undefined=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.Undefined, ItemLong -- 11
+}
+#typev pciconfig_c167 30 "%0%10!s!   UncorrectableErrorMask=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorMask.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c156 29 "%0%10!s!   ---End UncorrectableErrorStatus---
+" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c153 28 "%0%10!s!   - Poisoned TLP Egress Blocked Status=%11!x! (Bit 26)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+(pAerCapReg->UncorrectableErrorStatus.Reserved3 & 1), ItemLong -- 11
+}
+#typev pciconfig_c148 27 "%0%10!s!   - TlpPrefixBlocked=%11!x! (Bit 25)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.TlpPrefixBlocked, ItemLong -- 11
+}
+#typev pciconfig_c144 26 "%0%10!s!   - AtomicOpEgressBlocked=%11!x! (Bit 24)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.AtomicOpEgressBlocked, ItemLong -- 11
+}
+#typev pciconfig_c140 25 "%0%10!s!   - MCBlockedTlp=%11!x! (Bit 23)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.MCBlockedTlp, ItemLong -- 11
+}
+#typev pciconfig_c136 24 "%0%10!s!   - UncorrectableInternalError=%11!x! (Bit 22)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.UncorrectableInternalError, ItemLong -- 11
+}
+#typev pciconfig_c132 23 "%0%10!s!   - AcsViolation=%11!x! (Bit 21)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.AcsViolation, ItemLong -- 11
+}
+#typev pciconfig_c128 22 "%0%10!s!   - UnsupportedRequestError=%11!x! (Bit 20)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.UnsupportedRequestError, ItemLong -- 11
+}
+#typev pciconfig_c124 21 "%0%10!s!   - ECRCError=%11!x! (Bit 19)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.ECRCError, ItemLong -- 11
+}
+#typev pciconfig_c120 20 "%0%10!s!   - MalformedTLP=%11!x! (Bit 18)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.MalformedTLP, ItemLong -- 11
+}
+#typev pciconfig_c116 19 "%0%10!s!   - ReceiverOverflow=%11!x! (Bit 17)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.ReceiverOverflow, ItemLong -- 11
+}
+#typev pciconfig_c112 18 "%0%10!s!   - UnexpectedCompletion=%11!x! (Bit 16)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.UnexpectedCompletion, ItemLong -- 11
+}
+#typev pciconfig_c108 17 "%0%10!s!   - CompleterAbort=%11!x! (Bit 15)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.CompleterAbort, ItemLong -- 11
+}
+#typev pciconfig_c104 16 "%0%10!s!   - CompletionTimeout=%11!x! (Bit 14)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.CompletionTimeout, ItemLong -- 11
+}
+#typev pciconfig_c100 15 "%0%10!s!   - FlowControlProtocolError=%11!x! (Bit 13)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.FlowControlProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c96 14 "%0%10!s!   - PoisonedTLP=%11!x! (Bit 12)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.PoisonedTLP, ItemLong -- 11
+}
+#typev pciconfig_c92 13 "%0%10!s!   - SurpriseDownError=%11!x! (Bit 5)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.SurpriseDownError, ItemLong -- 11
+}
+#typev pciconfig_c88 12 "%0%10!s!   - DataLinkProtocolError=%11!x! (Bit 4)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.DataLinkProtocolError, ItemLong -- 11
+}
+#typev pciconfig_c84 11 "%0%10!s!   - Undefined=%11!x! (Bit 0)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.Undefined, ItemLong -- 11
+}
+#typev pciconfig_c79 10 "%0%10!s!   UncorrectableErrorStatus=0x%11!x! (ULONG)" //   LEVEL=DgbLvlPci FLAGS=DbgFlagInit FUNC=PrintAerCapReg
+{
+IDSTR2, ItemString -- 10
+pAerCapReg->UncorrectableErrorStatus.AsULONG, ItemLong -- 11
+}
+#typev pciconfig_c778 160 "%0%10!s!  !Could not get PCI information!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=ReadPciCommonConfigSpace
+{
+IDSTR2, ItemString -- 10
+}
+#typev pciconfig_c770 159 "%0%10!s!  !Could not get PCI information!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=ReadPciCommonConfigSpace
+{
+IDSTR2, ItemString -- 10
+}

@@ -1,0 +1,38 @@
+; DC-3410 Virtual RAID Processor Installationfile (x86/x64)
+; Copyright (C) 2010 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=07/05/2018, 5.13
+CatalogFile=DC3410.cat
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[Manufacturer]
+%StrgCompany%=DC3410_VP_Section, NTx86, NTamd64
+
+[DC3410_VP_Section]
+%StrgDevice%=DC3410_VP_Install, SCSI\ProcessorDC-3410_Virtual_RAID____
+
+[DC3410_VP_Section.NTx86]
+%StrgDevice%=DC3410_VP_Install, SCSI\ProcessorDC-3410_Virtual_RAID____
+
+[DC3410_VP_Section.NTamd64]
+%StrgDevice%=DC3410_VP_Install, SCSI\ProcessorDC-3410_Virtual_RAID____
+
+[DC3410_VP_Install]
+
+[DC3410_VP_Install.Services]
+AddService= , 2
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-3410 Virtual RAID Processor"

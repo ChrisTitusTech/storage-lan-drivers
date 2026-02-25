@@ -1,0 +1,104 @@
+; ****************************************************************************
+; ****************************************************************************
+; **
+; **    Filename:  IRSTRTDV.INF                                                 
+; **    Abstract:  Vista, Windows 7, Windows 8 and Windows Blue INF File 
+; **               for the Intel(R) Rapid Start Technology Driver
+; **
+; ****************************************************************************
+; ****************************************************************************
+
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+CatalogFile=irstrtdv.cat
+Provider=%Intel%
+DriverVer=06/28/2013,3.0.0.1051
+
+[SourceDisksNames]
+1=%DiskName%
+
+[SourceDisksFiles]
+irstrtdv.sys=1
+
+[DestinationDirs]
+DefaultDestDir = 12	; drivers
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+
+[Manufacturer]
+%Intel% = Intel,NTamd64.6.1
+
+
+[Intel.NTamd64.6.1]
+; DisplayName           Section       DeviceId
+; -----------       	-------       --------
+%Irstrt.DeviceDesc%=GenericIrstrt_Inst, ACPI\INT3392
+
+
+[GenericIrstrt_Inst]
+CopyFiles=Irstrt.CopyFiles
+
+
+[Irstrt.CopyFiles]
+irstrtdv.sys
+
+
+[GenericIrstrt_Inst.Services]
+AddService=irstrtdv,0x00000002,Irstrt_Service 
+
+
+[Irstrt_Service]
+DisplayName    = %Irstrt.DispName%                            
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\irstrtdv.sys                            
+
+[Strings]
+Intel = "Intel"
+Irstrt.DeviceDesc = "Intel(R) Rapid Start Technology Device"
+Irstrt.DispName = "Intel(R) Rapid Start Technology Driver"
+DiskName = "Driver Install Disk"
+
+
+
+;*************************************************************
+;
+; Copyright (c) 2011-2013 Intel Corporation
+;
+;*************************************************************
+; Intel is making no claims of usability, efficacy or 
+; warranty.
+;  
+;*************************************************************
+; Information in this document is provided in connection with 
+; Intel products.  No license, express or implied, by estoppel 
+; or otherwise, to any intellectual property rights is granted 
+; by this document.  Intel assumes no liability whatsoever, 
+; and Intel disclaims any express or implied warranty, 
+; relating to sale and/or use of Intel products including 
+; liability or warranties relating to fitness for a particular 
+; purpose, merchantability, or infringement of any patent, 
+; copyright or other intellectual property right.  Intel 
+; products are not intended for use in medical, life saving, 
+; or life sustaining applications.
+;
+;*************************************************************
+; Intel Corporation disclaims all warranties and liabilities 
+; for the use of this document and the information contained 
+; herein, and assumes no responsibility for any errors which 
+; may appear in this document, nor does Intel make a 
+; commitment to update the information contained herein. Intel 
+; reserves the right to make changes to this document at any 
+; time, without notice.
+;
+;*************************************************************
+; Third-party brands and names are the property of their 
+; respective owners.
+;
+;*************************************************************

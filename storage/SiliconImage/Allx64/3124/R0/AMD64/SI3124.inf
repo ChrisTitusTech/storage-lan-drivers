@@ -1,0 +1,202 @@
+; This INF file installs the Silicon Image Serial ATA non-Raid driver for
+; the SiI 3124 controller on systems using 64-bit extended processors.
+;
+;
+; Copyright (C) 2003 - 2008 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=SI3124.cat
+DriverVer=04/21/2009, 1.1.15.0
+
+
+[SourceDisksNames.amd64]
+1="Silicon Image SiI 3124 SATALink Driver Installation Disk",Si3124.inf,\amd64,
+
+[SourceDisksFiles.amd64]
+SI3124.sys	= 1
+SilSupp.dll	= 1
+SiWinAcc.sys	= 1
+SiRemFil.sys	= 1
+
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DllFiles		= 11
+
+
+[DriverFiles]
+SI3124.sys,,,0x20
+SiWinAcc.sys,,,0x20
+SiRemFil.sys,,,0x20
+
+[DllFiles]
+SilSupp.dll,,,0x20
+
+
+[Manufacturer]
+%SI%=SI_HDC,NTamd64
+
+[SI_HDC.NTamd64]
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_31241095
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_31248086
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_31241A57
+%PCI\VEN_1095&DEV_3124.DeviceDesc%=SI_3124_XP, PCI\VEN_1095&DEV_3124&SUBSYS_312414EB
+
+[ControlFlags]
+ExcludeFromSelect.ntx86=*
+
+
+
+;; Driver install sections
+;;
+[SI_3124_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_3124_XP.NTamd64.Services]
+AddService=SI3124,0x00000002,SI_3124_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,0,FilterService_Install
+AddService=SiRemFil, 0, RemovableDevFilter_Install
+
+[SI_3124_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3124_CoInstall_AddReg
+
+
+
+[SI_3124_CoInstall_AddReg]
+HKR,,CoInstallers32,0x00010000,"SilSupp.dll, CoInstHandler"
+
+
+[SI_3124_Service_Install]
+DisplayName=%SI3124.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3124.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=ChanConfigOverrides_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[FilterService_Install]
+DisplayName=SATALink driver accelerator
+ServiceType=1
+StartType=0
+ErrorControl=0
+ServiceBinary=%12%\SiWinAcc.sys
+LoadOrderGroup=Filter
+
+[RemovableDevFilter_Install]
+DisplayName=SATALink External Device Filter
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SiRemFil.sys
+LoadOrderGroup="PnP Filter"
+AddReg=RemovableDevFilter_AddReg
+
+
+; Enable removable device filter to attach to disk and cd-rom class devices.
+[RemovableDevFilter_AddReg]
+HKLM, System\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, SiRemFil
+HKLM, System\CurrentControlSet\Control\Class\{4d36e965-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, SiRemFil
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 124
+HKR,Parameters\Device,MaximumSGList,0x00010001, 33
+HKR, Parameters\Device, CreateInitiatorLU, 0x00010001, 1
+
+
+; Set controller's bus type to SATA.
+[BusType_AddReg]
+HKR, Parameters, BusType, 0x00010001, 11
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+HKR,ProblemDevices, %ProblemDev1Name%, 0, %ProblemDev1Value%
+HKR,ProblemDevices, %ProblemDev2Name%, 0, %ProblemDev2Value%
+HKR,ProblemDevices, %ProblemDev3Name%, 0, %ProblemDev3Value%
+HKR,ProblemDevices, %ProblemDev4Name%, 0, %ProblemDev4Value%
+HKR,ProblemDevices, %ProblemDev5Name%, 0, %ProblemDev5Value%
+HKR,ProblemDevices, %ProblemDev6Name%, 0, %ProblemDev6Value%
+HKR,ProblemDevices, %ProblemDev7Name%, 0, %ProblemDev7Value%
+HKR,ProblemDevices, %ProblemDev8Name%, 0, %ProblemDev8Value%
+
+
+; List of controller subsystem IDs to be supported by the SI3124.sys driver.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_3124.DeviceDesc%, 0x00010001, 0x31241095
+HKR,SupportedSubsystemIDs,%SI3124_SUB_ID_DESC_INTEL%, 0x00010001, 0x31248086
+HKR,SupportedSubsystemIDs, %SI3124_SUB_ID_DESC_HRS%, 0x00010001, 0x31241A57
+HKR,SupportedSubsystemIDs, %SI3124_SUB_ID_DESC_SEIKOEPSON%, 0x00010001, 0x312414EB
+
+
+[ChanConfigOverrides_AddReg]
+HKR, ChannelConfigurations, %SI3124_SUB_ID_DESC_HRS%, 0x00010001, 0x00001111
+HKR, ChannelConfigurations, %SI3124_SUB_ID_DESC_SEIKOEPSON%, 0x00010001, 0x00000001
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+SI="Silicon Image"
+
+PCI\VEN_1095&DEV_3124.DeviceDesc="Silicon Image SiI 3124 SATALink Controller"
+SI3124.SvcDesc="SiI-3124 SATALink Controller"
+
+
+; Registry value names to use for PCI subsystem ID values assigned by third parties
+; using the 3124 controller.
+SI3124_SUB_ID_DESC_INTEL="Silicon Image SiI 3124 SATALink Controller (Intel)"
+SI3124_SUB_ID_DESC_HRS="Silicon Image SiI 3124 SATALink Controller (Highly Reliable Systems)"
+SI3124_SUB_ID_DESC_SEIKOEPSON="Silicon Image SiI 3124 SATALink Controller (Seiko Epson)"
+
+
+ProblemDev1Name="Maxtor 4D060H3                          DAK05GK0"
+ProblemDev1Value="MaxMode = UDMA-5"
+
+ProblemDev2Name="HDS724040KLSA80                         KFAOA32A"
+ProblemDev2Value="DisableAtaQueueing"
+
+ProblemDev3Name="HDS722525VLSA80                         V36OA6MA"
+ProblemDev3Value="DisableAtaQueueing"
+
+ProblemDev4Name="HDS722516VLSA80                         V34OA6MA"
+ProblemDev4Value="DisableAtaQueueing"
+
+ProblemDev5Name="Maxtor 7B250S0                          BANC1B70"
+ProblemDev5Value="DisableSataQueueing"
+
+ProblemDev6Name="HTS541060G9SA00                         MB3OC60D"
+ProblemDev6Value="DisableSataQueueing"
+
+ProblemDev7Name="HTS541080G9SA00                         MB4OC60D"
+ProblemDev7Value="DisableSataQueueing"
+
+ProblemDev8Name="HTS541010G9SA00                         MBZOC60D"
+ProblemDev8Value="DisableSataQueueing"

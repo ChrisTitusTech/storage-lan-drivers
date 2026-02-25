@@ -1,0 +1,65 @@
+;
+; adpahmgt.inf for Adaptec HostRAID Solution
+; This INF installs a dummy driver for the management application.
+;
+; Copyright (c) 2008, Adaptec Inc.
+;
+[Version]
+Signature = "$WINDOWS NT$"
+Class = System
+ClassGuid = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider = %ADPT%
+CatalogFile ="adpahci.cat"
+DriverVer=09/09/2008,1.5.11905.0
+
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[SourceDisksNames]
+1 = %FLOPPY1_DESCRIPTION%,hraidsk1,,
+
+[SourceDisksFiles]
+
+[AdptMgtFiles]
+;
+; Dummy section to satisfy ChkInf tool
+;
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[Manufacturer]
+%ADPT% = ADAPTEC, NTamd64
+
+[ADAPTEC.NTamd64]
+; On the right hand side, what you insert is exactly what's sent in the inquiry. Each byte and its case should be identical. An underscore "_" character means dont care. The following line is for the inquiry string with
+;   8 byte Vendor = "ADAPTEC"
+; 16 byte Product = "HostRAID        "
+;   4 byte Revision = "1.0 "
+;
+%ADPTManagement.DeviceDesc%  = NODRV, SCSI\ProcessorADAPTEC_HostRAID________1.0_
+
+
+[NODRV]
+;
+; Dummy directive to satisfy ChkInf tool
+;
+CopyFiles = AdptMgtFiles
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[strings]
+
+ADPT = "Adaptec"
+ADPTManagement.DeviceDesc = "Adaptec HostRAID Management Processor Device (Pseudo)"
+FLOPPY1_DESCRIPTION = "Adaptec Windows SATA Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

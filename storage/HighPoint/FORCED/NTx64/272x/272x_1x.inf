@@ -1,0 +1,94 @@
+; 
+; 272x_1x.INF
+; 
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%HIGHPOINT%
+CatalogFile= 272x_1x.CAT
+DriverVer=04/15/2015, 1.6.13.0
+
+[DestinationDirs]
+DefaultDestDir  = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+; ExcludeFromSelect = *
+
+[Manufacturer]
+%HIGHPOINT%=HighPoint, NTamd64
+
+[HighPoint.NTamd64]
+%rr2710.DeviceDesc%=272x_1xPCI,PCI\VEN_1103&DEV_2710
+%rr2711.DeviceDesc%=272x_1xPCI,PCI\VEN_1103&DEV_2711
+%rr2720.DeviceDesc%=272x_1xPCI,PCI\VEN_1103&DEV_2720
+%rr2721.DeviceDesc%=272x_1xPCI,PCI\VEN_1103&DEV_2721
+%rr2722.DeviceDesc%=272x_1xPCI,PCI\VEN_1103&DEV_2722
+%SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc% = NODRV, SCSI\ProcessorHPT_____RCM_DEVICE______
+
+[NODRV]
+AddReg=NODRV_AddReg
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[272x_1xPCI.NTamd64]
+CopyFiles=@272x_1x.sys
+Reboot
+
+[272x_1xPCI.NTamd64.Services]
+AddService = 272x_1x, %SPSVCINST_ASSOCSERVICE%, 272x_1xPCI_Service_Inst, Miniport_EventLog_Inst
+
+[272x_1xPCI_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\272x_1x.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+[Hptpro_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+LoadOrderGroup = Filter
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x3c
+HKLM, "System\CurrentControlSet\Services\Disk", "TimeOutValue", 0x00010001, 0x00000078
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,,
+
+[SourceDisksFiles]
+272x_1x.sys = 1,,
+
+[NODRV_AddReg]
+;Dummy AddReg section 
+
+[strings]
+HighPoint="HighPoint"
+rr2710.DeviceDesc="RocketRAID 2710 SAS Controller"
+rr2711.DeviceDesc="RocketRAID 2711 SAS Controller"
+rr2720.DeviceDesc="RocketRAID 2720 SAS Controller"
+rr2721.DeviceDesc="RocketRAID 2721 SAS Controller"
+rr2722.DeviceDesc="RocketRAID 2722 SAS Controller"
+SCSI\ProcessorHPT_____RCM_DEVICE______.DeviceDesc = "HighPoint RCM Device"
+InstallDisk = "RocketRAID 271x/272x SAS Controller Driver"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

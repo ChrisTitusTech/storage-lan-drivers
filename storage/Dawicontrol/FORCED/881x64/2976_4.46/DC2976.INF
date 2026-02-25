@@ -1,0 +1,73 @@
+; DC-2976 SCSI Installationfile (x86/x64)
+; Copyright (C) 2010 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=10/27/2010, 5.10
+CatalogFile=DC2976.cat
+
+[ClassInstall32.NT]
+Addreg=DC2976_Reg
+
+[DC2976_Reg]
+HKR,,,,%SCSIClassName%
+HKR,,Installer32,,"SysSetup.Dll,ScsiClassInstaller"
+HKR,,Icon,,"-10"
+HKR,,LegacyInfOption,,"SCSI"
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC2976.sys = 1
+
+[Manufacturer]
+%StrgCompany%=DC2976_Section, NTx86, NTamd64
+
+[DC2976_Section]
+%StrgDevice%=DC2976_Install, PCI\VEN_1000&DEV_000F
+
+[DC2976_Section.NTx86]
+%StrgDevice%=DC2976_Install, PCI\VEN_1000&DEV_000F
+
+[DC2976_Section.NTamd64]
+%StrgDevice%=DC2976_Install, PCI\VEN_1000&DEV_000F
+
+[DC2976_Install]
+CopyFiles=@DC2976.sys
+
+[DC2976_Install.Services]
+AddService = DC2976, 2, DC2976_Service_Inst, DC2976_EventLog_Inst
+
+[DC2976_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC2976.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC2976_PNP_AddReg
+AddReg         = DC2976_Parm_AddReg
+
+[DC2976_EventLog_Inst]
+AddReg = DC2976_EventLog_AddReg
+
+[DC2976_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC2976_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[DC2976_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, ""
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-2976UW SCSI Hostadapter"
+StrgDiskLabel="SCSI Software Installation Disk"

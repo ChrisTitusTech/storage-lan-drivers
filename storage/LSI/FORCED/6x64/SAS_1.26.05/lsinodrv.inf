@@ -1,0 +1,49 @@
+; Copyright (c) 2007, LSI Corporation
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=04/17/2007,0.0.3.0
+CatalogFile.ntamd64=svlhx64.cat
+
+[SourceDisksFiles.amd64]
+
+[SourceDisksNames]
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%LSI%=LSI, NTamd64
+%IBM%=IBM, NTamd64
+
+[LSI.NTamd64]
+%SASx28.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX28_A.0______
+%SASx36.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICSASX36_A.0______
+%SASswitch.DeviceDesc% = NODRV, SCSI\EnclosureLSILOGICx36_LYNX3090____
+
+[IBM.NTamd64]
+%SAS_SES.DeviceDesc% = NODRV, SCSI\EnclosureIBM_____SAS_SES-2_DEVICE
+%SAS_BCS.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXSBCS-DSS1___3GSAS
+%SAS_BCS.DeviceDesc% = NODRV, SCSI\EnclosureIBM-ESXSBCS-DSS2___3GSAS
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+LSI = "LSI Corporation"
+IBM = "IBM Corporation"
+SASx28.DeviceDesc = "LSI SAS x28 Expander"
+SASx36.DeviceDesc = "LSI SAS x36 Expander"
+SASswitch.DeviceDesc = "LSI LYNX 3090 SAS Switch"
+SAS_SES.DeviceDesc = "IBM SAS SES Device"
+SAS_BCS.DeviceDesc = "IBM BCS SAS Storage Module"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

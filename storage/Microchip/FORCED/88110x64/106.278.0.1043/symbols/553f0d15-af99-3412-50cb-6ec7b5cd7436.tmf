@@ -1,0 +1,335 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+553f0d15-af99-3412-50cb-6ec7b5cd7436 2016 // SRC=FindAdap.c MJ= MN=
+#typev findadap_c2070 36 "%0
+%10!s!   !OS not supported.  New Extended Storport API is not available!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c2070 35 "%0
+%10!s!   Using New Extended Storport API." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c2070 34 "%0%10!s!   New Extended Storport API is not available while running in dump mode." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c2047 40 "%0%10!s!   CSMI IOCTL security level initialized to %11!d!. " //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->IoctlSecurity.ulGrantedSecLev, ItemLong -- 11
+}
+#typev findadap_c2021 67 "%0%10!s!   Reinitializing from eMiPnpPartialCleanup, hence PQI reset is not needed" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c1968 66 "%0%10!s!   PCI controller virtual I/O port address = %11!p!
+" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaRegisters.pVirIoAddress, ItemPtr -- 11
+}
+#typev findadap_c1966 65 "%0%10!s!   PCI controller virtual memory bar2 base address = %11!#p!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaRegisters.pVirMemoryAddress2, ItemPtr -- 11
+}
+#typev findadap_c1964 64 "%0%10!s!   PCI controller virtual memory bar1 base address = %11!#p!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaRegisters.pVirMemoryAddress1, ItemPtr -- 11
+}
+#typev findadap_c1961 63 "%0%10!s!   PCI controller function number  = %11!u!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaConfiguration.PciBusAddress.ucFunctionNumber, ItemLong -- 11
+}
+#typev findadap_c1959 62 "%0%10!s!   PCI controller device number    = %11!u!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaConfiguration.PciBusAddress.ucDeviceNumber, ItemLong -- 11
+}
+#typev findadap_c1957 61 "%0%10!s!   PCI controller bus number       = %11!u!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaConfiguration.PciBusAddress.ucBusNumber, ItemLong -- 11
+}
+#typev findadap_c1954 60 "%0%10!s!   **********  dt _SOP_DEVICE_EXTENSION %11!p! **********
+" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX, ItemPtr -- 11
+}
+#typev findadap_c1952 59 "%0
+%10!s!   ********** Subsystem ID = 0x%11!x! **********" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=CallBack_FindAdapter
+{
+IDSTR2, ItemString -- 10
+pDevX->HbaConfiguration.ulBoardID, ItemLong -- 11
+}
+#typev findadap_c181 12 "%0%10!s!   Error element size: AIO=%11!d!. RAID=%12!d!. Total=%13!d!KiB" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetErrorBufferSizeNeeded
+{
+IDSTR2, ItemString -- 10
+ulSizeOfAioErrorElement, ItemLong -- 11
+ulSizeOfRAIDErrorElement, ItemLong -- 12
+ulErrorBufferSize/1024, ItemLong -- 13
+}
+#typev findadap_c710 33 "%0%10!s!:  !Range Length = 0x%11!8x!.   Memory Bar for PQI device must be at least 512 bytes!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=GetMemoryBARs
+{
+DEBUG_NAME, ItemString -- 10
+pAccessRange->RangeLength, ItemLong -- 11
+}
+#typev findadap_c674 32 "%0%10!s!:  !Range Length = 0x%11!8x!!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=GetMemoryBARs
+{
+DEBUG_NAME, ItemString -- 10
+pAccessRange->RangeLength, ItemLong -- 11
+}
+#typev findadap_c672 31 "%0%10!s!:  !Range Start  = 0x%11!08x!%12!08x!!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=GetMemoryBARs
+{
+DEBUG_NAME, ItemString -- 10
+pAccessRange->RangeStart.HighPart, ItemLong -- 11
+pAccessRange->RangeStart.LowPart, ItemLong -- 12
+}
+#typev findadap_c669 30 "%0%10!s!:  !Could not get mapped system address for controller at PCI address %11!02x!:%12!02x!:%13!02x!.!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=GetMemoryBARs
+{
+DEBUG_NAME, ItemString -- 10
+pConfigInfo->SystemIoBusNumber, ItemLong -- 11
+pDeviceExtension->HbaConfiguration.PciBusAddress.ucDeviceNumber, ItemLong -- 12
+pDeviceExtension->HbaConfiguration.PciBusAddress.ucFunctionNumber, ItemLong -- 13
+}
+#typev findadap_c1385 41 "%0%10!s! !!!pConfigInfo invalid.!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=InitPortConfigInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c147 11 "%0%10!s!   Error buffer is not allocated yet" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=IsErrorBufferAllocated
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c141 10 "%0%10!s!   Error buffer already allocated.  I/O Error buffer size = %11!d! bytes." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=IsErrorBufferAllocated
+{
+IDSTR2, ItemString -- 10
+pErrInfo->ulIoErrorBufSize, ItemLong -- 11
+}
+#typev findadap_c2224 70 "%0%10!s! !!!SIS registers not initialized. %11!s!, Line %12!d! !!! " //   LEVEL=DbgLvlErr FLAGS=DbgFlagOfa FUNC=MiBringupAdapter
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c2201 69 "%0%10!s!   Allocate per LUN memory for all devices." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagEnum FUNC=MiBringupAdapter
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c2184 68 "%0%10!s! !!!Failed to find adapter in Sleep/OFA init. %11!s!, Line %12!d! !!! " //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiBringupAdapter
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1597 50 "%0%10!s! !!!Failed to create an operational temporary queue pair. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiChkConfigTableFeaturesUsingTempQPair
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1574 49 "%0%10!s! !!!Failed to create an operational temporary queue pair. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiChkConfigTableFeaturesUsingTempQPair
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1765 56 "%0%10!s! !!!Failed to create one and only Outbound Event Queue. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiContinuePqiInit
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1753 55 "%0%10!s! !!!Failed to sucessfully complete ReportPqiDeviceCapabilities command. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiContinuePqiInit
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1740 54 "%0%10!s! !!!ReportPqiDeviceCapabilities command never completed. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiContinuePqiInit
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1698 53 "%0%10!s! !!!Failed to create a PQI Administrator Inbound/Outbound Queue pair. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiContinuePqiInit
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c228 13 "%0%10!s!   Allocated %11!d! bytes for error buffer from %12!s!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCreateIoErrorBuffer
+{
+IDSTR2, ItemString -- 10
+ulErrorBufferSize, ItemLong -- 11
+MiAllocToAscii(eAllocationType), ItemString -- 12
+}
+#typev findadap_c552 25 "%0%10!s! !Driver running in Dump mode.  Crash dump!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetDriverMode
+{
+IDSTR, ItemString -- 10
+}
+#typev findadap_c561 26 "%0%10!s! !Driver running in Dump mode.  Hibernation!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetDriverMode
+{
+IDSTR, ItemString -- 10
+}
+#typev findadap_c572 27 "%0%10!s! !Driver running in Dump mode.  Memory Marking Only!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetDriverMode
+{
+IDSTR, ItemString -- 10
+}
+#typev findadap_c577 28 "%0%10!s! !Driver running in Dump mode.  Resume from Hibernation!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiGetDriverMode
+{
+IDSTR, ItemString -- 10
+}
+#typev findadap_c1664 52 "%0%10!s! !!!Failed to get Configuration Table info. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiInitControllerForPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1652 51 "%0%10!s! !!!PQI Post register, failed to post. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiInitControllerForPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c1829 58 "%0%10!s! !!!Could not load driver. Status= 0x%11!x!.!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiPqiCleanupFromError
+{
+IDSTR2, ItemString -- 10
+ulReturnStatus, ItemLong -- 11
+}
+#typev findadap_c1785 57 "%0%10!s! Driver failed to load! %11!s!, Line %12!d!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiPqiCleanupFromError
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+ulLine, ItemLong -- 12
+}
+#typev findadap_c502 24 "%0%10!s! !!!MiSendSynCmdInitStructBaseAddress() failed. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c461 23 "%0%10!s! !!!MiCreateIoSpecialErrorBuffer() failed. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c435 22 "%0%10!s! !!!RequestUncachedExtensionMemory() failed. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c415 21 "%0%10!s!   !Failed to allocate I/O error buffer! Will need to create it from arena..." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+}
+#typev findadap_c391 20 "%0%10!s! !!!Unable to re-use error buffer. %11!s!, Line %12!d! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c372 19 "%0%10!s! !!!Failed  to initialize port config structure. %11!s!, Line %12!d!  !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c357 39 "%0
+%10!s!   Driver's maximum number outstanding commands set to %11!d!. " //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+usDrvrMaxCmds, ItemLong -- 11
+}
+#typev findadap_c357 38 "%0
+%10!s!   Registry Controller Max=%11!d!. PerLun Max=%12!d!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagRegistry FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+pRegVar->usRegMaxCntrlIo, ItemLong -- 11
+pRegVar->usDeviceMaxQDepthAsIs, ItemLong -- 12
+}
+#typev findadap_c357 37 "%0
+%10!s!   Driver's maximum number outstanding commands set to %11!d!. " //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+MI_DUMP_MODE_MAX_NUM_COMMANDS, ItemLong -- 11
+}
+#typev findadap_c350 18 "%0%10!s! !!!Controller's Max I/O and Configuration Table location was not retrieved %11!s!, Line %12!d!  !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c337 17 "%0%10!s! !!!MiSendSynCmdGetCommPreferred() Failed. %11!s!, Line %12!d!  !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c322 16 "%0%10!s! !!!MiSendSynCmdGetAdapterProperties() Failed. %11!s!, Line %12!d!  !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c307 15 "%0%10!s! !!!MiChangeMsguToLineBased() Failed. %11!s!, Line %12!d!  !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__FILE__, ItemString -- 11
+__LINE__, ItemLong -- 12
+}
+#typev findadap_c293 14 "%0%10!s! !!!SIS registers not initialized. Line %11!d! !!! " //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSetCntrlToPqiMode
+{
+IDSTR2, ItemString -- 10
+__LINE__, ItemLong -- 11
+}
+#typev findadap_c1505 47 "%0%10!s!   Successfully got back the previously allocated %11!u! bytes of Uncached Extension memory from previous running driver.
+" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+ulRequestedMemSize, ItemLong -- 11
+}
+#typev findadap_c1510 48 "%0%10!s!   Successfully allocated %11!u! bytes of Uncached Extension memory.
+" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+ulRequestedMemSize, ItemLong -- 11
+}
+#typev findadap_c1490 46 "%0%10!s! !!!Failed to allocate %11!u! bytes of memory for Uncached Extensions.!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+ulRequestedMemSize, ItemLong -- 11
+}
+#typev findadap_c1473 45 "%0
+%10!s!   Driver requesting %11!d! bytes of Uncached Extension memory (%12!s! operating mode)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+ulRequestedMemSize, ItemLong -- 11
+pDevX->DrvFlags.fLimitMemory ? 'limited' : 'normal', ItemString -- 12
+}
+#typev findadap_c1432 44 "%0
+
+%10!s!   Per Lun memory size needed = %11!d! bytes, requested = %12!d! bytes." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+sizeof(PER_LUN_MEMORY), ItemLong -- 11
+PER_LOGICAL_UNIT_EXTENSION_SIZE, ItemLong -- 12
+}
+#typev findadap_c1429 43 "%0%10!s!   Srb Extension size = %11!d! bytes." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+SRB_EXTENSION_SIZE, ItemLong -- 11
+}
+#typev findadap_c1426 42 "%0
+
+%10!s!   Device Extension size = %11!d! bytes." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=RequestUncachedExtensionMemory
+{
+IDSTR2, ItemString -- 10
+sizeof(SOP_DEVICE_EXTENSION), ItemLong -- 11
+}

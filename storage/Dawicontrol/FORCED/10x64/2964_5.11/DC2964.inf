@@ -1,0 +1,58 @@
+; DC-2964 SCSI Installationfile (x64)
+; Copyright (C) 2017 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=08/01/2017, 5.11
+CatalogFile=DC2964.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC2964.sys = 1
+
+[Manufacturer]
+%StrgCompany%=DC2964_Section, NTamd64
+
+[DC2964_Section.NTamd64]
+%StrgDevice%=DC2964_Install, PCI\VEN_1022&DEV_2020
+
+[DC2964_Install]
+CopyFiles=@DC2964.sys
+
+[DC2964_Install.Services]
+AddService = DC2964, 2, DC2964_Service_Inst, DC2964_EventLog_Inst
+
+[DC2964_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC2964.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC2964_PNP_AddReg
+AddReg         = DC2964_Parm_AddReg
+
+[DC2964_EventLog_Inst]
+AddReg = DC2964_EventLog_AddReg
+
+[DC2964_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC2964_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[DC2964_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, ""
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-2964F SCSI Hostadapter"
+StrgDiskLabel="SCSI Software Installation Disk"

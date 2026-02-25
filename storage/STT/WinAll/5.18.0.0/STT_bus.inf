@@ -1,0 +1,189 @@
+;*****************************************************************************
+;
+; STT_bus.inf   -- Install the STT USB Composite Device
+;
+; Copyright (c) 1997-2010 by MCCI Corporation 
+;
+; MCCI is a registered trademark of MCCI Corporation.
+;
+; NOTICE: This software is licensed, not sold.  Any modification of this
+; inf file to change the reference to an operating system or to change the
+; reference to a device is not permitted unless authorized in writing by
+; MCCI Corporation.
+;
+;*****************************************************************************
+
+[version]
+signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=02/11/2010,5.18.0.0
+CatalogFile=STT_bus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+SUPERTALWdm.NT.CopyFiles        = 12                    ; system32\drivers
+PropPages.CopyFiles             = 11                    ; system
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+[SourceDisksNames.x86]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_bus.sys",,\i386
+
+
+[SourceDisksNames.amd64]
+; diskid = description[, [tagfile] [, <unused>, subdir]]
+1=%DiskString%,"STT_bus.sys",,\amd64
+
+
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+STT_bus.sys = 1
+STT_whnt.sys = 1
+
+;-----------------------------------------------------------------------------
+; Table of Contents:  manufacturer, then devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%SUPERTAL%=SUPERTAL, NTamd64
+
+;-----------------------------------------------------------------------------
+; The devices
+;-----------------------------------------------------------------------------
+[SUPERTAL]
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0300
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0301
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0302
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0303
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0304
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0305
+
+[SUPERTAL.NTamd64]
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0300
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0301
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0302
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0303
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0304
+%SUPERTAL.CdcBus.Desc% = SUPERTALWdm.Install, USB\VID_1B8F&PID_0305
+
+;-----------------------------------------------------------------------------
+; How to install them:  
+; On NT, the system first tries [section.NT], then [section].
+;-----------------------------------------------------------------------------
+
+;-----------------------------------------------------------------------------
+; Diagnostics Files CopyFiles List Section
+;-----------------------------------------------------------------------------
+[SUPERTAL.CopyFiles]
+
+;-----------------------------------------------------------------------------
+; XXX when we have a property page DLL, add it to the following section.
+;-----------------------------------------------------------------------------
+[PropPages.CopyFiles]
+
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.Install.NT]
+CopyFiles       = SUPERTALWdm.NT.CopyFiles
+AddReg          = SUPERTALWdm.AddReg, SUPERTALWdm.NT.AddReg
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+
+
+[SUPERTALWdm.Install.NT.Services]
+AddService      = STT_bus, 2, SUPERTALWdm.AddService, SUPERTALWdm.Install.EventLog
+
+[SUPERTALWdm.AddService]
+DisplayName             = %SUPERTAL.Service.Desc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\STT_bus.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       Setup event logging, if driver supports it
+;-----------------------------------------------------------------------------
+
+[SUPERTALWdm.Install.EventLog]
+Addreg = SUPERTALWdm.EventLog.AddReg
+
+[SUPERTALWdm.EventLog.AddReg]
+HKR,,EventMessageFile, 0x20000, "%%SystemRoot%%\System32\drivers\STT_bus.sys"
+HKR,,TypesSupported, 0x10001, 7
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.AddReg]
+;HKR,,EnableSelectiveSuspend, 0x10001, 01,00,00,00
+HKR,Scenarios,Scenario,0x10001, 01,00,00,00
+
+HKR,Scenarios\Scenario_0\Guids, GUID_MCCISCENARIO_EVALMSC2_MSFT,, "{81933031-CA18-4c91-AA6A-B34E2176BE82}"
+HKR,Scenarios\Scenario_0\ifc_00\Description, default,, "MSFT Storage Driver"
+
+HKR,Scenarios\Scenario_1\Guids, GUID_MCCISCENARIO_EVALMSC2_MCCI,, "{BFAC918D-AFC4-413e-B328-16BD9207E9CC}"
+HKR,Scenarios\Scenario_1\ifc_00\Description, default,, "SuperTalent Storage Driver"
+HKR,Scenarios\Scenario_1\ifc_00,HardwareId,, "USB\Vid_$VID&Pid_$PID&STT_&Mi_$IFC$,"
+HKR,Scenarios\Scenario_1\ifc_00,HardwareIdList,, "USB\Vid_$VID&Pid_$PID&STT_$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT&Os_$OS$,USB\Vid_$VID&Pid_$PID&Class_$CLASS&SubClass_$SUBCLASS&Prot_$PROT$,USB\Vid_$VID&Pid_$PID&STT_&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&MI_$IFC$,$,"
+HKR,Scenarios\Scenario_1\ifc_00,CompatibleIdList,, "USB\Vid_$VID&Pid_$PID&STT_$,USB\Vid_$VID&Pid_$PID&Mi_$IFC&Os_$OS$,USB\Vid_$VID&Pid_$PID&Mi_$IFC$,$,"
+
+
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.NT.AddReg]
+
+
+;-----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[SUPERTALWdm.NT.CopyFiles]
+STT_bus.sys
+STT_wh.sys,STT_whnt.sys
+STT_whnt.sys
+
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+;BEGIN ENG - US English Strings
+Provider = "Super Talent Technology Corporation"
+SUPERTAL = "Super Talent Technology Corporation"
+DiskString = "STT USB Composite Device Installation Disk"
+
+SUPERTAL.CdcBus.Desc = "STT USB Composite Device"
+SUPERTAL.Service.Desc = "STT USB Composite Device"
+
+CustomerDataPath = "SuperTalent Fast USB"
+DriverSet = "SuperTalent Fast USB Software"
+UninstallFile = "STT_Uninstall.exe"
+McciOptions = "Uninstallable"
+
+
+;END ENG - US English Strings
+
+;-----------------------------------------------------------------------------
+; Following are symbolic constants which don't change per locale.
+;-----------------------------------------------------------------------------
+
+;*** end of file ***

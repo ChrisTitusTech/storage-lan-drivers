@@ -1,0 +1,98 @@
+; ****************************************************************************
+; ****************************************************************************
+; **    Filename:  TxtSetup.OEM
+; ****************************************************************************
+; ****************************************************************************
+
+[Disks]
+disk1 = "JMB36X", jraid_f.inf, \
+
+[Defaults]
+scsi = JMicron_RAID_363
+
+;----------- Component Section -----------
+
+[scsi]
+JMicron_RAID_363  =  "JMicron JMB363 RAID Controller (Windows XP/2003 64bit)"
+JMicron_AHCI_363  =  "JMicron JMB363 AHCI Controller (Windows XP/2003 64bit)"
+JMicron_RAID_360  =  "JMicron JMB360 RAID Controller (Windows XP/2003 64bit)"
+JMicron_AHCI_360  =  "JMicron JMB360 AHCI Controller (Windows XP/2003 64bit)"
+JMicron_RAID_366  =  "JMicron JMB366 RAID Controller (Windows XP/2003 64bit)"
+JMicron_AHCI_366  =  "JMicron JMB366 AHCI Controller (Windows XP/2003 64bit)"
+JMicron_RAID_361  =  "JMicron JMB361 RAID Controller (Windows XP/2003 64bit)"
+JMicron_AHCI_361  =  "JMicron JMB361 AHCI Controller (Windows XP/2003 64bit)"
+
+;-------------------------------------------
+
+[Files.scsi.JMicron_RAID_360]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_RAID_361]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_RAID_363]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_RAID_366]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_AHCI_360]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_AHCI_361]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_AHCI_363]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+[Files.scsi.JMicron_AHCI_366]
+driver  = disk1, jraid.sys, Jraid
+driver  = disk1, Jgogo.sys, Jgogo
+inf     = disk1, jraid_f.inf
+catalog = disk1, jraid.cat
+
+;-------------------------------------------
+
+[Config.Jraid]
+value = parameters\PnpInterface,5,REG_DWORD,1
+
+;--------------------------------------------
+
+[HardwareIds.scsi.JMicron_RAID_360]
+id = "PCI\VEN_197B&DEV_2360&CC_0104", "Jraid"
+[HardwareIds.scsi.JMicron_RAID_361]
+id = "PCI\VEN_197B&DEV_2361&CC_0104", "Jraid"
+[HardwareIds.scsi.JMicron_RAID_363]
+id = "PCI\VEN_197B&DEV_2363&CC_0104", "Jraid"
+[HardwareIds.scsi.JMicron_RAID_366]
+id = "PCI\VEN_197B&DEV_2366&CC_0104", "Jraid"
+
+[HardwareIds.scsi.JMicron_AHCI_360]
+id = "PCI\VEN_197B&DEV_2360&CC_0106", "Jraid"
+[HardwareIds.scsi.JMicron_AHCI_361]
+id = "PCI\VEN_197B&DEV_2361&CC_0106", "Jraid"
+[HardwareIds.scsi.JMicron_AHCI_363]
+id = "PCI\VEN_197B&DEV_2363&CC_0106", "Jraid"
+[HardwareIds.scsi.JMicron_AHCI_366]
+id = "PCI\VEN_197B&DEV_2366&CC_0106", "Jraid"

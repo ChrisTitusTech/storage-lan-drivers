@@ -1,0 +1,40 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+e14306cd-8157-3565-de36-acab7ce06ab9 2016 // SRC=IoctlCsmiall.c MJ= MN=
+#typev ioctlcsmiall_c559 12 "%0%10!s!  IOCTL is CC_CSMI_SAS_GET_DRIVER_INFO." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c573 10 "%0%10!s!   Buffer not big enough." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c570 13 "%0%10!s!  IOCTL is CC_CSMI_SAS_GET_CNTLR_CONFIG." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c594 15 "%0%10!s!  IOCTL is CC_CSMI_SAS_GET_CNTLR_STATUS." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c609 17 "%0%10!s! !Received IOCTL FIRMWARE DOWNLOAD request for a controller that is FAILED/Offline!" //   LEVEL=1 FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c604 16 "%0%10!s!  IOCTL is CC_CSMI_SAS_FIRMWARE_DOWNLOAD." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c585 11 "%0%10!s!   Buffer not big enough." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c581 14 "%0%10!s!  IOCTL is CC_CSMI_SAS_GET_CNTLR_CONFIG_EX." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiall_c624 18 "%0%10!s! !Invalid miniport CSMIALL control code:  %11!u!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=ProcessCsmiAllIoctls
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+}

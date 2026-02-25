@@ -1,0 +1,141 @@
+#-------------------------------------------------------------
+# 
+#  Copyright 2007 Adaptec, Inc. All rights reserved.
+#
+#  This software contains the valuable trade secrets of Adaptec 
+#  or its licensors. The software is protected under international 
+#  copyright laws and treaties. This software may only be used in 
+#  accordance with the terms of its accompanying license agreement.
+# 
+#-------------------------------------------------------------
+
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+
+#-------------------------------------------------------------
+#						  
+# [Disks]
+#
+# This section lists all disks in the disk set.
+#
+# <description> is a descriptive name for a disk, used when
+#
+#               prompting for the disk
+# <tagfile>     is a file whose presence allows setup to recognize
+#               that the disk is inserted.
+#
+# <directory>   is where the files are located on the disk.
+#
+#-------------------------------------------------------------
+[Disks]
+d1   = "Adaptec Ultra320 Family Manager Set for Windows 64-bit", \u320dsk1, \
+
+
+#-------------------------------------------------------------
+#
+# [Defaults]
+#
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id>             is a unique <within the component> string to be associated
+#                  with an option.
+#
+#-------------------------------------------------------------
+[Defaults]
+scsi = a79xxNTAMD64
+
+#-------------------------------------------------------------
+#
+# [scsi]
+#
+# This section lists the options available for a particular component.
+#
+# <id>          is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name>    gives the name of the key to be created for the component in
+#               HKEY_LOCAL_MACHINE\ControlSet001\Services
+#
+#-------------------------------------------------------------
+[scsi]
+a79xxNTAMD64 = "Adaptec Ultra320 SCSI Cards (Windows 64-bit)"
+
+
+#-------------------------------------------------------------
+# [Files.scsi.a78xxNT40]
+#
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type>   is one of driver, port, class, dll, hal, inf, or detect.
+#               See below.
+#
+# <source_disk> identifies where the file is to be copied from, and must
+#               match en entry in the [Disks] section.
+#
+# <filename>    is the name of the file. This will be appended to the
+#               directory specified for the disk in the [Disks] section to form the
+#               full path of the file on the disk.
+#
+#-------------------------------------------------------------
+
+
+[Files.scsi.a79xxNTAMD64]
+driver  = d1, adpu320.sys, adpu320
+inf     = d1, adpu320.inf
+catalog = d1, adpu320.cat
+
+
+#-------------------------------------------------------------
+#
+# [Config.adpu320]
+#
+# This section specifies values to be set in the registry for
+# particular component options.  Required values in the services\xxx
+# key are created automatically -- use this section to specify additional
+# keys to be created in services\xxx and values in services\xxx and
+# services\xxx\yyy.
+#
+# <key_name>   is relative to the services node for this device.
+#              If it is empty, then it refers to the services node.
+#              If specified, the key is created first.
+#
+# <value_name> specifies the value to be set within the key
+#
+# <value_type> is a string like REG_DWORD.  See below.
+#
+# <value>      specifies the actual value; its format depends on <value_type>
+#
+#-------------------------------------------------------------
+#
+[Config.adpu320]
+value = "", tag, REG_DWORD, 20
+value = Parameters\PnpInterface,5, REG_DWORD,1
+
+[HardwareIds.scsi.a79xxNTamd64]
+id = "PCI\VEN_9005&DEV_801D", "adpu320"
+id = "PCI\VEN_9005&DEV_801E", "adpu320"
+id = "PCI\VEN_9005&DEV_801F", "adpu320"
+id = "PCI\VEN_9005&DEV_800F", "adpu320"
+id = "PCI\VEN_9005&DEV_800F&SUBSYS_005F9005", "adpu320"
+id = "PCI\VEN_9005&DEV_8000&SUBSYS_00609005", "adpu320"
+id = "PCI\VEN_9005&DEV_8010&SUBSYS_00409005", "adpu320"
+id = "PCI\VEN_9005&DEV_8011&SUBSYS_00419005", "adpu320"
+id = "PCI\VEN_9005&DEV_8012&SUBSYS_00429005", "adpu320"
+id = "PCI\VEN_9005&DEV_8014&SUBSYS_00449005", "adpu320"
+id = "PCI\VEN_9005&DEV_8015&SUBSYS_00409005", "adpu320"
+id = "PCI\VEN_9005&DEV_8016&SUBSYS_00409005", "adpu320"
+id = "PCI\VEN_9005&DEV_8017&SUBSYS_00449005", "adpu320"
+id = "PCI\VEN_9005&DEV_8017&SUBSYS_00459005", "adpu320"
+

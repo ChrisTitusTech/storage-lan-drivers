@@ -1,0 +1,138 @@
+// PDB:  Win10_Release\x64\\SmartPqi.pdb
+// PDB:  Last Updated :2018-06-11:19:14:12:778 (UTC) [tracepdb]
+b11f4c9d-f770-3996-2fd1-f48c6547d1ce 2016 // SRC=Util.c MJ= MN=
+#typev util_c2631 13 "%0%10!s! !Can't do a bus reset during hibernation or crash dump!" //   LEVEL=1 FLAGS=DbgFlagResets FUNC=CallBack_HardwareBusReset
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c2616 12 "%0%10!s!  **********************CallBack_HardwareBusReset(Bus=%11!ld!)**********************." //   LEVEL=1 FLAGS=DbgFlagResets FUNC=CallBack_HardwareBusReset
+{
+IDSTR, ItemString -- 10
+PathId, ItemLong -- 11
+}
+#typev util_c8885 23 "%0%10!s!: !No Controller lockup code returned!" //   LEVEL=0 FLAGS=DbgFlagInit FUNC=GetCntrlLockupCode
+{
+DEBUG_NAME, ItemString -- 10
+}
+#typev util_c6507 19 "%0%10!s! !The buffers passed to the function were too large Max buffer size = %11!d!! " //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+ulMaxBufferSize, ItemLong -- 11
+}
+#typev util_c6497 18 "%0%10!s! !An unsupported (for example, more current) version of the STOR_LOG_EVENT_DETAILS structure was specified!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6491 17 "%0%10!s! !There were insufficient system resources to complete the request!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6485 16 "%0%10!s! !An invalid parameter was passed in!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6479 15 "%0%10!s! !StorPortLogSystemEvent is not implemented on the running operating system!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6473 14 "%0%10!s! !Failed to log error because StorPortLogSystemEvent was made at IRQL > DISPATCH_LEVEL!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=Log_DisplayLogStatus
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c8979 27 "%0%10!s! !Completing SRB = %11!p!!" //   LEVEL=1 FLAGS=DbgFlagHeartBeat FUNC=MiCompleteAllRequests
+{
+IDSTR, ItemString -- 10
+pCmdInfo->pVoidSrb, ItemPtr -- 11
+}
+#typev util_c8974 26 "%0%10!s! !Released RequestId = %11!x! for pCmdInfo = %12!p!,!" //   LEVEL=1 FLAGS=DbgFlagHeartBeat FUNC=MiCompleteAllRequests
+{
+IDSTR, ItemString -- 10
+usReqId, ItemLong -- 11
+pCmdInfo, ItemPtr -- 12
+}
+#typev util_c9124 28 "%0%10!s!  !Failed to pause I/O .  Can't do a quick update!" //   LEVEL=1 FLAGS=DbgFlagIoctl FUNC=MiRequestQuickUpdate
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c7563 22 "%0%10!s!   Event type = 0x%11!x! acknowledged at TimeStamp 0x%12!x! %13!x!" //   LEVEL=2 FLAGS=DbgFlagIoctl FUNC=MiSendEventAcknowledgment
+{
+IDSTR, ItemString -- 10
+ucEventType, ItemLong -- 11
+pDeviceExtension->qTimeStampEventAcknowledged.HighPart, ItemLong -- 12
+pDeviceExtension->qTimeStampEventAcknowledged.LowPart, ItemLong -- 13
+}
+#typev util_c1739 11 "%0%10!s!:   !NewSubmitReqIuToOpIQ() failed. Driver failed to submit ReportLuns!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiSendReportLunsRequest
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c9624 43 "%0%10!s!   The Device Capabilites 2 Register = 0x%11!x!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+pCapability->DeviceControl2.CompletionTimeoutValue, ItemLong -- 11
+}
+#typev util_c9605 42 "%0%10!s! !!!Could not get PCI information.!!!" //   LEVEL=0 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c9563 41 "%0%10!s!   The Device Capabilites 2 Register = 0x%11!x!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+pCapability->DeviceControl2.CompletionTimeoutValue, ItemLong -- 11
+}
+#typev util_c9560 40 "%0%10!s!   The PhysicalSlotNumber = %11!d!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+pCapability->SlotCapabilities.PhysicalSlotNumber, ItemLong -- 11
+}
+#typev util_c9554 39 "%0%10!s!   Found Capability register Id = 0x10." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c9533 38 "%0%10!s! !!!Could not get PCI information.!!!" //   LEVEL=0 FLAGS=DbgFlagInit FUNC=MiSetPCIeDeviceControl2Reg
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c9415 37 "%0   week day = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Weekday, ItemLong -- 10
+}
+#typev util_c9413 36 "%0   millisecond = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Milliseconds, ItemLong -- 10
+}
+#typev util_c9411 35 "%0   second = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Second, ItemLong -- 10
+}
+#typev util_c9409 34 "%0   minute = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Minute, ItemLong -- 10
+}
+#typev util_c9407 33 "%0   hour = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Hour, ItemLong -- 10
+}
+#typev util_c9405 32 "%0   day = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Day, ItemLong -- 10
+}
+#typev util_c9403 31 "%0   month = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Month, ItemLong -- 10
+}
+#typev util_c9401 30 "%0   year = %10!u!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+timeFields.Year, ItemLong -- 10
+}
+#typev util_c9399 29 "%0%10!s!   " //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendBmicWriteHostWellness
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6870 20 "%0%10!s!   Not sending SendReportEventConfiguration(), Events not used while running in dump mode." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendReportEventConfiguration
+{
+IDSTR, ItemString -- 10
+}
+#typev util_c6963 21 "%0%10!s!   Not sending SendSetEventConfiguration(), Events not used while running in dump mode." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=SendSetEventConfiguration
+{
+IDSTR, ItemString -- 10
+}

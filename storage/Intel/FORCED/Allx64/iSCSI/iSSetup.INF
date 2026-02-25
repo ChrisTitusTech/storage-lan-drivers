@@ -1,0 +1,96 @@
+;*******************************************************************************
+;*                                                                            **
+;*                     I N T E L   P R O P R I E T A R Y                      **
+;*                                                                            **
+;*   COPYRIGHT (c) 2005-2013 BY INTEL CORPORATION. ALL RIGHTS RESERVED.  NO   **
+;*   PART  OF  THIS  PROGRAM OR PUBLICATION MAY BE REPRODUCED, TRANSMITTED,   **
+;*   TRANSCRIBED, STORED IN A RETRIEVAL  SYSTEM,  OR  TRANSLATED  INTO  ANY   **
+;*   LANGUAGE OR COMPUTER LANGUAGE IN ANY FORM OR BY ANY MEANS, ELECTRONIC,   **
+;*   MECHANICAL, MAGNETIC, OPTICAL, CHEMICAL, MANUAL, OR OTHERWISE, WITHOUT   **
+;*   THE PRIOR WRITTEN PERMISSION OF :                                        **
+;*                                                                            **
+;*                             INTEL CORPORATION                              **
+;*                                                                            **
+;*                          2200 MISSION COLLEGE BLVD                         **
+;*                                                                            **
+;*                     SANTA CLARA, CALIFORNIA 95052-8119                     **
+;*                                                                            **
+;*******************************************************************************
+;
+;*******************************************************************************
+; iSSetup.INF (Windows Server 2003 32-bit)
+; $Revision: 1.65 $
+;
+; Intel(R) iSCSI Setup Driver
+;******************************************************************************
+;
+[Version]
+Signature="$WINDOWS NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Intel%
+CatalogFile = iSSetup.cat
+DriverVer=03/15/2013,2.2.0.10
+
+[Manufacturer]
+%Intel%     = Intel, NTamd64.5.2, NTamd64.6.0
+
+; ================= Device Install section =====================
+[SourceDisksNames]
+1=%DiskId%
+
+[SourceDisksFiles]
+iSSetup.sys=1
+
+[DestinationDirs]
+DefaultDestDir=12
+
+[Intel]
+
+[Intel.NTamd64.5.2]
+%iSCSI.DeviceDesc% = iSCSIIntel_Inst, Root\InteliSCSI
+
+[Intel.NTamd64.6.0]
+;empty
+
+[iSCSIIntel_Inst]
+CopyFiles = iSCSIIntel_InstCopyFiles
+
+[iSCSIIntel_InstCopyFiles]
+iSSetup.sys
+
+[iSCSIIntel_Inst.Services]
+AddService = iSSetup,2,ISCSI_Service_Inst
+
+;
+; ============= Service Install section ==============
+;
+[ISCSI_Service_Inst]
+DisplayName    = %iSCSI.DeviceDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\iSSetup.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_isa_addreg
+
+[pnpsafe_isa_addreg]
+; follwing keys needs to be set for x64 only
+HKR, "Parameters\PnpInterface", "1", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "VirtualDevice", 0x00010001, 0x00000001
+
+[Strings]
+Intel = "Intel Corporation"
+iSCSI.DeviceDesc = "Intel(R) iSCSI Setup Driver"
+DiskId = "Intel iSCSI Setup Driver installation disk"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+
+REG_DWORD              = 0x00010001
+REG_BINARY             = 0x00000001
+REG_SZ                 = 0x00000000

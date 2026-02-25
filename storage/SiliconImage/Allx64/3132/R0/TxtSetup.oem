@@ -1,0 +1,98 @@
+; This file installs the SiI 3132 non-RAID serial ATA driver as part of text
+; mode setup on 64-bit versions of Windows XP, and Windows Server 2003.
+;
+; Copyright (C) 2004 - 2009 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image SiI 3132 SATALink Driver Installation Disk",\ia64\Si3132.sys,\ia64
+disk2 = "Silicon Image SiI 3132 SATALink Driver Installation Disk",\amd64\Si3132.sys,\amd64
+
+
+[Defaults]
+SCSI = Si3132_AMD64
+
+
+[SCSI]                  ; HwComponent section
+Si3132_AMD64 = "Silicon Image SiI 3132 SATALink Controller (64-bit Extended)"
+Si3132_IA64 = "Silicon Image SiI 3132 SATALink Controller (Itanium)"
+
+
+[Files.SCSI.Si3132_AMD64]
+driver = disk2,si3132.sys, Si3132
+driver = disk2,SiWinAcc.sys, SiFilter
+driver = disk2,SiRemFil.sys, SiRemFil
+inf = disk2,SI3132.inf
+dll = disk2,SilSupp.dll
+catalog = disk2, Si3132.cat
+
+
+[Files.SCSI.Si3132_IA64]
+driver = disk1,si3132.sys, Si3132
+driver = disk1,SiWinAcc.sys, SiFilter
+inf = disk1,SI3132.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, Si3132.cat
+
+
+[HardwareIds.SCSI.Si3132_AMD64]
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_31321095", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_710A1462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_B0021458", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CA9105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_3009148C", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_88881019", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_819F1043", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_09781019", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_716A1462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_715A1462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CAB105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0CAD105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8F105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8D105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C8B105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C89105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0C87105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_722A1462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_02391154", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_63001462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_63101462", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_2C0B17F2", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_00226409", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_0D10105B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_820E1043", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_31321A57", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_1000131F", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_000F182D", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_819F103C", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_F000147B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_8958152D", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_00401170", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_2A4A103C", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_02AF1028", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_CE21136B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_02F81028", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_02F71028", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_85301462", "Si3132"
+
+
+[HardwareIds.SCSI.Si3132_IA64]
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_31321095", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_F000147B", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_8958152D", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_00401170", "Si3132"
+id = "PCI\VEN_1095&DEV_3132&SUBSYS_CE21136B", "Si3132"
+
+
+[Config.Si3132]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "HDS724040KLSA80                         KFAOA32A", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722525VLSA80                         V36OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722516VLSA80                         V34OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "Maxtor 7B250S0                          BANC1B70", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541060G9SA00                         MB3OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541080G9SA00                         MB4OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541010G9SA00                         MBZOC60D", REG_SZ, "DisableSataQueueing"

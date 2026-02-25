@@ -1,0 +1,61 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+e7f3f073-940c-3c2c-8674-ff048c533239 2016 // SRC=Ofa.c MJ= MN=
+#typev ofa_c479 19 "%0%10!s!   Allocated %11!x! bytes host memory  for OFA. No.of SG's used for OFA %12!d!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagOfa FUNC=AllocateOfaHostMemoryBuffer
+{
+IDSTR2, ItemString -- 10
+ulSizeAllocated, ItemLong -- 11
+ulChunk, ItemLong -- 12
+}
+#typev ofa_c461 18 "%0%10!s!   Failed to Allocated %11!x! bytes host memory for OFA. Allocated chunks:%12!d! " //   LEVEL=DbgLvlErr FLAGS=DbgFlagOfa FUNC=AllocateOfaHostMemoryBuffer
+{
+IDSTR2, ItemString -- 10
+ulChunkSize, ItemLong -- 11
+ulChunk, ItemLong -- 12
+}
+#typev ofa_c419 17 "%0%10!s!   Event requested %11!x! bytes host memory for OFA." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=AllocateOfaHostMemoryBuffer
+{
+IDSTR2, ItemString -- 10
+ulMemSize, ItemLong -- 11
+}
+#typev ofa_c37 10 "%0%10!s!   Online Firmware Activation Status=%11!s!, Time taken=%12!d! seconds." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=CalculateOfaDuration
+{
+IDSTR2, ItemString -- 10
+pString, ItemString -- 11
+ulTimeInSecs, ItemLong -- 12
+}
+#typev ofa_c311 13 "%0%10!s!   !Controller Soft Reset status not responding for %11!d! seconds.Driver issuing Soft Reset to Controller. Online FirmWare Activation(OFA) is not valid" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagOfa FUNC=CallBack_HandleOfaQuiesceEvent
+{
+IDSTR2, ItemString -- 10
+ulTimeoutInSeconds, ItemLong -- 11
+}
+#typev ofa_c311 14 "%0%10!s!   Driver issuing Soft Reset to Controller.Online FirmWare Activation(OFA) is valid" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=CallBack_HandleOfaQuiesceEvent
+{
+IDSTR2, ItemString -- 10
+}
+#typev ofa_c311 15 "%0%10!s!   Controller Soft Reset is aborted with status MI_UNKNOWN_SOFT_RESET. Online FirmWare Activation(OFA) is not valid
+. Resume Io's" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=CallBack_HandleOfaQuiesceEvent
+{
+IDSTR2, ItemString -- 10
+}
+#typev ofa_c88 11 "%0%10!s!   QRM memory is successfully freed, Status: %11!s!." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=FreeOfaMemory
+{
+IDSTR2, ItemString -- 10
+pString, ItemString -- 11
+}
+#typev ofa_c559 16 "%0%10!s!   Received Online Firmware Activation Quisce Event.  TimeStamp=%11!I64u!sec" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=MiProcessOfaEvent
+{
+IDSTR2, ItemString -- 10
+pDevX->OfaFeature.ullOfaStarted, ItemULongLong -- 11
+}
+#typev ofa_c563 12 "%0%10!s!   !OFA cancelled. usReasonCode = 0x%11!x!!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=MiProcessOfaEvent
+{
+IDSTR2, ItemString -- 10
+usReasonCode, ItemLong -- 11
+}
+#typev ofa_c546 20 "%0%10!s!   %11!s!(0x%12!02x!) received" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagOfa FUNC=MiProcessOfaEvent
+{
+IDSTR2, ItemString -- 10
+EventIdToAscii(usEventId), ItemString -- 11
+usEventId, ItemLong -- 12
+}

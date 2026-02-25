@@ -1,0 +1,80 @@
+;
+; Adaptec SAS Enclosure inf file for Adaptec RAID controllers.
+; This INF installs the Storport miniport.
+;
+; Copyright 2009-2015 Adaptec, Inc.
+; Copyright 2015 PMC-Sierra, Inc.
+; All rights reserved.
+; 
+; This software contains the valuable trade secrets of Adaptec or its licensors.
+; The software is protected under international copyright laws and treaties.
+; This software may only be used in accordance with the terms of its accompanying license agreement.
+;
+
+
+[Version]
+Signature = "$Windows NT$"
+Class = System
+ClassGUID = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ADPT%
+CatalogFile=adpenc.cat
+DriverVer=09/08/2017,7.5.0.55022
+
+[DestinationDirs]
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[Manufacturer]
+%ADPT% = ADAPTEC_device,NTamd64
+
+[ADAPTEC_device.NTamd64]
+%adptEnzo.DeviceDesc% = ProcDevice,             SCSI\EnclosureADAPTEC_SANbloc_S50_____ 
+%adptEnzoT024.DeviceDesc% = ProcDevice,         SCSI\EnclosureNewisys_SANbloc_S50_____
+%adptMiramar.DeviceDesc% = ProcDevice,          scsi\enclosureadaptec_335sas__________
+%adptRoHSMiramar.DeviceDesc% = ProcDevice,      SCSI\EnclosureAMI_____MG9071__________
+%adptVirtual_SGPIO0.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__0
+%adptVirtual_SGPIO1.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__1
+%adptVirtual_SGPIO2.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__2
+%adptVirtual_SGPIO3.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__3
+%adptVirtual_SGPIO4.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__4
+%adptVirtual_SGPIO5.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__5
+%adptVirtual_SGPIO6.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__6
+%adptVirtual_SGPIO7.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__7
+%adptVirtual_SGPIO8.DeviceDesc% = ProcDevice,   SCSI\EnclosureADAPTEC_Virtual_SGPIO__8
+
+
+[ADAPTEC_device]
+; empty
+
+
+[ProcDevice]
+AddReg=,;
+CopyFiles=,;
+
+[ProcDevice.Services]
+AddService =  ,0x00000002 ;
+AddReg=ProcAddReg
+
+[ProcAddReg]
+HKR,,,,%EnclosureServiceName%
+
+
+[Strings]
+ADPT  = "ADAPTEC, INC."
+adptEnzo.DeviceDesc = "Adaptec S50 SAS Backplane Device"
+adptEnzoT024.DeviceDesc = "Newisys S50 SAS Backplane Device"
+adptMiramar.DeviceDesc = "Adaptec ASE-335 SAS Backplane Device"
+adptRoHSMiramar.DeviceDesc = "Adaptec ASE-335 SAS Backplane Device"
+adptVirtual_SGPIO0.DeviceDesc = "Adaptec Virtual SGPIO 0 Device"
+adptVirtual_SGPIO1.DeviceDesc = "Adaptec Virtual SGPIO 1 Device"
+adptVirtual_SGPIO2.DeviceDesc = "Adaptec Virtual SGPIO 2 Device"
+adptVirtual_SGPIO3.DeviceDesc = "Adaptec Virtual SGPIO 3 Device"
+adptVirtual_SGPIO4.DeviceDesc = "Adaptec Virtual SGPIO 4 Device"
+adptVirtual_SGPIO5.DeviceDesc = "Adaptec Virtual SGPIO 5 Device"
+adptVirtual_SGPIO6.DeviceDesc = "Adaptec Virtual SGPIO 6 Device"
+adptVirtual_SGPIO7.DeviceDesc = "Adaptec Virtual SGPIO 7 Device"
+adptVirtual_SGPIO8.DeviceDesc = "Adaptec Virtual SGPIO 8 Device"
+
+EnclosureServiceName = "Adaptec SAS backplane"

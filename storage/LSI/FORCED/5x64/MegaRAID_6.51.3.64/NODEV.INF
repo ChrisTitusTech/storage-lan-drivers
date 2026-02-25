@@ -1,0 +1,144 @@
+;#####################################################################
+;  Copyright © 2001, LSI Corp.
+;#####################################################################
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+CatalogFile=MRAID64.cat
+DriverVer=08/15/2007,6.51.3.64
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+
+[SourceDisksNames]
+
+
+[SourceDisksFiles]
+
+
+[Manufacturer]
+%LSI%=LSI,NTamd64
+%DELL%=DELL, NTamd64
+%TOSHIBA%=TOSHIBA, NTamd64
+%HP%=HP, NTamd64
+%JMR%=JMR, NTamd64
+%NSTOR%=NSTOR, NTamd64
+%GATEWAY%=GATEWAY, NTamd64
+%NEC%=NEC, NTamd64
+%ESG-SHV%=ESG-SHV, NTamd64
+
+[LSI.NTamd64]
+%NULL.DeviceDesc%     = NODRV, SCSI\Other__RAID___DummyDevice____
+%AMIProcessor%        = NODRV, SCSI\ProcessorAMI_____MegaProcessor___
+%AMI906Processor%     = NODRV, SCSI\ProcessorAMI_____Series_906______
+%LSIProcessor%        = NODRV, SCSI\ProcessorLSI_____MegaProcessor___
+%LSI320Processor%     = NODRV, SCSI\ProcessorLSI_____MegaRAID_320-2__
+%LSI3202xProcessor%   = NODRV, SCSI\ProcessorLSI_____MegaRAID_320-2X_
+%LSI3204xProcessor%   = NODRV, SCSI\ProcessorLSI_____MegaRAID_320-4X_
+%LSI3202EProcessor%   = NODRV, SCSI\ProcessorLSI_____MegaRAID_320-2E_
+%LSIViteProcessor%    = NODRV, SCSI\ProcessorSIRIUS__GC-BAT4E________
+%IDEProcessor%        = NODRV, SCSI\ProcessorLSI_____IDE_SAF-TE__-AMI
+%AMI523Processor%     = NODRV, SCSI\ProcessorAMI_____BackPlane944____
+%QuantaProcessor%     = NODRV, SCSI\ProcessorGENERIC_SATA_BP_________
+
+;Qlogic Chip
+%virtual.DeviceDesc%   = NODRV, PCI\VEN_1077&DEV_1216&SUBSYS_8471101E
+%virtual.DeviceDesc%   = NODRV, PCI\VEN_1077&DEV_1216&SUBSYS_8493101E
+
+[HP.NTamd64]
+%HPProcessor.DeviceDesc% = NODRV, SCSI\ProcessorSDR_____GEM318__________
+%HP2MProcessor.DeviceDesc% = NODRV, SCSI\ProcessorHP______NETRAID-2M______
+
+[ESG-SHV.NTamd64]
+%ESG-SHVProcessor%      = NODRV, SCSI\ProcessorESG-SHV_SCA_HSBP_M9_____
+%ESG-SHVProcessor%      = NODRV, SCSI\ProcessorESG-SHV_SCA_HSBP_M13____
+
+[NEC.NTamd64]
+%NECProcessor%         = NODRV, SCSI\ProcessorNEC_____GEM312R2________
+
+[NSTOR.NTamd64]
+%NSTORProcessor%      = NODRV, SCSI\ProcessornStor___CR8L__SAF-TE1.05
+%MEGARAIDSAFTEProcessor%    = NODRV,  SCSI\ProcessorMegaRAIDAMI___SAF-TE1.05
+
+
+[DELL.NTamd64]
+;DELL Processor device
+%DELLProcessor%       = NODRV, SCSI\ProcessorDELL____PERC_2/DC_______
+%DELLSCProcessor%     = NODRV, SCSI\ProcessorDELL____PERC_2/SC_______
+%DELLDCProcessor%     = NODRV, SCSI\ProcessorDELL____PERC_3/DC_______
+%DELLQCProcessor%     = NODRV, SCSI\ProcessorDELL____PERC_3/QC_______
+%DELLDiProcessor%     = NODRV, SCSI\ProcessorDELL____PERC_4/Di_______
+%DELL4DCProcessor%    = NODRV, SCSI\ProcessorDELL____PERC_4/DC_______
+%DELL4EDCProcessor%   = NODRV, SCSI\ProcessorDELL____PERC_4e/DC______
+
+
+[TOSHIBA.NTamd64]
+%TOSHIBA.DeviceDesc%     = NODRV, SCSI\ProcessorTOSHIBA_    
+%TOSHIBA.DeviceDesc%     = NODRV, SCSI\ProcessorSDR_____    
+
+[JMR.NTamd64]
+%JMRProcessor%        = NODRV, SCSI\ProcessorJMR_ELECFORTRA_SERIES.__
+
+[GATEWAY.NTamd64]
+%GatewayProcessor%    = NODRV, SCSI\ProcessorGateway_GEM354_REV002___
+
+[NODRV]
+AddReg=RaidAddreg
+
+[RaidAddreg]
+HKR, "Parameters\virtualraid", "level", 0x00010001, 0x00000001
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+
+[strings]
+LSI                   = "LSI Corp."
+DELL                  = "DELL"
+TOSHIBA               = "TOSHIBA"
+HP                    = "Hewlett Packard"
+JMR                   = "JMR Electric"
+NSTOR                 = "nStor"
+GATEWAY               = "Gateway"
+NEC                   = "NEC"
+ESG-SHV               = "ESG-SHV"
+AMIProcessor          = "AMI MegaProcessor SCSI Processor Device"
+AMI906Processor       = "AMI Series 906 SCSI Processor Device"
+IDEProcessor	      = "LSI IDE SAF-TE  -AMI SCSI Processor Device"
+AMI523Processor       = "AMI SATA 523 SAF-TE Processor Device"
+LSIProcessor          = "LSI MegaProcessor SCSI Processor Device"
+LSI320Processor       = "LSI MegaRAID 320-2 SCSI Processor Device"
+LSI3202xProcessor     = "LSI MegaRAID 320-2X SCSI Processor Device"
+LSI3204xProcessor     = "LSI MegaRAID 320-4X SCSI Processor Device"
+LSI3202EProcessor     = "LSI MegaRAID 320-2E SCSI Processor Device"
+LSIViteProcessor      = "SIRIUS GC-BAT4E SCSI Processor Device"
+NULL.DeviceDesc       = "LSI Logic MegaRAID Virtual Device"
+virtual.DeviceDesc    = "LSI Logic MegaRAID Controller Component"
+DellProcessor         = "DELL PERC 2/DC SCSI Processor Device"
+DellSCProcessor       = "DELL PERC 2/SC SCSI Processor Device"
+DellDCProcessor       = "DELL PERC 3/DC SCSI Processor Device"
+DellQCProcessor       = "DELL PERC 3/QC SCSI Processor Device"
+DellDiProcessor       = "DELL PERC 4/Di SCSI Processor Device"
+DELL4DCProcessor      = "DELL PERC 4/DC SCSI Processor Device"
+DELL4EDCProcessor     = "DELL PERC 4e/DC SCSI Processor Device"
+TOSHIBA.DeviceDesc    = "TOSHIBA SAF-TE SCSI Processor Device"
+HPProcessor.DeviceDesc = "HP SDR GEM318 SCSI Processor Device"
+HP2MProcessor.DeviceDesc = "HP NetRAID-2M SCSI Processor Device"
+JMRProcessor          = "JMR ELEC FORTRA SERIES. SCSI Processor Device"
+NSTORProcessor        = "nStor CR8L  SAF-TE1.05 SCSI Processor Device"
+MEGARAIDSAFTEProcessor= "MegaRAID AMI   SAF-TE1.05 SCSI Processor Device"
+GatewayProcessor      = "Gateway GEM354 REV002 SCSI Processor Device"
+NECProcessor          = "NEC GEM312R2 SCSI Processor Device"
+ESG-SHVProcessor      = "SCA Hotswap Backplane"
+QuantaProcessor       = "GENERIC SATA BP SCSI Processor Device"
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+

@@ -1,0 +1,167 @@
+;-------------------------------------------------------------------------------
+;
+; Copyright (c) 2009 Adaptec Incorporated
+;
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+; [Version]
+;-------------------------------------------------------------------------------
+
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_PROVIDER%
+CatalogFile="adpinv.cat"
+DriverVer=08/03/2009,5.0.1.0
+
+;-------------------------------------------------------------------------------
+; [SourceDisksNames] | [SourceDisksNames.x86] 
+;-------------------------------------------------------------------------------
+
+[SourceDisksNames]
+1 = %FLOPPY_DESCRIPTION%,,,\
+
+;-------------------------------------------------------------------------------
+; [SourceDisksFiles] | [SourceDisksFiles.x86] 
+;-------------------------------------------------------------------------------
+
+[SourceDisksFiles]
+adpinv.sys= 1,,
+
+[AdptMgtFiles]
+;
+; Dummy section to satisfy ChkInf tool
+;
+
+;-------------------------------------------------------------------------------
+; [ControlFlags]
+;-------------------------------------------------------------------------------
+[ControlFlags]
+;ExcludeFromSelect=
+
+;-------------------------------------------------------------------------------
+; [Manufacturer]
+;-------------------------------------------------------------------------------
+
+[Manufacturer]
+%ADP%= ADAPTEC, NTamd64
+
+;-------------------------------------------------------------------------------
+; [models-section-name]
+;-------------------------------------------------------------------------------
+
+[ADAPTEC.NTamd64]
+;
+; All Adaptec SAS Device IDs
+;
+%PCI\VEN_9005&DEV_0450.DeviceDesc% = ADPINV_Inst,PCI\VEN_9005&DEV_0450
+
+; Management Device 
+%ADPTManagement.DeviceDesc%  = NODRV, SCSI\ProcessorADAPTEC_ADPINV________1.0_
+
+;-------------------------------------------------------------------------------
+; DDInstall Section
+;-------------------------------------------------------------------------------
+
+[NODRV]
+;
+; Dummy directive to satisfy ChkInf tool
+;
+CopyFiles = AdptMgtFiles
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = ,%SPSVCINST_ASSOCSERVICE% ; null service install
+
+[ADPINV_Inst.nt]
+CopyFiles=@adpinv.sys
+
+[ADPINV_Inst.nt.HW]
+DelReg = LegacyScsiportValues
+
+;-------------------------------------------------------------------------------
+; DDInstall.Services Section
+;-------------------------------------------------------------------------------
+
+[ADPINV_Inst.nt.Services]
+AddService = adpinv, 0x00000002, ADPINV_Service_Inst, Miniport_EventLog_Inst
+
+;-------------------------------------------------------------------------------
+; [service-install-section]
+;-------------------------------------------------------------------------------
+
+[ADPINV_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\adpinv.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = QueueDepth_addreg
+AddReg         = bus_type_sas
+
+;-------------------------------------------------------------------------------
+; [add-registry-section]
+;-------------------------------------------------------------------------------
+
+[pnpsafe_pci_addreg]
+HKR,"Parameters\PnpInterface","5",0x00010001,0x00000001
+
+[QueueDepth_addreg]
+HKLM,SYSTEM\CurrentControlSet\Services\adpinv\Parameters\Device,NumberOfRequests,0x10001,32
+HKLM,SYSTEM\CurrentControlSet\Services\adpinv\Parameters\Device,MaximumSGList,0x00010001, 33
+HKLM,SYSTEM\CurrentControlSet\Services\adpinv\Parameters\Device,MaxTags,0x00010001,32
+HKLM,SYSTEM\CurrentControlSet\Services\adpinv\Parameters\Device,MaxLuns,0x00010001,128
+
+[bus_type_sas]
+HKR, "Parameters", "BusType", 0x00010001, 0x0000000A
+
+;-------------------------------------------------------------------------------
+; [del-registry-section]
+;-------------------------------------------------------------------------------
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+;-------------------------------------------------------------------------------
+; Event Log Install
+;-------------------------------------------------------------------------------
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\drivers\adpinv.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;-------------------------------------------------------------------------------
+; DestinationDirs Section
+;-------------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir = 12            
+                                
+;-------------------------------------------------------------------------------
+; [Strings]
+;-------------------------------------------------------------------------------
+[Strings]
+INF_PROVIDER="Adaptec"
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Windows SAS/SATA Driver"
+ADPTManagement.DeviceDesc = "Adaptec Processor Device (Pseudo)" 
+
+; Adaptec SAS Controllers supported by this driver.
+;
+; All SAS device IDs
+;
+PCI\VEN_9005&DEV_0450.DeviceDesc = "Adaptec ASC-1045/1405 SAS/SATA Controller"
+
+;-------------------------------------------------------------------------------
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002

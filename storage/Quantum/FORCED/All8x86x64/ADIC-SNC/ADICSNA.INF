@@ -1,0 +1,141 @@
+; Comprehensive Storage Network Controller Installer for Windows 8/2012
+; Copyright © 2012 Quantum Corporation
+; Version:  7.5.0.0
+;           06/25/2012
+
+[Version]
+Signature="$Windows NT$"        ;---- Valid for all NT-based operating systems
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ADIC%
+DriverVer=06/25/2012,7.5.0.0
+CatalogFile=ADICSNA.cat
+
+[Manufacturer]
+%ADIC%=ADIC, ntamd64
+%QUANTUM%=QUANTUM, ntamd64
+
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+; 
+[ADIC]
+
+%SCSI\ProcessorADIC_450x.DeviceDesc% = NODRV,  SCSI\ProcessorADIC____SNC_450x________
+%SCSI\ArrayADIC_ScalarSNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_SNC______
+%SCSI\ArrayADIC_Pathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_5000__
+%SCSI\ArrayADIC_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_5100________
+%SCSI\ArrayADIC_SNC_4000.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_4000________
+%SCSI\ArrayADIC_PathlightVX.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_VX____
+%SCSI\ArrayADIC_Scalar100.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_100______
+%SCSI\ArrayADIC_Scalar1000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_1000_____
+%SCSI\ArrayADIC_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i2000____
+%SCSI\ArrayADIC_Scalar10k.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_10K______
+%SCSI\ArrayADIC_FCIOB.DeviceDesc% = NODRV,SCSI\ArrayADIC____FC_IOB__________
+%SCSI\ArrayADIC_SNC6101.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6101________
+%SCSI\ArrayADIC_SNC6404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6404________
+%SCSI\ArrayADIC_SNC6104.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6104________
+%SCSI\ArrayADIC_SNC7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_7404________
+%SCSI\ArrayADIC_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____FCB7404_________
+%SCSI\ArrayADIC_SNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_____________
+%SCSI\ArrayADIC_Scalarv200.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_v200_____
+%SCSI\ArrayADIC_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i500_____
+
+[QUANTUM]
+
+%SCSI\ArrayQUANTUM_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i500_____
+%SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i2000____
+%SCSI\ArrayQUANTUM_Scalari6000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i6000____
+%SCSI\ArrayQUANTUM_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_FCB7404_________
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+; 
+[ADIC.NTamd64]
+
+%SCSI\ProcessorADIC_450x.DeviceDesc% = NODRV,  SCSI\ProcessorADIC____SNC_450x________
+%SCSI\ArrayADIC_ScalarSNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_SNC______
+%SCSI\ArrayADIC_Pathlight_5000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_5000__
+%SCSI\ArrayADIC_SNC_5100.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_5100________
+%SCSI\ArrayADIC_SNC_4000.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_4000________
+%SCSI\ArrayADIC_PathlightVX.DeviceDesc% = NODRV,SCSI\ArrayADIC____Pathlight_VX____
+%SCSI\ArrayADIC_Scalar100.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_100______
+%SCSI\ArrayADIC_Scalar1000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_1000_____
+%SCSI\ArrayADIC_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i2000____
+%SCSI\ArrayADIC_Scalar10k.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_10K______
+%SCSI\ArrayADIC_FCIOB.DeviceDesc% = NODRV,SCSI\ArrayADIC____FC_IOB__________
+%SCSI\ArrayADIC_SNC6101.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6101________
+%SCSI\ArrayADIC_SNC6404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6404________
+%SCSI\ArrayADIC_SNC6104.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_6104________
+%SCSI\ArrayADIC_SNC7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_7404________
+%SCSI\ArrayADIC_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayADIC____FCB7404_________
+%SCSI\ArrayADIC_SNC.DeviceDesc% = NODRV,SCSI\ArrayADIC____SNC_____________
+%SCSI\ArrayADIC_Scalarv200.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_v200_____
+%SCSI\ArrayADIC_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayADIC____Scalar_i500_____
+
+[QUANTUM.NTamd64]
+
+%SCSI\ArrayQUANTUM_Scalari500.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i500_____
+%SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i2000____
+%SCSI\ArrayQUANTUM_Scalari6000.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_Scalar_i6000____
+%SCSI\ArrayQUANTUM_FCB7404.DeviceDesc% = NODRV,SCSI\ArrayQUANTUM_FCB7404_________
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+
+[NODRV]
+AddReg = NODRV_AddReg
+
+[NODRV_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+
+[NODRV.Services]
+;
+; this is blank to just allow the install to succeed
+;
+AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[Strings]
+REG_EXPAND_SZ          = 0x00020000
+
+ADIC = "ADIC"
+SCSI\ArrayADIC_SNC_5100.DeviceDesc = "ADIC SNC 5100"
+SCSI\ArrayADIC_Pathlight_5000.DeviceDesc = "ADIC Pathlight 5000"
+SCSI\ArrayADIC_ScalarSNC.DeviceDesc = "ADIC Scalar SNC"
+SCSI\ArrayADIC_SNC.DeviceDesc = "ADIC SNC"
+SCSI\ArrayADIC_SNC_4000.DeviceDesc = "ADIC SNC 4000"
+SCSI\ArrayADIC_PathlightVX.DeviceDesc = "Pathlight VX"
+SCSI\ArrayADIC_Scalar100.DeviceDesc = "Scalar 100"
+SCSI\ArrayADIC_Scalar1000.DeviceDesc = "Scalar 1000"
+SCSI\ArrayADIC_Scalari500.DeviceDesc = "Scalar i500"
+SCSI\ArrayADIC_Scalari2000.DeviceDesc = "Scalar i2000"
+SCSI\ArrayADIC_Scalar10k.DeviceDesc = "Scalar 10K"
+SCSI\ArrayADIC_FCIOB.DeviceDesc = "FC IOB"
+SCSI\ArrayADIC_SNC6104.DeviceDesc = "ADIC SNC 6104"
+SCSI\ArrayADIC_SNC6404.DeviceDesc = "ADIC SNC 6404"
+SCSI\ArrayADIC_SNC6101.DeviceDesc = "ADIC SNC 6101"
+SCSI\ArrayADIC_SNC7404.DeviceDesc = "ADIC SNC 7404"
+SCSI\ArrayADIC_FCB7404.DeviceDesc = "ADIC FCB7404"
+SCSI\ArrayADIC_Scalarv200.DeviceDesc = "Scalar v200"
+SCSI\ProcessorADIC_450x.DeviceDesc = "ADIC SNC 450x"
+
+QUANTUM = "QUANTUM"
+SCSI\ArrayQUANTUM_Scalari500.DeviceDesc = "Scalar i500"
+SCSI\ArrayQUANTUM_Scalari2000.DeviceDesc = "Scalar i2000"
+SCSI\ArrayQUANTUM_Scalari6000.DeviceDesc = "Scalar i6000"
+SCSI\ArrayQUANTUM_FCB7404.DeviceDesc = "Quantum FCB7404"
+
+;*******************************************
+;Handy macro substitutions (non-localizable) 
+SPSVCINST_ASSOCSERVICE = 0x00000002

@@ -1,0 +1,216 @@
+# Copyright (c) 2003-2007 Emulex. All rights reserved.
+#
+# TXTSETUP.OEM - This file is used by Setup to install the Emulex Storport 
+#                Miniport driver elxstor.sys for Boot-time installation
+#
+#                (for Emulex LightPulse Fibre Channel Host Bus Adapters)
+#
+# Emulex BIOS may be found on our ftp site.  It currently supports INT13,
+# and multi-boot environments, with Private FC-AL an F_Port fabric support.
+# The BIOS is loaded to the adapter with either the NT or DOS utility.
+#
+# format for txtsetup.oem.
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+
+
+
+[Disks]
+
+# This section lists all disks in the disk set.
+#
+# <description> is a descriptive name for a disk, used when
+#   prompting for the disk
+# <tagfile> is a file whose presence allows setup to recognize
+#   that the disk is inserted.
+# <directory> is where the files are located on the disk.
+#
+
+d1 = "Emulex LPX000 Software Diskette", \lpscsi, \
+
+
+[Defaults]
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+scsi = elxstor
+
+[scsi]
+
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+
+
+elxstor = "Emulex LPX000 PCI Fibre Channel HBA", elxstor
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.elxstor]
+driver = d1, elxstor.sys, elxstor
+dll    = d1, elxstor.dll
+inf    = d1, oemsetup.inf
+catalog= d1, elxstor.cat
+
+# This section specifies values to be set in the registry for
+# particular component options.  Required values in the services\xxx
+# key are created automatically -- use this section to specify additional
+# keys to be created in services\xxx and values in services\xxx and
+# services\xxx\yyy.
+#
+# <key_name> is relative to the services node for this device.
+#   If it is empty, then it refers to the services node.
+#   If specified, the key is created first.
+# <value_name> specifies the value to be set within the key
+# <value_type> is a string like REG_DWORD.  See below.
+# <value> specifies the actual value; its format depends on <value_type>
+
+[Config.elxstor]
+value = Parameters\Device,DriverParameter,REG_SZ,"Topology=2;"
+value = Parameters\PnPInterface,5,REG_DWORD,1
+
+[HardwareIds.scsi.elxstor]
+id = "PCI\VEN_10DF&DEV_F800&SUBSYS_F80010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F085&SUBSYS_F08510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F800&SUBSYS_F8000E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F900&SUBSYS_F90010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F095&SUBSYS_F09510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F900&SUBSYS_F9000E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F095&SUBSYS_F0950E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F980&SUBSYS_F98010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F098&SUBSYS_F09810DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F980&SUBSYS_F9800E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F098&SUBSYS_F0980E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_FA00&SUBSYS_FA0010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0A5&SUBSYS_F0A510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0A1&SUBSYS_F0A110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC00&SUBSYS_FC0010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FA00&SUBSYS_FA000E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0A5&SUBSYS_F0A50E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0A1&SUBSYS_F0A10E11", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0A5&SUBSYS_1702103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD00&SUBSYS_FD0010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0D5&SUBSYS_F0D510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC10&SUBSYS_FC1110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC10&SUBSYS_FC1210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD00&SUBSYS_FD2210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD11&SUBSYS_FD1110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD12&SUBSYS_FD1210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD00&SUBSYS_FD2310DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FD00&SUBSYS_FD2410DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE0010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0E5&SUBSYS_F0E510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F0E1&SUBSYS_F0E110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_1708103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2A10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE11&SUBSYS_FE1110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE12&SUBSYS_FE1210DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2B10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2C10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2D10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2E10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2E10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE04&SUBSYS_FE0410DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2410DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_10F41734", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_7046103C", "elxstor"	   
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_7049103C", "elxstor"	   
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_7042103C", "elxstor"	   
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_7043103C", "elxstor"	   
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_7054103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC20&SUBSYS_FC2310DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2610DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_FE00&SUBSYS_FE2710DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F10010DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F015&SUBSYS_F01510DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F011&SUBSYS_F01110DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F112&SUBSYS_F11210DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F111&SUBSYS_F11110DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_FC40&SUBSYS_FC4210DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_FC40&SUBSYS_FC4110DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_038A1014", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_03891014", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12E10DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_FC40&SUBSYS_FC4E10DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12110DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12210DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12310DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12410DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12510DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12610DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12710DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12A10DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12B10DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F12C10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_1719103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_3281103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_3282103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F015&SUBSYS_3283103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_113C1734", "elxstor"
+id = "PCI\VEN_10DF&DEV_FC40&SUBSYS_FC4310DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_E100&SUBSYS_E10010DF", "elxstor" 
+id = "PCI\VEN_10DF&DEV_E180&SUBSYS_E18010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_E1FF&SUBSYS_E1FF10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_E61110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F180&SUBSYS_F18010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_3252103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_338F103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_3391103C", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_3392103C", "elxstor"
+
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13410DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13510DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13610DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13710DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13A10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13B10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_F13C10DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_F100&SUBSYS_30531054", "elxstor"
+
+id = "PCI\VEN_10DF&DEV_E200&SUBSYS_E20010DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_E200&SUBSYS_E20110DF", "elxstor"
+id = "PCI\VEN_10DF&DEV_E200&SUBSYS_03F11014", "elxstor"
+id = "PCI\VEN_10DF&DEV_E208&SUBSYS_03F11014", "elxstor"

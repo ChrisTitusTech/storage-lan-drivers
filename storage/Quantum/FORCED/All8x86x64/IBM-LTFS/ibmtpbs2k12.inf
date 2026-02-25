@@ -1,0 +1,100 @@
+;/*++
+;
+;Copyright (c) 2005-2014 IBM Corporation All Rights Reserved
+;
+;Module Name:
+;
+;    IBMTPBS.INF
+;
+;    NOTE: Do not change the title IBMTPBS.INF in this introductory text without also changing
+;    the uninstall procedure. Uninstall uses a string compare to determine whether the file 
+;    should be removed.
+;
+;Abstract:
+;    INF file for installing tape bus enumerator driver
+;
+;--*/
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%IBM%
+CatalogFile="ibmtpbs.cat"
+DriverVer=01/06/2017,6.2.6.0
+
+[DestinationDirs]
+Drivers_Dir2k12 = 12
+
+[SourceDisksNames]
+1 = %DiskId%,,,""
+
+[SourceDisksFiles]
+ibmtpbs2k12.sys = 1
+
+
+;*****************************************
+; TapeBus  Install Section
+;*****************************************
+
+[Manufacturer]
+%IBM%=IBM, NT.6.2, NTamd64.6.2, NT.6.3, NTamd64.6.3
+
+[IBM]
+
+[IBM.NT.6.3]
+%TapeBus.DeviceDesc%=TapeBus_Device2k12, root\ibmtpbs2k12
+
+[IBM.NTamd64.6.3]
+%TapeBus.DeviceDesc%=TapeBus_Device2k12, root\ibmtpbs2k12
+
+[IBM.NT.6.2]
+%TapeBus.DeviceDesc%=TapeBus_Device2k12, root\ibmtpbs2k12
+
+[IBM.NTamd64.6.2]
+%TapeBus.DeviceDesc%=TapeBus_Device2k12, root\ibmtpbs2k12
+
+[TapeBus_Device2k12]
+CopyFiles=Drivers_Dir2k12
+
+[Drivers_Dir2k12]
+ibmtpbs2k12.sys
+
+;-------------- Service installation
+[TapeBus_Device2k12.Services]
+AddService = ibmtpbs2k12,%SPSVCINST_ASSOCSERVICE%, ibmtpbs2k12_Service_Inst, ibmtpbs2k12_EventLog_Inst
+
+; -------------- busenum driver install sections
+[ibmtpbs2k12_Service_Inst]
+DisplayName    = %busenum.SVCDESC%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START% 
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ibmtpbs2k12.sys
+LoadOrderGroup = Extended Base
+AddReg         = SystemDrive_addreg
+
+[SystemDrive_addreg]
+HKR,,"SystemDrive",%REG_SZ%,%24%
+
+; -------------- busenum driver event logging sections
+[ibmtpbs2k12_EventLog_Inst]
+AddReg = ibmtpbs2k12_EventLog_AddReg
+
+[ibmtpbs2k12_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\ibmtpbs2k12.sys"
+; enclosing quotes on preceding entry prevent semicolon from being interpreted as a comment
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+SPSVCINST_ASSOCSERVICE  = 0x00000002
+SERVICE_DEMAND_START	= 0x3
+SERVICE_BOOT_START	= 0x0
+SERVICE_KERNEL_DRIVER	= 0x1
+SERVICE_ERROR_NORMAL	= 0x1
+IBM				= "IBM Corporation"
+DiskId				= "Tape Bus Installation Disk"
+TapeBus.DeviceDesc		= "Tape Bus Enumerator"
+busenum.SVCDESC			= "IBM Tape Bus Enumerator"
+REG_EXPAND_SZ			= 0x00020000
+REG_DWORD			= 0x00010001
+REG_SZ				= 0x00000000

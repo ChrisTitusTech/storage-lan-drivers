@@ -1,0 +1,103 @@
+;Copyright (C) JMicron Technology Corp.
+
+[Version]
+Signature="$Windows NT$"
+Provider=%JMICRON%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+DriverVer=09/17/2012, 1.17.65.11
+CatalogFile=jraid.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+JRAID.Copy     = 12
+JRAID.Del      = 12
+
+[Manufacturer]
+%JMICRON%=JM.Mfg,NTamd64
+
+[JM.Mfg.NTamd64]
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2360
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2361
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2362
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2363
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2364
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2366
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_2369
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM , PCI\VEN_197B&DEV_236F
+%PCI\VEN_197B&DEV_237x.DeviceDesc% = JM , PCI\VEN_197B&DEV_2373
+
+[JM]
+CopyFiles=JRAID.Copy
+;Reboot
+
+[JRAID.Copy]
+jraid.sys
+
+[JM.Services]
+AddService = JRAID, 2, JM_Service_Inst, JM_EventLog_Inst
+
+[JM_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+;LoadOrderGroup = SCSI Miniport
+LoadOrderGroup = System Bus Extender
+ServiceBinary  = %12%\jraid.sys
+AddReg         = pnp_pci_addreg
+
+[pnp_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR, "Parameters\Device", "CreateInitiatorLU", 0x00010001, 0x00000001
+HKR, "Parameters", "BusType", 0x00010001, 0x00000008
+HKR, "Private", "UseBigUnCache", 0x00010001, 0x00000001
+
+[JM_EventLog_Inst]
+AddReg = JM_EventLog_AddReg
+
+[JM_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\jraid.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[SourceDisksNames]
+1 = %DISKNAME%,,,,
+
+[SourceDisksFiles]
+jraid.sys = 1
+JMInsDrv.dll = 1
+
+; [JMPROCESSOR] is designed for pseudo devices
+;[JMPROCESSOR]
+;AddReg = JMPROCESSOR_ADDREG
+
+;[JMPROCESSOR.Services]
+;AddService = , 0x00000002
+
+;[JMPROCESSOR_ADDREG]
+
+
+;
+; [Driver.Uninst] is designed for removing driver files by JmInsdrv.dll;
+; This section  is only executed during uninstall with setup program.
+;
+[Driver.Uninst]
+DelFiles=JRAID.Del
+DelReg=Uninst.DelReg
+
+[JRAID.Del]
+jraid.sys,,,1
+jgogo.sys,,,1
+
+[Uninst.DelReg]
+HKLM,System\CurrentControlSet\Services\JRAID
+HKLM,System\CurrentControlSet\Services\JGOGO
+
+
+[strings]
+JMICRON="JMicron Technology Corp."
+PCI\VEN_197B&DEV_2363.DeviceDesc="JMicron JMB36X Controller"
+PCI\VEN_197B&DEV_237x.DeviceDesc="JMicron JMB37X Controller"
+PCI\VEN_197B&DEV_2368.DeviceDesc="JMicron JMB368 Controller"
+;SCSI\ProcessorJMicron_RAIDController______.DeviceDesc="JMicron JMB36X RAID Processor"
+DISKNAME="JMicron Driver Diskette"
+

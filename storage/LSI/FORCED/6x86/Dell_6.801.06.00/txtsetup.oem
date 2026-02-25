@@ -1,0 +1,74 @@
+# txtsetup.oem -  for the PERC RAID family of RAID Controllers
+#
+# **********************************************************************
+#                                                                       *
+#   Copyright 2011 LSI Corp.  All rights reserved.                      *
+#                                                                       *
+#   This file is property of LSI Corp. and is licensed for              *
+#   use as is.  The receipt of or posession of this file does not       *
+#   convey any rights to modify its contents, in whole, or in part,     *
+#   without the specific written consent of LSI Corp.                   *
+#                                                                       *
+# **********************************************************************
+
+[Disks]
+d1 = "DELL PERC RAID Controller Driver", \percsas2.sys, \
+
+[Defaults]
+scsi = percsas2
+
+[scsi]
+percsas2 = "DELL PERC RAID Controller Driver", percsas2
+
+[HardwareIds.scsi.percsas2]
+id = "PCI\VEN_1000&DEV_0073", "percsas2"
+id = "PCI\VEN_1000&DEV_0078", "percsas2"
+id = "PCI\VEN_1000&DEV_0079", "percsas2"
+id = "PCI\VEN_1000&DEV_005B", "percsas2"
+id = "PCI\VEN_1000&DEV_002F", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F4E1028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F4F1028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F501028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F511028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F521028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F531028", "percsas2"
+id = "PCI\VEN_1000&DEV_0073&SUBSYS_1F541028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F151028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F161028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F171028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F181028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F191028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F1A1028", "percsas2"
+id = "PCI\VEN_1000&DEV_0079&SUBSYS_1F1B1028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F2D1028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F301028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F311028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F321028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F331028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F341028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F351028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F361028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F371028", "percsas2"
+id = "PCI\VEN_1000&DEV_005B&SUBSYS_1F381028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F391028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3A1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3B1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3C1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3D1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3E1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F3F1028", "percsas2"
+id = "PCI\VEN_1000&DEV_002F&SUBSYS_1F401028", "percsas2"
+
+
+[Files.scsi.percsas2]
+driver  = d1, percsas2.sys, percsas2
+inf     = d1, percsas2.inf, percsas2
+inf     = d1, nodev.inf
+catalog = d1, percsas2.cat
+
+[Config.percsas2]
+value = "", Group, REG_SZ, "SCSI Miniport"
+value = "", Start, REG_DWORD, 0
+value = "", Tag,   REG_DWORD, 1
+value = "", Type,  REG_DWORD, 1
+value = Parameters\PnpInterface, 5, REG_DWORD, 1

@@ -1,0 +1,28 @@
+REGEDIT4
+;
+; Adaptec, 2008
+; =============================
+; WHQL.REG - 
+; Reduces the number of I/Os and Scatter Gather Lists to a normal numbers
+; supported by the drivers to support the hibernation.
+;
+; This registry file will add a registry entry to the aar81xx driver
+;
+;  How to make this registry option effective:
+;  Go to Windows Explorer and double-click on WHQL.REG or 
+;  Open a command prompt  and type the following: 
+;
+;      regedit WHQL.REG
+;
+;
+;
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AAR81XX\Parameters\Device]
+"DriverParameter"="PK=1;"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AAR81XX\Parameters\Device]
+"NumberOfRequests"=dword:0000001c
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AAR81XX\Parameters\Device]
+"MaximumSGList"=dword:00000011
+
+; Note: Please reboot the system for this setting to take effect.

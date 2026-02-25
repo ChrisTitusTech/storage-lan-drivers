@@ -1,0 +1,47 @@
+; Copyright 2017, Microsemi Corporation. All rights reserved. Microsemi logo are trademarks of Microsemi Corporation. All other trademarks and service marks are the property of their respective owners.
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%PMCS%
+DriverVer=10/06/2017,1.0.0.5
+CatalogFile.NTamd64=pmcsx64.cat
+
+[SourceDisksFiles.amd64]
+
+[SourceDisksNames]
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%PMCS%=PMCS,NTamd64
+%INTEL%=INTEL,NTamd64
+
+[PMCS.NTamd64]
+%AEC82885T.DeviceDesc%  = NODRV, SCSI\EnclosureADAPTEC_AEC-82885T______
+%AEC83600.DeviceDesc%   = NODRV, SCSI\EnclosureADAPTEC_AEC-83600_______
+
+[INTEL.NTamd64]
+%RES3FV288.DeviceDesc%  = NODRV, SCSI\EnclosureIntel___RES3FV288_______
+%RES3FV288R.DeviceDesc% = NODRV, SCSI\EnclosureIntel___RES3FV288-R_____
+%RES3TV360.DeviceDesc%  = NODRV, SCSI\EnclosureIntel___RES3TV360_______
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+PMCS                    = "Microsemi Corporation"
+INTEL                   = "Intel Corporation"
+AEC82885T.DeviceDesc    = "Adaptec Expander Card AEC-82885T"
+AEC83600.DeviceDesc     = "Adaptec Expander Card AEC-83600"
+RES3FV288.DeviceDesc    = "Intel(R) RAID Expander RES3FV288"
+RES3FV288R.DeviceDesc   = "Intel(R) RAID Expander RES3FV288-R"
+RES3TV360.DeviceDesc    = "Intel(R) RAID Expander RES3TV360"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002

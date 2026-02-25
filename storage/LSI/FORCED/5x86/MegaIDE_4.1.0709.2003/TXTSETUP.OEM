@@ -1,0 +1,344 @@
+#
+# (C) LSI Logic Corporation
+# All Rights Reserved.
+#
+# Windows NT 4.0 Miniport Driver for LSI LOGIC CORPORATION MegaRAID IDE
+#
+[Disks]
+d1 = "LSI MegaRAID IDE Driver Diskette",\MEGAIDE,\
+d2 = "LSI MegaRAID IDE Driver Diskette",\MEGAIDE,\WinNT
+d3 = "LSI MegaRAID IDE Driver Diskette",\MEGAIDE,\Win2k
+d4 = "LSI MegaRAID IDE Driver Diskette",\MEGAIDE,\Serv2003
+d5 = "LSI MegaRAID IDE Driver Diskette",\MEGAIDE,\WinXP
+
+[Defaults]
+scsi = MegaIDE_NT5
+
+[scsi]
+MegaIDE100_NT4 ="LSI MegaRAID IDE 100 Controller(Windows NT)", MEGAIDE
+MegaIDE100_NT5 ="LSI MegaRAID IDE 100 Controller(Windows 2000)", MEGAIDE
+MegaIDE100_NET ="LSI MegaRAID IDE 100 Controller(Server 2003)", MEGAIDE
+MegaIDE100_XP ="LSI MegaRAID IDE 100 Controller(Windows XP)", MEGAIDE
+
+MegaIDE100_NT4IDC ="Integrated Ultra ATA-100 Dual Channel Controller(Windows NT)", MEGAIDE
+MegaIDE100_NT5IDC ="Integrated Ultra ATA-100 Dual Channel Controller(Windows 2000)", MEGAIDE
+MegaIDE100_NETIDC ="Integrated Ultra ATA-100 Dual Channel Controller(Server 2003)", MEGAIDE
+MegaIDE100_XPIDC  ="Integrated Ultra ATA-100 Dual Channel Controller(Windows XP)", MEGAIDE
+
+MegaIDE100_NT4I ="Integrated Ultra ATA-100 IDE RAID Controller (windows NT)", MEGAIDE
+MegaIDE100_NT5I ="Integrated Ultra ATA-100 IDE RAID Controller (windows 2000)", MEGAIDE
+MegaIDE100_NETI ="Integrated Ultra ATA-100 IDE RAID Controller (Server 2003)", MegaIDE
+MegaIDE100_XPI ="Integrated Ultra ATA-100 IDE RAID Controller (Windows XP)", MegaIDE
+
+MegaIDE100_MZ3_NT4 ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z3x0 (Windows NT)", MEGAIDE
+MegaIDE100_MZ3_NT5 ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z3x0 (Windows 2000)", MEGAIDE
+MegaIDE100_MZ3_NET ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z3x0 (Server 2003)", MEGAIDE
+MegaIDE100_MZ3_XP ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z3x0 (Windows XP)", MEGAIDE
+
+MegaIDE100_MZ5_NT4 ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z500 (Windows NT)", MEGAIDE
+MegaIDE100_MZ5_NT5 ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z500 (Windows 2000)", MEGAIDE
+MegaIDE100_MZ5_NET ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z500 (Server 2003)", MEGAIDE
+MegaIDE100_MZ5_XP ="LSI Logic MegaRAID IDE 100 Driver For MAGNIA Z500 (Windows XP)", MEGAIDE
+
+MegaIDE133_NT4 =" LSI MegaRAID IDE 133 Controller (Windows NT)", MEGAIDE
+MegaIDE133_NT5 =" LSI MegaRAID IDE 133 Controller (Windows 2000)", MEGAIDE
+MegaIDE133_NET =" LSI MegaRAID IDE 133 Controller (Server 2003)", MEGAIDE
+MegaIDE133_XP =" LSI MegaRAID IDE 133 Controller (Windows XP)", MEGAIDE
+
+MegaIDE_SATA_NT4 =" LSI MegaRAID Serial ATA Controller (Windows NT)", MEGAIDE
+MegaIDE_SATA_NT5 =" LSI MegaRAID Serial ATA Controller (Windows 2000)", MEGAIDE
+MegaIDE_SATA_NET =" LSI MegaRAID Serial ATA Controller (Server 2003)", MEGAIDE
+MegaIDE_SATA_XP =" LSI MegaRAID Serial ATA Controller (Windows XP)", MEGAIDE
+
+MegaIDE_LSICSB6_NT4 =" LSI Logic CSB-6 IDE 100 RAID Controller (Windows NT)", MEGAIDE
+MegaIDE_LSICSB6_NT5 =" LSI Logic CSB-6 IDE 100 RAID Controller (Windows 2000)", MEGAIDE
+MegaIDE_LSICSB6_NET =" LSI Logic CSB-6 IDE 100 RAID Controller (Server 2003)", MEGAIDE
+MegaIDE_LSICSB6_XP =" LSI Logic CSB-6 IDE 100 RAID Controller (Windows XP)", MEGAIDE
+
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.MegaIDE100_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE100_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE100_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE100_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE100_NT4IDC]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE100_NT5IDC]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE100_NETIDC]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE100_XPIDC]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE100_NT4I]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE100_NT5I]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE100_NETI]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE100_XPI]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE100_MZ3_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE100_MZ3_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE100_MZ3_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE100_MZ3_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE100_MZ5_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE100_MZ5_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE100_MZ5_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE100_MZ5_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE133_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE133_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE133_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE133_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE_SATA_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE_SATA_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE_SATA_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE_SATA_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+[Files.scsi.MegaIDE_LSICSB6_NT4]
+driver  = d2, MegaIDE.sys, MEGAIDE
+inf     = d2, MegaIDE.inf
+
+[Files.scsi.MegaIDE_LSICSB6_NT5]
+driver  = d3, MegaIDE.sys, MEGAIDE
+inf     = d3, MegaIDE.inf
+inf     = d3, NODEV.inf
+catalog = d3, Mega2k.cat
+
+[Files.scsi.MegaIDE_LSICSB6_NET]
+driver  = d4, MegaIDE.sys, MEGAIDE
+inf     = d4, MegaIDE.inf
+inf     = d4, NODEV.inf
+catalog = d4, MegaNET.cat
+
+[Files.scsi.MegaIDE_LSICSB6_XP]
+driver  = d5, MegaIDE.sys, MEGAIDE
+inf     = d5, MegaIDE.inf
+inf     = d5, NODEV.inf
+catalog = d5, MegaXP.cat
+
+
+[HardwareIds.scsi.MegaIDE100_NT4]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NT5]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NET]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_XP]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NT4IDC]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NT5IDC]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NETIDC]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_XPIDC]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_005D0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NT4I]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NT5I]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_NETI]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_XPI]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_007E0E11", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ3_NT4]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ3_NT5]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ3_NET]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ3_XP]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_0649101E", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ5_NT4]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_FE001179", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ5_NT5MZ5]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_FE001179", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ5_NETMZ5]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_FE001179", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE100_MZ5_XPMZ5]
+id="PCI\VEN_1095&DEV_0649&SUBSYS_FE001179", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE133_NT4]
+id="PCI\VEN_1095&DEV_0680&SUBSYS_05241000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE133_NT5]
+id="PCI\VEN_1095&DEV_0680&SUBSYS_05241000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE133_NET]
+id="PCI\VEN_1095&DEV_0680&SUBSYS_05241000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE133_XP]
+id="PCI\VEN_1095&DEV_0680&SUBSYS_05241000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_SATA_NT4]
+id="PCI\VEN_1095&DEV_3112&SUBSYS_05341000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_SATA_NT5]
+id="PCI\VEN_1095&DEV_3112&SUBSYS_05341000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_SATA_NET]
+id="PCI\VEN_1095&DEV_3112&SUBSYS_05341000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_SATA_XP]
+id="PCI\VEN_1095&DEV_3112&SUBSYS_05341000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_LSICSB6_NT4]
+id="PCI\VEN_1166&DEV_0213&SUBSYS_02131000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_LSICSB6_NT5]
+id="PCI\VEN_1166&DEV_0213&SUBSYS_02131000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_LSICSB6_NET]
+id="PCI\VEN_1166&DEV_0213&SUBSYS_02131000", "MEGAIDE"
+
+[HardwareIds.scsi.MegaIDE_LSICSB6_XP]
+id="PCI\VEN_1166&DEV_0213&SUBSYS_02131000", "MEGAIDE"
+
+[Config.MEGAIDE]
+value = "", Tag, REG_DWORD, 1

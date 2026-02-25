@@ -1,0 +1,174 @@
+;=============================================================================
+;  Copyright (C) 2016 
+;  Toshiba Corporation 
+;  ALL RIGHTS RESERVED.
+;  UNPUBLISHED - PROTECTED UNDER COPYRIGHT LAWS.  USE OF A COPYRIGHT NOTICE 
+;  IS PRECAUTIONARY ONLY AND DOES NOT IMPLY PUBLICATION OR DISCLOSURE.
+;  THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF 
+;  TOSHIBA.  USE, DISCLOSURE, OR  REPRODUCTION IS PROHIBITED WITHOUT THE 
+;  PRIOR EXPRESS WRITTEN PERMISSION OF TOSHIBA.
+;
+; 64-bit ocznvme.inf
+;============================================================================= 
+
+[Version]
+Signature="$Windows NT$"
+Provider=%Toshiba%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+DriverVer=05/13/2016,1.2.126.843
+CatalogFile.NTAMD64 = ocznvme.cat
+
+[Manufacturer]
+%Toshiba% = Toshiba, NTamd64
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[DestinationDirs]
+DefaultDestDir   = 12
+CoInstaller_CopyFiles = 11
+
+[nvme_Service_Inst_e]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ocznvme.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters
+AddReg         = Parameters_e
+
+[nvme_Service_Inst_c]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\ocznvme.sys
+LoadOrderGroup = SCSI miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Parameters
+AddReg         = Parameters_c
+
+[ocztrimfilter_Install]
+DisplayName=SSD Device Filter
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\ocztrimfilter.sys
+LoadOrderGroup="PnP Filter"
+
+[nvme_EventLog_Inst]
+AddReg = nvme_EventLog_AddReg
+
+[nvme_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ocznvme.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", %REG_DWORD%, 0x00000001
+HKR, "Parameters", "BusType", %REG_DWORD%, 0x00000011
+
+[msi_addreg]
+HKR, Interrupt Management, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, 0x00000010
+HKR, Interrupt Management\MessageSignaledInterruptProperties, MSISupported,       %REG_DWORD%,   1
+;HKR, Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, %REG_DWORD%,   32
+HKR, Interrupt Management\Affinity Policy, 0x00000010
+HKR, Interrupt Management\Affinity Policy, DevicePolicy, %REG_DWORD%, 5 ;IrqPolicySpreadMessagesAcrossAllProcessors
+
+[Parameters]
+HKR, Parameters\Device, MaxTXSize,          %REG_DWORD%, 0x00100000 ; max transfer size
+
+[Parameters_e]
+HKR, Parameters\Device, StrictFUA,          %REG_DWORD%, 0x00000001
+
+[Parameters_c]
+HKR, Parameters\Device, StrictFUA,          %REG_DWORD%, 0x00000000
+
+
+[DiskTrimFilterCoinstaller_AddReg]
+HKLM,System\CurrentControlSet\Control\CoDeviceInstallers, \
+  {4D36E967-E325-11CE-BFC1-08002BE10318},0x00010008, "OczTrimCoinstaller.dll,OczTF_CoInstall"
+
+[CoInstaller_CopyFiles]
+OczTrimCoinstaller.dll
+
+
+;******************************************************************************
+;*
+;* 64-BIT X86 ARCHITECTURE
+;*
+;* This section specifies the 64-bit architecture specific INF file entries
+;* required to install a driver as a 64-bit compatible driver.
+;*
+;******************************************************************************
+
+[SourceDisksFiles.amd64]
+ocznvme.sys = 1,,,
+ocztrimfilter.sys=1,
+OczTrimCoinstaller.dll=1,
+
+[Toshiba.NTamd64]
+%R6000.DeviceDesc% = nvme_inst_e, PCI\VEN_1B85&DEV_4018
+%R6000.DeviceDesc% = nvme_inst_e, PCI\VEN_1B85&DEV_4118
+%OCZNvme.DeviceDesc% = nvme_inst_c, PCI\VEN_1B85&DEV_6018
+%XG3.DeviceDesc% = nvme_inst_e, PCI\VEN_1179&DEV_010F
+
+[nvme_inst_e.NTamd64]
+CopyFiles=@ocznvme.sys
+CopyFiles=@ocztrimfilter.sys
+CopyFiles=@ocztrimcoinstaller.dll
+
+[nvme_inst_e.NTamd64.HW]
+AddReg = msi_addreg
+
+[nvme_inst_e.NTamd64.Services]
+AddService = ocznvme, 0x00000002 , nvme_Service_Inst_e, nvme_EventLog_Inst
+AddService=ocztrimfilter, 0, ocztrimfilter_Install
+
+[nvme_inst_e.NTamd64.CoInstallers]
+AddReg = DiskTrimFilterCoinstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[nvme_inst_c.NTamd64]
+CopyFiles=@ocznvme.sys
+CopyFiles=@ocztrimfilter.sys
+CopyFiles=@ocztrimcoinstaller.dll
+
+[nvme_inst_c.NTamd64.HW]
+AddReg = msi_addreg
+
+[nvme_inst_c.NTamd64.Services]
+AddService = ocznvme, 0x00000002 , nvme_Service_Inst_c, nvme_EventLog_Inst
+AddService=ocztrimfilter, 0, ocztrimfilter_Install
+
+[nvme_inst_c.NTamd64.CoInstallers]
+AddReg = DiskTrimFilterCoinstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+;Include=machine.inf
+;Needs=PciASPMOptOut
+
+
+
+[Strings]
+;
+; Localizable Strings
+;
+diskId1 = "NVME Installation Disk"
+R6000.DeviceDesc = "ZD6000 Series"
+OCZNvme.DeviceDesc = "RD400"
+XG3.DeviceDesc = "XG3"
+
+Toshiba = "Toshiba"
+
+;
+; Non-Localizable Strings
+;
+
+REG_EXPAND_SZ  = 0x00020000
+REG_DWORD      = 0x00010001
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+

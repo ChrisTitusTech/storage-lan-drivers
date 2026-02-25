@@ -1,0 +1,141 @@
+;
+; LSI_FC.INF - version S2K8.0 (Windows Server 2008)
+;
+; This is the INF file for Windows Server 2008 for the LSI_FC based
+; PCI MPT environment (Fibre Channel devices)
+;
+; ********************************************************************
+;                                                                    *
+;   Copyright 2007 LSI Corporation, Inc. All rights reserved.        *
+;                                                                    *
+;   This file is property of LSI Corporation, Inc. and is licensed   *
+;   for use as is.  The receipt of or possession of this file does   *
+;   convey any rights to modify its contents, in whole, or in part,  *
+;   without the specific written consent of LSI Corporation.         *
+;                                                                    *
+; ********************************************************************
+
+[version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%LSI%
+DriverVer=01/07/2008,1.27.01.00
+CatalogFile.ntamd64=fvlhx64.cat
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+
+[SourceDisksFiles.amd64]
+lsi_fc.sys = 1
+
+[SourceDisksNames]
+1 = %DiskDesc%,,
+
+[Manufacturer]
+%LSI%=LSI, NTamd64
+
+[LSI.NTamd64]
+%DevDesc2% = LSI_FC_Inst, PCI\VEN_1000&DEV_0622
+%DevDesc3% = LSI_FC_Inst, PCI\VEN_1000&DEV_0624
+%DevDesc4% = LSI_FC_Inst_nomsi, PCI\VEN_1000&DEV_0626
+%DevDesc5% = LSI_FC_Inst_nomsi, PCI\VEN_1000&DEV_0628
+%DevDesc11% = LSI_FC_Inst, PCI\VEN_1000&DEV_0640
+%DevDesc12% = LSI_FC_Inst, PCI\VEN_1000&DEV_0646
+
+[ControlFlags]
+ExcludeFromSelect = PCI\VEN_1000&DEV_0622
+ExcludeFromSelect = PCI\VEN_1000&DEV_0624
+ExcludeFromSelect = PCI\VEN_1000&DEV_0626
+ExcludeFromSelect = PCI\VEN_1000&DEV_0628
+ExcludeFromSelect = PCI\VEN_1000&DEV_0640
+ExcludeFromSelect = PCI\VEN_1000&DEV_0646
+
+[LSI_FC_Inst]
+CopyFiles = LSI_FC_CopyFiles
+AddReg = LSI_FC_AddReg
+
+[LSI_FC_Inst.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+AddReg = InterruptMgmtValues
+
+[LSI_FC_Inst.Services]
+AddService = LSI_FC, %SPSVCINST_ASSOCSERVICE%, LSI_FC_Service_Inst, Miniport_EventLog_Inst
+
+[LSI_FC_Inst_nomsi]
+CopyFiles = LSI_FC_CopyFiles
+AddReg = LSI_FC_AddReg
+
+[LSI_FC_Inst_nomsi.HW]
+AddReg = Shutdown_addreg
+DelReg = LegacyScsiportValues
+AddReg = InterruptMgmtValues_nomsi
+
+[LSI_FC_Inst_nomsi.Services]
+AddService = LSI_FC, %SPSVCINST_ASSOCSERVICE%, LSI_FC_Service_Inst, Miniport_EventLog_Inst
+
+[LSI_FC_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\lsi_fc.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = bus_type_fc
+
+[LSI_FC_CopyFiles]
+lsi_fc.sys,,,1
+
+[LSI_FC_AddReg]
+HKLM,SYSTEM\CurrentControlSet\Services\Lsi_fc\Parameters\Device,DriverParameter,0x00000002,"PlaceHolder=0;"
+
+[Shutdown_addreg]
+HKR,"ScsiPort","NeedsSystemShutdownNotification",0x00010001,1
+
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+
+[InterruptMgmtValues]
+HKR,"Interrupt Management",0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+
+[InterruptMgmtValues_nomsi]
+HKR,"Interrupt Management",0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,0
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[bus_type_fc]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000006
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[Strings]
+LSI = "LSI Corporation"
+DiskDesc = "LSI PCI Fusion-MPT FC Driver Install Disk (StorPort)"
+DevDesc2 = "LSI Adapter, 2Gb FC, models 44929, G2 with 929 -StorPort"
+DevDesc3 = "LSI Adapter, 2Gb FC, models 40919 with 919 -StorPort"
+DevDesc4 = "LSI Adapter, 2Gb FC, models 7202,7402 with 929X -StorPort"
+DevDesc5 = "LSI Adapter, 2Gb FC, models 7102 with 919X -StorPort"
+DevDesc11 = "LSI Adapter, 4Gb FC, models 7104,7204,7404 with 949X -StorPort"
+DevDesc12 = "LSI Adapter, 4Gb FC, models 7104,7204,7404 with 949E -StorPort"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

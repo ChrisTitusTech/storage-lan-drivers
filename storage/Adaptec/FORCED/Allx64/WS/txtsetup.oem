@@ -1,0 +1,136 @@
+[Disks]
+d1 =  "Adaptec SAS/SATA-II RAID Windows XP/2003 x64 Device Drivers", \amd64\raidisk1, \
+d2 =  "Adaptec RAID Windows XP/2003 x64 Device Drivers", \amd64\raidisk1, \
+ 
+[Defaults]
+scsi = arcsas
+
+[Scsi]
+arcsas = "Adaptec SAS/SATA-II RAID Controller (x64 device drivers)", arcsas
+arc = "Adaptec RAID Controller (x64 device drivers)", arc
+
+[Files.Scsi.arcsas]
+driver = d1, arcsas.sys, arcsas
+catalog = d1, arcsas.cat
+inf = d1, arcsas.inf
+
+[Config.arcsas]
+value = "", Type, REG_DWORD, 1
+value = "", Start, REG_DWORD, 0
+value = "", Group, REG_SZ, "SCSI miniport"
+value = "", ErrorControl, REG_DWORD, 1
+value = Parameters\Device, NumberOfRequests, REG_DWORD, 0fe
+value = Parameters\PnpInterface, 5, REG_DWORD, 1
+
+[HardwareIds.scsi.arcsas]
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02989005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02f21014", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02999005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_029A9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02A49005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02A59005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_95801014", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_034D1014", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029B9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029C9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029D9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A09005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A19005", "arcsas"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_02A69005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B59005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B69005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B79005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B89005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B99005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BA9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BB9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BC9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BD9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BE9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02BF9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C09005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C19005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C29005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C39005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C49005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C59005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C69005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C79005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C89005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B515D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02B615D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02C915D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CA15D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_7AAC108E", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_7AAE108E", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_0286108E", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_0287108E", "arcsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CB9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CC9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0288&SUBSYS_02CD9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CE9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02CF9005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D09005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D19005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D215D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D315D9", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D49005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D59005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D69005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D79005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D89005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02D99005", "arcsas"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02DA9005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_03009005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_03019005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_03029005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_04009005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_04019005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_04039005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_02009005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_02019005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_03109005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_03119005", "arcsas"
+id = "PCI\VEN_9005&DEV_028B&SUBSYS_032012D1", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_04209005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05009005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05019005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05029005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05039005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05049005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05059005", "arcsas"
+id = "PCI\VEN_9005&DEV_028C&SUBSYS_05069005", "arcsas"
+
+[Files.Scsi.arc]
+driver = d2, arc.sys, arc
+catalog = d2, arc.cat
+inf = d2, arc.inf
+
+[Config.arc]
+value = "", Type, REG_DWORD, 1
+value = "", Start, REG_DWORD, 0
+value = "", Group, REG_SZ, "SCSI miniport"
+value = "", ErrorControl, REG_DWORD, 1
+value = Parameters\Device, NumberOfRequests, REG_DWORD, 0fe
+value = Parameters\PnpInterface, 5, REG_DWORD, 1
+
+[HardwareIds.scsi.arc]
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02859005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02869005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02879005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_028A9005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_028E9005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_028B9005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_028F9005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02909005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02929005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_02939005", "arc"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_028C9005", "arc"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_028D9005", "arc"
+id = "PCI\VEN_9005&DEV_0285&SUBSYS_3227103C", "arc"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029E9005", "arc"
+id = "PCI\VEN_9005&DEV_0286&SUBSYS_029F9005", "arc"
+
+
+
+

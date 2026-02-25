@@ -1,0 +1,53 @@
+[Disks] 
+disk0 = "Marvell SAS Driver Diskette", \mv64xx, \
+disk1 = "Marvell SAS Driver Diskette", \mv64xx, \i386
+disk2 = "Marvell SAS Driver Diskette", \mv64xx, \amd64
+
+[Defaults] 
+SCSI = i386_64xx
+
+[SCSI] 
+i386_mmxx   = "Marvell Shared Library for 32bit (Install First)", mv64xxmm
+amd64_mmxx  = "Marvell Shared Library for 64bit (Install First)", mv64xxmm
+i386_64xx   = "Marvell 64xx/63xx SAS Controller 32bit Driver", mv64xx 
+amd64_64xx  = "Marvell 64xx/63xx SAS Controller 64bit Driver", mv64xx
+
+
+[Files.SCSI.i386_64xx] 
+inf	= disk1, mv64xx.inf
+inf 	= disk1, mvnodrv.inf
+driver	= disk1, mv64xx.sys, mv64xx
+catalog = disk1, mv64xx.cat
+dll     = disk1, mvcoinst.dll
+
+[Files.SCSI.i386_mmxx] 
+driver	= disk1, mv64xxmm.sys, mv64xx
+
+[Files.SCSI.amd64_mmxx] 
+driver	= disk2, mv64xxmm.sys, mv64xx
+
+[Files.SCSI.amd64_64xx] 
+inf	= disk2, mv64xx.inf
+inf 	= disk2, mvnodrv.inf
+driver	= disk2, mv64xx.sys, mv64xx
+catalog = disk2, mv64xx.cat
+dll     = disk2, mvcoinst.dll
+
+[HardwareIds.SCSI.i386_64xx] 
+id = "PCI\VEN_11AB&DEV_6440", "mv64xx" 
+id = "PCI\VEN_11AB&DEV_6485", "mv64xx"
+
+[HardwareIds.SCSI.amd64_64xx] 
+id = "PCI\VEN_11AB&DEV_6440", "mv64xx" 
+id = "PCI\VEN_11AB&DEV_6485", "mv64xx"
+
+[HardwareIds.SCSI.i386_mmxx] 
+id = "PCI\VEN_11AB&DEV_6440", "mv64xx" 
+id = "PCI\VEN_11AB&DEV_6485", "mv64xx"
+
+[HardwareIds.SCSI.amd64_mmxx] 
+id = "PCI\VEN_11AB&DEV_6440", "mv64xx" 
+id = "PCI\VEN_11AB&DEV_6485", "mv64xx"
+
+[Config.mv64xx]
+value = parameters\PnpInterface,5,REG_DWORD,1

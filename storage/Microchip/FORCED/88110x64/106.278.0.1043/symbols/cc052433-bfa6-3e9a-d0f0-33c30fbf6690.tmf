@@ -1,0 +1,145 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+cc052433-bfa6-3e9a-d0f0-33c30fbf6690 2016 // SRC=Timer.c MJ= MN=
+#typev timer_c1416 27 "%0%10!s!  !returning from sleep Failed!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=CallBack_MiReturningFromSleep
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1461 28 "%0%10!s! !!!Controller is locked up!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=CallBack_MiReturningFromSleep
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1476 29 "%0%10!s!   Waiting %11!d! seconds for SIS registers to initialize and it's not ready yet." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=CallBack_MiReturningFromSleep
+{
+IDSTR2, ItemString -- 10
+ulTimeoutInSecond, ItemLong -- 11
+}
+#typev timer_c1405 26 "%0%10!s!   Enter function CallBack_MiReturningFromSleep()." //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=CallBack_MiReturningFromSleep
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c482 15 "%0%10!s!   Using %11!d! unchanged heartbeats as criteria for controller lockup (prev=%12!d!)." //   LEVEL=DbgLvlWrn FLAGS=DbgFlagHeartBeat FUNC=ChkForCntrlLockup
+{
+IDSTR2, ItemString -- 10
+ulLockUpTime, ItemLong -- 11
+pDevX->LockupCriteria.ulPrevLockUpTime, ItemLong -- 12
+}
+#typev timer_c477 21 "%0%10!s! !Controller heartbeat unchanged for %11!u! cycles!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagHeartBeat FUNC=ChkForCntrlLockup
+{
+IDSTR2, ItemString -- 10
+pLockupCriteria->ulUnchangedHeartBeatCnt, ItemLong -- 11
+}
+#typev timer_c465 19 "%0%10!s!   Ask for another Heartbeat" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagHeartBeat FUNC=ChkForCntrlLockup
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c411 20 "%0%10!s! !!!Controller has locked up!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagHeartBeat FUNC=ChkForCntrlLockup
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c274 18 "%0%10!s! !!!No Lockup Code Found. Driver forcing NMI on the controller!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagHeartBeat FUNC=DeclareControllerAsLockedUp
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c264 17 "%0%10!s!: !!!Controller Lockup. Lockup Code = 0x%11!x! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=DeclareControllerAsLockedUp
+{
+IDSTR2, ItemString -- 10
+pDevX->LockupCriteria.ulLockupCode, ItemLong -- 11
+}
+#typev timer_c238 16 "%0%10!s! !!!Controller has locked up.  No heatbeat or interrupt for %11!d! seconds.  TimeStamp=%12!I64u!msec!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagHeartBeat FUNC=DeclareControllerAsLockedUp
+{
+IDSTR2, ItemString -- 10
+pDevX->LockupCriteria.ulDeclareHbaLockup, ItemLong -- 11
+pDevX->ullTimeCntrlLockupMsec, ItemULongLong -- 12
+}
+#typev timer_c158 14 "%0%10!s!  !Faild to cancel Timer %11!s! pTimer=%12!p!. Status=0x%13!x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagTimer FUNC=MiCancelTimer
+{
+IDSTR2, ItemString -- 10
+pTimer->szName, ItemString -- 11
+pTimer, ItemPtr -- 12
+ulStatus, ItemLong -- 13
+}
+#typev timer_c91 12 "%0%10!s!   !Faild to release Timer %11!s!.  Status=0x%12!x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiFreeTimer
+{
+IDSTR2, ItemString -- 10
+pTimer->szName, ItemString -- 11
+ulStatus, ItemLong -- 12
+}
+#typev timer_c664 22 "%0%10!s!   1-minute Timer tick." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagHeartBeat FUNC=MiHeartBeat
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c66 11 "%0%10!s!   Initialized Timer: %11!s!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiInitTimer
+{
+IDSTR2, ItemString -- 10
+pTimer->szName, ItemString -- 11
+}
+#typev timer_c59 10 "%0%10!s!  !Faild to Initialize Timer %11!s!.  Status=0x%12!x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiInitTimer
+{
+IDSTR2, ItemString -- 10
+pTimer->szName, ItemString -- 11
+ulStatus, ItemLong -- 12
+}
+#typev timer_c1653 39 "%0%10!s! !!!ReportPhysicalLunsEx request data buffer command never sent." //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1630 38 "%0%10!s!   pSrb=NULL  Sending ReportPhysicalLunsEx request data." //   LEVEL=DbgLvlInit FLAGS=DbgFlagEnum FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1625 37 "%0%10!s! !!!ReportPhysicalLunsEx request buffer size command never sent." //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1602 36 "%0%10!s!   pSrb=NULL  Sending ReportPhysicalLunsEx request data buffer size." //   LEVEL=DbgLvlInit FLAGS=DbgFlagEnum FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1598 35 "%0%10!s! !!!ReportLogicalLunsEx request data buffer size command never sent." //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1575 34 "%0%10!s!   pSrb=NULL  Sending ReportLogicalLunsEx request data." //   LEVEL=DbgLvlInit FLAGS=DbgFlagEnum FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1571 33 "%0%10!s! !!!ReportLogicalLunsEx request buffer size command never sent." //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1541 32 "%0
+%10!s!   pSrb=NULL  Sending ReportLogicalLunsEx request data buffer size." //   LEVEL=DbgLvlInit FLAGS=DbgFlagEnum FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c1519 31 "%0%10!s!   MiRefreshDeviceTable: LimitMemory=%11!d! AdapterRestart=%12!d!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+pDevX->DrvFlags.fLimitMemory, ItemLong -- 11
+pDevX->DrvFlags.fAdapterRestart, ItemLong -- 12
+}
+#typev timer_c1507 30 "%0%10!s!  Should not be here.  We're not Adapter restart mode" //   LEVEL=DbgLvlErr FLAGS=DbgFlagInit FUNC=MiRefreshDeviceTable
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c123 13 "%0%10!s!  !Failed to request Timer=%11!s! pTimer=%12!p! Timeout=%13!I64u!. Status=0x%14!x!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagTimer FUNC=MiRequestTimer
+{
+IDSTR2, ItemString -- 10
+pTimer->szName, ItemString -- 11
+pTimer, ItemPtr -- 12
+pTimer->qTimeoutValue, ItemULongLong -- 13
+ulStatus, ItemLong -- 14
+}
+#typev timer_c1205 25 "%0%10!s!  !Timers shut off.  No new timers allowed!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiStartTimer2
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c804 23 "%0%10!s!  !Timers shut off.  No new timers allowed!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=MiStartTimerTick
+{
+IDSTR2, ItemString -- 10
+}
+#typev timer_c958 24 "%0%10!s!  !Timers shut off.  No new timers allowed!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=TimerCallBack_TimerTick
+{
+IDSTR2, ItemString -- 10
+}

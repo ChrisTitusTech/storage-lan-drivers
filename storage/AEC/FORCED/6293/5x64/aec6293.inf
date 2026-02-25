@@ -1,0 +1,81 @@
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+CatalogFile=aec6293.cat
+Provider=%ProviderName%
+DriverVer=05/25/2009, 1.0.1.5
+
+[DestinationDirs]
+DefaultDestDir  = 12 ; DIRID_DRIVERS
+
+[ControlFlags]
+; ExcludeFromSelect = *
+
+[Manufacturer]
+%MfgName%=ACARD,NTAMD64
+
+[ACARD.NTAMD64]
+%aec6293.DeviceDesc% = aec6293_Inst, PCI\VEN_1191&DEV_000D ;;&SUBSYS_000D1191
+;;%SCSI\aec6293.Processor% = NO_DRV,SCSI\ACARD___6293_PROCESSOR__1
+;;%SCSI\ProcessorACARD_____6293_DEVICE______.DeviceDesc% = NODRV, SCSI\ProcessorACARD_____6293_DEVICE______
+
+[NODRV]
+AddReg=NODRV_AddReg
+
+[NODRV.Services]
+;AddService = , %SPSVCINST_ASSOCSERVICE%   ; null service install
+
+[aec6293_Inst]
+CopyFiles=@aec6293.sys
+
+Reboot
+
+[aec6293_Inst.Services]
+AddService = aec6293, %SPSVCINST_ASSOCSERVICE%, aec6293_Service_Inst, Miniport_EventLog_Inst
+
+
+[aec6293_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\aec6293.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,,
+
+[SourceDisksFiles]
+aec6293.sys = 1,,
+
+
+[NODRV_AddReg]
+;Dummy AddReg section 
+
+[strings]
+ProviderName = "ACARD Technology Corp."
+MfgName = "ACARD"
+aec6293.DeviceDesc = "AEC-6293 2-CH SATA & 1-CH IDE Adapter"
+SCSI\ProcessorACARD_____6293_DEVICE______.DeviceDesc  = "ACARD 6293 Processor"
+InstallDisk = "aec6293 IDE Controller Driver Diskette"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001

@@ -1,0 +1,22 @@
+REGEDIT4
+;
+; Adaptec, 2008
+; =============================
+; Enclosure.REG - 
+; Exposes the Enclosure type devices to the operating system.
+;
+; This registry file will add a registry entry to the adpahci driver
+;
+;  How to make this registry option effective:
+;  Go to Windows Explorer and double-click on Enclosure.REG or 
+;  Open a command prompt  and type the following: 
+;
+;      regedit Enclosure.REG 
+;
+;
+;
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ADP3132\Parameters\Device]
+"DriverParameter"="ExposeEnclosure=1;"
+
+
+; Note: Please reboot the system for this setting to take effect.

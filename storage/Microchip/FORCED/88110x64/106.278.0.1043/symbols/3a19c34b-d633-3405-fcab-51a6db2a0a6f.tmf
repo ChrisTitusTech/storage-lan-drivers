@@ -1,0 +1,171 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3a19c34b-d633-3405-fcab-51a6db2a0a6f 2016 // SRC=Init.c MJ= MN=
+#typev init_c854 51 "%0%10!s!   Write to a RAID 1/10 volume=%11!u!=0x%12!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->ulMaxAioWriteRaid1_10, ItemLong -- 11
+pSense->ulMaxAioWriteRaid1_10, ItemLong -- 12
+}
+#typev init_c851 50 "%0%10!s!   Write to a RAID 5/50/6/60 volume=%11!u!=0x%12!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->ulMaxAioWriteRaid5_50_6_60, ItemLong -- 11
+pSense->ulMaxAioWriteRaid5_50_6_60, ItemLong -- 12
+}
+#typev init_c848 49 "%0%10!s!   Read/Write to an encrypted NVMe drive=%11!u!=0x%12!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->ulMaxAioCryptoToNvme, ItemLong -- 11
+pSense->ulMaxAioCryptoToNvme, ItemLong -- 12
+}
+#typev init_c845 48 "%0%10!s!   Read/Write to an encrypted SAS/SATA drive=%11!u!=0x%12!x!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->ulMaxAioCryptoToSasSata, ItemLong -- 11
+pSense->ulMaxAioCryptoToSasSata, ItemLong -- 12
+}
+#typev init_c842 47 "%0%10!s!   Max AIO path Transfer Sizes (Bytes):" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c838 46 "%0%10!s!   LegacyAio=%11!d! AdvancedAio=%12!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->IoPageFlags1.fLegacyAioSupport, ItemLong -- 11
+pSense->IoPageFlags1.fAioAdvancedWrites, ItemLong -- 12
+}
+#typev init_c833 45 "%0%10!s!   IO Controller Settings: SenseIoValid=%11!d! SenseAioValid=%12!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=DetermineControllerIoLimits
+{
+IDSTR2, ItemString -- 10
+pSense->fSenseFeatureIoPageSuccess, ItemLong -- 11
+pSense->fSenseFeatureAioPageSuccess, ItemLong -- 12
+}
+#typev init_c172 25 "%0%10!s!   The running OS is not supported by this version of SmartPqi. Wrong driver installed." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c165 24 "%0%10!s!   The running OS is not supported by this version of SmartPqi. Wrong driver installed." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c162 23 "%0%10!s!   The running OS is W2K8 or Vista.  Version 6.0. " //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c155 22 "%0%10!s!   The running OS is not supported by this version of SmartPqi. Wrong driver installed." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c152 21 "%0%10!s!   The running OS is W2K8 R2 or Windows 7.  Version 6.1" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c140 20 "%0%10!s!   The running OS is Server 2012 or Windows 8.  Version 6.2" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c133 19 "%0%10!s!   The running OS is Server 2012 R2 or Windows 8.1.  Version 6.3" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c120 18 "%0%10!s!   The running OS build number is 1809" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c113 17 "%0%10!s!   The running OS build number is 19H1" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c108 16 "%0%10!s!   The running OS is Server 2016 or Windows 10" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c100 15 "%0%10!s!   The running OS is Server 2016 or Windows 10 (Version 1511) - TH2" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c91 14 "%0%10!s!   The running OS is Server 2016 or Windows 10 (Version 1607) - RS1" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c84 13 "%0%10!s!   The running OS is Server 2016 or Windows 10(Version 1703) - RS2" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c77 12 "%0%10!s!   The running OS is Server 2016 or Windows 10(Version 1709) - RS3" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c69 11 "%0%10!s!   The running OS is Server 2016 or Windows 10 (Version 1803) RS4 or later OS." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c61 10 "%0%10!s!   The running OS is Server 2019 or Windows 10 (Version 1809) RS5 or later OS." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=GetRunningOsVersionUsingNtDdi
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c1156 56 "%0%10!s!  !DPC is not supported in Dump mode or may be disabled via reg value!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiCommonInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c1114 55 "%0%10!s!   Sleep/Hibernate Init=%11!d!  OFA Init=%12!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCommonInit
+{
+IDSTR2, ItemString -- 10
+pDevX->DrvFlags.fResumeFromSleepHibernate, ItemLong -- 11
+pDevX->DrvFlags.fOfaInProgress, ItemLong -- 12
+}
+#typev init_c1111 54 "%0%10!s!   Uncached extension memory still valid after restarting from a previous PnPAction == StorStopDevice." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCommonInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c1106 53 "%0%10!s!   Uncached extension memory still valid.  Driver running in Dump mode (aka Hibernating or Crash dump)." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCommonInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c1066 52 "%0%10!s!   MiCommonInit: fRestart=%11!d!. LimitMemory=%12!d!." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCommonInit
+{
+IDSTR2, ItemString -- 10
+pDevX->DrvFlags.fAdapterRestart, ItemLong -- 11
+pDevX->DrvFlags.fLimitMemory, ItemLong -- 12
+}
+#typev init_c789 44 "%0%10!s!   PerfInit: OS: Hibernation, crash or is Server2003 or older" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c782 43 "%0%10!s!   Successfully initialized Performance Optimizations." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c766 42 "%0%10!s!   PerfInit: MessageId range: %11!d! to %12!d!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+PerfConfigData.FirstRedirectionMessageNumber, ItemLong -- 11
+PerfConfigData.LastRedirectionMessageNumber, ItemLong -- 12
+}
+#typev init_c759 41 "%0%10!s!   Successfully initialized Performance Optimizations." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c738 40 "%0%10!s!   PerfInit: Driver requested StartIO Complete on Submit support." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+}
+#typev init_c709 39 "%0%10!s!   ConcurrentChannels = %11!d!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+PerfConfigData.ConcurrentChannels, ItemLong -- 11
+}
+#typev init_c691 38 "%0%10!s!   PerfConfigData Version=%11!d!, Size=%12!d!, Flags=%13!x!, Node=0x%14!x!" //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiPerfInit
+{
+IDSTR2, ItemString -- 10
+PerfConfigData.Version, ItemLong -- 11
+PerfConfigData.Size, ItemLong -- 12
+PerfConfigData.Flags, ItemLong -- 13
+PerfConfigData.DeviceNode, ItemLong -- 14
+}
+#typev init_c1470 58 "%0%10!s!   Releasing Driver memory resources, Cleanup From: %11!s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=MiReleaseAllMemResources
+{
+IDSTR2, ItemString -- 10
+pString, ItemString -- 11
+}

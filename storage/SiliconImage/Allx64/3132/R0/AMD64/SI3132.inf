@@ -1,0 +1,317 @@
+; This INF file installs the Silicon Image Serial ATA non-Raid driver for
+; the SiI 3132 controller on systems using 64-bit extended processors.
+;
+;
+; Copyright (C) 2004 - 2009 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=SI3132.cat
+DriverVer=06/24/2009, 1.0.15.6
+
+
+[SourceDisksNames.amd64]
+1="Silicon Image SiI 3132 SATALink Driver Installation Disk",Si3132.inf,\amd64,
+
+[SourceDisksFiles.amd64]
+SI3132.sys	= 1
+SilSupp.dll	= 1
+SiWinAcc.sys	= 1
+SiRemFil.sys	= 1
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DllFiles		= 11
+
+
+[DriverFiles]
+SI3132.sys,,,0x20
+SiWinAcc.sys,,,0x20
+SiRemFil.sys,,,0x20
+
+[DllFiles]
+SilSupp.dll,,,0x20
+
+
+[Manufacturer]
+%SI%=SI_HDC,NTamd64
+
+[SI_HDC.NTamd64]
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_31321095
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_710A1462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_B0021458
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0CA9105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_3009148C
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_88881019
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_819F1043
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_09781019
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_716A1462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_715A1462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0CAB105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0CAD105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0C8F105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0C8D105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0C8B105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0C89105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0C87105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_722A1462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_02391154
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_63001462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_63101462
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_2C0B17F2
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_00226409
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_0D10105B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_820E1043
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_31321A57
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_31321A5F
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_1000131F
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_000F182D
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_819F103C
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_F000147B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_8958152D
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_00401170
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_2A4A103C
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_02AF1028
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_CE21136B
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_02F81028
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_02F71028
+%PCI\VEN_1095&DEV_3132.DeviceDesc%=SI_3132_XP, PCI\VEN_1095&DEV_3132&SUBSYS_85301462
+
+
+[ControlFlags]
+ExcludeFromSelect.ntx86=*
+
+
+
+;; Driver install sections
+;;
+[SI_3132_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_3132_XP.NTamd64.Services]
+AddService=SI3132,0x00000002,SI_3132_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,0,FilterService_Install
+AddService=SiRemFil, 0, RemovableDevFilter_Install
+
+[SI_3132_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3132_CoInstall_AddReg
+
+
+
+[SI_3132_CoInstall_AddReg]
+HKR,,CoInstallers32,0x00010000,"SilSupp.dll, CoInstHandler"
+
+
+[SI_3132_Service_Install]
+DisplayName=%SI3132.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3132.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=ChanConfigOverrides_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[FilterService_Install]
+DisplayName=SATALink driver accelerator
+ServiceType=1
+StartType=0
+ErrorControl=0
+ServiceBinary=%12%\SiWinAcc.sys
+LoadOrderGroup=Filter
+
+[RemovableDevFilter_Install]
+DisplayName=SATALink External Device Filter
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SiRemFil.sys
+LoadOrderGroup="PnP Filter"
+AddReg=RemovableDevFilter_AddReg
+
+
+; Enable removable device filter to attach to disk and cd-rom class devices.
+[RemovableDevFilter_AddReg]
+HKLM, System\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, SiRemFil
+HKLM, System\CurrentControlSet\Control\Class\{4d36e965-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, SiRemFil
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 100
+HKR,Parameters\Device,MaximumSGList,0x00010001, 33
+HKR, Parameters\Device, CreateInitiatorLU, 0x00010001, 1
+
+
+; Set controller's bus type to SATA.
+[BusType_AddReg]
+HKR, Parameters, BusType, 0x00010001, 11
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+HKR,ProblemDevices, %ProblemDev1Name%, 0, %ProblemDev1Value%
+HKR,ProblemDevices, %ProblemDev2Name%, 0, %ProblemDev2Value%
+HKR,ProblemDevices, %ProblemDev3Name%, 0, %ProblemDev3Value%
+HKR,ProblemDevices, %ProblemDev4Name%, 0, %ProblemDev4Value%
+HKR,ProblemDevices, %ProblemDev5Name%, 0, %ProblemDev5Value%
+HKR,ProblemDevices, %ProblemDev6Name%, 0, %ProblemDev6Value%
+HKR,ProblemDevices, %ProblemDev7Name%, 0, %ProblemDev7Value%
+HKR,ProblemDevices, %ProblemDev8Name%, 0, %ProblemDev8Value%
+
+
+; List of controller subsystem IDs to be supported by the SI3132.sys driver.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs, %PCI\VEN_1095&DEV_3132.DeviceDesc%,0x00010001, 0x31321095
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI%, 0x00010001, 0x710A1462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_GIGABYTE%, 0x00010001, 0xB0021458
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN%, 0x00010001, 0x0CA9105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_TUL%, 0x00010001, 0x3009148C
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ECS%, 0x00010001, 0x88881019
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ASUS%, 0x00010001, 0x819F1043
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ECS_2%, 0x00010001, 0x09781019
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_2%, 0x00010001, 0x716A1462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_3%, 0x00010001, 0x715A1462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_2%, 0x00010001, 0x0CAB105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_3%, 0x00010001, 0x0CAD105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_4%, 0x00010001, 0x0C8F105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_5%, 0x00010001, 0x0C8D105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_6%, 0x00010001, 0x0C8B105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_7%, 0x00010001, 0x0C89105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_8%, 0x00010001, 0x0C87105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_4%, 0x00010001, 0x722A1462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_BUFFALO%, 0x00010001, 0x02391154
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_5%, 0x00010001, 0x63001462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_6%, 0x00010001, 0x63101462
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ALBATRON%, 0x00010001, 0x2C0B17F2
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_LOGITECH%, 0x00010001, 0x00226409
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_FOXCONN_9%, 0x00010001, 0x0D10105B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ASUS_2%, 0x00010001, 0x820E1043
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_HRS%, 0x00010001, 0x31321A57
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_SYSTEM_TALKS%, 0x00010001, 0x31321A5F
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_SIIG%, 0x00010001, 0x1000131F
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_SITECOM%, 0x00010001, 0x000F182D
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_HP%, 0x00010001, 0x819F103C
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_ABIT%, 0x00010001, 0xF000147B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_QUANTA%, 0x00010001, 0x8958152D
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_INVENTEC%, 0x00010001, 0x00401170
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_HP_2%, 0x00010001, 0x2A4A103C
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_DELL%, 0x00010001, 0x02AF1028
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_KAWASAKI%, 0x00010001, 0xCE21136B
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_DELL_2%, 0x00010001, 0x02F81028
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_DELL_3%, 0x00010001, 0x02F71028
+HKR,SupportedSubsystemIDs, %SI3132_SUB_ID_DESC_MSI_7%, 0x00010001, 0x85301462
+
+
+[ChanConfigOverrides_AddReg]
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_HRS%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_SYSTEM_TALKS%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_SIIG%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_SITECOM%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_ABIT%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_QUANTA%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_INVENTEC%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_DELL%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_KAWASAKI%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_DELL_2%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_DELL_3%, 0x00010001, 0x00000011
+HKR, ChannelConfigurations, %SI3132_SUB_ID_DESC_MSI_7%, 0x00010001, 0x00000011
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+SI="Silicon Image"
+
+PCI\VEN_1095&DEV_3132.DeviceDesc="Silicon Image SiI 3132 SATALink Controller"
+SI3132.SvcDesc="SiI-3132 SATALink Controller"
+
+
+; Registry value names to use for PCI subsystem ID values assigned by third parties
+; using the 3132 controller.
+SI3132_SUB_ID_DESC_MSI="Silicon Image SiI 3132 SATALink Controller (MSI)"
+SI3132_SUB_ID_DESC_GIGABYTE="Silicon Image SiI 3132 SATALink Controller (Gigabyte)"
+SI3132_SUB_ID_DESC_FOXCONN="Silicon Image SiI 3132 SATALink Controller (FoxConn)"
+SI3132_SUB_ID_DESC_TUL="Silicon Image SiI 3132 SATALink Controller (TUL)"
+SI3132_SUB_ID_DESC_ECS="Silicon Image SiI 3132 SATALink Controller (ECS)"
+SI3132_SUB_ID_DESC_ASUS="Silicon Image SiI 3132 SATALink Controller (ASUS)"
+SI3132_SUB_ID_DESC_ECS_2="Silicon Image SiI 3132 SATALink Controller (ECS_2)"
+SI3132_SUB_ID_DESC_MSI_2="Silicon Image SiI 3132 SATALink Controller (MSI_2)"
+SI3132_SUB_ID_DESC_MSI_3="Silicon Image SiI 3132 SATALink Controller (MSI_3)"
+SI3132_SUB_ID_DESC_FOXCONN_2="Silicon Image SiI 3132 SATALink Controller (FoxConn_2)"
+SI3132_SUB_ID_DESC_FOXCONN_3="Silicon Image SiI 3132 SATALink Controller (FoxConn_3)"
+SI3132_SUB_ID_DESC_FOXCONN_4="Silicon Image SiI 3132 SATALink Controller (FoxConn_4)"
+SI3132_SUB_ID_DESC_FOXCONN_5="Silicon Image SiI 3132 SATALink Controller (FoxConn_5)"
+SI3132_SUB_ID_DESC_FOXCONN_6="Silicon Image SiI 3132 SATALink Controller (FoxConn_6)"
+SI3132_SUB_ID_DESC_FOXCONN_7="Silicon Image SiI 3132 SATALink Controller (FoxConn_7)"
+SI3132_SUB_ID_DESC_FOXCONN_8="Silicon Image SiI 3132 SATALink Controller (FoxConn_8)"
+SI3132_SUB_ID_DESC_MSI_4="Silicon Image SiI 3132 SATALink Controller (MSI_4)"
+SI3132_SUB_ID_DESC_BUFFALO="Silicon Image SiI 3132 SATALink Controller (Buffalo)"
+SI3132_SUB_ID_DESC_MSI_5="Silicon Image SiI 3132 SATALink Controller (MSI_5)"
+SI3132_SUB_ID_DESC_MSI_6="Silicon Image SiI 3132 SATALink Controller (MSI_6)"
+SI3132_SUB_ID_DESC_MSI_7="Silicon Image SiI 3132 SATALink Controller (MSI_7)"
+SI3132_SUB_ID_DESC_ALBATRON="Silicon Image SiI 3132 SATALink Controller (ALBATRON)"
+SI3132_SUB_ID_DESC_LOGITECH="Silicon Image SiI 3132 SATALink Controller (Logitech)"
+SI3132_SUB_ID_DESC_FOXCONN_9="Silicon Image SiI 3132 SATALink Controller (FoxConn_9)"
+SI3132_SUB_ID_DESC_ASUS_2="Silicon Image SiI 3132 SATALink Controller (ASUS_2)"
+SI3132_SUB_ID_DESC_HRS="Silicon Image SiI 3132 SATALink Controller (Highly Reliable Systems)"
+SI3132_SUB_ID_DESC_SYSTEM_TALKS="Silicon Image SiI 3132 SATALink Controller (System Talks)"
+SI3132_SUB_ID_DESC_SIIG="Silicon Image SiI 3132 SATALink Controller (SIIG)"
+SI3132_SUB_ID_DESC_SITECOM="Silicon Image SiI 3132 SATALink Controller (SITECOM)"
+SI3132_SUB_ID_DESC_HP="Silicon Image SiI 3132 SATALink Controller (HP)"
+SI3132_SUB_ID_DESC_ABIT="Silicon Image SiI 3132 SATALink Controller (ABIT)"
+SI3132_SUB_ID_DESC_QUANTA="Silicon Image SiI 3132 SATALink Controller (Quanta)"
+SI3132_SUB_ID_DESC_INVENTEC="Silicon Image SiI 3132 SATALink Controller (Inventec)"
+SI3132_SUB_ID_DESC_HP_2="Silicon Image SiI 3132 SATALink Controller (HP_2)"
+SI3132_SUB_ID_DESC_DELL="Silicon Image SiI 3132 SATALink Controller (Dell)"
+SI3132_SUB_ID_DESC_KAWASAKI="Silicon Image SiI 3132 SATALink Controller (Kawasaki)"
+SI3132_SUB_ID_DESC_DELL_2="Silicon Image SiI 3132 SATALink Controller (Dell_2)"
+SI3132_SUB_ID_DESC_DELL_3="Silicon Image SiI 3132 SATALink Controller (Dell_3)"
+
+
+ProblemDev1Name="Maxtor 4D060H3                          DAK05GK0"
+ProblemDev1Value="MaxMode = UDMA-5"
+
+ProblemDev2Name="HDS724040KLSA80                         KFAOA32A"
+ProblemDev2Value="DisableAtaQueueing"
+
+ProblemDev3Name="HDS722525VLSA80                         V36OA6MA"
+ProblemDev3Value="DisableAtaQueueing"
+
+ProblemDev4Name="HDS722516VLSA80                         V34OA6MA"
+ProblemDev4Value="DisableAtaQueueing"
+
+ProblemDev5Name="Maxtor 7B250S0                          BANC1B70"
+ProblemDev5Value="DisableSataQueueing"
+
+ProblemDev6Name="HTS541060G9SA00                         MB3OC60D"
+ProblemDev6Value="DisableSataQueueing"
+
+ProblemDev7Name="HTS541080G9SA00                         MB4OC60D"
+ProblemDev7Value="DisableSataQueueing"
+
+ProblemDev8Name="HTS541010G9SA00                         MBZOC60D"
+ProblemDev8Value="DisableSataQueueing"

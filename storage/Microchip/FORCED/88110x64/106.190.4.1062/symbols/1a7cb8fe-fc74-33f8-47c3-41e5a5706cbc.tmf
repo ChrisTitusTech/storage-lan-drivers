@@ -1,0 +1,73 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+1a7cb8fe-fc74-33f8-47c3-41e5a5706cbc 2016 // SRC=PqiSis.c MJ= MN=
+#typev pqisis_c591 19 "%0%10!s!   Controller Mode is %11!d!=%12!s!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=GetCntrlMode
+{
+IDSTR2, ItemString -- 10
+eCtrlMode, ItemLong -- 11
+MiControllerModeToAscii(eCtrlMode), ItemString -- 12
+}
+#typev pqisis_c533 17 "%0%10!s!   Controller ProductID=%11!s! (0x%12!x!)" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCheckProductIdentifier
+{
+IDSTR2, ItemString -- 10
+pString, ItemString -- 11
+ulReg, ItemLong -- 12
+}
+#typev pqisis_c746 22 "%0%10!s!: !!!Controller self diagnostic test failed. Lockup Code = %11!x! !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiPqiRegistersPost
+{
+IDSTR2, ItemString -- 10
+pDevX->LockupCriteria.ulLockupCode, ItemLong -- 11
+}
+#typev pqisis_c738 21 "%0%10!s!: !!!PQI registers failed to initialize. Controller failed to Post in 3 minutes!!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiPqiRegistersPost
+{
+IDSTR2, ItemString -- 10
+}
+#typev pqisis_c729 20 "%0%10!s!:   Waiting for PQI registers to initialize.  Device state = %11!x!, %12!d! seconds." //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiPqiRegistersPost
+{
+IDSTR2, ItemString -- 10
+pStatusReg->PqiDevState, ItemLong -- 11
+DEFAULT_INTERVALS_TO_SECONDS(ulCount), ItemLong -- 12
+}
+#typev pqisis_c286 12 "%0%10!s!  !PD state machine is in PQI DEVICE STATE=%11!s!(%12!d!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagPower FUNC=MiPqiResetCntrl
+{
+IDSTR2, ItemString -- 10
+MiPqiSDevStatusToDevStateAscii(statusReg.PqiDevState), ItemString -- 11
+statusReg.PqiDevState, ItemLong -- 12
+}
+#typev pqisis_c286 11 "%0%10!s!  !PQI Device Reset timed out. PQI Device Reset did not report done in %11!d!msec" //   LEVEL=dWARN_LVL FLAGS=DbgFlagPower FUNC=MiPqiResetCntrl
+{
+IDSTR2, ItemString -- 10
+ulMaxTimeOutInMsec, ItemLong -- 11
+}
+#typev pqisis_c261 13 "%0%10!s!   Driver issued PQI reset." //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPqiResetCntrl
+{
+IDSTR2, ItemString -- 10
+}
+#typev pqisis_c554 18 "%0%10!s!   Saved Controller Mode as %11!d!=%12!s!." //   LEVEL=2 FLAGS=DbgFlagInit FUNC=MiSaveCntrlMode
+{
+IDSTR2, ItemString -- 10
+ePqiCtrlMode, ItemLong -- 11
+MiControllerModeToAscii(ePqiCtrlMode), ItemString -- 12
+}
+#typev pqisis_c410 16 "%0%10!s!: !!!Failed to initialize SIS registers in %11!d! seconds. !!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiSisRegistersPost
+{
+IDSTR2, ItemString -- 10
+ulTimeoutInSeconds, ItemLong -- 11
+}
+#typev pqisis_c396 15 "%0%10!s!   Waiting for SIS registers to initialize.  ScratchPad3 Register= %11!x!, %12!d! seconds." //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiSisRegistersPost
+{
+IDSTR2, ItemString -- 10
+ulRegisterValue, ItemLong -- 11
+DEFAULT_INTERVALS_TO_SECONDS(ulCount), ItemLong -- 12
+}
+#typev pqisis_c339 14 "%0%10!s!   !Controller did not start in SIS mode!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MiSisRegistersPost
+{
+IDSTR2, ItemString -- 10
+}
+#typev pqisis_c68 10 "%0%10!s! !Doorbell Register failed to clear after %11!d!msec. doorbell=0x%12!x!. read=0x%13!x!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagInit FUNC=MiWriteAndWaitForSisDoorbellToClear
+{
+IDSTR2, ItemString -- 10
+ulWaitTimeInMsec, ItemLong -- 11
+ulDoorbell, ItemLong -- 12
+ulRegistryValue, ItemLong -- 13
+}

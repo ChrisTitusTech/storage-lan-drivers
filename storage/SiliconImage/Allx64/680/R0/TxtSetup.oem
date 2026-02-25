@@ -1,0 +1,46 @@
+; This file installs the SiI 680 non-RAID ATA driver as part of text
+; mode setup on 64-bit versions of Windows.
+;
+; Copyright (C) 2003 - 2007 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image ATA/133 Driver Installation Disk",\ia64\PnP680.sys,\ia64
+disk2 = "Silicon Image ATA/133 Driver Installation Disk",\amd64\PnP680.sys,\amd64
+
+
+[Defaults]
+SCSI = Si680_AMD64
+
+
+[SCSI]                  ; HwComponent section
+Si680_AMD64 = "Silicon Image SiI 0680 ATA/133 Controller (64-bit Extended)"
+Si680_IA64 = "Silicon Image SiI 0680 ATA/133 Controller (Itanium)"
+
+
+[Files.SCSI.Si680_AMD64]
+driver = disk2,pnp680.sys, PnP680
+inf = disk2,SI680.inf
+dll = disk2,SilSupp.dll
+catalog = disk2, PnP680.cat
+
+
+[Files.SCSI.Si680_IA64]
+driver = disk1,pnp680.sys, PnP680
+inf = disk1,SI680.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, PnP680.cat
+
+
+[HardwareIds.SCSI.Si680_AMD64]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_06801095", "PnP680"
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_901B104D", "PnP680"
+
+[HardwareIds.SCSI.Si680_IA64]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_06801095", "PnP680"
+
+
+[Config.PnP680]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""

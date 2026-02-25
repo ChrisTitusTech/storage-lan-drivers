@@ -1,0 +1,189 @@
+; asahci.INF
+; Installation INF for ASMEDIA AHCI SATA Controller for Windows XP/2003
+; Copyright (C) 2010 Asmedia Technology
+
+[Version]
+Signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%ASMEDIA%
+DriverVer=03/28/2016,3.2.0.0000
+CatalogFile=asahci64.cat
+
+[Manufacturer]
+%ASMEDIA%=ASMEDIA_AHCI,NTamd64
+
+[ASMEDIA_AHCI.NTamd64]
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615
+%PCI\VEN_1B21&DEV_0620.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0620
+%PCI\VEN_1B21&DEV_0621.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0621
+%PCI\VEN_1B21&DEV_0622.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0622
+%PCI\VEN_1B21&DEV_0624.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0624
+%PCI\VEN_1B21&DEV_0625.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0625
+
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615&SUBSYS_10601B21
+%PCI\VEN_1B21&DEV_0620.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0620&SUBSYS_10611B21
+%PCI\VEN_1B21&DEV_0621.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0621&SUBSYS_10611B21
+%PCI\VEN_1B21&DEV_0622.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0622&SUBSYS_10611B21
+%PCI\VEN_1B21&DEV_0624.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0624&SUBSYS_10611B21
+%PCI\VEN_1B21&DEV_0625.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0625&SUBSYS_10611B21
+
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_84B71043&REV_02
+
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601&SUBSYS_79161462
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602&SUBSYS_79161462
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611&SUBSYS_79161462
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_79161462
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614&SUBSYS_79161462
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615&SUBSYS_79161462
+
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0620.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0620&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0621.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0621&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0622.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0622&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0624.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0624&SUBSYS_84B71043
+%PCI\VEN_1B21&DEV_0625.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0625&SUBSYS_84B71043
+
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0620.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0620&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0621.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0621&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0622.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0622&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0624.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0624&SUBSYS_858D1043
+%PCI\VEN_1B21&DEV_0625.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0625&SUBSYS_858D1043
+
+%PCI\VEN_1B21&DEV_0601.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0601&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0602.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0602&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0611.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0611&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0614.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0614&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0615.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0615&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0620.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0620&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0621.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0621&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0622.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0622&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0624.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0624&SUBSYS_858E1043
+%PCI\VEN_1B21&DEV_0625.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0625&SUBSYS_858E1043
+
+%PCI\VEN_1B21&DEV_0612.DeviceDesc%= asahci_Inst, PCI\VEN_1B21&DEV_0612&SUBSYS_06121458
+
+[ControlFlags]
+ExcludeFromSelect =*
+
+; --------------source
+[SourceDisksNames]
+1=%SOURCE_DISK%
+
+[SourceDisksFiles]
+asahci64.sys = 1
+ahcipp64.dll = 1
+
+; --------------dest
+[DestinationDirs]
+AhciPropPageFile = 11
+DefaultDestDir = 12 
+
+[asahci_Inst]
+CopyFiles=@asahci64.sys, AhciPropPageFile
+AddReg = AhciPropPageReg
+
+
+[AhciPropPageFile] 
+ahcipp64.dll
+
+[asahci_Inst.Services]
+AddService = %SERVICE_NAME%, %SPSVCINST_ASSOCSERVICE%, asahci_Service_Inst, asahci_EventLog_Inst
+
+[asahci_Inst.hw]
+Include=machine.inf 
+Needs=PciIoSpaceNotRequired
+AddReg = DDInstall_AddReg_HW_Removal_Policy
+ 
+[DDInstall_AddReg_HW_Removal_Policy]
+HKR,"ScsiPort","RemovalPolicy",0x00010001,3
+;AddReg = InterruptMgmtValues
+;HKR, "Interrupt Management", 0x00000010
+;HKR, "Interrupt Management\MessageSignaledInterruptProperties", 0x00000010
+;HKR, "Interrupt Management\MessageSignaledInterruptProperties", MSISupported, 0x00010001, 1
+;HKR, "Interrupt Management\MessageSignaledInterruptProperties", MessageNumberLimit, 0x00010001, 3
+
+[asahci_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_BOOT_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\asahci64.sys
+LoadOrderGroup = "SCSI Miniport"
+AddReg         = asahci_Service_Inst.AddReg
+
+[asahci_Service_Inst.AddReg]
+HKR,"Parameters\PnpInterface", "5", %REG_DWORD%, 0x00000001
+HKR, Parameters, BusType, %REG_DWORD%, 0x000000B
+HKR,"Parameters\Device", MaximumSGList,  %REG_DWORD%, 0x21
+HKR,"Parameters\Device", NumberOfRequests,  %REG_DWORD%, 0xF1
+
+[AhciPropPageReg]
+HKR,, EnumPropPages32,, "ahcipp64.dll, AhciPropPageProvider"
+
+[asahci_EventLog_Inst]
+AddReg = asahci_EventLog_Inst.AddReg
+
+[asahci_EventLog_Inst.AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+; ******** Uninstall section ********
+[DefaultUninstall]
+DelFiles = @asahci64.sys, AhciPropPageFile
+
+[DefaultUninstall.Services]
+DelService = %SERVICE_NAME%
+
+;********************************************************
+; Extra Registry Entries
+
+[Strings]
+ASMEDIA = "Asmedia Technology"
+PCI\VEN_1B21&DEV_0611.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0612.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0601.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0602.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0614.DeviceDesc ="Asmedia SATA Express Controller"
+PCI\VEN_1B21&DEV_0615.DeviceDesc ="Asmedia SATA Express Controller"
+PCI\VEN_1B21&DEV_0620.DeviceDesc ="Asmedia 106x SATA Controller"
+PCI\VEN_1B21&DEV_0621.DeviceDesc ="Asmedia 106x SATA/RAID Controller"
+PCI\VEN_1B21&DEV_0622.DeviceDesc ="Asmedia 106x SATA/RAID Controller"
+PCI\VEN_1B21&DEV_0624.DeviceDesc ="Asmedia 106x SATA/RAID Controller"
+PCI\VEN_1B21&DEV_0625.DeviceDesc ="Asmedia 106x SATA/RAID Controller"
+
+
+SOURCE_DISK  = "Asmedia 106x SATA Controller"
+SERVICE_NAME = "asahci64"
+
+;*******************************************
+;Non-localizable, Handy macro substitutions
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_BOOT_START     = 0
+SERVICE_ERROR_NORMAL   = 1
+SERVICE_ERROR_CRITICAL = 3
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+REG_MULTI_SZ           = 0x00010000

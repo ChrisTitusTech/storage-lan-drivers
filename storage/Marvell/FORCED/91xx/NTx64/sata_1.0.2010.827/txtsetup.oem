@@ -1,0 +1,32 @@
+#                      TXTSETUP.OEM 
+# 
+#                  Created by GenINF. 
+
+
+[Disks]
+disk1 = "MRVL",\mvSata.sys,\
+
+[Defaults]
+SCSI = mvSata
+
+[SCSI]
+mvSata = "Marvell Serial ATA Adapter"
+
+[Files.SCSI.mvSata]
+inf = disk1, mvSata.inf
+driver = disk1, mvSata.sys,mvSata
+
+[HardwareIds.SCSI.mvSata]
+id = "PCI\VEN_11ab&DEV_7042","mvSata"
+id = "PCI\VEN_11ab&DEV_6042","mvSata"
+id = "PCI\VEN_11ab&DEV_6081","mvSata"
+id = "PCI\VEN_11ab&DEV_6041","mvSata"
+id = "PCI\VEN_11ab&DEV_5081","mvSata"
+id = "PCI\VEN_11ab&DEV_5041","mvSata"
+id = "PCI\VEN_11ab&DEV_5080","mvSata"
+id = "PCI\VEN_11ab&DEV_5040","mvSata"
+
+[Config.mvSata]
+value = Parameters\PnPInterface,5,REG_DWORD,1
+
+

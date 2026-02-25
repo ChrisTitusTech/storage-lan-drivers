@@ -1,0 +1,60 @@
+; Copyright (c) 1993-1999 Microsoft Corporation
+;
+; DDK Sample INF File for PCIIDE
+;
+
+[version]
+Signature="$WINDOWS NT$"
+Class=hdc
+ClassGuid={4D36E96A-E325-11CE-BFC1-08002BE10318}
+Provider=%JMICRON%
+CatalogFile=jmide.cat
+DriverVer=09/16/2006, 1.00.00.00
+
+[SourceDisksNames]
+[SourceDisksFiles]
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%JMICRON%=JM.Mfg,NTamd64
+
+[JM.Mfg]
+;%PCI\CC_0101.DeviceDesc% = jmide_Inst,,PCI\CC_0101    ;Compatible Device ID for generic Dual PCI IDE 
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2361&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2363&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2365&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2366&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2368&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2370&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2371&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2372&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2373&CC_0101
+
+[JM.Mfg.NTamd64]
+;%PCI\CC_0101.DeviceDesc% = jmide_Inst,,PCI\CC_0101    ;Compatible Device ID for generic Dual PCI IDE 
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2361&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2363&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2365&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2366&CC_0101
+%PCI\CC_0101.DeviceDesc% = jmide_Inst , PCI\VEN_197B&DEV_2368&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2370&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2371&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2372&CC_0101
+%PCI\CC_0101.DeviceDesc_37x% = jmide_Inst , PCI\VEN_197B&DEV_2373&CC_0101
+
+;****************************************************
+; Generic Dual PCI IDE Controller 
+[jmide_Inst]
+Include=mshdc.inf
+Needs=pciide_Inst
+
+[jmide_Inst.Services]
+Include=mshdc.inf
+Needs=pciide_Inst.Services
+
+[Strings]
+JMICRON="JMicron Technology Corp."
+PCI\CC_0101.DeviceDesc  = "JMB36X Standard Dual Channel PCIE IDE Controller"
+PCI\CC_0101.DeviceDesc_37x  = "JMB37X Standard Dual Channel PCIE IDE Controller"

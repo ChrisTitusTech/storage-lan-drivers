@@ -1,0 +1,223 @@
+; 
+; ITEATAPI.INF
+; 
+; INF file of IT8211 ATA ATAPI controller for Windows 64-bit
+; Copyright (c) 2002-2004 ITE Tech. Inc. All rights reserved
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%ITE%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+CatalogFile=iteatapi.cat
+DriverVer=05/14/2008,1.3.4.3
+
+[DestinationDirs]
+DefaultDestDir = 12             ; DIRID_DRIVERS (this is IOSubsys on
+                                ; Win95, and System32\Drivers on NT)
+
+;
+; Driver information
+;
+
+[Manufacturer]
+%ITE%   = ITE.Mfg, Ntamd64, Ntia64
+
+[ITE.Mfg]
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111283 ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2A1D103C ; ASUS OEM
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_81381043 ; ASUS 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2C0717F2 ; Albatron 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011458 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011940 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0A46174B ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_90261695 ; Epox 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2801270F ; chaintech 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82121019 ; ECS
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100E1919 ; Soltek SL-915GPRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100F1919 ; Soltek SL-915GPRO-DDR2
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10171919 ; Soltek SL-925PRO-FDGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10181919 ; Soltek SL-915PRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C0F105B ; Foxconn 875A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C25105B ; Foxconn 925A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2D105B ; Foxconn 915A04
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2F105B ; Foxconn 915A03
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7A105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7B105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7C105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7D105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7E105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7F105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8A105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8B105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8C105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8D105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8E105B ; Foxconn 945A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8F105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC0105B ; Foxconn LPM01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC1105B ; Foxconn GWA01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1035147B ; ABIT GD8
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1055147B ; ABIT GD8-M
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1036147B ; ABIT GD8-V
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1056147B ; ABIT GD8-MV
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111849 ; ASROCK 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0573A0A0 ; Aopen 945
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82118086 ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_8211107B ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_D78015D9 ; supermicro
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_878015D9 ; supermicro
+
+[ITE.Mfg.Ntamd64]
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111283 ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2A1D103C ; ASUS OEM
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_81381043 ; ASUS 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2C0717F2 ; Albatron 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011458 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011940 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0A46174B ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_90261695 ; Epox 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2801270F ; chaintech 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82121019 ; ECS
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100E1919 ; Soltek SL-915GPRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100F1919 ; Soltek SL-915GPRO-DDR2
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10171919 ; Soltek SL-925PRO-FDGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10181919 ; Soltek SL-915PRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C0F105B ; Foxconn 875A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C25105B ; Foxconn 925A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2D105B ; Foxconn 915A04
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2F105B ; Foxconn 915A03
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7A105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7B105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7C105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7D105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7E105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7F105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8A105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8B105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8C105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8D105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8E105B ; Foxconn 945A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8F105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC0105B ; Foxconn LPM01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC1105B ; Foxconn GWA01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1035147B ; ABIT GD8
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1055147B ; ABIT GD8-M
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1036147B ; ABIT GD8-V
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1056147B ; ABIT GD8-MV
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111849 ; ASROCK 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0573A0A0 ; Aopen 945
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82118086 ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_8211107B ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_D78015D9 ; supermicro
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_878015D9 ; supermicro
+
+[ITE.Mfg.Ntia64]
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111283 ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2A1D103C ; ASUS OEM
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_81381043 ; ASUS 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2C0717F2 ; Albatron 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011458 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_B0011940 ; Gigabyte 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0A46174B ; 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_90261695 ; Epox 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_2801270F ; chaintech 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82121019 ; ECS
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100E1919 ; Soltek SL-915GPRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_100F1919 ; Soltek SL-915GPRO-DDR2
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10171919 ; Soltek SL-925PRO-FDGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_10181919 ; Soltek SL-915PRO-FGR
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C0F105B ; Foxconn 875A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C25105B ; Foxconn 925A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2D105B ; Foxconn 915A04
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C2F105B ; Foxconn 915A03
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7A105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7B105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7C105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7D105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7E105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C7F105B ; Foxconn 8212
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8A105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8B105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8C105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8D105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8E105B ; Foxconn 945A02
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0C8F105B ; Foxconn TBD
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC0105B ; Foxconn LPM01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0CC1105B ; Foxconn GWA01
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1035147B ; ABIT GD8
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1055147B ; ABIT GD8-M
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1036147B ; ABIT GD8-V
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_1056147B ; ABIT GD8-MV
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82111849 ; ASROCK 8211/DX
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_72001565 ; BIOSTAR 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_0573A0A0 ; Aopen 945
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_82118086 ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_8211107B ; Intel 8211
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_D78015D9 ; supermicro
+%ITE.DeviceDesc0% = iteatapi, PCI\VEN_1283&DEV_8211&SUBSYS_878015D9 ; supermicro
+
+;
+; General installation section
+;
+
+[iteatapi]
+AddReg=iteatapi.AddReg
+CopyFiles=iteatapi.Miniport
+Reboot
+
+[iteatapi.AddReg]
+
+;
+; File sections
+;
+
+[iteatapi.Miniport]
+iteatapi.sys
+
+;
+; Service Installation
+;
+
+[iteatapi.Services]
+AddService = iteatapi, 0x00000002 , iteatapi_Service_Inst, iteatapi_EventLog_Inst
+
+[iteatapi_Service_Inst]
+DisplayName    = %iteatapi.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 0                  ; SERVICE_SYSTEM_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+LoadOrderGroup = SCSI Miniport
+ServiceBinary  = %12%\iteatapi.sys
+AddReg         = pnpsafe_pci_addreg
+
+[iteatapi_EventLog_Inst]
+AddReg = iteatapi_EventLog_AddReg
+
+[iteatapi_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%SystemRoot%\System32\IoLogMsg.dll;%SystemRoot%\System32\drivers\iteatapi.sys"
+HKR,,TypesSupported,0x00010001,7
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+;
+; Source file information
+;
+
+[SourceDisksNames]
+1 = %InstallDisk%,,,""
+
+[SourceDisksFiles]
+iteatapi.sys = 1,,
+
+[Strings]
+ITE.DeviceDesc0 = "ITE IT8211 ATA ATAPI Controller"
+InstallDisk = "ITE IT8211 ATA ATPI Controller Driver Diskette"
+ITE = "ITE Tech. Inc."
+iteatapi.SvcDesc="ITEATAPI_Service_Install"

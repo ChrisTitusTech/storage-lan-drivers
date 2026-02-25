@@ -1,0 +1,99 @@
+; Copyright (c) 2005 ~ 2010 JMicron Technology Corp.
+
+[Version]
+CatalogFile.ntamd64=%JMAHCI_X64_BASENAME%.cat
+signature="$CHICAGO$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%JMICRON%
+DriverVer=08/15/2005, 5.2.0.202
+
+[DestinationDirs]
+DefaultDestDir = 12 ; DIRID_DRIVERS
+CopyRAID.NTamd64 = 12;
+
+[ControlFlags]
+
+[Manufacturer]
+%JMICRON%=JM,NTamd64
+
+
+[JM]
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM_I386 , PCI\VEN_197B&DEV_2360
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM_I386 , PCI\VEN_197B&DEV_2363&CC_0106
+
+[JM.NTamd64]
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM_AMD64 , PCI\VEN_197B&DEV_2360
+%PCI\VEN_197B&DEV_2363.DeviceDesc% = JM_AMD64 , PCI\VEN_197B&DEV_2363&CC_0106
+
+[JM_I386]
+Reboot
+;;
+;; AMD64
+;;
+[JM_AMD64]
+CopyFiles=CopyRAID.NTamd64
+Reboot
+
+[JM_AMD64.Services]
+AddService = %JGOGO_X64_BASENAME%, 0,JGOGO_X64_Service_Inst
+AddService = %JMAHCI_X64_BASENAME%, 2, JM_AMD64_Service_Inst
+
+
+
+[JM_AMD64_Service_Inst]
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\%JMAHCI_X64_BASENAME%.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnp_pci_addreg
+
+[JGOGO_X64_Service_Inst]
+DisplayName    = %ClasFilt.SvcDesc%
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_IGNORE%
+ServiceBinary  = %12%\%JGOGO_X64_BASENAME%.sys	
+AddReg         = UPFilt_X64_AddReg
+
+[UPFilt_X64_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKLM, %SCSIClass%, UpperFilters, 0x00010008, %JGOGO_X64_BASENAME%
+
+
+[pnp_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+HKR,, "parameter0", %REG_DWORD%,0 
+HKR,, "parameter1", %REG_DWORD%,0 
+
+
+[CopyRAID.NTamd64]
+JAHCIX64.sys
+JGOGOX64.sys
+
+[SourceDisksFiles]
+JAHCIX64.sys = 1
+JGOGOX64.sys = 1
+
+[SourceDisksNames]
+1 = %DISKNAME1%,,,,
+
+
+[strings]
+JMICRON="JMicron Technologies, Inc."
+PCI\VEN_197B&DEV_2363.DeviceDesc="JMicron 20360/20363 AHCI Controller"
+ClasFilt.SvcDesc	= "JMicron Hot-Plug Driver"
+
+REG_EXPAND_SZ=0x00020000
+REG_DWORD=0x00010001
+IOLOGMSGDLL="\IoLogMsg.dll"
+DISKNAME1="JMicron Driver Diskette"
+SERVICE_KERNEL_DRIVER = 1
+SERVICE_DEMAND_START  = 3
+SERVICE_ERROR_IGNORE  = 0
+
+JMAHCI_X64_BASENAME="JAHCIX64"
+
+JGOGO_X64_BASENAME="JGOGOX64"
+SCSIClass = "System\CurrentControlSet\Control\Class\{4D36E97B-E325-11CE-BFC1-08002BE10318}"

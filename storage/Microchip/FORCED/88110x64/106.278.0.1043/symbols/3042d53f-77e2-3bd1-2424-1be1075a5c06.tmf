@@ -1,0 +1,170 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+3042d53f-77e2-3bd1-2424-1be1075a5c06 2016 // SRC=Errors.c MJ= MN=
+#typev errors_c628 17 "%0%10!s! --> ID=%11!03d! SCSI Status for OS=%12!s!(0x%13!x!). ResidCnt=0x%14!x! DataP=%15!d! Length=0x%16!x!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=DisplayAioErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+ScsiStatusCodesToAscii(ucScsiStatus), ItemString -- 12
+ucScsiStatus, ItemLong -- 13
+pAioErrorInfoElement->ulResidualCount, ItemLong -- 14
+pAioErrorInfoElement->ucDataPresent, ItemLong -- 15
+usDataLength, ItemLong -- 16
+}
+#typev errors_c624 16 "%0%10!s! --> ID=%11!03d! ServiceResp=%12!s!(0x%13!x!). AioStatus=%14!s!(0x%15!x!)" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=DisplayAioErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+AioProprietaryServiceResponseCodesToAscii(ucServiceResponse), ItemString -- 12
+ucServiceResponse, ItemLong -- 13
+AioProprietaryStatusCodesToAscii(ucAioStatus), ItemString -- 14
+ucAioStatus, ItemLong -- 15
+}
+#typev errors_c621 15 "%0%10!s! --> ID=%11!03d! IU=0x%12!x!. SCSI Opcode=%13!s!(0x%14!x!)" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=DisplayAioErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pCmdInfo->RequestIuBuf.Byte[0], ItemLong -- 12
+ScsiToAscii(ucCdbOpCode), ItemString -- 13
+ucCdbOpCode, ItemLong -- 14
+}
+#typev errors_c614 14 "%0
+
+%10!s! ID=%11!03d! (%12!d!,%13!d!,%14!d!) Hdl=0x%15!x!. AIO error. pCmd=%16!p!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=DisplayAioErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pCmdInfo->BUS, ItemLong -- 12
+pCmdInfo->TARGET, ItemLong -- 13
+pCmdInfo->LUN, ItemLong -- 14
+pCmdInfo->ulByPassHandle, ItemLong -- 15
+pCmdInfo, ItemPtr -- 16
+}
+#typev errors_c1154 24 "%0%10!s! !LUN at (%11!d!, %12!d!, %13!d!) not ready, operation inprogress!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1141 23 "%0%10!s! !LUN at (%11!d!, %12!d!, %13!d!) offline due to overheated!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1163 25 "%0%10!s! !Medium Error, device at (%11!d!, %12!d!, %13!d!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1187 27 "%0%10!s! !Hardware error, LUN attachment failed at (%11!d!, %12!d!, %13!d!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1174 26 "%0%10!s! !****************LUN Failure at (%11!d!, %12!d!, %13!d!)*****************!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1215 29 "%0%10!s! !A cable pull event occured for LUN (%11!d!, %12!d!, %13!d!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+}
+#typev errors_c1207 28 "%0%10!s! !LUN not configured!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=HandleScsiSenseData
+{
+IDSTR2, ItemString -- 10
+}
+#typev errors_c887 22 "%0%10!s! --> ID=%11!03d! SCSI Status=%12!s!(0x%13!x!). Qual=0x%14!x! SenseL=0x%15!x! RespL=%16!d!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+ScsiStatusCodesToAscii(ucScsiStatus), ItemString -- 12
+ucScsiStatus, ItemLong -- 13
+pRaidError->usStatusQualifier, ItemLong -- 14
+pRaidError->usSenseDataLength, ItemLong -- 15
+pRaidError->usResponseDataLength, ItemLong -- 16
+}
+#typev errors_c882 21 "%0%10!s! --> ID=%11!03d! RAID DataOut=%12!s!(0x%13!x!). DataIn=%14!s!(0x%15!x!)" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+MiInOutCodeToAscii(pRaidError->ucDataOutResult), ItemString -- 12
+pRaidError->ucDataOutResult, ItemLong -- 13
+MiInOutCodeToAscii(pRaidError->ucDataInResult), ItemString -- 14
+pRaidError->ucDataInResult, ItemLong -- 15
+}
+#typev errors_c871 19 "%0%10!s! --> ID=%11!03d! RAID Vendor specific command=%12!s!(0x%13!x!)" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+VenderSpecificToAscii(pRaidIu->Cdb[6]), ItemString -- 12
+(ULONG)pRaidIu->Cdb[6], ItemLong -- 13
+}
+#typev errors_c878 20 "%0%10!s! --> ID=%11!03d! IU=0x%12!x!. SCSI Opcode=%13!s!(0x%14!x!)" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pCmdInfo->RequestIuBuf.Byte[0], ItemLong -- 12
+ScsiToAscii(ucCdbOpCode), ItemString -- 13
+ucCdbOpCode, ItemLong -- 14
+}
+#typev errors_c862 18 "%0
+
+%10!s! ID=%11!03d! (%12!d!,%13!d!,%14!d!) Lun=0x%15!x!. RAID error. pCmd=%16!p!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidErrorInfo
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pCmdInfo->BUS, ItemLong -- 12
+pCmdInfo->TARGET, ItemLong -- 13
+pCmdInfo->LUN, ItemLong -- 14
+ulLun, ItemLong -- 15
+pCmdInfo, ItemPtr -- 16
+}
+#typev errors_c573 13 "%0%10!s!  --> ID=%11!03d! Sense KCQ=%12!x!:%13!02x!:%14!02x! Key=%15!s!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=PrintScsiSenseData
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+ucKey, ItemLong -- 12
+ucAsc, ItemLong -- 13
+ucAscq, ItemLong -- 14
+SenseKeyCodesToAscii(ucKey), ItemString -- 15
+}
+#typev errors_c570 12 "%0%10!s!  --> ID=%11!03d! Sense ErrorCode=%12!x! Valid=%13!d! SegNum=0x%14!x! AddLength=0x%15!x!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=PrintScsiSenseData
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pSense->ErrorCode, ItemLong -- 12
+pSense->Valid, ItemLong -- 13
+pSense->SegmentNumber, ItemLong -- 14
+pSense->AdditionalSenseLength, ItemLong -- 15
+}
+#typev errors_c565 11 "%0%10!s!  --> ID=%11!03d! URE SenseLBA=0x%12!x! V=%13!d!. CmdLBA=0x%14!x!+%15!d! Phys=0x%16!x!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=PrintScsiSenseData
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+QWORD_LOWER(qSenseBlock), ItemLong -- 12
+fValid, ItemLong -- 13
+QWORD_LOWER(qHostBlock), ItemLong -- 14
+pCmdInfo->HostIo.ulBlockCnt, ItemLong -- 15
+QWORD_LOWER(qPhysBlock), ItemLong -- 16
+}
+#typev errors_c57 10 "%0%10!s!  --> ID=%11!03d! SRB Status=%12!s!(0x%13!x!). pCmd=%14!p!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIo FUNC=PrintSrbStatus
+{
+IDSTR2, ItemString -- 10
+ulErrorId, ItemLong -- 11
+pString, ItemString -- 12
+ucSrbStatus, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+}

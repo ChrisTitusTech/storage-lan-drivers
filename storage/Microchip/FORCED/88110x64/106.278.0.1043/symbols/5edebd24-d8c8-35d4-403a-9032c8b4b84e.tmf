@@ -1,0 +1,50 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+5edebd24-d8c8-35d4-403a-9032c8b4b84e 2016 // SRC=MemoryApis.c MJ= MN=
+#typev memoryapis_c107 11 "%0%10!s!   !Failed to allocate %11!d! bytes of continguous cached memory. Node=0x%12!x! Status=0x%13!x!!" //   LEVEL=DbgLvlErr FLAGS=DbgFlagMemory FUNC=AllocateContigCached
+{
+pDevX->szBdf, ItemString -- 10
+Size, ItemLong -- 11
+NumaNode, ItemLong -- 12
+ulStatus, ItemLong -- 13
+}
+#typev memoryapis_c91 10 "%0%10!s!   Allocated %11!d! bytes of contiguous cached memory. Node=0x%12!x! Addr=%13!p!." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagMemory FUNC=AllocateContigCached
+{
+pDevX->szBdf, ItemString -- 10
+Size, ItemLong -- 11
+NumaNode, ItemLong -- 12
+pBuffer, ItemPtr -- 13
+}
+#typev memoryapis_c419 13 "%0%10!s!   !Failed to release %11!d! bytes of NUMA node cached memory! Status = 0x%12!x!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagMemory FUNC=MiAllocOptimizeAlign
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+ulStatus, ItemLong -- 12
+}
+#typev memoryapis_c419 12 "%0%10!s!   Successfully freed %11!d! bytes of NUMA node cached memory." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagMemory FUNC=MiAllocOptimizeAlign
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+}
+#typev memoryapis_c186 13 "%0%10!s!   !Failed to release %11!d! bytes of NUMA node cached memory! Status = 0x%12!x!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagMemory FUNC=MiFreeCachedMemory
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+ulStatus, ItemLong -- 12
+}
+#typev memoryapis_c177 12 "%0%10!s!   Successfully freed %11!d! bytes of NUMA node cached memory." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagMemory FUNC=MiFreeCachedMemory
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+}
+#typev memoryapis_c473 13 "%0%10!s!   !Failed to release %11!d! bytes of NUMA node cached memory! Status = 0x%12!x!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagMemory FUNC=MiFreeMemoryPerMethod
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+ulStatus, ItemLong -- 12
+}
+#typev memoryapis_c473 12 "%0%10!s!   Successfully freed %11!d! bytes of NUMA node cached memory." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagMemory FUNC=MiFreeMemoryPerMethod
+{
+IDSTR2, ItemString -- 10
+Size, ItemLong -- 11
+}

@@ -1,0 +1,265 @@
+// PDB:  Win10_Release\x64\\SmartPqi.pdb
+// PDB:  Last Updated :2017-09-06:21:09:48:105 (UTC) [tracepdb]
+de4138d8-818c-337f-e7c8-eaf99f763cf1 2016 // SRC=Isr.c MJ= MN=
+#typev isr_c41 10 "%0%10!s! !ResponseIu Byte[%11!d!]=0x%12!x!!" //   LEVEL=0 FLAGS=DbgFlagInit FUNC=MiDumpResponseIu
+{
+IDSTR, ItemString -- 10
+ucByte, ItemLong -- 11
+pIuResponse->Byte[ucByte], ItemLong -- 12
+}
+#typev isr_c209 26 "%0" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+}
+#typev isr_c199 25 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! -  AIO No Sense or Response Data.  DataLength = 0x%15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+usDataLength, ItemLong -- 15
+}
+#typev isr_c185 24 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO Response Data Length = 0x%15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+usDataLength, ItemLong -- 15
+}
+#typev isr_c177 23 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO ASCQ = %15!x! 
+" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->AdditionalSenseCodeQualifier, ItemLong -- 15
+}
+#typev isr_c173 22 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO ASC = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->AdditionalSenseCode, ItemLong -- 15
+}
+#typev isr_c169 21 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO Additional Sense Length = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->AdditionalSenseLength, ItemLong -- 15
+}
+#typev isr_c165 20 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO SenseKey = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->SenseKey, ItemLong -- 15
+}
+#typev isr_c161 19 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO SegmentNumber = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->SegmentNumber, ItemLong -- 15
+}
+#typev isr_c157 18 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO Valid bit = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->Valid, ItemLong -- 15
+}
+#typev isr_c153 17 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO ErrorCode = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pAioErrorInfoElement->Data)->ErrorCode, ItemLong -- 15
+}
+#typev isr_c144 16 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO Sense Data Length = 0x%15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+usDataLength, ItemLong -- 15
+}
+#typev isr_c135 15 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO error information ucDataPresent = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+ucDataPresent, ItemLong -- 15
+}
+#typev isr_c132 14 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO error information ResidualCount = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+ulResidualCount, ItemLong -- 15
+}
+#typev isr_c129 13 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO error information Status = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+ucStatus, ItemLong -- 15
+}
+#typev isr_c126 12 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO error information ServiceResponse = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+ucServiceResponse, ItemLong -- 15
+}
+#typev isr_c115 11 "%0
+
+%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - AIO error SCSI Opcode = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessAioErrorInfo
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pCmdInfo->ReqeustIuBuf.AioCmd.Cdb[0], ItemLong -- 15
+}
+#typev isr_c594 39 "%0" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+}
+#typev isr_c588 38 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID ASCQ = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->AdditionalSenseCodeQualifier, ItemLong -- 15
+}
+#typev isr_c584 37 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID ASC = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->AdditionalSenseCode, ItemLong -- 15
+}
+#typev isr_c580 36 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID Additional Sense Length = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->AdditionalSenseLength, ItemLong -- 15
+}
+#typev isr_c576 35 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID SenseKey = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->SenseKey, ItemLong -- 15
+}
+#typev isr_c572 34 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID SegmentNumber = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->SegmentNumber, ItemLong -- 15
+}
+#typev isr_c568 33 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID Valid bit = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->Valid, ItemLong -- 15
+}
+#typev isr_c564 32 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID ErrorCode = %15!x! " //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+((PSENSE_DATA)pRaidErrorInfoElement->Data)->ErrorCode, ItemLong -- 15
+}
+#typev isr_c555 31 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID Sense Data Length = %15!d!," //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pRaidErrorInfoElement->usSenseDataLength, ItemLong -- 15
+}
+#typev isr_c549 30 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID command completion SCSI Status = 0x%15!x!, Status Qualifier = 0x%16!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pRaidErrorInfoElement->ucStatus, ItemLong -- 15
+pRaidErrorInfoElement->usStatusQualifier, ItemLong -- 16
+}
+#typev isr_c545 29 "%0
+
+%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID command SCSI Opcode = 0x%15!x!.  cdb[6]=0x%16!x!" //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pCmdInfo->ReqeustIuBuf.RaidCmd.Cdb[0], ItemLong -- 15
+pCmdInfo->ReqeustIuBuf.RaidCmd.Cdb[6], ItemLong -- 16
+}
+#typev isr_c538 28 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID ucDataInResult = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pRaidErrorInfoElement->ucDataInResult, ItemLong -- 15
+}
+#typev isr_c534 27 "%0%10!s! (%11!d!,%12!d!,%13!d!) %14!p! - RAID ucDataOutResult = 0x%15!x!." //   LEVEL=1 FLAGS=DbgFlagIo FUNC=MiProcessRAIDSenseAndResponseData
+{
+IDSTR, ItemString -- 10
+pCmdInfo->BUS, ItemLong -- 11
+pCmdInfo->TARGET, ItemLong -- 12
+pCmdInfo->LUN, ItemLong -- 13
+pCmdInfo, ItemPtr -- 14
+pRaidErrorInfoElement->ucDataOutResult, ItemLong -- 15
+}

@@ -1,0 +1,60 @@
+// PDB:  objfre_win7_amd64\amd64\SmartPqi.pdb
+// PDB:  Last Updated :2017-9-6:21:8:18:758 (UTC) [tracepdb]
+1d6711e0-99c3-5a0d-c668-0a23acc0907f 2008 // SRC=Reg.c MJ= MN=
+#typev  Reg_c1095 20 "%0%10!s!:    CosTimeout=%11!d!" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->RegVar.ulCoSTimeout, ItemLong -- 11
+}
+#typev  Reg_c1081 19 "%0%10!s!:    MaxQueueDepth=%11!d! KB
+" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->RegVar.usDeviceMaxQLen, ItemLong -- 11
+}
+#typev  Reg_c1079 18 "%0%10!s!:    EnableFull64Bit=%11!d!" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->RegVar.fEnableFull64Bit, ItemLong -- 11
+}
+#typev  Reg_c1077 17 "%0%10!s!:    EnableExtendedSrbs=%11!d!" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->RegVar.fEnableExtendedSrbs, ItemLong -- 11
+}
+#typev  Reg_c1074 16 "%0%10!s!:    MaxTransfer=%11!d! KB
+" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->RegVar.usMaxTransfer, ItemLong -- 11
+}
+#typev  Reg_c1072 15 "%0%10!s!:    Tracing=%11!d!" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+gMiTrace, ItemLong -- 11
+}
+#typev  Reg_c1070 14 "%0
+
+%10!s!:  *****Test Registry Values*****." //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+}
+#typev  Reg_c1066 13 "%0
+%10!s!:  Driver queuing is off." //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+}
+#typev  Reg_c1061 12 "%0
+%10!s!:  Driver queuing is on." //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+}
+#typev  Reg_c932 11 "%0%10!s!: !Invalid registry value for HeartBeatCriteria = %11!d!.  Defaulting to 30 seconds !" //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiAccessRegistry
+{
+IDSTR, ItemString -- 10
+pDeviceExtension->LockupCriteria.ulRegLockupTime, ItemLong -- 11
+}
+#typev  Reg_c411 10 "%0%10!s!: !Failed to read CSMI security registry value DriverParameter!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=MiAccessRegistry
+{
+DEBUG_NAME, ItemString -- 10
+}

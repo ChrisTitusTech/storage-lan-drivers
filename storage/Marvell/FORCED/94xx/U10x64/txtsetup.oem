@@ -1,0 +1,50 @@
+[Disks] 
+disk0 = "Marvell SAS Driver Diskette", \mvs94xx, \
+disk1 = "Marvell SAS Driver Diskette", \mvs94xx, \i386
+disk2 = "Marvell SAS Driver Diskette", \mvs94xx, \amd64
+
+[Defaults] 
+SCSI = i386_s94xx
+
+[SCSI] 
+i386_s94xx   = "Marvell 94xx SAS/SATA2 Controller 32bit Driver", mvs94xx 
+amd64_s94xx  = "Marvell 94xx SAS/SATA2 Controller 64bit Driver", mvs94xx
+
+[Files.SCSI.i386_s94xx] 
+inf	= disk1, mvs94xx.inf
+inf 	= disk1, mvnodrv.inf
+driver	= disk1, mvs94xx.sys, mvs94xx
+catalog = disk1, mvs94xx.cat
+
+
+[Files.SCSI.amd64_s94xx] 
+inf	= disk2, mvs94xx.inf
+inf 	= disk2, mvnodrv.inf
+driver	= disk2, mvs94xx.sys, mvs94xx
+catalog = disk2, mvs94xx.cat
+
+
+[HardwareIds.SCSI.i386_s94xx] 
+id = "PCI\VEN_11AB&DEV_9480", "mvs94xx"
+id = "PCI\VEN_11AB&DEV_948F", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9480", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_948F", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9440", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9445", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9485", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9580", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9588", "mvs94xx"
+
+[HardwareIds.SCSI.amd64_s94xx] 
+id = "PCI\VEN_11AB&DEV_9480", "mvs94xx"
+id = "PCI\VEN_11AB&DEV_948F", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9480", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_948F", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9440", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9445", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9485", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9580", "mvs94xx"
+id = "PCI\VEN_1B4B&DEV_9588", "mvs94xx"
+
+[Config.mvs94xx]
+value = parameters\PnpInterface,5,REG_DWORD,1

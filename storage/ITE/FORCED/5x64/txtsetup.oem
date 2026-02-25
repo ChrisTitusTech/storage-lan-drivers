@@ -1,0 +1,89 @@
+#
+# TXTSETUP.OEM for IT8212 ATA RAID Controller
+#
+
+[Disks]
+d1 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \
+d2 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \WINNT
+d3 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \WIN2K
+d4 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \WINXP
+d5 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \WIN2003
+d6 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \WIN64
+d7 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \Vista32
+d8 = "ITE IT8212 ATA RAID Driver Diskette", \ITERAID, \Vista64
+
+
+
+[Defaults]
+scsi = ITERAID_2000
+
+[scsi]
+ITERAID_NT     = "ITE IT8212 ATA RAID Controller (Windows NT)", ITERAID
+ITERAID_2000   = "ITE IT8212 ATA RAID Controller (Windows 2000)", ITERAID
+ITERAID_XP   = "ITE IT8212 ATA RAID Controller (Windows XP)", ITERAID
+ITERAID_2003   = "ITE IT8212 ATA RAID Controller (Windows 2003)", ITERAID
+ITERAID_WIN64   = "ITE IT8212 ATA RAID Controller (Windows XP, Windows 2003 64bit )", ITERAID
+ITERAID_Vista32   = "ITE IT8212 ATA RAID Controller (Windows Vista32)", ITERAID
+ITERAID_Vista64   = "ITE IT8212 ATA RAID Controller (Windows Vista64)", ITERAID
+
+[Files.scsi.ITERAID_NT]
+driver = d2, iteraid.sys, ITERAID
+inf    = d2, iteraid.inf
+
+[Files.scsi.ITERAID_2000]
+driver = d3, iteraid.sys, ITERAID
+inf    = d3, iteraid.inf
+catalog = d3, iteraid.cat
+
+[Files.scsi.ITERAID_XP]
+driver = d4, iteraid.sys, ITERAID
+inf    = d4, iteraid.inf
+catalog = d4, iteraid.cat
+
+[Files.scsi.ITERAID_2003]
+driver = d5, iteraid.sys, ITERAID
+inf    = d5, iteraid.inf
+catalog = d5, iteraid.cat
+
+[Files.scsi.ITERAID_WIN64]
+driver = d6, iteraid.sys, ITERAID
+inf    = d6, iteraid.inf
+catalog = d6, iteraid.cat
+
+[Files.scsi.ITERAID_Vista32]
+driver = d7, iteraid.sys, ITERAID
+inf    = d7, iteraid.inf
+catalog = d7, iteraid.cat
+
+[Files.scsi.ITERAID_Vista64]
+driver = d8, iteraid.sys, ITERAID
+inf    = d8, iteraid.inf
+catalog = d8, iteraid.cat
+
+
+[HardwareIds.scsi.ITERAID_NT]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_2000]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_XP]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_2003]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_WIN64]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_Vista32]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+[HardwareIds.scsi.ITERAID_Vista64]
+id = "PCI\VEN_1283&DEV_8212","ITERAID"
+
+
+
+[Config.ITERAID]
+value = "", Tag, REG_DWORD, 1
+value = "Parameters\PnpInterface", 5, REG_DWORD, 1

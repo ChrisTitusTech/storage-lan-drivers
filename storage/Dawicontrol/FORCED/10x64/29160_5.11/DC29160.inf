@@ -1,0 +1,58 @@
+; DC-29160 SCSI Installationfile (x64)
+; Copyright (C) 2010 Dawicontrol GmbH
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%StrgCompany%
+DriverVer=08/01/2017, 5.11
+CatalogFile=DC29160.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %StrgDiskLabel%,,
+
+[SourceDisksFiles]
+DC29160.SYS = 1
+
+[Manufacturer]
+%StrgCompany%=DC29160_Section, NTamd64
+
+[DC29160_Section.NTamd64]
+%StrgDevice%=DC29160_Install, PCI\VEN_1000&DEV_0021
+
+[DC29160_Install]
+CopyFiles=@DC29160.sys
+
+[DC29160_Install.Services]
+AddService = DC29160, 2, DC29160_Service_Inst, DC29160_EventLog_Inst
+
+[DC29160_Service_Inst]
+ServiceType    = 1
+StartType      = 0
+ErrorControl   = 1
+ServiceBinary  = %12%\DC29160.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = DC29160_PNP_AddReg
+AddReg         = DC29160_Parm_AddReg
+
+[DC29160_EventLog_Inst]
+AddReg = DC29160_EventLog_AddReg
+
+[DC29160_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+[DC29160_PNP_AddReg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+[DC29160_Parm_AddReg]
+HKR, "Parameters\Device", "DriverParameter", REG_SZ, ""
+
+[Strings]
+StrgCompany="Dawicontrol GmbH"
+StrgDevice="DC-29160 U3W SCSI Hostadapter"
+StrgDiskLabel="SCSI Software Installation Disk"

@@ -1,0 +1,156 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+84a03c4d-844c-3b6e-8795-225ee5a5016a 2016 // SRC=IoctlCsmiary.c MJ= MN=
+#typev ioctlcsmiary_c1788 39 "%0%10!s!   Received Completion for Invalid CSMI PASSTHRU control code:  %11!u!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=CsmiPassthroughCompletion
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+}
+#typev ioctlcsmiary_c1784 36 "%0%10!s!   Received Completion for IOCTL is CC_CSMI_SAS_GET_RAID_INFO." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=CsmiPassthroughCompletion
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c1784 37 "%0%10!s!   Received Completion for IOCTL is CC_CSMI_SAS_GET_RAID_CONFIG." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=CsmiPassthroughCompletion
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c1784 38 "%0%10!s!   Received Completion for !Invalid CSMIARY control code:  %11!u!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=CsmiPassthroughCompletion
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+}
+#typev ioctlcsmiary_c1540 35 "%0%10!s!   Csmi Raid Configuration is completed for SCSI Lun(%11!x! %12!x! %13!x!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=CsmiRaidConfigCompletion
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1511 34 "%0%10!s!   Completing Bmic 0x%11!x! (%12!s!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=CsmiRaidConfigCompletion
+{
+IDSTR2, ItemString -- 10
+ucBmicCmd, ItemLong -- 11
+pString, ItemString -- 12
+}
+#typev ioctlcsmiary_c1482 33 "%0%10!s!   Received Raid path error for SCSI Lun(%11!d! %12!d! %13!d!)." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=CsmiRaidConfigCompletion
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1278 29 "%0%10!s!   SAS RAID bDataType  is Invalid, Hence completing the SRB." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetLogicalDriveInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c1226 28 "%0%10!s!   Received Bmic Sense completion for SCSI Lun(%11!x! %12!x! %13!x!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetLogicalDriveInfo
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1414 32 "%0%10!s!   There is no more physical drives for Logical volume(SCSI Lun : %11!d! %12!d! %13!d!). Hence RaidConfig ioctl is completed" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetPhysicalDrivesInfo
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1391 31 "%0%10!s!   Mamimum number of Physical Drives(240) processed. Hence RaidConfig ioctl is completed" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetPhysicalDrivesInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c1376 30 "%0%10!s!   Identify Physical drive completed for one of the Physical drive belongs to Logical volume(SCSI Lun : %11!d! %12!d! %13!d!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetPhysicalDrivesInfo
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c940 23 "%0%10!s!   Volume Id: 0x%11!x!, Cache Module State: 0x%12!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagIoctl FUNC=GetRaidAdditionalData
+{
+IDSTR2, ItemString -- 10
+pLogicalAddress->VolumeId, ItemLong -- 11
+!pDevX->AdditionalInfo.fNoCacheModule, ItemLong -- 12
+}
+#typev ioctlcsmiary_c1170 27 "%0%10!s!   There is no more physical drives for Logical volume(SCSI Lun : %11!d! %12!d! %13!d!). Hence RaidConfig ioctl is completed" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetRaidDataDrives
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1150 26 "%0%10!s!   Bmic Sense configuration completed for SCSI Lun(%11!x! %12!x! %13!x!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetRaidDataDrives
+{
+IDSTR2, ItemString -- 10
+pDeviceRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pDeviceRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pDeviceRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c1110 25 "%0%10!s!   Memory Allocation is failed for %11!d! bytes requested memory from Arena buffer." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetRaidDataDrives
+{
+IDSTR2, ItemString -- 10
+BMIC_EXTENDED_SPARE_DRIVE_ASSIGNMENT_MAP_SIZE, ItemLong -- 11
+}
+#typev ioctlcsmiary_c1078 24 "%0%10!s!   Memory Allocation is failed for %11!d! bytes requested memory from Arena buffer." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetRaidDataDrives
+{
+IDSTR2, ItemString -- 10
+BMIC_EXTENDED_BIG_DRIVE_ASSIGNMENT_MAP_SIZE, ItemLong -- 11
+}
+#typev ioctlcsmiary_c351 20 "%0%10!s!   IOCTL is CC_CSMI_SAS_GET_RAID_INFO." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=ProcessCsmiRaidIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c360 21 "%0%10!s!   IOCTL is CC_CSMI_SAS_GET_RAID_CONFIG." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=ProcessCsmiRaidIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c369 22 "%0%10!s! !Invalid miniport CSMIARY control code:  %11!u!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessCsmiRaidIoctls
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+}
+#typev ioctlcsmiary_c339 19 "%0%10!s! !Received IOCTL request for a controller that is FAILED/Offline!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessCsmiRaidIoctls
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c283 18 "%0%10!s!   Start getting the Bmic Sense of Logical Drive for SCSI Lun(%11!x! %12!x! %13!x!)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidConfig
+{
+IDSTR2, ItemString -- 10
+pRecord->pExtra->ScsiAddress.Bus, ItemLong -- 11
+pRecord->pExtra->ScsiAddress.Target, ItemLong -- 12
+pRecord->pExtra->ScsiAddress.Lun, ItemLong -- 13
+}
+#typev ioctlcsmiary_c236 17 "%0%10!s! Raid index is out of range!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidConfig
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c225 16 "%0%10!s! Change Count not matching!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidConfig
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c211 15 "%0%10!s! !Buffer length too small!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidConfig
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c174 14 "%0%10!s!   No exposed drives found in device table!!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c161 13 "%0%10!s! BMIC(0x50) Failed to send!!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c129 12 "%0%10!s!   ------Start getting each Sense configuration for all logical drives-----" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c61 11 "%0%10!s! !Unable to get lock because managing DPC object is in use!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmiary_c50 10 "%0%10!s! !Buffer length too small!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_GetRaidInfo
+{
+IDSTR2, ItemString -- 10
+}

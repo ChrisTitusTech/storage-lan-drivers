@@ -1,0 +1,17 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+4732ed36-c2ce-3bda-25e9-da41a65eda7e 2016 // SRC=SmartPqi.c MJ= MN=
+#typev smartpqi_c315 12 "%0%10!s!:   !Search status = 0x%11!x!!" //   LEVEL=1 FLAGS=DbgFlagInit FUNC=DriverEntry
+{
+DEBUG_NAME, ItemString -- 10
+ulStatus, ItemLong -- 11
+}
+#typev smartpqi_c74 11 "%0SmartPqi Date:    %10!s! %11!s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPrintDriverMetadata
+{
+__DATE__, ItemString -- 10
+__TIME__, ItemString -- 11
+}
+#typev smartpqi_c73 10 "%0SmartPqi Driver Version: %10!s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiPrintDriverMetadata
+{
+DRIVER_VERSION_STR, ItemString -- 10
+}

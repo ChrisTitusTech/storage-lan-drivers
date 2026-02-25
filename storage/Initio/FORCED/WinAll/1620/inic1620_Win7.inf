@@ -1,0 +1,99 @@
+; inic1620.inf
+;
+; Installation inf for the SATA Host Adapter.
+;
+;Copyright (c) Initio Corporation 2004-2010.  All rights reserved.
+;
+[Version]
+Signature="$Windows NT$"
+Provider=%Initio%
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Class=SCSIAdapter
+DriverVer=07/09/2010, 4.13.10.0709
+CatalogFile=inic1620_Win7.cat
+
+[DestinationDirs]
+DefaultDestDir  = 12
+
+[Manufacturer]
+%MfgName% = HARDWARE_ID,NTx86.6.1,NTamd64.6.1
+
+[HARDWARE_ID.NTx86.6.1]   	; Win7 (32-bit)
+%Device1622% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device1623% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16231101&REV_02
+%Device1626% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16261101&REV_02
+%Device1627% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16271101&REV_02
+
+[HARDWARE_ID.NTamd64.6.1]
+%Device1622% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16221101
+%Device1623% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16231101&REV_02
+%Device1626% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16261101&REV_02
+%Device1627% = Device_Inst.Win7, PCI\VEN_1101&DEV_1622&SUBSYS_16271101&REV_02
+
+;;================
+;; Install Driver
+;;================
+
+[Device_Inst.Win7]			; to prevent IA64 and other unseen ones
+
+[Device_Inst.Win7.NTx86]
+CopyFiles=INI_CopyList.Win7_32bit;
+
+[Device_Inst.Win7.NTamd64]
+CopyFiles=INI_CopyList.Win7_64bit;
+
+[SourceDisksNames]
+1=%DISK_NAME%
+
+[SourceDisksFiles]
+inic1620Win732.sys = 1
+inic1620Win764.sys = 1
+
+[INI_CopyList]              ; empty section. Used to prevent INF use from 9x & ME
+
+[INI_CopyList.NTia64]       ; empty section. Used to prevent INF use from Intel Itanium platforms
+[INI_CopyList.Win7_32bit]
+inic1620.sys,inic1620Win732.sys;
+
+[INI_CopyList.Win7_64bit]
+inic1620.sys,inic1620Win764.sys;
+
+[Device_Inst.Win7.Services]
+
+[Device_Inst.Win7.NTx86.Services]
+AddService = inic1620, 2, Device_Service_Inst, Device_EventLog_Inst
+
+[Device_Inst.Win7.NTamd64.Services]
+AddService = inic1620, 2, Device_Service_Inst, Device_EventLog_Inst
+
+[Device_Service_Inst]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 0                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  
+LoadOrderGroup = SCSI Miniport
+ServiceBinary  = %12%\inic1620.sys
+AddReg         = pnpsafe_pci_addreg
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+
+[Device_EventLog_Inst]
+AddReg = Device_EventLog_AddReg
+
+[Device_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\inic1620.sys"
+HKR,,TypesSupported,0x00010001,7
+
+;================
+; Vendor Strings
+;================
+[Strings]
+Initio   = "INITIO Corp."
+MfgName    = "INITIO Corp."
+Device1622 = "Initio inic1622 S-ATA Adapter"
+Device1623 = "Initio inic1623 S-ATA Controller"
+Device1626 = "Initio inic1620 S-ATA Adapter"
+Device1627 = "Initio inic1623 S-ATA Cardbus Adapter"
+Install.Disk = "Initio INIC1620 S-ATA adapter Driver Installation Disk"	
+DISK_NAME   = "Initio INIC162x S-ATA RAID Controller Driver Installation Disk"

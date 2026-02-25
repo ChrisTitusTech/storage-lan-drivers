@@ -1,0 +1,744 @@
+
+; qdatwin.inf -- Quantum DAT Tape Driver for Windows 2000/XP/2003/Vista/2008
+; Copyright (c) 2001-2007 Quantum Corporation
+
+[version]
+signature="$Windows NT$"
+Class=TapeDrive
+ClassGUID={6D807884-7D21-11CF-801C-08002BE10318}
+Provider=%QuantumCorp%
+CatalogFile="qdatwin.cat"
+DriverVer=12/17/2007,1.15.0.0
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer]
+%Quantum% = Quantum, NTx86, NTamd64, NTia64
+
+[Quantum] ;--- x86 Windows 2000 device list ---
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ06_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ07_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4326NP/RP__!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4586NP_____!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STD224000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STL496000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00051-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00072-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00095-001
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_01931-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02004-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02635-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02636-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02801-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02830-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03195-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03812-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_03813-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_04688-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04689-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-005
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25601-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25602-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25950-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27416-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27807-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27811-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4322XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28219-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28354-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28388-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28454-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28849-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4586XX_28887-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29279-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29987-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, SCSI\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ06_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ07_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4326NP/RP__!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4586NP_____!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STD224000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STL496000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00051-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00072-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00095-001________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_01931-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02004-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02635-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02636-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02801-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02830-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03195-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03812-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_03813-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_04688-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04689-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-005________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25601-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25602-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25950-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27416-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27807-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27811-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4322XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28219-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28354-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28388-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28454-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28849-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4586XX_28887-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29279-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29987-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-452________________
+%ibmdat_DeviceDesc% = stdat_Inst, IDE\SequentialIBM_DDS_Gen5____________________________
+
+; [stdat_Inst] --> [stdat_Inst.NTx86]
+; [stdat_Inst.Services] --> [stdat_Inst.NTx86.Services]
+
+
+[Quantum.NTx86] ;--- x86 Windows XP/2003 device list ---
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ06_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ07_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4326NP/RP__!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4586NP_____!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STD224000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STL496000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00051-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00072-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00095-001
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_01931-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02004-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02635-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02636-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02801-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02830-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03195-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03812-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_03813-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_04688-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04689-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-005
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25601-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25602-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25950-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27416-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27807-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27811-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4322XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28219-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28354-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28388-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28454-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28849-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4586XX_28887-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29279-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29987-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, SCSI\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ06_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ07_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4326NP/RP__!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4586NP_____!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STD224000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STL496000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00051-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00072-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00095-001________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_01931-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02004-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02635-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02636-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02801-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02830-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03195-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03812-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_03813-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_04688-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04689-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-005________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25601-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25602-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25950-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27416-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27807-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27811-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4322XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28219-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28354-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28388-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28454-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28849-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4586XX_28887-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29279-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29987-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-452________________
+%ibmdat_DeviceDesc% = stdat_Inst, IDE\SequentialIBM_DDS_Gen5____________________________
+
+[stdat_Inst.NTx86]
+UseInfDeviceDesc=1
+CopyFiles = @qdatwin.sys
+
+[stdat_Inst.NTx86.Services]
+AddService = qdatwin, %SPSVCINST_ASSOCSERVICE%, stdat_Service_Inst, stdat_EventLog_Inst
+
+; ---- Start CoInstaller installation -----------------------------------------
+
+[stdat_Inst.NTx86.CoInstallers]
+CopyFiles = CoCopy_x86
+AddReg    = CoAddReg_x86
+
+[CoCopy_x86]
+qdatwin.dll,,,0x10
+
+[CoAddReg_x86]
+HKR,,CoInstallers32,0x00010000,"qdatwin.dll,qdatwin_CoInstaller"
+
+; ---- End CoInstaller installation -----------------------------------------
+
+
+[Quantum.NTamd64] ;--- amd64 Windows XP/2003 device list ---
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ06_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ07_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4326NP/RP__!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4586NP_____!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STD224000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STL496000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00051-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00072-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00095-001
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_01931-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02004-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02635-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02636-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02801-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02830-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03195-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03812-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_03813-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_04688-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04689-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-005
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25601-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25602-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25950-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27416-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27807-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27811-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4322XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28219-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28354-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28388-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28454-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28849-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4586XX_28887-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29279-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29987-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, SCSI\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ06_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ07_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4326NP/RP__!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4586NP_____!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STD224000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STL496000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00051-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00072-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00095-001________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_01931-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02004-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02635-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02636-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02801-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02830-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03195-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03812-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_03813-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_04688-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04689-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-005________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25601-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25602-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25950-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27416-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27807-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27811-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4322XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28219-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28354-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28388-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28454-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28849-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4586XX_28887-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29279-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29987-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-452________________
+%ibmdat_DeviceDesc% = stdat_Inst, IDE\SequentialIBM_DDS_Gen5____________________________
+
+[stdat_Inst.NTamd64]
+UseInfDeviceDesc=1
+CopyFiles = @qdatwin.sys
+
+[stdat_Inst.NTamd64.Services]
+AddService = qdatwin, %SPSVCINST_ASSOCSERVICE%, stdat_Service_Inst, stdat_EventLog_Inst
+
+; ---- Start CoInstaller installation -----------------------------------------
+
+[stdat_Inst.NTamd64.CoInstallers]
+CopyFiles = CoCopy_amd64
+AddReg    = CoAddReg_amd64
+
+[CoCopy_amd64]
+qdatwin.dll,,,0x10
+
+[CoAddReg_amd64]
+HKR,,CoInstallers32,0x00010000,"qdatwin.dll,qdatwin_CoInstaller"
+
+; ---- End CoInstaller installation -----------------------------------------
+
+
+[Quantum.NTia64] ;--- ia64 Windows XP/2003 device list ---
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, USBSTOR\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ06_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialDEC_____TLZ07_____(C)DEC
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4326NP/RP__!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM4586NP_____!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STD224000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_IBM-STL496000N!D
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00051-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00072-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_00095-001
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_01931-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02004-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02635-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02636-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02779-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02801-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_02830-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03195-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_03812-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_03813-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04106-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04377-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04687-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_04688-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_04689-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06240-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06241-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06408-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_06409-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25501-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25588-005
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25601-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25602-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_25950-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27416-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27807-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27811-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4322XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4326XX_27871-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28219-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28354-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28388-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28454-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_28849-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_4586XX_28887-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29279-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialARCHIVE_Python_29987-XXX
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____9SP40-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialSEAGATE_DAT____DAT72-452
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-000
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-052
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-400
+%stdat_DeviceDesc% = stdat_Inst, SCSI\SequentialQUANTUM_DAT____DAT72-452
+%ibmdat_DeviceDesc% = stdat_Inst, SCSI\SequentialIBM_____DDS_Gen5________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ06_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialDEC_____TLZ07_____(C)DEC________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4326NP/RP__!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM4586NP_____!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STD224000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_IBM-STL496000N!D________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00051-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00072-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_00095-001________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_01931-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02004-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02635-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02636-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02779-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02801-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_02830-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03195-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_03812-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_03813-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04106-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04377-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04687-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_04688-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_04689-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06240-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06241-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06408-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_06409-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25501-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25588-005________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25601-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25602-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_25950-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27416-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27807-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27811-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4322XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4326XX_27871-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28219-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28354-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28388-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28454-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_28849-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_4586XX_28887-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29279-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialARCHIVE_Python_29987-XXX________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____9SP40-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialSEAGATE_DAT____DAT72-452________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-000________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-052________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-400________________
+%stdat_DeviceDesc% = stdat_Inst, IDE\SequentialQUANTUM_DAT____DAT72-452________________
+%ibmdat_DeviceDesc% = stdat_Inst, IDE\SequentialIBM_DDS_Gen5____________________________
+
+[stdat_Inst.NTia64]
+UseInfDeviceDesc=1
+CopyFiles = @qdatwin.sys
+
+[stdat_Inst.NTia64.Services]
+AddService = qdatwin, %SPSVCINST_ASSOCSERVICE%, stdat_Service_Inst, stdat_EventLog_Inst
+
+; ---- Start CoInstaller installation -----------------------------------------
+
+[stdat_Inst.NTia64.CoInstallers]
+CopyFiles = CoCopy_ia64
+AddReg    = CoAddReg_ia64
+
+[CoCopy_ia64]
+qdatwin.dll,,,0x10
+
+[CoAddReg_ia64]
+HKR,,CoInstallers32,0x00010000,"qdatwin.dll,qdatwin_CoInstaller"
+
+; ---- End CoInstaller installation -----------------------------------------
+
+
+[stdat_Service_Inst]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\qdatwin.sys
+
+[stdat_EventLog_Inst]
+AddReg = stdat_EventLog_AddReg
+
+[stdat_EventLog_AddReg]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\qdatwin.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+
+; source-disk-number = disk-label,tag-or-cab-file,,subdir,flags,tag-file
+
+[SourceDisksNames.x86]
+1 = %sourcediskname%,,,\i386
+
+[SourceDisksNames.amd64]
+1 = %sourcediskname%,,,\amd64
+
+[SourceDisksNames.ia64]
+1 = %sourcediskname%,,,\ia64
+
+; source-filename = source-disk-number,subdir,size
+
+[SourceDisksFiles]
+qdatwin.sys = 1
+qdatwin.dll = 1
+
+[DestinationDirs]
+DefaultDestDir = 12 ; system32\drivers
+CoCopy_x86     = 11 ; system32
+CoCopy_amd64   = 11 ; system32
+CoCopy_ia64    = 11 ; system32
+
+[Strings]
+; Non-localizable
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+
+QuantumCorp = "Quantum Corporation"
+Quantum = "Quantum"
+
+; Localizable
+sourcediskname = "DAT Tape Driver for Windows 2000/XP/2003/Vista"
+stdat_DeviceDesc = "Quantum DAT Tape Drive"
+ibmdat_DeviceDesc = "IBM DDS Gen5 Tape Drive"

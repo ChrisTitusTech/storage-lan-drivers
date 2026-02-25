@@ -1,0 +1,285 @@
+# Copyright (c) 2003-2011 Emulex. All rights reserved.
+#
+# TXTSETUP.OEM - This file is used by Setup to install the Emulex Storport 
+#                Miniport driver elxcna.sys for Boot-time installation
+#
+#                (for Emulex LightPulse Fibre Channel Host Bus Adapters)
+#
+# Emulex BIOS may be found on our ftp site.  It currently supports INT13,
+# and multi-boot environments, with Private FC-AL an F_Port fabric support.
+# The BIOS is loaded to the adapter with either the NT or DOS utility.
+#
+# format for txtsetup.oem.
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+
+
+
+[Disks]
+
+# This section lists all disks in the disk set.
+#
+# <description> is a descriptive name for a disk, used when
+#   prompting for the disk
+# <tagfile> is a file whose presence allows setup to recognize
+#   that the disk is inserted.
+# <directory> is where the files are located on the disk.
+#
+
+d1 = "Emulex LPX000 Software Diskette", \lpscsi, \
+
+
+[Defaults]
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+scsi = elxcna
+
+[scsi]
+
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+
+
+elxcna = "Emulex LPX000 PCI Fibre Channel HBA", elxcna
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.elxcna]
+driver = d1, elxcna.sys, elxcna
+dll    = d1, elxcna.dll
+inf    = d1, oemsetup.inf
+catalog= d1, elxcna.cat
+
+# This section specifies values to be set in the registry for
+# particular component options.  Required values in the services\xxx
+# key are created automatically -- use this section to specify additional
+# keys to be created in services\xxx and values in services\xxx and
+# services\xxx\yyy.
+#
+# <key_name> is relative to the services node for this device.
+#   If it is empty, then it refers to the services node.
+#   If specified, the key is created first.
+# <value_name> specifies the value to be set within the key
+# <value_type> is a string like REG_DWORD.  See below.
+# <value> specifies the actual value; its format depends on <value_type>
+
+[Config.elxcna]
+value = Parameters\Device,DriverParameter,REG_SZ,"Topology=2;"
+value = Parameters\PnPInterface,5,REG_DWORD,1
+
+[HardwareIds.scsi.elxcna]
+id = "PCI\VEN_10DF&DEV_FE05&SUBSYS_FE0510DF", "elxcna"
+id = "PCI\VEN_10DF&DEV_FE05&SUBSYS_FE2810DF", "elxcna"
+id = "PCI\VEN_10DF&DEV_FE05&SUBSYS_FE2910DF", "elxcna"
+id = "PCI\VEN_10DF&DEV_FE05&SUBSYS_FE2A10DF", "elxcna"
+id = "PCI\VEN_10DF&DEV_FE05&SUBSYS_3252103C", "elxcna"
+id = "PCI\VEN_10DF&DEV_FE12&SUBSYS_004B1137", "elxcna"
+id = "PCI\VEN_10DF&DEV_0214&SUBSYS_100019A2", "elxcna"
+id = "PCI\VEN_10DF&DEV_0214&SUBSYS_100119A2", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_006F1137", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_03D01014", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_03D11014", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_119D1734", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_119E1734", "elxcna"
+id = "PCI\VEN_10DF&DEV_0714&SUBSYS_119F1734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E63010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E63210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E63410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E63610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E63810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E69010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E69210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E69E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_1746103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_1747103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_117A1734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_117C1734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_117E1734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E6A010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E6A210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E6AE10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_1748103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_1749103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_11801734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_11821734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_11841734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E61010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E62910DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E61210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E61410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E61610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E61810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E68010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E68210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E68E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_174A103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_174B103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_3314103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_11861734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_11881734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_118A1734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_006E1137", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E65110DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72910DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71110DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E79010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E79210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E79E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E7A010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E7A210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E7AE10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A01734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A11734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A21734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A31734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A41734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11A51734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3315103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3340103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3341103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3342103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3343103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3344103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3345103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71410DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71610DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71810DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E75110DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E78010DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E78210DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E78E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E60910DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0704&SUBSYS_E64910DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73110DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73310DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3376103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_337B103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_337C103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3391103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_3392103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11C11734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11C21734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_11C91734", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70A10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70B10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70C10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70D10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70F10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71B10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71C10DF", "elxcna"
+
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72310DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E74310DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E70310DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71A10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_304B1054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_177B103C", "elxcna"
+
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71510DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71E10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71F10DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E73510DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_17A3103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_17A6103C", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_304C1054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_304D1054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_304E1054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_304F1054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_30541054", "elxcna"
+
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_30571054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_30581054", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71710DF", "elxcna"
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E71910DF", "elxcna"
+
+id = "PCI\VEN_19A2&DEV_0714&SUBSYS_E72A10DF", "elxcna"
+
+id = "PCI\VEN_10DF&DEV_E260&SUBSYS_04101014", "elxcna"
+id = "PCI\VEN_10DF&DEV_E268&SUBSYS_04101014", "elxcna"

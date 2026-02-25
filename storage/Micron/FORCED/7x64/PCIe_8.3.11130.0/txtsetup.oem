@@ -1,0 +1,91 @@
+# 
+# txtsetup.oem file for Micron RealSSD P320 Driver 
+#
+
+[Disks]
+d1 = "Micron RealSSD PCIe SSD Driver Diskette for P320h and P420m", \Micron, \
+
+[Defaults]
+scsi = MicronP320h
+
+[scsi]
+MicronP320h = "Micron RealSSD P320h PCIe Controller"
+MicronP420m = "Micron RealSSD P420m PCIe Controller"
+DellP320h = "Dell Express Flash P320h PCIe Controller"
+DellP420m = "Dell Express Flash P420m PCIe Controller"
+EMCP320h = "EMC P320h PCIe Controller"
+EMCP420m = "EMC P420m PCIe Controller"
+
+[Files.scsi.MicronP320h]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+[Files.scsi.MicronP420m]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+[Files.scsi.DellP320h]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+[Files.scsi.DellP420m]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+[Files.scsi.EMCP320h]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+[Files.scsi.EMCP420m]
+driver  = d1, mtistorp.sys
+catalog = d1, mtistorp.cat
+inf     = d1, mtistorp.inf
+
+
+[HardwareIDs.scsi.MicronP320h]
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_00001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_10001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_11001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_21001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_12001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_22001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_32001344", "mtistorp"
+
+[HardwareIDs.scsi.MicronP420m]
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_00001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_10001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_20001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_12001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_22001344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_32001344", "mtistorp"
+ 
+[HardwareIDs.scsi.DellP320h]
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_00081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_10081344", "mtistorp"
+
+[HardwareIDs.scsi.DellP420m]
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_00081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_10081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_20081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_12081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_22081344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_32081344", "mtistorp"
+ 
+[HardwareIDs.scsi.EMCP320h]
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_00041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_10041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_12041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5150&SUBSYS_22041344", "mtistorp"
+
+[HardwareIDs.scsi.EMCP420m]
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_10041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_20041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_12041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_22041344", "mtistorp"
+id = "PCI\VEN_1344&DEV_5161&SUBSYS_32041344", "mtistorp"
+ 

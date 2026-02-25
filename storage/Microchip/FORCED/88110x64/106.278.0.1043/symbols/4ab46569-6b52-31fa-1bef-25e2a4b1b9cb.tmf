@@ -1,0 +1,100 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+4ab46569-6b52-31fa-1bef-25e2a4b1b9cb 2016 // SRC=Adapcntl.c MJ= MN=
+#typev adapcntl_c319 19 "%0%10!s! !Control Type is undefined or not supported!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagInit FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c292 18 "%0%10!s!  Another ScsiAdapterPrepareForBusReScan received before last RESCAN finished." //   LEVEL=DbgLvlWrn FLAGS=DbgFlagRescan FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c279 17 "%0%10!s!   Received ScsiAdapterPrepareForBusReScan.  TimeStamp=%11!I64u!secs" //   LEVEL=DbgLvlRescanImp FLAGS=DbgFlagRescan FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+OS_TIME_TO_SEC(pDevX->ullReScanTimeStartedMsec), ItemULongLong -- 11
+}
+#typev adapcntl_c246 16 "%0%10!s!   Received ScsiSetRunningConfig." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c229 15 "%0%10!s!   *********************DRIVER UNLOADED******************." //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c220 14 "%0%10!s!   Received ScsiSetBootConfig." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagShutdown FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c173 13 "%0%10!s!   Received ScsiRestartAdapter.  Restarting the adapter." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagShutdown FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c124 12 "%0%10!s!   Active Requests count is %11!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagShutdown FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+MiGetActiveRequestCount(pDevX), ItemLong -- 11
+}
+#typev adapcntl_c83 11 "%0%10!s!   Received ScsiStopAdapter.  Stopping the adapter." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagShutdown FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c58 10 "%0%10!s!   Checking for supported Control Types." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=CallBack_AdapterControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev adapcntl_c392 29 "%0%10!s!   --- RAID map disk data allocation count = %11!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pDevX->ulRaidMapDiskDataCnt, ItemLong -- 11
+}
+#typev adapcntl_c389 28 "%0%10!s!   --- Per Lun memory allocation count = %11!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pDevX->ulPerLunMemoryCnt, ItemLong -- 11
+}
+#typev adapcntl_c386 27 "%0%10!s!   --- Physical device record count = %11!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Data[ePHYSICAL].RecordCount, ItemLong -- 11
+}
+#typev adapcntl_c383 26 "%0%10!s!   --- Logical device record count = %11!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Data[eLOGICAL].RecordCount, ItemLong -- 11
+}
+#typev adapcntl_c380 25 "%0%10!s!   --- Physical external Bus 4 Leafcount=%11!d!, LeafUsed=%12!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Bus[ePHYSICAL_EXTERNAL_BUS]->LeafCount, ItemLong -- 11
+pMap->Bus[ePHYSICAL_EXTERNAL_BUS]->LeafUsed, ItemLong -- 12
+}
+#typev adapcntl_c376 24 "%0%10!s!   --- Physical internal Bus 3 Leafcount=%11!d!, LeafUsed=%12!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Bus[ePHYSICAL_INTERNAL_BUS]->LeafCount, ItemLong -- 11
+pMap->Bus[ePHYSICAL_INTERNAL_BUS]->LeafUsed, ItemLong -- 12
+}
+#typev adapcntl_c372 23 "%0%10!s!   --- Logical external Bus 2 Leafcount=%11!d!, LeafUsed=%12!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Bus[eLOGICAL_EXTERNAL_BUS]->LeafCount, ItemLong -- 11
+pMap->Bus[eLOGICAL_EXTERNAL_BUS]->LeafUsed, ItemLong -- 12
+}
+#typev adapcntl_c368 22 "%0%10!s!   --- Logical internal Bus 1 Leafcount=%11!d!, LeafUsed=%12!d!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pMap->Bus[eLOGICAL_INTERNAL_BUS]->LeafCount, ItemLong -- 11
+pMap->Bus[eLOGICAL_INTERNAL_BUS]->LeafUsed, ItemLong -- 12
+}
+#typev adapcntl_c363 21 "%0%10!s!   --- I/O Error buffer = %11!p!, size=%12!d!, allocation type = %13!s!" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+pErrInfo->pUnAlignedBuffer, ItemPtr -- 11
+pErrInfo->ulIoErrorBufSize, ItemLong -- 12
+MiAllocateTypeToAscii(pErrInfo->eAllocationMethod), ItemString -- 13
+}
+#typev adapcntl_c359 20 "%0%10!s!   ***Perserved Memory***" //   LEVEL=DbgLvlInit FLAGS=DbgFlagShutdown FUNC=DisplayPreservedResources
+{
+IDSTR2, ItemString -- 10
+}

@@ -1,0 +1,113 @@
+; PegasusJ2s.INF
+; Copyright 2013 Promise Technologies Inc.
+;
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+CatalogFile=PegasusJ2.cat
+Provider=%Promise%
+DriverVer=02/27/2013, 1.0.0.5
+;
+
+[DestinationDirs] 
+ahci8086.Files.amd64_12 = 12
+
+[SourceDisksNames.amd64]
+0=%Desc_amd640%
+
+[SourceDisksFiles.amd64]
+PegasusJ2.sys=0,
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer] 
+%Promise%=Promise, ntamd64
+
+[Promise.ntamd64]
+%NapaDesc%=Napa_Inst,PCI\VEN_1B21&DEV_0612&SUBSYS_5102105A
+
+[Napa_Inst.ntamd64] 
+CopyFiles = ahci8086.Files.amd64_12 
+
+[Napa_Inst.ntamd64.HW]
+Include=machine.inf
+Needs=PciIoSpaceNotRequired
+AddReg	= DDInstall_AddReg_HW_Removal_Policy
+
+[DDInstall_AddReg_HW_Removal_Policy]
+HKR,,"RemovalPolicy",0x00010001,3
+;where Policy = 2 for ExpectOrderlyRemoval, Policy = 3 for ExpectSurpriseRemoval.
+
+[Napa_Inst.ntamd64.Services] 
+AddService = PegasusJ2,0x00000002,Napa_Service_Instamd64, Napa_EventLog_Inst 
+
+[Napa_Service_Instamd64] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType =   %SERVICE_BOOT_START% 
+ErrorControl =     %SERVICE_ERROR_NORMAL% 
+ServiceBinary =  %12%\PegasusJ2.sys 
+LoadOrderGroup = "SCSI Storport"
+AddReg = pnpsafe_pci_addreg
+
+
+[ahci8086.Files.amd64_12] 
+PegasusJ2.sys
+
+[Napa_EventLog_Inst] 
+AddReg = Napa_EventLog_Inst.AddReg 
+ 
+[Napa_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\Device, EnableQueryAccessAlignment, %REG_DWORD%, 0x00000001
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001
+HKR, Parameters,BusType,0x00010001,0x0000000B
+HKR, Settings\CAM, EnableALPEDisableHotplug, 0x00010001, 0x00000000
+HKR, Settings\CAM, EnableCCC, 0x00010001, 0x00000000 
+HKR, Settings\CAM, CCCTimeoutValue, 0x00010001, 10 
+HKR, Settings\CAM, CCCCompletionValue, 0x00010001, 32 
+HKR, Settings\CAM, NCQEnableDiskIDBits, 0x00010001, 0xffffffff 
+HKR, Settings\CAM, EnableHIPM, 0x00010001, 0x00000000
+HKR, Settings\CAM, EnableDIPM, 0x00010001, 0x00000000 
+HKR, Settings\CAM, EnableHDDParking, 0x00010001, 0x00000001
+HKR, Settings\CAM, CAMTimeOutValue, 0x00010001, 0x00000005
+HKR, Settings\CAM, EnableAN, 0x00010001, 0x00000001
+HKR, Settings\CAM, EnableAPS, 0x00010001, 0x00000000
+
+;[pnpsafe_isa_addreg] 
+;HKR, Parameters\PnpInterface, 1, 0x00010001, 0x00000001 
+
+;[pnpsafe_eisa_addreg] 
+;HKR, Parameters\PnpInterface, 2, 0x00010001, 0x00000001 
+
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+Promise= "Promise Technologies Inc." 
+Desc_amd640= "Promise Pegasus J2 AHCI Compatible Controller Driver" 
+NapaDesc= "Promise Pegasus J2 AHCI Compatible Controller" 
+Promise_Raid_ControllerDesc= "Promise Raid Console"
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 
+
+SPSVCINST_ASSOCSERVICE=0x00000002

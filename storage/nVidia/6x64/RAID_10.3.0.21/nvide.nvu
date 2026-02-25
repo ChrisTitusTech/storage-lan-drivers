@@ -1,0 +1,268 @@
+call UninstallIDE
+CheckRAID IsRAIDEnabled
+if {IsRAIDEnabled}=FALSE then call UninstallRAID
+
+[UninstallIDE]
+;
+; Remove NVIDIA IDE devices
+;
+RemoveDevice PCI,VEN_10DE,hdc,{windir}\inf\mshdc.inf
+
+; DelOemInfs nv*,Version,Provider,%NVDA%,Version,Class,hdc,NVIDE.ntx86,Include,mshdc.inf
+
+DelBoot {sysdir}\nvmidesm.inf
+DelBoot {sysdir}\nvmhdc.inf
+DelBoot {sysdir}\nvmatabus.inf
+
+DelBoot {sysdir}\nvuide.exe
+DelBoot {sysdir}\nvcoi.dll
+
+UninstallService nvata
+UninstallService nvata64
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\nvgts\Parameters\Device 
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\nvgts64\Parameters\Device 
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\nvstor32\Parameters\Device 
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\nvstor64\Parameters\Device
+
+[UninstallRAID]
+;
+; Remove  NVIDIA RAID devices
+;
+UninstallService nvraid
+UninstallService nvatabus
+UninstallService nvrdx64
+UninstallService nvatax64
+
+RemoveDevice PCI,VEN_10DE,SCSIAdapter
+sleep 500
+; XP RAID Device
+RemoveDevice ACPI,_NVRAIDBUS,SCSIAdapter
+; Vista RAID Device
+RemoveDevice ACPI,NVRAIDBUS,SCSIAdapter
+
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,hdc,SourceDisksFiles.x86,nvatabus.sys,0
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,hdc,SourceDisksFiles.x86,nvatax64.sys,0
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvraid.cat
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvrdx64.cat
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvata.cat
+DelReg HKLM\Software\Microsoft\Windows\CurrentVersion\Run\NVRaidService
+DelReg HKLM\SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\*_nvraidbus
+DelReg HKCU\Software\NVIDIA Corporation\SMART 
+DelReg HKLM\Software\NVIDIA Corporation\SMART 
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\Eventlog\Application\NVRAIDSERVICE 
+DelReg HKLM\SYSTEM\CurrentControlSet\Services\\Eventlog\System\NVRAIDSERVICE 
+DelReg HKCU\Software\NVIDIA Corporation\SataConnection\Settings 
+DelReg HKLM\Software\NVIDIA Corporation\NVRAID\Settings 
+DelReg HKLM\SYSTEM\Software\NvRaid 
+DelReg HKLM\SYSTEM\Software\NvRaidDisk 
+
+DelBoot {sysdir}\drivers\nvatabus.sys
+DelBoot {sysdir}\drivers\nvata64.sys
+DelBoot {sysdir}\drivers\nvatax64.sys
+DelBoot {sysdir}\drivers\nvraid.sys
+DelBoot {sysdir}\drivers\nvrdx64.sys
+DelBoot {sysdir}\nvraid.sys
+DelBoot {sysdir}\nvrdx64.sys
+DelBoot {sysdir}\nvraidco.dll
+DelBoot {sysdir}\idecoi.dll
+
+;
+; Uninstall NVIDIA RAID app
+;
+killapp nvraidservice.exe
+
+SysCallAndWait {sysdir}\regsvr32.exe /s /u "{sysdir}\NvRaidWizard.dll"
+
+delreg HKLM\Software\Microsoft\Windows\CurrentVersion\Run\NVRaidService
+delreg HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\DontShowMeThisDialogAgain\NVIDIA_MEDIASHIELD_CREATE_ARRAY_PROMPT
+
+delreg HKCU\Software\NVIDIA Corporation\NVRAID\Settings\ShowToolTips
+delreg HKCU\Software\NVIDIA Corporation\NVRAID\Settings\WindowPositionX
+delreg HKCU\Software\NVIDIA Corporation\NVRAID\Settings\WindowPositionY
+delreg HKCU\Software\NVIDIA Corporation\NVRAID\Settings\WindowResolutionX
+delreg HKCU\Software\NVIDIA Corporation\NVRAID\Settings\WindowResolutionY
+delrege HKCU\Software\NVIDIA Corporation\NVRAID\Settings
+delrege HKCU\Software\NVIDIA Corporation\NVRAID
+
+delreg HKCU\Software\NVIDIA Corporation\SataConnection\Settings\ShowToolTips
+delreg HKCU\Software\NVIDIA Corporation\SataConnection\Settings\WindowPositionX
+delreg HKCU\Software\NVIDIA Corporation\SataConnection\Settings\WindowPositionY
+delreg HKCU\Software\NVIDIA Corporation\SataConnection\Settings\WindowResolutionX
+delreg HKCU\Software\NVIDIA Corporation\SataConnection\Settings\WindowResolutionY
+delrege HKCU\Software\NVIDIA Corporation\SataConnection\Settings
+delrege HKCU\Software\NVIDIA Corporation\SataConnection
+
+delrege HKCU\Software\NVIDIA Corporation
+
+Del {sysdir}\nvcchflt.sys
+Del {sysdir}\nvraiins.dll
+del {SysDir}\NvRaidMan.exe
+del {SysDir}\NvRaidar.dll
+del {SysDir}\NvRaidcs.dll
+del {SysDir}\NvRaidda.dll
+del {SysDir}\NvRaidde.dll
+del {SysDir}\NvRaidel.dll
+del {SysDir}\NvRaideng.dll
+del {SysDir}\NvRaidEnu.dll
+del {SysDir}\NvRaides.dll
+del {SysDir}\NvRaidfi.dll
+del {SysDir}\NvRaidfr.dll
+del {SysDir}\NvRaidhe.dll
+del {SysDir}\NvRaidhu.dll
+del {SysDir}\NvRaidit.dll
+del {SysDir}\NvRaidja.dll
+del {SysDir}\NvRaidko.dll
+del {SysDir}\NvRaidnl.dll
+del {SysDir}\NvRaidno.dll
+del {SysDir}\NvRaidpl.dll
+del {SysDir}\NvRaidpt.dll
+del {SysDir}\NvRaidptb.dll
+del {SysDir}\NvRaidru.dll
+del {SysDir}\NvRaidsk.dll
+del {SysDir}\NvRaidsl.dll
+del {SysDir}\NvRaidsv.dll
+del {SysDir}\NvRaidth.dll
+del {SysDir}\NvRaidtr.dll
+del {SysDir}\NvRaidzhc.dll
+del {SysDir}\NvRaidzht.dll
+del {SysDir}\nvraidservice.exe
+del {SysDir}\NvRaidSvar.dll
+del {SysDir}\NvRaidSvcs.dll
+del {SysDir}\NvRaidSvda.dll
+del {SysDir}\NvRaidSvde.dll
+del {SysDir}\NvRaidSvel.dll
+del {SysDir}\NvRaidSveng.dll
+del {SysDir}\NvRaidSvEnu.dll
+del {SysDir}\NvRaidSves.dll
+del {SysDir}\NvRaidSvfi.dll
+del {SysDir}\NvRaidSvfr.dll
+del {SysDir}\NvRaidSvhe.dll
+del {SysDir}\NvRaidSvhu.dll
+del {SysDir}\NvRaidSvit.dll
+del {SysDir}\NvRaidSvja.dll
+del {SysDir}\NvRaidSvko.dll
+del {SysDir}\NvRaidSvnl.dll
+del {SysDir}\NvRaidSvno.dll
+del {SysDir}\NvRaidSvpl.dll
+del {SysDir}\NvRaidSvpt.dll
+del {SysDir}\NvRaidSvptb.dll
+del {SysDir}\NvRaidSvru.dll
+del {SysDir}\NvRaidSvsk.dll
+del {SysDir}\NvRaidSvsl.dll
+del {SysDir}\NvRaidSvsv.dll
+del {SysDir}\NvRaidSvth.dll
+del {SysDir}\NvRaidSvtr.dll
+del {SysDir}\NvRaidSvzhc.dll
+del {SysDir}\NvRaidSvzht.dll
+del {SysDir}\NvRaidWizard.dll
+del {SysDir}\NvRaidWizardar.dll
+del {SysDir}\NvRaidWizardcs.dll
+del {SysDir}\NvRaidWizardda.dll
+del {SysDir}\NvRaidWizardde.dll
+del {SysDir}\NvRaidWizardel.dll
+del {SysDir}\NvRaidWizardeng.dll
+del {SysDir}\NvRaidWizardEnu.dll
+del {SysDir}\NvRaidWizardes.dll
+del {SysDir}\NvRaidWizardfi.dll
+del {SysDir}\NvRaidWizardfr.dll
+del {SysDir}\NvRaidWizardhe.dll
+del {SysDir}\NvRaidWizardhu.dll
+del {SysDir}\NvRaidWizardit.dll
+del {SysDir}\NvRaidWizardja.dll
+del {SysDir}\NvRaidWizardko.dll
+del {SysDir}\NvRaidWizardnl.dll
+del {SysDir}\NvRaidWizardno.dll
+del {SysDir}\NvRaidWizardpl.dll
+del {SysDir}\NvRaidWizardpt.dll
+del {SysDir}\NvRaidWizardptb.dll
+del {SysDir}\NvRaidWizardru.dll
+del {SysDir}\NvRaidWizardsk.dll
+del {SysDir}\NvRaidWizardsl.dll
+del {SysDir}\NvRaidWizardsv.dll
+del {SysDir}\NvRaidWizardth.dll
+del {SysDir}\NvRaidWizardtr.dll
+del {SysDir}\NvRaidWizardzhc.dll
+del {SysDir}\NvRaidWizardzht.dll
+del {SysDir}\NvSataConnection.exe
+del {SysDir}\NvSataConnectionar.dll
+del {SysDir}\NvSataConnectioncs.dll
+del {SysDir}\NvSataConnectionda.dll
+del {SysDir}\NvSataConnectionde.dll
+del {SysDir}\NvSataConnectionel.dll
+del {SysDir}\NvSataConnectioneng.dll
+del {SysDir}\NvSataConnectionEnu.dll
+del {SysDir}\NvSataConnectiones.dll
+del {SysDir}\NvSataConnectionfi.dll
+del {SysDir}\NvSataConnectionfr.dll
+del {SysDir}\NvSataConnectionhe.dll
+del {SysDir}\NvSataConnectionhu.dll
+del {SysDir}\NvSataConnectionit.dll
+del {SysDir}\NvSataConnectionja.dll
+del {SysDir}\NvSataConnectionko.dll
+del {SysDir}\NvSataConnectionnl.dll
+del {SysDir}\NvSataConnectionno.dll
+del {SysDir}\NvSataConnectionpl.dll
+del {SysDir}\NvSataConnectionpt.dll
+del {SysDir}\NvSataConnectionptb.dll
+del {SysDir}\NvSataConnectionru.dll
+del {SysDir}\NvSataConnectionsk.dll
+del {SysDir}\NvSataConnectionsl.dll
+del {SysDir}\NvSataConnectionsv.dll
+del {SysDir}\NvSataConnectionth.dll
+del {SysDir}\NvSataConnectiontr.dll
+del {SysDir}\NvSataConnectionzhc.dll
+del {SysDir}\NvSataConnectionzht.dll
+del {SysDir}\drivers\nvcchflt.sys
+
+set Shortcutpath={CommonPrograms}\NVIDIA Corporation\MediaShield
+set ShortcutName=MediaShield.lnk
+call DelShortCut
+del {ALLUSERSPROFILEDir}\Desktop\{ShortcutName}
+set Shortcutpath={CommonPrograms}\NVIDIA Corporation\RAIDManager
+set ShortcutName=RAIDManager.lnk
+call DelShortCut
+
+call UninstallSedona
+
+del {CommonPrograms}\NVIDIA Corporation
+delboot {CommonPrograms}\NVIDIA Corporation
+
+[UninstallSedona]
+set Shortcutpath={CommonPrograms}\NVIDIA Corporation\NVIDIA Control Panel
+set ShortcutName=Storage.lnk
+call DelShortCut
+
+SysCallAndWait {sysdir}\regsvr32.exe /s /u "{sysdir}\NvRaidServer.dll"
+set current file
+DirAndApply {sysdir}\nvraidserver*.dll,DelBoot {current file}
+
+DelBoot {sysdir}\regraidsedona.bat
+
+Set current file
+DirAndApply {windir}\help\nvcpl\nvsto*.chm,DelBoot {current file}
+
+Set ServersPresent=0
+EnumRegNamesCmd HKLM\Software\NVIDIA Corporation\NVControlPanel\RegisteredServers, set ServersPresent=1
+EnumRegNamesCmd HKLM\Software\NVIDIA Corporation\Global\NVControlPanel\RegisteredServers, set ServersPresent=1
+if {ServersPresent}=0 then call UninstallSedonaClient
+
+[UninstallSedonaClient]
+DelBoot {sysdir}\nvcpl.exe
+DelBoot {sysdir}\nvcplui.exe
+DelBoot {sysdir}\nvcpl.cpl
+DelBoot {sysdir}\nvcpluir.dll
+DelBoot {sysdir}\nvexpbar.dll
+
+Set current file
+DirAndApply {windir}\help\nvcpl\nvcpl*.chm,DelBoot {current file}
+DelBoot {windir}\help\nvcpl
+DelReg HKLM\Software\NVIDIA Corporation\NVControlPanel
+DelRegE HKLM\Software\NVIDIA Corporation
+
+set Shortcutpath={CommonPrograms}\NVIDIA Corporation\NVIDIA Control Panel
+set ShortcutName=Control Panel.lnk
+call DelShortCut
+
+[DelShortCut]
+del {Shortcutpath}\{ShortcutName}
+delboot {Shortcutpath}

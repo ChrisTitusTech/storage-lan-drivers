@@ -1,0 +1,488 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+58931658-4813-3699-c839-57722ff23c2d 2016 // SRC=Wmi.c MJ= MN=
+#typev wmi_c815 21 "%0%10!s!   Excuting a method described in the WMI class SMARTPQI_DEBUG_METHODS." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiExecuteMethod
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c830 22 "%0%10!s!  !WmiExecuteMethod is for a class that the driver does not support!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=CallBack_WmiExecuteMethod
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c914 24 "%0%10!s!   WmiFunctionControl - No more consumers registered for SMARTPQI_DRIVER_EVENT." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiFunctionControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c904 23 "%0%10!s!   WmiFunctionControl - One or more consumers registered for SMARTPQI_DRIVER_EVENT." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiFunctionControl
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c925 25 "%0%10!s!  !No Class found to handle WmiFunctionControl.  ulGuidIndex=%11!d!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=CallBack_WmiFunctionControl
+{
+IDSTR2, ItemString -- 10
+ulGuidIndex, ItemLong -- 11
+}
+#typev wmi_c494 18 "%0%10!s!  !QueryWmiDataBlock is for a class that the driver does not support.  Please add case statement!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c478 83 "%0%10!s!   SMARTPQI_DEBUG_METHODS" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c478 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c475 17 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_DEBUG_METHODS." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c463 82 "%0%10!s!   - WmiDriverEventFlags=0x%11!x!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+pDrvEventBuf->WmiDriverEventFlags, ItemLong -- 11
+}
+#typev wmi_c463 81 "%0%10!s!   SMARTPQI_DRIVER_EVENT" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c463 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c460 16 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_DRIVER_EVENT." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c448 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c445 15 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_SET_DRV_PREFERRED_SETTINGS." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c433 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c430 14 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_CONTROLLER_CONFIG." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c418 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c415 13 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_DEBUG_INFO MOF class." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c403 40 "%0%10!s!   - Offline Reason=%11!d!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+pCntlrStatusBuf->OfflineReason, ItemLong -- 11
+}
+#typev wmi_c403 39 "%0%10!s!   - Controller Status=%11!s!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ControllerStatusToAscii((UCHAR)pCntlrStatusBuf->CntlrStatus), ItemString -- 11
+}
+#typev wmi_c403 38 "%0%10!s!   SMARTPQI_CONTROLLER_STATUS" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c403 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c400 12 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_CONTROLLER_STATUS MOF class." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c388 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c385 11 "%0%10!s!   QueryWmiDataBlock - Query SMARTPQI_DRIVER_INFO MOF class." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c302 10 "%0%10!s!   QueryWmiRegInfo." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiQueryReginfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c561 26 "%0%10!s!  !Buffer is not large enough. ProvidedBufSize=%11!d!, RequiredBufSize=%12!d!." //   LEVEL=dWARN_LVL FLAGS=DbgFlagWmi FUNC=CallBack_WmiSetDataBlock
+{
+IDSTR2, ItemString -- 10
+ulBufferAvail, ItemLong -- 11
+ulRequiredBufferSize, ItemLong -- 12
+}
+#typev wmi_c558 19 "%0%10!s!   SetWmiDataBlock - Set SMARTPQI_SET_DRV_PREFERRED_SETTINGS." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=CallBack_WmiSetDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c572 20 "%0%10!s!  !SetWmiDataBlock is for a class that the driver does not support or class that is not writable!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=CallBack_WmiSetDataBlock
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c2332 89 "%0%10!s!   Executing method MethodDisableAIO." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c2323 94 "%0%10!s!  !Instance=%11!d! for MethodDisableAIO() not supported!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInstanceIndex, ItemLong -- 11
+}
+#typev wmi_c2350 90 "%0%10!s!   Executing method MethodEnableAIO." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c2342 95 "%0%10!s!  !Instance=%11!d! for MethodEnableAIO() not supported!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInstanceIndex, ItemLong -- 11
+}
+#typev wmi_c2368 91 "%0%10!s!   Executing method MethodSetLunQueueDepthToDefault." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c2360 96 "%0%10!s!  !Instance=%11!d! for WmiMethodSetLunQueueDepthToDefault() not supported!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInstanceIndex, ItemLong -- 11
+}
+#typev wmi_c2414 92 "%0%10!s!   Executing method MethodSetLunQueueDepth(IN=%11!d!)." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+pInParam->WmiMaxDeviceQueueDepth, ItemLong -- 11
+}
+#typev wmi_c2404 98 "%0%10!s!  !ulInBufSize=%11!d! for executing method MethodSetLunQueueDepth() is not big enough.  Required buf size=%12!d! !" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInBufSize, ItemLong -- 11
+ulRequiredInBufSize, ItemLong -- 12
+}
+#typev wmi_c2380 97 "%0%10!s!  !Instance=%11!d! for MethodSetLunQueueDepth() not supported!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInstanceIndex, ItemLong -- 11
+}
+#typev wmi_c2442 100 "%0%10!s!  !Provided Buffer size=%11!d! for executing method Method5Test() is not big enough.  Required buf size=%12!d! !" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+max(ulInBufSize. ulOutBufSize), ItemLong -- 11
+ulRequiredTotalBufSize, ItemLong -- 12
+}
+#typev wmi_c2455 93 "%0%10!s!   Executed method Method5Test(IN=%11!d!, IN=%12!d!, OUT=%13!d!, OUT=%14!d!)" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+fV1, ItemLong -- 11
+ulV2, ItemLong -- 12
+pOutParam->fVariable3, ItemLong -- 13
+pOutParam->usVariable4, ItemLong -- 14
+}
+#typev wmi_c2424 99 "%0%10!s!  !Instance=%11!d! for Method5Test() not supported!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+ulInstanceIndex, ItemLong -- 11
+}
+#typev wmi_c2466 101 "%0%10!s! !Requested Method not handled!" //   LEVEL=1 FLAGS=DbgFlagWmi FUNC=MiExecuteMethodsForMI_DEBUG_METHODS
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c2076 88 "%0%10!s!   Driver posted WMI Event = %11!s!." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiWmiFireEvent
+{
+IDSTR2, ItemString -- 10
+MiWmiClassToAscii(gEventGuid), ItemString -- 11
+}
+#typev wmi_c2034 87 "%0%10!s!  !Requested buffer size of event is too big. (Requested Buffer size=%11!d! > Max=%12!d!)!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagWmi FUNC=MiWmiFireEvent
+{
+IDSTR2, ItemString -- 10
+ucReqBufSize, ItemLong -- 11
+MI_MAX_WMI_SMALL_EVENT_DATA_BUFFER_SIZE, ItemLong -- 12
+}
+#typev wmi_c2016 86 "%0%10!s!   Nobody listening.  WMI Driver Event = %11!s!, not posted." //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=MiWmiFireEvent
+{
+IDSTR2, ItemString -- 10
+MiWmiClassToAscii(gEventGuid), ItemString -- 11
+}
+#typev wmi_c1413 76 "%0%10!s!   - DeviceName=%11!s!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+(pCntlrConfigBuf->DeviceName + 1), ItemWString -- 11
+}
+#typev wmi_c1411 75 "%0%10!s!   - SerialNumber=%11!s!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+(pCntlrConfigBuf->SerialNumber + 1), ItemWString -- 11
+}
+#typev wmi_c1409 74 "%0%10!s!   - ScsiPortNumber=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->ScsiPortNumber, ItemLong -- 11
+}
+#typev wmi_c1407 73 "%0%10!s!   - BusNumber=0x%11!x!, DeviceNumber=0x%12!x!, FunctionNumber=0x%13!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->BusNumber, ItemLong -- 11
+pCntlrConfigBuf->DeviceNumber, ItemLong -- 12
+pCntlrConfigBuf->FunctionNumber, ItemLong -- 13
+}
+#typev wmi_c1405 72 "%0%10!s!   - IoBusType=BUS_TYPE_PCI(0x%11!x!)" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->IoBusType, ItemLong -- 11
+}
+#typev wmi_c1403 71 "%0%10!s!   - SlotNumber=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->SlotNumber, ItemLong -- 11
+}
+#typev wmi_c1401 70 "%0%10!s!   - CosTimeout=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->CosTimeout, ItemLong -- 11
+}
+#typev wmi_c1399 69 "%0%10!s!   - BoardID=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->BoardID, ItemLong -- 11
+}
+#typev wmi_c1397 68 "%0%10!s!   - Base2ndMemoryAddressHighPart=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->Base2ndMemoryAddressHighPart, ItemLong -- 11
+}
+#typev wmi_c1395 67 "%0%10!s!   - Base2ndMemoryAddressLowPart=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->Base2ndMemoryAddressLowPart, ItemLong -- 11
+}
+#typev wmi_c1393 66 "%0%10!s!   - Base1stMemoryAddressHighPart=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->Base1stMemoryAddressHighPart, ItemLong -- 11
+}
+#typev wmi_c1391 65 "%0%10!s!   - Base1stMemoryAddressLowPart=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->Base1stMemoryAddressLowPart, ItemLong -- 11
+}
+#typev wmi_c1389 64 "%0%10!s!   - BaseIoAddress=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+pCntlrConfigBuf->BaseIoAddress, ItemLong -- 11
+}
+#typev wmi_c1387 63 "%0%10!s!   SMARTPQI_CONTROLLER_CONFIG" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintCntrlConfigBuffer
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c1252 62 "%0%10!s!   - fOutstandingIo=%11!d!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->fOutstandingIo, ItemLong -- 11
+}
+#typev wmi_c1250 61 "%0%10!s!   - fBlockEvents=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->fBlockEvents, ItemLong -- 11
+}
+#typev wmi_c1248 60 "%0%10!s!   - fAllTimersOff=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->fAllTimersOff, ItemLong -- 11
+}
+#typev wmi_c1246 59 "%0%10!s!   - fDidCleanup=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->fDidCleanup, ItemLong -- 11
+}
+#typev wmi_c1244 58 "%0%10!s!   - fDpcDisabled=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->fDpcDisabled, ItemLong -- 11
+}
+#typev wmi_c1242 57 "%0%10!s!   - pwszBDF=%11!s!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+(pDebugInfoBuf->pwszBDF + 1), ItemWString -- 11
+}
+#typev wmi_c1240 56 "%0%10!s!   - ucDumpMode=%11!s!(0x%12!x!)" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+MiDumpModeToAscii(pDebugInfoBuf->ucDumpMode), ItemString -- 11
+pDebugInfoBuf->ucDumpMode, ItemLong -- 12
+}
+#typev wmi_c1238 55 "%0%10!s!   - ePnPAction=%11!s!=(0x%12!x!)" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+PnpActionToAscii((UCHAR)pDebugInfoBuf->ePnPAction), ItemString -- 11
+pDebugInfoBuf->ePnPAction, ItemLong -- 12
+}
+#typev wmi_c1236 54 "%0%10!s!   - ulScheduledScan=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulScheduledScan, ItemLong -- 11
+}
+#typev wmi_c1234 53 "%0%10!s!   - ulHppFlags=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulHppFlags, ItemLong -- 11
+}
+#typev wmi_c1232 52 "%0%10!s!   - usCleanupType=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->usCleanupType, ItemLong -- 11
+}
+#typev wmi_c1230 51 "%0%10!s!   - usDevicePowerState=%11!s!(0x%12!x!)" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+PowerStateToAscii((UCHAR)pDebugInfoBuf->usDevicePowerState), ItemString -- 11
+pDebugInfoBuf->usDevicePowerState, ItemLong -- 12
+}
+#typev wmi_c1228 50 "%0%10!s!   - Min Elements Per Operational Outbound Queue=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulMinElementsPerOpOQ, ItemLong -- 11
+}
+#typev wmi_c1226 49 "%0%10!s!   - Min Elements Per Operational Inbound Queue=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulMinElementsPerOpIQ, ItemLong -- 11
+}
+#typev wmi_c1224 48 "%0%10!s!   - Max Operational Outbound Queues=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->usMaxOpOqId, ItemLong -- 11
+}
+#typev wmi_c1222 47 "%0%10!s!   - Max Operational Inbound Queues=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->usMaxOpIqId, ItemLong -- 11
+}
+#typev wmi_c1220 46 "%0%10!s!   - Driver Operational Groups Used=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulDrvOpGroupsUsed, ItemLong -- 11
+}
+#typev wmi_c1218 45 "%0%10!s!   - Max Active Internal Requests=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulMaxActiveInternalReq, ItemLong -- 11
+}
+#typev wmi_c1216 44 "%0%10!s!   - Active Internal Cmds=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulActiveInternalCmds, ItemLong -- 11
+}
+#typev wmi_c1214 43 "%0%10!s!   - Max Active Requests=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulMaxActiveRequests, ItemLong -- 11
+}
+#typev wmi_c1212 42 "%0%10!s!   - Active Requests=0x%11!x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+pDebugInfoBuf->ulActiveRequests, ItemLong -- 11
+}
+#typev wmi_c1210 41 "%0%10!s!   SMARTPQI_DEBUG_INFO" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDriverDebugInfo
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c1560 80 "%0%10!s!   - usWmiMaxDeviceQueueDepth=%11!d!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDrvPreferredSettings
+{
+IDSTR2, ItemString -- 10
+pPrefSetBuf->usWmiMaxDeviceQueueDepth, ItemLong -- 11
+}
+#typev wmi_c1558 79 "%0%10!s!   - fWmiDisableAioStreamDetection=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDrvPreferredSettings
+{
+IDSTR2, ItemString -- 10
+pPrefSetBuf->fWmiDisableAioStreamDetection, ItemLong -- 11
+}
+#typev wmi_c1556 78 "%0%10!s!   - fWmiDisableAIO=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDrvPreferredSettings
+{
+IDSTR2, ItemString -- 10
+pPrefSetBuf->fWmiDisableAIO, ItemLong -- 11
+}
+#typev wmi_c1554 77 "%0%10!s!   SMARTPQI_SET_DRV_PREFERRED_SETTINGS" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintDrvPreferredSettings
+{
+IDSTR2, ItemString -- 10
+}
+#typev wmi_c1005 37 "%0%10!s!   - Driver Description=%11!s!
+" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+(PWCHAR)((PUCHAR)pDriverInfo->DriverDescription + sizeof(USHORT)), ItemWString -- 11
+}
+#typev wmi_c1003 36 "%0%10!s!   - Driver Name=%11!s!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+(PWCHAR)((PUCHAR)pDriverInfo->DriverName + sizeof(USHORT)), ItemWString -- 11
+}
+#typev wmi_c1000 35 "%0%10!s!   - MaxTransfer=0x%11!x! (%12!d!) btyes" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->MaxTransfer, ItemLong -- 11
+pDriverInfo->MaxTransfer, ItemLong -- 12
+}
+#typev wmi_c998 34 "%0%10!s!   - Max device Queue Depth=%11!d! commands" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->MaxQueueDepth, ItemLong -- 11
+}
+#typev wmi_c996 33 "%0%10!s!   - Max Scatter Gather elements used=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->SGLength, ItemLong -- 11
+}
+#typev wmi_c994 32 "%0%10!s!   - Max Commands=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->MaxCommands, ItemLong -- 11
+}
+#typev wmi_c992 31 "%0%10!s!   - Driver Release Version=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->DriverReleaseVersion, ItemLong -- 11
+}
+#typev wmi_c990 30 "%0%10!s!   - Driver Build Version=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->DriverBuildVersion, ItemLong -- 11
+}
+#typev wmi_c988 29 "%0%10!s!   - Driver Minor Version=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->DriverMinorVersion, ItemLong -- 11
+}
+#typev wmi_c986 28 "%0%10!s!   - Driver Major Version=%11!d!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+pDriverInfo->DriverMajorVersion, ItemLong -- 11
+}
+#typev wmi_c984 27 "%0%10!s!   SMARTPQI_DRIVER_INFO" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagWmi FUNC=PrintSmartDriverInfo
+{
+IDSTR2, ItemString -- 10
+}

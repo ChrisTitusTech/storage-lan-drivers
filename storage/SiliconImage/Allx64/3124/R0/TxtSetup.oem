@@ -1,0 +1,60 @@
+; This file installs the SiI 3124 non-RAID serial ATA driver as part of text
+; mode setup on 64-bit versions of Windows XP, Windows Server 2003,
+; and Windows Vista.
+;
+; Copyright (C) 2003-2008 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image SiI 3124 SATALink Driver Installation Disk",\ia64\Si3124.sys,\ia64
+disk2 = "Silicon Image SiI 3124 SATALink Driver Installation Disk",\amd64\Si3124.sys,\amd64
+
+
+[Defaults]
+SCSI = Si3124_AMD64
+
+
+[SCSI]                  ; HwComponent section
+Si3124_AMD64 = "Silicon Image SiI 3124 SATALink Controller (64-bit Extended)"
+Si3124_IA64 = "Silicon Image SiI 3124 SATALink Controller (Itanium)"
+
+
+[Files.SCSI.Si3124_AMD64]
+driver = disk2,si3124.sys, Si3124
+driver = disk2,SiWinAcc.sys, SiFilter
+driver = disk2,SiRemFil.sys, SiRemFil
+inf = disk2,SI3124.inf
+dll = disk2,SilSupp.dll
+catalog = disk2, Si3124.cat
+
+
+[Files.SCSI.Si3124_IA64]
+driver = disk1,si3124.sys, Si3124
+driver = disk1,SiWinAcc.sys, SiFilter
+inf = disk1,SI3124.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, Si3124.cat
+
+
+[HardwareIds.SCSI.Si3124_AMD64]
+id = "PCI\VEN_1095&DEV_3124&SUBSYS_31241095", "Si3124"
+id = "PCI\VEN_1095&DEV_3124&SUBSYS_31248086", "Si3124"
+id = "PCI\VEN_1095&DEV_3124&SUBSYS_31241A57", "Si3124"
+id = "PCI\VEN_1095&DEV_3124&SUBSYS_312414EB", "Si3124"
+
+[HardwareIds.SCSI.Si3124_IA64]
+id = "PCI\VEN_1095&DEV_3124&SUBSYS_31241095", "Si3124"
+
+
+[Config.Si3124]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""
+value = ProblemDevices, "Maxtor 4D060H3                          DAK05GK0", REG_SZ, "MaxMode = UDMA-5"
+value = ProblemDevices, "HDS724040KLSA80                         KFAOA32A", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722525VLSA80                         V36OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "HDS722516VLSA80                         V34OA6MA", REG_SZ, "DisableAtaQueueing"
+value = ProblemDevices, "Maxtor 7B250S0                          BANC1B70", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541060G9SA00                         MB3OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541080G9SA00                         MB4OC60D", REG_SZ, "DisableSataQueueing"
+value = ProblemDevices, "HTS541010G9SA00                         MBZOC60D", REG_SZ, "DisableSataQueueing"

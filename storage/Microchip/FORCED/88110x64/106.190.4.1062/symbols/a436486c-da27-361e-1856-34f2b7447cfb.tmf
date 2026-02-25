@@ -1,0 +1,102 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+a436486c-da27-361e-1856-34f2b7447cfb 2016 // SRC=SystemInfo.c MJ= MN=
+#typev systeminfo_c670 17 "%0%10!s!   Numa Node=%11!u!. Grp=%12!u! Mask=0x%13!08x!`%14!08x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=GetPrintRelationship
+{
+IDSTR2, ItemString -- 10
+pNuma->NodeNumber, ItemLong -- 11
+pNuma->GroupMask.Group, ItemLong -- 12
+ulMaskUpper, ItemLong -- 13
+ulMaskLower, ItemLong -- 14
+}
+#typev systeminfo_c670 16 "%0%10!s!   %11!5u! 0x%12!02x!  0x%13!0002x! 0x%14!08x! %15!4u! %16!5u! 0x%17!x!`%18!08x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=GetPrintRelationship
+{
+IDSTR2, ItemString -- 10
+pCache->Level, ItemLong -- 11
+pCache->Associativity, ItemLong -- 12
+pCache->LineSize, ItemLong -- 13
+pCache->CacheSize, ItemLong -- 14
+pCache->Type, ItemLong -- 15
+pCache->GroupMask.Group, ItemLong -- 16
+ulMaskUpper, ItemLong -- 17
+ulMaskLower, ItemLong -- 18
+}
+#typev systeminfo_c670 15 "%0%10!s!   Level Assoc LineSz  CacheSz   Type Grp Mask" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=GetPrintRelationship
+{
+IDSTR2, ItemString -- 10
+}
+#typev systeminfo_c663 20 "%0
+%10!s!   Trimming %11!s! entry from %12!d! to %13!d! bytes:" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=GetPrintRelationship
+{
+IDSTR2, ItemString -- 10
+RelationshipToAscii(Type), ItemString -- 11
+ulBufferSize, ItemLong -- 12
+sizeof(tempBuf), ItemLong -- 13
+}
+#typev systeminfo_c654 19 "%0
+%10!s!   Processor Relationship Info:" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=GetPrintRelationship
+{
+IDSTR2, ItemString -- 10
+}
+#typev systeminfo_c825 24 "%0%10!s!   PerfInit: Group %11!d! CPU %12!d! mapped to MessageId %13!d! (Windows will not use this vector)." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagCpu FUNC=MiCreateCpuMessageIdMap
+{
+IDSTR2, ItemString -- 10
+pAffinity->Group, ItemLong -- 11
+ulCPU, ItemLong -- 12
+ulMessageId, ItemLong -- 13
+}
+#typev systeminfo_c820 23 "%0%10!s!   PerfInit: Group %11!d! CPU %12!d! mapped to MessageId %13!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagCpu FUNC=MiCreateCpuMessageIdMap
+{
+IDSTR2, ItemString -- 10
+pAffinity->Group, ItemLong -- 11
+ulCPU, ItemLong -- 12
+ulMessageId, ItemLong -- 13
+}
+#typev systeminfo_c87 13 "%0%10!s!   NUMA Node count=0.  Must be Non-NUMA multiprocessor or a single processor system." //   LEVEL=dWARN_LVL FLAGS=DbgFlagCpu FUNC=MiGetActiveNumaNodeCount
+{
+IDSTR2, ItemString -- 10
+}
+#typev systeminfo_c83 12 "%0%10!s!   NUMA Node count=%11!d!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagCpu FUNC=MiGetActiveNumaNodeCount
+{
+IDSTR2, ItemString -- 10
+ulNumaNodes, ItemLong -- 11
+}
+#typev systeminfo_c751 22 "%0%10!s!   %11!5u!  %12!4u!  %13!8x!`%14!08x! %15!4u!  %16!5u!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=MiGetAllProcessorRelationships
+{
+IDSTR2, ItemString -- 10
+usGroup, ItemLong -- 11
+proc.Number, ItemLong -- 12
+ulMaskUpper, ItemLong -- 13
+ulMaskLower, ItemLong -- 14
+pNuma->NodeNumber, ItemLong -- 15
+ulMsi, ItemLong -- 16
+}
+#typev systeminfo_c748 21 "%0%10!s!   Group  Proc  %11!17s! Numa  MSI-X" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=MiGetAllProcessorRelationships
+{
+IDSTR2, ItemString -- 10
+'Cache', ItemString -- 11
+}
+#typev systeminfo_c732 18 "%0%10!s!   Group=%11!u! Cnt=%12!u! Mask=0x%13!08x!`%14!08x!" //   LEVEL=DbgLvlInfo FLAGS=DbgFlagCpu FUNC=MiGetAllProcessorRelationships
+{
+IDSTR2, ItemString -- 10
+pGroup->ActiveGroupCount, ItemLong -- 11
+pFirstGroup->ActiveProcessorCount, ItemLong -- 12
+ulMaskUpper, ItemLong -- 13
+ulMaskLower, ItemLong -- 14
+}
+#typev systeminfo_c238 14 "%0%10!s!   Total number of Logical processors in the system=%11!d!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagCpu FUNC=MiGetAndSaveProcessorCount
+{
+IDSTR2, ItemString -- 10
+pMySystem->ulNumLogicalCPUs, ItemLong -- 11
+}
+#typev systeminfo_c224 11 "%0%10!s!   KGROUP count = %11!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagCpu FUNC=MiGetAndSaveProcessorCount
+{
+IDSTR2, ItemString -- 10
+usGroupCount, ItemLong -- 11
+}
+#typev systeminfo_c224 10 "%0%10!s! !KGROUP count = %11!d!.   Exceeds driver defined max group count of %12!d!!" //   LEVEL=DbgLvlFatal FLAGS=DbgFlagCpu FUNC=MiGetAndSaveProcessorCount
+{
+IDSTR2, ItemString -- 10
+usGroupCount, ItemLong -- 11
+MI_MAX_NUM_LOGICAL_PROCESSOR_GROUPS, ItemLong -- 12
+}

@@ -1,0 +1,11 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+673e53d8-833d-3216-248e-44ae3194bd42 2016 // SRC=IoctlProtocol.c MJ= MN=
+#typev ioctlprotocol_c261 11 "%0%10!s!  !Data buffer too small to process IOCTL_STORAGE_QUERY_PROPERTY->PROTOCOL!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessQueryProtocolInfoIoctl
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlprotocol_c245 10 "%0%10!s!  !Data buffer too small to process IOCTL_STORAGE_QUERY_PROPERTY->PROTOCOL!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=ProcessQueryProtocolInfoIoctl
+{
+IDSTR2, ItemString -- 10
+}

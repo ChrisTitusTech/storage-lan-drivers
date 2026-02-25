@@ -1,0 +1,44 @@
+RemoveDevice PCI,VEN_10DE,hdc,{windir}\inf\mshdc.inf
+
+DelOemInfs nv*,Version,Provider,%NVDA%,Version,Class,hdc,NVIDE.ntx86,Include,mshdc.inf
+
+DelBoot {sysdir}\nvmidesm.inf
+DelBoot {sysdir}\nvmhdc.inf
+DelBoot {sysdir}\nvmatabus.inf
+
+DelBoot {sysdir}\nvuide.exe
+DelBoot {sysdir}\nvcoi.dll
+
+UninstallService nvata
+UninstallService nvata64
+
+; also uninstalling nvraid driver
+; Disable SCSIAdapter for now
+; call RaidDriver
+
+[RaidDriver]
+UninstallService nvraid
+UninstallService nvatabus
+UninstallService nvrdx64
+UninstallService nvatax64
+
+RemoveDevice PCI,VEN_10DE,SCSIAdapter
+sleep 500
+RemoveDevice ACPI,_NVRAIDBUS,SCSIAdapter
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,hdc,SourceDisksFiles.x86,nvatabus.sys,0
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,hdc,SourceDisksFiles.x86,nvatax64.sys,0
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvraid.cat
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvrdx64.cat
+DelOemInfs nv*,Version,Provider,%NVIDIA%,Version,Class,SCSIAdapter,Version,Catalogfile,nvata.cat
+DelReg HKLM\Software\Microsoft\Windows\CurrentVersion\Run\NVRaidService
+DelReg HKLM\SYSTEM\CurrentControlSet\Control\CriticalDeviceDataBase\*_nvraidbus
+
+Del {sysdir}\drivers\nvatabus.sys
+Del {sysdir}\drivers\nvata64.sys
+Del {sysdir}\drivers\nvatax64.sys
+Del {sysdir}\drivers\nvraid.sys
+Del {sysdir}\drivers\nvrdx64.sys
+Del {sysdir}\nvraid.sys
+Del {sysdir}\nvrdx64.sys
+Del {sysdir}\nvraidco.dll
+Del {sysdir}\idecoi.dll

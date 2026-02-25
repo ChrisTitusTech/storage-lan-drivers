@@ -1,0 +1,13 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+6ecfc2c7-c9f4-3af0-59e5-3d7d88d46466 2016 // SRC=Cli.c MJ= MN=
+#typev cli_c73 11 "%0%10!s! CLI SOB wrapped, lost output! AllocSize=%11!d!" //   LEVEL=dDBG_CLI FLAGS=DbgFlagIoctl FUNC=CliPrintSaveString
+{
+IDSTR2, ItemString -- 10
+pCli->ulBufSize, ItemLong -- 11
+}
+#typev cli_c61 10 "%0%10!s!   %11!s!" //   LEVEL=dDBG_CLI FLAGS=DbgFlagIoctl FUNC=CliPrintSaveString
+{
+IDSTR2, ItemString -- 10
+pBufStart, ItemString -- 11
+}

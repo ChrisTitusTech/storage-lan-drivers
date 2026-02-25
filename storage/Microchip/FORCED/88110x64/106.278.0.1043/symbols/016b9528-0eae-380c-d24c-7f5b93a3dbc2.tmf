@@ -1,0 +1,45 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+016b9528-0eae-380c-d24c-7f5b93a3dbc2 2016 // SRC=InitQueues.c MJ= MN=
+#typev initqueues_c752 17 "%0%10!s!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+}
+#typev initqueues_c748 16 "%0%10!s!   All others       : IB=%11!d! OB=%12!d!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+pDevX->IoLimits.ulMinElementsPerOpIQ, ItemLong -- 11
+pDevX->IoLimits.ulMinElementsPerOpOQ, ItemLong -- 12
+}
+#typev initqueues_c745 15 "%0%10!s!   First Queue Group: IB=%11!d! OB=%12!d!." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+pDevX->IoLimits.ulNumElementsFirstIQ, ItemLong -- 11
+pDevX->IoLimits.ulNumElementsFirstOQ, ItemLong -- 12
+}
+#typev initqueues_c743 14 "%0%10!s!   Driver will create the following # elements per queue" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+}
+#typev initqueues_c741 13 "%0%10!s!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+}
+#typev initqueues_c736 12 "%0%10!s!  !Enforcing Excalibur RevA workarounds! Max elements: IB=%11!d! OB=%12!d!!
+" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagInit FUNC=MiCalElementsPerOpQ
+{
+IDSTR2, ItemString -- 10
+NUM_IB_ELEMENTS_IN_SINGLE_PAGE, ItemLong -- 11
+NUM_OB_ELEMENTS_IN_SINGLE_PAGE, ItemLong -- 12
+}
+#typev initqueues_c821 18 "%0%10!s!   The Event Outbound Qid = %11!d! " //   LEVEL=DbgLvlInit FLAGS=DbgFlagInit FUNC=MiCreateOpEventOQ
+{
+IDSTR2, ItemString -- 10
+MI_EVENT_OQ_ID, ItemLong -- 11
+}
+#typev initqueues_c602 11 "%0
+%10!s!   Driver will attempt to create %11!d! Operational queue groups." //   LEVEL=2 FLAGS=DbgFlagRegistry FUNC=MiSetNumOfOpGroupsToUse
+{
+IDSTR2, ItemString -- 10
+ulMaxQueueGroups, ItemLong -- 11
+}

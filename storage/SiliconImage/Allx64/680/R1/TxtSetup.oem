@@ -1,0 +1,45 @@
+; This file installs the SiI 680 RAID ATA driver as part of text
+; mode setup on 64-bit versions of Windows XP, Windows Server 2003 or Windows Vista.
+;
+; Copyright (C) 2003 - 2007 by Silicon Image, Inc.
+; All rights reserved
+
+
+[Disks]
+disk1 = "Silicon Image ATA/133 Driver Installation Disk",\ia64\PnP680r.sys,\ia64
+disk2 = "Silicon Image ATA/133 Driver Installation Disk",\ext64\PnP680r.sys,\ext64
+
+
+[Defaults]
+SCSI = Si680_EXT64
+
+
+[SCSI]                  ; HwComponent section
+Si680_EXT64 = "Silicon Image SiI 0680 ATA/133 RAID Controller (64-bit Extended)"
+Si680_IA64 = "Silicon Image SiI 0680 ATA/133 RAID Controller (Itanium)"
+
+
+[Files.SCSI.Si680_EXT64]
+driver = disk2,pnp680r.sys, PnP680r
+inf = disk2,SI680r.inf
+dll = disk2,SilSupp.dll
+catalog = disk2, PnP680r.cat
+
+
+[Files.SCSI.Si680_IA64]
+driver = disk1,pnp680r.sys, PnP680r
+inf = disk1,SI680r.inf
+dll = disk1,SilSupp.dll
+catalog = disk1, PnP680r.cat
+
+
+[HardwareIds.SCSI.Si680_EXT64]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_36801095", "PnP680r"
+
+[HardwareIds.SCSI.Si680_IA64]
+id = "PCI\VEN_1095&DEV_0680&SUBSYS_36801095", "PnP680r"
+
+
+[Config.PnP680r]
+value = Parameters\PnpInterface, "5", REG_DWORD, 1
+value = ProblemDevices, "", REG_SZ, ""

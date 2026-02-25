@@ -1,0 +1,92 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+f57e1eb8-fd37-3d58-ba65-6129b1a0afb7 2016 // SRC=IoctlCsmisas.c MJ= MN=
+#typev ioctlcsmisas_c1402 28 "%0%10!s!  Srb=0x%11!p! IOCTL=0x%12!x!(%13!s!) completed with CSMI return code: %14!s!." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=CompleteCommonCsmi
+{
+IDSTR2, ItemString -- 10
+pSrb, ItemPtr -- 11
+pIoctlHeader->ControlCode, ItemLong -- 12
+pCCString, ItemString -- 13
+pRetString, ItemString -- 14
+}
+#typev ioctlcsmisas_c1450 10 "%0%10!s!  !Failed to resume a paused adapter!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=CompleteSAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c545 18 "%0%10!s!  !Very large IOCTL pass-thru buffer!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=IsIoctlValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c531 17 "%0%10!s! !Buffer size exceeds maximum transfer size allowed in one IOCTL!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=IsIoctlValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c516 16 "%0%10!s! !Buffer length too small!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=IsIoctlValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c679 19 "%0%10!s! !Driver cannot determine where to send the request!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=IsValidPhyAndPortId
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c368 15 "%0%10!s! !CSMI IOCTL direction mismatch! ioctl=0x%11!x! SRB=0x%12!x!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=PrepareCmdInfoFromIoctlSrb
+{
+IDSTR2, ItemString -- 10
+ucDirection, ItemLong -- 11
+MiGetDataDirectionFromSrb(pSrb), ItemLong -- 12
+}
+#typev ioctlcsmisas_c360 14 "%0%10!s! !Buffer length too small!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=PrepareCmdInfoFromIoctlSrb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c1362 27 "%0%10!s!  !Invalid miniport CSMISAS control code:  %11!u!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=ProcessCsmiSasIoctls
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+}
+#typev ioctlcsmisas_c1300 26 "%0%10!s!   CSMISAS CC is 0x%11!x!=%12!s!." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessCsmiSasIoctls
+{
+IDSTR2, ItemString -- 10
+pIoctlHeader->ControlCode, ItemLong -- 11
+CsmiSasControlCodeToAscii(pIoctlHeader->ControlCode), ItemString -- 12
+}
+#typev ioctlcsmisas_c814 21 "%0%10!s! !Unsupported CDB length! length=%11!u! additional=%12!d!!" //   LEVEL=DbgLvlWrn FLAGS=DbgFlagIoctl FUNC=SAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+pParams->bCDBLength, ItemLong -- 11
+pParams->bAdditionalCDBLength, ItemLong -- 12
+}
+#typev ioctlcsmisas_c797 13 "%0%10!s!  !Failed to pause adapter for BMIC Configuration change!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c799 20 "%0%10!s! BMIC command should be retried" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c797 12 "%0%10!s! A rescan is in progress.  No configurations changes allowed at this time." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c797 11 "%0%10!s!  Received Flash ROM command. Using %11!u! unchanged heart beat as criteria for controller lockup." //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=SAS_SspPassThrough
+{
+IDSTR2, ItemString -- 10
+MI_CTRL_LOCKUP_CRITERIA_DURING_FLASH, ItemLong -- 11
+}
+#typev ioctlcsmisas_c1230 24 "%0%10!s! !Invalid flags!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_TaskManagement
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c1230 23 "%0%10!s! !TMF 0x%11!x! is not supported!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_TaskManagement
+{
+IDSTR2, ItemString -- 10
+pTaskIu->bTaskManagementFunction, ItemLong -- 11
+}
+#typev ioctlcsmisas_c1230 22 "%0%10!s! !Invalid flags!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_TaskManagement
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlcsmisas_c1205 25 "%0%10!s! !Buffer length too small!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=SAS_TaskManagement
+{
+IDSTR2, ItemString -- 10
+}

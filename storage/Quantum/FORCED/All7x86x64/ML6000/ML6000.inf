@@ -1,0 +1,202 @@
+; Dell ML6000 Tape Library Driver Setup
+; Copyright © 2009 Dell Inc.
+; Version:  7.5.2.0
+;           06/20/2009
+
+[version]
+signature = "$Windows NT$"
+Class     = MediumChanger
+ClassGUID = {CE5939AE-EBDE-11d0-B181-0000F8753EC4}
+Provider  = %INF_Provider%
+DriverVer = 06/20/2009,7.5.2.0
+CatalogFile = ML6000.cat
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %INF_Disk_Name%,,,,
+
+[Manufacturer]
+"Dell Inc" = Dell_Models, ntx86.5.1, ntamd64, ntia64
+
+[Strings]
+; Non-Localizable
+SPSVCINST_ASSOCSERVICE = 0x00000002
+SERVICE_KERNEL_DRIVER  = 1
+SERVICE_DEMAND_START   = 3
+SERVICE_ERROR_NORMAL   = 1
+REG_EXPAND_SZ          = 0x00020000
+REG_DWORD              = 0x00010001
+
+; Localizable strings
+INF_Disk_Name   = "Dell ML6000 Tape Library Driver Setup"
+INF_Provider    = "Dell Inc."
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+;                                                                              *
+
+
+[WIN_Inst.ntx86]
+CopyFiles = @M6000X32.sys
+
+[WIN_Inst.ntx86.Services]
+AddService = M6000X32, %SPSVCINST_ASSOCSERVICE%, WIN_Service_Inst_x86, WIN_EventLog_Inst_x86
+
+[WIN_Service_Inst_x86]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\M6000X32.sys
+LoadOrderGroup = SCSI Class
+Dependencies   = +SCSI Miniport
+
+[WIN_EventLog_Inst_x86]
+AddReg = WIN_EventLog_AddReg_x86
+
+[WIN_EventLog_AddReg_x86]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\M6000X32.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+HKLM,System\CurrentControlSet\Services\M6000X32,AutoRun,%REG_DWORD%,0
+
+
+[Dell_Models.ntx86.5.1]
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerADIC____Scalar_i500_____
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____
+
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+;                                                                              *
+
+
+[SourceDisksFiles.x86]
+M6000X32.sys = 1
+
+[W2K_Inst.ntx86]
+CopyFiles = @M6000X32.sys
+
+[W2K_Inst.ntx86.Services]
+AddService = M6000X32, %SPSVCINST_ASSOCSERVICE%, W2K_Service_Inst_x86, W2K_EventLog_Inst_x86
+
+[W2K_Service_Inst_x86]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\M6000X32.sys
+LoadOrderGroup = SCSI Class
+Dependencies   = +SCSI Miniport
+
+[W2K_EventLog_Inst_x86]
+AddReg = W2K_EventLog_AddReg_x86
+
+[W2K_EventLog_AddReg_x86]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\M6000X32.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+HKLM,System\CurrentControlSet\Services\M6000X32,AutoRun,%REG_DWORD%,0
+
+
+[Dell_Models.ntx86.5.1]
+"Dell ML6000 Tape Library" = W2K_Inst, SCSI\ChangerADIC____Scalar_i500_____
+"Dell ML6000 Tape Library" = W2K_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____
+
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+;                                                                              *
+
+[SourceDisksFiles.amd64]
+M6000X64.sys = 1
+
+
+[WIN_Inst.ntamd64]
+CopyFiles = @M6000X64.sys
+
+[WIN_Inst.ntamd64.Services]
+AddService = M6000X64, %SPSVCINST_ASSOCSERVICE%, WIN_Service_Inst_amd64, WIN_EventLog_Inst_amd64
+
+[WIN_Service_Inst_amd64]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\M6000X64.sys
+LoadOrderGroup = SCSI Class
+Dependencies   = +SCSI Miniport
+
+[WIN_EventLog_Inst_amd64]
+AddReg = WIN_EventLog_AddReg_amd64
+
+[WIN_EventLog_AddReg_amd64]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\M6000X64.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+HKLM,System\CurrentControlSet\Services\M6000X64,AutoRun,%REG_DWORD%,0
+
+
+[Dell_Models.ntamd64]
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerADIC____Scalar_i500_____
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____
+
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************
+
+; *** BEGIN:  Repeat for each CPU Architecture *********************************
+; ******************************************************************************
+;                                                                              *
+;                                                                              *
+
+[SourceDisksFiles.ia64]
+M6000I64.sys = 1
+
+
+[WIN_Inst.ntia64]
+CopyFiles = @M6000I64.sys
+
+[WIN_Inst.ntia64.Services]
+AddService = M6000I64, %SPSVCINST_ASSOCSERVICE%, WIN_Service_Inst_ia64, WIN_EventLog_Inst_ia64
+
+[WIN_Service_Inst_ia64]
+ServiceType    = %SERVICE_KERNEL_DRIVER%
+StartType      = %SERVICE_DEMAND_START%
+ErrorControl   = %SERVICE_ERROR_NORMAL%
+ServiceBinary  = %12%\M6000I64.sys
+LoadOrderGroup = SCSI Class
+Dependencies   = +SCSI Miniport
+
+[WIN_EventLog_Inst_ia64]
+AddReg = WIN_EventLog_AddReg_ia64
+
+[WIN_EventLog_AddReg_ia64]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\M6000I64.sys"
+HKR,,TypesSupported,%REG_DWORD%,7
+HKLM,System\CurrentControlSet\Services\M6000I64,AutoRun,%REG_DWORD%,0
+
+
+[Dell_Models.ntia64]
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerADIC____Scalar_i500_____
+"Dell ML6000 Tape Library" = WIN_Inst, SCSI\ChangerQUANTUM_Scalar_i500_____
+
+
+;                                                                              *
+;                                                                              *
+; ******************************************************************************
+; *** END:    Repeat for each CPU Architecture *********************************

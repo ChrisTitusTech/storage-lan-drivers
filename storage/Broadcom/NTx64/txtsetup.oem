@@ -1,0 +1,39 @@
+;*******************************************************************************
+;
+; txtsetup.oem - Text mode setup for Broadcom HT1000 SATA Controller[installation info]
+;
+; Copyright 2003-2006, Broadcom Corporation
+;
+;*******************************************************************************
+
+# DriverVer=04/21/2009,1.1.8070.1
+
+[Disks]
+disk1 = "Broadcom HT1000 SATA Controller",\bchtsw64.cat,\
+
+[Defaults]
+scsi =bchtsw64 
+
+[scsi]
+bchtsw64= "Broadcom HT1000 Serial ATA Controller (64 bit Windows StorPort Support)"
+
+[Files.scsi.bchtsw64]
+catalog = disk1, bchtsw64.cat
+driver = disk1, bchtsw64.sys, bchtsw64
+inf = disk1, bchtsw64.inf
+
+[Config.bchtsw64]
+value = parameters\PnpInterface,5,REG_DWORD,1
+value = InstalledDuringSetup,1,REG_DWORD,1
+
+[HardwareIds.scsi.bchtsw64]
+id = "PCI\VEN_1166&DEV_024A", "bchtsw64"
+#--The following lines give additional USB floppy support
+id = "USB\VID_03F0&PID_2001", "usbstor" #--HP
+id = "USB\VID_054C&PID_002C", "usbstor" #--Sony
+id = "USB\VID_057B&PID_0001", "usbstor" #--Y-E Data
+id = "USB\VID_0409&PID_0040", "usbstor" #--NEC
+id = "USB\VID_0424&PID_0FDC", "usbstor" #--SMSC
+id = "USB\VID_08BD&PID_1100", "usbstor" #--Iomega
+id = "USB\VID_055D&PID_2020", "usbstor" #--Samsung
+

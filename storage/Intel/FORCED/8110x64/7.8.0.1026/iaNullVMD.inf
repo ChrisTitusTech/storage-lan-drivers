@@ -1,0 +1,40 @@
+; Copyright (c) 2021 Intel Corporation
+; ****************************************************************************
+; ****************************************************************************
+; **     Filename:  iaNullVMD.inf
+; **     Abstract:  Windows* INF File for Intel(R) Volume Management Device
+; **                PCIe Compliance Function
+; ****************************************************************************
+;
+[Version]
+Signature="$Windows NT$"
+Provider=%INTEL%
+Class=System
+ClassGUID={4D36E97D-E325-11CE-BFC1-08002BE10318}
+DriverVer = 07/07/2022,7.8.0.1026
+CatalogFile=iaNullVMD.cat
+
+[Manufacturer]
+%INTEL% = INTEL,NTamd64
+
+[SourceDisksNames]
+
+[SourceDisksFiles]
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[INTEL.NTamd64]
+%PCI\VEN_8086&DEV_09AB.DeviceDesc% = vmd_null_inst, PCI\VEN_8086&DEV_09AB
+
+[vmd_null_inst.NTamd64]
+Include=machine.inf
+Needs=NO_DRV
+
+[vmd_null_inst.NTamd64.Services]
+Include=machine.inf
+Needs=NO_DRV.Services
+
+[Strings]
+INTEL="Intel Corporation"
+PCI\VEN_8086&DEV_09AB.DeviceDesc = "Intel(R) Volume Management Device PCIe Compliance Function"

@@ -1,0 +1,214 @@
+#-----------------------------------------------------------------------------
+#
+#  Copyright (c) Adaptec Inc. 2007
+#
+#  This software contains the valuable trade secrets of Adaptec 
+#  or its licensors. The software is protected under international 
+#  copyright laws and treaties. This software may only be used in 
+#  accordance with the terms of its accompanying license agreement.
+#
+#-----------------------------------------------------------------------------
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+#------------------------------------------------------------------------------
+# [Disks]
+# diskN = "description",tagfile,directory
+#
+# The Disks section identifies the disks in the device installation kit.
+# 
+# diskN
+#   Specifies a key that can be used in subsequent sections to identify
+#   the disk. 
+#
+# description 
+#   Specifies a string containing the name of the disk. 
+#   Setup uses the description to prompt the user to insert the disk.
+#
+# tagfile
+#   Specifies the name of a verification file on the disk. The filename must
+#   be specified as a full path from the root and must not specify a drive. 
+#   Setup checks for this file to ensure that the user inserted the correct
+#   disk. 
+#
+# directory
+#    Specifies the directory on the disk where the installation files are
+#    located. The directory must be specified as a full path from the root and
+#    must not specify a drive. 
+#-------------------------------------------------------------------------------
+
+[Disks]
+d2   = "Adaptec SAS/SATA Driver v1.00 (Windows EM64T/AMD64 for x64 Edition)", \sasdsk1, \amd64
+
+#-------------------------------------------------------------------------------
+# [Defaults]
+# component = ID
+#
+# The Defaults section lists the default driver(s) for each hardware component
+# supported by this file. Setup highlights the default selection when it 
+# presents a list of drivers to the user.
+#
+# component 
+#    Specifies a hardware component supported by this file. The component must
+#    be one of the following system-defined values: computer or scsi. 
+#
+# ID 
+#    Specifies a string that identifies the default option. This string matches
+#    an ID specified in the corresponding HwComponent section. 
+# 
+# If a txtsetup.oem file fails to define a default driver for a supported 
+# component, Setup uses the first entry in the HwComponent section.
+#-------------------------------------------------------------------------------
+
+[Defaults]
+scsi = ADAPTEC_64SASRAID
+
+#-------------------------------------------------------------------------------
+# [HwComponent]
+# ID = description
+#
+# A HwComponent section lists the drivers available for a particular component.
+# There is a HwComponent section for each type of component supported by the
+# file.
+# 
+# HwComponent 
+#    The name of the section must be one of the following system-defined values:
+#    computer or scsi. 
+#
+# ID 
+#    Specifies a string, unique within this section, that identifies the option. 
+#    For each entry in this section, there must be a corresponding
+#    Files.HwComponent.ID section in the file. 
+#
+# description 
+#    Specifies a string that Setup presents to the user in the menu of driver
+#    choices. 
+#-------------------------------------------------------------------------------
+
+[scsi]
+ADAPTEC_64SASRAID = "Adaptec SAS/SATA 64bit driver for Windows x64 Edition"
+
+#-------------------------------------------------------------------------------
+# [Files.HwComponent.ID]
+# filetype = diskN,filename[,DriverKey]
+#
+# A Files.HwComponent.ID section lists the files to be copied if the user
+# selects a particular component option. One of these sections must be present
+# for each option listed in each HwComponent section.
+#
+# HwComponent corresponds to the name of a HwComponent section in the file.
+# ID corresponds to an ID entry in that HwComponent section. 
+#
+# filetype
+#    Identifies the type of the file to be copied. One of these entries is
+#    present for each file to be copied for this HwComponent.ID. The filetype is
+#    one of the following system-defined values: 
+#    driver, dll, hal, inf, catalog, detect
+#
+#    driver - Valid for all components. Setup copies the file to
+#             %systemroot%\system32\drivers. 
+#    inf - Valid for all components. Specifies the regular INF file for the 
+#          device. This file is used during GUI-mode setup and for other device
+#          maintenance operations. The file is copied to %systemroot%\system32.
+#    catalog - Valid for drivers. Specifies a catalog file for the device. 
+#              For example, catalog = d1, mydriver.cat.  
+# diskN 
+#    Identifies the disk from which to copy the file.
+#    This value must match an entry in the Disks section. 
+#
+# filename 
+#    Specifies the name of the file, not including the directory path or drive.
+#    To form the full file name, Setup appends the filename to the directory 
+#    specified for the disk in the Disks section.
+#
+# DriverKey 
+#    Specifies the name of the key to be created in the registry services tree
+#    for this file, if the file is of type driver. This value is used to form
+#    Config.DriverKey section names. This value is required for components of
+#    type scsi. 
+#-------------------------------------------------------------------------------
+
+
+[Files.scsi.ADAPTEC_64SASRAID]
+driver  = d2,adp94xx.sys, adp94xx
+inf     = d2,adp94xx.inf
+catalog = d2,adp94xx.cat
+
+#-------------------------------------------------------------------------------
+# [Config.DriverKey]
+# value = subkey_name,value_name,value_type,value
+#
+# A Config.DriverKey section specifies values to be set in the registry for
+# particular component options. Setup automatically creates the required values
+# in the Services\DriverKey key. Use this section to specify additional keys to
+# be created under Services\DriverKey and values under Services\DriverKey and
+# Services\DriverKey\subkey_name.
+#
+# subkey_name 
+#    Specifies the name of a key under the Services\DriverKey tree where Setup
+#    places the specified value. Setup creates the key if it does not exist.
+#    If subkey_name is the empty string (""), the value is placed under the
+#    Services\DriverKey. The subkey_name can specify more than one level of
+#    subkey, such as "subkey1\subkey2\subkey3". 
+#
+# value_name
+#    Specifies the name of the value to be set.
+# 
+# value_type 
+#    Specifes the type of the registry entry.
+#    The value_type can be one of the following: 
+#    REG_DWORD,  REG_SZ or REG_EXPAND_SZ, REG_BINARY, REG_MULTI_SZ 
+# 
+# value
+#    Specifies the value; its format depends on value_type. 
+#
+# The following example shows a Config.DriverKey section:
+# [Config.OEMSCSI]
+# value = "",tag,REG_DWORD,5
+# value = parameters\PnpInterface,5,REG_DWORD,1
+#-------------------------------------------------------------------------------
+
+[Config.adp94xx]
+value = "", Group, REG_SZ,    "SCSI Miniport"
+value = "", Start, REG_DWORD, 0
+value = "", Tag,   REG_DWORD, 1
+value = "", Type,  REG_DWORD, 1
+value = Parameters\PnpInterface,5,REG_DWORD,1
+
+# [HardwareIds.scsi.Service]
+# id = "deviceID","service" 
+#
+# A HardwareIds.scsi.Service section specifies the hardware IDs of the devices
+# that a particular mass-storage driver supports. 
+#
+# HardwareIds.scsi.Service 
+#    Service specifies the service to be installed. 
+# deviceId
+#    Specifies the device ID for a mass-storage device. 
+# service 
+#    Specifies the service to be installed for the device. 
+# The following example excerpt shows a HardwareIds.scsi.Service section for
+# a disk device:
+#
+# [HardwareIds.scsi.oemscsi]
+# id = "PCI\VEN_9004&DEV_8111","oemscsi"
+#-------------------------------------------------------------------------------
+
+[HardwareIds.scsi.ADAPTEC_64SASRAID]
+id = "PCI\VEN_9005&DEV_041f","adp94xx"
+id = "PCI\VEN_9005&DEV_0410","adp94xx"
+id = "PCI\VEN_9005&DEV_0412","adp94xx"
+id = "PCI\VEN_9005&DEV_041E","adp94xx"
+id = "PCI\VEN_9005&DEV_0430","adp94xx"
+id = "PCI\VEN_9005&DEV_0432","adp94xx"
+id = "PCI\VEN_9005&DEV_0415","adp94xx"
+id = "PCI\VEN_9005&DEV_0416","adp94xx"
+id = "PCI\VEN_9005&DEV_043E","adp94xx"
+id = "PCI\VEN_9005&DEV_043F","adp94xx"

@@ -1,0 +1,1195 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version" : "2.1.0",
+  "runs" : [ {
+    "tool" : {
+      "driver" : {
+        "name" : "CodeQL",
+        "organization" : "GitHub",
+        "semanticVersion" : "2.4.6",
+        "rules" : [ {
+          "id" : "cpp/bad-addition-overflow-check",
+          "name" : "cpp/bad-addition-overflow-check",
+          "shortDescription" : {
+            "text" : "Bad check for overflow of integer addition"
+          },
+          "fullDescription" : {
+            "text" : "Checking for overflow of integer addition by comparing against one of the arguments of the addition does not work when the result of the addition is automatically promoted to a larger type."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "reliability", "correctness", "security", "external/cwe/cwe-190", "external/cwe/cwe-192" ],
+            "kind" : "problem",
+            "precision" : "very-high",
+            "name" : "Bad check for overflow of integer addition",
+            "description" : "Checking for overflow of integer addition by comparing\n              against one of the arguments of the addition does not work\n              when the result of the addition is automatically promoted\n              to a larger type.",
+            "id" : "cpp/bad-addition-overflow-check",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/pointer-overflow-check",
+          "name" : "cpp/pointer-overflow-check",
+          "shortDescription" : {
+            "text" : "Pointer overflow check"
+          },
+          "fullDescription" : {
+            "text" : "Adding a value to a pointer to check if it overflows relies on undefined behavior and may lead to memory corruption."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "reliability", "security" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Pointer overflow check",
+            "description" : "Adding a value to a pointer to check if it overflows relies\n              on undefined behavior and may lead to memory corruption.",
+            "id" : "cpp/pointer-overflow-check",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/too-few-arguments",
+          "name" : "cpp/too-few-arguments",
+          "shortDescription" : {
+            "text" : "Call to function with fewer arguments than declared parameters"
+          },
+          "fullDescription" : {
+            "text" : "A function call is passing fewer arguments than the number of declared parameters of the function. This may indicate that the code does not follow the author's intent. It is also a vulnerability, since the function is likely to operate on undefined data."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "correctness", "maintainability", "security" ],
+            "kind" : "problem",
+            "precision" : "very-high",
+            "name" : "Call to function with fewer arguments than declared parameters",
+            "description" : "A function call is passing fewer arguments than the number of\n              declared parameters of the function. This may indicate\n              that the code does not follow the author's intent. It is also\n              a vulnerability, since the function is likely to operate on\n              undefined data.",
+            "id" : "cpp/too-few-arguments",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/comparison-with-wider-type",
+          "name" : "cpp/comparison-with-wider-type",
+          "shortDescription" : {
+            "text" : "Comparison of narrow type with wide type in loop condition"
+          },
+          "fullDescription" : {
+            "text" : "Comparisons between types of different widths in a loop condition can cause the loop to behave unexpectedly."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-190", "external/cwe/cwe-197", "external/cwe/cwe-835" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Comparison of narrow type with wide type in loop condition",
+            "description" : "Comparisons between types of different widths in a loop\n              condition can cause the loop to behave unexpectedly.",
+            "id" : "cpp/comparison-with-wider-type",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/hresult-boolean-conversion",
+          "name" : "cpp/hresult-boolean-conversion",
+          "shortDescription" : {
+            "text" : "Cast between HRESULT and a Boolean type"
+          },
+          "fullDescription" : {
+            "text" : "Casting an HRESULT to/from a Boolean type and then using it in a test expression will yield an incorrect result because success (S_OK) in HRESULT is indicated by a value of 0."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-253", "external/microsoft/C6214", "external/microsoft/C6215", "external/microsoft/C6216", "external/microsoft/C6217", "external/microsoft/C6230" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Cast between HRESULT and a Boolean type",
+            "description" : "Casting an HRESULT to/from a Boolean type and then using it in a test expression will yield an incorrect result because success (S_OK) in HRESULT is indicated by a value of 0.",
+            "id" : "cpp/hresult-boolean-conversion",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/incorrect-string-type-conversion",
+          "name" : "cpp/incorrect-string-type-conversion",
+          "shortDescription" : {
+            "text" : "Cast from char* to wchar_t*"
+          },
+          "fullDescription" : {
+            "text" : "Casting a byte string to a wide-character string is likely to yield a string that is incorrectly terminated or aligned. This can lead to undefined behavior, including buffer overruns."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-704", "external/microsoft/c/c6276" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Cast from char* to wchar_t*",
+            "description" : "Casting a byte string to a wide-character string is likely\n              to yield a string that is incorrectly terminated or aligned.\n              This can lead to undefined behavior, including buffer overruns.",
+            "id" : "cpp/incorrect-string-type-conversion",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/windows/wdk/deprecated-api",
+          "name" : "cpp/windows/wdk/deprecated-api",
+          "shortDescription" : {
+            "text" : "Use of deprecated WDK API"
+          },
+          "fullDescription" : {
+            "text" : "Use of deprecated WDK API detected."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "feature.area" : "Multiple",
+            "owner.email" : "raulga@microsoft.com",
+            "security.severity" : "Low",
+            "query-version" : "1.1",
+            "kind" : "problem",
+            "impact" : "Attack Surface Reduction",
+            "repro.text" : "The following code locations contain calls to a deprecated WDK API",
+            "name" : "Use of deprecated WDK API",
+            "description" : "Use of deprecated WDK API detected.",
+            "id" : "cpp/windows/wdk/deprecated-api",
+            "platform" : "Desktop",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/offset-use-before-range-check",
+          "name" : "cpp/offset-use-before-range-check",
+          "shortDescription" : {
+            "text" : "Array offset used before range check"
+          },
+          "fullDescription" : {
+            "text" : "Accessing an array offset before checking the range means that the program may attempt to read beyond the end of a buffer"
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-120", "external/cwe/cwe-125" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Array offset used before range check",
+            "description" : "Accessing an array offset before checking the range means that\n              the program may attempt to read beyond the end of a buffer",
+            "id" : "cpp/offset-use-before-range-check",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/integer-multiplication-cast-to-long",
+          "name" : "cpp/integer-multiplication-cast-to-long",
+          "shortDescription" : {
+            "text" : "Multiplication result converted to larger type"
+          },
+          "fullDescription" : {
+            "text" : "A multiplication result that is converted to a larger type can be a sign that the result can overflow the type converted from."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "correctness", "types", "external/cwe/cwe-190", "external/cwe/cwe-192", "external/cwe/cwe-197", "external/cwe/cwe-681" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Multiplication result converted to larger type",
+            "description" : "A multiplication result that is converted to a larger type can\n              be a sign that the result can overflow the type converted from.",
+            "id" : "cpp/integer-multiplication-cast-to-long",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/signed-overflow-check",
+          "name" : "cpp/signed-overflow-check",
+          "shortDescription" : {
+            "text" : "Signed overflow check"
+          },
+          "fullDescription" : {
+            "text" : "Testing for overflow by adding a value to a variable to see if it \"wraps around\" works only for unsigned integer values."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "correctness", "security" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Signed overflow check",
+            "description" : "Testing for overflow by adding a value to a variable\n              to see if it \"wraps around\" works only for\n              unsigned integer values.",
+            "id" : "cpp/signed-overflow-check",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/upcast-array-pointer-arithmetic",
+          "name" : "cpp/upcast-array-pointer-arithmetic",
+          "shortDescription" : {
+            "text" : "Upcast array used in pointer arithmetic"
+          },
+          "fullDescription" : {
+            "text" : "An array with elements of a derived struct type is cast to a pointer to the base type of the struct. If pointer arithmetic or an array dereference is done on the resulting pointer, it will use the width of the base type, leading to misaligned reads."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "correctness", "reliability", "security", "external/cwe/cwe-119", "external/cwe/cwe-843" ],
+            "kind" : "path-problem",
+            "precision" : "high",
+            "name" : "Upcast array used in pointer arithmetic",
+            "description" : "An array with elements of a derived struct type is cast to a\n              pointer to the base type of the struct. If pointer arithmetic or\n              an array dereference is done on the resulting pointer, it will\n              use the width of the base type, leading to misaligned reads.",
+            "id" : "cpp/upcast-array-pointer-arithmetic",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/incorrect-not-operator-usage",
+          "name" : "cpp/incorrect-not-operator-usage",
+          "shortDescription" : {
+            "text" : "Incorrect 'not' operator usage"
+          },
+          "fullDescription" : {
+            "text" : "Usage of a logical-not (!) operator as an operand for a bit-wise operation. This commonly indicates the usage of an incorrect operator instead of the bit-wise not (~) operator, also known as ones' complement operator."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-480", "external/microsoft/c6317" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Incorrect 'not' operator usage",
+            "description" : "Usage of a logical-not (!) operator as an operand for a bit-wise operation.\n              This commonly indicates the usage of an incorrect operator instead of the bit-wise not (~) operator,\n              also known as ones' complement operator.",
+            "id" : "cpp/incorrect-not-operator-usage",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/suspicious-sizeof",
+          "name" : "cpp/suspicious-sizeof",
+          "shortDescription" : {
+            "text" : "Suspicious 'sizeof' use"
+          },
+          "fullDescription" : {
+            "text" : "Taking 'sizeof' of an array parameter is often mistakenly thought to yield the size of the underlying array, but it always yields the machine pointer size."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "correctness", "security", "external/cwe/cwe-467" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Suspicious 'sizeof' use",
+            "description" : "Taking 'sizeof' of an array parameter is often mistakenly thought\n              to yield the size of the underlying array, but it always yields\n              the machine pointer size.",
+            "id" : "cpp/suspicious-sizeof",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/uninitialized-local",
+          "name" : "cpp/uninitialized-local",
+          "shortDescription" : {
+            "text" : "Potentially uninitialized local variable"
+          },
+          "fullDescription" : {
+            "text" : "Reading from a local variable that has not been assigned to will typically yield garbage."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-665", "external/cwe/cwe-457" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Potentially uninitialized local variable",
+            "description" : "Reading from a local variable that has not been assigned to\n              will typically yield garbage.",
+            "id" : "cpp/uninitialized-local",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/unterminated-variadic-call",
+          "name" : "cpp/unterminated-variadic-call",
+          "shortDescription" : {
+            "text" : "Unterminated variadic call"
+          },
+          "fullDescription" : {
+            "text" : "Calling a variadic function without a sentinel value may result in a buffer overflow if the function expects a specific value to terminate the argument list."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-121" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Unterminated variadic call",
+            "description" : "Calling a variadic function without a sentinel value\n              may result in a buffer overflow if the function expects\n              a specific value to terminate the argument list.",
+            "id" : "cpp/unterminated-variadic-call",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "SM02313",
+          "name" : "cpp/conditionally-uninitialized-variable",
+          "shortDescription" : {
+            "text" : "Conditionally uninitialized variable"
+          },
+          "fullDescription" : {
+            "text" : "An initialization function is used to initialize a local variable, but the returned status code is not checked. The variable may be left in an uninitialized state, and reading the variable may result in undefined behavior."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-457" ],
+            "kind" : "problem",
+            "name" : "Conditionally uninitialized variable",
+            "opaque-id" : "SM02313",
+            "description" : "An initialization function is used to initialize a local variable, but the\n              returned status code is not checked. The variable may be left in an uninitialized\n              state, and reading the variable may result in undefined behavior.",
+            "id" : "cpp/conditionally-uninitialized-variable",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/suspicious-pointer-scaling",
+          "name" : "cpp/suspicious-pointer-scaling",
+          "shortDescription" : {
+            "text" : "Suspicious pointer scaling"
+          },
+          "fullDescription" : {
+            "text" : "Implicit scaling of pointer arithmetic expressions can cause buffer overflow conditions."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-468" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Suspicious pointer scaling",
+            "description" : "Implicit scaling of pointer arithmetic expressions\n              can cause buffer overflow conditions.",
+            "id" : "cpp/suspicious-pointer-scaling",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/suspicious-pointer-scaling-void",
+          "name" : "cpp/suspicious-pointer-scaling-void",
+          "shortDescription" : {
+            "text" : "Suspicious pointer scaling to void"
+          },
+          "fullDescription" : {
+            "text" : "Implicit scaling of pointer arithmetic expressions can cause buffer overflow conditions."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-468" ],
+            "kind" : "problem",
+            "precision" : "medium",
+            "name" : "Suspicious pointer scaling to void",
+            "description" : "Implicit scaling of pointer arithmetic expressions\n              can cause buffer overflow conditions.",
+            "id" : "cpp/suspicious-pointer-scaling-void",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/suspicious-add-sizeof",
+          "name" : "cpp/suspicious-add-sizeof",
+          "shortDescription" : {
+            "text" : "Suspicious add with sizeof"
+          },
+          "fullDescription" : {
+            "text" : "Explicitly scaled pointer arithmetic expressions can cause buffer overflow conditions if the offset is also implicitly scaled."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-468" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Suspicious add with sizeof",
+            "description" : "Explicitly scaled pointer arithmetic expressions\n              can cause buffer overflow conditions if the offset is also\n              implicitly scaled.",
+            "id" : "cpp/suspicious-add-sizeof",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/potentially-dangerous-function",
+          "name" : "cpp/potentially-dangerous-function",
+          "shortDescription" : {
+            "text" : "Use of potentially dangerous function"
+          },
+          "fullDescription" : {
+            "text" : "Use of a standard library function that is not thread-safe."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-676" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Use of potentially dangerous function",
+            "description" : "Use of a standard library function that is not thread-safe.",
+            "id" : "cpp/potentially-dangerous-function",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "SM02320",
+          "name" : "cpp/paddingbyteinformationdisclosure",
+          "shortDescription" : {
+            "text" : "Possible information leakage from uninitialized padding bytes."
+          },
+          "fullDescription" : {
+            "text" : "A newly allocated struct or class that is initialized member-by-member may leak information if it includes padding bytes."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-200" ],
+            "kind" : "problem",
+            "name" : "Possible information leakage from uninitialized padding bytes.",
+            "opaque-id" : "SM02320",
+            "description" : "A newly allocated struct or class that is initialized member-by-member may\n              leak information if it includes padding bytes.",
+            "id" : "cpp/paddingbyteinformationdisclosure",
+            "microsoft.severity" : "Important",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "SM02324",
+          "name" : "cpp/badoverflowguard",
+          "shortDescription" : {
+            "text" : "Bad overflow check"
+          },
+          "fullDescription" : {
+            "text" : "Checking for overflow of an addition by comparing against one of the arguments of the addition fails if the size of all the argument types are smaller than 4 bytes. This is because the result of the addition is promoted to a 4 byte int."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-190", "external/cwe/cwe-191" ],
+            "kind" : "problem",
+            "name" : "Bad overflow check",
+            "opaque-id" : "SM02324",
+            "description" : "Checking for overflow of an addition by comparing against one\n              of the arguments of the addition fails if the size of all the\n              argument types are smaller than 4 bytes. This is because the\n              result of the addition is promoted to a 4 byte int.",
+            "id" : "cpp/badoverflowguard",
+            "microsoft.severity" : "Important",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "SM02323",
+          "name" : "cpp/infiniteloop",
+          "shortDescription" : {
+            "text" : "Comparison of narrow type with wide type in loop condition"
+          },
+          "fullDescription" : {
+            "text" : "Comparisons between types of different widths in a loop condition can cause the loop to fail to terminate."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-190", "external/cwe/cwe-197" ],
+            "kind" : "problem",
+            "name" : "Comparison of narrow type with wide type in loop condition",
+            "opaque-id" : "SM02323",
+            "description" : "Comparisons between types of different widths in a loop\n              condition can cause the loop to fail to terminate.",
+            "id" : "cpp/infiniteloop",
+            "microsoft.severity" : "Important",
+            "problem.severity" : "error"
+          }
+        }, {
+          "id" : "cpp/use-after-free",
+          "name" : "cpp/use-after-free",
+          "shortDescription" : {
+            "text" : "Potential use after free (high precision, for drivers)"
+          },
+          "fullDescription" : {
+            "text" : "An allocated memory block is used after it has been freed. Behavior in such cases is undefined and can cause memory corruption."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "reliability", "security", "external/cwe/cwe-416" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Potential use after free (high precision, for drivers)",
+            "description" : "An allocated memory block is used after it has been freed. Behavior in such cases is undefined and can cause memory corruption.",
+            "id" : "cpp/use-after-free",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "SM02310",
+          "name" : "cpp/uninitializedptrfield",
+          "shortDescription" : {
+            "text" : "Dereference of potentially uninitialized pointer field"
+          },
+          "fullDescription" : {
+            "text" : "A pointer field which was not initialized during or since class construction will cause a null pointer dereference."
+          },
+          "defaultConfiguration" : { },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-476" ],
+            "kind" : "problem",
+            "name" : "Dereference of potentially uninitialized pointer field",
+            "opaque-id" : "SM02310",
+            "description" : "A pointer field which was not initialized during or since class \n              construction will cause a null pointer dereference.",
+            "id" : "cpp/uninitializedptrfield",
+            "microsoft.severity" : "Important",
+            "problem.severity" : "warning"
+          }
+        }, {
+          "id" : "cpp/weak-crypto/cng/hardcoded-iv",
+          "name" : "cpp/weak-crypto/cng/hardcoded-iv",
+          "shortDescription" : {
+            "text" : "Weak cryptography"
+          },
+          "fullDescription" : {
+            "text" : "Finds usage of a static (hardcoded) IV. (CNG)"
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-327" ],
+            "kind" : "problem",
+            "precision" : "high",
+            "name" : "Weak cryptography",
+            "description" : "Finds usage of a static (hardcoded) IV. (CNG)",
+            "id" : "cpp/weak-crypto/cng/hardcoded-iv",
+            "microsoft.severity" : "Important",
+            "problem.severity" : "error"
+          }
+        } ]
+      },
+      "extensions" : [ {
+        "name" : "codeql-javascript-upgrades"
+      }, {
+        "name" : "codeql-java",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-cpp-upgrades"
+      }, {
+        "name" : "legacy-libraries-csharp",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "legacy-libraries-python",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-cpp-examples",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-python-upgrades"
+      }, {
+        "name" : "codeql-python",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "legacy-libraries-cpp",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-cpp",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-java-tests",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-suite-helpers",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "legacy-libraries-java",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-python-examples",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-python-tests",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-javascript-examples",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-csharp-tests",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-csharp",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-javascript",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-csharp-upgrades"
+      }, {
+        "name" : "codeql-csharp-examples",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-java-upgrades"
+      }, {
+        "name" : "legacy-upgrades",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-javascript-tests",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-cpp-tests",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "codeql-java-examples",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "legacy-libraries-javascript",
+        "semanticVersion" : "0.0.0"
+      }, {
+        "name" : "windows-drivers",
+        "semanticVersion" : "0.9.6"
+      } ]
+    },
+    "artifacts" : [ {
+      "location" : {
+        "uri" : "DevMap.c",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 0
+      }
+    }, {
+      "location" : {
+        "uri" : "DevMap.h",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 1
+      }
+    }, {
+      "location" : {
+        "uri" : "StartIo.c",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 2
+      }
+    }, {
+      "location" : {
+        "uri" : "Crtl.c",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 3
+      }
+    }, {
+      "location" : {
+        "uri" : "Cli.c",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 4
+      }
+    }, {
+      "location" : {
+        "uri" : "IoctlTopology.c",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 5
+      }
+    } ],
+    "results" : [ {
+      "ruleId" : "cpp/comparison-with-wider-type",
+      "ruleIndex" : 3,
+      "message" : {
+        "text" : "Comparison between [ucCurrentBus](1) of type UCHAR and [... + ...](2) of wider type int."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2851,
+            "startColumn" : 39,
+            "endColumn" : 72
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "4b130a4acf5b9b7d:1",
+        "primaryLocationStartColumnFingerprint" : "35"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2779,
+            "startColumn" : 18,
+            "endColumn" : 30
+          }
+        },
+        "message" : {
+          "text" : "ucCurrentBus"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2851,
+            "startColumn" : 55,
+            "endColumn" : 72
+          }
+        },
+        "message" : {
+          "text" : "... + ..."
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/comparison-with-wider-type",
+      "ruleIndex" : 3,
+      "message" : {
+        "text" : "Comparison between [ucCurrentTarget](1) of type UCHAR and [LeafUsed](2) of wider type USHORT."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2858,
+            "startColumn" : 33,
+            "endColumn" : 66
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "a87f763df4bce000:1",
+        "primaryLocationStartColumnFingerprint" : "26"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2780,
+            "startColumn" : 18,
+            "endColumn" : 33
+          }
+        },
+        "message" : {
+          "text" : "ucCurrentTarget"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.h",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 672,
+            "startColumn" : 14,
+            "endColumn" : 22
+          }
+        },
+        "message" : {
+          "text" : "LeafUsed"
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/comparison-with-wider-type",
+      "ruleIndex" : 3,
+      "message" : {
+        "text" : "Comparison between [ucCurrentLun](1) of type UCHAR and [LeafUsed](2) of wider type USHORT."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2864,
+            "startColumn" : 33,
+            "endColumn" : 65
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "63169f9c3922d24b:1",
+        "primaryLocationStartColumnFingerprint" : "23"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2781,
+            "startColumn" : 18,
+            "endColumn" : 30
+          }
+        },
+        "message" : {
+          "text" : "ucCurrentLun"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.h",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 672,
+            "startColumn" : 14,
+            "endColumn" : 22
+          }
+        },
+        "message" : {
+          "text" : "LeafUsed"
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/comparison-with-wider-type",
+      "ruleIndex" : 3,
+      "message" : {
+        "text" : "Comparison between [index](1) of type UCHAR and [ulLunCnt](2) of wider type ULONG."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 258,
+            "startColumn" : 32,
+            "endColumn" : 48
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "7720f9fd494f460c:1",
+        "primaryLocationStartColumnFingerprint" : "16"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 62,
+            "startColumn" : 33,
+            "endColumn" : 38
+          }
+        },
+        "message" : {
+          "text" : "index"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 243,
+            "startColumn" : 22,
+            "endColumn" : 30
+          }
+        },
+        "message" : {
+          "text" : "ulLunCnt"
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/offset-use-before-range-check",
+      "ruleIndex" : 7,
+      "message" : {
+        "text" : "This use of offset 'i' should follow the [range check](1)."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Crtl.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 663,
+            "startColumn" : 15,
+            "endColumn" : 19
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "a90e60ebb5e19d29:1",
+        "primaryLocationStartColumnFingerprint" : "10"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Crtl.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 663,
+            "startColumn" : 24,
+            "endColumn" : 47
+          }
+        },
+        "message" : {
+          "text" : "range check"
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/offset-use-before-range-check",
+      "ruleIndex" : 7,
+      "message" : {
+        "text" : "This use of offset 'ii' should follow the [range check](1)."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Cli.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 4
+          },
+          "region" : {
+            "startLine" : 1407,
+            "startColumn" : 11,
+            "endColumn" : 22
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "e92a608914a087e0:1",
+        "primaryLocationStartColumnFingerprint" : "7"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Cli.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 4
+          },
+          "region" : {
+            "startLine" : 1407,
+            "startColumn" : 26,
+            "endColumn" : 33
+          }
+        },
+        "message" : {
+          "text" : "range check"
+        }
+      } ]
+    }, {
+      "ruleId" : "cpp/suspicious-pointer-scaling",
+      "ruleIndex" : 16,
+      "message" : {
+        "text" : "This pointer might have type [_STORAGE_PHYSICAL_NODE_DATA](1) (size 40), but the pointer arithmetic here is done with type PSTORAGE_PHYSICAL_ADAPTER_DATA (size 128)."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "IoctlTopology.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 5
+          },
+          "region" : {
+            "startLine" : 348,
+            "startColumn" : 62,
+            "endColumn" : 82
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "6b2b96298771e323:1",
+        "primaryLocationStartColumnFingerprint" : "58"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "IoctlTopology.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 5
+          },
+          "region" : {
+            "startLine" : 290,
+            "startColumn" : 82,
+            "endColumn" : 86
+          }
+        },
+        "message" : {
+          "text" : "_STORAGE_PHYSICAL_NODE_DATA"
+        }
+      } ]
+    }, {
+      "ruleId" : "SM02323",
+      "ruleIndex" : 22,
+      "message" : {
+        "text" : "In vprint comparison between [ii](1) of type unsigned int and [stringln](2) of wider type ULONG_PTR."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Crtl.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 454,
+            "startColumn" : 17,
+            "endColumn" : 30
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "42b694d8e9d2c780:1",
+        "primaryLocationStartColumnFingerprint" : "13"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Crtl.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 454,
+            "startColumn" : 17,
+            "endColumn" : 19
+          }
+        },
+        "message" : {
+          "text" : "ii"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "Crtl.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 454,
+            "startColumn" : 22,
+            "endColumn" : 30
+          }
+        },
+        "message" : {
+          "text" : "stringln"
+        }
+      } ]
+    }, {
+      "ruleId" : "SM02323",
+      "ruleIndex" : 22,
+      "message" : {
+        "text" : "In MapTraverseTrieStartStop comparison between [ucCurrentBus](1) of type UCHAR and [... + ...](2) of wider type int."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2851,
+            "startColumn" : 39,
+            "endColumn" : 72
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "4b130a4acf5b9b7d:1",
+        "primaryLocationStartColumnFingerprint" : "35"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2851,
+            "startColumn" : 39,
+            "endColumn" : 51
+          }
+        },
+        "message" : {
+          "text" : "ucCurrentBus"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "DevMap.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 2851,
+            "startColumn" : 55,
+            "endColumn" : 72
+          }
+        },
+        "message" : {
+          "text" : "... + ..."
+        }
+      } ]
+    }, {
+      "ruleId" : "SM02323",
+      "ruleIndex" : 22,
+      "message" : {
+        "text" : "In HandleScsiReportLunCmd comparison between [index](1) of type UCHAR and [ulLunCnt](2) of wider type ULONG."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 258,
+            "startColumn" : 32,
+            "endColumn" : 48
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "7720f9fd494f460c:1",
+        "primaryLocationStartColumnFingerprint" : "16"
+      },
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 258,
+            "startColumn" : 32,
+            "endColumn" : 37
+          }
+        },
+        "message" : {
+          "text" : "index"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "StartIo.c",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 258,
+            "startColumn" : 40,
+            "endColumn" : 48
+          }
+        },
+        "message" : {
+          "text" : "ulLunCnt"
+        }
+      } ]
+    } ],
+    "columnKind" : "utf16CodeUnits",
+    "properties" : {
+      "semmle.formatSpecifier" : "sarifv2.1.0"
+    }
+  } ]
+}

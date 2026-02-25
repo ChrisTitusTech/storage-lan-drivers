@@ -1,0 +1,181 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+558f3a80-e188-3fba-2e4a-752ce249487f 2016 // SRC=IoctlFirmware.c MJ= MN=
+#typev ioctlfirmware_c428 14 "%0%10!s!   !Invalid DataBufferOffset.  DataBufferOffset should be multiple of sizeof(PVOID)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetFirmwareRequestIfValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c420 13 "%0%10!s!   !Invalid FIRMWARE_REQUEST_BLOCK_STRUCTURE_VERSION!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetFirmwareRequestIfValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c412 12 "%0%10!s!   !Buffer not big enough!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetFirmwareRequestIfValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c403 11 "%0%10!s!   !Buffer not big enough!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetFirmwareRequestIfValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c394 10 "%0%10!s!   !ControlCode is not set to IOCTL_SCSI_MINIPORT_FIRMWARE!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetFirmwareRequestIfValid
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c867 28 "%0%10!s!  !Invalid STORAGE_FIRMWARE_DOWNLOAD_STRUCTURE_VERSION vs Size mismatch!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c1061 45 "%0%10!s!   Fw Image chunk(%11!d! of %12!d!) size = 0x%13!x! (%14!d! bytes)." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->usDriverChunkNumber, ItemLong -- 11
+pFwFlashParameters->usNumberOfFwChunks, ItemLong -- 12
+pFwFlashParameters->ulSizeOfCurrentFwChunk, ItemLong -- 13
+pFwFlashParameters->ulSizeOfCurrentFwChunk, ItemLong -- 14
+}
+#typev ioctlfirmware_c1054 44 "%0%10!s!   Fw Image last chunk(%11!d! of %12!d!) size = 0x%13!x! (%14!d! bytes)." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->usDriverChunkNumber, ItemLong -- 11
+pFwFlashParameters->usNumberOfFwChunks, ItemLong -- 12
+pFwFlashParameters->ulSizeOfCurrentFwChunk, ItemLong -- 13
+pFwFlashParameters->ulSizeOfCurrentFwChunk, ItemLong -- 14
+}
+#typev ioctlfirmware_c1048 43 "%0%10!s!   Current fw Image chunk offset = 0x%11!I64x! (%12!I64d! bytes)." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->ullAppRunningOffset, ItemLongLongX -- 11
+pFwFlashParameters->ullAppRunningOffset, ItemLongLong -- 12
+}
+#typev ioctlfirmware_c1045 42 "%0%10!s!   Pointer to current fw image chunk = 0x%11!p!" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pucImageFile, ItemPtr -- 11
+}
+#typev ioctlfirmware_c1040 41 "%0%10!s!  !The current fw download Ioctl is reporting a different total Image size!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c1030 40 "%0%10!s!  !STORAGE_HW_FIRMWARE_REQUEST_FLAG_LAST_SEGMENT flag not set!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c1014 39 "%0%10!s!  !chunk number=%11!d! is invalid size!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->usDriverChunkNumber, ItemLong -- 11
+}
+#typev ioctlfirmware_c1000 38 "%0%10!s!  !Driver's Offset(0x%11!I64x!) != Application's offset(0x%12!I64x!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->ullDriverRunningOffset, ItemLongLongX -- 11
+pFwFlashParameters->ullAppRunningOffset, ItemLongLongX -- 12
+}
+#typev ioctlfirmware_c979 37 "%0%10!s!  !Driver's Chunk(%11!d!) != Application's chunk number(%12!d!)!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->usDriverChunkNumber, ItemLong -- 11
+usAppChunkNumber, ItemLong -- 12
+}
+#typev ioctlfirmware_c974 47 "%0%10!s!   *************Current chunk number = %11!d! of %12!d!************." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+usChunkNumber, ItemLong -- 11
+pDevX->ManageIoctlFwFlash.usNumberOfFwChunks, ItemLong -- 12
+}
+#typev ioctlfirmware_c974 46 "%0%10!s!  !Invalid chunk size detected!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c951 36 "%0%10!s!   Total ImageSize = 0x%11!x! (%12!d! bytes)" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->ulTotalFwImageSize, ItemLong -- 11
+pFwFlashParameters->ulTotalFwImageSize, ItemLong -- 12
+}
+#typev ioctlfirmware_c946 35 "%0%10!s!  !The total fw image size != sum of its chunks!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c939 34 "%0%10!s!  !The last fw image chunk is to big!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c921 33 "%0%10!s!   Slot = %11!d!" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+ucSlot, ItemLong -- 11
+}
+#typev ioctlfirmware_c918 32 "%0%10!s!   The driver expecting a total of %11!d! fw IOCTL download commands." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFwFlashParameters->usNumberOfFwChunks, ItemLong -- 11
+}
+#typev ioctlfirmware_c916 16 "%0%10!s!   The number of chunks needed = %11!d!" //   LEVEL=dINFO_LVL1 FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+ulChunksNeeded, ItemLong -- 11
+}
+#typev ioctlfirmware_c903 31 "%0%10!s!  !STORAGE_HW_FIRMWARE_REQUEST_FLAG_FIRST_SEGMENT flag not set!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c893 30 "%0%10!s!   ******First IOCTL download******." //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c882 19 "%0%10!s!  !Invalid fw image chunk size=0!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c882 18 "%0%10!s!  !The fw image chunk size=%11!d! bytes exceeds ImagePayloadMaxSize=%12!d! bytes!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+ulSizeOfOneFwChunk, ItemLong -- 11
+STORAGE_FIRMWARE_CONTROLLER_IMAGE_PAYLOAD_MAX_SIZE, ItemLong -- 12
+}
+#typev ioctlfirmware_c882 17 "%0%10!s!  !The fw image chunk size needs to be a multiple of ImagePayloadAlignment=%11!d! from STORAGE_FIRMWARE_INFO!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+STORAGE_FIRMWARE_CONTROLLER_IMAGE_PAYLOAD_BYTE_ALIGNMENT, ItemLong -- 11
+}
+#typev ioctlfirmware_c877 29 "%0%10!s!  !Image file offset, should be aligned to value of ImagePayloadAlignment from STORAGE_FIRMWARE_INFO!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c857 27 "%0%10!s!  !Total image size is less than image buffer size of one IOCTL fw download command!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c848 26 "%0%10!s!  !Invalid Total image size. ImageSize=0 bytes!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c840 25 "%0%10!s!  !Invalid Slot=%11!d!.  Only Slot=0 supported!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFirmwareDownloadV2->Slot, ItemLong -- 11
+}
+#typev ioctlfirmware_c820 24 "%0%10!s!  !Invalid STORAGE_FIRMWARE_DOWNLOAD_STRUCTURE_VERSION. Version 1 not supported!" //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c796 23 "%0%10!s!   sizeof(STORAGE_FIRMWARE_DOWNLOAD) = %11!d! bytes" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFirmwareDownload->Size, ItemLong -- 11
+}
+#typev ioctlfirmware_c793 22 "%0%10!s!   STORAGE_FIRMWARE_DOWNLOAD_STRUCTURE_VERSION = %11!d!" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+pFirmwareDownload->Version, ItemLong -- 11
+}
+#typev ioctlfirmware_c787 21 "%0%10!s!  !IOCTL srb data buffer is to big." //   LEVEL=dWARN_LVL FLAGS=DbgFlagIoctl FUNC=GetParametersForCollectBufferCdb
+{
+IDSTR2, ItemString -- 10
+}
+#typev ioctlfirmware_c504 15 "%0%10!s!  %11!s!" //   LEVEL=DbgLvlIoctl FLAGS=DbgFlagIoctl FUNC=ProcessOsFirmwareIoctls
+{
+IDSTR2, ItemString -- 10
+IoctlFirmwareFunctionCodesToAscii(pFirmwareRequest->Function), ItemString -- 11
+}

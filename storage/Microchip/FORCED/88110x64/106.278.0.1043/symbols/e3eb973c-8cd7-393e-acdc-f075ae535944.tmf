@@ -1,0 +1,35 @@
+// PDB:  c:\jenkins\workspace\SmartPqi_rel-SR2.5.2_200211_106.178.0\build\2016\x64\Release\SmartPqi\\symbols\SmartPqi.pdb
+// PDB:  Last Updated :2020-02-11:20:20:08:129 (UTC) [tracepdb]
+e3eb973c-8cd7-393e-acdc-f075ae535944 2016 // SRC=DebugUtil.c MJ= MN=
+#typev debugutil_c149 12 "%0%10!s! --> BufSize=%11!d! NexusId=0x%12!x! TaskAtt=%13!d! CmdPrior=0x%14!x! Dir=%15!d! Part=%16!d!" //   LEVEL=dDBG_LVL FLAGS=DbgFlagIo FUNC=MiDisplayRaidRequestIu
+{
+IDSTR2, ItemString -- 10
+pRaidCmd->ulBufferSize, ItemLong -- 11
+pRaidCmd->usNexusId, ItemLong -- 12
+pRaidCmd->TaskAttribute, ItemLong -- 13
+pRaidCmd->CommandPriority, ItemLong -- 14
+pRaidCmd->DataDirection, ItemLong -- 15
+pRaidCmd->Partial, ItemLong -- 16
+}
+#typev debugutil_c71 11 "%0%10!s!      [%11!02d!]=0x%12!s!" //   LEVEL=Level FLAGS=DbgFlagIo FUNC=MiDumpBufferTrace
+{
+IDSTR2, ItemString -- 10
+ulSrcIndex, ItemLong -- 11
+buf, ItemString -- 12
+}
+#typev debugutil_c47 10 "%0%10!s!   %11!s!:" //   LEVEL=Level FLAGS=DbgFlagIo FUNC=MiDumpBufferTrace
+{
+IDSTR2, ItemString -- 10
+pHeader, ItemString -- 11
+}
+#typev debugutil_c116 11 "%0%10!s!      [%11!02d!]=0x%12!s!" //   LEVEL=Level FLAGS=DbgFlagIo FUNC=MiDumpResponseIu
+{
+IDSTR2, ItemString -- 10
+ulSrcIndex, ItemLong -- 11
+buf, ItemString -- 12
+}
+#typev debugutil_c116 10 "%0%10!s!   %11!s!:" //   LEVEL=Level FLAGS=DbgFlagIo FUNC=MiDumpResponseIu
+{
+IDSTR2, ItemString -- 10
+pHeader, ItemString -- 11
+}

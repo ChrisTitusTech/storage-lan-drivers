@@ -1,0 +1,112 @@
+# txtsetup.oem - version XP_X64.2 - LSI_SAS3 Windows XP X64 driver
+#
+# ***********************************************************************
+#                                                                       *
+#   Copyright 2011 LSI Corporation.  All rights reserved.               *
+#                                                                       *
+#   This file is property of LSI Corporation and is licensed for        *
+#   use as is.  The receipt of or posession of this file does not       *
+#   convey any rights to modify its contents, in whole, or in part,     *
+#   without the specific written consent of LSI Corporation.            *
+#                                                                       *
+# ***********************************************************************
+#
+# format for txtsetup.oem.
+#
+# General format:
+#
+# [section]
+# key = value1,value2,...
+#
+#
+# The hash ('#') introduces a comment.
+# Strings with embedded spaces, commas, or hashes should be double-quoted
+#
+
+
+[Disks]
+
+# This section lists all disks in the disk set.
+#
+# <description> is a descriptive name for a disk, used when
+#   prompting for the disk
+# <tagfile> is a file whose presence allows setup to recognize
+#   that the disk is inserted.
+# <directory> is where the files are located on the disk.
+#
+
+d1 = "LSI Fusion-MPT SAS3 Storport Driver",\lsi_sas3.tag,\
+
+
+[Defaults]
+
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+
+scsi = LSI_SAS3_X64
+
+
+[scsi]
+
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+
+LSI_SAS3_X64 = "LSI Fusion-MPT SAS3 Driver (XP X64)",lsi_sas3
+
+
+[HardwareIds.scsi.LSI_SAS3_X64]
+
+id = "PCI\VEN_1000&DEV_0090", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0091", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0092", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0093", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0094", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0095", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_006C", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0096", "lsi_sas3"
+id = "PCI\VEN_1000&DEV_0097", "lsi_sas3"
+
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.LSI_SAS3_X64]
+driver  = d1,lsi_sas3.sys,LSI_SAS3
+inf     = d1,lsi_sas3.inf
+inf     = d1,lsinodrv.inf
+catalog = d1,sxpam64.cat
+
+
+[Config.LSI_SAS3]
+
+# This section specifies values to be set in the registry for
+# particular component options.  Required values in the services\xxx
+# key are created automatically -- use this section to specify additional
+# keys to be created in services\xxx and values in services\xxx and
+# services\xxx\yyy.
+#
+# <key_name> is relative to the services node for this device.
+#   If it is empty, then it refers to the services node.
+#   If specified, the key is created first.
+# <value_name> specifies the value to be set within the key
+# <value_type> is a string like REG_DWORD.  See below.
+# <value> specifies the actual value; its format depends on <value_type>
+value = Parameters\PnpInterface,5,REG_DWORD,1

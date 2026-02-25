@@ -1,0 +1,147 @@
+; This INF file installs the Silicon Image Serial ATA non-Raid driver for
+; the SiI 3114 controller on systems using 64-bit extended processors.
+;
+;
+; Copyright (C) 2003 - 2008 by Silicon Image, Inc.
+; All rights reserved
+
+[Version]
+Signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGuid={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%SI%
+CatalogFile=SI3114.cat
+DriverVer=04/22/2009, 1.2.9.0
+
+
+[SourceDisksNames.amd64]
+1="Silicon Image SiI 3114 SATALink Driver Installation Disk",Si3114.inf,\amd64,
+
+[SourceDisksFiles.amd64]
+SI3114.sys	= 1
+SilSupp.dll	= 1
+SiWinAcc.sys	= 1
+
+
+[DestinationDirs]
+DefaultDestDir	= 12
+DllFiles		= 11
+
+
+[DriverFiles]
+SI3114.sys,,,0x20
+SiWinAcc.sys,,,0x20
+
+[DllFiles]
+SilSupp.dll,,,0x20
+
+
+[Manufacturer]
+%SI%=SI_HDC,NTamd64
+
+[SI_HDC.NTamd64]
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_31141095
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_288610F1
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_31148086
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_003915D4
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_B0021458
+%PCI\VEN_1095&DEV_3114.DeviceDesc%=SI_3114_XP, PCI\VEN_1095&DEV_3114&SUBSYS_31141458
+
+[ControlFlags]
+ExcludeFromSelect.ntx86=*
+
+
+
+;; Driver install sections
+;;
+[SI_3114_XP.NTamd64]
+Copyfiles=DriverFiles, DllFiles
+
+[SI_3114_XP.NTamd64.Services]
+AddService=SI3114,0x00000002,SI_3114_Service_Install, Miniport_EventLog_Inst
+AddService=SiFilter,0,FilterService_Install
+
+[SI_3114_XP.NTamd64.CoInstallers]
+Copyfiles=DllFiles
+AddReg = SI_3114_CoInstall_AddReg
+
+
+
+[SI_3114_CoInstall_AddReg]
+HKR,,CoInstallers32,0x00010000,"SilSupp.dll, CoInstHandler"
+
+
+[SI_3114_Service_Install]
+DisplayName=%SI3114.SvcDesc%
+ServiceType=1
+StartType=0
+ErrorControl=1
+ServiceBinary=%12%\SI3114.sys
+LoadOrderGroup=Scsi miniport
+AddReg=PnPSupport_AddReg
+AddReg=PortConfigure_AddReg
+AddReg=BusType_AddReg
+AddReg=ProblemDeviceList_AddReg
+AddReg=SupportedSubSystemIds_AddReg
+
+
+[FilterService_Install]
+DisplayName=SATALink driver accelerator
+ServiceType=1
+StartType=0
+ErrorControl=0
+ServiceBinary=%12%\SiWinAcc.sys
+LoadOrderGroup=Filter
+
+
+; Mark device as supporting Plug & Play on the PCI(5) bus.
+[PnPSupport_AddReg]
+HKR,Parameters\PnPInterface,5,0x00010001,1
+
+
+[PortConfigure_AddReg]
+HKR,Parameters\Device,NumberOfRequests,0x00010001, 64
+HKR,Parameters\Device,MaximumSGList,0x00010001, 33
+HKR, Parameters\Device, CreateInitiatorLU, 0x00010001, 1
+
+
+; Set controller's bus type to SATA.
+[BusType_AddReg]
+HKR, Parameters, BusType, 0x00010001, 11
+
+
+; List of devices with known configuration issues.
+[ProblemDeviceList_AddReg]
+HKR,ProblemDevices
+HKR,ProblemDevices, %ProblemDev1Name%, 0, %ProblemDev1Value%
+
+
+; List of controller subsystem IDs to be supported by the SI3114.sys driver.
+[SupportedSubSystemIds_AddReg]
+HKR,SupportedSubsystemIDs,%PCI\VEN_1095&DEV_3114.DeviceDesc%,0x00010001, 0x31141095
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3114.DeviceDesc% (Tyan)",0x00010001, 0x288610F1
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3114.DeviceDesc% (Intel)",0x00010001, 0x31148086
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3114.DeviceDesc% (Iwill)",0x00010001, 0x003915D4
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3114.DeviceDesc% (GigaByte)",0x00010001, 0xB0021458
+HKR,SupportedSubsystemIDs,"%PCI\VEN_1095&DEV_3114.DeviceDesc% (GigaByte_2)",0x00010001, 0x31141458
+
+
+;*************************************************************
+;The NT EventLog entries are the same for all SCSI miniports.
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+
+
+[Strings]
+SI="Silicon Image"
+
+PCI\VEN_1095&DEV_3114.DeviceDesc="Silicon Image SiI 3114 SATALink Controller"
+SI3114.SvcDesc="SiI-3114 SATALink Controller"
+
+
+ProblemDev1Name="Maxtor 4D060H3                          DAK05GK0"
+ProblemDev1Value="MaxMode = UDMA-5"

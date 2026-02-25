@@ -1,0 +1,46 @@
+;=============================================================================
+; Copyright (c) 2009. Marvell International Ltd.
+;
+; INF for Windows 2K, Windows XP, Windows server 2003 and Windows Vista
+;
+;=============================================================================
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%Marvell%
+CatalogFile=nvumi.cat
+DriverVer=02/23/2011,1.0.0.1022
+
+[SourceDisksFiles]
+
+[SourceDisksNames]
+
+;[ControlFlags]
+;ExcludeFromSelect = *
+
+[Manufacturer]
+%Marvell%=Marvell,ntamd64
+
+[Marvell.ntamd64]
+%Console.DeviceDesc%      = NODRV,SCSI\ProcessorMARVELL_Flash_Console___
+%TurboBoot.DeviceDesc%    = NODRV,SCSI\ProcessorMARVELL_Turbo_Boot______
+%TurboHiber.DeviceDesc%   = NODRV,SCSI\ProcessorMARVELL_Turbo_Hiber_____
+%TurboStandby.DeviceDesc% = NODRV,SCSI\ProcessorMARVELL_Turbo_Standby___
+
+[NODRV]
+
+[NODRV.Services]
+AddService = , %SPSVCINST_ASSOCSERVICE%
+
+[Strings]
+Marvell= "Marvell Inc."
+Console.DeviceDesc      = "Marvell Flash Controller Console"
+TurboBoot.DeviceDesc    = "Marvell Turbo Boot Device"
+TurboHiber.DeviceDesc   = "Marvell Turbo Hibernation Device"
+TurboStandby.DeviceDesc = "Marvell Turbo Standby Device"
+
+;*******************************************
+;Handy macro substitutions (non-localizable)
+SPSVCINST_ASSOCSERVICE = 0x00000002

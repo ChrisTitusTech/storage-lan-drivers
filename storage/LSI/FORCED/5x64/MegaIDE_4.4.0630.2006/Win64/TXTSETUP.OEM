@@ -1,0 +1,75 @@
+#
+# (C) LSI Logic Corporation
+# All Rights Reserved.
+#
+# Windows XP 64 Miniport Driver for LSI LOGIC CORPORATION MegaRAID IDE
+#
+[Disks]
+d1 = "Intel Embedded Server RAID Driver Diskette",\MEGAIDE,\
+
+[Defaults]
+scsi = MegaIDE_NT5
+
+[scsi]
+MegaIDE_INTEL_WIN64 ="Intel Embedded Server RAID Technology (Intel IA32E)", MEGAIDE
+
+# This section lists the files that should be copied if the user
+# selects a particular component option.
+#
+# <file_type> is one of driver, port, class, dll, hal, inf, or detect.
+#   See below.
+# <source_disk> identifies where the file is to be copied from, and must
+#   match en entry in the [Disks] section.
+# <filename> is the name of the file. This will be appended to the
+#   directory specified for the disk in the [Disks] section to form the
+#   full path of the file on the disk.
+
+[Files.scsi.MegaIDE_INTEL_WIN64]
+driver  = d1, MegaIDE.sys, MEGAIDE
+inf     = d1, MegaIDE.inf
+inf     = d1, NODEV.inf
+catalog = d1, Mega64.cat
+
+[HardwareIds.scsi.MegaIDE_INTEL_WIN64]
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34328086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34348086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34368086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34388086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_343a8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_343c8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_343e8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_344d8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34558086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34578086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34618086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34638086","MEGAIDE"
+id="PCI\VEN_8086&DEV_24df&SUBSYS_34658086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34418086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34438086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34458086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34518086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34678086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_34598086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_345b8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_345d8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_25b0&SUBSYS_345f8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_2652&SUBSYS_344b8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_2652&SUBSYS_344f8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_2652&SUBSYS_34538086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_34698086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_346B8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_34898086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348D8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348B8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348F8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_34898086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348D8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348B8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_348F8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_349B8086","MEGAIDE"
+id="PCI\VEN_8086&DEV_27c3&SUBSYS_349D8086","MEGAIDE"
+
+
+
+[Config.MEGAIDE]
+value = "Parameters\PnpInterface",5, REG_DWORD,1

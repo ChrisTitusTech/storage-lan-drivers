@@ -1,0 +1,210 @@
+;----------------------------------------------------------------
+;
+; ADPU320.INF -- This is the INF that support
+;                Adaptec Ultra320 SCSI Controllers 
+;                for Windows 64bit
+;
+; Copyright 2010 Adaptec, Inc. All rights reserved.
+;
+;  This software contains the valuable trade secrets of Adaptec 
+;  or its licensors. The software is protected under international 
+;  copyright laws and treaties. This software may only be used in 
+;  accordance with the terms of its accompanying license agreement.
+;
+;----------------------------------------------------------------
+
+;----------------------------------------------------------------
+;
+; [Version]
+;
+; Class and ClassGUID are defined in devguid.h
+;
+;----------------------------------------------------------------
+[Version]
+signature="$Windows NT$"
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%INF_PROVIDER%
+CatalogFile="adpu320.cat"
+DriverVer=01/28/2010,7.00.00.12
+
+;----------------------------------------------------------------
+;
+; [SourceDisksNames]
+;
+; diskid = description[,[tagfile][,<unused>,subdir]]
+;
+;----------------------------------------------------------------
+[SourceDisksNames]
+1 = %Floppy_Description%,,,
+ 
+;----------------------------------------------------------------
+;
+; [SourceDisksFiles.ia64]
+;
+; filename_on_source = diskid[,[subdir][,size]]
+;
+;----------------------------------------------------------------
+[SourceDisksFiles]
+adpu320.sys= 1,,
+;----------------------------------------------------------------
+;
+; [Manufacturer]
+;
+; manufacturer-name 
+; %strkey%=models-section-name
+; [%strkey%=models-section-name] ...
+;
+;----------------------------------------------------------------
+; Table of Contents
+[Manufacturer]
+%ADP%= ADAPTEC, NTamd64
+
+;----------------------------------------------------------------
+;
+; [ControlFlags]
+;
+;----------------------------------------------------------------
+[ControlFlags]
+;ExcludFromFiles.x86=
+;CopyFilesOnly=
+;----------------------------------------------------------------
+;
+; Models
+;
+; device-description=install-section-name,hw-id[,compatible-id...]
+;
+; "*" indicates that device is supported by more than one
+;     enumerator.
+;
+;----------------------------------------------------------------
+[ADAPTEC.NTamd64]
+;************************************
+; Adaptec Ultra320 SCSI Host Adapters
+;
+%PCI\VEN_9005&DEV_801D.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_801D
+%PCI\VEN_9005&DEV_801E.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_801E
+%PCI\VEN_9005&DEV_801F.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_801F
+%PCI\VEN_9005&DEV_800F.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_800F
+%PCI\VEN_9005&DEV_800F&SUBSYS_005F9005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_800F&SUBSYS_005F9005
+%PCI\VEN_9005&DEV_8000&SUBSYS_00609005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8000&SUBSYS_00609005
+%PCI\VEN_9005&DEV_8010&SUBSYS_00409005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8010&SUBSYS_00409005
+%PCI\VEN_9005&DEV_8011&SUBSYS_00419005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8011&SUBSYS_00419005
+%PCI\VEN_9005&DEV_8012&SUBSYS_00429005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8012&SUBSYS_00429005
+%PCI\VEN_9005&DEV_8014&SUBSYS_00449005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8014&SUBSYS_00449005
+%PCI\VEN_9005&DEV_8015&SUBSYS_00409005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8015&SUBSYS_00409005
+%PCI\VEN_9005&DEV_8016&SUBSYS_00409005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8016&SUBSYS_00409005
+%PCI\VEN_9005&DEV_8017&SUBSYS_00449005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8017&SUBSYS_00449005
+%PCI\VEN_9005&DEV_8017&SUBSYS_00459005.DeviceDesc% = adpu320_Inst,PCI\VEN_9005&DEV_8017&SUBSYS_00459005
+
+;----------------------------------------------------------------
+;
+; Install
+;
+;----------------------------------------------------------------
+[adpu320_Inst.nt]
+CopyFiles=@adpu320.sys
+
+[adpu320_Inst.nt.HW]
+DelReg = LegacyScsiportValues
+
+;----------------------------------------------------------------
+; SCSIPort Legacy Interface 
+;----------------------------------------------------------------
+[LegacyScsiportValues]
+HKR,Scsiport,BusNumber
+HKR,Scsiport,LegacyInterfaceType
+HKR,Scsiport,SlotNumber
+HKR,Scsiport
+
+;----------------------------------------------------------------
+;
+; Services
+;
+; Flag = 0x1 (SPSVCINST_TAGTOFRONT)
+;        Make sure that device loads at
+;        the front of its group
+;
+;----------------------------------------------------------------
+[adpu320_Inst.nt.Services]
+AddService = adpu320, 0x2, adpu320_Service_Inst, Miniport_EventLog_Inst
+
+[adpu320_Service_Inst]
+DisplayName=%DisplayDriverName%
+ServiceType    = 1      ; SERVICE_KERNEL_DRIVER
+StartType      = 0      ; SERVICE_BOOT_START
+ErrorControl   = 1      ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\adpu320.sys
+LoadOrderGroup = SCSI Miniport
+AddReg         = pnpsafe_pci_addreg
+AddReg         = Bus_Type_Raid
+
+[Bus_Type_Raid]
+HKR, "Parameters", "BusType", %FLG_ADDREG_TYPE_DWORD%, 0x00000001
+
+[pnpsafe_pci_addreg]
+HKR, "Parameters\PnpInterface", "5", 0x00010001, 0x00000001
+
+
+;----------------------------------------------------------------
+;
+; Event Log Install
+;
+;The NT EventLog entries are the same for all SCSI miniports.
+;
+;----------------------------------------------------------------
+[Miniport_EventLog_Inst]
+AddReg = Miniport_EventLog_AddReg
+
+[Miniport_EventLog_AddReg]
+HKR,,EventMessageFile,0x00020000,"%%SystemRoot%%\System32\IoLogMsg.dll"
+HKR,,TypesSupported,0x00010001,7
+HKLM,SYSTEM\CurrentControlSet\Services\adpu320\Parameters\Device,NumberOfRequests,0x10001,255
+HKLM,SYSTEM\CurrentControlSet\Services\adpu320\Parameters\Device,MaximumSGList,0x10001,65
+HKLM,System\CurrentControlSet\Services\adpu320\Parameters\Device,"DriverParameter",0x00000000,"/MAXTAGS=32"
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x0000003C
+
+;----------------------------------------------------------------
+;
+; [DestinationDirs]
+;
+; file-list-section=dirid[,subdir]] ... 
+;
+;----------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir = 12             ; DIRID_DRIVERS (this is IOSubsys on
+                                ; Win95, and System32\Drivers on NT)
+
+;----------------------------------------------------------------
+;
+; [Strings]
+;
+;----------------------------------------------------------------
+[Strings]
+INF_PROVIDER="Adaptec"
+ADP="Adaptec"
+FLOPPY_DESCRIPTION="Adaptec Ultra320 Family Manager Set for Windows 64-bit"
+DisplayDriverName="Adaptec Ultra320 SCSI"
+
+;**********************************
+; Adaptec Ultra320 SCSI Controllers
+;
+;
+PCI\VEN_9005&DEV_801D.DeviceDesc = "Adaptec AIC-7902B - Ultra320 SCSI"
+PCI\VEN_9005&DEV_801E.DeviceDesc = "Adaptec AIC-7901 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_801F.DeviceDesc = "Adaptec AIC-7902 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_800F.DeviceDesc = "Adaptec AIC-7901 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_800F&SUBSYS_005F9005.DeviceDesc = "Adaptec AIC-7901 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8000&SUBSYS_00609005.DeviceDesc = "Adaptec SCSI Card 29320A - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8010&SUBSYS_00409005.DeviceDesc = "Adaptec SCSI Card 39320 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8011&SUBSYS_00419005.DeviceDesc = "Adaptec SCSI Card 39320D - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8012&SUBSYS_00429005.DeviceDesc = "Adaptec SCSI Card 29320 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8014&SUBSYS_00449005.DeviceDesc = "Adaptec SCSI Card 29320LP - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8015&SUBSYS_00409005.DeviceDesc = "Adaptec SCSI Card 39320 - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8016&SUBSYS_00409005.DeviceDesc = "Adaptec SCSI Card 39320A - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8017&SUBSYS_00449005.DeviceDesc = "Adaptec SCSI Card 29320ALP - Ultra320 SCSI"
+PCI\VEN_9005&DEV_8017&SUBSYS_00459005.DeviceDesc = "Adaptec SCSI Card 29320LPE - Ultra320 SCSI"
+;*******************************************
+;Handy macro substitutions (non-localizable)
+FLG_ADDREG_TYPE_DWORD  = 0x00010001
+

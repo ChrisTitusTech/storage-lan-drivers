@@ -1,0 +1,39 @@
+#		       TXTSETUP.OEM
+#
+#		   Created by GenINF.
+
+
+[Disks]
+disk0 = "ACARD SCSI Adapterdrivers",\GINFD0,\x64
+disk1 = "ACARD SCSI Adapterdrivers",\GINFD0,\x86
+
+[Defaults]
+SCSI = AEC671xx
+
+[SCSI]
+AEC671xa  = "ACARD AEC-671X SCSI ADAPTER-amd64 platform "
+AEC671xx  = "ACARD AEC-671X SCSI ADAPTER-Intel Compatible. (Normal PCs)"
+
+
+[HardwareIds.SCSI.AEC671xa]
+id = "PCI\VEN_1191&DEV_808a","AEC671xa"
+
+[HardwareIds.SCSI.AEC671xx]
+id = "PCI\VEN_1191&DEV_808a","AEC671xx"
+
+[HardwareIds.SCSI.AEC671xa]
+id = "PCI\VEN_1191&DEV_8002","AEC671xa"
+id = "PCI\VEN_1191&DEV_8010","AEC671xa"
+id = "PCI\VEN_1191&DEV_8020","AEC671xa"
+id = "PCI\VEN_1191&DEV_8030","AEC671xa"
+id = "PCI\VEN_1191&DEV_8040","AEC671xa"
+
+[HardwareIds.SCSI.AEC671xx]
+id = "PCI\VEN_1191&DEV_8002","AEC671xx"
+id = "PCI\VEN_1191&DEV_8010","AEC671xx"
+id = "PCI\VEN_1191&DEV_8020","AEC671xx"
+id = "PCI\VEN_1191&DEV_8030","AEC671xx"
+id = "PCI\VEN_1191&DEV_8040","AEC671xx"
+
+
+

@@ -1,0 +1,76 @@
+# Copyright (c) 2009-2018 Intel Corporation
+# *****************************************************************************************************
+# *****************************************************************************************************
+# **    Filename:  txtsetup_win8.oem
+# **    Revision:  DRIVER_INFO
+# **    Abstract:  Windows* OEM File for Intel(R) Virtual RAID on CPU RAIDPort VMD Drivers
+# *****************************************************************************************************
+#
+[Disks]
+#
+# This section lists all disks in the disk set.
+#
+# <description> is a descriptive name for a disk, used when
+#   prompting for the disk
+# <tagfile> is a file whose presence allows setup to recognize
+#   that the disk is inserted.
+# <directory> is where the files are located on the disk.
+#
+#
+disk1 = "Intel(R) Virtual RAID on CPU Driver" \
+#
+#
+[Defaults]
+#
+# This section lists the default selection for each 'required'
+# hardware component.  If a line is not present for a component,
+# the default defaults to the first item in the [<component_name>]
+# section (see below).
+#
+# <component_name> is one of computer, display, keyboard, mouse, scsi
+# <id> is a unique <within the component> string to be associated
+#   with an option.
+#
+SCSI = iaVROC_P3500
+#
+[scsi]
+#
+# This section lists the options available for a particular component.
+#
+# <id> is the unique string for the option
+# <description> is a text string, presented to the user in a menu
+# <key_name> gives the name of the key to be created for the component in
+#   HKEY_LOCAL_MACHINE\ControlSet001\Services
+#
+; iaVROC.inf
+iaVROC_P3500 = "Intel() Volume Management Device NVMe RAID Controller"
+#
+[Files.scsi.iaVROC_P3500.NTamd64]
+driver = disk1, iaVROC.sys, iaVROC
+inf    = disk1, iaVROC.inf
+catalog = disk1, iavroc.cat
+#
+# [HardwareIds.scsi.id]
+# <id> corresponds to an id entry in the HwComponent section.
+# <deviceId> specifies the device id for a mass storage device.
+# <service>  specifies the service to be installed for the device.
+# The service is specified by the file name of its executable image without a .sys extension.
+#
+[HardwareIds.scsi.iaVROC_P3500]
+id = "PCI\VEN_8086&DEV_201D", "iaVROC"
+#
+# [Config.subkey_name]
+# Specifies the name of a key under the Services\DriverKey tree where Windows places the specified value.
+# <value_name> specifies the name of the value to be set.
+# <value_type> specifies the type of the registry entry.
+# The value_type can be one of the following: REG_DWORD, REG_BINARY, REG_MULTI_SZ
+# <value> specifies the value; its format depends on value_type.
+#
+[Config.iaVROC]
+value = Interrupt Management, 0x00000010
+value = Interrupt Management\MessageSignaledInterruptProperties, 0x00000010
+value = Interrupt Management\MessageSignaledInterruptProperties, MSISupported, REG_DWORD, 1
+value = Interrupt Management\MessageSignaledInterruptProperties, MessageNumberLimit, REG_DWORD, 64
+value = Interrupt Management\Affinity Policy, 0x00000010
+value = Interrupt Management\Affinity Policy, DevicePolicy, REG_DWORD, 5
+#

@@ -1,0 +1,154 @@
+;=============================================================================
+; Copyright (c) 2012. OCZ Technology Group, Inc.
+; 
+; 64-bit 10xx INF
+;============================================================================= 
+ 
+[Version] 
+signature = "$Windows NT$" 
+Class=SCSIAdapter
+ClassGUID={4D36E97B-E325-11CE-BFC1-08002BE10318}
+Provider=%Provider% 
+CatalogFile=ocz10xx.cat
+DriverVer=09/30/2013,1.3.9.4567
+
+[DestinationDirs] 
+ocz10xx.Files.amd64_12 = 12 
+
+[SourceDisksNames.amd64]
+0=%ocz10xxDesc%
+
+[SourceDisksFiles.amd64]
+ocz10xx.sys=0,
+;oczfilter.sys=0,
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+[Manufacturer] 
+%MfgName%=OCZ,ntamd64
+
+; OCZ products with OCZ bios
+[OCZ.ntamd64]
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1040&SUBSYS_10401B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1080&SUBSYS_10801B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1021&SUBSYS_10211B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1022&SUBSYS_10221B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1027&SUBSYS_10271B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1041&SUBSYS_10411B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1042&SUBSYS_10421B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1043&SUBSYS_10431B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1083&SUBSYS_10831B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1044&SUBSYS_10441B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1084&SUBSYS_10841B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1616&SUBSYS_16161B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1617&SUBSYS_16171B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1632&SUBSYS_16321B85
+%ocz10xxDesc%=ocz10xx_Inst,PCI\VEN_1B85&DEV_1633&SUBSYS_16331B85
+
+[ocz10xx_Inst.ntamd64] 
+CopyFiles = ocz10xx.Files.amd64_12
+AddReg = ocz10xx_Registry_Update,
+
+[ocz10xx_Inst.ntamd64.HW] 
+AddReg = InterruptMgmtValues
+
+;  ******** Change disk time out value from default 10s to 60s ********
+[ocz10xx_Registry_Update]
+HKLM,SYSTEM\CurrentControlSet\Services\Disk,TimeOutValue,0x00010001,0x3C
+
+; ***** For MSI interrupts uncomment the below section *****
+[InterruptMgmtValues]
+HKR,"Interrupt Management",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+
+[ocz10xx_Inst.ntamd64.Services] 
+AddService = ocz10xx,0x00000002,ocz10xx_Service_Instamd64, ocz10xx_EventLog_Inst 
+;AddService=oczfilter, 0, oczfilter_Installamd64
+
+[ocz10xx_Service_Instamd64] 
+ServiceType = %SERVICE_KERNEL_DRIVER% 
+StartType = %SERVICE_BOOT_START% 
+ErrorControl = %SERVICE_ERROR_NORMAL% 
+ServiceBinary = %12%\ocz10xx.sys 
+LoadOrderGroup = "SCSI Miniport"
+AddReg = pnpsafe_pci_addreg
+;AddReg = bus_type_raid_addreg
+AddReg = bus_type_scsi_addreg
+
+;[oczfilter_Installamd64]
+;DisplayName=OCZ NT Device Filter
+;ServiceType=1
+;StartType=0
+;ErrorControl=1
+;ServiceBinary=%12%\oczfilter.sys
+;LoadOrderGroup="PnP Filter"
+;AddReg=oczfilter_AddReg
+
+; Enable OCZ NT device filter
+;[oczfilter_AddReg]
+;HKLM, System\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}, UpperFilters, 0x00010008, oczfilter
+
+
+; ******** Uninstall section ********
+[DefaultUninstall]
+DelFiles = ocz10xx.DelFiles
+
+[DefaultUninstall.Services]
+DelService = ocz10xx
+;DelService = oczfilter
+
+[ocz10xx.DelFiles]
+ocz10xx.sys,,,
+;oczfilter.sys,,,
+
+;  **********************************
+
+[ocz10xx.Files.amd64_12] 
+ocz10xx.sys
+;oczfilter.sys
+
+[ocz10xx_EventLog_Inst] 
+AddReg = ocz10xx_EventLog_Inst.AddReg 
+ 
+[ocz10xx_EventLog_Inst.AddReg] 
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\Drivers\ocz10xx.sys" 
+HKR,,TypesSupported,%REG_DWORD%,7
+
+[pnpsafe_pci_addreg] 
+HKR, Parameters\PnpInterface, 5, 0x00010001, 0x00000001 
+HKR, "Parameters\Device", "NumberOfRequests", 0x00010001, 0x000000FF
+HKR, "Parameters\Device", "MaximumSGList", 0x00010001, 0x000000FF
+
+;[bus_type_raid_addreg]
+;HKR, "Parameters", "BusType", 0x00010001, 0x00000008
+
+[bus_type_scsi_addreg]
+HKR, "Parameters", "BusType", 0x00010001, 0x00000001
+
+[Strings] 
+
+;  *******Localizable Strings******* 
+Provider    = "OCZ Technology Group, Inc." 
+MfgName     = "OCZ Technology Group, Inc." 
+ocz10xxDesc = "OCZ 10xx SCSI Controller" 
+
+
+;  *******Non Localizable Strings******* 
+
+SERVICE_BOOT_START = 0x0 
+SERVICE_SYSTEM_START = 0x1 
+SERVICE_AUTO_START = 0x2 
+SERVICE_DEMAND_START = 0x3 
+SERVICE_DISABLED = 0x4 
+
+SERVICE_KERNEL_DRIVER = 0x1 
+SERVICE_ERROR_IGNORE = 0x0 
+SERVICE_ERROR_NORMAL = 0x1 
+SERVICE_ERROR_SEVERE = 0x2 
+SERVICE_ERROR_CRITICAL = 0x3 
+
+REG_EXPAND_SZ = 0x00020000 
+REG_DWORD = 0x00010001 
+
