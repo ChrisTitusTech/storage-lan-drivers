@@ -149,9 +149,68 @@ foreach ($folder in $foldersToDelete) {
 }
 
 # ----------------------------------------
-# STEP 3: Check driver .inf compatibility (Win11 64-bit)
+# STEP 3: Remove drivers that failed DISM injection (WinUtil log)
 # ----------------------------------------
-Write-Host "`n[STEP 3] Checking driver compatibility for Win11 64-bit..." -ForegroundColor Cyan
+Write-Host "`n[STEP 3] Checking WinUtil_Win11ISO.log for DISM injection failures..." -ForegroundColor Cyan
+Write-Host "----------------------------------------"
+
+$logPath = Join-Path $PSScriptRoot "WinUtil_Win11ISO.log"
+if (Test-Path $logPath) {
+    $logContent = Get-Content $logPath -ErrorAction SilentlyContinue
+    $failedInfNames = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+
+    for ($i = 0; $i -lt $logContent.Count; $i++) {
+        $line = $logContent[$i]
+
+        # Match DISM "Installing X of Y - <path>\driver.inf: <result>" lines
+        if ($line -match 'Installing \d+ of \d+ - (.+\.inf):') {
+            $infPath = $matches[1].Trim()
+            $infName = [System.IO.Path]::GetFileName($infPath)
+
+            # Look ahead up to 5 lines for a success confirmation
+            $succeeded = $false
+            for ($j = $i + 1; $j -lt [Math]::Min($i + 5, $logContent.Count); $j++) {
+                if ($logContent[$j] -match 'successfully installed') {
+                    $succeeded = $true
+                    break
+                }
+            }
+
+            if (-not $succeeded) {
+                $null = $failedInfNames.Add($infName)
+                Write-Host "  DISM FAIL: $infName" -ForegroundColor Red
+            }
+        }
+    }
+
+    if ($failedInfNames.Count -eq 0) {
+        Write-Host "  No DISM failures found in log." -ForegroundColor DarkGreen
+    } else {
+        foreach ($infName in $failedInfNames) {
+            $matchingInfs = Get-ChildItem -Path $rootFolder -Filter $infName -Recurse -File -ErrorAction SilentlyContinue
+            foreach ($inf in $matchingInfs) {
+                $driverFolder = $inf.DirectoryName
+                if ($deletedFolderPaths.Contains($driverFolder)) { continue }
+                Write-Host "Deleting folder (DISM failure): $driverFolder" -ForegroundColor Yellow
+                try {
+                    Remove-Item -Path $driverFolder -Recurse -Force
+                    $null = $deletedFolderPaths.Add($driverFolder)
+                    $incompatibleDriverCount++
+                } catch {
+                    Write-Host "FAILED to delete folder: $driverFolder" -ForegroundColor Red
+                    $failedCount++
+                }
+            }
+        }
+    }
+} else {
+    Write-Host "  WinUtil_Win11ISO.log not found at: $logPath - skipping." -ForegroundColor DarkGray
+}
+
+# ----------------------------------------
+# STEP 4: Check driver .inf compatibility (Win11 64-bit)
+# ----------------------------------------
+Write-Host "`n[STEP 4] Checking driver compatibility for Win11 64-bit..." -ForegroundColor Cyan
 Write-Host "----------------------------------------"
 
 $infFiles = Get-ChildItem -Path $rootFolder -Filter "*.inf" -Recurse -File -ErrorAction SilentlyContinue
@@ -183,10 +242,10 @@ foreach ($inf in $infFiles) {
 }
 
 # ----------------------------------------
-# STEP 4: Check driver signatures (.cat / .sys)
+# STEP 5: Check driver signatures (.cat / .sys)
 # Deletes any driver folder that is unsigned or has invalid catalog
 # ----------------------------------------
-Write-Host "`n[STEP 4] Checking driver signatures..." -ForegroundColor Cyan
+Write-Host "`n[STEP 5] Checking driver signatures..." -ForegroundColor Cyan
 Write-Host "----------------------------------------"
 
 $infFiles = Get-ChildItem -Path $rootFolder -Filter "*.inf" -Recurse -File -ErrorAction SilentlyContinue
@@ -247,9 +306,9 @@ foreach ($inf in $infFiles) {
 }
 
 # ----------------------------------------
-# STEP 5: Remove any empty folders left behind
+# STEP 6: Remove any empty folders left behind
 # ----------------------------------------
-Write-Host "`n[STEP 5] Cleaning up empty folders..." -ForegroundColor Cyan
+Write-Host "`n[STEP 6] Cleaning up empty folders..." -ForegroundColor Cyan
 Write-Host "----------------------------------------"
 
 $emptyPasses = 0
